@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Calvin Li</title>
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./note.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <!-- stylesheet found from w3school. (icon use)-->
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li class="courseNote">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./cs246.html">CS 246</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
+        <br><br><br>
+        
+        <div class="container">
+            <h1 class="title">CS 246</h1>
+            <hr>
+            
+            <div class="lec1">
+                <h3 class="title">Lecture 1</h3>
+                <hr>
+                <h4 class="title">Module 1 - Shell</h4>
+                <p>What is <b>Shell</b>?<br></p>
+                <p>
+                    It is the interface to the OS (Operating System).<br>
+                    It gets the OS to do things. For example, run program, manage files, etc.<br>
+                    The two main categories are <b>graphical</b> and <b>command-line</b>.
+                </p>
+                <ul>
+                    <li>Graphical interface is easy to use; people only need to click with mouse or touch the screen to finsih a task. It is available on almost every OS.</li>
+                    <li>Command-line interface accepts commands that are typed at the prompt. It is more versatile.</li>
+                </ul>
+                <p>In this course, we use <b>Bash</b>.<br>
+                    The Linux filesystem consists of program, code and data.<br>
+                    Then the shell should print out the tyoe of prompt <code class="cmdOption">-bash</code>
+                </p>
+                <br><br>
+                <p><b>Linux Filesystem</b></p>
+                <P>The Linux filesystem consists of program, code and data.</P>
+                <p>The first command we are going to talke is <code class="cmd">cat</code>, which is diplayed the contents of a file.</p>
+                <ul>
+                    <li>Example: <code><span class="cmd">cat</span> <span class="cmdFile">/usr/share/dict/words</span></code>
+                        <ul>
+                            <li><code class="cmdFile">/</code> is always the <b>root directory</b>.</li>
+                            <li><code class="cmdFile">usr</code>, <code class="cmdFile">share</code>, <code class="cmdFile">dict</code> are the directories, which are contained file.</li>
+                            <li><code class="cmdFile">words</code> is the file.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>In Linux, a directory is a special kind of file.</p>
+                <P>When you want to kill the program, press <code class="cmd">^c</code> (ctrl+c).</P>
+                <p>The second command is <code class="cmd">ls</code>; it will list files (which are non-hidden) in current directory.</p>
+                <ul>
+                    <li>Type <code><span class="cmd">ls</span><span class="cmdOption"> -a</span></code> will show all files, include hidden files.</li>
+                    <li>By the way, if you want to hide a file, just name it starting with <code class="cmdFile">.</code></li>
+                </ul>
+                <p>The third command is <code class="cmd">pwd</code>; it will print out the current directory.</p>
+                <p>Sometime, you will see <code class="cmd">1%</code>.</p>
+                <ul>
+                    <li>The <code class="cmd">%</code> in here is same as <code class="cmd">$</code>, so you are good to go!</li>
+                </ul>
+                <p>What if you just type <code class="cmd">cat</code>?<br>
+                   Nothing happen? Not really. It will print everything you type later.
+                </p>
+                <ul>
+                    <li>Example:<br>
+                        <code class="cmd">cat</code><br>
+                        <code>&lt; <span class="cmdInput">Hello.</span></code><br>
+                        <code>&gt; <span class="cmdOutput">Hello.</span></code>
+                     </li>
+                </ul>
+                <p>Is it useful? Maybe.<br>
+                    Example: to check if we can capture the output in a file.
+                </p>
+                <p>What if we type <code><span class="cmd">cat &gt;</span><span class="cmdFile"> output.txt</span></code>?<br>
+                    Okay... This is just the stupid way to create a file.</p>
+                <p>If we want tot stop the program (not killing it), we use <code class="cmd">^d</code> (ctrl+d) at the beginning of a line.</p>
+                <ul>
+                    <li>It sends an <b>end-of-file (EOF)</b> signal to <code class="cmd">cat</code>.</li>
+                </ul>
+                <p>In general, <code><span class="cmd">command-agrs &gt; </span><span class="cmdFile">file</span></code> excutes <code class="cmd">command-args</code> and captures output in <code class="cmdFile">file</code> instead of screen.<br>
+                It called <b>output redirection</b>.</p>
+                <p>The <b>input redirection</b> looks like this: <code><span class="cmd">cat &gt; </span><span class="cmdFile">inputfile.txt</span></code>.<br>
+                It takes input from <code class="cmdFile">inputfile.txt</code> instead of keyboard.<br>
+                It displays the file's contents.<br>
+                    It looks like <code><span class="cmd">cat </span><span class="cmdFile">inputfile.txt</span></code>.</p>
+                <p>What is the difference?<br>
+                    <code><span class="cmd">cat </span><span class="cmdFile">inputfile.txt</span></code> passes the name <code class="cmdFile">inputfile.txt</code> as an argument to <code class="cmd">cat</code>.</p>
+                <ul>
+                    <li><code class="cmd">cat</code> opens the file and displays it.</li>
+                </ul>
+                <p><code><span class="cmd">cat &lt; </span><span class="cmdFile">inputfile.txt</span></code><br>
+                The shell opens the file and passes the contents to <code class="cmd">cat</code> instead of keyboard.</p>
+                <p>The next command is <code class="cmd">wc</code>; it will count the number of lines, words and characters (in order) in file.</p>
+                <ul>
+                    <li>Example 1:<br>
+                        <code>&lt;<span class="cmd"> wc</span> <span class="cmdFile">output.txt</span></code><br>
+                        <code>&gt;<span class="cmdOutput"> 40 149 947 output.txt</span></code></li>
+                     <li>Example 2:<br>
+                         <code>&lt;<span class="cmd"> wc &lt; </span><span class="cmdFile">output.txt</span></code><br>
+                        <code>&gt; 40 149 947</code></li>
+                    <li>Example 3:<br>
+                            <table>
+                                <tr>
+                                    <td colspan="5"><code>&lt;<span class="cmd"> wc </span><span class="cmdFile">*.txt</span></code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>&gt;</code></td>
+                                    <td><code class="cmdOutput">40</code></td>
+                                    <td><code class="cmdOutput">149</code></td>
+                                    <td><code class="cmdOutput">947</code></td>
+                                    <td><code class="cmdOutput">text1.txt</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code></code></td>
+                                    <td><code class="cmdOutput">10</code></td>
+                                    <td><code class="cmdOutput">50</code></td>
+                                    <td><code class="cmdOutput">700</code></td>
+                                    <td><code class="cmdOutput">text2.txt</code></td>
+                                </tr>
+                                 <tr>
+                                    <td><code></code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code></code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code></code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                    <td><code class="cmdOutput"> .</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code></code></td>
+                                    <td><code class="cmdOutput">300</code></td>
+                                    <td><code class="cmdOutput">1001</code></td>
+                                    <td><code class="cmdOutput">6479</code></td>
+                                    <td><code class="cmdOutput">total</code></td>
+                                </tr>
+                            </table>
+                       </li>
+                </ul>
+                <p>
+                    <code>*.txt</code> is the globbing pattern; it matches any sequence of characters.<br>
+                    Shell finds all matching files in current directory and substitutes on command-line.<br>
+                    Basically, <code><span class="cmd">cat</span><span class="cmdFile"> *.txt</span></code> is same as <code><span class="cmd">wc</span><span class="cmdFile"> text1.txt text2.txt text3.txt ... text9.txt</span></code>.
+                </p>
+                <p>If we do <code><span class="cmd">cat</span><span class="cmdFile"> *.txt</span></code>, it will print all contents, line by line.</p>
+                <p>
+                    Note that we <em>CANNOT</em> do <code><span class="cmd">wc &lt; </span><span class="cmdFile">*.txt</span></code>.<br>
+                    We can only redirect to/from one file.<br>
+                    Look at the <em>Linux Command Summary</em> sheet tot see what tot do with more pattern.
+                </p>
+                <p>
+                    By the way, we can do <code><span class="cmd">wc &lt; </span><span class="cmdFile"> a.txt </span><span class="cmd">&gt; </span><span class="cmdFile"> b.txt</span></code>.
+                </p>
+                <br><br>
+                <p><b>Streams</b></p>
+                <p>Every process attached to 3 streams.</p>
+                <img src="./image/cs246/lec1/p1.png">
+                <br><br>
+                <p>
+                    <b>StdErr</b><br>
+                    It separates output stream for error messages.<br>
+                    So that output and errors can go to separate places.<br>
+                    So you don't miss the error messages, and error messages don't corrupt output formatting.
+                </p>
+                <p>
+                    <b>Buffered</b><br>
+                    StdOut may be buffered.<br>
+                    System may wait to accumulate output before actually displaying (flushing) it.<br>
+                    StdErr is nver buffered, so we can get the error message immediately.
+                </p>
+                <p>
+                    <b>Pipes</b><br>
+                    It uses output (StdOut) of one program as input (StdIn) of another.
+                </p>
+                <ul>
+                    <li>
+                        Example 1: How many words occur in the first 5 lines of <code class="cmdFile">sample.txt</code>?<br>
+                        <ul>
+                            <li>
+                                <code><span class="cmd">head </span><span class="cmdOption">-n </span><span class="cmdFile">file</span></code> prints the first <em>n</em> lines of <code class="cmdFile">file</code>.<br>
+                            </li>
+                            <li>
+                                <code><span class="cmd">wc </span><span class="cmdOption">-w </span><span class="cmdFile">file</span></code> shows just the number of words in <code class="cmdFile">file</code>.<br>
+                            </li>
+                        </ul>
+                        Solution: <code><span class="cmd">head </span><span class="cmdOption">-5</span><span class="cmdFile"> sample.txt </span><span class="cmd">| wc </span><span class="cmdOption">-w</span></code> or <code><span class="cmd">cat </span><span class="cmdFile">sample.txt </span><span class="cmd">| head </span><span class="cmdOption">-5</span><span class="cmd"> | wc </span><span class="cmdOption">-w</span></code>.<br>
+                        Note that <code class="cmd">|</code> is the "pipe".
+                    </li>
+                    <li>
+                        Example 2: Suppose <code class="cmdFile">word1.txt</code>, <code class="cmdFile">word2.txt</code>, etc. contain lists of words, one per line.<br>
+                        Print a duplicate-free (no repeated) list of all words that occur in any of these files.
+                        <ul>
+                            <li><code><span class="cmd">uniq </span><span class="cmdFile">file</span></code> removes consecutive duplicate lines from <code class="cmdFile">file</code>.</li>
+                            <li><code><span class="cmd">sort </span><span class="cmdFile">file</span></code> sorts the lines of <code class="cmdFile">file</code>.</li>
+                        </ul>
+                        Solution: <code><span class="cmd">cat </span><span class="cmdFile">word*.txt </span><span class="cmd">| sort | uniq</span></code>
+                    </li>
+                </ul>
+            </div>
+            <!--- End Lecture 1 note --->
+            <hr>
+            
+            <div class="footer">
+                <p>Thanks For Coming Here. - Calvin Li</p>
+                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
+                    <i class = "fa fa-envelope-square"></i>
+                </a>
+                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
+                    <i class = "fa fa-linkedin-square"></i>
+                </a>       
+                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href = "https://github.com/vertli" target = "_blank;">
+                    <i class="fa fa-github-square"></i>
+                </a>
+                <br>
+                <p>Chun Kit (Calvin) Li &copy; 2017</p>
+                <br>
+            </div>
+            
+        </div>
+        
+        
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        
+    </body>
+    
+</html>

@@ -4,138 +4,33 @@
     <head>
         <meta charset="utf-8">
         <title>Calvin Li</title>
-        <link rel = "stylesheet" href="style.css">
-        <!-- stylesheet found from w3school. (icon use)-->
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./style.css">
     </head>
     
     <body>      
-            
-        <div id = "navbar-top">
-            <ul>
-                <div id = "navbar-left">
-                    <li><a href = "#top">Calvin Li</a></li>
-                    <li><a href = "./doc/NewResume_CKLI.pdf" target = "_blank;">Résumé</a></li>
-                </div>
-                <div id = "navbar-right">
-                    <li><a href = "#about">About</a></li>
-<!--                    <li><a href = "#arts">Arts</a></li>-->
-                    <li><a href = "#projects">Projects</a></li>
-                    <li><a href = "#contact">Contact</a></li>
-                </div>
-            </ul>
-        </div>
-        
-        
-        <div id = "container">
-           
-            <div id = "top">
-                <h1>Chun Kit (Calvin) Li</h1>
-                <h2>Computational Mathematics Student</h2>
-                <h2>University of Waterloo</h2>
-                <h2>Class of 2020</h2>
+        <div class="top">
+            <h1>Chun Kit (Calvin) Li</h1>
+            <h2>Computational Mathematics Student</h2>
+            <h2>University of Waterloo</h2>
+            <h2>Class of 2020</h2>
+            <br>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-1"><a href="./doc/NewResume_CKLI.pdf" target="_blank">RÉSUMÉ</a></div>
+                <div class="col-md-1"><a href="./about.html">ABOUT</a></div>
+                <div class="col-md-1"><a href="./projects.html">PROJECTS</a></div>
+                <div class="col-md-1"><a href="./cs246.html">NOTES</a></div>
+                <div class="col-md-1">
+                    <a href="https://github.com/vertli" target="_blank;">GITHUB</a></div>
+                <div class="col-md-1">
+                    <a href="https://www.linkedin.com/in/vertckli/" target="_blank;">LINKEDIN</a></div>
+                <div class="col-md-1">
+                    <a href="https://www.instagram.com/vert_arts/" target="_blank;">INSTAGRAM</a></div>
+                <div class="col-md-1">
+                    <a href="mailto: ck6li@edu.uwaterloo.ca" target="_blank;">EMAIL</a></div>
+                <div class="col-md-2"></div>
             </div>
-            
-            <div id = "about">
-                <h1>Who am I?</h1>
-                <img src = "./image/self.jpg" style="height: 324px; width: 243px;">
-                <h3>I'm Calvin, and...</h3>
-                <p>I'm currently a Computational Mathematics student at University of Waterloo. I'm passionately interested in programming and I actively try my best to improve my skills.
-                </p>
-                <br>
-                <h3>I love games, and...</h3>
-                <p>I create games. I have started making RPG board games since I was in primary school. After I leant how to code with Pascal, I started creating storytelling text games. In the future, I would like to transfer my RPG board games to video games (in 2D, of course).</p>
-                <br>
-                <h3>I do arts. For me...</h3>
-                <p>Arts is the perfect way to represent my own feeling. I enjoy doing arts. However, I hate dirty. Thus I usually just draw with colour pencils and markers. (Usless I have to do my school projects, then I will try ohter media.)</p>
-                <br>
-                <h3>I'm not only a programmer, a gamer and an artist...</h3>
-                <p>I'm also a dart player. Dart is the only sport I fall in love with. I do know how to play badminton, but not that good. One interesting fact is that I don't know how to play table tennis but I was in my Hong Kong secondary school team. I was the only judge in my school.</p>
-                <br>
-                <h3>Lastly...</h3>
-                <p>I love listening music. My favourite singing groups are Celtic Thunder and Celtic Woman. I also like the sound of violin. Sadly, I don't know how to play violn.</p>
-                <br>
-                <p class = "special">Please feel free to message me if you want to have a chat!</p>
-                <br>
-            </div>
-            
-<!--
-            <div id = "arts">
-                <h1>Arts</h1>
-            </div>
--->
-            
-            <div id = "projects">
-                <h1>Projects</h1>
-                <table>
-                    <tr>
-                        <th>
-                           <img src = "./image/project/website.JPG">
-                            <h2>Personal Website</h2>
-                            <p><strong>Summary: </strong><br> The place to display my projects/arts. Yes, you are visiting it now!</p>
-                            <p><strong>Language: </strong>HTML, CSS</p>
-                            <p><strong>Software Used: </strong>Brackets</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/fmmEscape.JPG">
-                            <h2>FMM Escape</h2>
-                            <p><strong>Summary: </strong><br> An escape game as my final group project in Canadian high school.<br> We made two versions, one is SWING(Java) version and the other one is hsa.Console version.</p>
-                            <p><strong>Language: </strong>Java</p>
-                            <p><strong>Software Used: </strong>Eclipse, Ready to Program Java IDE</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/GetItAtOne.JPG">
-                            <h2>Get It At One</h2>
-                            <p><strong>Summary: </strong><br> A re-made guessing number game which is developed during my Hong Kong secondary school period.</p>
-                            <p><strong>Language: </strong> Pascal</p>
-                            <P><strong>Software Used: </strong> Free Pascal IDE</P>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/SBA.JPG">
-                            <h2>Health Care System</h2>
-                            <p><strong>Summary: </strong><br> An information system which is developed as the final project in Hong Kong secondary school.</p>
-                            <p><strong>Language: </strong> Pascal</p>
-                            <P><strong>Software Used: </strong> Free Pascal IDE</P>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/TRACKR.JPG">
-                            <h2>TRACKR</h2>
-                            <p><strong>Summary: </strong>A website which created as a group project in Hack The North 2017. My job was developed the front-end part.</p>
-                            <p><strong>Language: </strong>HTML, CSS, Javascript, Node.js</p>
-                            <p><Strong>Software Used: </Strong>Brackets</p>
-                        </th>
-                    </tr>
-                </table>
-            </div>
-            
-            <div id = "contact">
-                <br>
-                <p>Thanks For Coming Here. - Calvin Li</p>
-                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
-                    <i class = "fa fa-envelope-square"></i>
-                </a>
-                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
-                    <i class = "fa fa-linkedin-square"></i>
-                </a>       
-                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href = "https://github.com/vertli" target = "_blank;">
-                    <i class="fa fa-github-square"></i>
-                </a>
-                <br>
-                <p>Chun Kit (Calvin) Li &copy; 2017</p>
-            </div>
-            
-        </div> 
-        
+        </div>    
     </body>
 </html>
