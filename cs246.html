@@ -396,7 +396,95 @@
             <div class="lec4">
                 <h3>Lecture 4 - 19/09/2017</h3>
                 <hr>
-                <P>Lecture 4 will be updated this weekend... I hope.</P>
+                <h4 class="title">Module 2 - C++</h4>
+                
+                <p>Recall out first C program in CS136 - <b>helloWorld.c</b>:</p>
+                <script src="https://gist.github.com/vertli/bf37f591f2da675b77219074ed7c9c15.js"></script>
+                <p>Here is the C++ version:</p>
+                <script src="https://gist.github.com/vertli/886b5694ccb9c4016d8b9ca7e615b348.js"></script>
+                <p>
+                    Note that the <code class="name">main</code> function <u>must</u> be return the type <code class="var">int</code> in C++.<br>
+                    The <code class="name">stdio.h</code> and <code class="name">printf</code> are still available in C++.<br>
+                    But of course, we should always use C++ I/O where we are coding with C++.<br>
+                    The header for C++ I/O is <code class="name">iostream</code>.<br>
+                    The output format is <code><span class="name">std::cout &lt;&lt; </span>(data) <span class="name"> &lt;&lt; </span>...<span class="name"> &lt;&lt; </span>(data)<span class="name"> &lt;&lt; </span><span class="name"> std::endl</span></code>.<br>
+                    <code class="name">std::endl</code> means "end of line"; it is same as <code>\n</code> in C.<br>
+                    If we add <code>using namespace <span class="name">std</span>;</code> after <code class="name">iostream</code>, then we can omit <code>std::</code>.<br>
+                </p>
+                <br>
+                <p>
+                    To compiling C++ programs, type <code>g++ -std=c++14 -Wall helloWorld.cc -o helloWorld</code> or <code>g++14 helloWorld.cc -o helloWorld</code>.<br>
+                    <code>-o hello</code>: name of execute binary (default as <code>a.out</code>)<br>
+                    Once you compile the program, then type <code>./helloWorld</code>.<br>
+                    <br>
+                    Again, C programs work in C++.<br><br>
+                </p>
+                <p>
+                    <b>Input/Output</b><br>
+                    There are three types of I/O streams:
+                </p>
+                <ul>
+                    <li><code>cout</code>: for printing to <code>stdOut</code> (standard output)</li>
+                    <li><code>cin&nbsp;&nbsp;</code>: for reading from <code>stdIn</code> (standard Input)</li>
+                    <li><code>cerr</code>: for printing to <code>stdErr</code> (standard Error)</li>
+                </ul>
+                <br>
+                <p><b>I/O Operators in C++:</b></p>
+                <ul>
+                    <li>
+                        <code>&lt;&lt;</code>: "put to" (output)
+                    </li>
+                    <li>
+                        <code>&gt;&gt;</code>: "get from" (input)
+                    </li>
+                    <li>
+                        <code>cerr &gt;&gt; x</code> and <code>cerr &lt;&lt; x</code>: operatore "points" in the direction of information flow
+                    </li>
+                </ul>
+                <br>
+                <P>Example: Add 2 numbers:</P>
+                <script src="https://gist.github.com/vertli/960f50a60ef8ae9c79d3613ffa256a72.js"></script>
+                <p>
+                    In line 8, the program will get two integers from StdIn and skipping whitespace.<br>
+                    What if input does not contain an integer next?<br>
+                    <li>The statement will fail and the variable will become either ) or maxInt or minInt.</li>
+                    What if input is exhausted before we get two integers?
+                    <li>Same as before...</li>
+                    <br>
+                    If the read failed: <code>cin.fail ()</code> will be true.<br>
+                    If EOF <code>cin.eof ()</code> and <code>cin.fail ()</code> will be true, but not until the attempted read fails!<br>
+                    <br>
+                    Example: Read all integers from stdIn, echo them one per line, to stdOut; stop on bad input of EOF.
+                </p>
+                <script src="https://gist.github.com/vertli/e7d97917bb63be45032a2a2b08d982e9.js"></script>
+                <p>    
+                    Note: then there is am implicit conversion from <code>cin</code> to <code>bool</code>.<br>
+                    Let <code>cin</code> be used as a condition: true for success and false for failure.<br><br>
+                    Then... Here is the v2.0 for our example:
+                </p>
+                <script src="https://gist.github.com/vertli/8ba1443aa06cc5177389a8745f49f67f.js"></script>
+                <p>
+                    Note that <code>&gt;&gt;</code> is the right bitshift operator in C.<br>
+                    <code>a &gt;&gt; b</code> means shifts <span class="var">a</span>'s bits to the right by <span class="var">b</span> spots.<br>
+                    For example: <code>21 &gt;&gt; 3</code><br>
+                    Since <code>21=10101<sub>2</sub></code>, we get <code>21 &gt;&gt; 3 = 10<sub>2</sub> = 2</code>.<br>
+                    But when the left hand side is <code>cin</code>, <code>&gt;&gt;</code> is the "get from" operator.<br>
+                    <br>
+                    Operator <code>&gt;&gt;</code> inputs:
+                    <li><code>cin</code> (type <code class="name">istream</code>)</li>
+                    <li>data (several possible types)</li>
+                    Output??? Returns <code>cin</code> in back (<code>istream</code>).
+                    This is why we can write <code><span class="name">cin &gt;&gt; </span>x<span class="name"> &gt;&gt; </span>y<span class="name"> &gt;&gt; </span>z;</code>.<br><br>
+                    V3.0 for our example...
+                </p>
+                <script src="https://gist.github.com/vertli/9866755ac5a138fd0a8a20564ac5145f.js"></script>
+                <p>Lastly, V4.0 for our example:</p>
+                <script src="https://gist.github.com/vertli/f9dc9292464f19c7ab764c4060c6874a.js"></script>
+                <br>
+                <p>
+                    Example: Read all integers and echo to stdOut until EOF; skip non-integer input.
+                </p>
+                <script src="https://gist.github.com/vertli/e0a9e44a678a52d5b1a190ed44f9796e.js"></script>
             </div>
             <hr>
             

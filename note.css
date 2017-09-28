@@ -56,11 +56,11 @@ table{
     color: darkgreen;
 }
 
-.cmdFile {
+.cmdFile, .var {
     color: red;
 }
 
-.cmdOption {
+.cmdOption, .name {
     color: purple;
 }
 
@@ -71,6 +71,7 @@ table{
 .cmdOutput {
     color: black;
 }
+
 
 .footer {
     text-align: center;
