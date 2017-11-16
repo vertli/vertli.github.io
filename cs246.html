@@ -882,7 +882,226 @@
                 </p>
                 <script src="https://gist.github.com/vertli/ae21271ce891fe3d00a047f3c74df8a4.js"></script>
             </div>
-            <hr>  
+            <hr>
+            
+            <div class="lec20">
+                <h3>Lecture 20 - 16/11/2017</h3>
+                <hr>
+                    <p>Recall our last example from lecture 19...</p>
+                    <script src="https://gist.github.com/vertli/a8d5995f63830a113e6bb5e35e9fa1a3.js"></script>
+                    <script src="https://gist.github.com/vertli/ae21271ce891fe3d00a047f3c74df8a4.js"></script>
+                    <p>
+                        But thing is... It won't compile! Why?<br>
+                        In <code>book.h</code>, we have <code>#include "BookVisitor.h</code>.<br>
+                        In <code>BookVisitor.h</code>, we have <code>#include "book.h", "text.h"</code>.<br>
+                        Lastly, in <code>text.h</code>, we have <code>#include "book.h"</code>, but <code>book.h</code> won't be include (<code>#include</code> guard).<br>
+                        This is circular include dependency.<br>
+                        So Text doesn't know what Book is.<br>
+                        Are these <code>#include</code> really needed?<br>
+                    </p>
+                    <br>
+                    <b>Compilation Dependencies</b>
+                    <p>
+                        When does a compilation dependency exist?<br>
+                        Consider:
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// &quot;a.h"&quot;</span>  <br>
+                            <span class="cline">&nbsp;2&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">A</span>{...};  <br>
+                            <span class="cline">&nbsp;3&nbsp;&nbsp;</span><br>
+                            <span class="cline">&nbsp;4&nbsp;&nbsp;</span><span class="ccmd">// &quot;b.h&quot;</span>  <br>
+                            <span class="cline">&nbsp;5&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">B</span>: <span class="ckey">public</span> <span class="cvar">A</span> {...};  <br>
+                            <span class="cline">&nbsp;6&nbsp;&nbsp;</span><br>
+                            <span class="cline">&nbsp;7&nbsp;&nbsp;</span><span class="ccmd">// &quot;c.h&quot;</span>  <br>
+                            <span class="cline">&nbsp;8&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">C</span> {  <br>
+                            <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;A a;  <br>
+                            <span class="cline">10&nbsp;&nbsp;</span>};  <br> 
+                            <span class="cline">11&nbsp;&nbsp;</span><br>
+                            <span class="cline">12&nbsp;&nbsp;</span><span class="ccmd">// &quot;d.h&quot;</span>  <br>
+                            <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">D</span> {  <br>
+                            <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;A *a  <br>
+                            <span class="cline">15&nbsp;&nbsp;</span>};  <br>
+                            <span class="cline">16&nbsp;&nbsp;</span><br>
+                            <span class="cline">17&nbsp;&nbsp;</span><span class="ccmd">// &quot;e.h&quot;</span>  <br>
+                            <span class="cline">18&nbsp;&nbsp;</span>><span class="ckey">class</span> <span class="cvar">E</span> {  <br>
+                            <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;A f(A a);  <br>
+                            <span class="cline">20&nbsp;&nbsp;</span>};
+                        </code></pre>
+                </span>
+                <p>
+                    For class B and C, compiation dependency. So it needs to know how big A is to know how big B and C are. Therefore, we need <code>#include "a.h</code>.<br>
+                    If there is no compilation dependency necessiated by the code, we don't introduce one with extra <code>#include</code>.<br>
+                    When calss A changes, only A, B, C need recompilation.<br><br>
+                    For class D and E, we don't need to <code>#include "a.h"</code>.<br>
+                    Now in the <u>implementions</u> of D, E:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// d.cc</span><br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>void <span class="cvar">D::f</span>() {<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;a-><span class="cmtd">someMethod</span>(); <br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>// need to know about class A here<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>//&nbsp;&nbsp;&nbsp;&nbsp;a real compilation dependency<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>}
+                    </code></pre>
+                </span>
+                <p>
+                    Therefore, we need to add <code>#include &quot;a.h&quot;</code> in the .cc file, instead of the .h file (where possible).
+                </p>
+                <p>Now conside the XWindow class:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span> {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">private:</span> <span class="ccmd">// private data</span><br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">public:</span><br>
+                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>};
+                    </code></pre>
+                </span>
+                <p>
+                    We can look at private data. Do we know what it means? Do we care? NO!<br>
+                     What if we add or change a private member? All clients must recompile.<br>
+                    It would be better to hide these details away.<br><br>
+                    Solution: use the <u>pimpl idiom</u> ("pointer to implementation" idiom)<br>
+                    Create a second class called <code>XWindowImpl</code>:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// XWindowImpl.h</span><br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>#<span class="ckey">include</span> &lt;Xll/Xlib.h&gt;<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span><span class="ckey">struct</span> <span class="cvar">XWindowImpl</span> {<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">10&nbsp;&nbsp;</span><br>
+                        <span class="cline">11&nbsp;&nbsp;</span><span class="ccmd">// Window.h</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindowImpl</span>;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span>w {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;XWindowImpl *pimpl;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <span class="ccmd">// no change</span><br>
+                        <span class="cline">17&nbsp;&nbsp;</span>};
+                    </code></pre>
+                </span>
+                
+                <p>
+                    Now, this is the class D case.
+                    Then we don't need to include <code>Xlib.h</code> in <code>Window.cc</code>, it will forward declare the implementation class.<br>
+                    There is no compilation dependency on <code>XWindowImpl.h</code>.<br>
+                    Clients also don't depend on <code>XWindowImpl.h</code>.<br>
+                    </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// Window.cc</span><br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span><span class="ckey">#include</span> "window.h"<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span><span class="ckey">#include</span> "XWindowImpl.h"<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span><br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span><span class="cvar">XWindow::XWindow</span>(...): pimpl {<span class="ckey">new</span> XWindowImpl} ... {} <span class="ccmd">// delete in dtor</span>
+                    </code></pre>
+                </span>
+                
+                <p>
+                    Other methods: replace fields d, w, s etc. with <code>pimpl->d</code>, <code>pimple->w</code>, <code>pimpl->s</code>, etc.<br>
+                    If you confine all private fields to XWindowImpl, then <u>only</u> window.cc needs to be recompiled if these fields change.<br><br>
+                    Generalization:<br>
+                    What if there are several possible windos implementations, say XWindow and YWindow.<br>
+                    Then make the Impl struct a superclass.<br>
+                </p>
+                <img src="./image/cs246/lec20/Lec20_1.png" style="width: 50%; height: 50%">
+                <p>
+                    pimpl idiom with a class hierarchy of implementations - this is called the <u>Bridge Pattern</u>.<br>
+                </p>
+                <br>
+                <b>Measures of Design Quality</b>
+                <li>coupling and cohesion</li>
+                <ul>
+                    <li>
+                        Coupling
+                        <ul>
+                            <li>
+                                the degree to which distinct program modules depend on each other
+                                <ul>
+                                    <li>
+                                        low:
+                                        <ul>
+                                            <li>modules that communicate via function calls with basic parameters/results</li>
+                                            <li>modules pass arrays/structs back and forth</li>
+                                            <li>modules affect each other's control flow</li>
+                                            <li>modules share global data</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        high:
+                                        <ul>
+                                             <li>modules have access to each other's implementation (friendship)</li>
+                                        </ul>
+                                        High coupling implies changing to one module require greater changes to other modules.<br>
+                                        It is harder to reuse individual modules.<br>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Cohesion
+                        <ul>
+                            <li>
+                                how closely elements and a module are related to each other
+                                <ul>
+                                    <li>
+                                        low:
+                                        <ul>
+                                            <li>arbitrary grouping of unrelated elements (e.g. &lt;utility&gt;)</li>
+                                            <li>elements share a common theme, otherwise unrelated, perhaps share some base code (e.g. &lt;algorithm&gt;)</li>
+                                            <li>elements manupulate state over the lifetime of an object (e.g. open/read file)</li>
+                                            <li>elements pass data to each other</li>
+                                        </ul>
+                                        Low cohesion implies poorly organised code and it is hard to understand, maintain, reuse.
+                                    </li>
+                                    <li>
+                                        high:
+                                        <ul>
+                                            <li>elements cooperate to perform exactly one task</li>
+                                        </ul>
+                                    </li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Goal: Low Coupling and High Cohesion</p>
+                <br>
+                <b>Decoupling the Interface (MVC)</b>
+                <p>
+                    Your primary program classes should not be printing things.<br>
+                    Example:
+                </p>
+                
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                
+                <p>
+                    This is a bad design. Why? Inhibits code reuse.<br>
+                    What if you want to reuse ChessBoard, but not have it communicate via stdout?<br>
+                    We will talk about this next time.<br>
+                </p>
+            </div>
+            <hr>
             
             
             <div class="footer">

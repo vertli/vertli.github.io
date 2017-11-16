@@ -104,6 +104,20 @@ b {
     padding-right: 10px;
 }
 
+.arts {
+    height: auto;
+}
+
+.arts ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.arts li {
+    float: left;
+    margin-right: 10px;
+}
 
 .projects {
     height: auto;
