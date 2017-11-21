@@ -1104,6 +1104,245 @@
             <hr>
             
             
+            <div class="lec21">
+                <h3>Lecture 21 - 21/11/2017</h3>
+                <hr>
+            
+                <p>Recall:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This is a bad design - inhibits code reuse.<br>
+                    What if you want to reuse <code>ChessBoard</code>, but not have it communicate via stdout?<br>
+                    One solution: give the class stream objects where it can send its input/output:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;std::istream &amp;in;<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;std::ostream &amp;out;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cvar">ChessBoard</span> (std::istream &amp;in, std::ostream &amp;out): in{in}, out{out} {}<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; &quot;Your move&quot; &lt;&lt; endl;<br>
+                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Now the code is better - but what if we don't want to use streams at all?<br>
+                    Your <code>ChessBoard</code> class should not be doing any communication at all.<br>
+                </p>
+                <br>
+                <b>Single Responsibility Principle</b>
+                <ul>
+                     <li>"A class should only have one reason to change."</li>
+                    <li>game state, rules, strategy, communication... <u>all</u> reasons to change</li>
+                 </ul>
+                <p>A better way to solve the problem:</p>
+                <ul>
+                    <li>communicate with the <code>ChessBoard</code> via parameters/results</li>
+                    <li>confire user communication to outside the game class</li>
+                </ul>
+                <p>
+                    Question: So should <code>main</code> do all the communication and then call <code>ChessBoard</code> methods?<br>
+                    Answer: No - hard to reuse code if it&apos;s in main.<br>
+                    We should have a class to manage interaction, that is separate from the game state class.<br>
+                </p>
+                <br>
+                <b><u>Architecture:</u> Model-View-Controller (MVC)</b>
+                <p>
+                    Separate the distinct notions of the data (or state) from the presentation of the data, and the control of the data.<br>
+                    <u>Model</u> - the main data you are manipulating (e.g. game state)<br>
+                    <u>View</u> - how the model is displayed to the user<br>
+                    <u>Controller</u> - gow the model is manipulated<br>
+                </p>
+                <img src="./image/cs246/lec21/lec21_1.png">
+                <p>Model</p>
+                <ul>
+                    <li>can have multiple views (eg. text and graphics)</li>
+                    <li>doesn't need to know about their details</li>
+                    <li>classic Observer pattern (or could communicate via controller)</li>
+                </ul>
+                <p>Controller</p>
+                <ul>
+                    <li>mediates control flow through model and view</li>
+                    <li>may encapsulate turn-taking, or full game rules</li>
+                    <li>may ask for input(or this could be the view)</li>
+                </ul>
+                <p>By decoupling presentation of control, MVC promotes reuse.</p>
+
+                <br>
+                <b>Exception Safely</b>
+                <p>Consider:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">void</span> <span class="cvar">f()</span> {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass *p = <span class="ckey">new</span> MyClass;<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="cmtd">g</span>();<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">delete</span> p;<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    No leaks for this program.<br> 
+                    But what if <code>g()</code> raises an exception? What is guaranteed?<br>
+                    During stack-unwinding, dtors for staak-allocated objects will run. Heap-allocated memory is not destrayed.<br>
+                    Therefore, if  <code>g()</code> throws, <code>*p</code> is leaked, but <code>mc</code> is not.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass *p = new MyClass;<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;try {<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;g();<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;} catch(...) { // catch everything<br>
+                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete p;<br>
+                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;throw;<br>
+                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;delete p; // if g() doesn't throw, we still need to delete p<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Tedious of error-prone - duplication of code<br>
+                    How else can we guarantee that something (e.g. delete p) will happen, no matter how we exit p? (normal or exception?)<br>
+                    In some languages, you have thing called "finally" clauses guarantee certain final actions - not in C++ btw.<br>
+                    The only thing you can count on in C++ - the dtor for stack-allocated data will run.<br>
+                    Therefore, use stack-allocated data with dtors as much as possible.<br>
+                </p>
+                <li>use this guarantee to you advantage</li>
+                <br>
+                <br>
+                <b>C++ idiom - RAII (Resource Acquisition Is Initialization)</b>
+                <p>
+                    Every resource should be wrapped in a stack-allocated object, whose dtor frees it.<br>
+                    Example - files:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>{<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;ifstream f("file"); // acquiring the resource ("file") = initializing the object (f)<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The file is guaranteed to be released when f is popped from the stack (f's dtor runs).<br>
+                    This can be done with dynomic memory:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>class std::unique_ptr&lt;T&gt;<br>
+                    </code></pre>
+                </span>
+                <ul>
+                    <li>takes a <code>T*</code> in the ctor</li>
+                    <li>the dtor will delete the pointer</li>
+                    <li>in between - can dereference just like a pointer</li>
+                </ul>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;std::unique_ptr &lt;MyClass&gt; p {new MyClass;}<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;g();<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>No leaks. // Guaranteed by Prof. Lushman.</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>std::unique_ptr&lt;MyClass&gt; p = make_unique&lt;MyClass&gt;(/*ctor here*/);<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>// or<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>auto p = make_unique&lt;MyClass&gt;(/*ctor here*/)<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>// now you don't need to use the keyword new<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p><u>Difficulty:</u></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>class c{...};<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; p {new c{...}};<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; q = p;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What happens when a <code>unique_ptr</code> is copied? You don't want to delete the same pointer twice! So the code above doesn't work!<br>
+                    Instead - copying is disabled for unique_ptrs; they can only be moved. Therefore, the code won't not complie.<br>
+                    Sample implementation:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>template &lt;typename T&gt; class unique_ptr {<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;T *ptr;<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit unique_ptr(T *p): ptr{p} {}<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~unique_ptr() {delete ptr;}<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr(const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr (unique_ptr &amp;&amp;other): ptr {other.ptr} {other.ptr = nullptr;}<br>
+                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (unique_ptr &amp;&amp;other) {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(ptr, other.ptr);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T &amp;operator*() {return *ptr;}<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>If you need shared ownership (i.e. the ability to cpoy pointers)...</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>// use std::shared_ptr<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>{<br>
+                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;auto p1 = std::make_shared &lt;MyClass&gt; ();<br>
+                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;if (...) {<br>
+                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p2 = p1;<br>
+                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p2 popped - pointer NOT deleted<br>
+                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;// p1 popped, pointer IS deleted<br>
+                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>shared_ptr</code>s maintain a <u>reference count</u> - count of all <code>shared_ptr</code>s pointing at the same object.<br>
+                    Memory is freed when the number of <code>shared_ptr</code>s pointing to it reaches 0.<br>
+                    Use <code>shared_ptr</code> and <code>unique_ptr</code> to express ownership.<br>
+                    Use raw pointers only for non-ownership.<br>
+                    <u>Dramatically</u> fewer opportunities for leaks.<br>
+                    <br>
+                    Consider the Racket code:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>(define l1 (cons 1 (cons 2(cons 3 empty))))<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>(efine l2 (cons 4 (rest l1)))<br>
+                    </code></pre>
+                </span>
+                <p>
+                    We have two lists shared the same tail.<br>
+                    It&apos;s nightmare in C to do that - you need to have a lot of steps to delete those lists without double free!<br>
+                    But in C++, if they are all <code>shared_ptr</code>s, nighmare is gone now! Yeah!<br>
+                    <br>
+                    Back to exception safely...<br>
+                    There are 3 levels of exception safely and we will talk about them in next lecture.<br>
+                </p> 
+            </div>
+            <hr>       
+            
+            
             <div class="footer">
                 <p>Thanks For Coming Here. - Calvin Li</p>
                 <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
