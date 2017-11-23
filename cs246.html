@@ -907,25 +907,25 @@
                     </p>
                     <span>
                         <pre><code>
-                            <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// &quot;a.h"&quot;</span>  <br>
-                            <span class="cline">&nbsp;2&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">A</span>{...};  <br>
-                            <span class="cline">&nbsp;3&nbsp;&nbsp;</span><br>
-                            <span class="cline">&nbsp;4&nbsp;&nbsp;</span><span class="ccmd">// &quot;b.h&quot;</span>  <br>
-                            <span class="cline">&nbsp;5&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">B</span>: <span class="ckey">public</span> <span class="cvar">A</span> {...};  <br>
-                            <span class="cline">&nbsp;6&nbsp;&nbsp;</span><br>
-                            <span class="cline">&nbsp;7&nbsp;&nbsp;</span><span class="ccmd">// &quot;c.h&quot;</span>  <br>
-                            <span class="cline">&nbsp;8&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">C</span> {  <br>
-                            <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;A a;  <br>
+                            <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// &quot;a.h"&quot;</span>  <br>
+                            <span class="cline">02&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">A</span>{...};  <br>
+                            <span class="cline">03&nbsp;&nbsp;</span><br>
+                            <span class="cline">04&nbsp;&nbsp;</span><span class="ccmd">// &quot;b.h&quot;</span>  <br>
+                            <span class="cline">05&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">B</span>: <span class="ckey">public</span> <span class="cvar">A</span> {...};  <br>
+                            <span class="cline">06&nbsp;&nbsp;</span><br>
+                            <span class="cline">07&nbsp;&nbsp;</span><span class="ccmd">// &quot;c.h&quot;</span>  <br>
+                            <span class="cline">08&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">C</span> {  <br>
+                            <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a;  <br>
                             <span class="cline">10&nbsp;&nbsp;</span>};  <br> 
                             <span class="cline">11&nbsp;&nbsp;</span><br>
                             <span class="cline">12&nbsp;&nbsp;</span><span class="ccmd">// &quot;d.h&quot;</span>  <br>
                             <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">D</span> {  <br>
-                            <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;A *a  <br>
+                            <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A *a  <br>
                             <span class="cline">15&nbsp;&nbsp;</span>};  <br>
                             <span class="cline">16&nbsp;&nbsp;</span><br>
                             <span class="cline">17&nbsp;&nbsp;</span><span class="ccmd">// &quot;e.h&quot;</span>  <br>
-                            <span class="cline">18&nbsp;&nbsp;</span>><span class="ckey">class</span> <span class="cvar">E</span> {  <br>
-                            <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;A f(A a);  <br>
+                            <span class="cline">18&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">E</span> {  <br>
+                            <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A f(A a);  <br>
                             <span class="cline">20&nbsp;&nbsp;</span>};
                         </code></pre>
                 </span>
@@ -938,12 +938,12 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// d.cc</span><br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>void <span class="cvar">D::f</span>() {<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;a-><span class="cmtd">someMethod</span>(); <br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>// need to know about class A here<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>//&nbsp;&nbsp;&nbsp;&nbsp;a real compilation dependency<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>}
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// d.cc</span><br>
+                        <span class="cline">02&nbsp;&nbsp;</span>void <span class="cvar">D::f</span>() {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;a-><span class="cmtd">someMethod</span>(); <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// need to know about class A here<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// a real compilation dependency<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}
                     </code></pre>
                 </span>
                 <p>
@@ -952,15 +952,15 @@
                 <p>Now conside the XWindow class:</p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span> {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">private:</span> <span class="ccmd">// private data</span><br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
-                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
-                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">public:</span><br>
-                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">private:</span> <span class="ccmd">// private data</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">public:</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
                         <span class="cline">10&nbsp;&nbsp;</span>};
                     </code></pre>
                 </span>
@@ -973,22 +973,22 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// XWindowImpl.h</span><br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>#<span class="ckey">include</span> &lt;Xll/Xlib.h&gt;<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span><span class="ckey">struct</span> <span class="cvar">XWindowImpl</span> {<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;Display *d;<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;Window w;<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
-                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;GC gc;<br>
-                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
-                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// XWindowImpl.h</span><br>
+                        <span class="cline">02&nbsp;&nbsp;</span>#<span class="ckey">include</span> &lt;Xll/Xlib.h&gt;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><span class="ckey">struct</span> <span class="cvar">XWindowImpl</span> {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>};<br>
                         <span class="cline">10&nbsp;&nbsp;</span><br>
                         <span class="cline">11&nbsp;&nbsp;</span><span class="ccmd">// Window.h</span><br>
                         <span class="cline">12&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindowImpl</span>;<br>
                         <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span>w {<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;XWindowImpl *pimpl;<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <span class="ccmd">// no change</span><br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;XWindowImpl *pimpl;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <span class="ccmd">// no change</span><br>
                         <span class="cline">17&nbsp;&nbsp;</span>};
                     </code></pre>
                 </span>
@@ -1001,11 +1001,11 @@
                     </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ccmd">// Window.cc</span><br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span><span class="ckey">#include</span> "window.h"<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span><span class="ckey">#include</span> "XWindowImpl.h"<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span><br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span><span class="cvar">XWindow::XWindow</span>(...): pimpl {<span class="ckey">new</span> XWindowImpl} ... {} <span class="ccmd">// delete in dtor</span>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// Window.cc</span><br>
+                        <span class="cline">02&nbsp;&nbsp;</span><span class="ckey">#include</span> "window.h"<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><span class="ckey">#include</span> "XWindowImpl.h"<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span><span class="cvar">XWindow::XWindow</span>(...): pimpl {<span class="ckey">new</span> XWindowImpl} ... {} <span class="ccmd">// delete in dtor</span>
                     </code></pre>
                 </span>
                 
@@ -1088,10 +1088,10 @@
                 
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
                 
@@ -1111,11 +1111,11 @@
                 <p>Recall:</p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1125,14 +1125,14 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;std::istream &amp;in;<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;std::ostream &amp;out;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cvar">ChessBoard</span> (std::istream &amp;in, std::ostream &amp;out): in{in}, out{out} {}<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; &quot;Your move&quot; &lt;&lt; endl;<br>
-                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::istream &amp;in;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::ostream &amp;out;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cvar">ChessBoard</span> (std::istream &amp;in, std::ostream &amp;out): in{in}, out{out} {}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; &quot;Your move&quot; &lt;&lt; endl;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1183,12 +1183,12 @@
                 <p>Consider:</p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span><span class="ckey">void</span> <span class="cvar">f()</span> {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass *p = <span class="ckey">new</span> MyClass;<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass mc;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="cmtd">g</span>();<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="ckey">delete</span> p;<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">void</span> <span class="cvar">f()</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass *p = <span class="ckey">new</span> MyClass;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmtd">g</span>();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">delete</span> p;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1199,16 +1199,16 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>void f() {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass *p = new MyClass;<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass mc;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;try {<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;g();<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;} catch(...) { // catch everything<br>
-                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete p;<br>
-                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;throw;<br>
-                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;delete p; // if g() doesn't throw, we still need to delete p<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass *p = new MyClass;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g();<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} catch(...) { // catch everything<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete p;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete p; // if g() doesn't throw, we still need to delete p<br>
                         <span class="cline">11&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -1229,10 +1229,10 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>{<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;ifstream f("file"); // acquiring the resource ("file") = initializing the object (f)<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;ifstream f("file"); // acquiring the resource ("file") = initializing the object (f)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1251,30 +1251,30 @@
                 </ul>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>void f() {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;std::unique_ptr &lt;MyClass&gt; p {new MyClass;}<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;MyClass mc;<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;g();<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::unique_ptr &lt;MyClass&gt; p {new MyClass;}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;g();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
                 <p>No leaks. // Guaranteed by Prof. Lushman.</p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>std::unique_ptr&lt;MyClass&gt; p = make_unique&lt;MyClass&gt;(/*ctor here*/);<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>// or<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>auto p = make_unique&lt;MyClass&gt;(/*ctor here*/)<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>// now you don't need to use the keyword new<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>std::unique_ptr&lt;MyClass&gt; p = make_unique&lt;MyClass&gt;(/*ctor here*/);<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// or<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>auto p = make_unique&lt;MyClass&gt;(/*ctor here*/)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>// now you don't need to use the keyword new<br>
                     </code></pre>
                 </span>
                 <br>
                 <p><u>Difficulty:</u></p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>class c{...};<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>...<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; p {new c{...}};<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; q = p;<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>class c{...};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; p {new c{...}};<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; q = p;<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1284,20 +1284,20 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>template &lt;typename T&gt; class unique_ptr {<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;T *ptr;<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit unique_ptr(T *p): ptr{p} {}<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~unique_ptr() {delete ptr;}<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr(const unique_ptr &amp;other) = delete;<br>
-                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (const unique_ptr &amp;other) = delete;<br>
-                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr (unique_ptr &amp;&amp;other): ptr {other.ptr} {other.ptr = nullptr;}<br>
-                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (unique_ptr &amp;&amp;other) {<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(ptr, other.ptr);<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T &amp;operator*() {return *ptr;}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename T&gt; class unique_ptr {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T *ptr;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explicit unique_ptr(T *p): ptr{p} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~unique_ptr() {delete ptr;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr(const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr (unique_ptr &amp;&amp;other): ptr {other.ptr} {other.ptr = nullptr;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (unique_ptr &amp;&amp;other) {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(ptr, other.ptr);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T &amp;operator*() {return *ptr;}<br>
                         <span class="cline">16&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1305,15 +1305,15 @@
                 <p>If you need shared ownership (i.e. the ability to cpoy pointers)...</p>
                 <span>
                     <pre><code>
-                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>// use std::shared_ptr<br>
-                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>{<br>
-                        <span class="cline">&nbsp;3&nbsp;&nbsp;</span>&nbsp;&nbsp;auto p1 = std::make_shared &lt;MyClass&gt; ();<br>
-                        <span class="cline">&nbsp;4&nbsp;&nbsp;</span>&nbsp;&nbsp;if (...) {<br>
-                        <span class="cline">&nbsp;5&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p2 = p1;<br>
-                        <span class="cline">&nbsp;6&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p2 popped - pointer NOT deleted<br>
-                        <span class="cline">&nbsp;7&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
-                        <span class="cline">&nbsp;8&nbsp;&nbsp;</span>&nbsp;&nbsp;// p1 popped, pointer IS deleted<br>
-                        <span class="cline">&nbsp;9&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>// use std::shared_ptr<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>{<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p1 = std::make_shared &lt;MyClass&gt; ();<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (...) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto p2 = p1;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// p2 popped - pointer NOT deleted<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p1 popped, pointer IS deleted<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1341,6 +1341,268 @@
                 </p> 
             </div>
             <hr>       
+            
+            <div class="lec22">
+                <h3>Lecture 22 - 23/11/2017</h3>
+                <hr>
+                
+                <p>3 levels of exception safety for a function <code>f()</code>:</p>
+                <ol>
+                    <li>
+                        <b>Basic guarantee</b> - if an exception occurs, the program will be in some valid state (i.e. nothing is leaked, and class invariants maintained).
+                    </li>
+                    <li>
+                        <b>Strong guarantee</b> - if an exception is raised while executing <code>f()</code>, the state of the program will be as it was before <code>f()</code> was called.
+                    </li>
+                    <li>
+                        <b>No-throw guarantee</b> - <code>f()</code> will never throw an exception, and always accomplishes its purpose.
+                    </li>
+                </ol>
+                <p>Example:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class A{...}; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>class B{...}; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>class C { <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;B b; <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public: <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.g(); // may throw (strong guarantee) <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.h(); // may throw (strong guarantee) <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    Question: Is <code>C::f()</code> exception safety?<br>
+                    If <code>a.g()</code> throws, nothing happened yet. So it is okay.<br>
+                    If <code>b.h()</code> throws, effects of <code>g()</code> would have to be undone to offer the strong guarantee.<br>
+                    It is very hard or impossible if <code>g()</code> has non-local side-effects.<br>
+                    Therefore, the answer is NO - it is probably not exception safety.<br>
+                    If <code>A::g()</code> and <code>B::h()</code> do not have non-local side-effects, can use copy and swap.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class C{ <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f(){ <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A atemp = a; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B btemp = b; <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atemp.g(); <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btemp.h(); <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = atemp; <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = btemp; <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 4 to 7, if any of these throw, original a and b still intact.<br>
+                    What if any of line 8 to 9 throw?<br>
+                    It is better if the swap was no throw.<br>
+                    Solution: PIMPL idiom.
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct CImpl { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;B b; <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>class C { <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &lt;CImpl&gt; pImpl; <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto temp = make_unique&lt;CImpl&gt; (*pImpl); <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;a.g(); <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;b.h(); <br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::swap (pImpl, temp);  // No-throw <br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} // this is strong guarantee <br>
+                        <span class="cline">14&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p> 
+                    If either <code>A::g()</code> or <code>B::h()</code> offer no exception safety guarantee, then neither can <code>C::f()</code>.<br>
+                </p>
+                <br>
+                <b>Exception Safely and the STL: Vectors</b>
+                <p>
+                    Vectors:
+                </p>
+                <ul>
+                    <li>encapsulate a heap-allocated array</li>
+                    <li>RAII - when a stack-allocated vector goes out of scope, the internal heap-allocated array if freed.</li>
+                </ul>
+                <span>
+                    <pre><code>
+                    <span class="cline">01&nbsp;&nbsp;</span>void f() { <br>
+                    <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;c&gt; v; <br>
+                    <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                    <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    When <code>v</code> goes out-of-scope, then is freed, <code>C</code> dtor runs on all objects in the vector.<br>
+                    But...
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void g() { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;c*&gt; v; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    Array is freed but pointers don't have dtors, so objects pointed at by the pointers are NOT deleted.<br>
+                    <code>v</code> doesn't know whether the pointers in the array own the objects they point at.<br>
+                    [If you want to delete them: <code>for (auto &amp;x:v) delete x;</code>]<br>
+                    But...
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void h() { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;unique_ptr&lt;c&gt;&gt; v; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    Array is freed and dtor run, so objects <u>are</u> deleted.<br>
+                    So <u>no</u> explicit deallcation.<br>
+                    Also: <code>vector&lt;shard_ptr&lt;c&gt;&gt; v;</code><br>
+                    <br>
+                    <code>vector&lt;T&gt;::emplace_back</code>: offers the strong guarantee.<br>
+                    If the array is full (i.e. size == capacity), then allocate new array, copy objects over (copy ctor) and delete old array.<br>
+                    If a copy ctor throws, then destroy the new array, but old array still intact. (strong guarantee)<br>
+                    Then delete is no throw.<br>
+                    But... Copying is costly and the old data will be thrown away.<br>
+                    Wouldn't moving the objects be more efficient?<br>
+                    It allocate new array, <u>move</u> the objects over (move ctor), then delete old array.<br>
+                    If move ctor throws, it can't offer the strong guarantee and the original no longer intact.<br>
+                    If the move ctor offers the no-throw guarantee, <code>emplace_back</code> will use it.<br>
+                    Else, it will use the copy ctor(slower).<br>
+                    So your move operators should be no-throw, and you should indicate that they are:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class C { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public: <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C (C &amp;&amp;other) noexcept {...} <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C &amp;operator= (C &amp;&amp;other) noexcept {...} <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    If you know a function will never throw or propagate an exception, declare it no except.<br>
+                    At minimum: moves and swaps should be no except.<br>
+                </p>
+                <br>
+                <b>Casting</b>
+                <p>In C:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int *ip = (int *)(&amp;n); <br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 2, it's called "cast".<br>
+                    Cast forces C++ to frees a Node* as int*, so we can point an int* at a Node.<br>
+                    C-style casts should be avoided in C++.<br>
+                    If you <u>must</u> cast, use a C++ style cast.<br>
+                    We have 4 kinds of ways to do that.<br>
+                    <br>
+                    1. <b>static_cast</b> - "sensible casts" with well-defined semantics.<br>
+                    Example: double -&gt; int
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>double d; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int f(int d); <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>f (static_cast&lt;double&gt;(x)); <br>
+                </code></pre>
+                </span>
+                <p>Example: Superclass pointer to subclass pointer:</p>
+                <code>
+                    01.	Book *b = new Text {...}; <br>
+                    02.	Text *t = static_cast&lt;Text*&gt; (b); <br>
+                </code>
+                <p>
+                    Note that you are taking responsibility that b actually points at a Text.<br>
+                    You are asking the compiler to "trust you".<br>
+                    If it fails, undefined behavior. (This is all YOUR fault!)<br>
+                    <br>
+                    2. <b>reinterpret_cast</b> - unsafe, implementation-specific, "weird" conversions.<br>
+                    Example:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Student s; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Turtle *t = reinterpret_cast&lt;Turtle*&gt; (&amp;s); <br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    3. <b>const_cast</b> - for converting between const and non-const.<br>
+                    It is the only C++ cast than can "cast away const".<br>
+                    Example:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void g(int *p); <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f(const int *p) { <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// f() can't call g(), since f() won't change *p but g() <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// what if g() do something we want and we happen to <u>know</u> that g() <u>doesn't</u> modify *p <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g(const_cast&lt;int&gt; (p)); // this is how you use const_cast <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>} <br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs246/lec22/lec22_1.png" width="50%" height="50%">
+                <p>
+                    This is called "const posioning". <br>
+                    When we fix a const_erro, it will/may create a new one ._. <br>
+                    So we need to keep fixing this kind of error.<br>
+                </p>
+                <br>
+                <p>
+                    4. <b>dynamic_cast</b> - is it safe to conver a <code>Book*</code> to a <code>Text*</code>?
+                </p>
+                <span>
+                    <pre><code>
+                    <span class="cline">01&nbsp;&nbsp;</span>Book *pb = ...; <br>
+                    <span class="cline">02&nbsp;&nbsp;</span>static_cast&lt;Text *&gt;(pb)-&gt;getTopic(); <br>
+                </code></pre>
+                </span>
+                <p>
+                    Is line 2 safe?<br>
+                    It depends on what <code>pb</code> actually points at.<br>
+                    It is better to do a tentative cast - try it and see if it succeeds.
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Text *pt = dynamic_cast&lt;Text *&gt; (pb); <br>
+                    </code></pre>
+                </span>
+                <p>
+                    It the cast works (pb really points at a Text or a subclass of Text), then pt points at the object.<br>
+                    Otherwise, pt will be nullptr.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>if (pt) cout &lt;&lt; pt-&gt;getTopic(); <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>else cout &lt;&lt; "Not a Text";<br>
+                    </code></pre>
+                </span>
+                <p>
+                    We can use dynamic casting to make decisions based on an object's RTTI (Run-time Type Information).<br>
+                </p>
+            </div>
+            <hr>
+            
+            
             
             
             <div class="footer">
