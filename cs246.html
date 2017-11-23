@@ -955,13 +955,13 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span> {<br>
                         <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">private:</span> <span class="ccmd">// private data</span><br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
                         <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">public:</span><br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
                         <span class="cline">10&nbsp;&nbsp;</span>};
                     </code></pre>
                 </span>
@@ -989,7 +989,7 @@
                         <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span>w {<br>
                         <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;XWindowImpl *pimpl;<br>
                         <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <span class="ccmd">// no change</span><br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <span class="ccmd">// no change</span><br>
                         <span class="cline">17&nbsp;&nbsp;</span>};
                     </code></pre>
                 </span>
@@ -1130,9 +1130,9 @@
                         <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::istream &amp;in;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::ostream &amp;out;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cvar">ChessBoard</span> (std::istream &amp;in, std::ostream &amp;out): in{in}, out{out} {}<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; &quot;Your move&quot; &lt;&lt; endl;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cvar">ChessBoard</span> (std::istream &amp;in, std::ostream &amp;out): in{in}, out{out} {}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; &quot;Your move&quot; &lt;&lt; endl;<br>
                         <span class="cline">08&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1288,17 +1288,17 @@
                         <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename T&gt; class unique_ptr {<br>
                         <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T *ptr;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explicit unique_ptr(T *p): ptr{p} {}<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~unique_ptr() {delete ptr;}<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr(const unique_ptr &amp;other) = delete;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (const unique_ptr &amp;other) = delete;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr (unique_ptr &amp;&amp;other): ptr {other.ptr} {other.ptr = nullptr;}<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (unique_ptr &amp;&amp;other) {<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(ptr, other.ptr);<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T &amp;operator*() {return *ptr;}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit unique_ptr(T *p): ptr{p} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~unique_ptr() {delete ptr;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr(const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr (unique_ptr &amp;&amp;other): ptr {other.ptr} {other.ptr = nullptr;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (unique_ptr &amp;&amp;other) {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(ptr, other.ptr);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T &amp;operator*() {return *ptr;}<br>
                         <span class="cline">16&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1310,8 +1310,8 @@
                         <span class="cline">02&nbsp;&nbsp;</span>{<br>
                         <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p1 = std::make_shared &lt;MyClass&gt; ();<br>
                         <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (...) {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto p2 = p1;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// p2 popped - pointer NOT deleted<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p2 = p1;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p2 popped - pointer NOT deleted<br>
                         <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
                         <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p1 popped, pointer IS deleted<br>
                         <span class="cline">09&nbsp;&nbsp;</span>}<br>
@@ -1368,10 +1368,10 @@
                         <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a; <br>
                         <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;B b; <br>
                         <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public: <br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.g(); // may throw (strong guarantee) <br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.h(); // may throw (strong guarantee) <br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.g(); // may throw (strong guarantee) <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.h(); // may throw (strong guarantee) <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} <br>
                         <span class="cline">11&nbsp;&nbsp;</span>}; <br>
                     </code></pre>
                 </span>
@@ -1394,7 +1394,7 @@
                         <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btemp.h(); <br>
                         <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = atemp; <br>
                         <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = btemp; <br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} <br>
                         <span class="cline">11&nbsp;&nbsp;</span>}; <br>
                     </code></pre>
                 </span>
@@ -1414,10 +1414,10 @@
                         <span class="cline">06&nbsp;&nbsp;</span>class C { <br>
                         <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &lt;CImpl&gt; pImpl; <br>
                         <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto temp = make_unique&lt;CImpl&gt; (*pImpl); <br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;a.g(); <br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;b.h(); <br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::swap (pImpl, temp);  // No-throw <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto temp = make_unique&lt;CImpl&gt; (*pImpl); <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;a.g(); <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;b.h(); <br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::swap (pImpl, temp);  // No-throw <br>
                         <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} // this is strong guarantee <br>
                         <span class="cline">14&nbsp;&nbsp;</span>}; <br>
                     </code></pre>
@@ -1489,8 +1489,8 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>class C { <br>
                         <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public: <br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C (C &amp;&amp;other) noexcept {...} <br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C &amp;operator= (C &amp;&amp;other) noexcept {...} <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;C (C &amp;&amp;other) noexcept {...} <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;C &amp;operator= (C &amp;&amp;other) noexcept {...} <br>
                         <span class="cline">05&nbsp;&nbsp;</span>}; <br>
                     </code></pre>
                 </span>
@@ -1525,10 +1525,12 @@
                 </code></pre>
                 </span>
                 <p>Example: Superclass pointer to subclass pointer:</p>
-                <code>
-                    01.	Book *b = new Text {...}; <br>
-                    02.	Text *t = static_cast&lt;Text*&gt; (b); <br>
-                </code>
+                <span>
+                    <pre><code>
+                    <span class="cline">01&nbsp;&nbsp;</span>Book *b = new Text {...}; <br>
+                    <span class="cline">02&nbsp;&nbsp;</span>Text *t = static_cast&lt;Text*&gt; (b); <br>
+                </code></pre>
+                </span>
                 <p>
                     Note that you are taking responsibility that b actually points at a Text.<br>
                     You are asking the compiler to "trust you".<br>
@@ -1552,12 +1554,12 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>void g(int *p); <br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f(const int *p) { <br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// f() can't call g(), since f() won't change *p but g() <br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// what if g() do something we want and we happen to <u>know</u> that g() <u>doesn't</u> modify *p <br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g(const_cast&lt;int&gt; (p)); // this is how you use const_cast <br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>void f(const int *p) { <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// f() can't call g(), since f() won't change *p but g() <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// what if g() do something we want and we happen to <u>know</u> that g() <u>doesn't</u> modify *p <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;g(const_cast&lt;int&gt; (p)); // this is how you use const_cast <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
                         <span class="cline">08&nbsp;&nbsp;</span>} <br>
                     </code></pre>
                 </span>
