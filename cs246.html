@@ -1605,7 +1605,257 @@
             </div>
             <hr>
             
+            <div class="lec23">
+                <h3>Lecture 23 - 28/11/2017</h3>
+                <hr>
+                	<p>Recall the following codes:</p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = ...;<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>Text *pt = dynamic_cast&lt;Text*&gt; (pb);<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>if (pt) cout &lt;&lt; pt-&gt;getTopic();<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;else cout &lt;&lt; "Not a text";<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Line 3 and 4 make decisions based on an object's RTTI (Run-Time Type Information).<br>
+                        But can we do this on smart pointers (like static_pointer_cast, const_pointer_cast, dynamic_pointer_cast)?<br>
+                        Example: cast shared_ptrs to shared_ptrs.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>void whatIsIt(shared_ptr&lt;Book&gt; b) {<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (dynamic_pointer_cast&lt;Comic&gt; (b)) cout &lt;&lt; "Comic";<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (dynamic_pointer_cast&lt;Text&gt; (b)) cout &lt;&lt; "Text";<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else cout &lt;&lt; "Normal book";<br>
+                            <span class="cline">05&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        The codes above is tightly coupled to the Book class hierarchy, and may indicate bad design.<br>
+                        A better way to do is using virtual methods or writing a visitor (if possible).<br>
+                        <br>
+                        Note that dynamic casting also works on references.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>Text t {...};<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>Book &amp;b = t;<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>Text &amp;t2 = dynamic_cast&lt;Text&amp;&gt; (b);<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        If the cast succeeds, <code>t2</code> refers to <code>t</code>.<br>
+                        If not? It raises exception bad_cast.<br>
+                        <br>
+                        With dynamic casting we can solve the polymorphic assignment problem, as follows:<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Text &amp;Text::operator= (const Book &amp;other) { // virtual<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const Text &amp;textother = dynamic_cast&lt;const Text&amp;&gt; (other);<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;thextother) return *this;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Book::operator=(other);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;topic = textother.topic;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        In line 3, if other is not a Text, it will throw an exception.<br>
+                        Note: Dynamic casting only works on classes with at least one virtual method.<br>
+                        <br>
+                    </p>
+                    <b>How Virtual Methods Work?</b>
+                    <br>
+                    <span>
+                        <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void f();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>class Vec2 {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp; public:<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;virtual void f();<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Are <code>Vec v{1,2}</code> and <code>Vec2 w{1,2}</code> different?<br>
+                        Do they look the same in memory?<br>
+                        Note that <code>sizeof(v) = 8</code> and <code>sizeof(w) = 16</code>.<br>
+                        Clearly, 8 is space for 2 integers. (No space for the method.)<br>
+                        Methods are stored with all other functions.<br>
+                        Recall:<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = new Book();<br>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = new Text();<br>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = new Comic();<br>
+                            <span class="cline">02&nbsp;&nbsp;</span> // another one of the above (3 choose 1)<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>pb-&gt;isItHeavy();<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        <code>isItHeavy()</code> virtual: chosen based on the type of the actual object, which the compiler can't know advance.<br>
+                        Therefore, correct <code>isItHeavy()</code> must be chosen at runtime. But how?<br>
+                        For each class with virtual methods, the compiler creates a table of function pointers (the vtable).<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class C{<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual void f();<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual void g();<br>
+                            <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void h();<br>
+                            <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual ~C();<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        <code>C</code> objects have an extra pointer (the vpointer) that points to <code>C</code>'s vtable.<br>
+                        Consider <code>C c, d;</code>:
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_1.png" width="50%" height="50%">
+                    <br>
+                    <p>
+                        Example - Book, Text:
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_2.png" width="50%" height="50%">
+                    <p>
+                        Calling a vitual method:<br>
+                        - follow vpointer to vtable<br>
+                        - fetch pointer to actual method from the vtable<br>
+                        - follow the function pointer and call the function<br>
+                        They are all in run-time.<br>
+                        Therefore, virtual function calls incur a small cost.<br>
+                        <br>
+                        Also note that having at least one virtual method adds a vpointer to the object.<br>
+                        Hence, classes with virtual methods produce larger objects than if all methods were non-virtual (space cost).<br>
+                        <br>
+                        Concretely, how is an object laid out? Compiler-dependent.<br>
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_3.png" width="25%" height="25%">
+                    <p>Consider the following codes:</p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class A{<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int a, c;<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual void f();<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">05&nbsp;&nbsp;</span><br>
+                            <span class="cline">06&nbsp;&nbsp;</span>class B:public A {<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int b, d;<br>
+                            <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <img src="./image/cs246/lec23/lec23_4.png" width="35%" height="35%">
+                    <p>
+                        So a pointer to <code>B</code> looks like a pointer to <code>A</code> if you ignore the last two fields.<br>
+                        Also, if the vpointer is first, you always know how to find it (without knowing the object and type).<br>
+                    </p>
+                    <br>
+                    <b>Multiple Inheritance</b><br>
+                    <p>
+                        A class can inherit from more than one class.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class A {<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int a;<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">05&nbsp;&nbsp;</span><br>
+                            <span class="cline">06&nbsp;&nbsp;</span>class B {<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                            <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int b;<br>
+                            <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">10&nbsp;&nbsp;</span><br>
+                            <span class="cline">11&nbsp;&nbsp;</span>class C:public A, public B {<br>
+                            <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f(){<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; a &lt;&lt; ' ' &lt;&lt; b;<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            <span class="cline">15&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <img src="./image/cs246/lec23/lec23_5.png" width="25%" height="25%">
+                    <p>
+                        Challenges: Suppose we want to do this:
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_6.png" width="25%" height="25%">
+                    <br>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class D: public B, public C {<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d;<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">05&nbsp;&nbsp;</span><br>
+                            <span class="cline">06&nbsp;&nbsp;</span>D dobj;<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>dobj.a;  // which a is this? Ambiguous!<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        We need to specify <code>dobj.B::a</code> or <code>dobj.C::a</code>.<br>
+                        But if <code>B</code> and <code>C</code> inherit from <code>A</code>, should there be <u>one</u> <code>A</code> object or <u>two</u>(default)?<br>
+                        Should <code>B::a</code> and <code>C::a</code> be the same or different?<br>
+                        What if we want...
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_7.png" width="15%" height="15%">
+                    <p>
+                        This is called "Deadly Diamond".<br>
+                        Make <code>A</code> a <u>virtual</u> base class - use <u>virtual inheritance</u>.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class B:virtual public A {...};<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>class C:virtual public A {...};<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Example: The IO streams
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_8.png" width="50%" height="50%">
+                    <p>
+                        How will our deadly diamond be laid out?<br>
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_9.png" width="45%" height="45%">
+                    <p>
+                        What does g++ do?<br>
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_10.png" width="35%" height="35%">
+                    <p>
+                        Assume we create <code>B bodj;</code>...
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_11.png" width="15%" height="15%">
+                    <p>
+                        <code>B</code> needs to be laid out so that we can find its <code>A</code> part, but the distance is not fixed (depends on other subclasses).<br>
+                        Solution: location of base class object stored in vtable.<br>
+                        Note: The diagram doesn't look like all of <code>A, B, C, D</code> simultaneously. But slices of it do look like <code>A, B, C, D</code>. Therefore, pointer assignment among <code>A, B, C, D</code> changes the address stored in the pointer.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>D *d;<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>A *a = d; // this changes the address (to point to the A part)<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Note that static_cast, const_cast, dynamic_cast under multiple inheritance will also change the value of the pointer, but reinterpret_cast will not.<br>
+                    </p>
+            </div>
+            <hr> 
             
+            
+             <div class="lec24">
+                <h3>Lecture 24 - 30/11/2017</h3>
+                <hr>
+                <P>To be continued ...</P>
+            </div>
+            <hr> 
             
             
             <div class="footer">
