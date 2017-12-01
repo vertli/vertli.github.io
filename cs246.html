@@ -97,7 +97,7 @@
             <div class="lec1">
                 <h3>Lecture 1 - 07/09/2017</h3>
                 <hr>
-                <h4 class="title">Module 1 - Shell</h4>
+                <h4 class="title">Module 1 - The Shell</h4>
                 <p>What is <b>Shell</b>?<br></p>
                 <p>
                     It is the interface to the OS (Operating System).<br>
@@ -112,7 +112,7 @@
                     To make sure you are running Bash, type <code class="cmd">echo $0</code>.<br>
                     Then the shell should print out the tyoe of prompt <code class="cmdOption">-bash</code>.
                 </p>
-                <br><br>
+                <br>
                 <p><b>Linux Filesystem</b></p>
                 <P>The Linux filesystem consists of program, code and data.</P>
                 <p>The first command we are going to talke is <code class="cmd">cat</code>, which is diplayed the contents of a file.</p>
@@ -241,7 +241,7 @@
                 <p>
                     By the way, we can do <code><span class="cmd">wc &lt; </span><span class="cmdFile"> a.txt </span><span class="cmd">&gt; </span><span class="cmdFile"> b.txt</span></code>.
                 </p>
-                <br><br>
+                <br>
                 <p><b>Streams</b></p>
                 <p>Every process attached to 3 streams.</p>
                 <img src="./image/cs246/lec1/p1.png" width="50%" height="50%">
@@ -1853,7 +1853,242 @@
              <div class="lec24">
                 <h3>Lecture 24 - 30/11/2017</h3>
                 <hr>
-                <P>To be continued ...</P>
+                <b>Template Functions</b>
+                <br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template&lt;typename T&gt; T min (T x, T y) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return x &lt; y ? x : y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>int f() {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x = 1, y = 2;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int z = min(x,y); // T is integer now<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// we don't have to say min&lts;int&gt;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    C++ can infer that <code>T</code> is integer from the types of <code>x</code> and <code>y</code>.<br>
+                    It applies to function templates <u>only</u>.<br>
+                    If C++ can't determine <code>T</code>, then you can tell it.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>z = min&lt;int&gt;(x,y);<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>char w = min ('a', 'c'); // T = char<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>auto f = min (1.0, 3.0); // T = double<br>
+                    </code></pre>
+                </span>
+                <p>
+                    For what types <code>T</code> can <code>min</code> be used?<br>
+                    Any type for which operator <code>&lt;</code> is defined.<br>
+                    <br>
+                    Recall:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void for_each (AbstractIterator &amp;start, AbstractIterator &amp;finish, int(*f)(int)){<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (start != finish) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f(*start);<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++start;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Requirements:<br>
+                </p>
+                 <ol>
+                    <li>AbstractIterator must support <code>!=</code>, <code>*</code>, <code>++</code></li>
+                    <li><code>f</code> must be callable as a function</li>
+                    <li>make these template arguments</li>
+                 </ol>
+                 
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename Iter, typename Fn&gt; void for_each (Iter start, Iter finish, Fn f) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// as before<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Now <code>Iter</code> can be <u>any</u> type that supports <code>!=</code>, <code>*</code>, <code>++</code> (including raw pointers).<br>
+                    So we can do the following:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f (int n) {cout &lt;&lt; n &lt;&lt; endl;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int a[] = {1, 2, 3, 4, 5};<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>for_each(a, a+5, f); // prints the array<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>C++ STL &lt;algorithm&gt; Library</b>
+                <p>
+                    It is a suite of template functions, many of which work on iterators.<br>
+                    Examples:<br>
+                    <code>for_each</code>: (as above)<br>
+                    <code>find</code>: (see below)<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename Iter, typename T&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Iter find (Iter first, Iter last, const T &amp;val) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// return an iterator to the first element in [first, last) matching val<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// or return last if val no found<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>count</code>: like find, but returns number of occurrence, of <code>val</code><br>
+                    <code>copy</code>: (see below)<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename InIter, typename OutIter&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>OutIter copy (InIter first, InIter last, OutIter result) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// copies one container range [first, last) to another, starting at result<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// Note: this does NOT allocate memory<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>// Example:<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>vector&lt;int&gt;v {1, 2, 3, 4, 5, 6, 7};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>vector&lt;int&gt;w (4); // space for 4 integers<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>copy(v.begin()+1, v.begin()+5, w,begin()); // w = {2, 3, 4, 5}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span><br>
+                        <span class="cline">11&nbsp;&nbsp;</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span>template&lt;typename InIter, typename OutIter, typename Fn&gt;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>OutIter transform (InIter first, InIter last, OutIter result, Fn f) {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (first != last) {<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*result = f(*first);<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++first;<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++result;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return result;<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>// example:<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>int add1 (int n) {return n+1;}<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>vector&lt;int&gt; v {2, 3, 5, 7, 11};<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>vector&lt;int&gt; w (v.size());<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>transform(v.begin(), v.end(), w.begin(), add1); // w = {3, 4, 6, 8, 12}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    How general is this code?<br>
+                    1) What can we use for <code>Fn</code>?<br>
+                    2) What can we use for <code>InIter/OutIter</code>?<br>
+                    <br>
+                    Answers for 1) <code>Fn</code><br>
+                    How is <code>f</code> used? <code>f(*first)</code>.<br>
+                    <code>f</code> can be anything that can be called as a function.<br>
+                    It Can write operator() for objects.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Plus1 {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int operator()(int n) {reutrn n+1;}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>Plus1 p;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>p(4);// produces 5<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>transform (v.begin(), v.end(), w.begin(), Plus1{});<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>// the {} from Plus1{} is a ctor call (creates an object)<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>Generalise:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Plus {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int m;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plus(int m): m{m} ()<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int operator()(int n) {return n+m;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span><br>
+                        <span class="cline">08&nbsp;&nbsp;</span>transform(v.begin(), v.end(), w.begin(), Plus{1});<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>//the Plust{1} is called function object<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Advantage of function objects: can maintian state<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class IncreasingPlus {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int m = 0;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int operator()(int n) {return n+(m++);}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oid reset() {m = 0;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span><br>
+                        <span class="cline">08&nbsp;&nbsp;</span>vector&lt;int&gt; v(5,0); // 0 0 0 0 0<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>vector&lt;int&gt; w(v.size());<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>transform(v.begin(), v.end(), w.begin(), IncreasingPlus{}); // w = {0, 1, 2, 3, 4}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Consider: How many integers in a vector <code>v</code> are even?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>vector&lt;int&gt; v {...};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>bool even (int n) {return n%2==0;}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int x = count_if(v.begin(), v.end(), even);<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    It seems a waste to explicitly create the function <code>even</code>.<br>
+                    Also, you can't keep even close to <code>count_if</code> because functions must be declared at file or namespace scope (i.e. not inside other functions).<br>
+                    If this were Racket, we would use lambda.<br>
+                    So do the same here:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int x = count_if (v.begin(), v.end(), [](int n){reutrn n%2==0;});<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// [] means "lambda"<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>auto even = [] (int n) {return n%2 == 0;}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>// the only way to store a lambda as a variable is using auto<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Answer for 2) Iterators<br>
+                    It applies the notion of iteration to other data sources (e.g. streams).<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iterator&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>vector&lt;int&gt; v {1, 2, 3, 4, 5};<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>ostream_iterator&lt;int&gt; out {cot, ","};<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>copy (c.begin(), v.end(), out); // print 1, 2, 3, 4, 5,<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>vector&lt;int&gt; v {1, 2, 3, 4, 5};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>vector&lt;int&gt; w; // empty<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>copy(v.begin(), v.end(), w.begin()); // This is WRONG!!!<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>// w is size 0 - copy() does NOT allocate space in w.<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>// Why can it allocate space in w for us? It doesn't even know w is iterating over a vector!!!<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    But what if we ahd an iterator whose assignment operatore inserts a new item?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>copy(v.begin(), v.end(), back_inserter(w));<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// copies to the end of w, allocating space as it goes.<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// the back_inserter() is availabe for any container that supports push_back.<br>
+                    </code></pre>
+                </span>
+                <br>
+                <h3 class="title">CS246 - The End.</h3>
             </div>
             <hr> 
             
