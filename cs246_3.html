@@ -87,8 +87,7 @@
                 </tr>
             </table>
             <hr>
-                
-            
+           
             <div class="lec7">
                 <h3>Lecture 7 - 28/09/2017</h3>
                 <hr>
@@ -121,14 +120,433 @@
             <div class="lec11">
                 <h3>Lecture 11 - 17/10/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>Recall:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (Node &amp;&amp;other): data{other.data}, next{other.next} {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.next = nullptr;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>Similarly:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// the example for move constructor<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Node m;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>m = plusOne (n); // assignment from temporary<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// Move assignment operator<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (Node &amp;&amp;other) {<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//idea: steal other's data and destroy my old data<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//easy way: swap without copy<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (data, other.data);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (next, other.next);<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the temporary will be destroyed and take out old data with it<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If you don't define move  constructor/assignment operations, the copy versions will be used.<br>
+                    If the move ctor/assignment is defined, it will replace all calls to the copy  constructor/assignment when the argument "other" is a temporary (rvalue).<br>
+                    <br>
+                    Copy/Move Elision:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Vec makeAVec () {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {0,0}; // invokes Vec's basic  constructor<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>Vec v = makeAVec(); // What runs?<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What will run in line 4?<br>
+                    Copy constructor? If no move constructor.<br>
+                    Move constructor? If there exist move constructor.<br>
+                    Let's check in <code>g++</code>.<br>
+                    Just the basic ctor runs - not copy constructor, not move constructor.<br>
+                    <br>
+                    In some circumstances, the compiler is allowed to skip calling copy/move constructors (but doesn't have to).<br>
+                    <br>
+                    In the example above:<br>
+                    <code>makeAVec()</code> writes its result(<code>{0,0}</code>) directly into the space occupied by <code>v</code> in the caller, rather than copy it later.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void doSth (Vec v) {...} // pass-by-value: copy or move ctor<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>doSth (makeAVec());<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// result of makeAVec() has written directly into the parameter - no copy/move<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This code above is allowed, even if dropping ctor calls would change the behaviour of the program.<br>
+                    Example: if the constructors print something<br>
+                    <br>
+                    You are not expected to know exactly when copy/move elision is allowed - just that it is possible.<br>
+                    <br>
+                    It you need all of the cconstructors to run: <code>g++ -fno-elid-constructors file.cc</code><br>
+                    But this can slow down your program considerably.<br>
+                    <br>
+                    In summary: the Rule of 5 (or "Big 5")<br>
+                    If you need to customise any one of<br>
+                </p>
+                <ol>
+                    <li>copy constructor (copy ctor)</li>
+                    <li>copy assignment</li>
+                    <li>destructor (dtor)</li>
+                    <li>move constructor (move ctor)</li>
+                    <li>move assignment</li>
+                </ol>
+                <p>
+                    then you usually need to customise all 5.<br>
+                    <br>
+                    Arrays of Objects:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y): x{x}, y{y} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>Vec *vp = new Vec[15];<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>Vec moveVectors[10];<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Both of line 5 and 6 will not compile.<br>
+                    These want to call the default constructor on each item.<br>
+                    If there is no default ctor, then error!<br>
+                    <br>
+                    Options:<br>
+                </p>
+                <ol>
+                    <li>Provide a default constructor.</li>
+                    <li>
+                        For stack arrays: <code>Vec moreVectors[] = {Vec{0,0}, Vec{1,3}, Vec{2,4}};</code><br>
+                        This is allowed.<br>
+                    </li>
+                    <li>For heap arrays, create an array of pointer.</li>
+                </ol>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Vec **vp = new Vec*[5];<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>vp[0] = new Vec {0,0};<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>vp[1] = new Vec {1,3}; <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>// etc.<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>for (int I = 0; I &gt; 5; i++) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete vp[i];<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>delete [] vp;<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Invariants and Encapsulation</b>
+                <p>
+                    Consider:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data, Node *next): data{data}, next{next} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~Node () {delete next;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>Node n1 {1, new Node{2, nullptr}}; // on stack, next on heap<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Node n2 {3,nullptr};  // on stack<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>Node n3{4, &amp;n2};  // on stack<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What happens when these go out of scope?<br>
+                    <code>n1</code> - dtor runs, entire lies is deleted. OK.<br>
+                    <code>n2</code>, <code>n3</code> go out of scope - <code>n3</code>'s dtor tries to delete <code>n2</code>, but <code>n2</code> is not on the heap; <code>n2</code> is on the stack!<br>
+                    This is undefined behaviour!<br>
+                    You can't call <code>delete</code> for stack (only heap)!<br>
+                    The class <code>Node</code> relies on an assumption for its proper operation - that <code>next</code> is either <code>nullptr</code>, or is a valid pointer to the heap, allocated by <code>new</code>.<br>
+                    <br>
+                    This is an <u>invariant</u>.<br>
+                    Statement that holds true that <code>next</code> is either null pointer or pointer to memory allocated by <code>new</code>, upon which <code>Node</code> relies.<br>
+                    But we can't guarantee the invariant.<br>
+                    We can't trust the user to use <code>Node</code> property.<br>
+                    Right now, we can't enforce <i>any</i> incariants since the user can interfere with our data.<br>
+                    <br>
+                    Example - Stack<br>
+                    Invariant: last item pushed is the first item popped.<br>
+                    But not if the client can rearrange the underlying data.<br>
+                    To enforce invariants, we introduce <i>encapsulation</i>.<br>
+                    We want clinets to treat objects as black boxes - <u>capsules</u>.<br>
+                </p>
+                <ul>
+                    <li>implementation details sealed away</li>
+                    <li>can only interact via provided methods</li>
+                    <li>
+                        creates an abstraction<br>
+                        <ul>
+                            <li>regains control over the object</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y);<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>private:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec &amp;operator+ (const Vec &amp;other);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Anything in <code>private</code> is private, can't be accessed outside the struct.<br>
+                    Anything in <code>public</code> - anyone can assess.<br>
+                    By default, <code>Vec (int x, int y);</code> is public.<br>
+                    <br>
+                    Default visibility in structs - public.<br>
+                    In general, we want fields to be private; only methods should be public.<br>
+                    Better to have default visibility - private.<br>
+                    <br>
+                    Now, it is time to switch from <code>struct</code> to <code>class</code>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec &amp;operator+ (const Vec &amp;other);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The difference between <code>class</code> and <code>struct</code> is default visibility: public in <code>struct</code> and private in <code>class</code>.<br>
+                </p>
             </div>
             <hr>  
             
             <div class="lec12">
                 <h3>Lecture 12 - 19/10/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>Fix the linked list class:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// list.h<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>class List {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;struct Node; // private nested class<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *theList = nullptr; // only accessible inside class list<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void addToFront (int n);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int ith (int i);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~List();<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">11&nbsp;&nbsp;</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span>// list.cc<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>struct List::Node {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data, Node *next): ... {}<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~Node {delete next;}<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">20&nbsp;&nbsp;</span><br>
+                        <span class="cline">21&nbsp;&nbsp;</span>void List::addToFront (int n) {<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;theList = new Node {n, theList};<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">24&nbsp;&nbsp;</span><br>
+                        <span class="cline">25&nbsp;&nbsp;</span>int List::ith (int i) {<br>
+                        <span class="cline">26&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;node *curr;<br>
+                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 0; j &lt; i, j++) {<br>
+                        <span class="cline">28&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;curr = curr-&gt;next;<br>
+                        <span class="cline">29&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">30&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return curr-&gt;data;<br>
+                        <span class="cline">31&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">32&nbsp;&nbsp;</span><br>
+                        <span class="cline">22&nbsp;&nbsp;</span>List::~List() {delete theList;}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Note that only <code>List</code> can create/manipulate <code>Node</code> object.<br>
+                    It's because we need to gurentee the invariant that <code>next</code> is always <code>nullptr</code> or heap pointer.<br>
+                    But now, we can't traverse the list from node to node as we would want in a linked list.<br>
+                    Repeatedly calling <code>ith()</code> to access the whole list needs O(n<sup>2</sup>) time.<br>
+                    However, we can't expose the nodes or we lose encapsulation.<br>
+                </p>
+                <br>
+                <div class="specialTalk">
+                    <h4 class="title">Software Engineering Topic: Design Pattern</h4>
+                    <ul>
+                        <li>certain problems/scenarios arise frequently</li>
+                        <li>keep track of good solutions to these problems</li>
+                        <li>Design Pattern: If you have a situation like this, the technique may solve the problem.</li>
+                    </ul>
+                </div>
+                <br>
+                <p>
+                    Solution: Iterator Pattern
+                </p>
+                <ul>
+                    <li>
+                        create a class theat manages access to node
+                        <ul>
+                            <li>abstraction of a pointer</li>
+                            <li>walk the list without exposing the actual pointers</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// Inspiration: C<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>for (int *p = a; p != (a+n); p++) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *p &lt;&lt; endl;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>class List {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;struct Node;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *theList;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;class Iterator {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explicit Iterator (Node *p): p{p} {}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int &amp;operator* () {return p-&gt;data;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator &amp;operator++ () {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = p-&gt;next;<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool &amp;operator!= (const Iterator &amp;other) const {<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return p != other.p;<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}; // end Iterator<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Iterator begin() {return Iterator{theList};}<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Iterator end() {return Iterator{nullptr};}<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>}; // end List<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 14, the method <code>&amp;operator* ()</code> returns by reference.<br>
+                    The result is not a copy; it can mutate list items.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// client<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;List l;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;l.addToFront(1);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;l.addToFront(2);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;l.addToFront(3);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;for (List::Iterator it = l.begin(); it != l.end(); ++it) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    There is a shortcut: automatic type deduction - <code>auto x = y;</code>
+                    The keyword <code>auto</code> automatically give <code>x</code> the same type as its initializer <code>y</code>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>for (auto it = l.begin(); it != l.end(); ++it) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Now, the shorter-cut way: range-based for loop. 
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>for (auto n:l) { // n is the thing in the list<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 1, <code>n</code> will copy of list item.<br>
+                    The <code>for</code> statement can mutate <code>n</code>, but <code>l</code> will not be mutated.<br>
+                    <br>
+                    The keyword <code>auto</code> is available for any class with method <code>begin()</code> and <code>end()</code> that produce iterators, and the iterator type must support unary <code>*</code>, <code>!=</code> and prefix <code>++</code>.<br>
+                    <br>
+                    If you want to modify list items (or save copying), do the following:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>for (auto &amp;n:l) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;++n; // it will mutate list items<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Encapsulation (continue)</b>
+                <p>
+                    <code>List</code> clinet can create iterators directly!<br>
+                    <code>auto it = List::Iterator(nullptr);</code><br>
+                    This violates encapsulation, the clinet should be using <code>begin()</code> or <code>end()</code>.<br>
+                    We could make Iterator's constructor private.<br>
+                    Then client can't call <code>List::Iterator()</code>, but then neither can List.<br>
+                    <br>
+                    Solution: Give list privileged access to Iterator, using the keyword <code>friend</code>.<br>	
+                </p>
+
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class List{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;class Iterator {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explicit Iterator (Node *p);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;friend class List;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The keyword <code>friend</code> in line 9, has access to all members of Iterator.<br>
+                    <br>
+                    Now list can still create iterators, but client can only create iterators by calling <code>begin()</code> or <code>end()</code>.<br>
+                    <br>
+                    Notice that give your classes as few <code>friend</code>s as possible - weakness encapsulation.<br>
+                    Oce again, keep fields private.<br>
+                    What if you want to provide access to fields?<br>
+                    Create accessor/mutator methods.<br>
+                </p>
+
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Vec{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int getX() const {return x;} // accessor<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void setY (int z) {y = z;} // mutator<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
                 <br>
                 <h4 class="title">Module 3 - C++ (Part 2) and Introduction to OOP</h4>
                 <h5 class="title">The End</h5>

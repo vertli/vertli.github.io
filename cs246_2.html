@@ -237,7 +237,6 @@
                 <br>
                 <p>Example Revisited: Echo all numbers, skip non-numbers.</p>
                 <script src="https://gist.github.com/vertli/608619f17dbe436a73f608c8902f8f66.js"></script>
-                <br>
                 <p>
                     <b>Strings</b><br>
                     In C...
@@ -271,6 +270,72 @@
                     <script src="https://gist.github.com/vertli/3916d2778cf58129c9c21c0cf4679046.js"></script>
                 <p>  
                     <strong>Note:</strong> Optional parameters must be <strong><u>LAST</u></strong>.
+                </p>
+                <br>
+                <b>Overloading</b>
+                <p>In C, we do...</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int negInt (int n) {return -n;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>bool negBool (bool b) {return !b;}<br>
+                    </code></pre>
+                </span>
+
+                <p>In C++, we do...</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int neg (int n) {return -n;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>bool neg (bool b) {return !b;}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    These two functions called <strong>overloading</strong>.<br>
+                    <br>
+                    Compiler uses number and types of arguments to decide which <code>neg()</code> is being called. - overload resolution<br>
+                    Overloads must differ in number or ytpes of arguments - may not differ on just return type.<br>
+                    <br>
+                    We've seen this already: <code>&lt;&lt;</code> and <code>&gt;&gt;</code> are overloaded.<br>
+                    The behaviour depends on types of arguments.<br>
+                </p>
+                <br>
+                <b>Structs</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node* next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// don't forget the semicolon<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Constants</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>const int maxGrade = 100; // must be initialled<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Declare as many things <code>const</code> as you can - it helps catch erros!<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n1 = {5, nullptr};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// use nullptr, no NOT use NULL or 0 in this class<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>const Node n2 = n1;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// immutable copy of n1 (n1 can change, but n2 not)<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>const Node *pn = &amp;n1;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>// it can reassign n1 data, but it cannot reassign pn-&gt;data<br>
+                        <span class="cline">09&nbsp;&nbsp;</span><br>
+                        <span class="cline">10&nbsp;&nbsp;</span>Node *pn2 = &amp;n2;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>// this does NOT work!<br>
+                    </code></pre>
+                </span>
+                <p>
+                    You can have constant pointer to non-constant.<br>
+                    But you CANNOT have non-constant pointer to const.<br>
                 </p>
             </div>
             <hr>
