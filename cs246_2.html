@@ -343,7 +343,306 @@
             <div class="lec6">
                 <h3>Lecture 6 - 26/09/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <b>Parameter Passing</b>
+                <p>Recall:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void inc (int n) {n = n + 1;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int x = 5;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>inc (x);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>cout &lt;&lt; x; // we will get 5, not 6 here! Why?<br>
+                    </code></pre>
+                </span>
+                <b>Pass-by-value</b>
+                <p>
+                    The function <code>inc()</code> gets a <u>copy</u> of <code>x</code>, the original unchanged.<br>
+                    <br>
+                    Solution: If a function needs to modify a parameter - pass a pointer.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void inc (int *n) {*n = *n + 1;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int x = 5;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>inc (&amp;x);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>cout &lt;&lt; x; // now, we will get 6 here.<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Why <code>cin &gt;&gt; x</code> but not <code>cin &gt;&gt; (&amp;x)</code>?<br>
+                    C++ has another pointer-like type: references!<br>
+                </p>
+                <br>
+                <b>References - IMPORTANT!!!</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">02&nbsp;&nbsp;</span>int y = 10;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int &amp;z = y;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>z</code> is a <u>lvalue reference</u> to integer (to <code>y</code>).<br>
+                    Reference is like a constant pointer.<br>
+                    It is similar to <code>int* const z = &amp;y;</code><br>
+                    References are like constant pointers with automatic dereferencing.<br>
+                </p>
+                <!-- add img -->
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>z = 12; // NOT *z = 12; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// now y = 12<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int *p = &amp;z;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// &amp;z gives the address of y<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In all cases, <code>z</code> behaves exactly like y.<br>
+                    <code>z</code> is an <i>alias</i> ("another name") for y.<br>
+                    <br>
+                    Things you can't do with lvalue references:
+                </p>
+                <ul>
+                    <li>
+                        leave them uninitialized<br>
+                        <ul>
+                            <li>
+                                <code>int &amp;x; // can't do this!</code>
+                            </li>
+                            <li>
+                                must be initialized with something that has an address<br>
+                                <ul>
+                                    <li>
+                                        <code>int &amp;x = 3; // can't do this!</code> 
+                                    </li>
+                                    <li>
+                                        <code>int &amp;x = y + z; // can't do this!</code>
+                                    </li>
+                                    <li>
+                                        <code>int &amp;x = y; // you are fine.</code>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        create a pointer to a reference<br>
+                        <ul>
+                            <li>You want the pointer to the original thing...</li>
+                            <li><code>int &amp;*x = ...; // do NOT do this!</code></li>
+                            <li>
+                                reference to pointer is okay.<br>
+                                <code>int *&amp;x = ...; // this is fine ._.</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        create a reference to a reference<br>
+                        <ul>
+                            <li>You want the reference to the original thing...</li>
+                            <li>
+                                <code>int &amp;&amp;r = ...;</code>
+                                <ul>
+                                    <li>This means something different (you will see it later)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        create an array of reference<br>
+                        <code>int &amp;r[3] = {..., ..., ...}; // can't do this!</code>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    What <u>can</u> you do??? Pass as function parameters!<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void inc (int &amp;n) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;n = n + 1;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The <code>&amp;n</code> here is the constant pointer to the argument(*), so changes to <code>n</code> affect <code>x</code>.<br>
+                    Note that <code>n = n + 1;</code> is no pointer dereference.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int x = 5;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>inc (x);<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>cout &gt;&gt; x; // you will get 6 here.<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Why does <code>cin &gt;&gt; x</code> work?<br>
+                    It takes <code>x</code> by reference.<br>
+                    Example:<br>
+                    <code>istream &amp;operator&gt;&gt; (istream &amp;in, int &amp;x);</code><br>
+                    <br>
+                </p>
+                <b>Pass-by-value</b>
+                <p>
+                    Example: <code>int f (int n) {...}</code> copy the argument<br>
+                    If the argument is big, copy is expensive.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct ReallyBig {...};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int f (ReallyBig rb) {...}; // this is slow<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int g (reallyBig &amp;rb) {...} // alias-fast, but could change rb in the caller<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int h (const ReallyBig &amp;rb) {...} // fast, no copy, parameter will not change<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <i>Advice:</i><br>
+                    Prefer pass-by-const-value over pass-by-value for anything larger than a pointer, unless the function needs to make a copy anyway, then use pass-by-value.<br>
+                    <br>
+                    <i>Also:</i><br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int f (int &amp;n) {...}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int g (const int &amp;n) {...}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>f(5);<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>g(5);<br>
+                    </code></pre>
+                </span>
+                <p>
+                    For line 3...<br>
+                    You can't do this! You can't initialize an lvalue reference (<code>n</code>) to a literal value. If <code>n</code> change, it can't change the literal 5.<br>
+                    <br>
+                    For line 4...<br>
+                    This is okay. Since <code>n</code> can never be changed, compiler allows this.<br>
+                    How? Compiler creates a <i>temporary</i> location in memory to hold the 5. Hence, the reference <code>n</code> has something to point at.<br>
+                </p>
+                <br>
+                <b>Dynamic Memory Allocation</b>
+                <p>In C...</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int *p = malloc (... * sizeof(int));<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>free(p);<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Good news: do NOT use these in C++!<br>
+                    Bad news: C++ has it own way to do it...<br>
+                    The keywords are <code>new</code> and <code>delete</code>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// type-aware, less error-prone<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>Node *np = new Node;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>delete np;<br>
+                    </code></pre>
+                </span>
+                <!-- add pic-->
+                <p>
+                    All local variables reside on the <u>heap</u>.<br>
+                    Variables deallocated when they go out of scope (stack is popped).<br>
+                    <br>
+                    Allocated memory resides on the <i>heap</i>.<br>
+                    Remains allocated until <code>delete</code> is called.<br>
+                    If you don't delete all allocated memory... Memory Leak!!!<br>
+                    The program will eventually fail and this is incorrect behaviour.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node getMeANode () {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node n;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This is expensive.<br>
+                    <code>n</code> is copied to caller's stack frame on return.<br>
+                    How about return a pointer (or reference) instead?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node &amp;getMeANode () {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node n;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    It's fast, but... This is DANGEROUS! You should NOT do it.<br>
+                    It will return a reference to stack, allocated data, which is dead on return.<br>
+                    Hence, do NOT return a pointer to a location data.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node *getMeANode () {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return new Node;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This is fast and safe.<br>
+                    It returns a pointer to the heap. (The pointer is still alive!)<br>
+                    But don't forget to delete it when done!<br>
+                </p>
+                <br>
+                <b>Operator Overloading</b>
+                <p>
+                    Give meaning to C++ operators for new types.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>Vec operator+ (const Vec &amp;v1, const Vec &v2) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec v {v1.x + v2.x, v1.y + v2.y};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Vec operator* (const int k, const Vec &amp;v1) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {k * v1.x, k * v1.y};<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The <code>operator*</code> is okay because the compiler knows it's creating a <code>Vec</code>, based on the return type.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// Another version<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Vec operator* (const Vec &amp;v1, const int k) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return k * v1;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Overloading &lt;&lt; and &gt;&gt;</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Grade {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int theGrade;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>ostream &amp;operator&lt;&lt; (ostream &amp;out, const Grade &amp;g) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; g.theGrade &lt;&lt; '%';<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return out;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <br>
                 <h4 class="title">Module 2 - C++ (Part 1)</h4>
                 <h5 class="title">The End</h5>
