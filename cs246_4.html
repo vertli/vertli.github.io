@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Calvin Li</title>
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./note.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <!-- stylesheet found from w3school. (icon use)-->
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li class="courseNote">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./cs246.html">CS 246</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <br><br>
+        <div class="container">
+            <br>
+            <table class="header">
+                <tr>
+                    <td colspan="100%">
+                        <h1 class="title">CS 246 - Object-Oriented Development</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5%">
+                        <span class="headerLeft">Instructor:</span>
+                    </td>
+                    <td colspan="95%">Brad Lushman</td>
+                </tr>
+                <tr>
+                    <td colspan="5%">
+                        <span class="headerLeft">Office:</span>
+                    </td>
+                    <td colspan="95%">DC3110</td>
+                </tr>
+                <tr>
+                    <td colspan="5%">
+                        <span class="headerLeft">Email:</span>
+                    </td>
+                    <td colspan="95%">brad.lushman@uwaterloo.ca</td>
+                </tr>
+                <tr>
+                    <td colspan="5%">
+                        <span class="headerLeft">Website:</span>
+                    </td>
+                    <td colspan="95%">
+                        <a href="https://www.student.cs.uwaterloo.ca/~cs246/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs246/</a>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td colspan="95%"><span class="headerLeft">Note:</span></td>
+                    <td>All program codes below are provided by Prof. Lushman in class.</td>
+                </tr>
+            </table>
+            <hr>
+            
+            <div class="lec13">
+                <h3>Lecture 13 - 24/10/2017</h3>
+                <hr>
+                <h4 class="title">Module 4 - C++ (Part 3), UML and Design Pattern</h4>
+                <b>Static Fields and Methods</b>
+                <p>
+                    What if we want to track the number of times a method is ever called? Or how many <code>students</code> are created?<br>
+                    Static Members - associated with the class itself, not with any specific instance (object).<br>
+                    Example: How many <code>Student</code> had been created?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;static int numInstances;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (...): ... {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++numInstances;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>// studnet.cc<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>int Student::numInstances = 0;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Static fields must be defined external to the class.<br>
+                    Static member functions don't depend on a specific instance of the class (no <code>this</code> parameter);<br>
+                    &nbsp;&nbsp;it can only access static fields and call other static methods.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;static int numInstances;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;static void printNumInstances() {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; numInstances &lt;&lt; endl;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">09&nbsp;&nbsp;</span><br>
+                        <span class="cline">10&nbsp;&nbsp;</span>// studnet.cc<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>int Student::numInstances = 0;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>Student billy {70, 80, 90};<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>Student jane {80, 90, 100};<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>Student::printNumInstances();<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>System Modelling</b>
+                <p>
+                    Building on object-oriented operating system involves planning.<br>
+                </p>
+                <li>identify abstractions, relationship among them</li>
+                <li>map these out</li>
+                <br>
+                <p>
+                    Popular standard: UML (Unified Modelling Language)<br>
+                    <br>
+                    Modelling a class:<br>
+                </p>
+                <img src="image/cs246/lec13/lec13_1.png" width="45%" height="45%">
+                <br>
+                <p><br>Relationship: Composition of Classes</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y, z;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y, int z): x{x}, y{y}, z{z} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>// Two Vecs define a plane<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>class Plane {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec v1, v2;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>Plane p; // this does NOT work<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Notice that we can't initialize <code>v1</code> and <code>v2</code> (step2) since no default constructor for <code>Vec</code>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Plane {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec v1, v2;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Plane(): v1 {1,0,0}, v2 {0,1,0} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 4, <code>v1 {1, 0, 0}</code> means initialize <code>v1</code> to <code>Vec {1, 0, 0}</code>.<br>
+                    Embedding one object inside another (for example, <code>Vec</code> inside <code>Plane</code>) called <u>composition</u>.<br>
+                    <br>
+                    Relationship between Plane and Vec called “owns-a”.<br>
+                    For example, a Plance <u>owns</u> a <code>Vec</code> object (in fact, two of them).<br>
+                    If A owns a B then <u>typically</u>, B has no identity outside A (no independent existence).<br>
+                    If A is destroyed, B is destroyed.<br>
+                    If A is copied, B is copied (deep copy).<br>
+                    <br>
+                    Example:<br>
+                    A car owns four wheels - a wheel is part of the car.<br>
+                    If we destroy the car, we also destroy the wheels.<br>
+                    If we copy the car, we copy the wheels too.<br>
+                    <br>
+                    Implementation is <u>usually</u> as composition of class<br>
+                    Modelling:<br>
+                </p>
+                <img src="image/cs246/lec13/lec13_2.png" width="45%" height="45%">
+                <p>
+                    <br>
+                    <u>Aggregation</u>: Compare car parts in a car ("owns a") v.s. car parts in a catalogue<br>
+                    Catalogue contains the parts, but the parts have an independent existence.<br>
+                    This is a "has-a" ("aggregation") relationship.<br>
+                    <br>
+                    If A "has a" B, then <u>typically</u> B has an existence apart from its associtation with A.<br>
+                    If A is destroyed, B still lives on.<br>
+                    If A is copied, B is not (shallow copy). That is, copies of A share the same B.<br>
+                    <br>
+                    Example: Ducks in a pond.<br>
+                    <br>
+                    Typical Implementation: pointer fields
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Pond {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Duck *ducks [maxDucks];<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <img src="image/cs246/lec13/lec13_3.png" width="25%" height="25%">
+                <br><br>
+                <b>Specialization (Inheritance)</b>
+                <p>
+                    Suppose you want to track your collection of Books:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Book {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string title, author;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int numPage;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Book (…);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>For textbooks: also a topic</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Test {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string title, author;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int numPages;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string topic;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Text (…);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>For comic books: also a hero</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Comic {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string title, author;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int numPages;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string hero;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Comic (…);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The code above is okay, just okay.<br>
+                    But it doesn’t capture the relationship among these classes.<br>
+                    <br>
+                    And how do we create an array (or list) that contains a mixture of these?<br>
+                    In C, we would...<br>
+                    1) use a <code>union</code><br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>union BookTypes {Book *b; Text *t; comic *c;};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Booktypes myBooks[20];<br>
+                    </code></pre>
+                </span>
+                <p>
+                    2)Array of <code>void*</code>: Pointer to anything.<br>
+                    These two methods are not type-safe.<br>
+                    <br>
+                    But... We know that <code>Text</code> and <code>Comic</code> are <u>kinds of</u> <code>Book</code> - a <code>Book</code> with extra features.<br>
+                    <br>
+                    To model in C++ - Inheritance.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Book {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string title, author;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int numPages;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Book (…);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>class Text: public Book {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string topic;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Text (…);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">15&nbsp;&nbsp;</span><br>
+                        <span class="cline">16&nbsp;&nbsp;</span>class Comic: public Book {<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string hero;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Comic (…);<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>class Book</code> is called "base class" (or superclass).<br>
+                    The <code>class Text</code> and <code>class Comic</code> are called "derived classes" (or subclasses).<br>
+                    Subclasses <u>inherit</u> fields and methods from the supberclass. So <code>Text</code> and <code>Comic</code> get <code>title</code>, <code>author</code>, <code>numPages</code> fields.<br>
+                    Any method that can be called on <code>Book</code>, cna be also called on <code>Text</code> and <code>Comic</code>.<br>
+                    <br>
+                    What can see these members?<br>
+                    <code>title</code>, etc. are private fields of <code>Book</code>, so outsiders can't see them.<br>
+                    Can <code>Text</code> and <code>Comic</code> see them? No.<br>
+                    Even subclasses can't see them!<br>
+                    <br>
+                    Example:<code>Text t;</code><br>
+                    <code>t</code> can't access <code>t.author</code>.<br>
+                    But <code>t</code> can call <code>t.getAuthor();</code> (public method).<br>
+                    <br>
+                    How do we initialize a <code>Text</code>?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Text: public Book {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>	…<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>	Text(string title, …, string topic):<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>		title{title}, …, topic{topic} {}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The code above is wrong!<br>
+                    <code>title</code> is private in <code>Book</code>, not your (<code>Text</code>) field.<br>
+                </p>                   
+            </div>
+            <hr>
+            
+            <div class="lec14">
+                <h3>Lecture 14 - 26/10/2017</h3>
+                <hr>
+                <P>This lecture will be updated someday in the future...</P>
+            </div>
+            <hr>         
+            
+            <div class="lec15">
+                <h3>Lecture 15 - 31/10/2017</h3>
+                <hr>
+                <p>This lecture will be updated someday in the future...</p>
+            </div>
+            <hr>
+            
+            <div class="lec16">
+                <h3>Lecture 16 - 02/11/2017</h3>
+                <hr>
+                <P>This lecture will be updated someday in the future...</P>
+            </div>
+            <hr>
+            
+            <div class="lec17">
+                <h3>Lecture 17 - 07/11/2017</h3>
+                <hr>
+                <P>This lecture will be updated someday in the future...</P>
+            </div>
+            <hr>         
+            
+            <div class="lec18">
+                <h3>Lecture 18 - 09/11/2017</h3>
+                <hr>
+                <p>Recall: The horse race example from the End of Last Lecture.</p>
+                <img src="./image/cs246/lec18/Lec18_1.png" style="width: 50%; height: 50%">
+                <br>
+                <br>
+                <script src="https://gist.github.com/vertli/4cfc676fa26e312185855f26b26ec2b5.js"></script>
+                <br>
+                <b>Decorator Pattern</b>
+                <li>We want to enhance an object at runtime: add functionality/features</li>
+                <li>Example: Winodwing system
+                    <ul>
+                        <li>start with a basic window</li>
+                        <li>add scrollbar</li>
+                        <li>add menu</li>
+                    </ul>
+                    We want to choose these enhancements at runtime.
+                </li>
+                <img src="./image/cs246/lec18/Lec18_2.png" style="width: 50%; height: 50%"><br>
+                <br>
+                <p>Class Component</p>
+                <li>defines the interface: operations your objects will provide</li>
+                <br>
+    			<p>ConcreteComponent</p>
+    			<li>implements the interface</li>
+                <br>
+    			<p>Decorators</p>
+    			<li>all inherit from Decorator, which inherits from Component</li>
+    			<p>So every decorator <u>is</u> a component <u>AND</u> every decorator <u>has</u> a component.</p>
+    			<br>
+    			<p>
+    				Example:<br>
+                    <li>Window with scrollbar is a kind of window and has a pointer to the underlying plain window.</li>
+    				<li>Window with scrollbar and menu <u>is</u> a window, has a pointer to window will scrollbar, which has a pointer to a plain window.</li>
+    				<li>All inherit from abstract Window class, so window methods can be used polymorphically on all of them.</li>
+    			</p>
+    			<br>
+    			<p>
+    				Example: Pizza - Let start a Pizza company.<br>
+    				<li>Basic pizza is crust and sauce.</li>
+    			</p>
+                <img src="./image/cs246/lec18/Lec18_3.png" style="width: 25%; height: 25%"><br>
+                <br>
+                <script src="https://gist.github.com/vertli/257bfef234e8c1363c95603d6a75cf03.js"></script>
+                <p>
+				    But... No one comes and buys the pizza...<br>
+				    Let's make some changes.<br>
+                </p>
+                <img src="./image/cs246/lec18/Lec18_4.png" style="width: 50%; height: 50%"><br><br>
+                <script src="https://gist.github.com/vertli/62ac43ab6cea6805fcdcfa6bfa0483de.js"></script>
+                <br>
+                <b>Factory Method Pattern - "Virtual Constructor Pattern"</b>
+                <p>
+                    Example:<br>
+                    Write a video game with 2 kinds of enemies: turtles and bullets.<br>
+                    <li>System randomly sends turtles and bullets, but bullets become more frequent as you get closer to the end.</li>
+                    <li>We never know exactly which enemy comes next, so can't call Turtle/Bullet ctors directly.</li>
+                    <li>Instead, we need to put a factory method in Level that creates enemies.</li>
+                </p>
+    			<br>
+                <script src="https://gist.github.com/vertli/1c5a6a240a52d35374fd07934166e8ae.js"></script>
+                <br>
+                <b>Template Method Pattern</b>
+    			<p>
+                    <li>We want subclass objects to override superclass behaviour, but some aspects must stary the same.</li>
+                    We will leave this for next lecture.
+                </p>
+            </div>
+            <hr>
+            
+            <div class="lec19">
+                <h3>Lecture 19 - 14/11/2017</h3>
+                <hr>
+                <b>Templete Method Pattern</b>
+                <li>want subclasses to override superclass behaviour, but some aspects must stary the same</li>
+                <br>
+                <p>Example: There are red turtles and green turtles in the video game example.</p>
+                <script src="https://gist.github.com/vertli/a91467f68ff3e02fc3b197b9278dc0e3.js"></script>
+                <br>
+                <p>
+                    Subclasses can't change the way a turtle is drawn (head, shell, feet), but can change the way a shell is drawn.<br>
+                    <br>
+                    Generalization: the Non-Virtual Interface (NVI) idiom<br>
+                </p>
+                <li>
+                    A public virtual method is two things:
+                    <ul>
+                        <li>
+                            public: interface to the client
+                            <ul>
+                                <li>indicates provided behaviour with pre/post conditions</li>
+                            </ul>
+                        </li>
+                        <li>
+                            virtual: interface to subclasses
+                            <ul>
+                                <li>a "hook" to insert specialised behaviour</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>It is hard to separate these interfaces if they are tied to the same methods.</li>
+                <br>
+                <p>What if you later want to separate a virtual funtion into two?</p>
+                <li>forced to change client interface</li>
+                <p>
+                    How can you force overriding functions to obey pre/post conditions?<br>
+                    NVI idiom says:
+                </p>
+                <ul>
+                    <li>all public methods should be non-virtual</li>
+                    <li>all virtual methods should be non-public/private/protected</li>
+                    <li>(except the dtor)</li>
+                </ul>
+                <p>Example:</p>
+                <script src="https://gist.github.com/vertli/deda56d11c30a847b4baa28194d88673.js"></script>
+                <p>
+                    Notice that we can add other codes before/after <code>doPlay();</code> in line 11.
+                    Example: check copyright before <code>doPlay();</code>, or update play count after <code>doPlay();</code>
+                    <br><br>
+                    Generalises Template Method: puts <u>every</u> virtual method inside a template method.<br>
+                </p>
+                <br>
+                <b>STL Map - for creating dictionaries</b>
+                <p>Example: "arrays" that map string to integer</p>
+                <script src="https://gist.github.com/vertli/e026bdcd6045b2ece680546764454fd7.js"></script>
+                <p>
+                    In line 15, if the key is not present, it is inserted and the value is default-constructed (for integer is 0).<br>
+                    Iterating over a map: keys produced in sorted order (line 17-20)<br>
+                </p>
+                <br>
+                <b>Visitor Pattern</b>
+                <p>
+                    For implementing <u>double dispatch</u>.<br>
+                    Recall - virtual method: chosen based on the <u>actual type</u> (at runtime) of the object on which it is called<br>
+                    <br>
+                    What if you want to choose based on <u>two</u> objects?<br>
+                    Example:
+                </p>
+                <img src="./image/cs246/lec19/Lec19_1.png" style="width: 50%; height: 50%">
+                <p>
+                    Striking enemies with various weapons.<br>
+                    We want something like <code>virtual void (Enemy, Weapon)::strike();</code><br>
+                    If strike is a method of Enemy, choose based on Enemy/Weapon, but not on Weapon/Enemy.<br>
+                    Trick to get dispatch based on both - combine overriding and overloading.<br>
+                </p>
+
+                <script src="https://gist.github.com/vertli/1bd86b7e12748c58d2141f094476c5f3.js"></script>
+
+                <p>
+                    What happens in line 38?<br>
+                    <code>Bullet::beStruckBy</code> runs (virtual method lookup).<br>
+                </p>
+                <li>calls <code>Weapon::strike</code>, <code>*this</code> is a Bullet, so Bullet version is chosen (at compile-time!).</li>
+                <li>vitual 'strike' method call resolves to <code>Rock::strike(Bullet &)</code></li>
+
+                <p>
+                    Note: do NOT do <code>public virtual</code>; it broke the rule of NVI!!!!<br>
+                    (It just saves time to do it in lecture....)<br>
+                </p>
+                <br>
+                <p>
+                    Visitor can be used to add functionality to existing classes, without changing or recompiling the classes themselves.<br>
+                    Example: add a visitor to the Book hierarchy
+                </p>
+                <script src="https://gist.github.com/vertli/a8d5995f63830a113e6bb5e35e9fa1a3.js"></script>
+                <p>
+                    Application - track how many of each kind of book I have:<br>
+                </p>
+                <li>Books - by Author</li>
+                <li>Texts - by Topic</li>
+                <li>Comics - by Hero</li>
+                <p>
+                    First choice: use a <code>map&lt;string,int&gt;</code><br>
+                    We could write <code>virtual void updateMap(...)</code> to each class
+                    <br>
+                    Second choice: write a visitor:
+                </p>
+                <script src="https://gist.github.com/vertli/ae21271ce891fe3d00a047f3c74df8a4.js"></script>
+            </div>
+            <hr>
+            
+            <div class="lec20">
+                <h3>Lecture 20 - 16/11/2017</h3>
+                <hr>
+                    <p>Recall our last example from lecture 19...</p>
+                    <script src="https://gist.github.com/vertli/a8d5995f63830a113e6bb5e35e9fa1a3.js"></script>
+                    <script src="https://gist.github.com/vertli/ae21271ce891fe3d00a047f3c74df8a4.js"></script>
+                    <p>
+                        But thing is... It won't compile! Why?<br>
+                        In <code>book.h</code>, we have <code>#include "BookVisitor.h</code>.<br>
+                        In <code>BookVisitor.h</code>, we have <code>#include "book.h", "text.h"</code>.<br>
+                        Lastly, in <code>text.h</code>, we have <code>#include "book.h"</code>, but <code>book.h</code> won't be include (<code>#include</code> guard).<br>
+                        This is circular include dependency.<br>
+                        So Text doesn't know what Book is.<br>
+                        Are these <code>#include</code> really needed?<br>
+                    </p>
+                    <br>
+                    <b>Compilation Dependencies</b>
+                    <p>
+                        When does a compilation dependency exist?<br>
+                        Consider:
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// &quot;a.h"&quot;</span>  <br>
+                            <span class="cline">02&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">A</span>{...};  <br>
+                            <span class="cline">03&nbsp;&nbsp;</span><br>
+                            <span class="cline">04&nbsp;&nbsp;</span><span class="ccmd">// &quot;b.h&quot;</span>  <br>
+                            <span class="cline">05&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">B</span>: <span class="ckey">public</span> <span class="cvar">A</span> {...};  <br>
+                            <span class="cline">06&nbsp;&nbsp;</span><br>
+                            <span class="cline">07&nbsp;&nbsp;</span><span class="ccmd">// &quot;c.h&quot;</span>  <br>
+                            <span class="cline">08&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">C</span> {  <br>
+                            <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a;  <br>
+                            <span class="cline">10&nbsp;&nbsp;</span>};  <br> 
+                            <span class="cline">11&nbsp;&nbsp;</span><br>
+                            <span class="cline">12&nbsp;&nbsp;</span><span class="ccmd">// &quot;d.h&quot;</span>  <br>
+                            <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">D</span> {  <br>
+                            <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A *a  <br>
+                            <span class="cline">15&nbsp;&nbsp;</span>};  <br>
+                            <span class="cline">16&nbsp;&nbsp;</span><br>
+                            <span class="cline">17&nbsp;&nbsp;</span><span class="ccmd">// &quot;e.h&quot;</span>  <br>
+                            <span class="cline">18&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">E</span> {  <br>
+                            <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A f(A a);  <br>
+                            <span class="cline">20&nbsp;&nbsp;</span>};
+                        </code></pre>
+                </span>
+                <p>
+                    For class B and C, compiation dependency. So it needs to know how big A is to know how big B and C are. Therefore, we need <code>#include "a.h</code>.<br>
+                    If there is no compilation dependency necessiated by the code, we don't introduce one with extra <code>#include</code>.<br>
+                    When calss A changes, only A, B, C need recompilation.<br><br>
+                    For class D and E, we don't need to <code>#include "a.h"</code>.<br>
+                    Now in the <u>implementions</u> of D, E:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// d.cc</span><br>
+                        <span class="cline">02&nbsp;&nbsp;</span>void <span class="cvar">D::f</span>() {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;a-><span class="cmtd">someMethod</span>(); <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// need to know about class A here<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// a real compilation dependency<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}
+                    </code></pre>
+                </span>
+                <p>
+                    Therefore, we need to add <code>#include &quot;a.h&quot;</code> in the .cc file, instead of the .h file (where possible).
+                </p>
+                <p>Now conside the XWindow class:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">private:</span> <span class="ccmd">// private data</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">public:</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>};
+                    </code></pre>
+                </span>
+                <p>
+                    We can look at private data. Do we know what it means? Do we care? NO!<br>
+                     What if we add or change a private member? All clients must recompile.<br>
+                    It would be better to hide these details away.<br><br>
+                    Solution: use the <u>pimpl idiom</u> ("pointer to implementation" idiom)<br>
+                    Create a second class called <code>XWindowImpl</code>:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// XWindowImpl.h</span><br>
+                        <span class="cline">02&nbsp;&nbsp;</span>#<span class="ckey">include</span> &lt;Xll/Xlib.h&gt;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><span class="ckey">struct</span> <span class="cvar">XWindowImpl</span> {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Display *d;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Window w;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">int</span> s;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;GC gc;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">unsigned long</span> colours[<span class="cnum">10</span>];<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">10&nbsp;&nbsp;</span><br>
+                        <span class="cline">11&nbsp;&nbsp;</span><span class="ccmd">// Window.h</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindowImpl</span>;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">XWindow</span>w {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;XWindowImpl *pimpl;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <span class="ccmd">// no change</span><br>
+                        <span class="cline">17&nbsp;&nbsp;</span>};
+                    </code></pre>
+                </span>
+                
+                <p>
+                    Now, this is the class D case.
+                    Then we don't need to include <code>Xlib.h</code> in <code>Window.cc</code>, it will forward declare the implementation class.<br>
+                    There is no compilation dependency on <code>XWindowImpl.h</code>.<br>
+                    Clients also don't depend on <code>XWindowImpl.h</code>.<br>
+                    </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ccmd">// Window.cc</span><br>
+                        <span class="cline">02&nbsp;&nbsp;</span><span class="ckey">#include</span> "window.h"<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><span class="ckey">#include</span> "XWindowImpl.h"<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span><span class="cvar">XWindow::XWindow</span>(...): pimpl {<span class="ckey">new</span> XWindowImpl} ... {} <span class="ccmd">// delete in dtor</span>
+                    </code></pre>
+                </span>
+                
+                <p>
+                    Other methods: replace fields d, w, s etc. with <code>pimpl->d</code>, <code>pimple->w</code>, <code>pimpl->s</code>, etc.<br>
+                    If you confine all private fields to XWindowImpl, then <u>only</u> window.cc needs to be recompiled if these fields change.<br><br>
+                    Generalization:<br>
+                    What if there are several possible windos implementations, say XWindow and YWindow.<br>
+                    Then make the Impl struct a superclass.<br>
+                </p>
+                <img src="./image/cs246/lec20/Lec20_1.png" style="width: 50%; height: 50%">
+                <p>
+                    pimpl idiom with a class hierarchy of implementations - this is called the <u>Bridge Pattern</u>.<br>
+                </p>
+                <br>
+                <b>Measures of Design Quality</b>
+                <li>coupling and cohesion</li>
+                <ul>
+                    <li>
+                        Coupling
+                        <ul>
+                            <li>
+                                the degree to which distinct program modules depend on each other
+                                <ul>
+                                    <li>
+                                        low:
+                                        <ul>
+                                            <li>modules that communicate via function calls with basic parameters/results</li>
+                                            <li>modules pass arrays/structs back and forth</li>
+                                            <li>modules affect each other's control flow</li>
+                                            <li>modules share global data</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        high:
+                                        <ul>
+                                             <li>modules have access to each other's implementation (friendship)</li>
+                                        </ul>
+                                        High coupling implies changing to one module require greater changes to other modules.<br>
+                                        It is harder to reuse individual modules.<br>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Cohesion
+                        <ul>
+                            <li>
+                                how closely elements and a module are related to each other
+                                <ul>
+                                    <li>
+                                        low:
+                                        <ul>
+                                            <li>arbitrary grouping of unrelated elements (e.g. &lt;utility&gt;)</li>
+                                            <li>elements share a common theme, otherwise unrelated, perhaps share some base code (e.g. &lt;algorithm&gt;)</li>
+                                            <li>elements manupulate state over the lifetime of an object (e.g. open/read file)</li>
+                                            <li>elements pass data to each other</li>
+                                        </ul>
+                                        Low cohesion implies poorly organised code and it is hard to understand, maintain, reuse.
+                                    </li>
+                                    <li>
+                                        high:
+                                        <ul>
+                                            <li>elements cooperate to perform exactly one task</li>
+                                        </ul>
+                                    </li>
+                                </ul> 
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Goal: Low Coupling and High Cohesion</p>
+                <br>
+                <b>Decoupling the Interface (MVC)</b>
+                <p>
+                    Your primary program classes should not be printing things.<br>
+                    Example:
+                </p>
+                
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                
+                <p>
+                    This is a bad design. Why? Inhibits code reuse.<br>
+                    What if you want to reuse ChessBoard, but not have it communicate via stdout?<br>
+                    We will talk about this next time.<br>
+                </p>
+            </div>
+            <hr>
+            
+            <div class="lec21">
+                <h3>Lecture 21 - 21/11/2017</h3>
+                <hr>
+            
+                <p>Recall:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;Your move&quot;;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This is a bad design - inhibits code reuse.<br>
+                    What if you want to reuse <code>ChessBoard</code>, but not have it communicate via stdout?<br>
+                    One solution: give the class stream objects where it can send its input/output:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">class</span> <span class="cvar">ChessBoard</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::istream &amp;in;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::ostream &amp;out;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cvar">ChessBoard</span> (std::istream &amp;in, std::ostream &amp;out): in{in}, out{out} {}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; &quot;Your move&quot; &lt;&lt; endl;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Now the code is better - but what if we don't want to use streams at all?<br>
+                    Your <code>ChessBoard</code> class should not be doing any communication at all.<br>
+                </p>
+                <br>
+                <b>Single Responsibility Principle</b>
+                <ul>
+                     <li>"A class should only have one reason to change."</li>
+                    <li>game state, rules, strategy, communication... <u>all</u> reasons to change</li>
+                 </ul>
+                <p>A better way to solve the problem:</p>
+                <ul>
+                    <li>communicate with the <code>ChessBoard</code> via parameters/results</li>
+                    <li>confire user communication to outside the game class</li>
+                </ul>
+                <p>
+                    Question: So should <code>main</code> do all the communication and then call <code>ChessBoard</code> methods?<br>
+                    Answer: No - hard to reuse code if it&apos;s in main.<br>
+                    We should have a class to manage interaction, that is separate from the game state class.<br>
+                </p>
+                <br>
+                <b><u>Architecture:</u> Model-View-Controller (MVC)</b>
+                <p>
+                    Separate the distinct notions of the data (or state) from the presentation of the data, and the control of the data.<br>
+                    <u>Model</u> - the main data you are manipulating (e.g. game state)<br>
+                    <u>View</u> - how the model is displayed to the user<br>
+                    <u>Controller</u> - gow the model is manipulated<br>
+                </p>
+                <img src="./image/cs246/lec21/lec21_1.png">
+                <p>Model</p>
+                <ul>
+                    <li>can have multiple views (eg. text and graphics)</li>
+                    <li>doesn't need to know about their details</li>
+                    <li>classic Observer pattern (or could communicate via controller)</li>
+                </ul>
+                <p>Controller</p>
+                <ul>
+                    <li>mediates control flow through model and view</li>
+                    <li>may encapsulate turn-taking, or full game rules</li>
+                    <li>may ask for input(or this could be the view)</li>
+                </ul>
+                <p>By decoupling presentation of control, MVC promotes reuse.</p>
+
+                <br>
+                <b>Exception Safely</b>
+                <p>Consider:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span><span class="ckey">void</span> <span class="cvar">f()</span> {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass *p = <span class="ckey">new</span> MyClass;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmtd">g</span>();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ckey">delete</span> p;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    No leaks for this program.<br> 
+                    But what if <code>g()</code> raises an exception? What is guaranteed?<br>
+                    During stack-unwinding, dtors for staak-allocated objects will run. Heap-allocated memory is not destrayed.<br>
+                    Therefore, if  <code>g()</code> throws, <code>*p</code> is leaked, but <code>mc</code> is not.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass *p = new MyClass;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g();<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} catch(...) { // catch everything<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete p;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete p; // if g() doesn't throw, we still need to delete p<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Tedious of error-prone - duplication of code<br>
+                    How else can we guarantee that something (e.g. delete p) will happen, no matter how we exit p? (normal or exception?)<br>
+                    In some languages, you have thing called "finally" clauses guarantee certain final actions - not in C++ btw.<br>
+                    The only thing you can count on in C++ - the dtor for stack-allocated data will run.<br>
+                    Therefore, use stack-allocated data with dtors as much as possible.<br>
+                </p>
+                <li>use this guarantee to you advantage</li>
+                <br>
+                <br>
+                <b>C++ idiom - RAII (Resource Acquisition Is Initialization)</b>
+                <p>
+                    Every resource should be wrapped in a stack-allocated object, whose dtor frees it.<br>
+                    Example - files:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;ifstream f("file"); // acquiring the resource ("file") = initializing the object (f)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The file is guaranteed to be released when f is popped from the stack (f's dtor runs).<br>
+                    This can be done with dynomic memory:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>class std::unique_ptr&lt;T&gt;<br>
+                    </code></pre>
+                </span>
+                <ul>
+                    <li>takes a <code>T*</code> in the ctor</li>
+                    <li>the dtor will delete the pointer</li>
+                    <li>in between - can dereference just like a pointer</li>
+                </ul>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::unique_ptr &lt;MyClass&gt; p {new MyClass;}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;MyClass mc;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;g();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>No leaks. // Guaranteed by Prof. Lushman.</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>std::unique_ptr&lt;MyClass&gt; p = make_unique&lt;MyClass&gt;(/*ctor here*/);<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// or<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>auto p = make_unique&lt;MyClass&gt;(/*ctor here*/)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>// now you don't need to use the keyword new<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p><u>Difficulty:</u></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class c{...};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; p {new c{...}};<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>unique_ptr&lt;c&gt; q = p;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What happens when a <code>unique_ptr</code> is copied? You don't want to delete the same pointer twice! So the code above doesn't work!<br>
+                    Instead - copying is disabled for unique_ptrs; they can only be moved. Therefore, the code won't not complie.<br>
+                    Sample implementation:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename T&gt; class unique_ptr {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T *ptr;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit unique_ptr(T *p): ptr{p} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~unique_ptr() {delete ptr;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr(const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (const unique_ptr &amp;other) = delete;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr (unique_ptr &amp;&amp;other): ptr {other.ptr} {other.ptr = nullptr;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &amp;operator= (unique_ptr &amp;&amp;other) {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(ptr, other.ptr);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T &amp;operator*() {return *ptr;}<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>If you need shared ownership (i.e. the ability to cpoy pointers)...</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// use std::shared_ptr<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>{<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p1 = std::make_shared &lt;MyClass&gt; ();<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (...) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto p2 = p1;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p2 popped - pointer NOT deleted<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// p1 popped, pointer IS deleted<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>shared_ptr</code>s maintain a <u>reference count</u> - count of all <code>shared_ptr</code>s pointing at the same object.<br>
+                    Memory is freed when the number of <code>shared_ptr</code>s pointing to it reaches 0.<br>
+                    Use <code>shared_ptr</code> and <code>unique_ptr</code> to express ownership.<br>
+                    Use raw pointers only for non-ownership.<br>
+                    <u>Dramatically</u> fewer opportunities for leaks.<br>
+                    <br>
+                    Consider the Racket code:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">&nbsp;1&nbsp;&nbsp;</span>(define l1 (cons 1 (cons 2(cons 3 empty))))<br>
+                        <span class="cline">&nbsp;2&nbsp;&nbsp;</span>(efine l2 (cons 4 (rest l1)))<br>
+                    </code></pre>
+                </span>
+                <p>
+                    We have two lists shared the same tail.<br>
+                    It&apos;s nightmare in C to do that - you need to have a lot of steps to delete those lists without double free!<br>
+                    But in C++, if they are all <code>shared_ptr</code>s, nighmare is gone now! Yeah!<br>
+                    <br>
+                    Back to exception safely...<br>
+                    There are 3 levels of exception safely and we will talk about them in next lecture.<br>
+                </p> 
+            </div>
+            <hr>       
+            
+            <div class="lec22">
+                <h3>Lecture 22 - 23/11/2017</h3>
+                <hr>
+                
+                <p>3 levels of exception safety for a function <code>f()</code>:</p>
+                <ol>
+                    <li>
+                        <b>Basic guarantee</b> - if an exception occurs, the program will be in some valid state (i.e. nothing is leaked, and class invariants maintained).
+                    </li>
+                    <li>
+                        <b>Strong guarantee</b> - if an exception is raised while executing <code>f()</code>, the state of the program will be as it was before <code>f()</code> was called.
+                    </li>
+                    <li>
+                        <b>No-throw guarantee</b> - <code>f()</code> will never throw an exception, and always accomplishes its purpose.
+                    </li>
+                </ol>
+                <p>Example:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class A{...}; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>class B{...}; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>class C { <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;B b; <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public: <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.g(); // may throw (strong guarantee) <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.h(); // may throw (strong guarantee) <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    Question: Is <code>C::f()</code> exception safety?<br>
+                    If <code>a.g()</code> throws, nothing happened yet. So it is okay.<br>
+                    If <code>b.h()</code> throws, effects of <code>g()</code> would have to be undone to offer the strong guarantee.<br>
+                    It is very hard or impossible if <code>g()</code> has non-local side-effects.<br>
+                    Therefore, the answer is NO - it is probably not exception safety.<br>
+                    If <code>A::g()</code> and <code>B::h()</code> do not have non-local side-effects, can use copy and swap.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class C{ <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f(){ <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A atemp = a; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B btemp = b; <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atemp.g(); <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btemp.h(); <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = atemp; <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = btemp; <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 4 to 7, if any of these throw, original a and b still intact.<br>
+                    What if any of line 8 to 9 throw?<br>
+                    It is better if the swap was no throw.<br>
+                    Solution: PIMPL idiom.
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct CImpl { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;A a; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;B b; <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>class C { <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;unique_ptr &lt;CImpl&gt; pImpl; <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f() { <br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;auto temp = make_unique&lt;CImpl&gt; (*pImpl); <br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;a.g(); <br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;temp-&gt;b.h(); <br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::swap (pImpl, temp);  // No-throw <br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} // this is strong guarantee <br>
+                        <span class="cline">14&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p> 
+                    If either <code>A::g()</code> or <code>B::h()</code> offer no exception safety guarantee, then neither can <code>C::f()</code>.<br>
+                </p>
+                <br>
+                <b>Exception Safely and the STL: Vectors</b>
+                <p>
+                    Vectors:
+                </p>
+                <ul>
+                    <li>encapsulate a heap-allocated array</li>
+                    <li>RAII - when a stack-allocated vector goes out of scope, the internal heap-allocated array if freed.</li>
+                </ul>
+                <span>
+                    <pre><code>
+                    <span class="cline">01&nbsp;&nbsp;</span>void f() { <br>
+                    <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;c&gt; v; <br>
+                    <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                    <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    When <code>v</code> goes out-of-scope, then is freed, <code>C</code> dtor runs on all objects in the vector.<br>
+                    But...
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void g() { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;c*&gt; v; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    Array is freed but pointers don't have dtors, so objects pointed at by the pointers are NOT deleted.<br>
+                    <code>v</code> doesn't know whether the pointers in the array own the objects they point at.<br>
+                    [If you want to delete them: <code>for (auto &amp;x:v) delete x;</code>]<br>
+                    But...
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void h() { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;unique_ptr&lt;c&gt;&gt; v; <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    Array is freed and dtor run, so objects <u>are</u> deleted.<br>
+                    So <u>no</u> explicit deallcation.<br>
+                    Also: <code>vector&lt;shard_ptr&lt;c&gt;&gt; v;</code><br>
+                    <br>
+                    <code>vector&lt;T&gt;::emplace_back</code>: offers the strong guarantee.<br>
+                    If the array is full (i.e. size == capacity), then allocate new array, copy objects over (copy ctor) and delete old array.<br>
+                    If a copy ctor throws, then destroy the new array, but old array still intact. (strong guarantee)<br>
+                    Then delete is no throw.<br>
+                    But... Copying is costly and the old data will be thrown away.<br>
+                    Wouldn't moving the objects be more efficient?<br>
+                    It allocate new array, <u>move</u> the objects over (move ctor), then delete old array.<br>
+                    If move ctor throws, it can't offer the strong guarantee and the original no longer intact.<br>
+                    If the move ctor offers the no-throw guarantee, <code>emplace_back</code> will use it.<br>
+                    Else, it will use the copy ctor(slower).<br>
+                    So your move operators should be no-throw, and you should indicate that they are:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class C { <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public: <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;C (C &amp;&amp;other) noexcept {...} <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;C &amp;operator= (C &amp;&amp;other) noexcept {...} <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}; <br>
+                    </code></pre>
+                </span>
+                <p>
+                    If you know a function will never throw or propagate an exception, declare it no except.<br>
+                    At minimum: moves and swaps should be no except.<br>
+                </p>
+                <br>
+                <b>Casting</b>
+                <p>In C:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int *ip = (int *)(&amp;n); <br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 2, it's called "cast".<br>
+                    Cast forces C++ to frees a Node* as int*, so we can point an int* at a Node.<br>
+                    C-style casts should be avoided in C++.<br>
+                    If you <u>must</u> cast, use a C++ style cast.<br>
+                    We have 4 kinds of ways to do that.<br>
+                    <br>
+                    1. <b>static_cast</b> - "sensible casts" with well-defined semantics.<br>
+                    Example: double -&gt; int
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>double d; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int f(int d); <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>f (static_cast&lt;double&gt;(x)); <br>
+                </code></pre>
+                </span>
+                <p>Example: Superclass pointer to subclass pointer:</p>
+                <span>
+                    <pre><code>
+                    <span class="cline">01&nbsp;&nbsp;</span>Book *b = new Text {...}; <br>
+                    <span class="cline">02&nbsp;&nbsp;</span>Text *t = static_cast&lt;Text*&gt; (b); <br>
+                </code></pre>
+                </span>
+                <p>
+                    Note that you are taking responsibility that b actually points at a Text.<br>
+                    You are asking the compiler to "trust you".<br>
+                    If it fails, undefined behavior. (This is all YOUR fault!)<br>
+                    <br>
+                    2. <b>reinterpret_cast</b> - unsafe, implementation-specific, "weird" conversions.<br>
+                    Example:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Student s; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Turtle *t = reinterpret_cast&lt;Turtle*&gt; (&amp;s); <br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    3. <b>const_cast</b> - for converting between const and non-const.<br>
+                    It is the only C++ cast than can "cast away const".<br>
+                    Example:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void g(int *p); <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>void f(const int *p) { <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// f() can't call g(), since f() won't change *p but g() <br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// what if g() do something we want and we happen to <u>know</u> that g() <u>doesn't</u> modify *p <br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;g(const_cast&lt;int&gt; (p)); // this is how you use const_cast <br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">08&nbsp;&nbsp;</span>} <br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs246/lec22/lec22_1.png" width="50%" height="50%">
+                <p>
+                    This is called "const posioning". <br>
+                    When we fix a const_erro, it will/may create a new one ._. <br>
+                    So we need to keep fixing this kind of error.<br>
+                </p>
+                <br>
+                <p>
+                    4. <b>dynamic_cast</b> - is it safe to conver a <code>Book*</code> to a <code>Text*</code>?
+                </p>
+                <span>
+                    <pre><code>
+                    <span class="cline">01&nbsp;&nbsp;</span>Book *pb = ...; <br>
+                    <span class="cline">02&nbsp;&nbsp;</span>static_cast&lt;Text *&gt;(pb)-&gt;getTopic(); <br>
+                </code></pre>
+                </span>
+                <p>
+                    Is line 2 safe?<br>
+                    It depends on what <code>pb</code> actually points at.<br>
+                    It is better to do a tentative cast - try it and see if it succeeds.
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Text *pt = dynamic_cast&lt;Text *&gt; (pb); <br>
+                    </code></pre>
+                </span>
+                <p>
+                    It the cast works (pb really points at a Text or a subclass of Text), then pt points at the object.<br>
+                    Otherwise, pt will be nullptr.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>if (pt) cout &lt;&lt; pt-&gt;getTopic(); <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>else cout &lt;&lt; "Not a Text";<br>
+                    </code></pre>
+                </span>
+                <p>
+                    We can use dynamic casting to make decisions based on an object's RTTI (Run-time Type Information).<br>
+                </p>
+            </div>
+            <hr>
+            
+            <div class="lec23">
+                <h3>Lecture 23 - 28/11/2017</h3>
+                <hr>
+                	<p>Recall the following codes:</p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = ...;<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>Text *pt = dynamic_cast&lt;Text*&gt; (pb);<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>if (pt) cout &lt;&lt; pt-&gt;getTopic();<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;else cout &lt;&lt; "Not a text";<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Line 3 and 4 make decisions based on an object's RTTI (Run-Time Type Information).<br>
+                        But can we do this on smart pointers (like static_pointer_cast, const_pointer_cast, dynamic_pointer_cast)?<br>
+                        Example: cast shared_ptrs to shared_ptrs.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>void whatIsIt(shared_ptr&lt;Book&gt; b) {<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (dynamic_pointer_cast&lt;Comic&gt; (b)) cout &lt;&lt; "Comic";<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (dynamic_pointer_cast&lt;Text&gt; (b)) cout &lt;&lt; "Text";<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else cout &lt;&lt; "Normal book";<br>
+                            <span class="cline">05&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        The codes above is tightly coupled to the Book class hierarchy, and may indicate bad design.<br>
+                        A better way to do is using virtual methods or writing a visitor (if possible).<br>
+                        <br>
+                        Note that dynamic casting also works on references.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>Text t {...};<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>Book &amp;b = t;<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>Text &amp;t2 = dynamic_cast&lt;Text&amp;&gt; (b);<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        If the cast succeeds, <code>t2</code> refers to <code>t</code>.<br>
+                        If not? It raises exception bad_cast.<br>
+                        <br>
+                        With dynamic casting we can solve the polymorphic assignment problem, as follows:<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Text &amp;Text::operator= (const Book &amp;other) { // virtual<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const Text &amp;textother = dynamic_cast&lt;const Text&amp;&gt; (other);<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;thextother) return *this;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Book::operator=(other);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;topic = textother.topic;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        In line 3, if other is not a Text, it will throw an exception.<br>
+                        Note: Dynamic casting only works on classes with at least one virtual method.<br>
+                        <br>
+                    </p>
+                    <b>How Virtual Methods Work?</b>
+                    <br>
+                    <span>
+                        <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void f();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>class Vec2 {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp; public:<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;virtual void f();<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Are <code>Vec v{1,2}</code> and <code>Vec2 w{1,2}</code> different?<br>
+                        Do they look the same in memory?<br>
+                        Note that <code>sizeof(v) = 8</code> and <code>sizeof(w) = 16</code>.<br>
+                        Clearly, 8 is space for 2 integers. (No space for the method.)<br>
+                        Methods are stored with all other functions.<br>
+                        Recall:<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = new Book();<br>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = new Text();<br>
+                            <span class="cline">01&nbsp;&nbsp;</span>Book *pb = new Comic();<br>
+                            <span class="cline">02&nbsp;&nbsp;</span> // another one of the above (3 choose 1)<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>pb-&gt;isItHeavy();<br>
+                    </code></pre>
+                    </span>
+                    <p>
+                        <code>isItHeavy()</code> virtual: chosen based on the type of the actual object, which the compiler can't know advance.<br>
+                        Therefore, correct <code>isItHeavy()</code> must be chosen at runtime. But how?<br>
+                        For each class with virtual methods, the compiler creates a table of function pointers (the vtable).<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class C{<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual void f();<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual void g();<br>
+                            <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void h();<br>
+                            <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual ~C();<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        <code>C</code> objects have an extra pointer (the vpointer) that points to <code>C</code>'s vtable.<br>
+                        Consider <code>C c, d;</code>:
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_1.png" width="50%" height="50%">
+                    <br>
+                    <p>
+                        Example - Book, Text:
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_2.png" width="50%" height="50%">
+                    <p>
+                        Calling a vitual method:<br>
+                        - follow vpointer to vtable<br>
+                        - fetch pointer to actual method from the vtable<br>
+                        - follow the function pointer and call the function<br>
+                        They are all in run-time.<br>
+                        Therefore, virtual function calls incur a small cost.<br>
+                        <br>
+                        Also note that having at least one virtual method adds a vpointer to the object.<br>
+                        Hence, classes with virtual methods produce larger objects than if all methods were non-virtual (space cost).<br>
+                        <br>
+                        Concretely, how is an object laid out? Compiler-dependent.<br>
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_3.png" width="25%" height="25%">
+                    <p>Consider the following codes:</p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class A{<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int a, c;<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;virtual void f();<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">05&nbsp;&nbsp;</span><br>
+                            <span class="cline">06&nbsp;&nbsp;</span>class B:public A {<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int b, d;<br>
+                            <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <img src="./image/cs246/lec23/lec23_4.png" width="35%" height="35%">
+                    <p>
+                        So a pointer to <code>B</code> looks like a pointer to <code>A</code> if you ignore the last two fields.<br>
+                        Also, if the vpointer is first, you always know how to find it (without knowing the object and type).<br>
+                    </p>
+                    <br>
+                    <b>Multiple Inheritance</b><br>
+                    <p>
+                        A class can inherit from more than one class.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class A {<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int a;<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">05&nbsp;&nbsp;</span><br>
+                            <span class="cline">06&nbsp;&nbsp;</span>class B {<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                            <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int b;<br>
+                            <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">10&nbsp;&nbsp;</span><br>
+                            <span class="cline">11&nbsp;&nbsp;</span>class C:public A, public B {<br>
+                            <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void f(){<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; a &lt;&lt; ' ' &lt;&lt; b;<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            <span class="cline">15&nbsp;&nbsp;</span>};<br>
+                        </code></pre>
+                    </span>
+                    <img src="./image/cs246/lec23/lec23_5.png" width="25%" height="25%">
+                    <p>
+                        Challenges: Suppose we want to do this:
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_6.png" width="25%" height="25%">
+                    <br>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class D: public B, public C {<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                            <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d;<br>
+                            <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                            <span class="cline">05&nbsp;&nbsp;</span><br>
+                            <span class="cline">06&nbsp;&nbsp;</span>D dobj;<br>
+                            <span class="cline">07&nbsp;&nbsp;</span>dobj.a;  // which a is this? Ambiguous!<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        We need to specify <code>dobj.B::a</code> or <code>dobj.C::a</code>.<br>
+                        But if <code>B</code> and <code>C</code> inherit from <code>A</code>, should there be <u>one</u> <code>A</code> object or <u>two</u>(default)?<br>
+                        Should <code>B::a</code> and <code>C::a</code> be the same or different?<br>
+                        What if we want...
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_7.png" width="15%" height="15%">
+                    <p>
+                        This is called "Deadly Diamond".<br>
+                        Make <code>A</code> a <u>virtual</u> base class - use <u>virtual inheritance</u>.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>class B:virtual public A {...};<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>class C:virtual public A {...};<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Example: The IO streams
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_8.png" width="50%" height="50%">
+                    <p>
+                        How will our deadly diamond be laid out?<br>
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_9.png" width="45%" height="45%">
+                    <p>
+                        What does g++ do?<br>
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_10.png" width="35%" height="35%">
+                    <p>
+                        Assume we create <code>B bodj;</code>...
+                    </p>
+                    <img src="./image/cs246/lec23/lec23_11.png" width="15%" height="15%">
+                    <p>
+                        <code>B</code> needs to be laid out so that we can find its <code>A</code> part, but the distance is not fixed (depends on other subclasses).<br>
+                        Solution: location of base class object stored in vtable.<br>
+                        Note: The diagram doesn't look like all of <code>A, B, C, D</code> simultaneously. But slices of it do look like <code>A, B, C, D</code>. Therefore, pointer assignment among <code>A, B, C, D</code> changes the address stored in the pointer.<br>
+                    </p>
+                    <span>
+                        <pre><code>
+                            <span class="cline">01&nbsp;&nbsp;</span>D *d;<br>
+                            <span class="cline">02&nbsp;&nbsp;</span>A *a = d; // this changes the address (to point to the A part)<br>
+                        </code></pre>
+                    </span>
+                    <p>
+                        Note that static_cast, const_cast, dynamic_cast under multiple inheritance will also change the value of the pointer, but reinterpret_cast will not.<br>
+                    </p>
+            </div>
+            <hr> 
+                  
+            <div class="lec24">
+                <h3>Lecture 24 - 30/11/2017</h3>
+                <hr>
+                <b>Template Functions</b>
+                <br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template&lt;typename T&gt; T min (T x, T y) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return x &lt; y ? x : y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>int f() {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x = 1, y = 2;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int z = min(x,y); // T is integer now<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// we don't have to say min&lts;int&gt;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    C++ can infer that <code>T</code> is integer from the types of <code>x</code> and <code>y</code>.<br>
+                    It applies to function templates <u>only</u>.<br>
+                    If C++ can't determine <code>T</code>, then you can tell it.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>z = min&lt;int&gt;(x,y);<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>char w = min ('a', 'c'); // T = char<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>auto f = min (1.0, 3.0); // T = double<br>
+                    </code></pre>
+                </span>
+                <p>
+                    For what types <code>T</code> can <code>min</code> be used?<br>
+                    Any type for which operator <code>&lt;</code> is defined.<br>
+                    <br>
+                    Recall:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void for_each (AbstractIterator &amp;start, AbstractIterator &amp;finish, int(*f)(int)){<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (start != finish) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f(*start);<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++start;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Requirements:<br>
+                </p>
+                 <ol>
+                    <li>AbstractIterator must support <code>!=</code>, <code>*</code>, <code>++</code></li>
+                    <li><code>f</code> must be callable as a function</li>
+                    <li>make these template arguments</li>
+                 </ol>
+                 
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename Iter, typename Fn&gt; void for_each (Iter start, Iter finish, Fn f) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// as before<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Now <code>Iter</code> can be <u>any</u> type that supports <code>!=</code>, <code>*</code>, <code>++</code> (including raw pointers).<br>
+                    So we can do the following:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f (int n) {cout &lt;&lt; n &lt;&lt; endl;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int a[] = {1, 2, 3, 4, 5};<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>for_each(a, a+5, f); // prints the array<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>C++ STL &lt;algorithm&gt; Library</b>
+                <p>
+                    It is a suite of template functions, many of which work on iterators.<br>
+                    Examples:<br>
+                    <code>for_each</code>: (as above)<br>
+                    <code>find</code>: (see below)<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename Iter, typename T&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Iter find (Iter first, Iter last, const T &amp;val) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// return an iterator to the first element in [first, last) matching val<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// or return last if val no found<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>count</code>: like find, but returns number of occurrence, of <code>val</code><br>
+                    <code>copy</code>: (see below)<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename InIter, typename OutIter&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>OutIter copy (InIter first, InIter last, OutIter result) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// copies one container range [first, last) to another, starting at result<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// Note: this does NOT allocate memory<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>// Example:<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>vector&lt;int&gt;v {1, 2, 3, 4, 5, 6, 7};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>vector&lt;int&gt;w (4); // space for 4 integers<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>copy(v.begin()+1, v.begin()+5, w,begin()); // w = {2, 3, 4, 5}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span><br>
+                        <span class="cline">11&nbsp;&nbsp;</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span>template&lt;typename InIter, typename OutIter, typename Fn&gt;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>OutIter transform (InIter first, InIter last, OutIter result, Fn f) {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (first != last) {<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*result = f(*first);<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++first;<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++result;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return result;<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>// example:<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>int add1 (int n) {return n+1;}<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>vector&lt;int&gt; v {2, 3, 5, 7, 11};<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>vector&lt;int&gt; w (v.size());<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>transform(v.begin(), v.end(), w.begin(), add1); // w = {3, 4, 6, 8, 12}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    How general is this code?<br>
+                    1) What can we use for <code>Fn</code>?<br>
+                    2) What can we use for <code>InIter/OutIter</code>?<br>
+                    <br>
+                    Answers for 1) <code>Fn</code><br>
+                    How is <code>f</code> used? <code>f(*first)</code>.<br>
+                    <code>f</code> can be anything that can be called as a function.<br>
+                    It Can write operator() for objects.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Plus1 {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int operator()(int n) {reutrn n+1;}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>Plus1 p;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>p(4);// produces 5<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>transform (v.begin(), v.end(), w.begin(), Plus1{});<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>// the {} from Plus1{} is a ctor call (creates an object)<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>Generalise:</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Plus {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int m;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plus(int m): m{m} ()<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int operator()(int n) {return n+m;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span><br>
+                        <span class="cline">08&nbsp;&nbsp;</span>transform(v.begin(), v.end(), w.begin(), Plus{1});<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>//the Plust{1} is called function object<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Advantage of function objects: can maintian state<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class IncreasingPlus {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int m = 0;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int operator()(int n) {return n+(m++);}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oid reset() {m = 0;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span><br>
+                        <span class="cline">08&nbsp;&nbsp;</span>vector&lt;int&gt; v(5,0); // 0 0 0 0 0<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>vector&lt;int&gt; w(v.size());<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>transform(v.begin(), v.end(), w.begin(), IncreasingPlus{}); // w = {0, 1, 2, 3, 4}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Consider: How many integers in a vector <code>v</code> are even?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>vector&lt;int&gt; v {...};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>bool even (int n) {return n%2==0;}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int x = count_if(v.begin(), v.end(), even);<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    It seems a waste to explicitly create the function <code>even</code>.<br>
+                    Also, you can't keep even close to <code>count_if</code> because functions must be declared at file or namespace scope (i.e. not inside other functions).<br>
+                    If this were Racket, we would use lambda.<br>
+                    So do the same here:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int x = count_if (v.begin(), v.end(), [](int n){reutrn n%2==0;});<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// [] means "lambda"<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>auto even = [] (int n) {return n%2 == 0;}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>// the only way to store a lambda as a variable is using auto<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Answer for 2) Iterators<br>
+                    It applies the notion of iteration to other data sources (e.g. streams).<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iterator&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>vector&lt;int&gt; v {1, 2, 3, 4, 5};<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>ostream_iterator&lt;int&gt; out {cot, ","};<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>copy (c.begin(), v.end(), out); // print 1, 2, 3, 4, 5,<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>vector&lt;int&gt; v {1, 2, 3, 4, 5};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>vector&lt;int&gt; w; // empty<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>copy(v.begin(), v.end(), w.begin()); // This is WRONG!!!<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>// w is size 0 - copy() does NOT allocate space in w.<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>// Why can it allocate space in w for us? It doesn't even know w is iterating over a vector!!!<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    But what if we ahd an iterator whose assignment operatore inserts a new item?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>copy(v.begin(), v.end(), back_inserter(w));<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// copies to the end of w, allocating space as it goes.<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// the back_inserter() is availabe for any container that supports push_back.<br>
+                    </code></pre>
+                </span>
+                <br>
+                <h4 class="title">Module 4 - C++ (Part 3), UML and Design Pattern</h4>
+                <h4 class="title">CS246</h4>
+                <h5 class="title">The End.</h5>
+            </div>
+            <hr> 
+            
+            <table width="100%">
+                <tr>
+                    <td width="45%"><a href="./cs246_3.html">&larr; Go to Module 3 - C++ (Part 2) and Introduction to OOP</a></td>
+                    <td width="10%" align="centre"><a href="./cs246.html">&uarr; Go to Index</a></td>
+                    <td width="45%"></td>
+                </tr>
+            </table>
+            
+            <div class="footer">
+                <p>Thanks For Coming Here. - Calvin Li</p>
+                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
+                    <i class = "fa fa-envelope-square"></i>
+                </a>
+                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
+                    <i class = "fa fa-linkedin-square"></i>
+                </a>       
+                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href = "https://github.com/vertli" target = "_blank;">
+                    <i class="fa fa-github-square"></i>
+                </a>
+                <br>
+                <p>Chun Kit (Calvin) Li &copy; 2017</p>
+                <br>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    </body>
+    
+</html>
