@@ -92,7 +92,265 @@
                 <h3>Lecture 7 - 28/09/2017</h3>
                 <hr>
                 <h4 class="title">Module 3 - C++ (Part 2) and Introduction to OOP</h4>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>
+	               Recall: Overloading <code>&lt;&lt;</code> and <code>&gt;&gt;</code>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Grade {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int theGrade;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>ostream &amp;operator&lt;&lt; (ostream &amp;out, const Grade &amp;g) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return out &lt;&lt; g.theGrade &lt;&lt; '%';<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>istream &amp;operator&gt;&gt; (istream &amp;in, Grade &amp;g) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;in &gt;&gt; g.theGrade;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (g.theGrade &lt; 0) g.theGrade = 0;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (g.theGrade &gt; 100) g.theGrade = 100;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return in;<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>The Preprocessor</b>
+                <p>
+                    The preprocessor transforms the program before the compiler sees it.<br>
+                    <code>#______</code> is the preprocessor directive.<br>
+                    For example, <code>#inlcude</code>.<br>
+                    It includes old C headers into C++: new naming convention.<br>
+                    For example, instead of using <code>#include &lt;stdio.h&gt;</code>, we use <code>#include &lt;cstdio&gt;</code> in C++.<br>
+                    <br>
+                    <code>#define var val</code><br>
+                    This code sets a preprocessor variable, then all occurrences of <code>var</code> in the source file are replaced with <code>val</code>.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#define MAX 10<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int a[MAX];<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// transformed to int a[10]<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Instead of doing this, you can just use constant.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#define ever ;;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>for (ever) {...}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Yes... You can actually do that...<br>
+                    <br>
+                    <code>#define FLAG</code><br>
+                    This code sets the variable FLAG and the value is the empty string.<br>
+                    <br>
+                    Define constants good for conditional compilation.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#if SECURITYLEVEL == 1 // remove if SECURITYLEVEL != 1<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;short int<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>#elif SECURITYLEVEL == 2 // removed if SECURITYLEVEL != 2<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;long long int<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>#endif<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;publickey;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Special Case:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#if 0<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">03&nbsp;&nbsp;</span>#endif<br>
+                    </code></pre>
+                </span>
+                <p>
+                    0 is false, so never true, all inner text is removed before it gets to the compiler.<br>
+                    You can use if for <strong>industrial strength "comment out"</strong>.<br>
+                </p>
+                <br>
+                <b>Comment</b>
+                <p>
+                    Way 1: <code> // I am a comment</code><br>
+                    Way 2: <code>/* I am a comment */</code><br>
+                    Notice that way 2 doesn't nest. In other word,<code>/* /* I am a comment */ I am out of the comment */</code> doesn't work.<br>
+                    But our special case is nests properly!<br>
+                    <br>
+                    We can define symbols via compiler arguments.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// define.cc<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; X &lt;&lt; endl;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>g++14 -DX=15 define.cc -o define<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>./define<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>// then we will get 15<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>#ifdef NAME</code> true if <code>NAME</code> has been defined.<br>
+                    <code>#ifndef NAME</code> true if <code>NAME</code> has not been defined.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#ifdef DEBUG<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "setting x = 1" &lt;&lt; endl;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#endif<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x = 1;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (x &lt; 10) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++x;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ifdef DEBUG<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "x is now" &lt;&lt; endl;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endif<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; x &lt;&lt; end;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span><br>
+                        <span class="cline">15&nbsp;&nbsp;</span>g++14 debug.cc -o debug // no debugging output<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>g++14 -DDEBUG debug.cc -o debug // enables debugging output<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Separate Compilation</b>
+                <p>
+                    Split programs into composable <u>modules</u>, which each provide<br>
+                </p>
+                <ul>
+                    <li>
+                        interface<br>
+                        <ul><li>type definitions, prototypes for functions (in .h file)</li></ul>
+                    </li>
+                    <li>
+                        implementation<br>
+                        <ul><li>full definition for every provided function (in .cc file)</li></ul>
+                    </li>
+                </ul>
+                <p>
+                    Recall:<br>
+                    Declaration - asserts existence<br>
+                    Definition - full details: allocates space (variables/functions)<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// interface vec.h<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>Vec operator+ (const Vec &amp;v1, const Vec &amp;v2);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>// implementation vec.cc<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>#include "vec.h" // so that we get the struct definition<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Vec operator+ (cons Vec &amp;v1, const Vec &amp;v2) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {v1.x + v2.x, v1.y + v2.y};<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">12&nbsp;&nbsp;</span><br>
+                        <span class="cline">13&nbsp;&nbsp;</span>// main.cc<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>#include "vec.h"<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec v {1, 2};<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;v = v + v;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <P>
+                    Recall: an entity can be declared many times, but defined at most once.<br>
+                </P>
+                <br>
+                <b>Compiling Separately</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>g++14 -c vec.cc<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// compile only, do not link<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// creates vec.o ("object file")<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>g++14 -c main.cc<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>g++14 vec.o main.o -o main<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>// links object files into executable<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What if we want a module to provide a global variable?<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// abc.h<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int globalNum; // definition and declaration<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Every file athat includes <code>abc.h</code> defines a separate <code>globalNum</code>.<br>
+                    You cannot have more than one global variable with the same name; the program will not link.<br>
+                    Solution:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// abc.h<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>extern int globalNum; // declaration, but not definition<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>// abc.cc<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>int globalNum; // definition<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Suppose we write a linear algebra module:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// linalg.h<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>#include "vector.h"<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>// linalg.cc<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>#include "linalg.h"<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>#include "vector.h"<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>...
+                    </code></pre>
+                </span>
+                <p>
+                    The program won't compile.<br>
+                    <code>linalg.cc</code> includes <code>linalg.h</code> and <code>vector.h</code>.<br>
+                    But <code>linalg.h</code> includes <code>vector.h</code> too.<br>
+                    So we have 2 copies of <code>vector.h</code>.<br>
+                    The struct <code>Vec</code> defined twice!!!<br>
+                    <br>
+                    We need to prevent files from being included more than once.<br>
+                    Solution: <code>#inlucde</code> guard.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// vec.h<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>#ifndef VEC_H // pick any unique symbol (suggest: based on file name)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#define VEC_H<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... // file contents<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>#endif<br>
+                    </code></pre>
+                </span>
+                <p>
+                    First time <code>vec.h</code> is included.<br>
+                    The symbol <code>VEC_H</code> is not defined, so the file is included it.<br>
+                    After that, <code>VEC_H</code> is defined, so the contents of <code>vec.h</code> are suppressed.<br>
+                    <strong>Always</strong> put <code>#include</code> guards in .h files!<br>
+                    <strong>Never ever ever *100</strong> compile .h files and include .cc files.<br>
+                    <strong>Never</strong> put <code>using namespace std;</code> in headers; this forces the client to open up the namespace, so always use the <code>std::</code> prefix in headers.<br>
+                </p>
             </div>
             <hr> 
             
