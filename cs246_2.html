@@ -94,9 +94,27 @@
                 <h4 class="title">Module 2 - C++ (Part 1)</h4>
                 
                 <p>Recall out first C program in CS136 - <b>helloWorld.c</b>:</p>
-                <script src="https://gist.github.com/vertli/bf37f591f2da675b77219074ed7c9c15.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;stdio.h&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;printf(“Hello, World!\n”);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+                    </code></pre>
+                </span>
                 <p>Here is the C++ version:</p>
-                <script src="https://gist.github.com/vertli/886b5694ccb9c4016d8b9ca7e615b348.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Hello world" &lt;&lt; endl;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <p>
                     Note that the <code class="name">main</code> function <u>must</u> be return the type <code class="var">int</code> in C++.<br>
                     The <code class="name">stdio.h</code> and <code class="name">printf</code> are still available in C++.<br>
@@ -120,7 +138,7 @@
                 </p>
                 <ul>
                     <li><code>cout</code>: for printing to <code>stdOut</code> (standard output)</li>
-                    <li><code>cin&nbsp;&nbsp;</code>: for reading from <code>stdIn</code> (standard Input)</li>
+                    <li><code>cin&nbsp;</code>: for reading from <code>stdIn</code> (standard Input)</li>
                     <li><code>cerr</code>: for printing to <code>stdErr</code> (standard Error)</li>
                 </ul>
                 <br>
@@ -138,11 +156,23 @@
                 </ul>
                 <br>
                 <P>Example: Add 2 numbers:</P>
-                <script src="https://gist.github.com/vertli/960f50a60ef8ae9c79d3613ffa256a72.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// We will omit the above lines for now on (understood)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; x &gt;&gt; y;// ignore whitespace<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; x + y &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <p>
                     In line 8, the program will get two integers from StdIn and skipping whitespace.<br>
                     What if input does not contain an integer next?<br>
-                    <li>The statement will fail and the variable will become either ) or maxInt or minInt.</li>
+                    <li>The statement will fail and the variable will become either 0 or maxInt or minInt.</li>
                     What if input is exhausted before we get two integers?
                     <li>Same as before...</li>
                     <br>
@@ -151,13 +181,41 @@
                     <br>
                     Example: Read all integers from stdIn, echo them one per line, to stdOut; stop on bad input of EOF.
                 </p>
-                <script src="https://gist.github.com/vertli/e7d97917bb63be45032a2a2b08d982e9.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; i;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin.fail()) break;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <p>    
                     Note: then there is am implicit conversion from <code>cin</code> to <code>bool</code>.<br>
                     Let <code>cin</code> be used as a condition: true for success and false for failure.<br><br>
                     Then... Here is the v2.0 for our example:
                 </p>
-                <script src="https://gist.github.com/vertli/8ba1443aa06cc5177389a8745f49f67f.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cin >> i;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (!cin) break;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <p>
                     Note that <code>&gt;&gt;</code> is the right bitshift operator in C.<br>
                     <code>a &gt;&gt; b</code> means shifts <span class="var">a</span>'s bits to the right by <span class="var">b</span> spots.<br>
@@ -172,14 +230,58 @@
                     This is why we can write <code><span class="name">cin &gt;&gt; </span>x<span class="name"> &gt;&gt; </span>y<span class="name"> &gt;&gt; </span>z;</code>.<br><br>
                     V3.0 for our example...
                 </p>
-                <script src="https://gist.github.com/vertli/9866755ac5a138fd0a8a20564ac5145f.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!(cin &gt;&gt; i)) break;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <p>Lastly, V4.0 for our example:</p>
-                <script src="https://gist.github.com/vertli/f9dc9292464f19c7ab764c4060c6874a.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin &gt;&gt; i) break;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
                 <br>
                 <p>
                     Example: Read all integers and echo to stdOut until EOF; skip non-integer input.
                 </p>
-                <script src="https://gist.github.com/vertli/e0a9e44a678a52d5b1a190ed44f9796e.js"></script>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;iostream&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!(cin &gt;&gt; i)) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin.eof()) break;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin.clear (); // reset the fail flag<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin.ignore (); // skip a char<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { // read was ok<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
             </div>
             <hr>
             
@@ -292,7 +394,7 @@
                     These two functions called <strong>overloading</strong>.<br>
                     <br>
                     Compiler uses number and types of arguments to decide which <code>neg()</code> is being called. - overload resolution<br>
-                    Overloads must differ in number or ytpes of arguments - may not differ on just return type.<br>
+                    Overloads must differ in number or types of arguments - may not differ on just return type.<br>
                     <br>
                     We've seen this already: <code>&lt;&lt;</code> and <code>&gt;&gt;</code> are overloaded.<br>
                     The behaviour depends on types of arguments.<br>

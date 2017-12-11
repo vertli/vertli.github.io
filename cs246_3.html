@@ -357,21 +357,725 @@
             <div class="lec8">
                 <h3>Lecture 8 - 03/10/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>Recall:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node *np = new Node();<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>delete np;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <br>
+                    Or in array:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int *p = new int [40]; // arry of 40 integers<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>delete [] p;<br>
+                    </code></pre>
+                </span>
+                <p>The form of <code>new</code> must match the form of <code>delete</code>.<br></p>
+                <b>Classes</b>
+                <p>
+                    We can put functions inside of structres.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return assn * 0.4 + mt * 0.2 + final * 0.4;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>Student s {70, 80, 90};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>cout &lt;&lt; s.grade() &lt;&lt; endl;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Class is the structure type that can contain functions.<br>
+                    C++ has a <u>class</u> keyword (will use later).<br>
+                    <br>
+                    Object: an instance of a class<br>
+                    <br>
+                    The function <code>grade()</code> is called a <i>member function</i> (or <i>method</i>).<br>
+                    <br>
+                    What do <code>assn</code>, <code>mt</code> and <code>final</code> mean insider of <code>grade(){...}</code>?<br>
+                    They are fields of the <u>current</u> object - the object upon which grade was invoked.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Student billy {...};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>billy.grade(); // uses Billy's assn, mt and final<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Formally, methods take a hidden extra parameter called <code>this</code>.<br>
+                    <code>this</code>: pointer to the object on which the method was called<br>
+                    Example: <code>billy.grade(); // this == &amp;billy</code><br>
+                    So we can write as<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade () {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this-&gt;assn * 0.4 + this-&gt;mt * 0.2 + this-&gt; * 0.4;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Initialising Objects</b>
+                <p>
+                    <code>Student billy {60, 70, 80}; // this is okay, but limited</code><br>
+                    The better way to do is have a method that does initialisation - a <u>constructor</u>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade () {…}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (int assn, int mt, int final){<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;assns = assns;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;mt = mt;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;final = final;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>Student billy {60, 70, 80}; // better<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If a constructor has been defined, these are passed as arguments to the constructor.<br>
+                    It no constructor has been defined, tehse initialise the individual fields of <code>Student</code>.<br>
+                    <br>
+                    <code>Studnet billy = Student {60, 70, 80};</code><br>
+                    Heap allocation: <code>Student *pbilly = new Student {60, 70, 80};</code><br>
+                    <br>
+                    Advantages of Constructor: (1) default parameters, (2) overloading and (3) sanity checks.<br>
+                    <br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Studnet (int assn = 0; int mt = 0; int final = 0) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;assn = assn;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// etc.<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>Student jane {60, 70}; // 60, 70, 0<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Student newKid; // 0, 0, 0<br> 
+                    </code></pre>
+                </span>
+                <p>
+                    Note:<br>
+                    Every class comes with a built-in default (i.e. no arguments) constructor.<br>
+                    (It is ject a default, constructs all fields that are objects.)<br>
+                    Example:<br>
+                    <code>Vec v; // default constructor (does nothing in this case)</code><br>
+                    <br>
+                    But the built-in default constructor goes away if you provide a constructor.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;x = x;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;y = y;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>Vec v; // Error, no default constructor<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Vec v {1,2}; // this is okay<br>
+                        <span class="cline">10&nbsp;&nbsp;</span><br>
+                        <span class="cline">11&nbsp;&nbsp;</span>int x = 5; // work<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>int x{5}; // work<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>int x(5); // work<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>struct Vec v {1,2}; // work<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>string s = "Hello"; // work<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>string s {"Hello"}; // work<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>ifstream f ("file.txt"); // work<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>ifstream f = "file.txt"; // you cannot do this<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This <code>{}</code> is called "uniform initialisation". (99% work in C++!!!!)<br>
+                    <br>
+                    What if a structure contians constants or references?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct myStruct{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int myConst;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int &amp;myRef;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The whole thing must be initialised. So initialise:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int z;
+                        <span class="cline">02&nbsp;&nbsp;</span>struct myStruct {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int myConst = 5;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int &amp;myRef = z;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This is not a full solution...<br>
+                    But does <u>every</u> instance of <code>myStruct</code> need to have the <u>same</u> value of <code>myConst</code>, etc.?<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int id;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// constant (doesn't change), but not the same for all students!<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Where do we initialise?<br>
+                    Constructor body? Too late, fields must be fully constructed by then.<br>
+                    <br>
+                    What happens when an object is created?<br>
+                    1) Space is allocated<br>
+                    2) Fields are constructed in declaration order<br>
+                    3) Constructor body runs<br>
+                    <br>
+                    We need to put our initialisation in declaration. But How?<br>
+                    <strong>Member Initialisation List (MIL)</strong>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int id;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (int id, int assn, int mt, int final): id{id}, assn{assn}, mt{mt}, final{final} {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>id{id}, assn{assn}, mt{mt}, final{final}</code><br>
+                    Each of them are <code>field{parameter}</code><br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string name;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (string name) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;name = name;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>name</code> is default.<br>
+                    It constructed to step 2, then reassigned in step 3.<br>
+                    <br>
+                    <code> Student (string name): name{name} {}</code><br>
+                    <code>this-&gt;name</code> is initialised to <code>name</code> in step 2.<br>
+                    <br>
+                    Note: fields are initialised <u>in the order in which they are declared in the class</u>, even if the MIL orders them differently.<br>
+                    <br>
+                    Embrace the MIL!<br>
+                    What if a field is initialised inline AND in the MIL?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x = 0, y = 0;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x): x{x} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    MIL takes precedence.<br>
+                    <code>int x = 0, y = 0;</code> only happens if the field is not mentioned in the MIL.<br>
+                    <br>
+                    Now consider:<br>
+                    <code>Student billy {60, 70, 80};</code><br>
+                    <code>Student bilaal = billy;</code><br>
+                    How does this initialisation happen?<br>
+                    The <strong>copy constructor</strong>, for constructing one object as a copy of another.<br>
+                    <br>
+                    Note: Every class comes with...<br>
+                </p>
+                <ul>
+                    <li>a default constructor (default - constructs all fields that are objects)</li>
+                    <li>a copy constructor (just copies all fields)</li>
+                    <li>a copy assignment operator</li>
+                    <li>a move constructor</li>
+                    <li>a move assignment operator</li>
+                    <li>a destructor</li>
+                </ul>
+                <p>
+                    <br>Writing your own copy constructor:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (...) {...}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (const Student &amp;other): assn{other.assn}, mt{other.mt}, final{other.final} {...}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// equiv. to built-in<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>Student (const Student &amp;other)</code> must be by reference.<br>
+                    <br>
+                    When is the built-in copy constructor not correct?<br>
+                    Consider:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
             </div>
             <hr>         
             
             <div class="lec9">
                 <h3>Lecture 9 - 05/10/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>What the built-in copy constructor is not correct?<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (const Node &amp;other): data{other.data}, next{other.next} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data, Node *next): data{data}, next{next} {}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>Node *n = new Node {1, nex Node{1, new Node{2, new Node{}, nullptr}}};<br>
+                    </code></pre>
+                </span>
+                <img src="image/cs246/lec9/lec9_1.png" width="35%" height="35%">
+                <p>
+                    Simply copy of fields -&gt; only the first node is actually copied (<strong>shallow</strong> copy).<br>
+                    If you want a <strong>deep</strong> copy (copies the whole list), must write you own copy constructor.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (const Node &amp;other): data{other.data}, next{other.next? new Node{*other.next}:nullptr} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>new Node{*other.next}</code> calls the copy constructor - Recursion!!!<br>
+                    <br>
+                    The copy constructor is called when...<br>
+                    1) an object is initialised with another object<br>
+                    2) an object is passed by value<br>
+                    3) an object is returned  by a function<br>
+                    P.S. There are exceptions to these (later!)<br>
+                    <br>
+                    <strong>Beware</strong> of copy constructor that can take <u>one</u> argument.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data): data{data}, next{nullptr} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Single-argument copy constructors create implicit conversions.<br>
+                    Example: <code>Node n{4}; // [4|nullptr]</code><br>
+                    But also <code>Node n = 4; // implicit conversion from integer to Node</code><br>
+                    and <code>String s = "hello";</code> // implicit conversion from char* to string<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>int f (Node n) {...}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>f(4); // this works, since 4 implicitly converted to Node<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <strong>Danger!</strong><br>
+                    Accidentally pass an integer to a function expecting a Node...<br>
+                    1) silent conversion<br>
+                    2) compiler does not signal an error<br>
+                    3) potential error not caught<br>
+                    <br>
+                    Good Idea: disable the implicit conversion and make the copy constructor <code>ecplicit</code>.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit Node (int data): data{data}, next{nullptr} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>	&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>// then...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>Node n{4}; // okay<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Node n = 4; // no<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>f(4); // no<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>f(Node{4}); // okay<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Destructor</b>
+                <p>	
+                    When an object is destroyed...<br>
+                    - stack-allocated: goes out of scope<br>
+                    - heap-allocated: is deleted<br>
+                    <br>
+                    ... a method calls the <u>destructor</u> runs:<br>
+                    1) destructor (dtor) body runs<br>
+                    2) field's destructor are called in reverse declaration order<br>
+                    3) Space deallocated<br>
+                    Classes come with a destructor (just calls destructor for all fields that are objects).<br>
+                    <br>
+                    When do we need to write one?<br>
+                    <code>Node *np = new Node{1, new Node{2, new Node{3, nullptr}}};</code><br>
+                    If <code>np</code> goes out of scope...<br>
+                    - the <u>pointer</u> is reclaimed (on the stack).<br>
+                    - the <u>entire list</u> is leaked.<br>
+                    If we say <code>delete np</code>...<br>
+                    - calls <code>*np</code>'s destructor, which doesn't do anything.<br>
+                </p>
+                <img src="image/cs246/lec9/lec9_2.png" width="45%" height="45%">
+                <p>
+                    <br>
+                    Write a destructor to ensure the whole list is freed:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~Node() {delete next;}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>delete next;</code> recursively calls <code>*next</code>'s destructor, so whole list is freed.<br>
+                    Now, <code>delete np;</code> frees the whole list.<br>
+                </p>
+                <br>
+                <b>Copy Assignment Operator</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Student billy {60, 70, 80};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Student bilaal = billy; // copy constructor<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>Student frost; // default constructor {0, 0, 0}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>frost = billy; // copy, but not constructor<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 4, this is the copy assignment operator.<br>
+                    It uses compiler-supplied default (shallow).<br>
+                    <br>
+                    You may need to write your own one:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = oter.data;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node{*other.next}:nullptr;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This is DANGEROUS!!!!<br>
+                    Using <code>Node &amp;</code>: so that cascading works.<br>
+                    But why the structure is dangerous?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n {1, new Node{2, new Node{3, nullptr}}};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>n = n;<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Deletes <code>n</code> and then tries to copy <code>n</code> to <code>n</code>?<br>
+                    This is undefined behaviour!<br>
+                    <br>
+                    Other examples for using copy assignment operator:<br>
+                    <code>*p = *q;</code> and <code>a[i] = a[j];</code><br>
+                    <br>
+                    When writing <code>operator=</code>, ALWAYS make sure it works for self-assignment:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = other.data;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete next;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If the <code>new</code> in line 7 fail, this function will fail out.<br>
+                    - deleted successor nudes, but <code>next</code> still points at them<br>
+                    &nbsp;- dangling pointer<br>
+                </p>
             </div>
             <hr>  
             
             <div class="lec10">
                 <h3>Lecture 10 - 12/10/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = next.data;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete next;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If the <code>new</code> in line 6 fail, function will abort.<br>
+                    The <code>next</code> points at deleted data corrupted list.<br>
+                    <br>
+                    A better way to do is...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node *tmp = next;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = other.data;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete tmp;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If the <code>new</code> in line 7 fail, the Node will still be in a valid state.<br>
+                </p>
+                <br>
+                <b>Alternative: Copy and Swap Idiom</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;utility&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void swap (Node &amp;other) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (data, other.data);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (next, other.next);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node tmp = other;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (tmp);<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Notice:<br>
+                    The <code>operator=</code> is a member function, not a Standalone function.<br>
+                    When an operator is declared as a member function, <code>*this</code> plays the role of the first operand.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec operator+ (const Vec &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {x + other.x, y + other.y};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec operator* (const int k) { // this is v * k<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {x * k, y * k};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    How would we implement <i>k*v</i>?<br>
+                    You can't do it as a member function.<br>
+                    The first argument no a <code>Vec</code>! It must be standalone:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Vec operator* (const int k, const Vec &amp;v) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return v * k;<br>
+                        <span class="cline">013&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <br>
+                    What about I/O operators?<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;ostream &amp;operator&lt;&lt; (ostream &amp;out) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return out &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What is wrong with this?<br>
+                    It makes <code>Vec</code> the LHS operand, not the RHS.<br>
+                    So we need to do <code>v &lt;&lt; cout;</code>. This is so confusing!!!<br>
+                    So we need to write the <code>operator&lt;&lt;</code> and <code>operator&gt;&gt;</code> as standalone functions.<br>
+                    <br>
+                    Certain operators <u>must</u> be members:<br>
+                    1) <code>operator=</code><br>
+                    2) <code>operator[]</code><br>
+                    3) <code>operator-&gt;</code><br>
+                    4) <code>operator()</code><br>
+                    5) <code>operatorT</code> where <code>T</code> is a type<br>
+                </p>
+                <br>
+                <b>Separate Compilation for Classes</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>// Node.h <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>#ifnder NODE_H<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>#define NODE_H<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit Node (int data, Node *next = nullptr);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;bool isSingleton();<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>#endif<br>
+                        <span class="cline">11&nbsp;&nbsp;</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span>// Node.cc<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>#include "Node.h"<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>Node::Node (int data, Node *next): data{data}, next{next} {}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>bool Node::isSingleton () {return next == nullptr;}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>::</code> is called <u>scope resolution operator</u>.<br>
+                    <code>Node::______</code> means <code>______</code> in the context of <code>struct Node</code>.<br>
+                    <code>::</code> is like <code>.</code> where LHS is a class (or namespace, not an object.<br>
+                </p>
+                <br>
+                <b>Constant Objects</b>
+                <p>
+                    <code>int f (const Node &amp;n) {...}</code><br>
+                    Constatn objects arise often, especially as parameters.<br>
+                    <br>
+                    So, what is a constant object?<br>
+                    The fields cannot be modified.<br>
+                    <br>
+                    Can we call methods on a constant object?<br>
+                    Issue: the method may change fields, violate constant.<br>
+                    Answer: Yes, we can call methods that <u>promise</u> not to modify fields.<br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade() const; // doesn't modify fields, so declare the method const<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>float Student::grade () const {...}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Compiler will check that constant methods don't modify fields.<br>
+                    Only constant methods can be called on constant objects.<br>
+                </p>
+                <br>
+                <b>Rvalues and Rvalue References</b>
+                <p>
+                    Reacll:<br>
+                    An lvalue is anything with an address.<br>
+                    An lvalue reference (<code>&amp;</code>) is like a constant pointer with auto-dereference.<br>
+                    We need to always initialised an lvalue reference to an lvalue.<br>
+                    <br>
+                    Now consider:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n {1, new Node {2, nullptr}};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Node m = n;  // copy constructor<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>Node m2;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>m2 = n; // copy assignment<br>
+                        <span class="cline">05&nbsp;&nbsp;</span><br>
+                        <span class="cline">06&nbsp;&nbsp;</span>Node pulsOne (Node n) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;for (Node *p = &amp;n; p; p = p-&gt;next) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++p-&gt;data;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">12&nbsp;&nbsp;</span><br>
+                        <span class="cline">13&nbsp;&nbsp;</span>Node m3 = plusOne(n); // copy constructor<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 13, what is "other" for <code>plusOne(n)</code>?<br>
+                    A reference.<br>
+                    Reference to what?<br>
+                    Compiler creates a <u>temporary object</u> to hold the result of <code>pulsOne</code>.<br>
+                    So "other" is a reference to this temporary.<br>
+                    Copy constructor deep-copies the data from the temporary.<br>
+                    <br>
+                    But...<br>
+                    The temporary is just going to be discarded anyway, as soon as the statement <code>Node m3 = plusOne(n);</code> is done.<br>
+                    It is wasteful to have to copy the data from the temporary. Why not just steal it instead? Then it will save the cost of a copy.<br>
+                    We need to be able to tell whether other is a reference to a temporary object or a standalone object.<br>
+                    <br>
+                    C++:
+                    rvalue reference <code>Node&amp;&amp;</code> is a reference to a <u>temporary</u> object (rvale) of bype Node.<br>
+                    <br>
+                    Version of the copy constructor that takes a <code>Node&amp;&amp;</code>:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (Node &amp;&amp;other): data{other.data}, next{other.next} {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.next = nullptr;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The <code>Node &amp;&amp;other</code> in line 3 is called a <u>move constructor</u>.<br>
+                    Move Constructor: steal other's data<br>
+                </p>
             </div>
             <hr>         
             
