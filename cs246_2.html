@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
         <link rel="stylesheet" href="./note.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
         <!-- stylesheet found from w3school. (icon use)-->
         <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -99,8 +99,9 @@
                         <span class="cline">01&nbsp;&nbsp;</span>#include &lt;stdio.h&gt;<br>
                         <span class="cline">02&nbsp;&nbsp;</span><br>
                         <span class="cline">03&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;printf(“Hello, World!\n”);<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;printf(“Hello, World!\n”);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
                 <p>Here is the C++ version:</p>
@@ -110,8 +111,8 @@
                         <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
                         <span class="cline">03&nbsp;&nbsp;</span><br>
                         <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Hello world" &lt;&lt; endl;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; "Hello world" &lt;&lt; endl;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;return 0;<br>
                         <span class="cline">07&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -163,9 +164,9 @@
                         <span class="cline">03&nbsp;&nbsp;</span>// We will omit the above lines for now on (understood)<br>
                         <span class="cline">04&nbsp;&nbsp;</span><br>
                         <span class="cline">05&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; x &gt;&gt; y;// ignore whitespace<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; x + y &lt;&lt; endl;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;cin &gt;&gt; x &gt;&gt; y;// ignore whitespace<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; x + y &lt;&lt; endl;<br>
                         <span class="cline">09&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -187,12 +188,12 @@
                         <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
                         <span class="cline">03&nbsp;&nbsp;</span><br>
                         <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; i;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin.fail()) break;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; i;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (cin.fail()) break;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">11&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -207,12 +208,12 @@
                         <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
                         <span class="cline">03&nbsp;&nbsp;</span><br>
                         <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;while (true) {<br>
                         <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cin >> i;<br>
                         <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (!cin) break;<br>
                         <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">11&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -236,11 +237,11 @@
                         <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
                         <span class="cline">03&nbsp;&nbsp;</span><br>
                         <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!(cin &gt;&gt; i)) break;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (!(cin &gt;&gt; i)) break;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">10&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -251,11 +252,11 @@
                         <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
                         <span class="cline">03&nbsp;&nbsp;</span><br>
                         <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin &gt;&gt; i) break;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (cin &gt;&gt; i) break;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">10&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -269,16 +270,16 @@
                         <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
                         <span class="cline">03&nbsp;&nbsp;</span><br>
                         <span class="cline">04&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!(cin &gt;&gt; i)) {<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin.eof()) break;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin.clear (); // reset the fail flag<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin.ignore (); // skip a char<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { // read was ok<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int i;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;while (true) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (!(cin &gt;&gt; i)) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cin.eof()) break;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin.clear (); // reset the fail flag<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin.ignore (); // skip a char<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;} else { // read was ok<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; i &lt;&lt; endl;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">15&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -378,16 +379,16 @@
                 <p>In C, we do...</p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>int negInt (int n) {return -n;}<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>bool negBool (bool b) {return !b;}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>int negInt(int n) {return -n;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>bool negBool(bool b) {return !b;}<br>
                     </code></pre>
                 </span>
 
                 <p>In C++, we do...</p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>int neg (int n) {return -n;}<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>bool neg (bool b) {return !b;}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>int neg(int n) {return -n;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>bool neg(bool b) {return !b;}<br>
                     </code></pre>
                 </span>
                 <p>
@@ -404,8 +405,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node* next;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node* next;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>};<br>
                         <span class="cline">05&nbsp;&nbsp;</span>// don't forget the semicolon<br>
                     </code></pre>
@@ -449,10 +450,10 @@
                 <p>Recall:<br></p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>void inc (int n) {n = n + 1;}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>void inc(int n) {n = n + 1;}<br>
                         <span class="cline">02&nbsp;&nbsp;</span>...<br>
                         <span class="cline">03&nbsp;&nbsp;</span>int x = 5;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>inc (x);<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>inc(x);<br>
                         <span class="cline">05&nbsp;&nbsp;</span>cout &lt;&lt; x; // we will get 5, not 6 here! Why?<br>
                     </code></pre>
                 </span>
@@ -464,10 +465,10 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>void inc (int *n) {*n = *n + 1;}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>void inc(int *n) {*n = *n + 1;}<br>
                         <span class="cline">02&nbsp;&nbsp;</span>...<br>
                         <span class="cline">03&nbsp;&nbsp;</span>int x = 5;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>inc (&amp;x);<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>inc(&amp;x);<br>
                         <span class="cline">05&nbsp;&nbsp;</span>cout &lt;&lt; x; // now, we will get 6 here.<br>
                     </code></pre>
                 </span>
@@ -564,7 +565,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>void inc (int &amp;n) {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;n = n + 1;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;n = n + 1;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -576,7 +577,7 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>...<br>
                         <span class="cline">02&nbsp;&nbsp;</span>int x = 5;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>inc (x);<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>inc(x);<br>
                         <span class="cline">04&nbsp;&nbsp;</span>cout &gt;&gt; x; // you will get 6 here.<br>
                     </code></pre>
                 </span>
@@ -596,9 +597,9 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct ReallyBig {...};<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>int f (ReallyBig rb) {...}; // this is slow<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>int g (reallyBig &amp;rb) {...} // alias-fast, but could change rb in the caller<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>int h (const ReallyBig &amp;rb) {...} // fast, no copy, parameter will not change<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int f(ReallyBig rb) {...}; // this is slow<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int g(reallyBig &amp;rb) {...} // alias-fast, but could change rb in the caller<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int h(const ReallyBig &amp;rb) {...} // fast, no copy, parameter will not change<br>
                     </code></pre>
                 </span>
                 <p>
@@ -609,8 +610,8 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>int f (int &amp;n) {...}<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>int g (const int &amp;n) {...}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>int f(int &amp;n) {...}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>int g(const int &amp;n) {...}<br>
                         <span class="cline">03&nbsp;&nbsp;</span>f(5);<br>
                         <span class="cline">04&nbsp;&nbsp;</span>g(5);<br>
                     </code></pre>
@@ -628,7 +629,7 @@
                 <p>In C...</p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>int *p = malloc (... * sizeof(int));<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>int *p = malloc(... * sizeof(int));<br>
                         <span class="cline">02&nbsp;&nbsp;</span>...<br>
                         <span class="cline">03&nbsp;&nbsp;</span>free(p);<br>
                     </code></pre>
@@ -642,8 +643,8 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// type-aware, less error-prone<br>
                         <span class="cline">02&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
                         <span class="cline">05&nbsp;&nbsp;</span>};<br>
                         <span class="cline">06&nbsp;&nbsp;</span>Node *np = new Node;<br>
                         <span class="cline">07&nbsp;&nbsp;</span>...<br>
@@ -665,8 +666,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>Node getMeANode () {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node n;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;Node n;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;return n;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -678,8 +679,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>Node &amp;getMeANode () {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node n;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;Node n;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;return n;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -691,7 +692,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>Node *getMeANode () {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return new Node;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;return new Node;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -709,15 +710,15 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>}<br>
                         <span class="cline">04&nbsp;&nbsp;</span><br>
-                        <span class="cline">05&nbsp;&nbsp;</span>Vec operator+ (const Vec &amp;v1, const Vec &v2) {<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec v {v1.x + v2.x, v1.y + v2.y};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>Vec operator+(const Vec &amp;v1, const Vec &amp;v2) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec v{v1.x + v2.x, v1.y + v2.y};<br>
                         <span class="cline">07&nbsp;&nbsp;</span>}<br>
                         <span class="cline">08&nbsp;&nbsp;</span><br>
-                        <span class="cline">09&nbsp;&nbsp;</span>Vec operator* (const int k, const Vec &amp;v1) {<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {k * v1.x, k * v1.y};<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Vec operator*(const int k, const Vec &amp;v1) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;return {k * v1.x, k * v1.y};<br>
                         <span class="cline">11&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -727,7 +728,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// Another version<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>Vec operator* (const Vec &amp;v1, const int k) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>Vec operator*(const Vec &amp;v1, const int k) {<br>
                         <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return k * v1;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
                     </code></pre>
@@ -737,12 +738,12 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Grade {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int theGrade;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int theGrade;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>};<br>
                         <span class="cline">04&nbsp;&nbsp;</span><br>
                         <span class="cline">05&nbsp;&nbsp;</span>ostream &amp;operator&lt;&lt; (ostream &amp;out, const Grade &amp;g) {<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; g.theGrade &lt;&lt; '%';<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return out;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;out &lt;&lt; g.theGrade &lt;&lt; '%';<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;return out;<br>
                         <span class="cline">08&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -779,6 +780,7 @@
                 <br>
             </div>
         </div>
+        
         <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
         <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     </body>

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
         <link rel="stylesheet" href="./note.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
         <!-- stylesheet found from w3school. (icon use)-->
         <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -98,18 +98,18 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Grade {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int theGrade;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int theGrade;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>};<br>
                         <span class="cline">04&nbsp;&nbsp;</span><br>
-                        <span class="cline">05&nbsp;&nbsp;</span>ostream &amp;operator&lt;&lt; (ostream &amp;out, const Grade &amp;g) {<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return out &lt;&lt; g.theGrade &lt;&lt; '%';<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>ostream &amp;operator&lt;&lt;(ostream &amp;out, const Grade &amp;g) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;return out &lt;&lt; g.theGrade &lt;&lt; '%';<br>
                         <span class="cline">07&nbsp;&nbsp;</span>}<br>
                         <span class="cline">08&nbsp;&nbsp;</span><br>
-                        <span class="cline">09&nbsp;&nbsp;</span>istream &amp;operator&gt;&gt; (istream &amp;in, Grade &amp;g) {<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;in &gt;&gt; g.theGrade;<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (g.theGrade &lt; 0) g.theGrade = 0;<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (g.theGrade &gt; 100) g.theGrade = 100;<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return in;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>istream &amp;operator&gt;&gt;(istream &amp;in, Grade &amp;g) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;in &gt;&gt; g.theGrade;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;if (g.theGrade &lt; 0) g.theGrade = 0;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;if (g.theGrade &gt; 100) g.theGrade = 100;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;return in;<br>
                         <span class="cline">14&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -154,11 +154,11 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>#if SECURITYLEVEL == 1 // remove if SECURITYLEVEL != 1<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;short int<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;short int<br>
                         <span class="cline">03&nbsp;&nbsp;</span>#elif SECURITYLEVEL == 2 // removed if SECURITYLEVEL != 2<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;long long int<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;long long int<br>
                         <span class="cline">05&nbsp;&nbsp;</span>#endif<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;publickey;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;publickey;<br>
                     </code></pre>
                 </span>
                 <p>
@@ -167,7 +167,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>#if 0<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;... <br>
                         <span class="cline">03&nbsp;&nbsp;</span>#endif<br>
                     </code></pre>
                 </span>
@@ -190,7 +190,7 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// define.cc<br>
                         <span class="cline">02&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; X &lt;&lt; endl;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; X &lt;&lt; endl;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
                         <span class="cline">05&nbsp;&nbsp;</span><br>
                         <span class="cline">06&nbsp;&nbsp;</span>g++14 -DX=15 define.cc -o define<br>
@@ -207,17 +207,17 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#ifdef DEBUG<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "setting x = 1" &lt;&lt; endl;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#endif<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x = 1;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;while (x &lt; 10) {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++x;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ifdef DEBUG<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "x is now" &lt;&lt; endl;<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endif<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; x &lt;&lt; end;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;#ifdef DEBUG<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "setting x = 1" &lt;&lt; endl;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;#endif<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int x = 1;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;while (x &lt; 10) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;++x;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#ifdef DEBUG<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "x is now" &lt;&lt; endl;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#endif<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; x &lt;&lt; end;<br>
                         <span class="cline">13&nbsp;&nbsp;</span>}<br>
                         <span class="cline">14&nbsp;&nbsp;</span><br>
                         <span class="cline">15&nbsp;&nbsp;</span>g++14 debug.cc -o debug // no debugging output<br>
@@ -249,22 +249,22 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// interface vec.h<br>
                         <span class="cline">02&nbsp;&nbsp;</span>struct Vec {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>Vec operator+ (const Vec &amp;v1, const Vec &amp;v2);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>Vec operator+(const Vec &amp;v1, const Vec &amp;v2);<br>
                         <span class="cline">06&nbsp;&nbsp;</span><br>
                         <span class="cline">07&nbsp;&nbsp;</span>// implementation vec.cc<br>
                         <span class="cline">08&nbsp;&nbsp;</span>#include "vec.h" // so that we get the struct definition<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>Vec operator+ (cons Vec &amp;v1, const Vec &amp;v2) {<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {v1.x + v2.x, v1.y + v2.y};<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Vec operator+(cons Vec &amp;v1, const Vec &amp;v2) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;return {v1.x + v2.x, v1.y + v2.y};<br>
                         <span class="cline">11&nbsp;&nbsp;</span>}<br>
                         <span class="cline">12&nbsp;&nbsp;</span><br>
                         <span class="cline">13&nbsp;&nbsp;</span>// main.cc<br>
                         <span class="cline">14&nbsp;&nbsp;</span>#include "vec.h"<br>
                         <span class="cline">15&nbsp;&nbsp;</span>int main () {<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec v {1, 2};<br>
-                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;v = v + v;<br>
-                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec v {1, 2};<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;v = v + v;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">19&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -338,8 +338,8 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// vec.h<br>
                         <span class="cline">02&nbsp;&nbsp;</span>#ifndef VEC_H // pick any unique symbol (suggest: based on file name)<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;#define VEC_H<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;... // file contents<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;#define VEC_H<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;... // file contents<br>
                         <span class="cline">05&nbsp;&nbsp;</span>#endif<br>
                     </code></pre>
                 </span>
@@ -384,12 +384,12 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return assn * 0.4 + mt * 0.2 + final * 0.4;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;float grade {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return assn * 0.4 + mt * 0.2 + final * 0.4;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>Student s {70, 80, 90};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>Student s{70, 80, 90};<br>
                         <span class="cline">08&nbsp;&nbsp;</span>cout &lt;&lt; s.grade() &lt;&lt; endl;<br>
                     </code></pre>
                 </span>
@@ -408,7 +408,7 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>Student billy {...};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>Student billy{...};<br>
                         <span class="cline">02&nbsp;&nbsp;</span>billy.grade(); // uses Billy's assn, mt and final<br>
                     </code></pre>
                 </span>
@@ -421,31 +421,31 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade () {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this-&gt;assn * 0.4 + this-&gt;mt * 0.2 + this-&gt; * 0.4;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;float grade() {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return this-&gt;assn * 0.4 + this-&gt;mt * 0.2 + this-&gt; * 0.4;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
                 <br>
                 <b>Initialising Objects</b>
                 <p>
-                    <code>Student billy {60, 70, 80}; // this is okay, but limited</code><br>
+                    <code>Student billy{60, 70, 80}; // this is okay, but limited</code><br>
                     The better way to do is have a method that does initialisation - a <u>constructor</u>.<br>
                 </p>
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade () {…}<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (int assn, int mt, int final){<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;assns = assns;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;mt = mt;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;final = final;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;float grade() {…}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Student(int assn, int mt, int final) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;assns = assns;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;mt = mt;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;final = final;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">09&nbsp;&nbsp;</span>};<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>Student billy {60, 70, 80}; // better<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>Student billy{60, 70, 80}; // better<br>
                     </code></pre>
                 </span>
                 <p>
@@ -461,13 +461,13 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Studnet (int assn = 0; int mt = 0; int final = 0) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;assn = assn;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// etc.<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Studnet(int assn = 0; int mt = 0; int final = 0) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;assn = assn;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// etc.<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">07&nbsp;&nbsp;</span>};<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>Student jane {60, 70}; // 60, 70, 0<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>Student jane{60, 70}; // 60, 70, 0<br>
                         <span class="cline">09&nbsp;&nbsp;</span>Student newKid; // 0, 0, 0<br> 
                     </code></pre>
                 </span>
@@ -485,21 +485,21 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
                         <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y) {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec(int x, int y) {<br>
                         <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;x = x;<br>
                         <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;y = y;<br>
                         <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
                         <span class="cline">07&nbsp;&nbsp;</span>};<br>
                         <span class="cline">08&nbsp;&nbsp;</span>Vec v; // Error, no default constructor<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>Vec v {1,2}; // this is okay<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Vec v{1,2}; // this is okay<br>
                         <span class="cline">10&nbsp;&nbsp;</span><br>
                         <span class="cline">11&nbsp;&nbsp;</span>int x = 5; // work<br>
                         <span class="cline">12&nbsp;&nbsp;</span>int x{5}; // work<br>
                         <span class="cline">13&nbsp;&nbsp;</span>int x(5); // work<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>struct Vec v {1,2}; // work<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>struct Vec v{1,2}; // work<br>
                         <span class="cline">15&nbsp;&nbsp;</span>string s = "Hello"; // work<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>string s {"Hello"}; // work<br>
-                        <span class="cline">17&nbsp;&nbsp;</span>ifstream f ("file.txt"); // work<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>string s{"Hello"}; // work<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>ifstream f("file.txt"); // work<br>
                         <span class="cline">18&nbsp;&nbsp;</span>ifstream f = "file.txt"; // you cannot do this<br>
                     </code></pre>
                 </span>
@@ -511,8 +511,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct myStruct{<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int myConst;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int &amp;myRef;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;const int myConst;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;int &amp;myRef;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -521,10 +521,10 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>int z;
+                        <span class="cline">01&nbsp;&nbsp;</span>int z;<br>
                         <span class="cline">02&nbsp;&nbsp;</span>struct myStruct {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int myConst = 5;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int &amp;myRef = z;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;const int myConst = 5;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;int &amp;myRef = z;<br>
                         <span class="cline">05&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -536,9 +536,9 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int id;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// constant (doesn't change), but not the same for all students!<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;const int id;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;// constant (doesn't change), but not the same for all students!<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">05&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -557,12 +557,13 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;const int id;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (int id, int assn, int mt, int final): id{id}, assn{assn}, mt{mt}, final{final} {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;const int id;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Student(int id, int assn, int mt, int final):<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id{id}, assn{assn}, mt{mt}, final{final} {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
                 <p>
@@ -572,10 +573,10 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;string name;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (string name) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;name = name;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;string name;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Student(string name) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;this-&gt;name = name;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -594,8 +595,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x = 0, y = 0;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x): x{x} {}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int x = 0, y = 0;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec(int x): x{x} {}<br>
                         <span class="cline">04&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -604,7 +605,7 @@
                     <code>int x = 0, y = 0;</code> only happens if the field is not mentioned in the MIL.<br>
                     <br>
                     Now consider:<br>
-                    <code>Student billy {60, 70, 80};</code><br>
+                    <code>Student billy{60, 70, 80};</code><br>
                     <code>Student bilaal = billy;</code><br>
                     How does this initialisation happen?<br>
                     The <strong>copy constructor</strong>, for constructing one object as a copy of another.<br>
@@ -625,10 +626,11 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (...) {...}<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Student (const Student &amp;other): assn{other.assn}, mt{other.mt}, final{other.final} {...}<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// equiv. to built-in<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Student (...) {...}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Student (const Student &amp;other):<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;assn{other.assn}, mt{other.mt}, final{other.final} {...}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;// equiv. to built-in<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -641,9 +643,9 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">05&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -657,12 +659,12 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (const Node &amp;other): data{other.data}, next{other.next} {}<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data, Node *next): data{data}, next{next} {}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(const Node &amp;other): data{other.data}, next{other.next} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(int data, Node *next): data{data}, next{next} {}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>Node *n = new Node {1, nex Node{1, new Node{2, new Node{}, nullptr}}};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>Node *n = new Node{1, nex Node{1, new Node{2, new Node{}, nullptr}}};<br>
                     </code></pre>
                 </span>
                 <img src="image/cs246/lec9/lec9_1.png" width="35%" height="35%">
@@ -673,9 +675,10 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (const Node &amp;other): data{other.data}, next{other.next? new Node{*other.next}:nullptr} {}<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(const Node &amp;other):<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;data{other.data}, next{other.next? new Node{*other.next}:nullptr} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
                 <p>
@@ -693,9 +696,9 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data): data{data}, next{nullptr} {}<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(int data): data{data}, next{nullptr} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">05&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -707,7 +710,7 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>int f (Node n) {...}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>int f(Node n) {...}<br>
                         <span class="cline">02&nbsp;&nbsp;</span>f(4); // this works, since 4 implicitly converted to Node<br>
                     </code></pre>
                 </span>
@@ -724,9 +727,9 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit Node (int data): data{data}, next{nullptr} {}<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>	&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;explicit Node(int data): data{data}, next{nullptr} {}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">05&nbsp;&nbsp;</span>};<br>
                         <span class="cline">06&nbsp;&nbsp;</span><br>
                         <span class="cline">07&nbsp;&nbsp;</span>// then...<br>
@@ -765,8 +768,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~Node() {delete next;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;~Node() {delete next;}<br>
                         <span class="cline">04&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -778,7 +781,7 @@
                 <b>Copy Assignment Operator</b>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>Student billy {60, 70, 80};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>Student billy{60, 70, 80};<br>
                         <span class="cline">02&nbsp;&nbsp;</span>Student bilaal = billy; // copy constructor<br>
                         <span class="cline">03&nbsp;&nbsp;</span>Student frost; // default constructor {0, 0, 0}<br>
                         <span class="cline">04&nbsp;&nbsp;</span>frost = billy; // copy, but not constructor<br>
@@ -793,12 +796,12 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = oter.data;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node{*other.next}:nullptr;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node &amp;operator=(const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;data = oter.data;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node{*other.next}:nullptr;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">08&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -809,7 +812,7 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>Node n {1, new Node{2, new Node{3, nullptr}}};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n{1, new Node{2, new Node{3, nullptr}}};<br>
                         <span class="cline">02&nbsp;&nbsp;</span>n = n;<br>
                     </code></pre>
                 </span>
@@ -825,14 +828,14 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = other.data;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete next;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node &amp;operator=(const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;data = other.data;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete next;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">10&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -850,14 +853,14 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = next.data;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete next;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node &amp;operator=(const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;data = next.data;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete next;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">10&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -870,15 +873,15 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node *tmp = next;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = other.data;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete tmp;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node &amp;operator=(const Node &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;if (this == &amp;other) return *this;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *tmp = next;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;data = other.data;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;next = other.next? new Node {*other.next}:nullptr;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete tmp;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">11&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -891,17 +894,17 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>#include &lt;utility&gt;<br>
                         <span class="cline">02&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void swap (Node &amp;other) {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (data, other.data);<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (next, other.next);<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (const Node &amp;other) {<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node tmp = other;<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (tmp);<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;void swap(Node &amp;other) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;swap(data, other.data);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;swap(next, other.next);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;Node &amp;operator=(const Node &amp;other) {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node tmp = other;<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;swap(tmp);<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">14&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -913,14 +916,14 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec{<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec operator+ (const Vec &amp;other) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {x + other.x, y + other.y};<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec operator* (const int k) { // this is v * k<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {x * k, y * k};<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec operator+(const Vec &amp;other) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {x + other.x, y + other.y};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec operator*(const int k) { // this is v * k<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {x * k, y * k};<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">09&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -931,8 +934,8 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>Vec operator* (const int k, const Vec &amp;v) {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return v * k;<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>Vec operator*(const int k, const Vec &amp;v) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;return v * k;<br>
                         <span class="cline">013&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -943,10 +946,10 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;ostream &amp;operator&lt;&lt; (ostream &amp;out) {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return out &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;ostream&amp; operator&lt;&lt;(ostream &amp;out) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return out &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -971,17 +974,17 @@
                         <span class="cline">02&nbsp;&nbsp;</span>#ifnder NODE_H<br>
                         <span class="cline">03&nbsp;&nbsp;</span>#define NODE_H<br>
                         <span class="cline">04&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit Node (int data, Node *next = nullptr);<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;bool isSingleton();<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;explicit Node(int data, Node *next = nullptr);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;bool isSingleton();<br>
                         <span class="cline">09&nbsp;&nbsp;</span>};<br>
                         <span class="cline">10&nbsp;&nbsp;</span>#endif<br>
                         <span class="cline">11&nbsp;&nbsp;</span><br>
                         <span class="cline">12&nbsp;&nbsp;</span>// Node.cc<br>
                         <span class="cline">13&nbsp;&nbsp;</span>#include "Node.h"<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>Node::Node (int data, Node *next): data{data}, next{next} {}<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>bool Node::isSingleton () {return next == nullptr;}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>Node::Node(int data, Node *next): data{data}, next{next} {}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>bool Node::isSingleton() {return next == nullptr;}<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1006,11 +1009,11 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Student {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int assn, mt, final;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;float grade() const; // doesn't modify fields, so declare the method const<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int assn, mt, final;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;float grade() const; // doesn't modify fields, so declare the method const<br>
                         <span class="cline">04&nbsp;&nbsp;</span>};<br>
                         <span class="cline">05&nbsp;&nbsp;</span>...<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>float Student::grade () const {...}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>float Student::grade() const {...}<br>
                     </code></pre>
                 </span>
                 <p>
@@ -1029,16 +1032,16 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>Node n {1, new Node {2, nullptr}};<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>Node n{1, new Node {2, nullptr}};<br>
                         <span class="cline">02&nbsp;&nbsp;</span>Node m = n;  // copy constructor<br>
                         <span class="cline">03&nbsp;&nbsp;</span>Node m2;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>m2 = n; // copy assignment<br>
                         <span class="cline">05&nbsp;&nbsp;</span><br>
-                        <span class="cline">06&nbsp;&nbsp;</span>Node pulsOne (Node n) {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;for (Node *p = &amp;n; p; p = p-&gt;next) {<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++p-&gt;data;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>Node pulsOne(Node n) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;for (Node *p = &amp;n; p; p = p-&gt;next) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;++p-&gt;data;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;return n;<br>
                         <span class="cline">11&nbsp;&nbsp;</span>}<br>
                         <span class="cline">12&nbsp;&nbsp;</span><br>
                         <span class="cline">13&nbsp;&nbsp;</span>Node m3 = plusOne(n); // copy constructor<br>
@@ -1065,10 +1068,10 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (Node &amp;&amp;other): data{other.data}, next{other.next} {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.next = nullptr;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(Node &amp;&amp;other): data{other.data}, next{other.next} {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;other.next = nullptr;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1086,10 +1089,10 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (Node &amp;&amp;other): data{other.data}, next{other.next} {<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;other.next = nullptr;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(Node &amp;&amp;other): data{other.data}, next{other.next} {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;other.next = nullptr;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">06&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1098,20 +1101,20 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// the example for move constructor<br>
                         <span class="cline">02&nbsp;&nbsp;</span>Node m;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>m = plusOne (n); // assignment from temporary<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>m = plusOne(n); // assignment from temporary<br>
                         <span class="cline">04&nbsp;&nbsp;</span><br>
                         <span class="cline">05&nbsp;&nbsp;</span>// Move assignment operator<br>
                         <span class="cline">06&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node &amp;operator= (Node &amp;&amp;other) {<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//idea: steal other's data and destroy my old data<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//easy way: swap without copy<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (data, other.data);<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap (next, other.next);<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the temporary will be destroyed and take out old data with it<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;Node&amp; operator=(Node &amp;&amp;other) {<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;//idea: steal other's data and destroy my old data<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;//easy way: swap without copy<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;using std::swap;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;swap(data, other.data);<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;swap(next, other.next);<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// the temporary will be destroyed and take out old data with it<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">17&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1123,8 +1126,8 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>Vec makeAVec () {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return {0,0}; // invokes Vec's basic  constructor<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>Vec makeAVec() {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;return {0,0}; // invokes Vec's basic  constructor<br>
                         <span class="cline">03&nbsp;&nbsp;</span>}<br>
                         <span class="cline">04&nbsp;&nbsp;</span>Vec v = makeAVec(); // What runs?<br>
                     </code></pre>
@@ -1145,8 +1148,8 @@
                 </p>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>void doSth (Vec v) {...} // pass-by-value: copy or move ctor<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>doSth (makeAVec());<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>void doSth(Vec v) {...} // pass-by-value: copy or move ctor<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>doSth(makeAVec());<br>
                         <span class="cline">03&nbsp;&nbsp;</span>// result of makeAVec() has written directly into the parameter - no copy/move<br>
                     </code></pre>
                 </span>
@@ -1177,8 +1180,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y): x{x}, y{y} {}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec(int x, int y): x{x}, y{y} {}<br>
                         <span class="cline">04&nbsp;&nbsp;</span>};<br>
                         <span class="cline">05&nbsp;&nbsp;</span>Vec *vp = new Vec[15];<br>
                         <span class="cline">06&nbsp;&nbsp;</span>Vec moveVectors[10];<br>
@@ -1202,11 +1205,11 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>Vec **vp = new Vec*[5];<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>vp[0] = new Vec {0,0};<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>vp[1] = new Vec {1,3}; <br>
+                        <span class="cline">02&nbsp;&nbsp;</span>vp[0] = new Vec{0,0};<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>vp[1] = new Vec{1,3}; <br>
                         <span class="cline">04&nbsp;&nbsp;</span>// etc.<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>for (int I = 0; I &gt; 5; i++) {<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;delete vp[i];<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>for (int i = 0; i &gt; 5; i++) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;delete vp[i];<br>
                         <span class="cline">07&nbsp;&nbsp;</span>}<br>
                         <span class="cline">08&nbsp;&nbsp;</span>delete [] vp;<br>
                     </code></pre>
@@ -1219,14 +1222,14 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Node {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data, Node *next): data{data}, next{next} {}<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;…<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~Node () {delete next;}<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(int data, Node *next): data{data}, next{next} {}<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;…<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;~Node () {delete next;}<br>
                         <span class="cline">07&nbsp;&nbsp;</span>};<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>Node n1 {1, new Node{2, nullptr}}; // on stack, next on heap<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>Node n2 {3,nullptr};  // on stack<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>Node n1{1, new Node{2, nullptr}}; // on stack, next on heap<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>Node n2{3,nullptr};  // on stack<br>
                         <span class="cline">10&nbsp;&nbsp;</span>Node n3{4, &amp;n2};  // on stack<br>
                     </code></pre>
                 </span>
@@ -1266,12 +1269,12 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>struct Vec {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y);<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>private:<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>public:<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec &amp;operator+ (const Vec &amp;other);<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec(int x, int y);<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;private:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec &amp;operator+(const Vec &amp;other);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">08&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1289,11 +1292,11 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>class Vec {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec (int x, int y);<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Vec &amp;operator+ (const Vec &amp;other);<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec(int x, int y);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;Vec&amp; operator+(const Vec &amp;other);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">07&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1311,34 +1314,34 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// list.h<br>
                         <span class="cline">02&nbsp;&nbsp;</span>class List {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;struct Node; // private nested class<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *theList = nullptr; // only accessible inside class list<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>public:<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void addToFront (int n);<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int ith (int i);<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~List();<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;struct Node; // private nested class<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *theList = nullptr; // only accessible inside class list<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;void addToFront(int n);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;int ith(int i);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;~List();<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">10&nbsp;&nbsp;</span>};<br>
                         <span class="cline">11&nbsp;&nbsp;</span><br>
                         <span class="cline">12&nbsp;&nbsp;</span>// list.cc<br>
                         <span class="cline">13&nbsp;&nbsp;</span>struct List::Node {<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int data;<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *next;<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node (int data, Node *next): ... {}<br>
-                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;~Node {delete next;}<br>
-                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;Node(int data, Node *next): ... {}<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;~Node {delete next;}<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">19&nbsp;&nbsp;</span>};<br>
                         <span class="cline">20&nbsp;&nbsp;</span><br>
-                        <span class="cline">21&nbsp;&nbsp;</span>void List::addToFront (int n) {<br>
-                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;theList = new Node {n, theList};<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>void List::addToFront(int n) {<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;theList = new Node{n, theList};<br>
                         <span class="cline">23&nbsp;&nbsp;</span>}<br>
                         <span class="cline">24&nbsp;&nbsp;</span><br>
-                        <span class="cline">25&nbsp;&nbsp;</span>int List::ith (int i) {<br>
-                        <span class="cline">26&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;node *curr;<br>
-                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 0; j &lt; i, j++) {<br>
-                        <span class="cline">28&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;curr = curr-&gt;next;<br>
-                        <span class="cline">29&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">30&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return curr-&gt;data;<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>int List::ith(int i) {<br>
+                        <span class="cline">26&nbsp;&nbsp;</span>&nbsp;&nbsp;node *curr;<br>
+                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;for (int j = 0; j &lt; i, j++) {<br>
+                        <span class="cline">28&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;curr = curr-&gt;next;<br>
+                        <span class="cline">29&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">30&nbsp;&nbsp;</span>&nbsp;&nbsp;return curr-&gt;data;<br>
                         <span class="cline">31&nbsp;&nbsp;</span>}<br>
                         <span class="cline">32&nbsp;&nbsp;</span><br>
                         <span class="cline">22&nbsp;&nbsp;</span>List::~List() {delete theList;}<br>
@@ -1378,28 +1381,28 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// Inspiration: C<br>
                         <span class="cline">02&nbsp;&nbsp;</span>for (int *p = a; p != (a+n); p++) {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *p &lt;&lt; endl;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; *p &lt;&lt; endl;<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
                         <span class="cline">05&nbsp;&nbsp;</span><br>
                         <span class="cline">06&nbsp;&nbsp;</span>class List {<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;struct Node;<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *theList;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>public:<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;class Iterator {<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
-                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explicit Iterator (Node *p): p{p} {}<br>
-                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int &amp;operator* () {return p-&gt;data;}<br>
-                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator &amp;operator++ () {<br>
-                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = p-&gt;next;<br>
-                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
-                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool &amp;operator!= (const Iterator &amp;other) const {<br>
-                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return p != other.p;<br>
-                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}; // end Iterator<br>
-                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Iterator begin() {return Iterator{theList};}<br>
-                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Iterator end() {return Iterator{nullptr};}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;struct Node;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *theList;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;class Iterator {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;public:<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit Iterator(Node *p): p{p} {}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int &amp;operator* (){return p-&gt;data;}<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Iterator &amp;operator++() {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = p-&gt;next;<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;bool &amp;operator!=(const Iterator &amp;other) const {<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return p != other.p;<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;}; // end Iterator<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;Iterator begin() {return Iterator{theList};}<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;Iterator end() {return Iterator{nullptr};}<br>
                         <span class="cline">25&nbsp;&nbsp;</span>}; // end List<br>
                     </code></pre>
                 </span>
@@ -1411,13 +1414,13 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>// client<br>
                         <span class="cline">02&nbsp;&nbsp;</span>int main() {<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;List l;<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;l.addToFront(1);<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;l.addToFront(2);<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;l.addToFront(3);<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;for (List::Iterator it = l.begin(); it != l.end(); ++it) {<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;List l;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;l.addToFront(1);<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;l.addToFront(2);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;l.addToFront(3);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;for (List::Iterator it = l.begin(); it != l.end(); ++it) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
                         <span class="cline">10&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -1428,7 +1431,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>for (auto it = l.begin(); it != l.end(); ++it) {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -1438,7 +1441,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>for (auto n:l) { // n is the thing in the list<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
                         <span class="cline">03&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -1453,8 +1456,8 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>for (auto &amp;n:l) {<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;++n; // it will mutate list items<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;++n; // it will mutate list items<br>
                         <span class="cline">04&nbsp;&nbsp;</span>}<br>
                     </code></pre>
                 </span>
@@ -1472,18 +1475,18 @@
 
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>class List{<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;class Iterator {<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explicit Iterator (Node *p);<br>
-                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;public:<br>
-                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;friend class List;<br>
-                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;};<br>
-                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>class Listb{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;class Iterator {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;explicit Iterator (Node *p);<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;friend class List;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;;...<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;};<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">13&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1501,11 +1504,11 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>class Vec{<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>public:<br>
-                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;int getX() const {return x;} // accessor<br>
-                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;void setY (int z) {y = z;} // mutator<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;int x, y;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;int getX() const {return x;} // accessor<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;void setY(int z) {y = z;} // mutator<br>
                         <span class="cline">07&nbsp;&nbsp;</span>};<br>
                     </code></pre>
                 </span>
@@ -1544,6 +1547,7 @@
                 <br>
             </div>
         </div>
+        
         <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
         <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     </body>
