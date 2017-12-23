@@ -1235,8 +1235,8 @@
                 </span>
                 <p>
                     What happens when these go out of scope?<br>
-                    <code>n1</code> - dtor runs, entire lies is deleted. OK.<br>
-                    <code>n2</code>, <code>n3</code> go out of scope - <code>n3</code>'s dtor tries to delete <code>n2</code>, but <code>n2</code> is not on the heap; <code>n2</code> is on the stack!<br>
+                    <code>n1</code> - destructor runs, entire lies is deleted. OK.<br>
+                    <code>n2</code>, <code>n3</code> go out of scope - <code>n3</code>'s destructor tries to delete <code>n2</code>, but <code>n2</code> is not on the heap; <code>n2</code> is on the stack!<br>
                     This is undefined behaviour!<br>
                     You can't call <code>delete</code> for stack (only heap)!<br>
                     The class <code>Node</code> relies on an assumption for its proper operation - that <code>next</code> is either <code>nullptr</code>, or is a valid pointer to the heap, allocated by <code>new</code>.<br>
@@ -1526,7 +1526,7 @@
                     <td width="45%" align="right"><a href="./cs246_4.html">&rarr; Go to Module 4 - C++ (Part 3), UML and Design Pattern&nbsp;</a></td>
                 </tr>
             </table>
-            
+            <hr>
             
             <div class="footer">
                 <p>Thanks For Coming Here. - Calvin Li</p>

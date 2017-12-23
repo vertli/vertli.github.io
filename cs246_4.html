@@ -96,7 +96,7 @@
                 <p>
                     What if we want to track the number of times a method is ever called? Or how many <code><strong>Student</strong></code>s are created?<br>
                     Static Members - associated with the class itself, not with any specific instance (object)<br>
-                    Example: How many <code><strong>Student</strong>strong></code> had been created?<br>
+                    Example: How many <code><strong>Student</strong></code> had been created?<br>
                 </p>
                 <span>
                     <pre><code>
@@ -876,14 +876,509 @@
             <div class="lec16">
                 <h3>Lecture 16 - 02/11/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>Recall:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>*pb1 = *pb2;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// the Book pointer pointing at Texts<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If <code>operator=</code> is...<br>
+                </p>
+                <ul>
+                    <li>non-virtual: partial assignment</li>
+                    <li>virtual: mixed assignment</li>
+                </ul>
+                <p>
+                    Recommend: all superclass <u>abstract</u><br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class AbstractBook {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;string title, author;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;int numPages;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;protected:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;AbstractBook&amp; operator=(const AbstractBook &amp;other);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;AbstractBook(...);<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;virtual ~AbstractBook() = 0;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;// need at least one pure virtual method<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;// if no others, use the destructor<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">12&nbsp;&nbsp;</span><br>
+                        <span class="cline">13&nbsp;&nbsp;</span>class NormalBook : public AbstractBook {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;NormalBook(...);<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;~NormalBook();<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;NormalBook&amp; operator=(const NormalBook &amp;other) {<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;AbstractBook::operator=(other);<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;return *this;<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;// other classes - similar<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">23&nbsp;&nbsp;</span><br>
+                        <span class="cline">24&nbsp;&nbsp;</span>*pt1 = *pt2; // doesn't work now (AbstractBook *pt1, *pt2)<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The keyword <code>protected</code> in line 4 prevents assignment through base class pointers from compiling, but implementation still available to subclasses.<br>
+                    Note: These codes above prevent partial and mixed assignment; they don't link.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>AbstractBook::~AbstractBook() {}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Note:<br>
+                    A virtual destructor <u>must</u> be implemented, even if it is pure virtual.<br>
+                    Step 3 - superclass destructor <u>WILL</u> get called - so it <u>must</u> exist.<br>
+                    <br>
+                </p>
+                <b>Templates</b>
+                <p>Huge topic - just the highlights.</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class List {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;struct Node;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *theList;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span><br>
+                        <span class="cline">07&nbsp;&nbsp;</span>struct List::Node {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;int data;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What if you want to store something else but not integer?<br>
+                    Do we need to write a whole new class?<br>
+                    We can write a <u>template</u> - class <u>parameterised by a type</u>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>template &lt;typename T&gt; class List {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;struct Node;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *theList;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;class Iterator {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;Node *p;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;public:<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;T&amp; operator*();<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;};<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">14&nbsp;&nbsp;</span><br>
+                        <span class="cline">15&nbsp;&nbsp;</span>template &lt;typename T&gt; struct List&lt;T&gt;::Node {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;T data;<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;Node *next;<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">19&nbsp;&nbsp;</span><br>
+                        <span class="cline">20&nbsp;&nbsp;</span>template &lt;typename T&gt; class Stack {<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;int size, cap;<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;T *theStack;<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;Stack() {...}<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>&nbsp;&nbsp;void push(T x) {...}<br>
+                        <span class="cline">26&nbsp;&nbsp;</span>&nbsp;&nbsp;T top() {...}<br>
+                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;void pop() {...}<br>
+                        <span class="cline">28&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">29&nbsp;&nbsp;</span><br>
+                        <span class="cline">30&nbsp;&nbsp;</span>// Client:<br>
+                        <span class="cline">31&nbsp;&nbsp;</span>List&lt;int&gt; l1;<br>
+                        <span class="cline">32&nbsp;&nbsp;</span>List&lt;List&lt;int&gt;&gt; l2;<br>
+                        <span class="cline">33&nbsp;&nbsp;</span>l1.addToFront(3);<br>
+                        <span class="cline">34&nbsp;&nbsp;</span>l2.addToFront(l1);<br>
+                        <span class="cline">35&nbsp;&nbsp;</span><br>
+                        <span class="cline">36&nbsp;&nbsp;</span>for (List&lt;int&gt;Iterator it = l1.begin(); it != l1.end(); ++it) {<br>
+                        <span class="cline">37&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
+                        <span class="cline">38&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">39&nbsp;&nbsp;</span>// or you can do the following:<br>
+                        <span class="cline">40&nbsp;&nbsp;</span>for (auto n : l1) {<br>
+                        <span class="cline">41&nbsp;&nbsp;</span>&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; endl;<br>
+                        <span class="cline">42&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    The compiler specialises templates at the source code level, before compilation (i.i. the compiler writes new <code><strong>List</strong></code> classes for you.)<br>
+                </p>
+                <br>
+                <b>The Standard Template Library (STL)</b>
+                <ul><li>Large number of useful templates</li></ul>
+                <p>
+                    Example: dynamic-length arrays - vectors<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;vector&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>using namespace std;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span><br>
+                        <span class="cline">04&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;// create vector<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;vector&lt;int&gt; v{4,5}; // v[4,5]<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;vector&lt;int&gt; w (4,5); // w[5,5,5,5]<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;// add element into vector<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;v.emplace_back (6); // v[4,5,6]<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;v.emplace_back (7); // v[4,5,6,7]<br>
+                        <span class="cline">12&nbsp;&nbsp;</span><br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;// looping over vectors<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;// version 1<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;for (int i = 0; i &lt; v.size(); i++) {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; v[i] &lt;&lt; endl;<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;// version 2<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;for (vector&lt;int&gt;::iterator it = v.begin(); it != v.end(); ++it) {<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; *it &lt;&lt; endl;<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;// version 3<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;for (auto &amp;n : v) {<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt; end;<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">26&nbsp;&nbsp;</span><br>
+                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;// to iterate in reverse<br>
+                        <span class="cline">28&nbsp;&nbsp;</span>&nbsp;&nbsp;// version 1<br>
+                        <span class="cline">29&nbsp;&nbsp;</span>&nbsp;&nbsp;for (vector&lt;int&gt;::reverse_iterator it = v.begin(); it != v.rend(); ++it) {<br>
+                        <span class="cline">30&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">31&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">32&nbsp;&nbsp;</span>&nbsp;&nbsp;// version 2<br>
+                        <span class="cline">33&nbsp;&nbsp;</span>&nbsp;&nbsp;for (auto it = v.rbegin(); it != v.rend(); ++it) {<br>
+                        <span class="cline">34&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">35&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">36&nbsp;&nbsp;</span><br>
+                        <span class="cline">37&nbsp;&nbsp;</span>&nbsp;&nbsp;// remove last element<br>
+                        <span class="cline">38&nbsp;&nbsp;</span>&nbsp;&nbsp;v.pop_back(); // v[4,5,6]<br>
+                        <span class="cline">39&nbsp;&nbsp;</span><br>
+                        <span class="cline">40&nbsp;&nbsp;</span>&nbsp;&nbsp;// use iterators to remove item from inside a vector<br>
+                        <span class="cline">41&nbsp;&nbsp;</span>&nbsp;&nbsp;auto it = v.erase(v.begin()); // erases v[0]<br>
+                        <span class="cline">42&nbsp;&nbsp;</span>&nbsp;&nbsp;auto it = v.erase(v.begin() + 3); // erases v[3]<br>
+                        <span class="cline">43&nbsp;&nbsp;</span><br>
+                        <span class="cline">44&nbsp;&nbsp;</span>&nbsp;&nbsp;// it returns an iterator pointing just after the point of erasure<br>
+                        <span class="cline">45&nbsp;&nbsp;</span>&nbsp;&nbsp;// so you can do this:<br>
+                        <span class="cline">46&nbsp;&nbsp;</span>&nbsp;&nbsp;it = v.erase(it); // erases the new element v[3]<br>
+                        <span class="cline">47&nbsp;&nbsp;</span>&nbsp;&nbsp;it = v.erase(v.end() - 1); // erases the last element<br>
+                        <span class="cline">48&nbsp;&nbsp;</span><br>
+                        <span class="cline">49&nbsp;&nbsp;</span>&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">50&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>v[i]</code> returns the i<sup>th</sup> element of <code><var>v</var></code>.<br>
+                    It is unchecked. If you go out of bounds, undefined behaviour.<br>
+                    <br>
+                    <code>v.at(i)</code> is the checking version of <code>v[i]</code>.<br>
+                    What happens if you go out of bounds?<br>
+                    What should happen?<br>
+                    <br>
+                    Problem:<br>
+                    <code>vector</code>'s code can detect the error, but doesn't know what to do about it.<br>
+                    Client can respond, but can't detect the error.<br>
+                    <br>
+                    C solution:<br>
+                    Functions return a status code, or set the global variable <code>errno</code>.<br>
+                    It leads to awkward programming.<br>
+                    It encourages programmers to ignore error checks.<br>
+                    <br>
+                    C++ solution:<br>
+                    When an error condition, the function <u>raises an exception</u>.<br>
+                    <br>
+                </p>
+                <b>Exception</b>
+                <p>
+                    What happens?<br>
+                    By default, execution stops (intentional crash).<br>
+                    But we can write <u>handlers</u> to <u>catch</u> exceptions to deal with them.<br>
+                    <br>
+                    <code>vector&lt;T&gt;at()</code> throws exception of type <code>std::out_of_range</code> when it fails.<br>
+                    Handle as follows:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;stdexcept&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;try {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; v.at(1000) &lt;&lt; std::endl;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// statement that may raise an exception go in the try block<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;} catch (std::out_of_range orr) {<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;std::cerr &lt;&lt; "Range Error" &lt;&lt; std::endl;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 8, <code>std::out_of_range</code> is a type and <code>oor</code> is an object that was thrown.<br>
+                </p>
             </div>
             <hr>
             
             <div class="lec17">
                 <h3>Lecture 17 - 07/11/2017</h3>
                 <hr>
-                <P>This lecture will be updated someday in the future...</P>
+                <p>Recall:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>#include &lt;stdexcept&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;try {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; v.at(1000) &lt;&lt; endl;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;} catch (out_of_range ex) {<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;cerr &lt;&lt; "Range Error" &lt;&lt; ex.what() &lt;&lt; endl;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In line 7, <code>out_of_range</code> is a type and <code>ex</code> is an object.<br>
+                    Now consider:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void f() {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;throw out_of_range{"f"}; // f is what() is<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>void g() {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;f();<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>void h() {<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;g();<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">12&nbsp;&nbsp;</span><br>
+                        <span class="cline">13&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;try {<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;h();<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;} catch (out_of_range) {<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;return 0;<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    What happens?
+                    <code>main()</code> calls <code>h()</code>.<br>
+                    <code>h()</code> calls <code>g()</code>.<br>
+                    <code>g()</code> calls <code>f()</code>.<br>
+                    <code>f()</code> throws <code>out_of_range</code>.<br>
+                    <code>g()</code> has no handler for <code>out_of_range</code>.<br>
+                    <br>
+                    Control goes back through the call chain (<u>unwinds</u> the stack) until a handler is found.<br>
+                    All the was back to <code>main()</code>, <code>main()</code> handles it.<br>
+                    If no handler find, program terminates.<br>
+                    <br>
+                    <code>out_of_range</code> is a class, so <code>throw out_of_range{"f"};</code> is a ctor call (create an <code>out_of_range</code> object).<br>
+                    <br>
+                    A handler might do part of the recovery job - execute some corrective code and throw another exception:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>try {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>} catch (someErrorType s) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;throw someOtherError{...};<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Or we can always throw the same exception:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>try {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>} catch (someErrorType s) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;throw;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>throw;</code> vs <code>throw s;</code>
+                </p>
+                <img src="./image/cs246/lec17/Lec17_1.png" style="width: 10%; height: 10%"><br>
+                <p>
+                    <code>throw;</code>:<br>
+                    Actual type of <code>s</code> is retained.<br>
+                    <br>
+                    <code>throw s;</code>:<br>
+                    <code>throw</code> rethrows a new exception of type <code>SomeErrorType</code>.<br>
+                    <code>s</code> may be a subtype of <code>someErrorType</code>.<br>
+                    <br>
+                    A handler can act as a <u>catch-all</u>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>try {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>} catch (...) { // the ... this line means "catch all exceptions!"
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>}
+                    </code></pre>
+                </span>
+                <p>
+                    You can throw anything you want; you don't have to throw object.<br>
+                    <br>
+                    Define your own exception class:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class BadInput{};<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>try {<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;int n;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;if (!(cin &gt;&gt; n)) throw BadInput{};<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>} catch (BadInput &amp;) {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;cerr &lt;&lt; "Input not well-formed.";<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>BadInput{}</code> is an object and <code>&amp;</code> in line 5 means "catch by reference" (reduces copying).<br>
+                    <br>
+                    Some standard exceptions:<br>
+                    <code>length_error</code>: string/vector is too large (i.e. can't resize).<br>
+                    <code>bad_alloc</code>: <code>new</code> fails.<br>
+                    <br>
+                    <b><u><i>NEVER</i></u></b> let a destructor throw exception.<br>
+                    If a destructor throws, program terminates immediately (unless the destructor is tagged with <code>noexcept(false)</code>).<br>
+                    If a destructor throws...<br>
+                    If that destructor was executed during stack unwinding, while another exception is still looking for a handler, you now have <u>two or more</u> active, unhandled exceptions, and the program <u>will</u> abort immediately.<br>
+                    <br>
+                    Much more on exceptions later.<br>
+                    <br>
+                </p>
+                <b>Design Patterns Continued...</b>
+                <p>
+                    Guiding principle:<br>
+                    Program to the interface, not the implementation.<br>
+                </p>
+                <ul>
+                    <li>
+                        abstract base classes define the interface
+                        <ul>
+                            <li>work with pointers to abstract base classes and call their methods</li>
+                            <li>
+                                concrete subclasses can be swapped in an out
+                                <ul>
+                                    <li>abstraction over a variety of behaviours</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Example:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>class List {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;class Iterator : public AbstractIterator {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;};<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">09&nbsp;&nbsp;</span><br>
+                        <span class="cline">10&nbsp;&nbsp;</span>class Set {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;class Iterator : public AbstractIterator {<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;};<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>};<br>
+                        <span class="cline">18&nbsp;&nbsp;</span><br>
+                        <span class="cline">19&nbsp;&nbsp;</span>class AbstractIterator {<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;public:<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;virtual int&amp; operator*() = 0;<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;virtual AbstractIterator&amp; operator++() = 0;<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;virtual bool operator!=(const AbstractIterator &amp;other) const = 0;<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;virtual ~AbstractIterator();<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>};<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Once you have <code>: public AbstractIterator</code>, then you can write code that operates over iterators:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>void for_each(AbstractIterator &amp;start,<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractIterator &amp;finish,<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void (*f)(int)) {<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;while (start != end) {<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;f(*start);<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;++start;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    It work over <code><strong>List</strong></code> and <code><strong>Set</strong></code>.<br>
+                    <br>
+                </p>
+                <b>Observer Pattern</b>
+                <ul>
+                    <li>
+                        Publish-subscribe model
+                        <ul>
+                            <li>
+                                one class: publisher/subject
+                                <ul>
+                                    <li>generates data</li>
+                                </ul>
+                            </li>
+                            <li>
+                                one or more subscriber/observer classes
+                                <ul>
+                                    <li>
+                                        revive data and react to it
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Example:<br>
+                    Publisher = Spreadsheet cells<br>
+                    Observers = Graphs when cells change, graphs update<br>
+                    <br>
+                    We can have many different kinds of observer objects; subject should not need to know all the details.<br>
+                </p>
+                <img src="./image/cs246/lec17/Lec17_2.png" style="width: 35%; height: 35%"><br>
+                <p>
+                    Sequence of method calls:<br>
+                </p>
+                <ol>
+                    <li><code>subject</code>'s state is updated</li>
+                    <li>
+                        <code>Subject::notifyObservers()</code>
+                        <ul>
+                            <li>calls every observer's <code>notify()</code></li>
+                            <li>(could be called by the subject, or by some external controller)</li>
+                        </ul>
+                    </li>
+                    <li>each observer calls <code>ConcreteSubject::getState()</code> to query the state of react appropriately</li>
+                </ol>
+                <p>
+                    Example: Horse Races<br>
+                    Subject - publishes winners<br>
+                    Observers - individual bettors - declare victory when their horse wins<br>
+                    We will continue it next lecture.<br>
+                </p>
             </div>
             <hr>         
             
@@ -1171,7 +1666,7 @@
                 <ul>
                     <li>all public methods should be non-virtual</li>
                     <li>all virtual methods should be non-public/private/protected</li>
-                    <li>(except the dtor)</li>
+                    <li>(except the destructor)</li>
                 </ul>
                 <p>Example:</p>
                 <span>
@@ -1519,7 +2014,7 @@
                         <span class="cline">02&nbsp;&nbsp;</span><span class="ckey">#include</span> "window.h"<br>
                         <span class="cline">03&nbsp;&nbsp;</span><span class="ckey">#include</span> "XWindowImpl.h"<br>
                         <span class="cline">04&nbsp;&nbsp;</span><br>
-                        <span class="cline">05&nbsp;&nbsp;</span><span class="cvar">XWindow::XWindow</span>(...): pimpl{<span class="ckey">new</span> XWindowImpl}, ... {} <span class="ccmd">// delete in dtor</span>
+                        <span class="cline">05&nbsp;&nbsp;</span><span class="cvar">XWindow::XWindow</span>(...): pimpl{<span class="ckey">new</span> XWindowImpl}, ... {} <span class="ccmd">// delete in destructor</span>
                     </code></pre>
                 </span>
                 
@@ -1707,7 +2202,7 @@
                 <p>
                     No leaks for this program.<br> 
                     But what if <code>g()</code> raises an exception? What is guaranteed?<br>
-                    During stack-unwinding, dtors for staak-allocated objects will run. Heap-allocated memory is not destrayed.<br>
+                    During stack-unwinding, destructors for staak-allocated objects will run. Heap-allocated memory is not destrayed.<br>
                     Therefore, if  <code>g()</code> throws, <code><var>*p</var></code> is leaked, but <code><var>mc</var></code> is not.<br>
                 </p>
                 <span>
@@ -1729,15 +2224,15 @@
                     Tedious of error-prone - duplication of code<br>
                     How else can we guarantee that something (e.g. <code>delete p</code>) will happen, no matter how we exit p? (normal or exception?)<br>
                     In some languages, you have thing called "finally" clauses guarantee certain final actions - not in C++ btw.<br>
-                    The only thing you can count on in C++ - the dtor for stack-allocated data will run.<br>
-                    Therefore, use stack-allocated data with dtors as much as possible.<br>
+                    The only thing you can count on in C++ - the destructor for stack-allocated data will run.<br>
+                    Therefore, use stack-allocated data with destructors as much as possible.<br>
                 </p>
                 <li>use this guarantee to you advantage</li>
                 <br>
                 <br>
                 <b>C++ idiom - RAII (Resource Acquisition Is Initialization)</b>
                 <p>
-                    Every resource should be wrapped in a stack-allocated object, whose dtor frees it.<br>
+                    Every resource should be wrapped in a stack-allocated object, whose destructor frees it.<br>
                     Example - files:
                 </p>
                 <span>
@@ -1750,7 +2245,7 @@
                     </code></pre>
                 </span>
                 <p>
-                    The file is guaranteed to be released when <code><var>f</var></code> is popped from the stack (<code><var>f</var></code>'s dtor runs).<br>
+                    The file is guaranteed to be released when <code><var>f</var></code> is popped from the stack (<code><var>f</var></code>'s destructor runs).<br>
                     This can be done with dynomic memory:<br>
                 </p>
                 <span>
@@ -1760,7 +2255,7 @@
                 </span>
                 <ul>
                     <li>takes a <code><var>T*</var></code> in the constructor</li>
-                    <li>the dtor will delete the pointer</li>
+                    <li>the destructor will delete the pointer</li>
                     <li>in between - can dereference just like a pointer</li>
                 </ul>
                 <span>
@@ -1956,7 +2451,7 @@
                     </code></pre>
                 </span>
                 <p>
-                    When <code><var>v</var></code> goes out-of-scope, then is freed, <code><strong>C</strong></code>'s dtor runs on all objects in the vector.<br>
+                    When <code><var>v</var></code> goes out-of-scope, then is freed, <code><strong>C</strong></code>'s destructor runs on all objects in the vector.<br>
                     But...
                 </p>
                 <span>
@@ -1968,7 +2463,7 @@
                     </code></pre>
                 </span>
                 <p>
-                    Array is freed but pointers don't have dtors, so objects pointed at by the pointers are NOT deleted.<br>
+                    Array is freed but pointers don't have destructors, so objects pointed at by the pointers are NOT deleted.<br>
                     <code><var>v</var></code> doesn't know whether the pointers in the array own the objects they point at.<br>
                     (If you want to delete them: <code>for (auto &amp;x:v) delete x;</code>)<br>
                     But...
@@ -1982,7 +2477,7 @@
                     </code></pre>
                 </span>
                 <p>
-                    Array is freed and dtor run, so objects <u>are</u> deleted.<br>
+                    Array is freed and destructor run, so objects <u>are</u> deleted.<br>
                     So <u>no</u> explicit deallcation.<br>
                     Also: <code>vector&lt;shard_ptr&lt;c&gt;&gt; v;</code><br>
                     <br>
@@ -2613,6 +3108,7 @@
                     <td width="45%"></td>
                 </tr>
             </table>
+            <hr>
             
             <div class="footer">
                 <p>Thanks For Coming Here. - Calvin Li</p>
