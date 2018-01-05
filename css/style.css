@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 16px;
+    height: 100%;
 }
 
 hr {
@@ -19,7 +20,7 @@ b {
 }
 
 .container {
-    background-color: darkseagreen;
+    background-color: #8FAE8F;
 }
 
 
@@ -42,14 +43,13 @@ b {
 
 
 .top {
-    background-image: url(./image/background/new.jpg);
+    background-image: url(../image/background/new.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     height: 100vh;
     color: white;
     text-align: center;
-  
 }
 
 .top h1 {
@@ -127,6 +127,7 @@ b {
 }
 
 .projects h1 {
+    text-align: center;
     font-size: 2.25em;
 }
 
@@ -162,4 +163,42 @@ b {
 /* Change the link color to #111000 (black) on hover */
 .projects table th:hover {
     background-color: #e6ffe6;
+}
+
+
+.notePage {
+    height: auto;
+}
+
+.notePage p {
+    font-size: 1.15em;
+}
+
+.notePage h1 {
+    font-size: 2.25em;
+    text-align: center;
+}
+
+.notePage table {
+    background-color: whitesmoke;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.notePage table th {
+    text-align: center;
+}
+
+.notePage table .two td {
+    width: 50%;
+}
+
+.notePage table .three td {
+    width: 33.3%;
+}
+
+.notePage table .four td {
+    width: 25%;
 }

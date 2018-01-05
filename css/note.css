@@ -1,0 +1,53 @@
+code {
+    font-size: 15px;
+    font-family: 'Hack','Open Sans', sans-serif;
+}
+
+table {
+    background-color: whitesmoke;
+}
+
+
+.header {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.header tr th {
+    padding-left: 1%;
+}
+
+.title {
+    text-align: center;
+}
+
+
+pre code {
+    display: block;
+    border: 0;
+    border-radius: 3px;
+    white-space: initial;
+}
+
+ol, ul {
+    margin-top: -5px;
+}
+
+.buttomTable {
+    width: 100%;
+}
+
+.buttomLeftTable {
+    width: 45%;
+    text-align: left;
+}
+
+.buttomCentreTable{
+    width: 10%;
+    text-align: center;
+}
+
+.buttomRightTable{
+    width: 45%;
+    text-align: right;
+}

@@ -1,0 +1,23 @@
+.textTable table {
+    width: auto;
+    text-align: center;
+}
+
+.textTable tr th, .textTable tr td {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.textTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.textTable tr:hover {
+    background-color: #ddd;
+}
+
+.math {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 20px;
+}
