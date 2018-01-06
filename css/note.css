@@ -42,12 +42,18 @@ ol, ul {
     text-align: left;
 }
 
-.buttomCentreTable{
+.buttomCentreTable {
     width: 10%;
     text-align: center;
 }
 
-.buttomRightTable{
+.buttomRightTable {
     width: 45%;
     text-align: right;
+}
+
+.key {
+    font-style: italic;
+    color: darkviolet;
+    text-shadow: 0.5px 0.5px #FFFFFF;
 }
