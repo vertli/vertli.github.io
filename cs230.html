@@ -351,7 +351,832 @@
                 </p>
             </div>
             <hr>
-            
+            <div class="lec2">
+                <h3>Lecture 2 - 09/01/2018</h3>
+                <hr>
+                <b>Binary Addition</b>
+                <p>
+                    Last time, we had learnt how to convert decimal number to binary number.<br>
+                    But how do we add two binary numbers together?<br>
+                    Binary addition is actually simple textbook addition.<br>
+                    <br>
+                    However, we have a problem.<br>
+                    Unlike writing on paper or doing math in our head, our circuit can only have a certain number of bits (for example, 32-bit).<br>
+                    This is what we call <span class="key">fixed-width representation</span>; in fixed-width representation, we have a problem called  <span class="key">overflow</span>.<br>
+                    <br>
+                    Consider a 4-bit fixed-width representation.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>12<sub>10</sub> + 7<sub>10</sub></td>
+                        <td>&nbsp;= 1100<sub>2</sub> + 0111<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1 0011<sub>2</sub></td>
+                    </tr>
+                </table>
+                <p>
+                    Our answer has 5 bits, but we are working with a 4-bit fixed-width representation!<br>
+                    This is an overflow!<br>
+                    Hence, we have to omit the leftest bit and so, we can get a 4-bit answer.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>12<sub>10</sub> + 7<sub>10</sub></td>
+                        <td>&nbsp;= 1100<sub>2</sub> + 0111<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 0011<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 3<sub>10</sub></td>
+                    </tr>
+                </table>
+                <p>
+                    So <span class="math">12<sub>10</sub> + 7<sub>10</sub> = 3<sub>10</sub></span> in a 4-bits fixed-width representation<br>
+                    <br>
+                    We can calculate the result directly modulo 16 (so the largest number we can represent with 4 bits is 15).<br>
+                </p>
+                <br>
+                <b>Binary Subtraction</b>
+                <p>
+                    Now we know that the addition works with binary, but human is lazy - we don't want to design a subtraction circuit!<br>
+                    Subtraction is simply adding a negative number, or adding the negation of the number you are subtracting.<br>
+                    <br>
+                    Naive Approach:<br>
+                    If we have n-bit to store our number, use n-1 bits to just store a regular old binary natural number (magnitude) and use the remaining bit to denote the sign.<br>
+                    This is the <span class="key">sign and magnitude approach</span>.<br>
+                    But this approach has two problems!<br>
+                    <br>
+                    The first problem is we have two zeros here!<br>
+                    For example, in 4-bit fixed-width representation...<br>
+                    <span class="math">1000<sub>2</sub> = -0<sub>10</sub></span> where the first bit <span class="math">1</span> is the sign bit <span class="math">-</span> and the rest of the bits is the magnitude of <span class="math">0<sub>10</sub></span>.<br>
+                    <span class="math">0000<sub>2</sub> = +0<sub>10</sub></span> where the first bit <span class="math">0</span> is the sign bit <span class="math">+</span> and the rest of the bits is the magnitude of <span class="math">0<sub>10</sub></span>.<br>
+                    <br>
+                    The second problem is addition does not work here!<br>
+                    For example,<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>3<sub>10</sub> - 1<sub>10</sub></td>
+                        <td>&nbsp;= 3<sub>10</sub> + (-1<sub>10</sub>)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 0011<sub>2</sub> + 1001<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1100<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= -4<sub>10</sub></td>
+                    </tr>
+                </table>
+                <p>
+                    Clearly, we know that <span class="math">3 - 1 &ne; -4</span>.<br>
+                    <br>
+                    Attempt 2: <span class="key">1's Complement</span><br>
+                    To represent negation of a binary number, simply invert(flip) the bits - 0's become 1's and 1's become 0's.<br>
+                    Addition is possible here; the trick is to add any carry over to the sum.<br>
+                    Example: <span class="math">7<sub>10</sub> - 4<sub>10</sub></span> in 4-bit fixed-width representation.<br>
+                    We know that <span>4<sub>10</sub> = 0100<sub>2</sub></span>, then flip it and we will get <span class="math">1011<sub>2</sub></span> to represent <span class="math">-4</span>.<br>
+
+                </p>
+                <table>
+                    <tr class="math">
+                        <td>7<sub>10</sub> - 4<sub>10</sub></td>
+                        <td>&nbsp;= 7<sub>10</sub> + (-4<sub>10</sub>)</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 0111<sub>2</sub> + 1011<sub>2</sub></td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 1 0010<sub>2</sub></td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td class="math">&nbsp;= 0010<sub>2</sub> + 1<sub>2</sub></td>
+                        <td> // add the carry over to the sum</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 0011<sub>2</sub></td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 3<sub>10</sub></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>
+                    Wait... We still have two zeros here!<br>
+                    <span class="math">0000<sub>2</sub> = +0<sub>10</sub></span> and <span class="math">1111<sub>2</sub> = -0<sub>10</sub></span>.<br>
+                    Also, this is not our same addition from before; we want to reuse the exact same circuit!<br>
+                    <br>
+                    Attempt 3: <span class="key">2's Complement</span><br>
+                    To negate a number, flip the bits, then add 1.<br>
+                    This will only give us one zero.<br>
+                </p>
+                <table>
+                    <tr>
+                        <td class="math">+0<sub>10</sub></td>
+                        <td class="math">&nbsp;= 0000<sub>2</sub></td>
+                        <td>// work in 4-bit fixed-width representation</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 1111<sub>2</sub></td>
+                        <td>// flip</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 10000<sub>2</sub></td>
+                        <td>// add 1</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 0000<sub>2</sub></td>
+                        <td>// remove the overflow bit</td>
+                    </tr>
+                </table>
+                <p>
+                    Example: <span class="math">7 - 4</span> in 4-bit fixed-width representation.<br>
+                    We know that <span>4<sub>10</sub> = 0100<sub>2</sub></span>, then flip it to get <span class="math">1011<sub>2</sub></span> and add 1 to get <span class="math">1100<sub>2</sub></span> which represents <span class="math">-4</span>.<br>
+                </p>
+                <table>
+                    <tr class="math">
+                        <td>7<sub>10</sub> - 4<sub>10</sub></td>
+                        <td>&nbsp;= 7<sub>10</sub> + (-4<sub>10</sub>)</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 0111<sub>2</sub> + 1100<sub>2</sub></td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 1 0011<sub>2</sub></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 0011<sub>2</sub></td>
+                        <td> // remove the overflow bit</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 3<sub>10</sub></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>
+                    The 2's complement solves our problems and it works!<br>
+                    This is how all computers today represent negative integers.<br>
+                    <br>
+                    Beauty is in the eye of the beholder!<br>
+                    What does <span class="math">1011<sub>2</sub></span> mean?<br>
+                    This could be <span class="math">11<sub>10</sub></span> or <span class="math">-5<sub>10</sub></span>, it depends on how we choose to interpret it.<br>
+                    There are other ways to interpret these binary numbers; we will talk about later.<br>
+                </p>
+                <br>
+                <b>Sign Extension</b>
+                <p>
+                    We were using 4-bit fixed-width representation. If we wanted to move to other fixed-width representation (e.g. 8-bit), fill the extra spaces on the left with 0's for any positive number, or 1's for any negative number.<br>
+                    For example...
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>&nbsp;4-bit&nbsp;</th>
+                        <th>&nbsp;8-bit&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td><span class="math">5<sub>10</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">0101<sub>2</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">0000 0101<sub>2</sub></span>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><span class="math">-3<sub>10</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">1101<sub>2</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">1111 1101<sub>2</sub></span>&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Range</b>
+                <p>
+                    For 2's complement, the range of n-bit fixed-width representation is <span class="math">[-2<sup>n-1</sup>, 2<sup>n-1</sup> - 1]</span>.<br>
+                    For example, the range of 4-bit fixed-width representation is <span class="math">[-8, 7]</span>.<br>
+                    <br>
+                    Range for unsigned integers is <span class="math">[0, 2<sup>n</sup> - 1]</span>.<br>
+                </p>
+                <br>
+                <b>Shift Operations</b>
+                <p>
+                    We can shift a bit string right or left.<br>
+                    They are equivalent to division or multiplication by 2.<br>
+                    They are very fast machine instructions.<br>
+                    When right shifting a negative number, fill the "new" left positions with 1's; for positive number, fill with 0's.<br>
+                    For example...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td class="math">1101 &lt;&lt; 2</td>
+                        <td>&nbsp;// shift the bit string <span class="math">1101</span> left 2 positions</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td class="math">11 0100</td>
+                        <td>&nbsp;// Overflow, omit the 2 leftest bits</td>
+                    </tr>
+                    <tr class="tableUnderline">
+                        <td>=&nbsp;</td>
+                        <td class="math">0100</td>
+                        <td>&nbsp;// final answer</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">0001 &lt;&lt; 2</td>
+                        <td>&nbsp;// shift the bit string <span class="math">0001</span> left 2 positions</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td class="math">00 0100</td>
+                        <td>&nbsp;// Overflow, omit the 2 leftest bits</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td class="math">0100</td>
+                        <td>&nbsp;// final answer</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Binary Multiplication</b>
+                <p>
+                    Binary multiplication is same as textbook multiplication.<br>
+                    For example...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="tableUnderline">
+                        <td>&#10005;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="tableUnderline">
+                        <td>+</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="tableDoubleUnderline">
+                        <td></td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+                <p>
+                    Binary multiplication is done by the processor as shift and add operators.<br>
+                    It can be easily parallelized.<br>
+                </p>
+                <br>
+                <b>Binary Division</b>
+                <p>
+                    Again, it is same as textbook division.<br>
+                    For example...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td class="tableLeftLine">1</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0<sub>2</sub></td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0<sub>2</sub></td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableDoubleUnderline">1</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0<sub>2</sub></td>
+                    </tr>
+                </table>
+                <p>
+                    Binary division is also done by shift and subtract.<br>
+                    But each result depends on the previous, division cannot be easily to parallelized.<br>
+                    <br>
+                    So, the duration of binary multiplication is shorter than the duration of binary division.<br>
+                </p>
+                <br>
+                <b>Boolean Algebra</b>
+                <p>
+                    How does our computer actually implement binary addition, subtraction, multiplication, division and shifting?<br>
+                    How does it work with all these 0's and 1's?<br>
+                    <br>
+                    The basis of all our computer's circuits today comes from the work of a mathematician who died in 1864 - George Boole.<br>
+                    Boole's work is what we call <span class="key">Boolean algebra</span> today.<br>
+                    <br>
+                    <span class="key">Boolean algebra</span> is a specific branch of algebra dedicated to work with only values <span class="key">true</span> and <span class="key">false</span>.<br>
+                    The basic operators of Boolean algebra are <span class="key">AND</span>, <span class="key">OR</span>, <span class="key">NOT</span>.<br>
+                    In computers, each of these "logic gates" can be created with a few transistors.<br>
+                </p>
+                <br>
+                <b>OR operator</b>
+                <p>
+                    It is also called "disjunction".<br>
+                    It denotes as x&or;y; it most closely relates to addition(+) in regular algebra, so it can be denoted as x+y.<br>
+                    x&or;y is true if either<span class="math">x</span> or <span class="math">y</span> is true, or both.
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate OR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_1.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                </table>
+                <br>
+                <b>AND operator</b>
+                <p>
+                    It is also called "conjunction".<br>
+                    It denotes as x&and;y; it most closely relates to multiplication(*) in regular algebra, so it can be denoted as x*y.<br>
+                    AND means both of <span class="math">x</span> and <span class="math">y</span> must be true!<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate AND for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_2.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                </table>
+                <br>
+                <b>NOT operator</b>
+                <p>
+                    It is also called "negation".<br>
+                    It denotes as &not;x, x&#772;, ~x or !x.<br>
+                    NOT means the opposite of <span class="math">x</span>.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOT for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><img src="./image/cs230/lec2/2_3.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    There also exists more specific gates that can be built from combinations of the above three operators.<br>
+                    But these are so common and helpful, we use them in our Boolean algebra.<br>
+                </p>
+                <br>
+                <b>XOR operator</b>
+                <p>
+                    It is also called "exclusive or".<br>
+                    It denotes as x&oplus;y or x#y.<br>
+                    It means "one or the other, but not both."<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate XOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_4.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <img src="./image/cs230/lec2/2_5.PNG">
+                <br><br>
+                <b>NOR operator</b>
+                <p>
+                    It denotes as &not;(x&#8897;y) or x&darr;y.<br>
+                    It means "neither", aka "NOT OR".<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_6.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <b>NAND operator</b>
+                <p>
+                    It denotes as &not;(x&#8896;y) or x&uarr;y.<br>
+                    It means "not both"; it is simply negation of AND.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_7.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLin tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Since this is Boolean algebra, we can combine these operators to form complex expression and of course, we have rules for how these operators write.<br> 
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th class="tableUnderline">Identity</th>
+                        <th class="tableUnderline tableLeftLine">Name</th>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">&not;(&not;x) = x</td>
+                        <td class="tableUnderline tableLeftLine">Double Negation</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;x = x</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">Idempotent Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;x = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;1 = x</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">Identity Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;0 = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;0 = 0</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">Domination Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;1 = 1</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;y = y&and;x</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">&nbsp;Commutative Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;y = y&or;x</td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
