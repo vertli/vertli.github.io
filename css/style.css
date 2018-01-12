@@ -1,4 +1,9 @@
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
     background-color: #4a6f4a;
     color: #2e3c2e;
     margin: 0;
@@ -20,6 +25,7 @@ b {
 }
 
 .container {
+    height: auto;
     background-color: #8FAE8F;
 }
 

@@ -74,3 +74,8 @@ ol, ul {
     border-left-width: thin;
     border-left-color: black;
 }
+
+img {
+    background-color: white;
+    padding: 5px;
+}

@@ -6,6 +6,8 @@
 .textTable tr th, .textTable tr td {
     border: 1px solid #ddd;
     text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .textTable tr:nth-child(even){

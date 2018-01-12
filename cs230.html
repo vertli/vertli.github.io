@@ -351,6 +351,7 @@
                 </p>
             </div>
             <hr>
+            
             <div class="lec2">
                 <h3>Lecture 2 - 09/01/2018</h3>
                 <hr>
@@ -463,7 +464,7 @@
                         <td>&nbsp;= 1 0010<sub>2</sub></td>
                         <td></td>
                     </tr>
-                    <tr class="math">
+                    <tr>
                         <td></td>
                         <td class="math">&nbsp;= 0010<sub>2</sub> + 1<sub>2</sub></td>
                         <td> // add the carry over to the sum</td>
@@ -1177,6 +1178,532 @@
                 </table>
             </div>
             <hr>
+            
+            <div class="lce3">
+                <h3>Lecture 3 - 11/01/2018</h3>
+                <hr>
+                <p>Example: Convert the following binary to decimal.</p>
+                <table class="textTable">
+                    <tr>
+                        <th>Binary</th>
+                        <th>Sign and Magnitude</th>
+                        <th>1's Complement</th>
+                        <th>2's Complement</th>
+                    </tr>
+                    <tr>
+                        <td>0000<sub>2</sub></td>
+                        <td>+0<sub>10</sub></td>
+                        <td>+0<sub>10</sub></td>
+                        <td>0<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>0001<sub>2</sub></td>
+                        <td>+1<sub>10</sub></td>
+                        <td>+1<sub>10</sub></td>
+                        <td>1<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1000<sub>2</sub></td>
+                        <td>-0<sub>10</sub></td>
+                        <td>-7<sub>10</sub></td>
+                        <td>-8<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1001<sub>2</sub></td>
+                        <td>-1<sub>10</sub></td>
+                        <td>-6<sub>10</sub></td>
+                        <td>-7<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1011<sub>2</sub></td>
+                        <td>-3<sub>10</sub></td>
+                        <td>-4<sub>10</sub></td>
+                        <td>-5<sub>10</sub></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    In human mind, t oconver binary to decimal under 2's complement, we can use the following formula:<br>
+                </p>
+                <img src="./image/cs230/lec3/3_sum.png" width="15%" height="15%">
+                <br>
+                <p>
+                    For example: <span class="math">1001<sub>2</sub></span>
+                </p>
+                <table>
+                    <tr>
+                        <td>1001<sub>2</sub></td>
+                        <td>= -2<sup>3</sup> + 0&times;2<sup>2</sup> + 0&times;2<sup>1</sup> + 1&times;2<sup>0</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>= -8<sub>10</sub> + 1<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>= -7<sub>10</sub></td>
+                    </tr>
+                </table>
+                <br>
+                <b>Boolean Algebra</b>
+                <table class="textTable">
+                    <tr>
+                        <th>Identity</th>
+                        <th>Name</th>
+                    </tr>
+                    <tr>
+                        <td>&not;(&not;x) = x</td>
+                        <td>Law of the Double Complement</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;x = x</td>
+                        <td rowspan="2">Idempotent Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;x = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;1 = x</td>
+                        <td rowspan="2">Identity Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;0 = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;0 = 0</td>
+                        <td rowspan="2">Domination Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;1 = 1</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;y = y&and;x</td>
+                        <td rowspan="2">&nbsp;Commutative Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;y = y&or;x</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(y&or;z) = (x&or;y)&or;z</td>
+                        <td rowspan="2">Associative Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(y&and;z) = (x&and;y)&and;z</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(y&and;z) = (x&or;y)&and;(x&or;z)</td>
+                        <td rowspan="2">Distributive Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(y&or;z) = (x&and;y)&or;(x&and;z)</td>
+                    </tr>
+                    <tr>
+                        <td>&not;(x&or;y) = (&not;x)&and;(&not;y)</td>
+                        <td rowspan="2">DeMorgan's Law</td>
+                    </tr>
+                    <tr>
+                        <td>&not;(x&and;y) = (&not;x)&or;(&not;y)</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(x&and;y) = x</td>
+                        <td rowspan="2">Absorption Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(x&or;y) = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(&not;x) = 1</td>
+                        <td rowspan="2">Nonmonotone Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(&not;x) = 0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    A Boolean expression represents a logic function.<br>
+                    A logic function can be represented also by a logic circuit diagram, or a truth table.<br>
+                    Example: (x&or;y)&and;(&not;x)
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="5">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec3/3_1.png"></td>
+                        <td>x</td>
+                        <td>y</td>
+                        <td>x&or;y</td>
+                        <td>&not;x</td>
+                        <td>(x&or;y)&and;(&not;x)</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    It is worth mentioning that our variables represent logical statements.<br>
+                    If you are ever confused about how to apply a law over a larger more complex expression, you can say "let p = (x&or;y&or;z)" and do your manipulations after subbing p into that expression, than resub back the real value to get the final result.<br>
+                    <br>
+                    Additionally, while drawing circuits, we can choose to draw an AND, OR, NAND, or NOR gate having an numbers of inputs.<br>
+                    This is easily replicated in redraw.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>x&or;y&or;z</th>
+                        <th>x&and;y&and;z</th>
+                    </tr>
+                    <tr>
+                        <td><img src="./image/cs230/lec3/3_2.png"></td>
+                        <td><img src="./image/cs230/lec3/3_3.png"></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Now, we can draw logic gates and we know logic gates can be easily constructed with only a handful of circuit.<br>
+                    So, let's build a circuit to add two bits together.<br>
+                    <br>
+                    Example: 1-column of Addition<br>
+                    We want sum (is there 1 remaining in this column after addition) and carry (do we need to carry a 1 to the next column).<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>sum = A&oplus;B</td>
+                        <td rowspan="2"><img src="./image/cs230/lec3/3_4.png"></td>
+                    </tr>
+                    <tr>
+                        <td>carry = A&and;B</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So all of that for one column of addition.<br>
+                    This circuit is called a <span class="key">Half-Adder</span>.<br>
+                    The half-adder does not take into account the fact a carry bit may have come in from the previous column.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>Carry<sub>in</sub></th>
+                        <th>Carry<sub>out</sub></th>
+                        <th>Sum</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <br>
+                <p>How about <span class="key">full-adder</span>?<br></p>
+                <table class="textTable">
+                    <tr>
+                        <td>sum = x&oplus;y&oplus;Carry<sub>in</sub></td>
+                        <td rowspan="2"><img src="./image/cs230/lec3/3_5.png"></td>
+                    </tr>
+                    <tr>
+                        <td>carry = (x&and;y)&or;((x&oplus;y)&and;Carry<sub>in</sub>)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Take away if you can build a truth table or logical expression, you can build a circuit (and all other combos too).<br>
+                    So what about adding numbers with a width larger than 1?<br>
+                    Stick a bunch of full-adders together!<br>
+                </p>
+                <img src="./image/cs230/lec3/3_6.png">
+                <br><br>
+                <p>
+                    Example:<br>
+                </p>
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td><sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td><sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(</td>
+                        <td>x<sub>3</sub></td>
+                        <td>&nbsp;</td>
+                        <td>x<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>x<sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>x<sub>0</sub></td>
+                        <td>)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                     <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(</td>
+                        <td>y<sub>3</sub></td>
+                        <td>&nbsp;</td>
+                        <td>y<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>y<sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>y<sub>0</sub></td>
+                        <td>)</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">+</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline"></td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableDoubleUnderline">1</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                     <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(</td>
+                        <td>d<sub>3</sub></td>
+                        <td>&nbsp;</td>
+                        <td>d<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>d<sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>d<sub>0</sub></td>
+                        <td>)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    But there is a problem: this is kind of slow!<br>
+                    The carry bit needs to propagate from each column to the next.<br>
+                    So, this is linear in number of bits.<br>
+                </p>
+                <b>Carry-Lookahead Adder</b>
+                <p>
+                    This is faster than full adder.<br>
+                    It is more complex(larger) circuits to determine carry.<br>
+                    Trade-off is complexity and speed (example: power, cost, etc.).<br>
+                    <br>
+                    Now, we know how to represent integers and how basis operations work.<br>
+                    But what about other data types?<br>
+                    We know that a bit is the smallest piece of information representable - true or false.<br>
+                </p>
+                <br>
+                <b>Byte</b>
+                <p>
+                    A byte today is 8 bits; it can easily be shown as two hexadecimal digits.<br>
+                    <br>
+                    A word is the size of instruction on the given architecture.<br>
+                    The common architectures for now are 4 bytes (32 bits) and 8 bytes (64 bits).<br>
+                    <br>
+                    Words can be ordered in different way.<br>
+                    What is the most significant byte?<br> This ordering is called <span class="key">Endianness</span>.<br>
+                </p>
+                <br>
+                <b>Endianness</b>
+                <p>
+                    Big endian which is most significant byte first descending.<br>
+                    Little endian which is least significant byte first asscending.<br>
+                    <br>
+                    If we want to represent the number <span class="math">0xDEADBEEF</span> in one 4-byte word, it looks like this.<br>
+                </p>
+                <table>
+                    <tr class="textTable">
+                        <td>Big Endian: </td>
+                        <td>0xDE</td>
+                        <td>0xAD</td>
+                        <td>0xBE</td>
+                        <td>0xEF</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&uarr;</td>
+                        <td>&uarr;</td>
+                        <td>&uarr;</td>
+                        <td>&uarr;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td></td>
+                        <td>0x0010</td>
+                        <td>0x0020</td>
+                        <td>0x0030</td>
+                        <td>0x0040</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&darr;</td>
+                        <td>&darr;</td>
+                        <td>&darr;</td>
+                        <td>&darr;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td>Little Endian: </td>
+                        <td>0xEF</td>
+                        <td>0xBE</td>
+                        <td>0xAD</td>
+                        <td>0xDE</td>
+                    </tr>
+                </table>
+                <p>
+                    Endianness is important!<br>
+                    Think about two computers passing a file.<br>
+                    If one computer stores in big endian but the other stores in little endian, they will not understand the file is the same!<br>
+                    <br>
+                    Endianness is important in network area; the standard for networking is big endian.<br>
+                    <br>
+                    Okay, so these are bits and bytes.<br>
+                    But how do we store staff?<br>
+                </p>
+                <br>
+                <b>Character</b>
+                <p>
+                    Character is letter!<br>
+                    There are two famous character encoding standard.<br>
+                    <br>
+                    The first one is <span class="key">ASCII</span> (American Standard Code for Information Interchange).<br>
+                    In ASCII, 1 byte means 1 character.<br>
+                    The normal ASCII codes are using [0,127] and the extended ASCII codes are using [128,255].<br>
+                    For example, [0,31] is for special control characters (non-printable), [48,57] is for number 0 to 9, [65,90] is for alphabet A to Z and [97,122] is for alphabet a to z.<br>
+                    <br>
+                    But... ASCII does not include other languages!<br>
+                    So we have other standard called <span class="key">UTF-8</span> (8-bit Unicode Transformation Format).<br>
+                    In UTF-8, we use 1 to 4 bytes to represent per character.<br>
+                    The 1 byte encoding is compatible as ASCII - characters that tend to occur more frequently store in 1 byte.<br>
+                </p>
+                <br>
+                <b>String</b>
+                <p>
+                    String is just a collection or array of characters.<br>
+                    But how does the computer know the length of a string?<br>
+                    Commonly, a string is terminated with the special character NULL(\0): 0x00.<br>
+                    For example, "Hello" in ASCII is 0x48 0x65 0x6C 0x6c 0x6F 0x00.<br>
+                </p>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
