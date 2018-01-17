@@ -1704,6 +1704,264 @@
             </div>
             <hr>
             
+            <div class="lec4">
+                <h3>Lecture 4 - 16/01/2018</h3>
+                <hr>
+                <b>Real Numbers</b>
+                <p>
+                    What is real number? For example, <span class="math">1.15</span> is real number.<br>
+                    <br>
+                    How does computer represent real numbers?<br>
+                    First of all, let's talk about the <span class="key">Scientific Notation</span>.<br>
+                    For example, <span class="math">-3.24&times;10<sup>56</sup></span>, and it is also called as <span class="key">Normalized Scientific Notation</span>.<br>
+                    <br>
+                    <span class="key">Normalized Scientific Notation</span>: one non-zero digit in front of the decimal point<br>
+                    For example, <span class="math">0.002&times;10<sup>4</sup></span> and <span class="math">56.123&times;10<sup>8</sup></span> are not normalized.<br>
+                    <br>
+                    How do we write a real number in binary with scientific notation?<br>
+                    For example, <span class="math">1.01<sub>2</sub>&sdot;2<sup>1</sup></span> where the <span class="key">.</span> after 1 and before 0 is called a binary point (radix point generally).<br>
+                    So what does <span class="math">1.01<sub>2</sub></span> mean?<br>
+                    Before we answer this answer, we need to ask ourselves, what does <span class="math">1.01<sub>10</sub></span> mean?<br>
+                    <span class="math">1.01<sub>10</sub> = 1&sdot;10<sup>0</sup> + 0&sdot;10<sup>-1</sup> + 1&sdot;10<sup>-2</sup></span><br>
+                    With the same idea, we have...<br>
+                    <span class="math">1.01<sub>2</sub> = 1&sdot;2<sup>0</sup> + 0&sdot;2<sup>-1</sup> + 1&sdot;2<sup>-2</sup> = 1 +  1/4 = 1.25<sub>10</sub></span><br>
+                    <br>
+                    How do we represent real numbers in our machines?<br>
+                    We use what's called <span class="math">floating point number</span>.<br>
+                    The reason it is called this name because it allow the binary point to "float" by changing the exponent.<br>
+                    The opposite would be fixed point.<br>
+                    <br>
+                    Floating point is of the form <span class="math">I.F&sdot;B<sup>E</sup></span> where...<br>
+                </p>
+                <ul>
+                    <li><span class="math">I</span>: Integer</li>
+                    <li><span class="math">F</span>: Fractional</li>
+                    <li><span class="math">B</span>: Base</li>
+                    <li><span class="math">E</span>: Exponent</li>
+                    <li><span class="math">I.F</span>: Significand (or "Mantissa")</li>
+                </ul>
+                <p>
+                    Our floats are always normalized, so <span class="math">I</span> is always <span class="math">1</span>.<br>
+                </p>
+                <ul>
+                    <li>left out of our representation is called "implicit/hidden point"</li>
+                </ul>
+                <p>
+                    The base in always <span class="math">2</span> because we are in binary!<br>
+                    So these are the components of our floating point.<br>
+                    <br>
+                    How does float represent in a machine? the standard <span class="key">IEEE 754</span>.<br>
+                    We have single precision 32 bits, double precision 64 bits.<br>
+                    <br>
+                    Single Precision Float: 32 bits<br>
+                </p>
+                <img src="./image/cs230/lec4/4_1.png" >
+                <p>
+                    We have 1 bit for the sign bit (green box), 8 bits for the exponent (red boxes) and the rest of the boxes (purple) are for the fractional.<br>
+                    Note that integer and base are not represented since base is 2 and integer is always 1 except for special subnormal numbers.<br>
+                    <br>
+                    Also, we need to know that the exponent bits do not represent exactly the exponent <span class="math">e</span> in <span class="math">I.F&sdot;B<sup>e</sup></span>. Why?<br>
+                    The standard uses a bias value, so the exponent bits represent an unsigned number and you subtract the bias from it.<br>
+                    Bias for single precision is 127.<br>
+                    <br>
+                    So to calculate the value <span class="math">(-1)<sup>5</sup>&sdot;(I.F)&dot;2<sup>e-127</sup></span>, let's try calculating the decimal value of single precision float:<br>
+                    <span class="math">0 10000100 11000000000000000000000</span><br>
+                    The first <span class="math">0</span> is the sign bit.<br>
+                    Then, <span class="math">10000100</span> are the exponent bits: <span class="math">10000100 = 128 + 4 - bias = 132 - 127 = 5</span><br>
+                    The rest of the bits <span class="math">11000000000000000000000</span> are the fractional bits where<br>
+                    &nbsp;&nbsp;<span class="math">1.11 = 1 + 2<sup>-1</sup> + 2<sup>-2</sup> = 1 + 0.5 + 0.25 = 1.75</span><br>
+                    So, we now have:<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>(-1)<sup>S</sup>&sdot;(I.F)&sdot;2<sup>e-127</sup></td>
+                        <td>&nbsp;= (-1)<sup>0</sup>&sdot;(1.11)&sdot;2<sup>5</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1&sdot;(1.75)&sdot;2<sup>5</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 56.0</td>
+                    </tr>
+                </table>
+                <p>
+                    Let's consider a simplified 8-bit representation for floats: 1 bit for sign bit, 3 bits for exponent (bias = 3) and 4 bits for fractional.<br>
+                    Note that bias is a choosing value, so you don't have to worry about it.<br>
+                    <br>
+                    Example: Express 4.5 in our simplified format.<br>
+                    Note that <span class="math">4<sub>10</sub> = 100<sub>2</sub></span> and <span class="math">0.5<sub>10</sub> = 1/2<sub>10</sub> = 2<sup>-1</sup> = 0.1<sub>2</sub></span>.<br>
+                    Thus, <span class="math">4.5<sub>10</sub> = 100.1<sub>2</sub></span>.<br>
+                    Then we have <span class="math">100.1&sdot;2<sup>0</sup></span> and normalize it, we get <span class="math">1.001&sdot;2<sup>2</sup></span>.<br>
+                    Next, the exponent is <span class="math">e + bias = 2 + 3 = 5 = 101<sub>2</sub></span> and sign bit is 0 since 4.5 is a positive number.<br>
+                    So, we get 0 101 0010 as our final answer, where 0 is the sign bit, 101 is the exponent bits and 0010 is the fractional bits.<br>
+                    <br>
+                    Arithmetic with floats is easy.<br>
+                    For addition, just set the exponents the same and add the significands (regular addition).<br>
+                    <br>
+                    Example: Add 1.25 and 2.125 in our simplified format.<br>
+                    Note that <span class="math">1.25 = 1.01&dots;2<sup>0</sup></span>.<br>
+                    So we know that <span class="math">F = 0100</span>, <span class="math">E = 0 + 3 = 3 = 011</span> and <span class="math">S = 0</span>.<br>
+                    Thus, <span class="math">1.25<sub>10</sub> = 0 011 0100<sub>2</sub></span>.<br>
+                    Also, <span class="math">2.125 = 1.0001&dots;2<sup>1</sup></span>.<br>
+                    So we know that <span class="math">F = 0001</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
+                    Thus, <span class="math">2.125<sub>10</sub> = 0 100 0001<sub>2</sub></span>.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>1.25 + 2.125</td>
+                        <td>&nbsp;= 1.01&sdot;2<sub>0</sub> + 1.0001&sdot;2<sub>1</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.01&sdot;2<sub>0</sub> + 10.001&sdot;2<sub>0</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 11.011&sdot;2<sup>0</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.1011&sdot;2<sup>1</sup></td>
+                    </tr>
+                </table>
+                <p>
+                    From the normalized scientific notation <span class="math">1.1011&sdot;2<sup>1</sup></span>, we know that <span class="math">F = 1011</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
+                    So our final answer is 0 100 1011.<br>
+                    <br>
+                    For multiplication, we add exponents, then multiply significands.<br>
+                    For example, <span class="math">1.5&sdot;2.25</span>.<br>
+                    Note that <span class="math">1.5 = 0 011 100</span> and <span class="math">2.25 = 0 100 0010</span>.<br>
+                    Step 1 - Add Exponents:<br>
+                    <span class="math">(E<sub>1.5</sub> - bias) + (E<sub>2.25</sub> - bias) = (011 - 011) + (100 - 011) = 1 = e</span><br>
+                    So <span class="math">E = 1 = 3 = 4 = 100<sub>2</sub></span>.<br>
+                    Step 2 - Multiply Significands:<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>1.1000 &times; 1.0010</td>
+                        <td>&nbsp;= (1&sdot;1.001) + (0.1&sdot;1.001)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.001 + 0.1001</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.1011</td>
+                    </tr>
+                </table>
+                <p>
+                    So our new fractional bits are 1011, new exponent bits are 100 and new sign bit is 0.<br>
+                    Therefore, <span class="math">1.5&sdot;2.25 = 0 100 1011</span>.<br>
+                    <br>
+                    However, examining our simplified format we can see the problems that arise in floating point numbers.<br>
+                    The first problem is there exists infinite numbers between 0 and 1, but we cannot represent infinite numbers within 32 bits!<br>
+                    For example, consider 15.25 in our 8-bit system:<br>
+                    <span class="math">15.25 = 1111.01&sdot;2<sup>0</sup> = 1.11101&sdot;2<sup>3</sup></span><br>
+                    We need 5 bits for the fraction but we only have 4 bits to use!<br>
+                    So we get an overflow, which is <span class="math">1.1110&sdot;2<sup>3</sup></span>.<br>
+                    If we round up, we get 15.5; if we round down, we get 15.0.<br>
+                    <br>
+                    So overflow can happen; they get represented as <span class="key">inf</span> (also occurs for divide by 0).<br>
+                    <br>
+                    For IEEE 754,<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Exponent Bits</th>
+                        <th>Fractional Bits</th>
+                        <th>Value/Type</th>
+                    </tr>
+                    <tr>
+                        <td>0000 0000</td>
+                        <td>00...00</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0000 0000</td>
+                        <td>non-zero</td>
+                        <td>subnormal</td>
+                    </tr>
+                    <tr>
+                        <td>0000 0000 1...1111 1110</td>
+                        <td>Any</td>
+                        <td>normal number</td>
+                    </tr>
+                    <tr>
+                        <td>1111 1111</td>
+                        <td>00...00</td>
+                        <td>infinity</td>
+                    </tr>
+                    <tr>
+                        <td>1111 1111</td>
+                        <td>non-zero</td>
+                        <td>NaN</td>
+                    </tr>
+                </table>
+                <p>
+                    What is <span class="key">NaN</span>? It means "not a number".<br>
+                    For example, &radic;-1, &infin;/&infin; and &infin;&sdot;0.<br>
+                    <br>
+                    If we didn't create a special case for subnormal numbers, then the gap between 0 and our smallest representable number would be:<br>
+                    <span class="math">0 000 0000<sub>2</sub> = 1.0000&sdot;2<sup>-3</sup> = 0.1255</span><br>
+                    That is a large gap! Often we talk about small numbers.<br>
+                    This also means our gap between adjacent numbers is <span class="math">0.0001&sdot;2<sup>-3</sup> = 2<sup>-7</sup></span>.<br>
+                    <br>
+                    Instead, we treat subnormal numbers as a special case.<br>
+                    So, when we would have (0 - bias) exponent instead we do (1 - bias) as exponent and have the implicit bit be 0.<br>
+                    This is how to interpret subnormal numbers: <span class="math">(-1)<sup>S</sup>&sdot;(0.F)&sdot;2<sup>1 - bias</sup></span><br>
+                </p>
+                <ul>
+                    <li>Smallest number (&gt;0) is <span class="math">1.00&sdot;2<sup>-2</sup></span></li>
+                    <li>Gap between number is <span class="math">0.0001&sdot;2<sup>-2</sup></span> (worse)</li>
+                    <li>Smallest subnormal number is <span class="math">0.0001&sdot;2<sup>-2</sup> = 0.01525</span> (much better!)</li>
+                </ul>
+                <p>
+                    So using subnormal numbers we get a larger gap between our numbers (largest/smallest possible exponent).<br>
+                    But we get closer to 0 before losing all our precision.<br>
+                    Tradeoff is the gaps between representable numbers and how close to 0 we can get.<br>
+                </p>
+                <br>
+                <b>Gradual Underflow</b>
+                <p>
+                    Don't forget floating point is not exact, it is only an approximation of real numbers.<br>
+                    For example, 0.1 cannot be represented in IEEE 754.<br>
+                    Therefore, don't use <span class="code">==</span> on floats.<br>
+                    Also, associativity and distribution or arithmetic operators are not guaranteed!<br>
+                </p>
+                <br>
+                <b>Assembly Language</b>
+                <p>
+                    Recall: Computers only understand set instructions which are group of 1's and 0's (machine code).<br>
+                    <br>
+                    A assembly language is one step up from that - basis operations that operate on registers.<br>
+                    It has a direct translation to machine code.<br>
+                    <br>
+                    A program called an assembler translates assembly to machine code.<br>
+                    <br>
+                    In order to understand how computers/programs work, we are going to study <span class="key">MIPS</span> on assembly language.<br>
+                    Because assembly languages operate on registers (actual hardware of CPU), assembly languages are tied to hardware.<br>
+                    Hence why we use an emulator.<br>
+                    <br>
+                    <span class="key">MIPS</span> is an acronym for Microprocessor without Interlocked Pipeline Stages; we will talk about the meaning later (someday in the future).<br>
+                    <br>
+                    In MUPS, we have 32 registers (which are labeled with $0 to $31).<br>
+                    Each register is 32 bits.<br>
+                    Why we only have 32 registers, not more? More means slower - we need more bits to store a register.<br>
+                    For now, we only need 5 bits to store 32 registers.<br>
+                    <br>
+                    <span class="key">Special Registers</span><br>
+                    PC (program counter) holds the memory address of the next instruction; each instruction done increments it by 4, or it can be manipulator.<br>
+                    <br>
+                    <span class="key">Register 0 ($0)</span>: It is the constant 0; otherwise, the machine will die!<br>
+                    <br>
+                    <span class="key">Conventions</span><br>
+                    $31 is the return address and $30, $29 and $28 are special.<br>
+                </p>
+            </div>
+            <hr>
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
