@@ -1928,7 +1928,7 @@
                 <p>
                     Don't forget floating point is not exact, it is only an approximation of real numbers.<br>
                     For example, 0.1 cannot be represented in IEEE 754.<br>
-                    Therefore, don't use <span class="code">==</span> on floats.<br>
+                    Therefore, don't use <code>==</code> on floats.<br>
                     Also, associativity and distribution or arithmetic operators are not guaranteed!<br>
                 </p>
                 <br>
@@ -1962,6 +1962,432 @@
                 </p>
             </div>
             <hr>
+            
+            <div class="lec5">
+                <h3>Lecture 5 - 18/01/2018</h3>
+                <hr>
+                <b>Announcements:</b>
+                <p>
+                    Assignment 1 is due tomorrow!<br>
+                    Midterm is 3 weeks after today!<br>
+                </p>
+                <br>
+                <b>Midterm</b>
+                <p>
+                    In midterm, you can have one 8.5" &times; 11" (inches) single-sided "cheat sheet".<br>
+                    You can write anything on the cheat sheet, but only single sided.<br>
+                    It will be taken away during midterm if it is NOT single sided.<br>
+                    It will be collected with your midterm paper.<br>
+                    One more thing, this cheat sheet must be hand-written.<br>
+                </p>
+                <br>
+                <b>MIPS (Microprocessor without Interlocked Pipeline Stages)</b>
+                <p>
+                    MIPS does NOT stand for "Millions for Instructions Per Second".<br>
+                    <br>
+                    It is an assembly language; it has direct translation to machine code.<br>
+                    We use assembler to translate from assembly language to machine code.<br>
+                    An assembly language operates directly on the registers in the CPU, so it is tied to the hardware.<br>
+                    <br>
+                    In MIPS, we have 32 registers labeled with 0 to 31.<br>
+                </p>
+                <br>
+                <b>Special Registers</b>
+                <ul>
+                    <li>Program Counter (PC) holds the address of the next instruction to execute</li>
+                    <li>Register 0 ($0): constant 0</li>
+                    <li>Conversion $31: return address</li>
+                    <li>Conversions $28, $29, $30: global, stack, frame, etc.; our emulator uses $30 for stack pointer (SP)</li>
+                </ul>
+                <br>
+                <b>Instructions</b>
+                <p>
+                    They have up to 3 operands, often registers.<br>
+                    When using 3 operands, the first one is the destination, the other two are sources.<br>
+                    <br>
+                    Example: Addition<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>add $8, $9, $10<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This instruction add the values stored in register 9 and register 10 together, then store the result in register 8.<br>
+                    <br>
+                    The general form for these R-type instruction (register instruction) is:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>add $d, $s, $t<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <code>$d</code> is the destination register (Rd); <code>$s</code> and <code>$t</code> are the source registers, which are denoted as Rs and Rt.<br>
+                    The instruction <span class="add">add</span> means <span class="math"> d = s + t</span> and the values stored in those registers.<br>
+                    <br>
+                    Example: Subtraction<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>sub $d, $s, $t &nbsp;; d = s - t<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Note that <code>;</code> is how to start a comment in MIPS.<br>
+                    <br>
+                    What if we want a value that does not already exist in one of our registers? We can use <span class="key">immediate</span> instruction.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $t, $s, i<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In here, <code>$t</code> is the destination register and <code>$s</code> is the source register.<br>
+                    How about <code>i</code>? This is an I-type instruction, which means we are using a literal value.<br>
+                    <br>
+                    Example: Add the value in register 8 to the literal value 42, then store the result in register 15.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $15, $8, 42<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Example: Add 10 and 24, subtract 3, store result in $3.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $1, $0, 10 &nbsp;; initialize $1 to 10<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>addi $2, $0, 24 &nbsp;; initialize $2 to 24<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>add &nbsp;$3, $1, $2 &nbsp;; add the value 10 and 24 in register 1 and register 2, store result in register 3<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>addi $3, $3, -3 &nbsp;; subtract 3 from value in register 3, store result in register 3<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>jr &nbsp;&nbsp;$31 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; need this to terminate program in emulator<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    <span class="key">Multiplication</span><br>
+                    Note that we have 32 bits in our registers.<br>
+                    If we multiply 2 32-bit numbers together, the result could have as many as 64 bits.<br>
+                    Hence, we have the special registers "hi" and "lo" to store the result.<br>
+                </p>
+                <table>
+                    <tr>
+                        <td>&nbsp;hi</td>
+                        <td colspan="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;lo</td>
+                        <td colspan="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="tableBox">&nbsp;32 bits&nbsp;</td>
+                        <td colspan="6" class="tableBox">&nbsp;32 bits&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>mul $s, $t &nbsp;; $s&times;$t, place result in hi and lo<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <span class="key">Special instructions to copy from hi and lo:</span><br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>mfhi $d &nbsp;; "move from hi" and copy the value in $hi to $d<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>mflo $d &nbsp;; "move from lo" and copy the value in $lo to $d<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <span class="key">Division</span>: <code>div $s, $t  ; $s / $t</code><br>
+                    It is always integer division; it place the quotient in $lo and the remainder in $hi.<br>
+                    <br>
+                    Example: Calculate average of 3 numbers stored in $3, $4 and $5, then store result in #3.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; calculate ($3 + $4 + $5) / $3<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>add &nbsp;$3, $4, $3<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>add &nbsp;$3, $5, $3<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>addi $6, $0, 3<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>div &nbsp;$3, $6<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>mflo $3<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>jr &nbsp;&nbsp;$31<br>
+                    </code></pre>
+                </span>
+                <p>
+                    So now we can do basic math. Yeah!<br>
+                    But what if we cant to do basic math lots of times?<br>
+                    In Python, we have constructs like while loop, for loop, recursion for repetition.<br>
+                    If we want repetition in MIPS, we need to manipulate $PC.<br>
+                    <br>
+                    <span class="key">Conditional Branches</span><br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>beq $s, $t, label &nbsp;; branch if equal<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>; if $s == $t, then goto label<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>; overwrite $pc with the address of the instruction at label<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>bne $s, $t, label &nbsp;; branch if not equal<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>; if $s != $t, then goto label<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Example: Write a loop with MIPS.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $1, $0, 10<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>loopStart:<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;addi $1, $1, -1<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;; loop body<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;bne $1, $0, loopStart<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;jr $31<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Example: Calculate <span class="math">0 + 1 + ... + n</span> where <span class="math">n</span> is stored in $8, and store result in $7.<br>
+                    In Python...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>;; assume n already initialized<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>iter = n<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>y = 0<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>while (iter != 0):<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;y = y + iter<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;iter = iter - 1<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In MIPS: assume n = $8, y = $7 and iter = $9<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>add $9, $8, $0 &nbsp;&nbsp;; iter = n<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>add $7, $0, $0 &nbsp;&nbsp;; y = 0<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>beq $9, $0, end &nbsp;; skip if iter == 0<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>loopStart:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;add &nbsp;$7, $7, $8  ; y = y + iter<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;addi $9, $9, -1  ; iter = iter - 1<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;bne &nbsp;$9, $0, loopStart<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>end:<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;jr $31<br>
+                    </code></pre>
+                </span>
+                <p>
+                    There are more instructions. For example...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>slt $d, $s, $t<br>
+                    </code></pre>
+                </span>
+                <p>
+                    This instruction is "set less than".<br>
+                    If $s &lt; $t, then $d := 1, otherwise $d := 0.<br>
+                    It is just a comparison operator with the result (T/F) store in $d.<br>
+                    So we can combine this with branches to simulate conditional.<br>
+                    <br>
+                    Example: if x &lt; y, set x := x - y<br>
+                    In Python, we do...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>if (x &lt; y):<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;x = x - y<br>
+                    </code></pre>
+                </span>
+                <p>
+                    In MIPS, let x = $7, y = $8<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>slt $6, $7, $8<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>beq $6, $0, done<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>sub $7, $7, $8<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>done:<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;jr $31<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Memory</b>
+                <p>
+                    Memory region forms in MIPS is 2<sup>32</sup> bytes (4GiB).<br>
+                    Note that <span class="math">2<sup>30</sup> = 1</span> gibibyte and so <span class="math">2<sup>30</sup> &times; 4 = 4</span> gibibytes <span class="math">= 2<sup>32</sup></span>.<br>
+                    Memory is essentially a huge array, addresses are the indices or rather always are small bits of memory, indices are address offsets.<br>
+                    <br>
+                    In this course, we use word-aligned memory access/addressing (4-byte).<br>
+                    MIPS word = 43 bits<br>
+                </p>
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="4" class="textTable">32 bits</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td class="tableBox">0</td>
+                        <td class="tableBox">1</td>
+                        <td class="tableBox">2</td>
+                        <td class="tableBox">3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="tableBox">0</td>
+                        <td class="tableBox">1</td>
+                        <td class="tableBox">2</td>
+                        <td class="tableBox">3</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td class="tableBox">0</td>
+                        <td class="tableBox">1</td>
+                        <td class="tableBox">2</td>
+                        <td class="tableBox">3</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td class="tableBox">...</td>
+                        <td class="tableBox">...</td>
+                        <td class="tableBox">...</td>
+                        <td class="tableBox">...</td>
+                    </tr>
+                </table>
+                <p>
+                    Accessing Memory: <code>lw $t, i($s)  ; load word</code><br>
+                    It treats the value in register $s as an address for memory, add i to $s.<br>
+                    Then the result as an address, copy the word (32 bits) stored at that address into register t.<br>
+                    Note that i = $s <span class="key">MUST</span> be word aligned (divisible by 4).<br>
+                    <br>
+                    Example: <code>lw  $2, 4($1)</code>
+                </p>
+                <table>
+                    <tr>
+                        <th colspan="2" class="textTable">&nbsp;Register:&nbsp;</th>
+                        <td></td>
+                        <th colspan="2" class="textTable">&nbsp;Memory:&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;0&nbsp;</td>
+                        <td class="tableBox">&nbsp;0x00000000&nbsp;</td>
+                        <td class="textTable">&nbsp;</td>
+                        <td class="textTable">&nbsp;address&nbsp;</td>
+                        <td class="textTable">&nbsp;value&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;1&nbsp;</td>
+                        <td class="tableBox">&nbsp;0x00000010&nbsp;</td>
+                        <td class="textTable">&nbsp;</td>
+                        <td class="textTable">&nbsp;0&nbsp;</td>
+                        <td class="textTable">&nbsp;12&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;2&nbsp;</td>
+                        <td class="tableBox">&nbsp;0x00000015&nbsp;</td>
+                        <td class="textTable">&nbsp;</td>
+                        <td class="textTable">&nbsp;4&nbsp;</td>
+                        <td class="textTable">&nbsp;42&nbsp;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td colspan="3">&nbsp;</td>
+                        <td>&nbsp;8&nbsp;</td>
+                        <td>&nbsp;9&nbsp;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td colspan="3">&nbsp;</td>
+                        <td>&nbsp;12&nbsp;</td>
+                        <td>&nbsp;17&nbsp;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td colspan="3">&nbsp;</td>
+                        <td>&nbsp;16&nbsp;</td>
+                        <td>&nbsp;125&nbsp;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td colspan="3">&nbsp;</td>
+                        <td>&nbsp;20&nbsp;</td>
+                        <td>&nbsp;21&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                        <td>&nbsp;24&nbsp;</td>
+                        <td>&nbsp;100&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                        <td>&nbsp;...&nbsp;</td>
+                        <td>&nbsp;...&nbsp;</td>
+                    </tr>
+                </table>
+                <p>
+                    Since the value in $1 is 16, then <span class="math">4($1) = 4 + $1 = 4 + 16 = 20</span>.<br>
+                    So we are looking for the address 20.<br>
+                    Therefore, we need to store the value 21 into $2.<br>
+                    <br>
+                    Make sure you can differentiate between:<br>
+                </p>
+                <ul>
+                    <li>register <u>number</u> (0 - 31)</li>
+                    <li>
+                        register value (e.g. $20)
+                        <ul>
+                            <li>contents of the registers</li>
+                        </ul>
+                    </li>
+                    <li>memory address</li>
+                    <li>memory contents (value)</li>
+                </ul>
+                <p>
+                    Example: Read values stored in memory addresses 64 and 72, add them together, store the result in address 80.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi &nbsp;$1, $0, 64<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>lw &nbsp;&nbsp;&nbsp;$2, 0($1)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>lw &nbsp;&nbsp;&nbsp;$3, 8($1)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>add &nbsp;&nbsp;$4, $2, $3<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>sw &nbsp;&nbsp;&nbsp;$4, 16($1) ; save word<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>jr &nbsp;&nbsp;$31<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Remember a program is just a bunch of machine code instructions (1's and 0's).<br>
+                    <br>
+                    What do our 32-bit instructions look like in memory?<br>
+                    R-type Instructions (e.g. add)<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>op</td>
+                        <td>Rs</td>
+                        <td>Rt</td>
+                        <td>Rd</td>
+                        <td>shamt</td>
+                        <td>func</td>
+                    </tr>
+                    <tr>
+                        <td>6 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>6 bits</td>
+                    </tr>
+                </table>
+                <br>
+                <ul>
+                    <li>op: op-code</li>
+                    <li>Rs, Rt, Td: the source registers and the destination register</li>
+                    <li>shamt: shift amount (only used for shift instructions)</li>
+                    <li>func: works together with op-code to denote arithmetic instructions</li>
+                </ul>
+            </div>
+            
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>

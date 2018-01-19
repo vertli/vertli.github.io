@@ -3,6 +3,10 @@ code {
     font-family: 'Hack','Open Sans', sans-serif;
 }
 
+.cline {
+    color: rgba(27,31,35,0.3); 
+}
+
 table {
     background-color: whitesmoke;
 }
@@ -73,6 +77,12 @@ ol, ul {
     border-left-style: solid;
     border-left-width: thin;
     border-left-color: black;
+}
+
+.tableBox {
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
 }
 
 img {
