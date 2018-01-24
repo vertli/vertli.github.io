@@ -1755,7 +1755,7 @@
                     <br>
                     Single Precision Float: 32 bits<br>
                 </p>
-                <img src="./image/cs230/lec4/4_1.png" >
+                <img src="./image/cs230/lec4/4_1.png">
                 <p>
                     We have 1 bit for the sign bit (green box), 8 bits for the exponent (red boxes) and the rest of the boxes (purple) are for the fractional.<br>
                     Note that integer and base are not represented since base is 2 and integer is always 1 except for special subnormal numbers.<br>
@@ -2386,7 +2386,288 @@
                     <li>func: works together with op-code to denote arithmetic instructions</li>
                 </ul>
             </div>
+            <hr>
             
+            <div class="lec6">
+                <h3>Lecture 6 - 23/01/2018</h3>
+                <hr>
+                <p>
+                    Recall: A program is just a series of instructions, and instructions are just specific groups of 1's and 0's.<br>
+                    <br>
+                    So, what does a program look like in memory?<br>
+                    In MIPS, we have 32-bit instructions with 3 different instruction types: R-type, I-type and J-type.<br>
+                </p>
+                <b>R-type Instruction</b>
+                <table class="textTable">
+                    <tr>
+                        <td>Op-code</td>
+                        <td>R<sub>s</sub></td>
+                        <td>R<sub>t</sub></td>
+                        <td>R<sub>d</sub></td>
+                        <td>shamt</td>
+                        <td>func</td>
+                    </tr>
+                    <tr>
+                        <td>6 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>6 bits</td>
+                    </tr>
+                </table>
+                <p>
+                    R<sub>s</sub>, R<sub>t</sub>: the source registers.<br>
+                    R<sub>d</sub>: the destination register.<br>
+                    shamt: shift amount, only used for shift operations.<br>
+                    func: 6 bits used in tandem with the op-code to denote arithmetic instructions.<br>
+                </p>
+                <b>I-type Instruction</b>
+                <table class="textTable">
+                    <tr>
+                        <td>Op-code</td>
+                        <td>R<sub>s</sub></td>
+                        <td>R<sub>t</sub></td>
+                        <td>Immediate Value</td>
+                    </tr>
+                    <tr>
+                        <td>6 bits</td>
+                        <td>5 bits</td>
+                        <td>5 bits</td>
+                        <td>16 bits</td>
+                    </tr>
+                </table>
+                <br>
+                <b>J-type Instruction</b>
+                <table class="textTable">
+                    <tr>
+                        <td>Op-code</td>
+                        <td>Address</td>
+                    </tr>
+                    <tr>
+                        <td>6 bits</td>
+                        <td>26 bits</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Example: What is the binary represent of <code>add $3, $1, $2</code>?<br>
+                    According to our MIPS Reference Sheet, we know that...<br>
+                    The op-code binary is <code>000000</code>, the shamt binary is <code>00000</code> and the function binary is <code>100000</code>.<br>
+                    Now we need to find the binary of R<sub>s</sub>($1), R<sub>t</sub>($2) and R<sub>d</sub>($3).
+                    Notice that the binary of 3 is <code>00011</code>, the binary of 1 is <code>00001</code> and the binary of 2 is <code>00010</code>.<br>
+                    Therefore, the binary represent of <code>add $3, $1, $2</code> is <code>0000 0000 0010 0010 0001 1000 0010 0000</code>.<br>
+                    <br>
+                    Example: Given <code>0000 0000 1000 0101 0011 1000 0010 1010</code>, what is this instruction?<br>
+                    The first 6 bits <code>000000</code> is for op-code, so we know that this is a R-type instruction.<br>
+                    Then the last 6 bits <code>101010</code> is for function, and according to our MIPS Reference Sheet, the instruction is <code>slt</code>.<br>
+                    Then we get 4 from the R<sub>s</sub> bits <code>00100</code>, 5 from the R<sub>t</sub> bits <code>00101</code>, 7 from the R<sub>d</sub> bits <code>00111</code>, and the shamt bits are <code>00000</code>.<br>
+                    Therefore, <code>0000 0000 1000 0101 0011 1000 0010 1010</code> is <code>slt $7, $5, %7</code>.<br>
+                    <br>
+                    Note that the binary represent of shamt is always <code>00000</code> and we don't have to worry/carry about it in this course.<br>
+                    <br>
+                    Example: Find the binary represent of <code>addi $5, $0, 42</code>.<br>
+                    Answer: <code>0010 0000 0000 0101 0000 0000 0010 1010</code> where <code>001000</code> is the op-code, <code>00000</code> is the R<sub>s</sub>($0), <code>00101</code> is the R<sub>t</sub>($5) and <code>0000000000101010</code> is the immediate value 42.<br>
+                    <br>
+                    In this course, our programs start at memory address 0 - the "top" of memory.<br>
+                    That means our program counter(PC) starts at 0 and increments by 4 each instruction.<br>
+                </p>
+                <table>
+                    <tr>
+                        <td class="textTable">&nbsp;0&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 1&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;4&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 2&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;8&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 3&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;12&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 4&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;...&nbsp;</td>
+                        <td class="tableBox">&nbsp;...&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Generally, our data is stored after our program.<br>
+                    We could put it in the middle and jump over it, but why bother?<br>
+                    <br>
+                    Immediate instructions limit us to 16-bit immediate value, but we have 32 bits of space in our registers! It seems wasteful.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>lis&nbsp;&nbsp;&nbsp;$d&nbsp;&nbsp;&nbsp;&nbsp;; instruction is 1 word<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>.word 4254&nbsp;&nbsp;; value is 1 word<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    The r-type instruction <code>lis $d</code> means "load immediate and skip".<br>
+                    It treats the next 32 bits as data, load into <code>$d</code> and skip over that word.<br>
+                    In memory...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td class="textTable">&nbsp;0&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 1&nbsp;</td>
+                        <td class="textTable">&nbsp;<code>lis $d</code>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;4&nbsp;</td>
+                        <td class="tableBox">&nbsp;4254&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;8&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 3&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;12&nbsp;</td>
+                        <td class="tableBox">&nbsp;instruction 4&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="textTable">&nbsp;...&nbsp;</td>
+                        <td class="tableBox">&nbsp;...&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Alright, let's talk about I/O (Input/Output).<br>
+                    How can we do I/O in MIPS?<br>
+                    We have special memory address that lie outside of our "real" memory space, and treat those addresses as the location of our I/O devices.<br>
+                    <br>
+                    So for us, <code>0xFFFF0004</code> is our input device.<br>
+                    <code>lw</code> when used of this address receives 1 byte of our destination register.<br>
+                    <br>
+                    To write, we use <code>0xFFFF000C</code> as the address of our output device.<br>
+                    USe <code>sw $t, i($s)</code> on this address, to put the lowest order byte of your source register, interpreted as an ASCII character to the screen.<br>
+                    <br>
+                    If you had 65 in one register, and 65+2<sup>24</sup> in another , and printed both - they would both print 'A'.<br>
+                    <br>
+                    Example: Print out everything you read from input, only stop when you see the ASCII character for ESC.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lis&nbsp;&nbsp;$1<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0xffff0004&nbsp;&nbsp;&nbsp;&nbsp;; Input address<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lis&nbsp;&nbsp;$2<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0xffff000c&nbsp;&nbsp;&nbsp;&nbsp;; Output address<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi $3, $0, 0x1b&nbsp;&nbsp;&nbsp;; ESC char in ASCII<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>loop:<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lw&nbsp;&nbsp;&nbsp;$4, 0($1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Read char from input<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;sw&nbsp;&nbsp;&nbsp;$4, 0($2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Print that char back to output<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;bne&nbsp;&nbsp;$3, $4, loop&nbsp;&nbsp;&nbsp;; Repeat if ESC not entered<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;jr&nbsp;&nbsp;&nbsp;$31&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Finish<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Let's look at storing data in a program as a string and iterating that string: "Hello World"<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lis&nbsp;&nbsp;$1<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0xffff000c<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lis&nbsp;&nbsp;$2<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word helloWorld&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Replaced by assembler with address of label<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>loop:<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lw&nbsp;&nbsp;&nbsp;$3, 0($2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Load address character at address stored in $2<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;beq&nbsp;&nbsp;$3, $0, end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; If we read NUL char we are done.<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;sw&nbsp;&nbsp;&nbsp;$3, 0($1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Print that character.<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi $2, $2, 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Point $2 at next char in string.<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;beq&nbsp;&nbsp;$0, $0, loop<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>end:<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;jr&nbsp;&nbsp;&nbsp;$31<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>helloWorld:<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x48<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x65<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x6c<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x6c<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x6f<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x20<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x57<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x6f<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x72<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x6c<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x64<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x21<br>
+                        <span class="cline">26&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x0a<br>
+                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0x00<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Subroutines</b>
+                <ul>
+                    <li>equivalent to our high level functions</li>
+                    <li>
+                        makes assembly programming debugging easier
+                        <ul>
+                            <li>break up our problem into smaller subproblems</li>
+                        </ul>
+                    </li>
+                    <li>can be reusable, callable from anywhere!</li>
+                </ul>
+                <br>
+                <p>What do we need to make these work?<br></p>
+                <ul>
+                    <li>
+                        How to call/return execution from a subroutine?
+                        <ul>
+                            <li>call is easy; we're always jumping to the same location to run the subroutine (static)</li>
+                            <li>called subroutine must return execution to whatever part of the program called it (dynamic)</li>
+                        </ul>
+                    </li>
+                    <li>What about passing arguments and returning values?</li>
+                </ul>
+                <br>
+                <p>
+                    We already know how to call a subroutine (jump to its label).<br>
+                    So how to return execution?<br>
+                    If we want dynamic return, we need to know 2 things:<br>
+                </p>
+                <ul>
+                    <li>
+                        need to store the address of where to return execution, so the subroutine can jump back to that address
+                        <ul>
+                            <li>we must store <code>$pc + 4</code> for our return address</li>
+                        </ul>
+                    </li>
+                    <li>
+                        jump to the subroutine
+                        <ul>
+                            <li>luckily, we have an instruction to do just this : <code>jal srLabel ; jump and link</code></li>
+                            <li>store the next instruction to execute in <code>$31</code> (next instruction to execute after source register is done</li>
+                        </ul>
+                    </li>
+                    <li>
+                        then, jump to srLabel
+                        <ul>
+                            <li>but we have still got some problems</li>
+                            <li>we must be able to store register 31's value before overwriting it or we lose the previous return address</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Where to store? Another register? NO!
+                        <ul>
+                            <li>limited (only 32) and valuable</li>
+                            <li>registers are not dynamic - ops that use them are not</li>
+                            <li>subroutine might overwrite that register</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Solution: STACK!!!<br>
+                    Finally, we can talk about stack.<br>
+                    But what is stack? Stack is just a last in first out (LIFO) data structure.<br>
+                </p>
+            </div>
+            <hr>
             
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
