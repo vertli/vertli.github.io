@@ -2669,6 +2669,156 @@
             </div>
             <hr>
             
+            <div class="lec7">
+                <h3>Lecture 7 - 25/01/2018</h3>
+                <hr>
+                <p>
+                    Problem: We need to store the value of our return address register somewhere and so the value won't be overwritten.<br>
+                    Solution: Use the stack.<br>
+                    <br>
+                    <span class="key">Stack</span>
+                    It is a last-in first-out (LIFO) data structure.<br>
+                    <br>
+                    Example:
+                </p>
+                <img src="./image/cs230/lec7/7_1.PNG">
+                <br>
+                <p>
+                    Stacks are a very convenient way of representing/using our memory.<br>
+                    Convention: Stack grows up from the bottom of memory (as opposed to our program that went down from the top, address 0).<br>
+                    Normally, in MIPS register 29, is the stack pointer register.<br>
+                    In our emulator, the stack pointer is in register 30.<br>
+                    <br>
+                    How to use the stack via the stack pointer?<br>
+                    If we want to store something, we must "make room" on the stack by making the stack pointer further away from the bottom of memory however many bytes we need.<br>
+                    This is achieved by decrementing.<br>
+                    <br>
+                    How much must we decrement the stack pointer by to store one register?<br>
+                    We must decrement by 4.<br>
+                    <br>
+                    To store return address on stack, or any other register's value for that matter:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, -<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$31, 0($30)<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec7/7_2.PNG">
+                <p>
+                    The value of $31 at the time it was stored.<br>
+                    <br>
+                    To restore a value from the stack:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$31, 0($30)<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>addi $30, $30, 4<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Now we know how to dynamically return from a subroutine without losing our return address.<br>
+                    So generally to call a subroutine...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi&nbsp;&nbsp;$30, $30, -4<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;&nbsp;$31, 0($30)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>jal&nbsp;&nbsp;&nbsp;srLabel<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;&nbsp;$31, 0($30)<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>addi&nbsp;&nbsp;$30, $30, 4<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    How to pass values into subroutine as arguments and our as return values?<br>
+                    Specific Register Conventions:<br>
+                </p>
+                <ul>
+                    <li>$2 and $3: return values</li>
+                    <li>$4 to $7: arguments</li>
+                    <li>$8 to $15, $24, $25: unsaved temporaries</li>
+                    <li>$16 to $23: saved temporaries</li>
+                    <li>rest are special uses</li>
+                </ul>
+                <p>
+                    If you need more than 2 return values or 3 arguments - use the stack!<br>
+                    <br>
+                    <span class="key">Unsaved Temporaries</span> mean that these registers are <u>NOT</u> preserved when a subroutine is ran.<br>
+                    If you are going to call a subroutine and want to keep these values, you MUST save them (this is the caller's job to save), move them to saved temporaries, OR push to stack before call.<br>
+                    <br>
+                    <span class="key">Saved Temporaries</span> are guaranteed to be preserved across a call, so when a subroutine returns you are promised to still have those values.<br>
+                    It is the store register's job (or the caller's job) to save these registers.<br>
+                    <br>
+                    Let's put it all together in a case study.<br>
+                    We will use <code>a2q5.asm</code> from assignment 5 as our case study.<br>
+                    Assume we need to print an array of integers separated by commas.<br>
+                    We need to break up into 2 tasks...<br>
+                </p>
+                <ul>
+                    <li>
+                        printing an integer
+                        <ul>
+                            <li>need to print each digit in order</li>
+                            <li>print a minus sign in front if it its negative</li>
+                        </ul>
+                    </li>
+                    <li>iterating an array printing each element in it</li>
+                </ul>
+                <p>
+                    To figure out digits, repeatedly divide by 10 and look at remainder.<br>
+                    Example: <span class="math">2542 / 10 = 254 .. 2</span><br>
+                    <br>
+                    Do we print that digit as soon as we read it?<br>
+                    No, then we will print the string reversal of the number.<br>
+                    We need to store digits as we discover them, then print them in the reverse order of discovery!<br>
+                    Push them onto stack, them pop them off and print them.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>printInt:<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;; $4 is the int to print<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;add&nbsp;&nbsp;&nbsp;$11, $0, $0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; init $11 to 0<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;add&nbsp;&nbsp;&nbsp;$12, $4, $0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; init $12 to our number<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$13, $0, 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; init $13 to 10<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lis&nbsp;&nbsp;&nbsp;$10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; setup $10 as printer<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;.word 0xFFFF000C<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;slt&nbsp;&nbsp;&nbsp;$8,&nbsp;&nbsp;$4, $0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; check if negative number<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;beq&nbsp;&nbsp;&nbsp;$8,&nbsp;&nbsp;$0, pushLoop ; if positive just start loop<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;sub&nbsp;&nbsp;&nbsp;$12, $0, $4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; convert to positive<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$9,&nbsp;&nbsp;$0, 45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; load 45, ascii -<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;sw&nbsp;&nbsp;&nbsp;&nbsp;$9,&nbsp;&nbsp;0($10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; print minus sign<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>pushLoop:<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;divu&nbsp;&nbsp;$12, $13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; divide current number by 10<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;mfhi&nbsp;&nbsp;$14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; copy remainder into $14<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;mflo&nbsp;&nbsp;$12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; update current number to quotient<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$11, $11, 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; increment number characters<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$30, $30, -4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; make space on stack<br>
+                        <span class="cline">19&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;sw&nbsp;&nbsp;&nbsp;&nbsp;$14, 0($30)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; store digit on stack<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;bne&nbsp;&nbsp;&nbsp;$12, $0, pushLoop ; keep going it not at 0<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>popLoop:<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;lw&nbsp;&nbsp;&nbsp;&nbsp;$9,&nbsp;&nbsp;0($30)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; load current digit to print<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$9,&nbsp;&nbsp;$9,&nbsp;&nbsp;48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; set to ASCII value for that digit<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;sw&nbsp;&nbsp;&nbsp;&nbsp;$9,&nbsp;&nbsp;0($10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; print the digit<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$30, $30, 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; pop off stack <br>
+                        <span class="cline">26&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;addi&nbsp;&nbsp;$11, $11, -1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; decrement count of digits<br>
+                        <span class="cline">27&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;bne&nbsp;&nbsp;&nbsp;$11, $0,&nbsp;&nbsp;popLoop ; keep going if not done<br>
+                        <span class="cline">28&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;jr&nbsp;&nbsp;&nbsp;&nbsp;$31<br>
+                    </code></pre>
+                </span>
+                <p>
+                    So now we can print integers!<br>
+                    Let's use that to print our array!<br>
+                    <br>
+                    There's lots of ways these subroutines could be improved.<br>
+                    For example, in <code>pLoop</code> from <code>a2q5.asm</code>, we don't actually need to back up all those registers.<br>
+                    We could just initialize before use - not at start.<br>
+                    Example: the comma character and the space character<br>
+                    We don't need to use that many resisters - we can reuse registers in ways that make sense.<br>
+                </p>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
