@@ -1801,7 +1801,7 @@
                     For addition, just set the exponents the same and add the significands (regular addition).<br>
                     <br>
                     Example: Add 1.25 and 2.125 in our simplified format.<br>
-                    Note that <span class="math">1.25 = 1.01&dots;2<sup>0</sup></span>.<br>
+                    Note that <span class="math">1.25 = 1.01&sdot;2<sup>0</sup></span>.<br>
                     So we know that <span class="math">F = 0100</span>, <span class="math">E = 0 + 3 = 3 = 011</span> and <span class="math">S = 0</span>.<br>
                     Thus, <span class="math">1.25<sub>10</sub> = 0 011 0100<sub>2</sub></span>.<br>
                     Also, <span class="math">2.125 = 1.0001&dots;2<sup>1</sup></span>.<br>
@@ -2816,6 +2816,326 @@
                     Example: the comma character and the space character<br>
                     We don't need to use that many resisters - we can reuse registers in ways that make sense.<br>
                 </p>
+            </div>
+            <hr>
+            
+            <div class="lec8">
+                <h3>Lecture 8 - 30/01/2018</h3>
+                <hr>
+                <p>
+                    Assignment 2 due this Friday (2<sup>nd</sup> February, 2018) at 5pm!<br>
+                    Midterm is next week, Thursday 8<sup>th</sup> February, 2018!<br>
+                </p>
+                <br>
+                <b>Questions from last lecture?</b>
+                <p>
+                    The stack - controlled (used) through a pointer (a memory address) to the current location of the stack.<br>
+                    Our stack pointer is in <code>$30</code>.<br>
+                    Stack starts at the BOTTOM (END) of our memory and "grows up" towards the start.<br>
+                </p>
+                <br>
+                <img src="./image/cs230/lec8/8_1.png">
+                <p>
+                    Note that we can't store store anything in the end of memory - that would go outside the memory space!<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, -4<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_2.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; assume $1 is 0xFB<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw $1, 0($30)<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_3.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, -8<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_4.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; assume $2 is 0x81, $3 is 0xABC<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw $3, 0($30)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>sw $3, 4($30)<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_5.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $1, $0, 0xABD ; now $1 is 0xABD<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>addi $2, $0, 0xEE&nbsp; ; now $2 is 0xEE<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>addi $3, $0, 0xCC&nbsp; ; now $3 is 0xCC<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>lw&nbsp;&nbsp; $2, 0($30) &nbsp;&nbsp;&nbsp;; $2 is back to 0x81<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_6.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $40, $30, 4<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_7.png">
+                <p>
+                    Note that even the value <code>0x81</code> is popped, it still exists in memory until we overwrite something into the memory.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>lw &nbsp;$3, &nbsp;0($30)<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>lw &nbsp;$1, &nbsp;4($30)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>; now $3 is 0xABC and $1 is 0xFB<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>add $30, $30, 8<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_8.png">
+                <br><br>
+                <b>Why bother learning assembly?</b>
+                <ul>
+                    <li>Gain and understanding of what a program actually is (sequence of instructions)</li>
+                    <li>Understand how our high level languages can be interpreted by a computer</li>
+                    <li>Gain an appreciation for which high level constructs are slower (take more instructions)</li>
+                    <li>
+                        Understand high level concepts better
+                        <ul>
+                            <li>example: How is data actually represented?</li>
+                        </ul>
+                    </li>
+                </ul>	
+                <br>
+                <b>Machine Internals and Performance</b>
+                <p>
+                    Computers are constructed with a <u>CLOCK</u> that determines the speed at which instructions are done.<br>
+                    Basically, it is a metronome for the computer - it keeps time for operations and achieves by sending an alternating signal of high/low voltage (in time).<br>
+                </p>
+                <img src="./image/cs230/lec8/8_9.png">
+                <p>
+                    Electric signal propagates pretty fast.<br>
+                </p>
+                <ul>
+                    <li>Not infinitely fast, physical constraints</li>
+                    <li>Gate delay, time it takes for a signal to enter a gate and result exit the gate (at a steady state)</li>
+                </ul>
+
+                <p>
+                    Clock Period (Cycle Time)<br>: Duration in seconds of a cycle<br>
+                    Clock Frequency (Clock Rate)<br>: Cycles per second (1/cycle time) in Hz (hertz)<br>
+                    <br>
+                    Example: clock period of <span class="math">250ps = 250(10<sup>12</sup>) s/cycle</span>.<br>
+                    Note: ps is picoseconds, a.k.a <span class="math">10<sup>-12</sup></span>.<br>
+                    What is our clock rate?<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;1 / 250(10<sup>-12</sup>)</td>
+                        <td>&nbsp;= 10<sup>12</sup> / 250</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 4(10<sup>9</sup>)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 4 GHz</td>
+                    </tr>
+                </table>
+                <p>
+                    Our cycles are used to "time" operations.<br>
+                </p>
+                <br>
+                <b>Single Cycle Execution</b>
+                <ul>
+                    <li>Execute one instruction per cycle</li>
+                    <li>
+                        Fixed cycle time equal to the time it takes for our slowest instruction
+                        <ul>
+                            <li>add v.s. multiply</li>
+                            <li>memory instructions (slow)</li>
+                        </ul>
+                    </li>
+                    <li>If we want our common cases to be fast - then single cycle execution is not a great choice.</li>
+                </ul>
+                <br>
+                <b>Measuring Performance</b>
+                <p>Time</p>
+                <ul>
+                    <li>
+                        Time to execute program (short as possible is goal!) - different ways of measuring this:
+                        <ul>
+                            <li>
+                                Elapsed Time (total response time): total real time it takes the program to execute from an outside perspective<br>
+                                It includes wait times (waiting for a resource like memory or hard dist), waiting for input, idle time.<br>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        CPU Time is how much time your program actually spends processing instructions and quite often CPU time is less than Elapsed time.<br> 
+                    </li>
+                </ul>
+                <ul>
+                    <li>Latency - time to execute one instruction</li>
+                    <li>Throughput - number of instructions executed per unit of time</li>
+                </ul>
+                <b>Metrics of a Program/Hardware Combo</b>
+                <ul>
+                    <li>Cycles Per Instruction (PCI) - determined by the CPU hardware, probable for different instructions to take different number of cycles</li>
+                    <li>Instruction count (IC) - the number of instructions in a program. Affected by primarily the program itself, the instruction set itself (e.g. <code>slt</code> and <code>bne</code> v.s. "branch is less than", the compiler (how much does it optimizes)</li>
+                </ul>
+                <p>
+                    Number of clock cycles for a program: <span class="math">IC&sdot;CPI</span><br>
+                    <span class="math">CPU Time = IC&sdot;CPI&sdot;cycleTime</span><br>
+                    <br>
+                    Example:<br>
+                    Computer A has a cycle time 250ps and CPI is 2.0.<br>
+                    Computer B has a cycle time 500ps and CPI is 1.2.<br>
+                    Both of them use same instruction set, running the same program. Which is faster?<br>
+                    <br>
+                    <span class="math">CPU TIME<sub>A</sub> = IC&sdot;20&sdot;250ps = IC&sdot;500ps</span><br>
+                    <span class="math">CPU TIME<sub>B</sub> = IC&sdot;1.2&sdot;500ps = IC&sdot;600ps</span><br>
+                    <br>
+                    So computer A is faster - how much faster?<br>
+                    <span class="math">CPU TIME<sub>B</sub> / CPU TIME<sub>A</sub> = 600ps / 500ps = 1.2</span><br><br>
+                    Computer A is 1.2 times faster than computer B.<br>
+                    <br>
+                    Example: 3 different types of instructions, each takes a different number of cycles, 2 programs X and Y.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>I-type</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                    </tr>
+                    <tr>
+                        <td>CPI</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>IC<sub>x</sub></td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>IC<sub>Y</sub></td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <p>
+                    What is the weighted average CPI for programs X and Y?<br>
+                /p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;CPI<sub>X</sub></td>
+                        <td>&nbsp;= numbers of cycles / numbers of instructions</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1&sdot;1+2&sdot;1+4&sdot;3 / (1+1+3)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 15 / 5</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 3.0</td>
+                    </tr>
+                </table>
+                <br>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;CPI<sub>Y</sub></td>
+                        <td>&nbsp;= numbers of cycles / numbers of instructions</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1&sdot;2+2&sdot;4+4&sdot;1 / (2+5+1)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 14 / 7</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 2.0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So program Y is using less cycles per instruction than X since it's using quicker instructions.<br>
+                    <br>
+                    In summary, we can calculate CPU time required for some program as<br>
+                    <span class="math">CPUtime = IC&sdot;CPI&sdot;cycleTime = IC&sdot;CPI&sdot;(1/clockRate)</span><br>
+                    We can try to reduce CPU time by...<br>
+                </p>
+                <ul>
+                    <li>using less instructions</li>
+                    <li>Reduce our CPI time</li>
+                    <li>Faster clock (over-clocking)</li>
+                </ul>
+                <p>
+                    Tradeoffs to all of these - we have other ways to increase performance.<br>
+                </p>
+                <br>
+                <b>Pipelining</b>
+                <p>
+                    The idea behind pipelining is to use all your resources as much possible, not have resources sit waiting.<br>
+                    A completely unpipelined task will do each task in sequence waiting for completion before starting the next.<br>
+                    A pipelined version will do multiple tasks in parallel, so long as there is no reason why it cannot. (The resource required is not available, or its not ready)<br>
+                    <br>
+                    The best real life analogy for pipelining is laundry. We have 4 tasks (wash, dry, fold, put away) and 3 resources (washer, dryer, manual labour).<br>
+                </p>
+                <p>
+                    In the pipelined version, we don't wait for one load to be completely finished (folded and put away) before starting the next load.<br>
+                    So our pipelined version is faster, by making sure our resources in use as often as possible.<br>
+                    In reality, it's not this clean , e.g. we have might have hang dry (take labour resource), can't fold and put away at same time.<br>
+                    <br>
+                    Under pipelining, can I wash one article of clothing faster than without pipelining?<br>
+                    Pipelining does not affect LATENCY; it only affects throughput.<br>
+                    <br>
+                    In MIPS, we break up our execution into 5 steps, each step takes one cycle, and all 5 can be done in the same cycle (they use different resources). So in theory, we could have 5 instructions currently executing in any one cycle (under ideal conditions).<br>
+                    <br>
+                    Let's talk about our stages of execution.<br>
+                </p>
+                <ol>
+                    <li>
+                        Instruction Fetch (IF)
+                        <ul>
+                            <li>load instruction from memory into the CPU</li>
+                            <li>load from the address in <code>$PC</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Instruction Decode (ID)
+                        <ul>
+                            <li>Determine which instruction this is and what registers it is using (decode the bits of the instruction)</li>
+                            <li>Read the values from the corresponding registers into the ALU (takes place in the second half of cycle)</li>
+                            <li>Also determine if it is a branch instruction</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Execute (EX)
+                        <ul>
+                            <li>Do the operation indicated by the instruction (done in the ALU)</li>
+                            <li>For <code>add</code> do addition</li>
+                            <li>For <code>mult</code> do multiplication</li>
+                            <li>For  <code>lw/sw</code> compute the address  <code>$s + i</code>, etc.</li>
+                        </ul>
+                    </li>
+                </ol>
             </div>
             <hr>
             
