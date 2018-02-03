@@ -2863,7 +2863,7 @@
                 <span>
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>; assume $2 is 0x81, $3 is 0xABC<br>
-                        <span class="cline">02&nbsp;&nbsp;</span>sw $3, 0($30)<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw $2, 0($30)<br>
                         <span class="cline">03&nbsp;&nbsp;</span>sw $3, 4($30)<br>
                     </code></pre>
                 </span>
@@ -2881,7 +2881,7 @@
                 <br><br>
                 <span>
                     <pre><code>
-                        <span class="cline">01&nbsp;&nbsp;</span>addi $40, $30, 4<br>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, 4<br>
                     </code></pre>
                 </span>
                 <img src="./image/cs230/lec8/8_7.png">
@@ -3139,6 +3139,522 @@
             </div>
             <hr>
             
+            <div class="lec9">
+                <h3>Lecture 9 - 01/02/2018</h3>
+                <hr>
+                <b>Five Stages of MIPS Execution Pipeline</b>
+                <ol>
+                    <li>
+                        Instruction Fetch (IF)
+                        <ul>
+                            <li>load the instruction from memory into CPU</li>
+                            <li>load from address in <code>$PC</code> (program counter register)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Instruction Decode (ID)
+                        <ul>
+                            <li>determine which instruction this is (decoding the bits of the instruction</li>
+                            <li>read the values from the corresponding registers into the ALU (takes place in the second half of the cycle)</li>
+                            <li>also, determine if a branch is taken (extra hardware)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Execute (EX)
+                        <ul>
+                            <li>do the operation the instruction says to do (done in ALU)</li>
+                            <li>for <code>add</code>, do the addition</li>
+                            <li>for <code>mult</code>, do the multiplication</li>
+                            <li>for <code>sw/lw</code>, compute the address <code>$w + i</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Memory Address (MEM)
+                        <ul>
+                            <li>accessing memory</li>
+                            <li>only used for <code>lw/sw</code> instructions</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Write Back (WB)
+                        <ul>
+                            <li>write results into the destination register</li>
+                            <li>this happens in the first half of the clock cycle</li>
+                        </ul>
+                    </li>
+                </ol>
+                <br>
+                <p>
+                    Let's look at what stages of execution.<br>
+                    Some of our different instructions use and how long they take.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>instruction Class</th>
+                        <th>IF</th>
+                        <th>ID</th>
+                        <th>EX</th>
+                        <th>MEM</th>
+                        <th>WB</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td><code>lw</code> (load word)</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>800ps</td>
+                    </tr>
+                    <tr>
+                        <td><code>sw</code> (store word)</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps</td>
+                        <td>200ps</td>
+                        <td>-</td>
+                        <td>700ps</td>
+                    </tr>
+                    <tr>
+                        <td>R-Format</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps</td>
+                        <td>-</td>
+                        <td>100ps</td>
+                        <td>600ps</td>
+                    </tr>
+                    <tr>
+                        <td>Branch</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps (jump to)</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>500ps</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    What is the actual speedup gained from pipelining?<br>
+                    Under perfect conditions with all stages balanced (take the same time), then the speedup is equal to the number of stages.<br>
+                    <br>
+                    Of course, if the stages aren't balanced (or we don't have perfect conditions), then the speedup is less.<br>
+                    <br>
+                    In our example, we experienced a speedup <span class="math"> 800ps / 200ps = 4 times as fast</span><br>
+                    <br>
+                    Example:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>cycle</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td>(1)</td>
+                        <td><code>addi $8, $0, 2</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td><del>MEM</del></td>
+                        <td>WB</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>(2)</td>
+                        <td><code>sub $9, $9, $10</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td><del>MEM</del></td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that MEM does nothing in our example, so we just crossed it out.<br>
+                    <br>
+                    Question: What if in our example above, instruction (2) was instead <code>sub $9, $8, $10</code>?<br>
+                </p>
+                <br>
+                <b>Pipeline Hazards</b>
+                <p>
+                    <span class="key">Hazard</span>: a condition which blocks the flow of the pipeline<br>
+                </p>
+                <ul>
+                    <li>instructions are (often) not completely independent</li>
+                    <li>
+                        we have 3 types of Hazards:
+                        <ol>
+                            <li>Data Hazard</li>
+                            <li>Control Hazard</li>
+                            <li>Structural Hazard</li>
+                        </ol>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    A <span class="key">data hazard</span> is when data that is required for the execution of an instruction is not available yet. This is the problem we have above if we changed the subtract instruction to read from <code>$8</code>.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th colspan="2">5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td class="borderRightDashed">WB</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>add $11, $8, $2</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="borderRightDashed"></td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MUM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that the two <code>-</code>s in row 3 are stalls (do nothing).<br>
+                    <br>
+                    This is an example of data hazard; it is called a "Read After Write" or "RAW" hazard.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td><code>slt $8, $12, $13</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    This is not a pipeline hazard.<br>
+                    This iteration is called "write after write".<br>
+                    <br>
+                    In our first example, we had to delay the ID phase of instruction 2 until instruction had written back its result into <code>$8</code>; the data was not ready yet. We could do IF for instruction 2 in cycle 5, because ID reads the values from the source registers in the second half of the cycle, while WB is written them in the first half.<br>
+                </p>
+                <br>
+                <p>
+                    <span class="key">Control Hazards</span> are when we don't know which instruction we should execute next. Most simple example is a branch we don't know if the branch is taken or not, so we don't know if we should execute the immediately following instruction or the one the branch would jump us to.<br>
+                    To mitigate this problem extra hardware is put in so that result of the branch condition can be determined in the ID phase (mentioned above).<br>
+                    <br>
+                    It is still not perfect though.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>beq $11, $12, label</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>sub $14, $0, $13</code></td>
+                        <td></td>
+                        <td></td>
+                        <td>-</td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that we don't know if the <code>sub</code> instruction is the real next instruction, so we put <code>-</code> in row 4 column 3.<br>
+                    <br>
+                    Also, for row 4 column 4 <code>IF</code>, ID of branch determined branch condition was false, we can now execute this instruction.<br>
+                    <br>
+                    Only had to stall for 1 cycle sine extra hardware allowed branch conditions to be evaluated in ID phase.<br>
+                    <br>
+                    It is still had to stall though...<br>
+                </p>
+                <br>
+                <p>
+                    A <span class="key">structural hazard</span> occurs when two or more instructions need the same resource at the same time.<br>
+                    <br>
+                    Most common example is when the IF stage of one instruction needs to access the same memory as the MEM stage of another instruction. Or, not even the same memory but asking the memory resource for memory values maybe it can only process one request at a time.<br>
+                    <br>
+                    For now, we'll assume memory is fast enough to do both in one cycle.<br>
+                </p>
+                <br>
+                <b>Solving Hazards</b>
+                <p>
+                    <span class="class">Forwarding</span>: send data from an intermediate pipeline stage directly to another stage. (Instead of writing result back to register and waiting to read from that register send data directly to next pipeline.)<br>
+                    <br>
+                    Example with data forwarding:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>add $11, <u>$8</u>, $12</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td><u>ID</u></td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    The data was forwarded directly from the EX phase of instruction 1 to the EX phase of instruction 2 in the next cycle.<br>
+                    <br>
+                    This takes extra hardware. Thus, with forwarding:<br>
+                </p>
+                <ul>
+                    <li>saved two stall cycles in this example</li>
+                    <li>implementing forwarding increase hardware complexity</li>
+                    <li>we can't always avoid stalls by forwarding; if the value isn't ready in time we can't forward backward in the time</li>
+                </ul>
+                <br>
+                <p>
+                    Example: Loading into a register immediately before usage load-use data hazard.
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                    </tr>
+                    <tr>
+                        <td><code>lw $16, 0($8)</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX (0 + $8)</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>sub $9, $16, $10</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>- (stall)</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that the <code>MEM</code> in row 2 is linked to the <code>EX</code> in row 3. (That is, MEM &harr; EX.)<br>
+                    <br>
+                    Load from memory the value is not ready until it is actually loaded from MEM at the end of MEM stage. Hence we still must stall. We did save one stall cycle from the case without forwarding.<br>
+                </p>
+                <br>
+                <b>Branch Prediction</b>
+                <p>
+                    It tries to predict to the best of our abilities the outcome of the branch condition. Then, we're only wasted time if the guess was wrong.<br>
+                </p>
+                <ul>
+                    <li>
+                        (1) Simple Branch Prediction
+                        <ul>
+                            <li>predict the branch is never taken</li>
+                            <li>fetch the instruction (no delay)</li>
+                            <li>stall only when we guessed wrong</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Example: Wrong Prediction<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                    </tr>
+                    <tr>
+                        <td><code>beq $0, $0, label</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>next instruction</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td colspan="3">---(flush)---&rarr;</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    If we guessed correctly, no stall!<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td><code>bne $0, $0, label</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>next instruction</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <ul>
+                    <li>
+                        (2) Static Branch Prediction
+                        <ul>
+                            <li>base predictions on typical branch behaviour</li>
+                        </ul>
+                    </li>
+                </ul>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>loop:<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;bne $4, $0, loop<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Backwards branches are often used for loops; loops are often ran more than once, so always guess the branch will be taken for backwards branches.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>&nbsp;&nbsp;beq $3, $0, else<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>else:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Forward branches are often used for if statement and if-else statement. Guess that forward loops are not taken, if you have an <code>if, elif, elif, ..., else</code> chain, all but one are NOT taken!<br>
+                </p>
+            </div>
+            <hr>
+                     
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>

@@ -18,6 +18,12 @@
     background-color: #ddd;
 }
 
+.textTable tr .borderRightDashed {
+    border-right-color: black;
+    border-right-style: dashed;
+    border-right-width: 2px;
+}
+
 .math {
     font-family: 'Crimson Text', serif;
     font-style: italic;
