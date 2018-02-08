@@ -1632,7 +1632,7 @@
                 </p>
                 <table>
                     <tr class="textTable">
-                        <td>Big Endian: </td>
+                        <td>&nbsp;Big Endian: </td>
                         <td>0xDE</td>
                         <td>0xAD</td>
                         <td>0xBE</td>
@@ -1647,10 +1647,10 @@
                     </tr>
                     <tr class="textTable">
                         <td></td>
-                        <td>0x0010</td>
-                        <td>0x0020</td>
-                        <td>0x0030</td>
-                        <td>0x0040</td>
+                        <td>0x0010&nbsp;</td>
+                        <td>0x0020&nbsp;</td>
+                        <td>0x0030&nbsp;</td>
+                        <td>0x0040&nbsp;</td>
                     </tr>
                     <tr>
                         <td></td>
@@ -1660,7 +1660,7 @@
                         <td>&darr;</td>
                     </tr>
                     <tr class="textTable">
-                        <td>Little Endian: </td>
+                        <td>&nbsp;Little Endian: </td>
                         <td>0xEF</td>
                         <td>0xBE</td>
                         <td>0xAD</td>
@@ -1719,19 +1719,19 @@
                     For example, <span class="math">0.002&times;10<sup>4</sup></span> and <span class="math">56.123&times;10<sup>8</sup></span> are not normalized.<br>
                     <br>
                     How do we write a real number in binary with scientific notation?<br>
-                    For example, <span class="math">1.01<sub>2</sub>&sdot;2<sup>1</sup></span> where the <span class="key">.</span> after 1 and before 0 is called a binary point (radix point generally).<br>
+                    For example, <span class="math">1.01<sub>2</sub> &sdot; 2<sup>1</sup></span> where the <span class="key">.</span> after 1 and before 0 is called a binary point (radix point generally).<br>
                     So what does <span class="math">1.01<sub>2</sub></span> mean?<br>
                     Before we answer this answer, we need to ask ourselves, what does <span class="math">1.01<sub>10</sub></span> mean?<br>
-                    <span class="math">1.01<sub>10</sub> = 1&sdot;10<sup>0</sup> + 0&sdot;10<sup>-1</sup> + 1&sdot;10<sup>-2</sup></span><br>
+                    <span class="math">1.01<sub>10</sub> = 1 &sdot; 10<sup>0</sup> + 0 &sdot; 10<sup>-1</sup> + 1 &sdot; 10<sup>-2</sup></span><br>
                     With the same idea, we have...<br>
-                    <span class="math">1.01<sub>2</sub> = 1&sdot;2<sup>0</sup> + 0&sdot;2<sup>-1</sup> + 1&sdot;2<sup>-2</sup> = 1 +  1/4 = 1.25<sub>10</sub></span><br>
+                    <span class="math">1.01<sub>2</sub> = 1 &sdot; 2<sup>0</sup> + 0 &sdot; 2<sup>-1</sup> + 1 &sdot; 2<sup>-2</sup> = 1 +  1/4 = 1.25<sub>10</sub></span><br>
                     <br>
                     How do we represent real numbers in our machines?<br>
                     We use what's called <span class="math">floating point number</span>.<br>
                     The reason it is called this name because it allow the binary point to "float" by changing the exponent.<br>
                     The opposite would be fixed point.<br>
                     <br>
-                    Floating point is of the form <span class="math">I.F&sdot;B<sup>E</sup></span> where...<br>
+                    Floating point is of the form <span class="math">I.F &sdot; B<sup>E</sup></span> where...<br>
                 </p>
                 <ul>
                     <li><span class="math">I</span>: Integer</li>
@@ -1760,11 +1760,11 @@
                     We have 1 bit for the sign bit (green box), 8 bits for the exponent (red boxes) and the rest of the boxes (purple) are for the fractional.<br>
                     Note that integer and base are not represented since base is 2 and integer is always 1 except for special subnormal numbers.<br>
                     <br>
-                    Also, we need to know that the exponent bits do not represent exactly the exponent <span class="math">e</span> in <span class="math">I.F&sdot;B<sup>e</sup></span>. Why?<br>
+                    Also, we need to know that the exponent bits do not represent exactly the exponent <span class="math">e</span> in <span class="math">I.F &sdot; B<sup>e</sup></span>. Why?<br>
                     The standard uses a bias value, so the exponent bits represent an unsigned number and you subtract the bias from it.<br>
                     Bias for single precision is 127.<br>
                     <br>
-                    So to calculate the value <span class="math">(-1)<sup>5</sup>&sdot;(I.F)&dot;2<sup>e-127</sup></span>, let's try calculating the decimal value of single precision float:<br>
+                    So to calculate the value <span class="math">(-1)<sup>5</sup> &sdot; (I.F)&dot;2<sup>e-127</sup></span>, let's try calculating the decimal value of single precision float:<br>
                     <span class="math">0 10000100 11000000000000000000000</span><br>
                     The first <span class="math">0</span> is the sign bit.<br>
                     Then, <span class="math">10000100</span> are the exponent bits: <span class="math">10000100 = 128 + 4 - bias = 132 - 127 = 5</span><br>
@@ -1774,12 +1774,12 @@
                 </p>
                 <table class="math">
                     <tr>
-                        <td>(-1)<sup>S</sup>&sdot;(I.F)&sdot;2<sup>e-127</sup></td>
-                        <td>&nbsp;= (-1)<sup>0</sup>&sdot;(1.11)&sdot;2<sup>5</sup></td>
+                        <td>(-1)<sup>S</sup> &sdot; (I.F) &sdot; 2<sup>e-127</sup></td>
+                        <td>&nbsp;= (-1)<sup>0</sup> &sdot; (1.11) &sdot; 2<sup>5</sup></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>&nbsp;= 1&sdot;(1.75)&sdot;2<sup>5</sup></td>
+                        <td>&nbsp;= 1 &sdot; (1.75) &sdot; 2<sup>5</sup></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -1793,7 +1793,7 @@
                     Example: Express 4.5 in our simplified format.<br>
                     Note that <span class="math">4<sub>10</sub> = 100<sub>2</sub></span> and <span class="math">0.5<sub>10</sub> = 1/2<sub>10</sub> = 2<sup>-1</sup> = 0.1<sub>2</sub></span>.<br>
                     Thus, <span class="math">4.5<sub>10</sub> = 100.1<sub>2</sub></span>.<br>
-                    Then we have <span class="math">100.1&sdot;2<sup>0</sup></span> and normalize it, we get <span class="math">1.001&sdot;2<sup>2</sup></span>.<br>
+                    Then we have <span class="math">100.1 &sdot; 2<sup>0</sup></span> and normalize it, we get <span class="math">1.001 &sdot; 2<sup>2</sup></span>.<br>
                     Next, the exponent is <span class="math">e + bias = 2 + 3 = 5 = 101<sub>2</sub></span> and sign bit is 0 since 4.5 is a positive number.<br>
                     So, we get 0 101 0010 as our final answer, where 0 is the sign bit, 101 is the exponent bits and 0010 is the fractional bits.<br>
                     <br>
@@ -1801,47 +1801,47 @@
                     For addition, just set the exponents the same and add the significands (regular addition).<br>
                     <br>
                     Example: Add 1.25 and 2.125 in our simplified format.<br>
-                    Note that <span class="math">1.25 = 1.01&sdot;2<sup>0</sup></span>.<br>
+                    Note that <span class="math">1.25 = 1.01 &sdot; 2<sup>0</sup></span>.<br>
                     So we know that <span class="math">F = 0100</span>, <span class="math">E = 0 + 3 = 3 = 011</span> and <span class="math">S = 0</span>.<br>
                     Thus, <span class="math">1.25<sub>10</sub> = 0 011 0100<sub>2</sub></span>.<br>
-                    Also, <span class="math">2.125 = 1.0001&dots;2<sup>1</sup></span>.<br>
+                    Also, <span class="math">2.125 = 1.0001 &sdot; 2<sup>1</sup></span>.<br>
                     So we know that <span class="math">F = 0001</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
                     Thus, <span class="math">2.125<sub>10</sub> = 0 100 0001<sub>2</sub></span>.<br>
                 </p>
                 <table class="math">
                     <tr>
                         <td>1.25 + 2.125</td>
-                        <td>&nbsp;= 1.01&sdot;2<sub>0</sub> + 1.0001&sdot;2<sub>1</sub></td>
+                        <td>&nbsp;= 1.01 &sdot; 2<sup>0</sup> + 1.0001 &sdot; 2<sup>1</sup></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>&nbsp;= 1.01&sdot;2<sub>0</sub> + 10.001&sdot;2<sub>0</sub></td>
+                        <td>&nbsp;= 1.01 &sdot; 2<sup>0</sup> + 10.001 &sdot; 2<sup>0</sup></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>&nbsp;= 11.011&sdot;2<sup>0</sup></td>
+                        <td>&nbsp;= 11.011 &sdot; 2<sup>0</sup></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>&nbsp;= 1.1011&sdot;2<sup>1</sup></td>
+                        <td>&nbsp;= 1.1011 &sdot; 2<sup>1</sup></td>
                     </tr>
                 </table>
                 <p>
-                    From the normalized scientific notation <span class="math">1.1011&sdot;2<sup>1</sup></span>, we know that <span class="math">F = 1011</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
+                    From the normalized scientific notation <span class="math">1.1011 &sdot; 2<sup>1</sup></span>, we know that <span class="math">F = 1011</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
                     So our final answer is 0 100 1011.<br>
                     <br>
                     For multiplication, we add exponents, then multiply significands.<br>
-                    For example, <span class="math">1.5&sdot;2.25</span>.<br>
+                    For example, <span class="math">1.5 &sdot; 2.25</span>.<br>
                     Note that <span class="math">1.5 = 0 011 100</span> and <span class="math">2.25 = 0 100 0010</span>.<br>
                     Step 1 - Add Exponents:<br>
                     <span class="math">(E<sub>1.5</sub> - bias) + (E<sub>2.25</sub> - bias) = (011 - 011) + (100 - 011) = 1 = e</span><br>
-                    So <span class="math">E = 1 = 3 = 4 = 100<sub>2</sub></span>.<br>
+                    So <span class="math">E = 1 + 3 = 4 = 100<sub>2</sub></span>.<br>
                     Step 2 - Multiply Significands:<br>
                 </p>
                 <table class="math">
                     <tr>
                         <td>1.1000 &times; 1.0010</td>
-                        <td>&nbsp;= (1&sdot;1.001) + (0.1&sdot;1.001)</td>
+                        <td>&nbsp;= (1 &sdot; 1.001) + (0.1 &sdot; 1.001)</td>
                     </tr>
                     <tr>
                         <td></td>
@@ -1854,14 +1854,14 @@
                 </table>
                 <p>
                     So our new fractional bits are 1011, new exponent bits are 100 and new sign bit is 0.<br>
-                    Therefore, <span class="math">1.5&sdot;2.25 = 0 100 1011</span>.<br>
+                    Therefore, <span class="math">1.5 &sdot; 2.25 = 0 100 1011</span>.<br>
                     <br>
                     However, examining our simplified format we can see the problems that arise in floating point numbers.<br>
                     The first problem is there exists infinite numbers between 0 and 1, but we cannot represent infinite numbers within 32 bits!<br>
                     For example, consider 15.25 in our 8-bit system:<br>
-                    <span class="math">15.25 = 1111.01&sdot;2<sup>0</sup> = 1.11101&sdot;2<sup>3</sup></span><br>
+                    <span class="math">15.25 = 1111.01 &sdot; 2<sup>0</sup> = 1.11101 &sdot; 2<sup>3</sup></span><br>
                     We need 5 bits for the fraction but we only have 4 bits to use!<br>
-                    So we get an overflow, which is <span class="math">1.1110&sdot;2<sup>3</sup></span>.<br>
+                    So we get an overflow, which is <span class="math">1.1110 &sdot; 2<sup>3</sup></span>.<br>
                     If we round up, we get 15.5; if we round down, we get 15.0.<br>
                     <br>
                     So overflow can happen; they get represented as <span class="key">inf</span> (also occurs for divide by 0).<br>
@@ -1902,21 +1902,21 @@
                 </table>
                 <p>
                     What is <span class="key">NaN</span>? It means "not a number".<br>
-                    For example, &radic;-1, &infin;/&infin; and &infin;&sdot;0.<br>
+                    For example, &radic;-1, &infin;/&infin; and &infin; &sdot; 0.<br>
                     <br>
                     If we didn't create a special case for subnormal numbers, then the gap between 0 and our smallest representable number would be:<br>
-                    <span class="math">0 000 0000<sub>2</sub> = 1.0000&sdot;2<sup>-3</sup> = 0.1255</span><br>
+                    <span class="math">0 000 0000<sub>2</sub> = 1.0000 &sdot; 2<sup>-3</sup> = 0.1255</span><br>
                     That is a large gap! Often we talk about small numbers.<br>
-                    This also means our gap between adjacent numbers is <span class="math">0.0001&sdot;2<sup>-3</sup> = 2<sup>-7</sup></span>.<br>
+                    This also means our gap between adjacent numbers is <span class="math">0.0001 &sdot; 2<sup>-3</sup> = 2<sup>-7</sup></span>.<br>
                     <br>
                     Instead, we treat subnormal numbers as a special case.<br>
                     So, when we would have (0 - bias) exponent instead we do (1 - bias) as exponent and have the implicit bit be 0.<br>
-                    This is how to interpret subnormal numbers: <span class="math">(-1)<sup>S</sup>&sdot;(0.F)&sdot;2<sup>1 - bias</sup></span><br>
+                    This is how to interpret subnormal numbers: <span class="math">(-1)<sup>S</sup> &sdot; (0.F) &sdot; 2<sup>1 - bias</sup></span><br>
                 </p>
                 <ul>
-                    <li>Smallest number (&gt;0) is <span class="math">1.00&sdot;2<sup>-2</sup></span></li>
-                    <li>Gap between number is <span class="math">0.0001&sdot;2<sup>-2</sup></span> (worse)</li>
-                    <li>Smallest subnormal number is <span class="math">0.0001&sdot;2<sup>-2</sup> = 0.01525</span> (much better!)</li>
+                    <li>Smallest number (&gt;0) is <span class="math">1.00 &sdot; 2<sup>-2</sup></span></li>
+                    <li>Gap between number is <span class="math">0.0001 &sdot; 2<sup>-2</sup></span> (worse)</li>
+                    <li>Smallest subnormal number is <span class="math">0.0001 &sdot; 2<sup>-2</sup> = 0.01525</span> (much better!)</li>
                 </ul>
                 <p>
                     So using subnormal numbers we get a larger gap between our numbers (largest/smallest possible exponent).<br>
@@ -2990,16 +2990,16 @@
                     <li>Instruction count (IC) - the number of instructions in a program. Affected by primarily the program itself, the instruction set itself (e.g. <code>slt</code> and <code>bne</code> v.s. "branch is less than", the compiler (how much does it optimizes)</li>
                 </ul>
                 <p>
-                    Number of clock cycles for a program: <span class="math">IC&sdot;CPI</span><br>
-                    <span class="math">CPU Time = IC&sdot;CPI&sdot;cycleTime</span><br>
+                    Number of clock cycles for a program: <span class="math">IC &sdot; CPI</span><br>
+                    <span class="math">CPU Time = IC &sdot; CPI &sdot; cycleTime</span><br>
                     <br>
                     Example:<br>
                     Computer A has a cycle time 250ps and CPI is 2.0.<br>
                     Computer B has a cycle time 500ps and CPI is 1.2.<br>
                     Both of them use same instruction set, running the same program. Which is faster?<br>
                     <br>
-                    <span class="math">CPU TIME<sub>A</sub> = IC&sdot;20&sdot;250ps = IC&sdot;500ps</span><br>
-                    <span class="math">CPU TIME<sub>B</sub> = IC&sdot;1.2&sdot;500ps = IC&sdot;600ps</span><br>
+                    <span class="math">CPU TIME<sub>A</sub> = IC &sdot; 20 &sdot; 250ps = IC &sdot; 500ps</span><br>
+                    <span class="math">CPU TIME<sub>B</sub> = IC &sdot; 1.2 &sdot; 500ps = IC &sdot; 600ps</span><br>
                     <br>
                     So computer A is faster - how much faster?<br>
                     <span class="math">CPU TIME<sub>B</sub> / CPU TIME<sub>A</sub> = 600ps / 500ps = 1.2</span><br><br>
@@ -3043,7 +3043,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>&nbsp;= 1&sdot;1+2&sdot;1+4&sdot;3 / (1+1+3)</td>
+                        <td>&nbsp;= 1 &sdot; 1+2 &sdot; 1+4 &sdot; 3 / (1+1+3)</td>
                     </tr>
                     <tr>
                         <td></td>
@@ -3062,7 +3062,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>&nbsp;= 1&sdot;2+2&sdot;4+4&sdot;1 / (2+5+1)</td>
+                        <td>&nbsp;= 1 &sdot; 2+2 &sdot; 4+4 &sdot; 1 / (2+5+1)</td>
                     </tr>
                     <tr>
                         <td></td>
@@ -3078,7 +3078,7 @@
                     So program Y is using less cycles per instruction than X since it's using quicker instructions.<br>
                     <br>
                     In summary, we can calculate CPU time required for some program as<br>
-                    <span class="math">CPUtime = IC&sdot;CPI&sdot;cycleTime = IC&sdot;CPI&sdot;(1/clockRate)</span><br>
+                    <span class="math">CPUtime = IC &sdot; CPI &sdot; cycleTime = IC &sdot; CPI &sdot; (1/clockRate)</span><br>
                     We can try to reduce CPU time by...<br>
                 </p>
                 <ul>
@@ -3654,7 +3654,30 @@
                 </p>
             </div>
             <hr>
-                     
+               
+            <div class="lec10">
+
+                <h3>Lecture 10 - 06/02/2018</h3>
+                <hr>
+
+                <b>Midterm Review</b>
+                <p>
+                    Office hours for this week: Today 16:30 - 18:30 <br>
+                    Normally Thursdays 16:30 - 18:30<br>
+                    <br>
+                    Midterm Thursday 16:30 - 18:20, check seating online (link posted on Piazza if you don't know where to look)<br>
+                    <br>
+                    You don't have to know the proof of Boolean algebra. (But you do need to put those Boolean algebra on you cheat sheet!)<br>
+                    <br>
+                    You won't ask for doing math with 32-bit fixed width. (32-bit is too big and you only have 2 hours to write your midterm!)<br>
+                    <br>
+                    You won't ask for drawing a terrible circuit diagram.<br>
+                    <br>
+                    By the way, we still have class before the midterm on this Thursday!<br>
+                </p>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
