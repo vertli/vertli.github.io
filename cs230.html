@@ -3678,6 +3678,343 @@
             </div>
             <hr>
             
+            <div class="lec11">
+                <h3>Lecture 11 - 08/02/2018</h3>
+                <hr>
+                <p>
+                    Midterm today at 16:30 YaY! :)<br>
+                    <br>
+                    Last time, we talked about pipeline hazards - data, structural and control.<br>
+                    We talked about data forwarding for data hazards too.<br>
+                    We also talked about branch prediction for control.<br>
+                </p>
+                <ul>
+                    <li>Simple brunch prediction: always assume brunch is NOT taken</li>
+                    <li>Static branch prediction: Guess based on typical behaviours</li>
+                </ul>
+                <br>
+                <b>Dynamic Branch Prediction</b>
+                <p>
+                    This is what we left last time.<br>
+                    Dynamic branch prediction predicts the behaviour of branches based on recent history. It keeps track of recent branches. Also, it increases complexity and has fewer stalls, but at the cost of increased complexity, it needs more power consumption.<br>
+                </p>
+                <br>
+                <b>Software Solution</b>
+                <p>
+                    It is aware of potential hazards and structure code in such a way to avoid them as often as possible.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>sub $2,&nbsp; $4, $5<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>slt $12, $2, $5<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>slt $18, $6, $2<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>add $13, $7, $4<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Assume pipeline with NO forwarding...<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><code>sub $2, $4, $5</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $12, $2, $5</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td>slt $18, $6, $2</td>
+                        <td colspan="4"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>add $13, $7, $4</code></td>
+                        <td colspan="5"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>Assume with forwarding...</p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td><code>sub $2, $4, $5</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $12, $2, $5</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $18, $6, $2</code></td>
+                        <td colspan="2"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>add $13, $7, $4</code></td>
+                        <td colspan="3"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    What if our hardware doesn't support data forwarding? Can we do better than 2 stalls?<br>
+                    We can rearrange code (so long as it doesn't change the actual program) to avoid hazards.<br>
+                    The only requirement for this block of code is that the <code>slt</code>'s happen after the <code>sub</code>.<br>
+                </p>
+                <br>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                    </tr>
+                    <tr>
+                        <td><code>sub $2, $4, $5</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>add $13, $7, $4</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $12, $2, $5</code></td>
+                        <td colspan="2"></td>
+                        <td>IF</td>
+                        <td>-</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $13, $7, $4</code></td>
+                        <td colspan="4"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <p>So we save 1 stall by restructuring our code.<br></p>
+                <br>
+                <b>Memory</b>
+                <p>
+                    Until now, we've only talked about 2 types of memory: registers, and "main memory" where program and data are stored.<br>
+                </p>
+                <ul>
+                    <li>
+                        Metrics of Memory, characteristics
+                        <ul>
+                            <li>Cost per unit of storage
+                                <ul>
+                                    <li>How expensive is our memory? This affects how much of this memory we can feasibly have.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Performance
+                                <ul>
+                                    <li>How long does our memory access take (latency)?</li>
+                                    <li>How many memory accesses can we do per unit of time (throughput)?</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Is the memory volatile?
+                                <ul>
+                                    <li>Volatile memory does NOT hold its data through a power cycle (power being turned off and on).</li>
+                                    <li>Non-volatile memory <u>does</u> hold its data without a power source.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Registers are part of our CPU
+                            </li>
+                            <li>
+                                Main Memory
+                                <ul>
+                                    <li>where our program/data are stored so it can be executed</li>
+                                    <li>
+                                        Often (always) implemented with RAM (Random Access Memory)
+                                        <ul>
+                                            RAM takes the same amount of time to read away location of the memory
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                DRAM (dynamic RAM) and SRAM (static RAM)
+                            </li>
+                            <li>
+                                Main memory is comprised of DRAM
+                            </li>
+                            <li>
+                                Registers: expensive, fastest, volatile
+                            </li>
+                            <li>
+                                SRAM (cache): expensive (cheaper than register), fastest next to registers, volatile
+                            </li>
+                            <li>
+                                DRAM (main memory): cheaper, slower (almost factor of 100 slower than SRAM), volatile
+                            </li>
+                            <li>
+                                Hard drives: very cheap, very slow, non-volatile
+                                <ul>
+                                    <li>spinning disk drive (very very slow)</li>
+                                    <li>solid state drive (fast than spinning disk drive, but still slower than DRAM)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    It is very common for programmers to say "memory is cheap".<br>
+                    What they should really say is "slower memory is cheap"<br>
+                    <br>
+                    In a perfect world, we have unlimited fast memory.<br>
+                    <br>
+                    In reality, fast memory is expensive (i.e. registers, SRAM) and slower memory is cheaper (e.g. DRAM, Hard Disks).
+                    <br>
+                    Our programs need memory, our programs <u>ARE</u> memory.<br>
+                    So our goal is to satisfy as many memory requests as fast as possible.<br>
+                    <br>
+                    In order to achieve this goal, we implement a memory hierarchy.<br>
+                    It goes from very fast memory to slower memory, only grabbing from slower memory when we absolutely need to.<br>
+                    <br>
+                    Main memory is slow and registers are fast, but our registers are very limited (expensive per bit).<br>
+                    So we stick in between main memory and our registers - a fast "cache" of memory made typically of SRAM.<br>
+                    <br>
+                    There is a example memory hierarchy.<br>
+                </p>
+                <img src="./image/cs230/lec11/11_1.png">
+                <p> <br>
+                    The goal of our cache is to be larger than our register storage, and when our registers need to fetch memory values, they grab from the cache.<br>
+                    Caches more expensive then main memory, so our cache is much smaller than main memory.<br>
+                    <br>
+                    It can't hold all of program/data at once.<br>
+                    If we try to fetch something from our cache to load into our registers and it's not there, then our cache must go grab that data from main memory (very slow). When the cache doesn't have the data we want, it is called a "<span class="key">cache miss</span>".<br>
+                    When it is time to copy data from main memory into the cache - the <span class="key">miss penalty</span>.<br>
+                    <br>
+                    On the flip side, if the cache does have our data then we just load into our registers - this is called a <span class="key">cache hit</span>.<br>
+                    It costs to fetch from cache - <span class="key">hit time</span>.<br>
+                    hit time &lt;&lt;&lt;&lt; miss penalty<br>
+                    <br>
+                    So if we have a cache miss, we must go to main memory which is very slow. We therefore want to limit cache misses to as few as possible. How to do that?<br>
+                    <br>
+                    Observation: We can't load our entire program/data into our cache at once.<br>
+                    But in any given period of time, we only need a certain subset of program/data. This set of data is called our "working set".<br>
+                    <br>
+                    We work with the assumption that working set &lt;&lt; size (all data/memory).<br>
+                    We want for the data in our cache to be as close to the working set as possible.<br>
+                    <br>
+                    How to maximize probability that we save the data we need in our cache?<br>
+                    We follow the "principle of locality".<br>
+                    The idea is things that are close together are most likely to be used together. (close together things are related)<br>
+                    <br>
+                    What do we mean by close together?<br>
+                    Typically there is 2 types of locality we're interested in.<br>
+                </p>
+                <ul>
+                    <li>
+                        Temporal Locality (Time)
+                        <ul>
+                            <li>Data that was recently used is likely to be used again soon (e.g. loops)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Structural Locality (Space)
+                        <ul>
+                            <li>Data that is close (physically) to data that was recently used will likely be used soon.</li>
+                            <li>For examples, iterating over a array, our program itself - instructions are ordered one after another in memory.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    So, how do we apply these principles to loading our cache?<br>
+                    Don't throw data away as soon as it is used, hold on to more recently used data on overwrite older accessed memory first.<br>
+                    If you're asked to load the word at address X in main memory, don't just load that one word, load it into the cache AND several nearby words before and after it in memory.<br>
+                </p>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
