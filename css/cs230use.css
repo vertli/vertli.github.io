@@ -37,3 +37,27 @@ code {
     color: black;
     border: 1px;
 }
+
+.textTable tr .tableBox {
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+}
+
+.textTable tr .tableRightLine {
+    border-right-style: solid;
+    border-right-width: thin;
+    border-right-color: black;
+}
+
+.textTable tr .tableBottomLine {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: black;
+}
+
+.rectangle {
+    width:auto;
+    height:auto;
+    background: white;
+}

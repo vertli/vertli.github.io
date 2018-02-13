@@ -4015,6 +4015,587 @@
             </div>
             <hr>
             
+            <div class="lec12">
+                <h3>Lecture 12 - 13/02/2018</h3>
+                <hr>
+                <b>Recall</b>
+                <ul>
+                    <li>Cache Hit: the memory we want to access is already loaded into the cache</li>
+                    <li>Cache Miss: the memory we want to access is <u>NOT</u> already loaded into the cache</li>
+                </ul>
+                <p>
+                    What actually happens when a hit or miss occur? Firstly, we need a bit more vocabulary.<br>
+                </p>
+                <ul>
+                    <li>Memory Block: a grouping of 1 or more (2, 4, 8, 16, ...) words in memory</li>
+                    <li>Cache Slot: a spot in the cache that can accommodate one memory block</li>
+                </ul>
+                <p>
+                    On a cache bit, the value is read from the cache, and the processor continues execution.<br>
+                    <br>
+                    On a cache miss, we have to stall the CPU pipeline and fetch a memory block from the next level of hierarchy (main memory).<br>
+                    If the memory we miss was an INSTRUTION, then we must restart IF phase.<br>
+                    If the memory was data, then finish the data access.<br>
+                </p>
+                <br>
+                <b>Cache Structure</b>
+                <p>
+                    Note: This is in textbook section 5.2 of 4<sup>th</sup> edition.<br>
+                    <br>
+                    How does the CPU ask the cache for data?<br>
+                    The CPU tries to access memory at a specific address. That address corresponds to main memory.<br>
+                    Our cache is much smaller than main memory. This means an address in main memory is not a location in our cache.<br>
+                    Thus, we must structure our cache such that...<br>
+                    <br>
+                    We need to know where to look in our cache to correspond to a specific address of main memory (which slot stores which block).<br>
+                    <br>
+                    We must be able to check if that address <u>is</u> currently loaded into our cache. (is this a hit or a miss?)<br>
+                    <br>
+                    We have 3 methods for structuring our cache.<br>
+                </p>
+                <br>
+                <b>Direct-Mapped Cache</b>
+                <p>
+                    Each memory block is mapped to exactly ONE slot in our cache, so block X can only ever be in slot Y.<br>
+                    <br>
+                    Example:<br>
+                    Memory block is 2 words, 16 blocks in main memory, 4 slots in our cache.<br>
+                    Remember, each slot can hold 1 block.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Address (in bytes)</th>
+                        <th rowspan="2" class="tableBottomLine">Main Memory</th>
+                        <th>Word number (4 bytes/word)</th>
+                        <th rowspan="2">Block number</th>
+                    </tr>
+                    <tr>
+                        <th>(in bytes)</th>
+                        <th>(4 bytes/word)</th>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">0</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>0</td>
+                        <td rowspan="2">0</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">4</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>1</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">8</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>2</td>
+                        <td rowspan="2">1</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">12</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>3</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">16</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>4</td>
+                        <td rowspan="2">2</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">20</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">.<br>.<br>.</td>
+                        <td class="tableBox rectangle">.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                    </tr>
+                
+                    <tr>
+                        <td class="tableRightLine">48</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>12</td>
+                        <td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">52</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">.<br>.<br>.</td>
+                        <td class="tableBox rectangle">.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">120</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>30</td>
+                        <td rowspan="2">15</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">124</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>31</td>
+                    </tr>
+                </table>
+                <p>
+                    In a direct mapping, in order to find which cache slot corresponds to a given memory block, you simply work modulo the number of slots.<br>
+                    <span class="math">(Cache Slot Number) = (Memory Block Number) mod (Number of Cache Slots)</span><br>
+                    <br>
+                    Or equivalently we need 2 bits to represent our slots (<span class="math">4 = 2<sup>2</sup></span>).<br>
+                    <br>
+                    You need to determine the binary representation of your memory block.<br>
+                    Keep the lowest order number of cache slot bits, that is, your cache slot number.<br>
+                    <br>
+                    What if we had 8 cache slots?<br>
+                    <br>
+                    Example: Which cache slot does the memory block containing address 48 map to?<br>
+                    <br>
+                    What block is address 48 in? What word does address 48 correspond to?<br>
+                    4 bytes/word so <span class="math">48/4 = 12</span>.<br>
+                    <br>
+                    What block is word 12 in? 2 words/block so <span class="math">12/2 = block 6</span>.<br>
+                    <br>
+                    What cache slot does block 6 map to? <span class="math">6<sub>10</sub> = 110<sub>2</sub></span><br>
+                    Look at the last 2 bits, we know that cache slot <span class="math">10<sub>2</sub> = 2<sub>10</sub></span><br>
+                    Or we can do <span class="math">6 mod 4 = 2</span>, so cache slot is 2.<br>
+                    <br>
+                    Of course, this is not the only memory block that maps to slot 2, which other blocks map to slot 2? 2, 6 , 10 and 14.<br>
+                    <br><br>
+                    Let's figure out the cache slot of address 48 if we have 8 cache slots, memory block 6.<br>
+                    <span class="math">6 mod 8 = 6</span>, so cache slot is 6.<br>
+                    Or <span class="math">6 = 110<sub>2</sub></span>, so the cache slot is 6.<br>
+                    <br>
+                    If we have 8 cache slots, which other blocks map to slot 6? 6 and 14.<br>
+                    <br><br>
+                    So, we've achieved our first requirement for ordering our cache (which slot to look in for the value of a memory address).<br>
+                    <br>
+                    Have we solved our second requirement? No!<br>
+                    We only know which slot CAN store the given block for that address, not whether or not it DOES store that block, since it could be storing another block that maps to that slot.<br>
+                    <br>
+                    Since many memory blocks map to 1 cache slot in a direct-mapped cache, we also store TAGS that say which block this cache slot currently corresponds to.<br>
+                    <br>
+                    Since our cache slot tells us already the lowest order <span class="math">log<sub>2</sub></span> (number of cache slot) bits of our block number, our tag only needs to be the remaining higher order bits.<br>
+                    Or equivalently, <span class = "math">(Memory Block Number) / (Number of Cache Slots)</span>.<br>
+                    <br>
+                    So, is this enough to meet requirement 2? No.<br>
+                    It's because until we've loaded memory into our cache, all the data in the cache and the tags are garbage - not the actual data of our program.<br>
+                    <br>
+                    So to solve this problem, we give ourselves "valid bit" that says whether or not that slot is valid.<br>
+                    At	start, valid bits all set to 0.<br>
+                    When a memory access loads a block into a slot valid bit is set, tag is updated.<br>
+                    <br>
+                    Let's simulate a cache, with our parameters described before.<br>
+                    For the following memory accesses:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 22: Cache Miss<br>
+                    <span class="math">
+                        word/block = 22/2 = block 11<br>
+                        11<sub>10</sub> = 1011<sub>2</sub><br>
+                        slot: 11<sub>2</sub> = 3<sub>10</sub><br>
+                        Tag: 10<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 22 and 23 (block 11), bytes 88 - 95</td>
+                     </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 16: Cache Miss<br>
+                    <span class="math">
+                        word/block = 16 / 2 = block 8<br>
+                        8<sub>10</sub> = 1000<sub>2</sub><br>
+                        slot: 00<sub>2</sub> = 0<sub>10</sub><br>
+                        Tag: 10<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>	
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 22 and 23 (block 11), bytes 88 - 95</td>
+                     </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 3: Cache Miss<br>
+                    <span class="math">
+                        word/block = 3 / 2 = block 1<br>
+                        1<sub>10</sub> = 0001<sub>2</sub><br>
+                        slot: 01<sub>2</sub> = 1<sub>10</sub><br>
+                        Tag: 00<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>	
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>Y</td>
+                        <td>00</td>
+                        <td>words 2 and 3, block 1 (bytes 8 - 15)</td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 22 and 23 (block 11), bytes 88 - 95</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 14: Cache Miss<br>
+                    <span class="math">
+                        word/block = 14 / 2 = block 7<br>
+                        7<sub>10</sub> = 0111<sub>2</sub><br>
+                        slot: 11<sub>2</sub> = 3<sub>10</sub><br>
+                        Tag: 01<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>	
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>Y</td>
+                        <td>00</td>
+                        <td>words 2 and 3, block 1 (bytes 8 - 15)</td>
+                    </tr>
+                    <tr>
+                        <td>word 143</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>01</td>
+                        <td>words 14 and 15 (block 7)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 2: Cache Hit<br>
+                    <span class="math">
+                        word/block = 2 / 2 = block 1<br>
+                        1<sub>10</sub> = 0001<sub>2</sub><br>
+                        slot: 01<sub>2</sub> = 1<sub>10</sub><br>
+                        Tag: 00<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>
+
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>Y</td>
+                        <td>00</td>
+                        <td>words 2 and 3, block 1 (bytes 8 - 15)</td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>01</td>
+                        <td>words 14 and 15 (block 7)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    What another word that would result in a hit currently? 2, 3, 14, 15, 16 and 17.<br>
+                    Our block size is one parameter we could tune to try and limit cache misses.<br>
+                    <br>
+                    What do changes in our block size do?<br>
+                </p>
+                <ul>
+                    <li>
+                        Larger block size <u>may</u> reduce miss rate.
+                        <ul>
+                            <li>
+                                Larger block size means more memory is read into the cache when a miss occurs. Implements the idea of structural locality (spatial locality)
+                                <ul>
+                                    <li>For example, if we block size 4 words, and you ask for word 1 and it is a miss the words 0 - 3 get loaded into the cache.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        If our cache size is fixed and we increase the block size...
+                        <ul>
+                            <li>larger blocks mean fewer slots.
+                                <ul>
+                                    <li>For example we have 4 cache slots when block size was 2 words, if we make it 4 words we can only have 2 slots.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                fewer cache slots means we have to overwrite slots more often, which we means we're throwing out data we were just using more often.
+                                <ul>
+                                    <li>Reduced temporal locality.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Also, larger block size means a larger read occurs on miss; miss penalty is larger the larger read times may offset the fewer potential cache misses.
+                    </li>
+                </ul>
+                <p>
+                    So far we've only generally talked about memory accesses, really we're been discussing reads.<br>
+                    It's because what happens when you want tot write to a memory address in a caches system?<br>
+                    When we write, we must update main memory.<br>
+                    What policy should we follow for doing so?<br>
+                </p>
+                <br>
+                <b>3 different Policies</b>
+                <ul>
+                    <li>
+                        <span class="key">Write-through</span>
+                        <ul>
+                            <li>When a write occurs update both the cache and main memory.</li>
+                            <li>Every single write made accesses main memory, individual writes are very slow.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Write-back</span>
+                        <ul>
+                            <li>When a write is made, update the value stored in the corresponding cache slot.</li>
+                            <li>It could have multiple writes to same block.</li>
+                            <li>It keeps track of which cache slots have pending writes in them by setting a "dirty bit" for that slot.</li>
+                            <li>When a block would be evicted from its cache slot, if the dirty bit is set, write all values in that cache slot to their corresponding places in memory.
+                            <ul>
+                                <li>For example, we load block 11 in our example above, we then write to words 22 and 23, so their values are updated in the cache and dirty bit is set. Then, when we go to load block 7 which maps to the same cache slot, we write the data from cache slot 3 into main memory words 22 and 23 BEFORE over writing it in the cache with block 7.</li>
+                            </ul>
+                            <ul>
+                                <li>When you read in a new block, unset the dirty bit.</li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Write buffered</span>
+                        <ul>
+                            <li>It separates dedicated buffer for dirty blocks.</li>
+                            <li>Writes are made to the buffer, execution continuous.</li>
+                            <li>When necessary, the buffer flushes makes all writes to main memory.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    There are other ways to structure a cache other than direct-mapped.<br>
+                </p>
+                <br>
+                <b>Fully Associative Cache</b>
+                <p>
+                    It allows a given memory block to store to ANY cache slot.<br>
+                    Since a block can be stored in any slot, we have to search every slot in our cache.<br>
+                    This is slow... It defeats the purpose of a cache.<br>
+                    It requires all entries to be searched at once, which is a much more expensive/complex piece of hardware.<br>
+                </p>
+                <br>
+                <b>A N-way Associative Cache</b>
+                <p>We will talk about this next class.</p>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
