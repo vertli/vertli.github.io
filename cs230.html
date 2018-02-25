@@ -4596,6 +4596,440 @@
             </div>
             <hr>
             
+            <div class="lec13">
+                <h3>Lecture 13 - 15/02/2018</h3>
+                <hr>
+                <b>3 Different Policies For Handling Writes</b>
+                <ul>
+                    <li>
+                        <span class="keyword">Write-through</span>: Immediately write to both the cache and main memory for each individual write instructions.
+                    </li>
+                    <li>
+                        <span class="keyword">Write-back</span>: Write to the cache only when write is done mark that cache slot as "dirty" by setting a "dirty bit" that slot to true
+                    </li>
+                    <li>
+                        <span class="keyword">Write buffered</span>:
+                    </li>
+                </ul>
+                <table class="textTable">
+                    <tr>
+                        <th>Word</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>Word</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th class="tableBottomLine">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>5</td>
+                        <td rowspan="4">&nbsp;Block 1&nbsp;&nbsp;</td>
+                        <td rowspan="4">&nbsp;</td>
+                        <td>8</td>
+                        <td>15</td>
+                        <td rowspan="4" class="tableRightLine">&nbsp;Block 3&nbsp;&nbsp;</td>
+                        <td rowspan="9" class="tableRightLine tableBottomLine">
+                            This place of table is main memory.<br>
+                            <br>
+                            Block Size: 4 words<br>
+                            <br>
+                            <code class="left">
+                                <span class="cline">01&nbsp;&nbsp;</span> lw&nbsp;&nbsp;&nbsp;$5, 12($0)<br>
+                                <span class="cline">02&nbsp;&nbsp;</span> word @byte12<br>
+                                <span class="cline">03&nbsp;&nbsp;</span> word 3<br>
+                            </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>12</td>
+                        <td>9</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>8</td>
+                        <td>11</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>-1</td>
+                        <td rowspan="4">&nbsp;Block 2&nbsp;&nbsp;</td>
+                        <td rowspan="4">&nbsp;</td>
+                        <td>12</td>
+                        <td>19</td>
+                        <td rowspan="4">&nbsp;Block 4&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>17</td>
+                        <td>13</td>
+                        <td>58</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>42</td>
+                        <td>14</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>1000</td>
+                        <td>15</td>
+                        <td>64</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Fully Associative Cache</b>
+                <ul>
+                    <li>
+                        It allows a given memory block to be stored in any slot.
+                    </li>
+                    <li>
+                        Since no direct mapping between blocks and slots, we must check all our cache slots to determine if they hold a block we are looking for.
+                    </li>
+                    <li>
+                        It requires all memories can be searched at once, so in one time step we can use "do you have block 5 currently loaded" and get the answer.
+                    </li>
+                    <li>
+                        It is more complex/expensive hardware.
+                    </li>
+                </ul>
+                <br>
+                <b>N-way Associative Cache</b>
+                <ul>
+                    <li>group our cache slots together into sets</li>
+                    <li>each for contains N-slots</li>
+                    <li>we map from block number to set number
+                        <ul>
+                            <li>exactly the same as direct mapped <span class="math">(Set Number) = (Block Number) mod (Number of Sets)</span></li>
+                        </ul>
+                    </li>
+                    <li>can store that block in any slot in its set</li>
+                    <li>only need to search entries in a given set</li>
+                    <li>cheaper than fully associative since we only need parallel search for each slot in a set</li>
+                </ul>
+                <br>
+                <b>Compare 3 Different Kinds of Caches</b>
+                <p>
+                    Each cache has 4 slots and we're accessing the following blocks in order.<br>
+                    Blocks: 0, 8, 0, 6, 8<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Direct</th>
+                        <th>Mapped</th>
+                        <th colspan="3"></th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;Slot&nbsp;</th>
+                        <th>&nbsp;Data&nbsp;</th>
+                        <th>&nbsp;Block Number&nbsp;</th>
+                        <th>&nbsp;Slot Number&nbsp;</th>
+                        <th>&nbsp;Hit/Miss&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td><del>MEM[0]</del>&nbsp;<del>MEM[8]</del>&nbsp;<del>MEM[0]</del>&nbsp;MEM[8]</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td></td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MEM[6]</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">2-way Associative Cache</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                </table>
+                <br>
+                <table class="textTable">
+                    <tr>
+                        <th>Set Number</th>
+                        <th>Slot Number</th>
+                        <th>Data</th>
+                        <th>Block Number</th>
+                        <th>Set Number</th>
+                        <th>Hit/Miss</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">1</td>
+                        <td>0</td>
+                        <td><del>MEM[0]</del>&nbsp;MEM[6]</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>MEM[8]</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td>
+                        <td>2</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Hit</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Hit</td>
+                    </tr>
+                </table>
+                <br>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="4">Fully Associative Cache</th>
+                    </tr>
+                    <tr>
+                        <th>Slot Number</th>
+                        <th>Data</th>
+                        <th>Block Number</th>
+                        <th>Hit/Miss</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>MEM[0]</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>MEM[8]</td>
+                        <td>8</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MEM[6]</td>
+                        <td>0</td>
+                        <td>Hit</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>8</td>
+                        <td>Hit</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    If you were designing a CPU and were deciding what kind of cache you want to put in to your CPU, what level of associativity do you choose?
+                </p>
+                <ul>
+                    <li>
+                        Increased associativity &rarr; Decreased miss rate
+                        <ul>
+                            <li>
+                                Diminishing Returns: If we have N sets with P slots each, then until we read P blocks that map to set number i, we don't have to throw anything out, if we're that for away from the original memory, we probably don't care about it anymore.
+                            </li>
+                        </ul>			
+                    </li>
+                    <li>Increased associativity increases complexity and cost of our cache and therefore our CPU</li>
+                    <li>Trade-off</li>
+                </ul>
+                <p>
+                    How does our cache decide what data it's going to replace when it must evict a block?
+                </p>
+                <ul>
+                    <li>Direct Mapped: We have no choice slot is affected by blocked number.</li>
+                    <li>
+                        Associative: Prefer empty/invalid slots (unused)
+                        <ul>
+                            <li>temporal locality says we should evict the lease recently used block</li>
+                            <li>we must keep track of order accesses &rarr; increased complexity/price</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Alternatively, just do random replacement.
+                        <ul>
+                            <li>simple and fast</li>
+                            <li>not that much waste then lease recently used in terms of miss rate</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Cache Performance</b>
+                <p>
+                    Before our CPU time calculations ignored the cost of accessing memory.<br>
+                    We must now include memory stall cycles in our CPY time calculations.<br>
+                    Now...<br>
+                    <span class="math">CPU Time = (CPU Execution Cycles + Memory Stall Cycles) &times; Cycle Time </span><br>
+                    <br>
+                    Memory stall cycles from cache misses:<br>
+                    <span class="math">
+                        (Number of Memory Accesses &divide; Program) &times; Miss Rate &times; Miss Penalty
+                    </span><br>
+                    or <span class="math">
+                        (Instructions &divide; Program) &times; (Misses &divide; Instructions) &times; Miss Penalty</span><br>
+                    <br>
+                    Example: How much faster is a perfect cache compare with:<br>
+                    Instruction cache miss rate: 2%<br>
+                    Data access cache miss rate: 4%<br>
+                    Miss penalty: 100 cycles<br>
+                    Load/Stores: 36% of all our instructions<br>
+                    Base CPI (perfect cache): 2.0<br>
+                    So we have...<br>
+                    <span>
+                        0.02 &times; 100 cycles = 2 cycles/instructions<br>
+                        0.36 &times; 0.04 &times; 100 cycles = 1.44 cycles/instructions<br>
+                    </span>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>Actual CPI</td>
+                        <td>&nbsp;= base CPI + stall cycles/instructions</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 2.0 + 2.00 (IF misses) + 1.44 (data misses)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 5.44 cycles/instructions</td>
+                    </tr>
+                </table>
+                <br>
+                <p>So, how much faster is the perfect cache?</p>
+                <table class="math">
+                    <tr>
+                        <td></td>
+                        <td>CPU Time Stalls &divide; CPU Time Perfect </td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>(IC &times; CPI Stall &times; Cycle Time) &divide; (IC &times; CPI Perfect &times; Cycle Time)</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>CPI Stalls &divide; CPI Perfect</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>5.44/2</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>2.72 times faster</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    In this example above, we assume hit time is 0. In reality, we must talk about <u>average memory access time</u> (AMAT).<br>
+                    <span class="math">AMAT = Hit Time + Miss Rate + Miss Penalty</span><br>
+                    <br>
+                    Example: Given 1 ns clock, hit time is 1 cycle, miss penalty of 20 cycles, and instruction cache miss rate is 5%.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>AMAT</td>
+                        <td>=&nbsp;</td>
+                        <td>1ns + 0.05 &times; 20 cycles &times; (1ns /cycle)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1ns + 1ns</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>2ns</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Multi-Level Caches</b>
+                <p>
+                    When we first discuss the memory hierarchy, we mentioned the possibility that our cache level between our registers and main memory could be multiple levels. This is often the case.<br>
+                    <span class="key">Multi-level</span> cache follows the same principle as the rest of memory hierarchy, as we go down each step in our hierarchy, we have a larger pool of less expensive, but slower memory than the precious level.<br>
+                </p>
+                <ul>
+                    <li>
+                        Level 1(L1) Cache
+                        <ul>
+                            <li>very small, very fast</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Level 2(L2) Cache
+                        <ul>
+                            <li>larger than L1, but slower</li>
+                            <li>still faster than main memory</li>
+                        </ul>
+                    </li>
+                    <li>Many systems have more levels, sometimes for specialised purposes.</li>
+                </ul>
+                <p>
+                    What we have said before about hit and misses still hold.<br>
+                </p>
+                <ul>
+                    <li>If data needed is in current level of hierarchy (e.g. L1 cache), then we have a hit and we use that data.</li>
+                    <li>If the data needed is not in our current level (e.g. L1 cache), then it is a miss and we must go to the next level (e.g. L2 cache).</li>
+                </ul>
+                <p>
+                    Obviously, misses can propagate down the hierarchy.
+                </p>
+                <ul>
+                    <li>L1 doesn't have the data, it asks L2</li>
+                    <li>L2 doesn't have the data, it asks main memory</li>
+                </ul>
+            </div>
+            
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
