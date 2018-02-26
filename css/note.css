@@ -90,3 +90,7 @@ img {
     background-color: white;
     padding: 5px;
 }
+
+.leftMargin {
+    margin-right: 0.75em;
+}
