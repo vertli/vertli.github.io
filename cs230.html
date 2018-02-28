@@ -2982,7 +2982,7 @@
                 </ul>
                 <b>Metrics of a Program/Hardware Combo</b>
                 <ul>
-                    <li>Cycles Per Instruction (PCI) - determined by the CPU hardware, probable for different instructions to take different number of cycles</li>
+                    <li>Cycles Per Instruction (CPI) - determined by the CPU hardware, probable for different instructions to take different number of cycles</li>
                     <li>Instruction count (IC) - the number of instructions in a program. Affected by primarily the program itself, the instruction set itself (e.g. <code>slt</code> and <code>bne</code> v.s. "branch is less than", the compiler (how much does it optimizes)</li>
                 </ul>
                 <p>
@@ -4060,9 +4060,9 @@
                 </p>
                 <table class="textTable">
                     <tr>
-                        <th>Address (in bytes)</th>
+                        <th>Address</th>
                         <th rowspan="2" class="tableBottomLine">Main Memory</th>
-                        <th>Word number (4 bytes/word)</th>
+                        <th>Word number</th>
                         <th rowspan="2">Block number</th>
                     </tr>
                     <tr>
@@ -5024,6 +5024,264 @@
                     <li>L2 doesn't have the data, it asks main memory</li>
                 </ul>
             </div>
+            <hr>
+            
+            <div class="lec14">
+                <h3>Lecture 14 - 27/02/2018</h3>
+                <hr>
+                <p>
+                    <u>Recall</u>:<br>
+                    We can add multiple caches to our memory hierarchy. Hence if out L1 cache misses, it goes to our L2 cache; if our L2 cache misses, it goes to the next level in the hierarchy, etc.<br>
+                    <br>
+                    Example: Consider the following...<br>
+                </p>
+                <ul>
+                    <li>Base CPI: 1.0</li>
+                    <li>Clock Rate: 4GHz, that is, <span class="math">cycle time = 1 &divide; (4&times;10<sup>9</sup>) = 0.25ns</span></li>
+                    <li>Miss Rate: 2% (primary cache)</li>
+                    <li>Main Memory Access Time: 100ns</li>
+                </ul>
+                <p>
+                    With just a primary cache:<br>
+                    <span class="math">
+                        Miss Penalty = 100ns &divide; 0.25ns/cycle = 400 cycles<br>
+                        Effective CPI = 1 + 400 &times; 0.02 = 9 cycles per instruction<br>
+                    </span>
+                    <br>
+                    Now let's add an L2 cache. Consider the following...<br>
+                </p>
+                <ul>
+                    <li>Access time for L2 cache = 5ns (access time means an hit or miss)</li>
+                    <li>Global Miss Rate to Main Memory = 0.5%</li>
+                </ul>
+                <p>
+                    Primary cache miss with L2 hit:<br>
+                    <span class="math">5ns &divide; 0.25ns/cycle = 20 cycles</span><br>
+                    <br>
+                    Primary cache miss with L2 miss: 400 cycles (same as before)<br>
+                    <br>
+                    <span class="math">Effective CPI = 1.0 + 0.02 &times; 20 + 0.005 &times; 400 = 3.4 CPI</span><br>
+                    Or in other terms, the processor with L2 cache is 9 &divide; 3.4 = 26 times faster.<br>
+                    <br>
+                    In summary, caching helps to increase our performance by lowering the cost of memory access at the cost of adding some overhead and complexity to our hardware. In this case, the trade-off is absolutely worth it.<br>
+                </p>
+                <br>
+                <b>Input and Output (I/O) Devices</b>
+                <p>
+                    Practically, everything connected to our CPU other than our main memory can be thought of as an I/O device.<br>
+                    <br>
+                    Some characteristics of I/O devices we care about are:<br>
+                </p>
+                <ul>
+                    <li>
+                        behaviour characteristics - what is the behaviour of this device?
+                        <ul>
+                            <li>Input - read ONCE only (e.g. keyboard)</li>
+                            <li>Output - write only, cannot read (e.g. print to screen)</li>
+                            <li>Storage - read and write, usually reread/rewritten (e.g. hard drive)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Partner - who (or what) is feeding or reading data to/from the I/O device.
+                        <ul>
+                            <li>Human (e.g. mouse, keyboard</li>
+                            <li>Machine (e.g. network [someone else's computer] modern)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Data Rate - the MAXIMUM rate we can transfer data between our I/O device and our computer.<br>
+                        <ul>
+                            <li>bytes/sec</li>
+                            <li>transfers/sec</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    Additionally, we have I/O controller component in our computer (NOT part of the CPU) facilitates communication between our I/O devices and our CPU.<br>
+                    <br>
+                    We need some way to connect all the components of our computer CPU, main memory, I/O controllers, etc.<br>
+                    <br>
+                    We use to connect the components of our computer what is called a <u>BUS</u>, which is a channel for sending data back and forth often access different components.<br>	
+                </p>
+                <ul>
+                    <li>Physically, this wires along our circuit board (or traces really).</li>
+                    <li>A parallel set of wires for data and synchronization.</li>
+                </ul>
+                <img src="./image/cs230/lec14/14_1.png">
+                <p>
+                    Traditionally, our buses are separated into two types.
+                </p>
+                <br>
+                <b>Bus Types</b>
+                <ul>
+                    <li>
+                        Processor-Memory Bus: connects our CPU to main memory
+                        <ul>
+                            <li>very short in length</li>
+                            <li>the design the bus so it matches the memory organization of our machine itself</li>
+                        </ul>
+                    </li>
+                    <li>
+                        I/O Bus: connects many different devices together
+                        <ul>
+                            <li>can be quite lengthy</li>
+                            <li>doesn't interface directly to main memory</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    We have what is called our <u>Bridge</u> connects our memory and I/O bus, rather than them communicating directly.<br>
+                </p>
+                <br>
+                <b>Bus Signals</b>
+                <p>
+                    An individual bus <u>must</u> send multiple signals.
+                </p>
+                <ul>
+                    <li>
+                        Data Lines
+                        <ul>
+                            <li>carry addresses and data
+                                <ul>
+                                    <li>can be separate, or multiplexed (shared)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Control Lines
+                        <ul>
+                            <li>carry information about the data being carried</li>
+                            <li>indicate <u>data types</u> synchronize transaction</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Serial Communication
+                        <ul>
+                            <li>one bit at a time, on one line</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Parallel communication
+                        <ul>
+                            <li>multiple bits at a time, sent on memory parallel lines (still on bit/line)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Bus Synchronization</b>
+                <p>
+                    Information begin sent back and forth on a bus needs to be synchronized somehow. So the component making a request needs to know when it is receiving on answer to the request.<br>
+                </p>
+                <ul>
+                    <li>
+                        Synchronous Bus: include a clock on our bus in the control lines, follow a fixed protocol for questions/answers
+                        <ul>
+                            <li>
+                                e.g. CPU could send out a request for a word from memory with the address and instruction (read) at cycle 1; the protocol may say that the memory device must respond with the requested word exactly on cycle 5.
+                            </li>
+                            <li>
+                                Every device on the bus must be synchronized to the same clock (run at the same clock rate)
+                            </li>
+                            <li>
+                                Clock skew is an issue particularly on lengthy buses that are also fast.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Asynchronous Bus: no clock, all requests/answers must follow an handshaking protocol to facilitate synchronization
+                        <ul>
+                            <li>send out signal, wait for acknowledge of that signal before sending next</li>
+                            <li>can support any devices that follow the protocol, no need for clocks</li>
+                            <li>can lengthened as needed</li>
+                        </ul>			
+                    </li>
+                </ul>
+                <br>
+                <b>I/O Programming</b>
+                <p>
+                    How do we actually create hardware that works with I/O devices and our VNA?<br>
+                </p>
+                <ul>
+                    <li>
+                        Memory-Mapped I/O
+                        <ul>
+                            <li>specific parts of our address space correspond to specific I/O devices</li>
+                            <li>reads/writes to those addresses are instead interpreted as reads/writes to that device</li>
+                            <li>what we've seen in MIPS</li>
+                        </ul>
+                    </li>
+                    <li>
+                        I/O Instructions
+                        <ul>
+                            <li>provide special instructions in our architecture for I/O ops</li>
+                            <li>
+                                can only executed when in a high level access mode (kernel mode)
+                                <ul>
+                                    <li>may talk about that late time permitting</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    How do we facilitate communication between our I/O devices and our CPU?<br> 
+                </p>
+                <ul>
+                    <li>
+                        Polling
+                        <ul>
+                            <li>The I/O devices put information about their state in a status register.</li>
+                            <li>CPU must poll (repeatedly check) the status of the register.</li>
+                            <li>If the device is ready perform operation.</li>
+                            <li>If error, take action.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Interrupts
+                        <ul>
+                            <li>The I/O controller <u>interrupts</u> the CPU when a device requires attention (e.g. something was typed in the keyboard).</li>
+                            <li>Asynchronous with respect to instruction execution - Interrupts are not associated with instruction execution, and don't prevent instruction competition.</li>
+                            <li>They pause the current program and take over the CPU - Must save the current state of the program (or at least with CPU) and restore it when done. Very, very costly timewise.</li>
+                            <li>Can have different levels of intercepts, different priorities, and in some circumstances we can ignore an interrupt until later.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>I/O Data Transfer</b>
+                <p>
+                    How to move data between our I/O device and memory?<br>
+                </p>
+                <ul>
+                    <li>
+                        Traditional
+                        <ul>
+                            <li>The CPU acts as the middle man between and I/O devices.</li>
+                            <li>Time consuming, uses a lot of CPU time.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Direct Memory Access (DMA)
+                        <ul>
+                            <li>Provide memory addresses directly to I/O controllers.</li>
+                            <li>I/O controller autonomously transfers data</li>
+                            <li>interrupt/poll signal on completion or error to notify the program</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Big problem with DMA!<br>
+                    How to synchronize with cache?<br>
+                </p>
+                <ul>
+                    <li>If block X is in our cache, and DMA updates it in main memory, we now have a stale copy in our cache.</li>
+                    <li>Or if we've dirtied block X in our cache and DMA reads block X from main memory, it gets a stale copy.</li>
+                </ul>
+            </div>
+            
+            
             
             
             <p>
