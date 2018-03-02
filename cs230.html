@@ -5281,9 +5281,255 @@
                     <li>Or if we've dirtied block X in our cache and DMA reads block X from main memory, it gets a stale copy.</li>
                 </ul>
             </div>
+            <hr>
             
-            
-            
+            <div class="lec15">
+                <h3>Lecture 15 - 01/03/2018</h3>
+                <hr>
+                <b>Module 4 - Build and Execute</b>
+                <p>
+                    How do we really go from a high level language to a final executable binary file of our machine code instructions?<br><br>
+                    Our classic tool chain is:
+                </p>
+                <ul>
+                    <li>
+                        <span class="key">Compiler</span>
+                        <ul>
+                            <li>It translates from a source language to a target language (usually high level to low level); this will produce assembly (compilers usually just create the final binary file). </li>
+                        </ul>
+                    </li>
+                    <li><span class="key">Assembler</span>
+                        <ul>
+                            <li>It translates an assembly code program into a machine code object file.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Linker</span>
+                        <ul>
+                            <li>It combines multiple object files of machine code into a final executable file.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Loader</span>
+                        <ul>
+                            <li>It loads a program file into our main memory.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Library</span>
+                        <ul>
+                            <li>The special object files that can be added to your program either in the linking or loading phase.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Notice that compiler, assembler and linker are for building and loader is for executing.<br>
+                </p>
+                <br>
+                <b>The Compiler</b>
+                <ul>
+                    <li>translatess a program from a <u>source</u> language to a <u>target language</u></li>
+                    <li>typically from high language to low language</li>
+                    <li>can be followed by an assembler to generate machine code</li>
+                </ul>
+                <p>
+                    We usually breaks our compilation up into steps: these steps can be even subdivided.
+                </p>
+                <ol>
+                    <li>
+                        <span class="key">Scanning/Lexical Analysis</span>
+                        <ul>
+                            <li><u>scanning</u> through the program and breaking it up into meaningful tokens</li>
+                            <li>the tool that performs this step is called a <u>lexer</u></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Parsing/Syntax Analysis</span>
+                        <ul>
+                            <li>check that the sequences of tokens provided by our lexer is meaningful (does it follow the rules of our languages?)</li>
+                            <li>the tool that performs parsing is called a <u>parser</u></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Semantic Analysis</span>
+                        <ul>
+                            <li>gather information needed for the execution of the program from the source code</li>
+                            <li>create a <u>symbol table</u> and do type checking</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Code Generation</span>
+                        <ul>
+                            <li>generate the target language copy of this code</li>
+                        </ul>
+                    </li>
+                </ol>
+                <br>
+                <b>Scanning/Lexical Analysis (Tokenizing)</b>
+                <ul>
+                    <li>ultimately convert our program into a stream of tokens</li>
+                    <li><span class="key">tokens</span>: symbolic representations of parts of our program
+                        <ul>
+                            <li>keywords: <code>for</code>, <code>if</code>, <code>while</code>, etc.</li>
+                            <li>operators: <code>+</code>, <code>-</code>, <code>==</code>, etc.</li>
+                            <li>literals (constants): <code>500</code>, <code>2.5</code>, <code>"hello"</code>, etc.</li>
+                            <li>delimiters (separates): <code>{</code>, <code>(</code>, <code>;</code>, etc.</li>
+                            <li>identifiers (variable name): <code>minAddress</code>, <code>x</code>, etc.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    How to identify a valid identifier? Literal?<br>
+                    We use specific methods of pattern matching comes from the theory of formal languages.<br>
+                    <br>
+                    What is a formal language? It is defined by:
+                </p>
+                <ul>
+                    <li>A alphabet is a set of symbols that can be used to from the "words" of our language.</li>
+                    <li>A set of rules that determines how characters from our alphabet can be combined to create "words".</li>
+                    <li>There are specific kinds of formal languages and strict mathematical notations for defining them.</li>
+                    <li>One specific type of formal language is a <u>regular language</u> and three different ways of representing a regular language are:
+                        <ul>
+                            <li>Deterministic Finite Automate (DFA)</li>
+                            <li>Na-Deterministic Finite Automate (NFA)</li>
+                            <li>Regular Expressions (RegEx)</li>
+                        </ul>
+                        All of these can match any regular language, and they are all mathematically equivalent structures.
+                    </li>
+                </ul>
+                <br>
+                <b>Deterministic Finite Automate (DFA)</b>
+                <p>
+                    A Deterministic Finite Automate (DFA) is a state machine.<br>
+                    It is also called a Deterministic Finite State Machine (DFSM).<br>
+                </p>
+                <ul>
+                    <li>has a finite set of states
+                        <ul>
+                            <li>a initial state</li>
+                            <li>a non-empty set of accepting (terminal states)</li>
+                        </ul>
+                    </li>
+                    <li>finite set of input symbols (alphabet)</li>
+                    <li>A transition function (function from state-symbol pairs to state)
+                        <ul>
+                            <li>Example: <code>(S1, a ,S2)</code> if in state <code>S1</code> and receive input <code>'a'</code>, go to state <code>S2</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    A DFA determines whether a given input string is part of your regular language (accepted) if you end in an accepting state after reading the input.<br>
+                    Example: A DFA that accepts <code>"beq</code>.
+                </p>
+                <img src="./image/cs230/lec15/15_1.png">
+                <br><br>
+                <ul>
+                    <li><code>q<sub>0</sub></code> is our initial state</li>
+                    <li><code>q<sub>3</sub></code> is an accepting state</li>
+                    <li>transition labels show the input that causes that transition to be taken
+                        <ul>
+                            <li>CANNOT have 2 transitions FROM the same state that accept the same input</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Na-Deterministic Finite Automate (NFA)</b>
+                <ul>
+                    <li>CAN have many transition from the same state with the same input</li>
+                    <li>CAN have transitions that require no input (called &epsilon;-transitions)</li>
+                    <li>may be easier to create (but can be easier to make mistakes) and also harder to check if a string is part of your language</li>
+                    <li>can always create an equivalent DFA to any NFA</li>
+                </ul>
+                <img src="./image/cs230/lec15/15_2.png">
+                <p>
+                    A Bit harder to evaluate if any given string is in your regular lbnguage.<br>
+                    Example: <code>"00"</code> could end in <code>q<sub>0</sub></code>, <code>q<sub>1</sub></code> or <code>q<sub>2</sub></code> depending on the transitions you take.<br>
+                    So long a string can end on an accepting state then it is accepted.<br>
+                    It accepts any binary numbers that end in two 0's, or equivalently any binary number that is divisible by 4.<br>
+                </p>
+                <br>
+                <b>Regular Expressions (RegEx)</b>
+                <p>
+                    A sequence of regular symbols and meta symbols that describes a regular language. The empty string is denoted &epsilon;.
+                </p>
+                <br>
+                <b>Our Meta Characters</b>
+                <ul>
+                    <li>
+                        <code>|</code> means "or", separates alternatives
+                        <ul>
+                            <li>Example: <code>hello|hi</code> accepts the string <code>hello</code> or the string <code>hi</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <code>()</code> means "grouping", used to define scope/precedence of our operators
+                        <ul>
+                            <li>Example: <code>honor|honour</code> is equivalent to <code>hon(o|ou)r</code></li>
+                        </ul>
+                    </li>
+                    <li><code>[]</code> matches any one symbol included in the brackets
+                        <ul>
+                            <li><code>[^]</code> matches any one symbol NOT in the brackets</li>
+                            <li>Example: <code>[aeiou]</code> matches one real vowel</li>
+                            <li>Example: <code>[a-z]</code> specifies the range of lowercase alphabet chars, basically is <code>[abcd...z]</code></li>
+                            <li>Example: <code>[^0-9]</code> any non-digit characters</li>
+                            <li>Example: <code>[a-zA-Z]</code> any alphabetical characters <code>[abc...zABC...Z]</code></li>
+                        </ul>
+                    </li>
+                    <li><code>.</code> (period) represents ANY one characters</li>
+                    <li><code>*</code> matches 0 or more of the previous character or pattern
+                        <ul>
+                            <li>Example: <code>Hell*o</code> matches {Helo, Hello, Helllo, Hellllo, etc.}</li>
+                            <li>Example: <code>[0-9]*</code> matches {&epsilon;, any natural number}</li>
+                            <li>Example: <code>.*</code> matches <u>ANY</u> string including the empty string</li>
+                        </ul>
+                    </li>
+                    <li><code>+</code> matches 1 or more of the previous character or pattern
+                        <ul>
+                            <li>Example: <code>[0-9]+</code> any natural number</li>
+                            <li>Example: <code>.+</code> any non-empty string</li>
+                        </ul>
+                    </li>
+                    <li><code>?</code> matches 0 or 1 of the previous character or pattern
+                        <ul>
+                            <li>Example: <code>Honou?r</code> is same as <code>Hon(o|ou)r</code></li>
+                        </ul>
+                    </li>
+                    <li><code>\</code> is escape character, use this before a meta character to literally match that meta character, not have special behaviours.</li>
+                </ul>
+                <br>
+                <p>
+                    Examples:<br>
+                    <code>a*</code> = {&epsilon;, a, aa, aaa, aaaa, ...}
+                </p>
+                <img src="./image/cs230/lec15/15_3.png">
+                <br><br>
+                <p>
+                    <code>.+</code> = set of all non empty strings
+                </p>
+                <img src="./image/cs230/lec15/15_4.png">
+                <p>
+                    Notice that &Sigma; represents our alphabet, so here it means any charcter from our alphabet.<br>
+                    <br>
+                    <code>colou?r</code> = {colour, color}
+                </p>
+                <img src="./image/cs230/lec15/15_5.png">
+                <br><br>
+                <p>
+                    Example:<br>
+                    How to write a regular expression that matches ANY string that contains exactly one <code>a</code> character, regardless of case (one A or a, that's is)?<br>
+                    Let's think about it. What defines a string with exactly <code>a</code>, can we break it up into components?<br>
+                </p>
+                <ul>
+                    <li>a string of non-A characters (may be empty)</li>
+                    <li>an <code>A</code> or an <code>a</code></li>
+                    <li>a string of non-A characters (may be empty)</li>
+                </ul>
+                <p>
+                    Answer: <code>[^aA]*[aA][^aA]*</code>
+                </p>
+            </div>
+            <hr>
             
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
