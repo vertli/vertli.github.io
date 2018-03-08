@@ -5531,6 +5531,187 @@
             </div>
             <hr>
             
+            <div class="lec16">
+                <h3>Lecture 16 - 06/03/2018</h3>
+                <hr>
+                <p>
+                    Recall:<br>
+                    We were talking about regular language to solve our problem of tokenization (lexing/scanning).<br>
+                    <br>
+                    We discussed 3 constructs for defining a regular language - DFA, NFA and RegEx.<br>
+                    <br>
+                    Example: All strings that contain exactly one 'A' character (regardless of case).<br>
+                    Solution: <code>[^aA]*[aA][^aA]*</code>
+                </p>
+                <img src="./image/cs230/lec16/16_1.png">
+                <br><br>
+                <p>
+                    What does the regular expression <code>([1-9]|1[0-2]):[0-5][0-9](AM|PM)?</code> accept?<br>
+                    12 hour clock time, you may or may not be told if it is AM or PM.<br>
+                </p>
+                <img src="./image/cs230/lec16/16_2.png">
+                <br>
+                <img src="./image/cs230/lec16/16_3.png">
+                <br>
+                <p>
+                    Let's write a regEx that accepts real numbers. Our real number can be just a decimal number or can be a decimal number following by 'E' then an integer.<br>
+                    What are our cases? Let <span class="math">x, y, z &isin; sequence of digit</span>.
+                </p>
+                <ul>
+                    <li class="math">x.y</li>
+                    <li class="math">x.yEz</li>
+                    <li class="math">x.y-z</li>
+                    <li class="math">-x.y</li>
+                    <li class="math">-x.yEz</li>
+                    <li class="math">-x.yE-z</li>
+                </ul>
+                <p>
+                    Answer: <code>-?[0-9]+\.[0-9]+(E-?[0-9]+)?</code>
+                </p>
+                <img src="./image/cs230/lec16/16_4.png">
+                <br><br>
+                <p>
+                    Splitting our input stream: How to tokenize <code>if17</code>?
+                </p>
+                <ul>
+                    <li>one token, identifier (variable name) <code>if17</code></li>
+                    <li>variable name <code>if1</code> followed by literal 7</li>
+                    <li>keyword <code>if</code> followed by literal 17</li>
+                    <li>keyword <code>if</code> followed by literal 1, followed by literal 7</li>
+                    <li>variable name <code>i</code> followed by variable name "f17"</li>
+                    <li>e.t.c.</li>
+                </ul>
+                <p>
+                    To solve conflicting rules (is <code>if</code> the keyword or variable name), the rule that is written first takes priority.<br>
+                    <br>
+                    To solve cases where an input could be broken up multiple times by some of rules, the longest match is taken (<code>17</code> is <code>17</code>, not <code>1</code> then <code>7</code>).<br>
+                    <br>
+                    If the input doesn't match any of our rules, then it is not part of our language.<br>
+                    In the context of compiling:
+                </p>
+                <ul>
+                    <li>the code will not compile</li>
+                    <li>you will receive an error message</li>
+                    <li>stop executing, skip characters until valid input is reached again, and keep going - so that all the syntax errors can be printed our when found</li>
+                </ul>
+                <p>
+                    After the scanner's execution, there is a sequence of valid tokens (e.g. a series of correctly spelled words in English).<br>
+                </p>
+                <br>
+                <b>Parsing</b>
+                <ul>
+                    <li>analyse the sequence of tokens and verify that it follows the rules of our language
+                        <ul>
+                            <li>e.g. Does that sequence of correctly spelled rules follow the rules of grammar?</li>
+                        </ul>
+                    </li>
+                    <li>report errors if not</li>
+                    <li>create an <span class="keyword">Abstract Syntax Tree (AST)</span></li>
+                </ul>
+                <p>
+                    So, we need some way to state the rules of our language, regular languages are not sufficient.<br>
+                    We want a way to specify our language that is:
+                </p>
+                <ul>
+                    <li>simple for humans</li>
+                    <li>unlike human languages, must be unambiguous
+                        <ul><li>a sentence can have <u>only one</u> meaning</li></ul>
+                    </li>
+                </ul>
+                <p>
+                    Example:<br>
+                    1. "It's unpleasantly like being drunk."<br>
+                    2. "What;s so unpleasant about being drunk?"<br>
+                    1. You ask a glass of water.<br>
+                    It must be easy to build parsing tools for that language.<br>
+                    <br>
+                    We want a formal language that is defined by what is called a "Context-Free Grammar" (CFG).<br>
+                </p>
+                <br>
+                <b>Context-Free Grammar (CFG)</b>
+                <p>The components of CFG are:</p>
+                <ul>
+                    <li><span class="keyword">terminal symbols</span>: actual symbols that appear in our language
+                        <ul>
+                            <li>the set of our terminal symbols can be thought of as our alphabet</li>
+                        </ul>
+                    </li>
+                    <li><span class="keyword">nonterminals</span>: abstract component of our language, we can think of them as variable names
+                        <ul>
+                            <li>nonterminals themselves don't literally appear in our input</li>
+                            <li>one nonterminal is chosen as our "start symbol" where all valid "sentences" of our language begin</li>
+                            <li>denoted <code>&lt;NTName&gt;</code></li>
+                        </ul>
+                    </li>
+                    <li><span class="keyword">production rules</span>
+                        <ul>
+                            <li>rules of expansion of our nonterminals into one or more terminals and/or nonterminals</li>
+                            <li>more than one rule per nonterminal is allowed, alternatives are separated with <code>|</code> (the pipe character)</li>
+                            <li>notation is <code>&lt;NTName&gt; -&gt; Expansion1|Expansion2</code></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Deriving Input Strings</b>
+                <ul>
+                    <li>application of production rules to generate valid input string
+                        <ul>
+                            <li>starting with our start symbol, repeatedly replace one nonterminal with <u>one</u> of its expansions</li>
+                            <li>continue until all nonterminals are gone</li>
+                            <li>resulting sequence of terminals is a valid or syntactically correct input string</li>
+                            <li>formal definition of our language is all valid sequences that can be derived from our start symbol following our rules of production</li>
+                            <li>systematic approach is to always expand the left-most nonterminal</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Example:<br>
+                    Simple language that accepts <code>if</code> and <code>while</code> constructs and only values 0 or 1 as our conditions. An <code>if</code> or <code>while</code> can be defined as:<br>
+                </p>
+                <ul>
+                    <li>either the keyword <code>if</code> or <code>while</code></li>
+                    <li>after the keyword, we see an opening parenthesis <code>(</code> then a 0 or a 1, and then <code>)</code></li>
+                    <li>after the conditional, we see <code>{</code> then any number of <code>if</code> or <code>while</code> statement then a <code>}</code></li>
+                    <li>Terminals: while if 0 1 ( ) { }</li>
+                    <li>Starting nonterminal: &lt;statement&gt;</li>
+                </ul>
+                <img src="./image/cs230/lec16/16_5.png"  align="left" class="leftMargin">
+                <span>
+                    <pre><code>
+                        &lt;statement&gt; &rarr; &lt;keyword&gt;&lt;condition&gt;&lt;block&gt;<br>
+                        &lt;condition&gt; &rarr; (0)|(1)<br>
+                        &lt;keyword&gt; &rarr; while|if<br>
+                        &lt;block&gt; &rarr; {&lt;blockComponent&gt;}<br>
+                        &lt;blockComponent&gt; &rarr; &epsilon;|&lt;statement&gt;&lt;blockComponent&gt;<br>
+                        <br>
+                        // Example derivation of<br>
+                        <span class="cline">01&nbsp;&nbsp;</span> while (1) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span> &nbsp;&nbsp;if (0) {}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span> }<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Stat at our start NT:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span> &lt;keyword&gt; &lt;condition&gt; &lt;block&gt;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span> while &lt;condition&gt; &lt;block&gt;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span> while (1) &lt;block&gt; <br>
+                        <span class="cline">05&nbsp;&nbsp;</span> while (1) {&lt;blockComponent&gt;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span> while (1) {&lt;statement&gt; &lt;blockComponent&gt;}<br>
+                        <span class="cline">07&nbsp;&nbsp;</span> while (1) {&lt;keyword&gt; &lt;condition&gt; &lt;block&gt; &lt;blockComponent&gt;} <br>
+                        <span class="cline">08&nbsp;&nbsp;</span> while (1) {if &lt;condition&gt; &lt;block&gt; &lt;blockComponent&gt;} <br>
+                        <span class="cline">09&nbsp;&nbsp;</span> while (1) {if (0) &lt;block&gt; &lt;blockComponent&gt;}<br>
+                        <span class="cline">10&nbsp;&nbsp;</span> while (1) {if (0) {&lt;blockComponent&gt;} &lt;blockComponent&gt;}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span> while (1) {if (0) {} &lt;blockComponent&gt;}<br>
+                        <span class="cline">12&nbsp;&nbsp;</span> while (1) {if (0) {}}<br>
+                    </code></pre>
+                </span>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
