@@ -5682,7 +5682,7 @@
                         &lt;condition&gt; &rarr; (0)|(1)<br>
                         &lt;keyword&gt; &rarr; while|if<br>
                         &lt;block&gt; &rarr; {&lt;blockComponent&gt;}<br>
-                        &lt;blockComponent&gt; &rarr; &epsilon;|&lt;statement&gt;&lt;blockComponent&gt;<br>
+                        &lt;blockComponent&gt; &rarr; &epsilon;|&lt;statement&gt; &lt;blockComponent&gt;<br>
                         <br>
                         // Example derivation of<br>
                         <span class="cline">01&nbsp;&nbsp;</span> while (1) {<br>
@@ -5709,6 +5709,281 @@
                         <span class="cline">12&nbsp;&nbsp;</span> while (1) {if (0) {}}<br>
                     </code></pre>
                 </span>
+            </div>
+            <hr>
+            
+            <div class="lec17">
+                <h3>Lecture 17 - 08/03/2018</h3>
+                <hr>
+                <p>Recall from last lecture...</p>
+                <span>
+                    <pre><code>
+                        &lt;statement&gt; &rarr; &lt;keyword&gt; &lt;condition&gt; &lt;block&gt;<br>
+                        &lt;keyword&gt; &rarr; while|if<br>
+                        &lt;condition&gt; &rarr; (1)|(0)<br>
+                        &lt;block&gt; &rarr; {&lt;blockComponent&gt;}<br>
+                        &lt;blockComponent&gt; &rarr; &epsilon;|&lt;statement&gt; &lt;blockComponent&gt;<br>
+                        <br>
+                        // example: Statement (1)<br>
+                        <span class="cline">01&nbsp;&nbsp;</span> while (1) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span> &nbsp;&nbsp;if (0) {}<br>
+                        <span class="cline">03&nbsp;&nbsp;</span> }<br>
+                    </code></pre>
+                </span>
+                <p>
+                    So we want our parser to produce an AST. It can be hard for a human to go straight from a grammar to an AST. Thus, we will also discuss a parse tree and how it differs from an AST.<br> 
+                    <br>
+                    A parse tree:
+                </p>
+                <ul>
+                    <li>explicitly encodes the entirety of your derivation</li>
+                    <li>has your non-terminals as the internal nodes</li>
+                    <li>root of your tree is the start non-terminal</li>
+                    <li>children of nodes are given by the production rules</li>
+                    <li>has your terminals as leaf nodes</li>
+                </ul>
+                <br>
+                <p>While an AST:</p>
+                <ul>
+                    <li>implicitly encodes as much information as possible in the structure of the idea</li>
+                    <li>doesn't explicitly include non-terminals</li>
+                    <li>simple to interpret/work with</li>
+                </ul>
+                <p>
+                    For our statement (1), the parse tree and AST are...
+                </p>
+                <img src="./image/cs230/lec17/17_1.png">
+                <br>
+                <p>
+                    If we did have multiple statements in our block, in an AST, we would essentially have an empty node as the right child of the <code>if</code> or <code>while</code>.<br>
+                    Example: <code>while (1) {if (0) {} while (0) {}}</code>
+                </p>
+                <img src="./image/cs230/lec17/17_2.png">
+                <br>
+                <p>
+                    Let's consider another example.<br>
+                    A CFG for the input to a basic integers calculator. We want to support subtraction, addition, multiplication, division and parentheses.<br>
+                    <br>
+                    Grammar (E1):
+                </p>
+                <ul>
+                    <li>Tokens: <code>*</code>, <code>+</code>, <code>-</code>, <code>/</code>, <code>(</code>, <code>)</code>, and integer constants</li>
+                    <li>Start with non-terminal <code>&lt;expr&gt;</code> (expression)</li>
+                </ul>
+                <span>
+                    <pre><code>
+                        &lt;expr&gt; &rarr; &lt;term&gt; &lt;more terms&gt;<br>
+                        &lt;term&gt; &rarr; &lt;factor&gt; &lt;more factors&gt;<br>
+                        &lt;factor&gt; &rarr; &lt;expr&gt;|int<br>
+                        &lt;more Terms&gt; &rarr; + &lt;term&gt; &lt;more terms&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - &lt;term&gt; &lt;more terms&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &epsilon;<br>
+                        &lt;more factors&gt; &rarr; * &lt;factor&gt; &lt;more factors&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| /  &lt;factor&gt; &lt;more factors&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &epsilon;<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>Example: Leftmost derivation of <code span="math">7 + 34</code>.</p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span> &lt;expr&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span> &lt;term&gt; &lt;more terms&gt;<br>
+                        <span class="cline">03&nbsp;&nbsp;</span> &lt;factor&gt; &lt;more factors&gt; &lt;more terms&gt;<br>
+                        <span class="cline">04&nbsp;&nbsp;</span> 7 &lt;more factors&gt; &lt;more terms&gt;<br>
+                        <span class="cline">05&nbsp;&nbsp;</span> 7 &lt;more terms&gt;<br>
+                        <span class="cline">06&nbsp;&nbsp;</span> 7 + &lt;term&gt; &lt;more terms&gt;<br>
+                        <span class="cline">07&nbsp;&nbsp;</span> 7 + &lt;factor&gt; &lt;more factors&gt; &lt;more terms&gt;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span> 7 + 34 &lt;more factors&gt; &lt;more terms&gt;<br>
+                        <span class="cline">09&nbsp;&nbsp;</span> 7 + 34 &lt;more terms&gt;<br>
+                        <span class="cline">10&nbsp;&nbsp;</span> 7 + 34<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec17/17_3.png">
+                <br>
+                <p>
+                    We must consider a couple other factors other than just having our CFG be unambiguous.<br>
+                    Two things of concern are associativity and precedence of our operators.<br>
+                </p>
+                <ul>
+                    <li>
+                        <span span="keyword">Associativity</span>: grouping of our equivalent operators
+                        <ul>
+                            <li>
+                                <span class="math">6 - 3 + 4</span> could be read left or right associative, respectively <span class="math">(6 - 3) + 4</span> or <span class="math">6 - (3 + 4)</span>
+                            </li>
+                            <li>
+                                For integer division, associativity is very important. So by definition, division is left-associative.
+                                <ul>
+                                    <li>
+                                        <span class="math">6 / 3 / 2</span> if interpreted right-associative: <span class="math">6 / (3 / 2)</span> &rarr; <span class="math">6 / 1</span> &rarr; <span class="math">6</span>
+                                    </li>
+                                    <li>
+                                        <span class="math">6 / 3 / 2</span> if interpreted left-associative <span class="math">(6 / 3) / 2</span> &rarr; <span class="math">2 / 2</span> &rarr; <span class="math">1</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span span="keyword">Precedence</span>: which operators "bind together", who should get executed first
+                    </li>
+                </ul>
+                <p>
+                    Example: Our parse tree for <span class="math">6 / 3 / 2</span> following with <code>E1</code> is...
+                </p>
+                <img src="./image/cs230/lec17/17_4.png">
+                <br>
+                <p>
+                    This is right associative! This is NOT good!<br>
+                    <br>
+                    So we rewrite our grammar to be left associative. We do this by having our expressions <i>ALWAYS</i> recurse on the left hand side of the operator and the right hand side being a terminal, atomic expression in parentheses.<br>
+                    <br>
+                    New Grammar (E2), start non-terminal <code>&lt;expr&gt;</code>.
+                </p>
+                <span>
+                    <pre><code>
+                        &lt;expr&gt; &rarr; &lt;expr&gt; + &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt; - &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt; * &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt; / &lt;term&gt;<br>		  
+                        &lt;term&gt; &rarr; int<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| (&lt;expr&gt;)<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>So deriving <span class="math">6 / 3 / 2</span> with <code>E2</code> we get:</p>
+                <img src="./image/cs230/lec17/17_5.png">
+                <br>
+                <p>
+                    Precedence is obviously also important.<br>
+                    Example: <span class="math">2 + 3 * 4</span> is <span class="math">2 + (3 * 4)</span> not <span class="math">(2 + 3) * 4</span>.<br>
+                </p>
+                <img src="./image/cs230/lec17/17_6.png">
+                <br>
+                <p>
+                    This derives to <span class="math">(2 + 3) * 4</span>!!! This is NOT good!!!<br>
+                    <br>
+                    New, Grammar <code>E3</code>.<br>
+                    To enforce precedence, we order our rules from least to most precedence.<br> 
+                </p>
+                <span>
+                    <pre><code>
+                        &lt;expr&gt; &rarr; &lt;term&gt; + &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt; - &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt;<br>
+                        &lt;term&gt; &rarr; &lt;term&gt; * &lt;factor&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt; / &lt;factor&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;factor&gt;<br>
+                        &lt;factor&gt; &rarr; (&lt;expr&gt;)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| int<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Let's derive <span class="math">2 + 3 * 4</span>.<br>
+                </p>
+                <img src="./image/cs230/lec17/17_7.png">
+                <br><br>
+                <b>Ambiguity</b>
+                <p>
+                    If a sentence can be interpreted more than one way, there exists two derivations for the same sentence.<br>
+                    <br>
+                    Grammar <code>E4</code>:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        &lt;expr&gt; &rarr; &lt;term&gt; + &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt; - &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;factor&gt;<br>
+                        &lt;factor&gt; &rarr; &lt;factor&gt; * &lt;factor&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;factor&gt; / &lt;factor&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| int<br>       
+                    </code></pre>
+                </span>
+                <br>
+                <p>Example: derive <span class="math">2 * 3 * 4</span> using <code>E4</code>.</p>
+                <img src="./image/cs230/lec17/17_8.png">
+                <br>
+                <p>
+                    Associativity of this language is ambiguous!<br>
+                    <br>
+                    Lastly, grammar <code>E5</code>:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        &lt;expr&gt; &rarr; &lt;expr&gt; + &lt;expr&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt; - &lt;expr&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt; * &lt;expr&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;expr&gt; / &lt;expr&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| (&lt;expr&gt;)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| int<br> 
+                    </code></pre>
+                </span>
+                <br>
+                <p>Example: derive <span class="math">2 + 3 * 4</span>.</p>
+                <img src="./image/cs230/lec17/17_9.png">
+                <br>
+                <p>
+                    Ambiguous Precedence!!!<br>
+                    Associativity, precedence, ambiguity &rarr; why do we care?<br>
+                </p>
+                <ul>
+                    <li>good specification of our language means a good free structure</li>
+                    <li>good tree structure &rarr; correct evaluation for code generation</li>
+                    <li>if ambiguous - which tree do we generate?</li>
+                </ul>
+                <p>
+                    Encode precedence and associativity in your grammar.<br>
+                    If we have an ambiguous grammar, we have no definitive output.<br>
+                </p>
+                <ul>
+                    <li>certain ambiguities can be spotted easily
+                        <ul><li>example: two same non-terminals in a rule</li></ul>
+                    </li>
+                    <li>
+                        ultimately, undecidable problem
+                        <ul>
+                            <li>no method can exist that an answer "is this grammar ambiguous" for all grammars</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Parse Tree Evaluation</b>
+                <ul>
+                    <li>recursive tree traversal</li>
+                    <li>evaluate current node <u>after</u> evaluating children (post-order traversal)</li>
+                </ul>
+                <p>
+                    In order to ensure proper evaluation order...
+                </p>
+                <ul>
+                    <li>arrange your non-terminal rules (have we fixed precedence?)</li>
+                    <li>potentially introduce new non-terminals</li>
+                </ul>
+                <p>
+                    That's parsing; the parser uses a CFG to check the validity of the input stream of tokens and produce an AST for the next steps.<br>
+                    <br>
+                    Last stages of Compiler - Semantic Analyzer<br>
+                </p>
+                <ul>
+                    <li>create a symbol table
+                        <ul>
+                            <li>maps variable names/function/class names to relevant information</li>
+                        </ul>
+                    </li>
+                    <li>type checking
+                        <ul>
+                            <li>
+                                make sure operations are valid on the types passed in 
+                                <ul>
+                                    <li>example: can't add an integer and a string <code>5 + "hello"</code></li>
+                                </ul>
+                            </li>
+                            <li>annotate the parse tree or AST with type information</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <hr>
             
