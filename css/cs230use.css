@@ -63,3 +63,8 @@ code {
     border-radius: 3px;
     white-space: initial;
 }
+
+.textNextToImg {
+    float : left;
+    margin-right: 6px;
+}

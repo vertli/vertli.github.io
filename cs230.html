@@ -5038,14 +5038,14 @@
                 </p>
                 <ul>
                     <li>Base CPI: 1.0</li>
-                    <li>Clock Rate: 4GHz, that is, <span class="math">cycle time = 1 &divide; (4&times;10<sup>9</sup>) = 0.25ns</span></li>
+                    <li>Clock Rate: 4GHz, that is, <span class="math">cycle time = 1 &divide; (4&times;10<sup>9</sup>) = 0.25 ns/cycle</span></li>
                     <li>Miss Rate: 2% (primary cache)</li>
                     <li>Main Memory Access Time: 100ns</li>
                 </ul>
                 <p>
                     With just a primary cache:<br>
                     <span class="math">
-                        Miss Penalty = 100ns &divide; 0.25ns/cycle = 400 cycles<br>
+                        Miss Penalty = 100 ns &divide; 0.25 ns/cycle = 400 cycles<br>
                         Effective CPI = 1 + 400 &times; 0.02 = 9 cycles per instruction<br>
                     </span>
                     <br>
@@ -5057,7 +5057,7 @@
                 </ul>
                 <p>
                     Primary cache miss with L2 hit:<br>
-                    <span class="math">5ns &divide; 0.25ns/cycle = 20 cycles</span><br>
+                    <span class="math">5 ns &divide; 0.25 ns/cycle = 20 cycles</span><br>
                     <br>
                     Primary cache miss with L2 miss: 400 cycles (same as before)<br>
                     <br>
@@ -5986,6 +5986,288 @@
                 </ul>
             </div>
             <hr>
+            
+            <div class="lec18">
+                <h3>Lecture 18 - 13/03/2018</h3>
+                <hr>
+                <img src="./image/cs230/lec18/18_1.png" class="textNextToImg">
+                <p>
+                    Evaluate a parse tree or AST, we do so with recursive tree traversal.<br>
+                    Typically, post-order traversal.<br>
+                </p>
+                <br>
+                <p>
+                    If you're looking at Node N, first evaluate its left child, then its right child, then node N itself. (post-order traversal)<br>
+                    <br>
+                    In order to ensure proper evaluation order, our tree <u>must</u> have a good structure (proper associatively and precedence) to enforce a good structure:
+                </p>
+                <ol>
+                    <li>carefully arrange your non-terminals in your rules</li>
+                    <li>potentially introduce new non-terminals</li>
+                </ol>
+                <br>
+                <b>Last Stage of Compilation</b>
+                <ul>
+                    <li>Semantic Analysis
+                        <ul>
+                            <li>Check extra semantic information not included in our token sequence or tree</li>
+                            <li>
+                                <span class="keyword">Type Checking</span>
+                                <ul>
+                                    <li>Example: It is valid to say (as per the rules of our grammar) <code>var1 = var2</code>, but if <code>var1</code> is an integer and <code>var2</code> is a string, this is invalid.</li>
+                                </ul>
+                            </li>
+                            <li>Does the identifier being referenced actually exist at this point?
+                                <ul>
+                                    <li>Example: <code>len(myVar)</code> &rarr; If <code>myVar</code> does not exist then this is nonsensical</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Builds the <u>symbol table</u> which keeps track of what identifiers exist in the current given scope and their type signatures.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Code Generation
+                        <ul>
+                            <li>Generate the actual target language version of our source code.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Last class we looked at 5 grammars, which <code>E4</code> and <code>E5</code> were purpose fully bad to show ambiguity.<br>
+                    <code>E3</code> was our best grammar.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        &lt;expr&gt; &rarr; &lt;term&gt; + &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt; - &lt;term&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt;<br>
+                        &lt;term&gt; &rarr; &lt;term&gt; * &lt;factor&gt;<br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;term&gt; / &lt;factor&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;factor&gt;<br>
+                        &lt;factor&gt; &rarr; (&lt;expr&gt;)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| int<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Let's look at the derivation of <span class="math">10 * (1 + 2)</span>
+                </p>
+                <img src="./image/cs230/lec18/18_2.png">
+                <br><br>
+                <p>
+                    The code generation is quite straightforward.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $9,&nbsp;&nbsp;$0,&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;; eval left child of *<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>addi $10, $0,&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;; eval left child of +<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>addi $11, $0,&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;; eval right child of +<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>add  $10, $10, $11 ; eval +<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>mult $9,&nbsp;&nbsp;$10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; eval *<br>
+                    </code></pre>
+                </span>
+                <p>
+                    If instead of literals, we did have some sort of variables, we will have to keep track of where the variables are stored and use the equivalent operations with loads and stores.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>var1: .word 0<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>var2: .word 0<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Code generation becomes slightly trickier when generating assembly for high level programming concepts; for example, loops, functions, classes, etc.<br>
+                    In the end you just have to find a general form for the concept and generate with the given concepts.<br>
+                    <br>
+                    After code generation is done, we must now assemble.<br>
+                    Assembler will:
+                </p>
+                <ol>
+                    <li>do line by line translation of one assembly instruction to one (or more) machine code instructions</li>
+                    <li>insert data for our <code>.word</code> directives</li>
+                    <li>ignore any comments or blank lines</li>
+                    <li>compute the addresses of each label and replace references to that label with that address</li>
+                </ol>
+                <p>
+                    Example:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>list&nbsp;&nbsp;$9 ----&rarr; &lt;binary represent of list $9&gt;<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>.word string &rarr; 000&hellip;&hellip;10100100<br>
+                        &#8285;<br>
+                        <span class="cline">41&nbsp;&nbsp;</span>jr $31 &rarr; 0000 0011 1110 0000<br>
+                        <span class="cline">42&nbsp;&nbsp;</span>string: .word 0x41; ASCII for 'A' &rarr; 0001&hellip;&hellip;101001<br>
+                        <span class="cline">43&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.word 0x00 --------------&rarr; 0000&hellip;&hellip;0000<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Linker</b>
+                <p>
+                    Goal: combine multiple object files.<br>
+                    <br>
+                    Why break up our program into multiple files?<br>
+                    It can avoid compiling our whole program every time we make a change, only compile the files that changed and re-link.<br>
+                    <br>
+                    Linker resolves <u>external symbols</u>: label that refers to other object file.<br>
+                    For example, we could want to jump to a subroutine in another object file.<br>
+                    <br>
+                    Also, linker produces the final executable.<br>
+                </p>
+                <br>
+                <b>Basics of Object File Format</b>
+                <ul>
+                    <li>file header (meta data)</li>
+                    <li>text segment (actual code)</li>
+                    <li>data segment (static data)</li>
+                    <li>defined external symbols
+                        <ul>
+                            <li>our symbols that other object files can refer to</li>
+                        </ul>
+                    </li>
+                    <li>undefined external symbols
+                        <ul>
+                            <li>symbols not defined here, we must find them in another object files' defined external symbols </li>
+                        </ul>
+                    </li>
+                    <li>local symbols (debugging relocation)</li>
+                </ul>
+                <br>
+                <b>Relocation</b>
+                <p>
+                    When assembler produces our object files, the code for each starts at address 0.<br>
+                    How do we combine multiple files like this?
+                </p>
+                <ul>
+                    <li>Relative addresses (e.g. branch) is not a problem.</li>
+                    <li>Absolute addresses and static data must be fixed.
+                        <ul>
+                            <li>We have object file contain a list of such code locations.</li>
+                        </ul>
+                    </li>
+                    <li>Adjust Actual addresses in object code.</li>
+                </ul>
+                <p>Example:</p>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="2">File A</th>
+                        <td colspan="2">&nbsp;</td>
+                        <th colspan="2">File B</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td><code>&hellip;&hellip;</code></td>
+                        <td colspan="2"></td>
+                        <td>0</td>
+                        <td><code>&hellip;&hellip;</code></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code>&hellip;&hellip;</code></td>
+                        <td colspan="2"></td>
+                        <td colspan="2"><code>&hellip;&hellip;</code></td>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td><code>jar mySubroutine</code></td>
+                        <td colspan="2"></td>
+                        <td>42</td>
+                        <td><code>mySubroutine: addi &hellip;&hellip;</code></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><code>&hellip;&hellip;</code></td>
+                        <td colspan="2"></td>
+                        <td colspan="2"><code>&hellip;&hellip;</code></td>
+                    </tr>
+                    <tr>
+                        <td>99</td>
+                        <td><code>jr $31</code></td>
+                        <td colspan="2"></td>
+                        <td colspan="2"><code>&hellip;&hellip;</code></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Imagine we just stack there files on top of each other.<br>
+                    Then, the first instruction of file B actually becomes instruction 100.<br>
+                    So, the first instruction of <code>mySubroutine</code> becomes instruction 142.<br>
+                    Now, when we jump to <code>mySubroutine</code>, we can resolve the address to be <span class="math">142 * 4</span>.<br>
+                </p>
+                <br>
+                <b>Libraries</b>
+                <ul>
+                    <li>just a collection of object files</li>
+                    <li>contain functionality used by many programs, like square root</li>
+                    <li>ready for linking with other files</li>
+                </ul>
+                <br>
+                <b>Loading</b>
+                <ul>
+                    <li>loading executable from disk into memory</li>
+                    <li>if command line arguments are used, place them in the correct (expectable) place</li>
+                    <li>initialise register (e.g. stack pointer)</li>
+                    <li>create a new process in the operating system and initialise by jumping to the start label</li>
+                </ul>
+                <br>
+                <b>Dynamic Linking</b>
+                <ul>
+                    <li>relocate and resolve symbols at load time instead of linking</li>
+                </ul>
+                <br>
+                <b>Dynamic Library</b>
+                <ul>
+                    <li>do not add the library to the final compiled executable, combine with it at the loading step (smaller executable)</li>
+                </ul>
+                <br>
+                <b>Dynamic Shared Libraries</b>
+                <ul>
+                    <li>keep only one object code in memory, store in special memory area, or special relocatable object code</li>
+                    <li><span class="keyword">Dynamic Link Libraries (DLL)</span> on Windows</li>
+                    <li>modifications to a DLL apply all programs that use it
+                        <ul>
+                            <li>no rebuilding necessary</li>
+                        </ul>
+                    </li>
+                    <li>requires that the computer running your program has the DLL you rely on and it has to be a compatible version</li>
+                </ul>
+                <br>
+                <b>Alternative Execution Approaches</b>
+                <ul>
+                    <li>
+                        <span class="keyword">Interpretation</span>
+                        <ul>
+                            <li>alternative to compiling</li>
+                            <li>scanning, parsing and type checking are done in the same way</li>
+                            <li>where a compiler would traverse the AST and generate the code and a interpreter traverses the tree and executes the code</li>
+                            <li>usually slower than executing a compiled program
+                                <ul>
+                                    <li>may have to traverse some part of the tree multiple time (e.g. loop)</li>
+                                    <li>it is a program executing your program</li>
+                                </ul>
+                            </li>
+                            <li>writing an interpreter is usually easier than writing a compiler and if you write an interpreter with a language that can be compiled on may different machines, now you language works on all those machines</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Compilation and Interpretation can be combined:
+                        <ul>
+                            <li>have a compiler that generates an intermediate representation of your code, and an interpreter that interprets that intermediate representation</li>
+                            <li>
+                                Java is an example of this
+                                <ul>
+                                    <li>Java is compiled to Java byte code</li>
+                                    <li>the interpreter that interprets the Java byte code is the <span class="keyword">Java Virtual Machine (JVM)</span></li>
+                                    <li>if we can write a JVM for a system, we can run Java on that system</li>
+                                </ul>
+                            </li>
+                            <li>trade-off is between portability and speed</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+
             
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.

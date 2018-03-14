@@ -61,6 +61,15 @@ ol, ul {
     color: darkviolet;
 }
 
+.textTable table {
+    width: auto;
+    text-align: center;
+}
+
+.textTable tr th, .textTable tr td{
+    text-align: center;
+}
+
 .tableUnderline {
     border-bottom-style: solid;
     border-bottom-width: thin;
