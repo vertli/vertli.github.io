@@ -6268,6 +6268,196 @@
             </div>
             <hr>
 
+            <div class="lec19">
+                <h3>Lecture 19 - 15/03/2018</h3>
+                <hr>
+                <b>Concurrence</b>
+                <p>
+                    It means multiple things occurring at the same time.<br>
+                    <br>
+                    Unless you've known, otherwise, all programs you've written have not used concurrently. They have been single-threaded.<br>
+                    We want parts of our program to run concurrently (at the same time) or at least appear to run concurrently.<br>
+                    <br>
+                    Larger software, or specific types of software typically want concurrence.<br>
+                    For example, any software with a Graphical User iInterface (GUI) wants to employ concurrency. Why?<br>
+                    When user presses a button which begins execution of a computation that takes several seconds.<br>
+                    If no concurrency the computation runs taking all CPU time for those seconds meaning the code for the GUI can't run so the GUI appears frozen to user.<br>
+                    This scares and frustrates the user.<br>
+                    We want the work of background computation and displaying the GUI to be done concurrently.<br>
+                </p>
+                <br>
+                <b>Multiprogramming</b>
+                <p>
+                    It is a simplest form of implementing concurrency. It is analogous to how humans multi-task.<br>
+                    Multiple tasks do not actually occur at one time step, instead you switch back and forth between tasks.<br>
+                    <br>
+                    The idea is CPUs are very fast.<br>
+                    Many computer tasks do not saturate the CPU (use 100% of the CPU's power).<br>
+                    Often computer tasks interact with slower entities.
+                </p>
+                <ul>
+                    <li>Devices such as disk, network, mouse, keyword.</li>
+                    <li>Humans, who need time to read, interpret and respond.</li>
+                </ul>
+                <p>
+                    Goal is to use our single CPU to execute multiple tasks concurrently, or rather switch between these tasks to minimise wasted time, and simulate concurrency.
+                </p>
+                <br>
+                <b>Task</b>
+                <p>
+                    It is the unit of computing our operating system controls, implemented as programs.<br>
+                    An instance of a task is called a <span class="keyword">process</span>.<br>
+                    <br>
+                    The operating system manages execution of all processes, REALLY it's like a middle manager.
+                </p>
+                <ul>
+                    <li>facilitates computation and running of processes</li>
+                    <li>enforces the rules on the processed</li>
+                </ul>
+                <p>
+                    A <u>process</u> is comprised of:
+                </p>
+                <ul>
+                    <li>Threads (divisions of execution of a given process) one or more</li>
+                    <li>Data (our addressable memory space/ address space)</li>
+                    <li>I/O Associations
+                        <ul>
+                            <li>example: open files, network connections</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Threads within a process share the same address space (main memory) but do NOT share their stacks.<br>
+                    But the stack is stored in main memory, so how?<br>
+                    We just break up our stack space into segments for each thread and give each thread a distinct stack pointer.<br>
+                </p>
+                <img src="./image/cs230/lec19/19_1.png"><br>
+                <p>
+                    This is usually okay because generally the stack does not get very large.<br>
+                    <br>
+                    Really we are just simulating concurrency by switching between threads; we still only have one CPU doing work on one given thread at any given time.<br>
+                    <br>
+                    We must be able to switch between which thread is executing - how to facilitate AND execute a <u>Thread Switch</u>.<br>
+                    <br>
+                    To switch thread A to thread thread B...
+                </p>
+                <ul>
+                    <li>
+                        suspend the execution of thread A
+                        <ul>
+                            <li>store the CPU state (our registers) on the stack</li>
+                            <li>store thread A's stack pointer in a special per thread data structure maintained by the operating system, called the <span class="keyword">Thread Control Block (TCB)</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        resume execution of thread B
+                        <ul>
+                            <li>retrieve thread B's stack pointer from the TCB</li>
+                            <li>restore your register you stored on the stack</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="./image/cs230/lec19/19_2.png"><br>
+                <p>
+                    Thread switches are different than subroutines:
+                </p>
+                <ul>
+                    <li>can happen at any time, current thread has no idea when it will be paused</li>
+                    <li>not known which thread will execute next</li>
+                    <li><u>all</u> registers must be saved</li>
+                    <li>must change our stack (isolated)</li>
+                </ul>
+                <p>
+                    If threads can swap in and out at any time, what is managing the execution of threads?<br>
+                    The <span class="keyword">Scheduler</span> (which is part of the OS).<br>
+                </p>
+                <br>
+                <b>Scheduler</b>
+                <ul>
+                    <li>part of OS</li>
+                    <li>keeps a list of <u>ready</u> threads and decides which to activate next</li>
+                    <li>when a thread paused execution, the scheduler is invoked</li>
+                </ul>
+                <p>
+                    Analogy: Scheduler is the coach of a sports term. Thread states are:
+                </p>
+                <ul>
+                    <li>Running: currently executing thread (player on the field)</li>
+                    <li>Ready: thread is ready and waiting (analogous to being on the bench)</li>
+                    <li>Blocked: thread is NOT ready to be executed (player is out with injury)
+                        <ul>
+                            <li>example: waiting for input</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    The actions or transition between these states are:
+                </p>
+                <ul>
+                    <li>Yield: running thread wants to pause its execution - asking the coach to sub you out</li>
+                    <li>Pre-empt: scheduler interrupts the currently executing thread - coach pulling you off the field</li>
+                    <li>Block/Unblock: block a thread (transition into blocked) or unblock (transition into ready) - getting injured/miraculously recovering</li>
+                </ul>
+                <br>
+                <b>State Transitions</b>
+                <br>
+                <img src="./image/cs230/lec19/19_3.png">
+                <img src="./image/cs230/lec19/19_4.png">
+                <br>
+                <p>
+                    How to choose which ready thread to execute? We will talk about it later.<br>
+                </p>
+                <br>
+                <b>Using Threads in Code (pseudo-code)</b>
+                <p>
+                    <span class="keyword">Operations</span><br>
+                    <code>tx = create (function name, function parameters)</code><br>
+                </p>
+                <ul>
+                    <li><code>tx</code>: the thread name</li>
+                    <li><code>function name</code>: the code that thread must execute (a function)</li>
+                    <li><code>function parameters</code>: arguments for that function parameters</li>
+                </ul>
+                <p>
+                    The operation spawns a new thread that will execute we named function with the given arguments. The thread is called <code>tx</code>.<br>
+                    <br>
+                    <code>join (tx)</code><br>
+                    The line waits for thread <code>tx</code> to compete.<br>
+                    <br>
+                    Example: Run a program that print A and B, each printed in a separate thread.
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>printLetter(inputChar) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;output(inputChar); // prints intputChar to screen<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>main() {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;t1 = create(printLetter,"A");<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;t2 = create(printLetter, "B");<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t1);<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t2);<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>// output: either "AB" or "BA"<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>// we don't know which one<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Note:<br>
+                    Once a thread is created, it may start running right away, or maybe put in a ready state and run later, depending on scheduler.<br>
+                </p>
+                <img src="./image/cs230/lec19/19_5.png"><br>
+                <p>
+                    Possible executions:
+                </p>
+                <img src="./image/cs230/lec19/19_6.png"><br>
+                <p>Other scenarios are possible.
+                    In this example, threads were independent with respect to the data they used.<br>
+                    What if they aren't? We will talk about this next lecture.<br>
+                </p>
+            </div>
+            
             
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
