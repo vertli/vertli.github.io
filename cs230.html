@@ -6457,7 +6457,250 @@
                     What if they aren't? We will talk about this next lecture.<br>
                 </p>
             </div>
+            <hr>
             
+            <div class="lec20">
+                <h3>Lecture 20 - 20/03/2018</h3>
+                <hr>
+                <p>Pseudocode Example 2:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>global int count = 0<br>
+                        <span class="cline">02&nbsp;&nbsp;</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// function that adds 1 to counter 10 000 000 times<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>increaseCounter(inputChar){<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;output("Begin! " + inputChar)<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;for (int i = 0; i &lt; 10 000 000; ++i) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;counter = counter++;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;output("Done: " + inputChar)<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;t1 = create(increaseCounter, 'A')<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;t2 = create(increaseCounter, 'B')<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t1)<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t2)<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;output("counter = " + counter)<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    We have no control over the scheduler.<br>
+                    To understand what's going on here, let's consider the assembly for <code>counter = counter + 1</code>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; counter is currently 50<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>lis&nbsp;&nbsp;$8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; initialise $8 to the address of counter<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>.word counter&nbsp;&nbsp;&nbsp;; never change $8<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; load counter's value into register 9, so $50 = 50<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>addi $9, $9, 1  ; set $9 to 51<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>; scheduler interrupts thread 1 here and starts thread 2<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>; thread 2 starts executing<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; $9 = 50<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>addi $9, $9, 1  ; $9 = 51<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; counter = 51<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>; thread 2 continues 49 more times so it gets preempted right after<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; counter = 100<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>; now we go back to thread 1, which loads its program state<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>; off its stack and starts where it left off<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; sets counter to 51<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Summary</b>
+                <ul>
+                    <li><code>t1</code> copied counter's current value of 50 into register 9 and incremented it, so <code>$9 = 51</code></li>
+                    <li><code>t1</code> was interrupted, storing 51 for <code>$9</code> on its stack</li>
+                    <li><code>t2</code> was interrupted after incrementing counter 50 times, right after storing back to counter</li>
+                    <li><code>t1</code> begins execution again right where it paused, so it gets 51 as the value for register 9, and then executes <code>sw $9, 0($8)</code>, <code>counter = $9</code></li>
+                </ul>
+                <p>
+                    This is called a <span class="keyword">Race Condition</span>, where a program's result depends on the timing of the execution of threads.<br>
+                    <br>
+                    Section of code that can result in a race condition is called a <span class="keyword">critical section</span>.<br>
+                    For example,  <code>counter = counter + 1</code>.<br>
+                    <br>
+                    We need <span class="keyword">mutual exclusion</span>.<br>
+                    If one thread is in a critical section, another thread cannot enter that critical section.<br>
+                    <br>
+                    In order to implement mutual exclusion, we could use more powerful <span class="keyword">atomic instructions</span>.<br>
+                    It comes from the definition of atomic: "of or forming a single irreducible unit or component in a larger system." <br>
+                    That is, an atomic instruction is either entirely executed or not all.<br>
+                </p>
+                <ul>
+                    <li>Once atomic instruction has began execution, it cannot be paused until it is done.</li>
+                    <li>One such instruction we could use is <code>addmen $s, i</code>.</li>
+                    <li>Atomic instruction that <code>adds i</code> to the address of memory pointer to by <code>$5</code>.</li>
+                </ul>
+                <p>
+                    Atomicity of an instruction is ensured by hardware.<br>
+                    All the instructions we have seen are atomic; they are just not powerful enough.<br>
+                    <br>
+                    Special instructions like this may not be feasible or generalisable.<br>
+                    We can't make an atomic instruction for every possible task.<br>
+                    A programmer might want to be atomic.<br>
+                    How? Impact on hardware? Pipeline? CPI?<br>
+                    <br>
+                    Instead of atomic instructions for everything, have special atomic instructions to control <span class="keyword">locks</span> that we can use to ensure mutual exclusion of a critical component.<br>
+                    We can use a global lock variable pre critical section (or per critical/resource) which holds the state of the lock (locked or unlocked).<br>
+                </p>
+                <ul>
+                    <li>available, UNLOCKED, free</li>
+                    <li>acquired, held, LOCKED</li>
+                </ul>
+                <p>
+                    Thread must acquire the lock before entering the critical section and must release it upon completion.<br>
+                </p>
+                <br>
+                <b>Fix Example 2 Using Locks</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>global lock mutex<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// in our increasCounter function...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>lock(mutex)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>counter = counter + 1<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>unlock(mutex)<br>
+                    </code></pre>
+                </span>
+                <p>
+                    When a thread calls <code>lock(lockName)</code>, it tries to acquire the lock "lockName".<br>
+                    If no other thread has the lock (i.e. it is unlocked), the requesting thread acquires it and enters its critical section.<br>
+                    If the lock is not free, <code>lock(lockName)</code> will not return until the lock becomes free when the thread that holds it calls <code>unlock(lockName)</code> when exiting the critical section.<br>
+                    <br>
+                    How can <code>lock()</code> and <code>unlock()</code> actually work?<br>
+                    There are many possible implementations; one possibility is assume we have an atomic instruction <code>compare_and_swap(lock, expected, new)</code> which works by checking if lock is currently in state expected; if it is it changes to state new, in both cases it returns the old state of lock.<br>
+                    <br>
+                    Pseudo-code:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>CAS(lock, expected, new){<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;actual = lock<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;if (actual == expected){<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;lock = new<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;return actual<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>// So now we can implement<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>lock(lockName){<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;while (CAS(lockName, UNLOCKED, LOCKED) == LOCKED) {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// do nothing<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span><br>
+                        <span class="cline">15&nbsp;&nbsp;</span>unlock(lockName) {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;lockName = UNLOCKED<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">18&nbsp;&nbsp;</span><br>
+                        <span class="cline">19&nbsp;&nbsp;</span>// Let's consider the lock is unlocked...<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>CAS(lockName, UNLOCKED, LOCKED){<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;actual = UNLOCKED<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;if (actual == UNLOCKED) {<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;lockName = LOCKED<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>&nbsp;&nbsp;return actual // UNLOCKED<br>
+                        <span class="cline">26&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">27&nbsp;&nbsp;</span><br>
+                        <span class="cline">28&nbsp;&nbsp;</span>// Similarly, if lock is LOCKED<br>
+                        <span class="cline">29&nbsp;&nbsp;</span>CAS(lockName, UNLOCKED, LOCKED){<br>
+                        <span class="cline">30&nbsp;&nbsp;</span>&nbsp;&nbsp;actual = LOCKED<br>
+                        <span class="cline">31&nbsp;&nbsp;</span>&nbsp;&nbsp;if (actual == UNLOCKED) { // false<br>
+                        <span class="cline">32&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;lockName = LOCKED<br>
+                        <span class="cline">33&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">34&nbsp;&nbsp;</span>&nbsp;&nbsp;return actual // LOCKED<br>
+                        <span class="cline">35&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Since the return value of <code>CAS</code> is <code>LOCKED</code>, if we don't get the lock (because it is already locked), then the loop in <code>lock(lockName)</code> keeps looping.<br>
+                    <br>
+                    If it is <code>UNLOCKED</code>, then we got the lock and our loop ends.<br>
+                    <br>
+                    Locks of this style are called <span class="keyword">spin locks</span>.<br>
+                    <br>
+                    Since while waiting we need to constantly check if the lock variable is free, this is called <span class="keyword">busy waiting</span>.<br>
+                    It is not very productive.<br>
+                    The entire time a waiting thread is running, it is just checking the lock (that can't get unlocked until another thread runs).<br>
+                    <br>
+                    Alternative: <span class="keyword">Blocking LOCK</span><br>
+                </p>
+                <ul>
+                    <li>uses scheduler to reduce busy wait time</li>
+                    <li>blocks a thread when locked out, unblocks when available</li>
+                </ul>
+                <br>
+                <p>
+                    Locks are great; they have solved our need for mutual exclusion of our critical sections.<br>
+                    <br>
+                    Locks themselves raise a new set of problems.<br>
+                    <br>
+                    Consider two functions, 2 critical sections, 2 locks...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>fn1{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(A)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(b)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(B)<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(A)<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>fn2{<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(B)<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(A)<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(A)<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(B)<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    One possible interleaving of execution is:
+                </p>
+                <ul>
+                    <li><code>fn1</code> acquires <code>A</code></li>
+                    <li><code>fn2</code> acquires <code>B</code></li>
+                    <li><code>fn1</code> attempts to acquire <code>B</code></li>
+                    <li><code>fn2</code> attempts to acquire <code>A</code></li>
+                </ul>
+                <p>
+                    Neither thread can continue; if they can't continue, they can't unblock their block.<br>
+                    <br>
+                    This is called a <span class="keyword">deadlock</span>; when two threads are blocking each other from continuing, in doing so they ensure the other can never finish, but neither can they.<br>
+                    <br>
+                    We can solve this deadlock by only ever acquiring the locks in the same order.<br>
+                    <br>
+                    Solving deadlocks is not always so easy.<br>
+                </p>
+                <br>
+                <b>Hungry Hungry Philosopher (the dining philosopher's problem(</b>
+                <ul>
+                    <li>5 philosophers are sitting around a round table with plates of spaghetti in front of each of them</li>
+                    <li>in between each pair of philosophers is a fork so 5 forks total</li>
+                    <li>philosophers must alternate between thinking and eating</li>
+                    <li>to eat, a philosopher must have a fork in each hand and they can only grab the two forks beside them</li>
+                </ul>
+                <img src="./image/cs230/lec20/20_1.png">
+                <p>
+                    The goal is design an algorithm so no philosopher starves.<br>
+                    Simple approach:<br>
+                </p>
+                <ol>
+                    <li>think until left fork is available, then pick it up</li>
+                    <li>think until right fork is available, then pick it up</li>
+                    <li>when both forks are held, eat for a fixed amount of time</li>
+                    <li>put right fork down</li>
+                    <li>put left fork down</li>
+                    <li>repeat from beginning</li>
+                </ol>
+            </div>
+            <hr>
             
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
