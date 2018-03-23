@@ -103,3 +103,9 @@ img {
 .leftMargin {
     margin-right: 0.75em;
 }
+
+.math {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 20px;
+}
