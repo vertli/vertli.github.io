@@ -6702,6 +6702,288 @@
             </div>
             <hr>
             
+            <div class="lec21">
+                <h3>Lecture 21 - 22/03/2018</h3>
+                <hr>
+                <b>Wrap-Up</b>
+                <p>
+                    So far we have talked about concurrency with no support from hardware.<br>
+                    We simply created multiple threads and swapped between them for execution (done by scheduler).<br>
+                    <br>
+                    Without support from hardware, a multi-threaded program will <u>always</u> have worse throughput (runtime) than a single threaded version of that program.<br>
+                </p>
+                <ul>
+                    <li>That is, the same program multi-threaded will take longer to execute than the single threaded version.</li>
+                    <li>Overhead of threads cost (swapping is costly, creating threads, waiting for threads, potential wasted time waiting for locks)</li>
+                </ul>
+                <p>
+                    Threads are not useless in this case, they are used to allow for responsive software.<br>
+                    For example, thread for computation, thread for UI.<br>
+                    <br>
+                    How can hardware support concurrency?<br>
+                </p>
+                <br>
+                <b>Hardware Multi-threading</b>
+                <ul>
+                    <li>still only have <u>one</u> pipeline for execution
+                        <ul>
+                            <li>only one thread can run at a time</li>
+                        </ul>
+                    </li>
+                    <li>multiple (N) sets of registers</li>
+                    <li>support up to N threads</li>
+                    <li>switching is done in hardware, instead of saving/restoring</li>
+                </ul>
+                <br>
+                <b>Temporal Multi-threading</b>
+                <ul>
+                    <li>still not parallel execution</li>
+                </ul>
+                <br>
+                <p>
+                    We can go even further to full <span class="keyword">multi core</span> (standard for today's CPUs).
+                </p>
+                <ul>
+                    <li>multiple fully replicated pipelines, essentially multiple CPUs</li>
+                    <li>finally actual parallel execution (threads can be running at the same time as each other)</li>
+                    <li>potential gains are limited by the fraction of the program that can actually be run in parallel</li>
+                    <li>parallelisation of software is a big research topic today</li>
+                </ul>
+                <br>
+                <p>How much can we actually speed up our code using multiple cores?<br></p>
+                <b>Amdahl's Law</b>
+                <ul>
+                    <li><span class="math">p</span> is the percentage of the program that can be made to be parallel</li>
+                    <li><span class="math">1-p</span> is the percentage that cannot be parallelised</li>
+                    <li>
+                        maximum speed up from using <span class="math">N</span> cores can be calculated by...
+                        <ul><li class="math">S(N) = 1 &div; [(1-p) + (p &div; N)]</li></ul>
+                    </li>
+                </ul>
+                <p>
+                    What is the maximum possible speed-up if <span class="math">p = 90%</span>?<br>
+                    Maximum possible speed-up: <span class="math">N = &infin;</span>
+                </p>
+                <table>
+                    <tr>
+                        <td class="math">S(N)&nbsp;</td>
+                        <td class="math">=&nbsp;</td>
+                        <td class="math">1 &div; [(1-p) + (p &div; N)]&nbsp;</td>
+                        <td>(all limit as <span class="math">N &rarr; &infin;</span>)</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1 &div; [(1 - 0.9) + (0.9 &div; &infin;)]</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1 &div; (0.1 + 0)</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <p>
+                    Hence, the maximum speed-up is 10 times faster.<br>
+                    <br>
+                    When trying to use parallelisation for speed, programmers try to write their code in such a way that maximises <span class="math">p</span>.<br>
+                    More cores does not automatically make code run faster, some tasks cannot be parallelised at all.<br>
+                    Diminishing returns with increasing numbers of cores.<br>
+                    <br>
+                    Scheduler controls which threads run on which cores.<br>
+                </p>
+                <br>
+                <b>Module 6 - The Operating System</b>
+                <p>What does an operating system do?</p>
+                <ul>
+                    <li>provides an execution environment for programs</li>
+                    <li>manages resources (CPU, memory, I/O)</li>
+                    <li>
+                        provides isolation for our programs and protection from...
+                        <ul>
+                            <li>reading/using other programs' memory</li>
+                            <li>CPU hogging (one process hogging all CPU time so no one else gets to run)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    The <span class="keyword">kernel</span> is the core process (program) of the operating system.<br>
+                    It is the middle man between the applications and hardware.<br>
+                    One part of the kernel is the scheduler - it controls the execution of threads.<br>
+                </p>
+                <br>
+                <b>Performance Metrics</b>
+                <ul>
+                    <li>throughput (or threads) - number of threads completed per unit of time</li>
+                    <li>
+                        latency
+                        <ul>
+                            <li>turnaround time: <span class="math">T<sub>completion</sub> - T<sub>arrival</sub></span></li>
+                            <li>response time: <span class="math">T<sub>first run</sub> - T<sub>arrival</sub></span></li>
+                        </ul>
+                    </li>
+                    <li>fairness - equal CPU time for threads or proportional &rarr; making sure threads get to execute</li>
+                    <li>wait time - time spent in ready state</li>
+                </ul>
+                <p>
+                    Scheduling is a very complex topic, so we will start with 4 (very unrealistic) assumptions and relax them as we go.
+                </p>
+                <ol>
+                    <li>each thread runs for the same amount of time</li>
+                    <li>all jobs arrive (are created) at the same time</li>
+                    <li>all jobs use only CPU (no I/O)</li>
+                    <li>run time is known for each thread</li>
+                </ol>
+                <p>
+                    Most basic attempt at scheduling - first come first served (first in first out - FIFO).<br>
+                    It is very simple and easy to execute.<br>
+                    <br>
+                    Example: We have 3 threads A, B and C. All of them take 10 seconds to run. Assumption 2 says they all arrive at same time.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_1.png">
+                <br><br>
+                <p>What is the average turnaround time?</p>
+                <table class="textTable">
+                    <tr>
+                        <th>Job</th>
+                        <th>T<sub>completion</sub></th>
+                        <th>T<sub>arrival</sub></th>
+                        <th>T<sub>turnaround</sub></th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>20</td>
+                        <td>0</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>30</td>
+                        <td>0</td>
+                        <td>30</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    <span class="math">Average Turnaround = (10 + 20 + 30) &div; 3 = 20s</span><br>
+                    <br>
+                    Let's relax assumption 1 (all threads take same time).<br>
+                    How does FIFO perform now?<br>
+                    Does poorly with the grocery store dilemma:<br>
+                    A, B and C again, but A takes 100s, B and C take 10s.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_2.png">
+                <p>
+                    <span class="math">Average Turnaround = (100 + 110 + 120) &div; 3 = 110s</span><br>
+                    <br>
+                    This problem of many short resource consumers stuck behind one large resource consumer is called the <span class="keyword">convoy effect</span>.<br>
+                    <br>
+                    <span class="keyword">Shortest Job First (SJF): schedule shortest first</span>
+                </p>
+                <img src="./image/cs230/lec21/21_3.png">
+                <p>
+                    <span class="math">Average Turnaround = (10 + 20 + 120) &div; 3 = 50s</span><br>
+                    <br>
+                    SJF is much better than FIFO in this case.<br>
+                    If our assumptions held, SJF would probably be optimal.<br>
+                    <br>
+                    If we relax assumption 2 (all threads arrive at the same time) and if A arrives first in previous example, we still get convoy effect.<br>
+                    Maybe then the currently executing thread should be pre-empted if a new thread has a shorter runtime than the remainder of the current thread is runtime.<br>
+                    <br>
+                    This is called <span class="keyword">shortest time to completion first (STCF)</span>, aka <span class="keyword">pre-emptive shortest job first (PSJF)</span>.<br>
+                    <br>
+                    Example: Previous scenario with A arrives at 0, B and C arrive at 10.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_4.png">
+                <br>
+                <p>
+                    <span class="math">Average Turnaround = [(120 - 0) + (20 - 10) + (30 - 10)] &div; 3 = 50s</span><br>
+                    <br>
+                    It avoids convoy effect even without assumption 2.<br>
+                    STCF is probably optimal (for turnaround time); so long as we still have assumptions 3 and 4.<br>
+                    <br>
+                    But turnaround time is not our only metric.<br>
+                    <br>
+                    Users want low response time on their interactions with the program.<br>
+                    <br>
+                    Response time from our previous example...
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Job</th>
+                        <th>T<sub>first response</sub></th>
+                        <th>T<sub>arrival</sub></th>
+                        <th>T<sub>response</sub></th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <p>
+                    <span class="math">Average Turnaround = (0 + 0 + 10) &div; 3 &approx; 3.33s</span><br>
+                    <br>
+                    STCF (and related) are not good for response time.<br>
+                    Imagine thread C was for user input and was responding to you typing something - waiting 10 seconds to see what you typed show upon the screen is not what we want or expect from our software.<br>
+                    <br>
+                    Another big problem with STCF is a long runtime thread can be perpetually passed over in favour of shorter threads.<br>
+                    It is called <span class="keyword">thread starvation</span>.<br>
+                </p>
+                <br>
+                <b>Another algorithm: Round-robin</b>
+                <p>
+                    Instead of running a job until completion (or until pre-emption by a shorter thread), run the job for a short set amount of time, then switch to the next job in queue.<br>
+                </p>
+                <ul><li>repeat until all threads are done</li></ul>
+                <p>
+                    Hardware timers interrupts the CPU at the end of each time slice.<br>
+                    <br>Example: Threads A, B and C, arrive at <span class="math">t = 0</span>, each require 5 seconds.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_5.png">
+                <p>
+                    <span class="math">Average Response Time = (0 + 5 + 10) &div; 3 = 5s</span><br>
+                    <br>
+                    With round-robin and time slice of 1 second:<br>
+                </p>
+                <img src="./image/cs230/lec21/21_6.png">
+                <p>
+                    <span class="math">Average Response Time = (0 + 1 + 2) &div; 3 = 1s</span><br>
+                    <br>
+                    Intuitively, response time is better with round-robin.<br>
+                    But context switch takes time - it is costly.<br>
+                    So it is a trade-off between responsiveness and paying for switches.<br>
+                    <br>
+                    Also, how does round-robin perform on turnaround time?<br>
+                    In example above, <span class="math">turnaround = (13 + 14 + 15) &div; 3 = 14s</span><br>
+                    Generally, response time is at odds with turnaround time.
+                </p>
+            </div>
+            <hr>
+            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
