@@ -6496,7 +6496,7 @@
                         <span class="cline">02&nbsp;&nbsp;</span>lis&nbsp;&nbsp;$8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; initialise $8 to the address of counter<br>
                         <span class="cline">03&nbsp;&nbsp;</span>.word counter&nbsp;&nbsp;&nbsp;; never change $8<br>
                         <span class="cline">04&nbsp;&nbsp;</span>...<br>
-                        <span class="cline">05&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; load counter's value into register 9, so $50 = 50<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; load counter's value into register 9, so $9 = 50<br>
                         <span class="cline">06&nbsp;&nbsp;</span>addi $9, $9, 1  ; set $9 to 51<br>
                         <span class="cline">07&nbsp;&nbsp;</span>; scheduler interrupts thread 1 here and starts thread 2<br>
                         <span class="cline">08&nbsp;&nbsp;</span>; thread 2 starts executing<br>
@@ -6981,6 +6981,195 @@
                     In example above, <span class="math">turnaround = (13 + 14 + 15) &div; 3 = 14s</span><br>
                     Generally, response time is at odds with turnaround time.
                 </p>
+            </div>
+            <hr>
+            
+            <div class="lec22">
+                <h3>Lecture 22 - 27/03/2018</h3>
+                <hr>
+                <p>
+                    We know how long each job is going to take.<br>
+                    In reality, the scheduler has next to no information.<br>
+                </p>
+                <br>
+                <b>Review</b>
+                <ul>
+                    <li><span class="keyword">Turnaround Time</span>: time until completion
+                        <ul>
+                            <li class="math">T<sub>Finish</sub> - T<sub>Initial</sub></li>
+                        </ul>
+                    </li>
+                    <li><span class="keyword">Response Time</span>: time until first run
+                        <ul>
+                            <li>T<sub>first run</sub> - T<sub>initial</sub></li>
+                        </ul>
+                    </li>
+                    <li><span class="keyword">Round-Robin</span>: smaller time slices, so better response time worse turnaround time
+                    </li>
+                </ul>
+                <p>
+                    In general, we have a trade-off between response and turnaround.<br>
+                    <br>
+                    Our jobs are all CPU, not I/O.<br>
+                    This is ridiculous; any useful program has I/O - so now we relax this assumption.<br>
+                    <br>
+                    Example:<br>
+                    Job A and B both need 50ms of CPU time.<br>
+                    A runs on the CPU for 10ms at a time, then requests data from the disk (assume this request takes 10ms).<br>
+                    B simply uses CPU for 50ms.<br>
+                </p>
+                <img src="./image/cs230/lec22/22_1.png">
+                <br>
+                <p>
+                    We are wasting the CPU time.<br>
+                    <br>
+                    Common approach:<br>
+                    Treat A as several sub-jobs, each taking 10ms and use STCF.<br>
+                    When I/O is done for A, spawn its next sub-job if it is not complete.<br>
+                </p>
+                <img src="./image/cs230/lec22/22_2.png">
+                <br>
+                <p>
+                    This allows for much better usage of our resources (less waste).<br>
+                    <br>
+                    But... The scheduler in reality has no idea how long are jobs going to take.<br>
+                    We relax our final assumption (knowing how long all jobs take).<br>
+                    Now how? Since we do not know anything about a job's behaviour:
+                </p>
+                <ul>
+                    <li>how long does it take to execute?</li>
+                    <li>
+                        <ul>Is it a heavily interactive?
+                            <li>short bursts of CPU heavy work</li>
+                            <li>broken up by I/O</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    We want to watch the jobs, and adapt to how they behave and avoid problem we saw earlier (e.g. convoy effect).<br>
+                </p>
+                <br>
+                <b>Multi-Level Feedback Queue</b>
+                <p>
+                    Many real OS's use some form of this as their base for their scheduler.<br>
+                    <br>
+                    Definition:
+                </p>
+                <ul>
+                    <li>
+                        Some number of queues to put jobs in. Each queue has a different priority level.
+                        <ul>
+                            <li>For example, jobs in queue A are of higher priority then jobs in queue B.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Each queue has its own scheduling algorithm (could be the same).
+                    </li>
+                    <li>
+                        Based on job behaviour, define a policy for movement between queues. That is, define how to promote/demote jobs to a higher/lower priority queue.
+                        <ul>
+                            <li>
+                                policy for promotion and policy for demotion
+                                <ul>
+                                    <li>Example: If a job is acting like a highly interactive program, maybe we promote/keep in high priority.</li>
+                                    <li>Example: If job is using CPU for long periods of time, may demote.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Let's define then our own multi-level feedback queue scheduling algorithm.<br>
+                    We will have 8 queues: <code>q<sub>1</sub> ... q<sub>8</sub></code>.<br>
+                    <code>q<sub>8</sub></code> is the highest priority, <code>q<sub>1</sub></code> is lowest priority.<br>
+                    Snapshot of our queues with 4 jobs:<br>
+                </p>
+                <img src="./image/cs230/lec22/22_3.png">
+                <br><br>
+                <p>
+                    Our rules will be as follows:
+                </p>
+                <ol>
+                    <li>If priority(X) &gt; priority(Y), then X runs, Y doesn't</li>
+                    <li>If priority(X) == priority(Y), then X and Y run in Round-Robin</li>
+                </ol>
+                <p>
+                    With only these two rules, what happens in example above?<br>
+                    Round-Robin for A and B, only two get to run; when they finish we run C, after that finishes run D.<br>
+                </p>
+                <ol start="3">
+                    <li>when job enters our system, they are placed in <code>q<sub>8</sub></code> (high priority).</li>
+                    <li>When a job has run its Round-Robin time allotment, demote it to the next lower priority queue (instead of placing at back of current queue).</li>
+                    <li>After some amount of time, move all jobs back up to <code>q<sub>8</sub></code> (the topmost queue).</li>
+                </ol>
+                <p>
+                    This is a very simple approach to the problem, but it somewhat achieves what we set out to do.<br>
+                </p>
+                <ul>
+                    <li>do not know how long jobs run for, so assume short and give high priority</li>
+                    <li>a job that is actually short will finish in the first few time slices it is given</li>
+                    <li>if the job is actually long, it will fall down to lower priority queues (avoid convoy effect)</li>
+                    <li>our rule of promoting everything back up allows for adopting to changes in a job's behaviour</li>
+                </ul>
+                <p>
+                    While scheduling processes is a large part of the OS's job, but it is not everything.<br>
+                    <br>
+                    Another big component is the management of memory.<br>
+                    The OS "owns" the memory and loans portions of it to programs.<br>
+                    <br>
+                    Previously we have used the term <span class="keyword">address space</span> to talk about the range of memory addresses we could access.<br>
+                    We talk about <span class="keyword">address spaces</span> instead of just saying memory since our processes only see an abstraction of memory, not the real thing or not all of it.<br>
+                </p>
+                <dl>
+                    <dt>Logical Address Space</dt>
+                    <dd>It is the abstracted set of memory address a process sees; it represents that process own memory.</dd>
+                    <br>
+                    <dt>Logical Address (aka Virtual Address)</dt>
+                    <dd>It is the address of a piece of data as computed by the process.</dd>
+                    <dd>Since the process only knows about its own logical address space, this address is within that space (the number is within that range) and does not represent the actual "physical" location of that data in memory.</dd>
+                    <br>
+                    <dt>Physical Address</dt>
+                    <dd>It is the place that data actually resides in the <span class="keyword">physical address space</span>.</dd>
+                    <br>
+                    <dt>Memory-Management Unit (MMU)</dt>
+                    <dd>It is a new (to us) piece of hardware which is to map a process's logical address to a physical address.</dd>
+                    <br>
+                    <dt>Physical Address Space</dt>
+                    <dd>The entirety of our memory space as seen by our MMU (may or may not just our RAM, for example).</dd>
+                </dl>
+                <p>
+                    There are many different ways for the MMU to map between logical addresses and physical addresses.<br>
+                    We will consider first the simplest idea: keep track of where a process's logical memory starts in physical memory, and how large it is.<br>
+                    To achieve this, lets make our lives easy and give ourselves a special registers.<br>
+                </p>
+                <dl>
+                    <dt>Base Register</dt>
+                    <dd>It holds the smallest physical address that is accessible by the current executing process.</dd>
+                    <br>
+                    <dt>Limit Register</dt>
+                    <dd>It holds the size of our address space.</dd>
+                </dl>
+                <p>
+                    The loader initialises these registers for us as it does the other registers when it loads this program into memory.<br>
+                    <br>
+                    Example:<br>
+                    A process P1 with a 16KB address space, we actually have 4 GB of memory.
+                </p>
+                <img src="./image/cs230/lec22/22_4.png">
+                <br>
+                <br>
+                <p>
+                    So our base register would hold: 128 * 1024 = 131 072<br>
+                    Our limit register would hold: 16 * 1024 = 16 384<br>
+                    The end of our range is: 128 * 1024 + 16 * 1024 = 147 456<br>
+                    <br>
+                    A simple mapping approach like this makes it seen like there is no different between using this and just allowing programs to discuss physical addresses.<br>
+                    Two reasons to do this:
+                </p>
+                <ul>
+                    <li>Simpler for the program, our loader does not need to update for all memory access</li>
+                    <li>Offers protection from illegal accesses - processes cannot access each other memory. MMU can check the access and disallow it if its outside of that program's physical address space.</li>
+                </ul>
             </div>
             <hr>
             
