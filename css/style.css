@@ -53,7 +53,7 @@ b {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 100vh;
+    height: 100%;
     color: white;
     text-align: center;
 }
@@ -67,14 +67,14 @@ b {
 
 .top h2 {
     font-size: 2em;
-    color: #ebfaeb;
+    color: #A7C7B9;
     text-shadow: 2px 2px #051405;
 }
 
 .top a {
     font-size: 1.5em;
-    color: #A7C7B9;
-    text-shadow: 2px 2px #272727;
+    color: #ebfaeb;
+    text-shadow: 2px 2px #051405;
 }
 
 
