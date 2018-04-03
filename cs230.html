@@ -7260,7 +7260,7 @@
                     Since our segments must large enough for our largest program, we are wasting a tonne of space for our smaller progress.<br>
                     <br>
                     Example:<br>
-                    Our memory segments are <span class="math">256 Kb</span>span>, we have a process that only uses <span class="math">2 Kb</span> - we are wasting <span class="math">254 Kb</span>.<br>
+                    Our memory segments are <span class="math">256 Kb</span>, we have a process that only uses <span class="math">2 Kb</span> - we are wasting <span class="math">254 Kb</span>.<br>
                     <br>
                     This type of memory waste is called <span class="keyword">internal fragmentation</span>.<br>
                     <br>
@@ -7367,11 +7367,330 @@
             <hr>
             
             <section id="lec24">
-                <h3>Lecture 24 - 03/04/2018</h3>
+                <h3>Lecture 24 - 04/03/2018 "The Final Lecture"</h3>
                 <hr>
+                <b>Announcements</b>
+                <p>
+                    Final is coming up!!!<br>
+                    You can bring your own cheat sheet.<br>
+                    But it must be hand written, not printed off.<br>
+                    Also, it can be double-sided.<br>
+                    <br>
+                    <br>
+                    Last time, we talked about logical address spaces v.s. physical address spaces.<br>
+                    <br>
+                    Now let's consider a simple but concrete example of how a process' logical address space, physical memory and the page table may look.<br>
+                </p>
+                <ul>
+                    <li>Page size of 4 bytes</li>
+                    <li>Word size of 1 byte</li>
+                </ul>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="2">Logical Memory</th>
+                        <th rowspan="31">&nbsp;</th>
+                        <th colspan="2">Page Table</th>
+                        <th rowspan="31">&nbsp;</th>
+                        <th colspan="3" rowspan="2"> Physical Memory</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Array of Characters</th>
+                        <th>Page</th>
+                        <th>Frame</th>		
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>a</td>
+                        <td>0</td>
+                        <td>5</td>
+                        <td rowspan="4">Frame 0</td>
+                        <td>0</td>
+                        <td rowspan="4">&#8285;<br>&#8285;</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>b</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>c</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>d</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>e</td>
+                        <td rowspan="25"></td>
+                        <td rowspan="25"></td>
+                        <td rowspan="4">Frame 1</td>
+                        <td>4</td>
+                        <td>i</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>f</td>
+                        <td>5</td>
+                        <td>j</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>g</td>
+                        <td>6</td>
+                        <td>k</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>h</td>
+                        <td>7</td>
+                        <td>l</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>i</td>
+                        <td rowspan="4">Frame 2</td>
+                        <td>8</td>
+                        <td>m</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>j</td>
+                        <td>9</td>
+                        <td>o</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>k</td>
+                        <td>10</td>
+                        <td>o</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>l</td>
+                        <td>11</td>
+                        <td>p</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>m</td>
+                        <td rowspan="4">Frame 3</td>
+                        <td>12</td>
+                        <td rowspan="4">&#8285;<br>&#8285;</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>n</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>o</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>p</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>q</td>
+                        <td rowspan="4">Frame 4</td>
+                        <td>16</td>
+                        <td rowspan="4">&#8285;<br>&#8285;</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>r</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>s</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>t</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>u</td>
+                        <td rowspan="4">Frame 5</td>
+                        <td>20</td>
+                        <td>a</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>v</td>
+                        <td>21</td>
+                        <td>b</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>w</td>
+                        <td>22</td>
+                        <td>c</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>x</td>
+                        <td>23</td>
+                        <td>d</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>y</td>
+                        <td rowspan="4">Frame 6</td>
+                        <td>24</td>
+                        <td>e</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>z</td>
+                        <td>25</td>
+                        <td>f</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"></td>
+                        <td>26</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>h</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">&#8285;<br>More Frame...<br>&#8285;</td>
+                        <td rowspan="2">&#8285;<br>&#8285;</td>
+                        <td rowspan="2">&#8285;<br>&#8285;</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So, the process and the programmer still see their memory laid out in a "logical" way they asked for it.<br>
+                    But behind the scenes, the physical reality is far from the logical view.<br>
+                    It is spread out across physical memory.<br>
+                    <br>
+                    How might we actually implement a page table?<br>
+                    We will consider only the case where the OS creates a separate page table for each process.<br>
+                    <br>
+                    Every memory access we make must go through the page table.<br>
+                    This means we want our page table to be very fast to access and find the page/frame we are looking up.<br>
+                    In order to be fast, we need hardware to support.<br>
+                    <br>
+                    A page table can be supported by hardware several ways.<br>
+                    One possibility is have a special set of registers that store the page table.<br>
+                    Those registers must be protected, only the OS can access them.<br>
+                    Registers must be stored/restored on context switches, increases the cost of switching between processes.<br>
+                    Only reasonable if the page table is small; but modern page tables can be as large as 1 million entries!<br>
+                    <br>
+                    Instead we can keep only one special register for the page table; we call that <span class="keyword">Page Table Base Register (PTBR)</span>.<br>
+                    PTBR stores the address of the page table in main memory.<br>
+                    We only need to store/restore this register on context switches.<br>
+                    Now all memory accesses require 2 accesses, one into the page table and one to grab the actual data requested.<br>
+                    <br>
+                    Both of these solutions had been used on systems in the past.<br>
+                    <br>
+                    Modern personal computers however require a faster solution, and support for large page tables.<br>
+                    <br>
+                    A special associative cache specifically for the page table is added to the hardware; this cache is called the <span class="keyword">Translation Look-Aside Buffer (TLB)</span>.<br>
+                    Like in our regular caches, our TLB has a tag (also called a <span class="keyword">key</span>) and the actual data stored.<br>
+                    Recall in our regular caches, the tag was used to say which block of memory was actually stored in the slot.<br>
+                    In our TLB, the tag is the page number we are looking for.<br>
+                    <br>
+                    Recall again a fully associative cache, each tag can be searched simultaneously, that means in our TLB we can searched all our slots for the page we want simultaneously.<br>
+                    <br>
+                    Our page table can be very large, so we cannot store the page table in the TLB.<br>
+                    <br>
+                    So page table still kept in main memory; TLB acts as a cache specifically for our page table.<br>
+                    <br>
+                    How, from a software prospective, should we structure our page table?<br>
+                    Modern PCs have very large logical address spaces. That means very large page table.<br>
+                    If we have <span class="math">1 million</span> entries, each being <span class="math">4 bytes</span>, each page table could be up to <span class="math">4 Mb</span>.<br>
+                    It is not feasible nor do we want to store <span class="math">4 Mb</span> of memory contiguously.<br>
+                    <br>
+                    There are several solutions to this problem.<br>
+                    <br>
+                    Given our current knowledge, what might one solution be?<br>
+                    Why not create a page table for the page table?<br>
+                    This idea is called <span class="keyword">hierarchical paging</span>.<br>
+                    Specifically in this scenario, it is called <span class="keyword">two level paging</span>.<br>
+                    <br>
+                    Consider our previous example:<br>
+                    We have a page size of <span class="math">4 Kb</span>, <span class="math">32-bit</span> logical address space.<br>	
+                </p>
+                <ul>
+                    <li>high order <span class="math">20 bits</span> - page number</li>
+                    <li>Low order <span class="math">12 bits</span> - offset</li>
+                </ul>
+                <p>
+                    With 2 level paging, instead...
+                </p>
+                <ul>
+                    <li>high order <span class="math">10 bits</span> - the page of the outer page table</li>
+                    <li>next <span class="math">10 bits</span> - the offset into that page</li>
+                    <li>last <span class="math">12 bits</span> - same as before, the offset</li>
+                </ul>
+                <img src="./image/cs230/lec24/24_1.png"><br><br>
+                <p>
+                    Now we only require it each in a page table is <span class="math">4 bytes</span>.<br>
+                    <span class="math">(1024 &times; 4) + (1024 &times; 4) = 1024 + (1024 &times; 1024 &times; 4) &lt;&lt;&lt;&lt; 2 Mb</span><br>
+                    <strong>Hackman: Wait, I think I messed it up. Let's me do it again LOL</strong><br>
+                    <br>
+                    Page number in outer page table is storable in <span class="math">10 bits</span>, so <span class="math">2^10 - 1</span> entries in outer page table.<br>
+                    Each entry must tell us which page in the inner page table we go to.<br>
+                    If outer page table is <span class="math">4</span> byte entries, <span class="math">(2^10 - 1) &times; 4 bytes</span> is the space required for outer page table.<br>
+                    The reason we use <span class="math">(2^10 - 1) bytes</span> is because the offset into it is <span class="math">10 bits</span>.<br>
+                    <span class="math">4 bytes</span> entries mean our inner page table has <span class="math">(2^32 - 1)</span> entries (pages).<br>
+                    <span class="math">(2^32 - 1)</span> pages, each pages has <span class="math">(2^10 - 1)</span> entries, each entry is <span class="math">4 bytes</span>.<br>
+                    So the total is <span class="math">(2^32 - 1) &times; (2^10 - 1) &times; 4 bytes</span>.<br>
+                    <br>
+                    However hierarchical paging causes to be feasible as we go to <span class="math">64-bit</span> (and larger) architectures.<br>
+                    <span class="math">64-bit</span> addressable space, <span class="math">4 Kb</span> page sizes.
+                </p>
+                <ul>
+                    <li><span class="math">12-bit</span>: offset</li>
+                    <li><span class="math">52-bit</span>: page number</li>
+                    <li><span class="math">2^52 - 1</span>: potential entries into our page table, each 4 or even 8 bytes</li>
+                </ul>
+                <p>
+                    To make the size feasible would have go to at least 4 levels, but each level is another step of following a pointer and accessing a table until you have got your data.<br>
+                    <br>
+                    We are not willing to pay this access cost.<br>
+                    For <span class="math">64 bits</span> and above, hierarchical paging is not feasible nor is it used.<br>
+                    <br>
+                    Another solution to the paging problem is the Hashed Page Table.<br>
+                </p>
+                <ul>
+                    <li><span class="keyword">Hashed Page Table</span>: the page table is stored as a special data structure called a hash map</li>
+                    <li><span class="keyword">Map</span> (aka <span class="keyword">dictionary</span>): a pairing of key's to values (like a literary dictionary pairs words to definition)</li>
+                </ul>
+                <p>
+                    The hash part allows for constant time lookup of keys.<br>
+                    A hash function can have <span class="keyword">hash collisions</span> 2 or more inputs map to the same output.<br>
+                    Solve this problem by having the values (the actual data keys map to) be a limited list of entries which store frame number, and meta-data (data about data) about which page they correspond to.<br>
+                    <br>
+                    There is much more to operating systems; we have barely scratched the surface.<br>
+                    If you want to know more, read <strong>Operating System Concepts</strong> by Silberschatz.<br>
+                </p>
+                <br>
+                <h4 class="title">CS230</h4>
+                <h5 class="title">The End.</h5>
             </section>
             <hr>
-            
             <p>
                 Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
             </p>
