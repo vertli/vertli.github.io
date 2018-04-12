@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CS230|Calvin Li</title>
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/note.css">
+        <link rel="stylesheet" href="./css/cs230use.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:600,600i" rel="stylesheet"> <!-- for math use -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <!-- stylesheet found from w3school. (icon use)-->
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body class="cs230">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li class="courseNote">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./cs230.html">CS 230</a></li>
+                                <li><a href="./cs246.html">CS 246</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
+        <br><br><br>
+        
+        <div class="container">
+            
+            <br>
+            <table class="header">
+                <tr>
+                    <td colspan="100%">
+                        <h1 class="title">CS 230 - Introduction to Computers and Computer Systems</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Instructor:</th>
+                    <td colspan="95%">Rob Hackman</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Office:</th>
+                    <td colspan="95%">DC2551A</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Email:</th>
+                    <td colspan="95%"><a href = "mailto: r2hackma@uwaterloo.ca" target = "_blank;">r2hackma@uwaterloo.ca</a></td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Website:</th>
+                    <td colspan="95%">
+                        <a href="https://www.student.cs.uwaterloo.ca/~cs230/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs230/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Note:</th>
+                    <td>All program codes in this course notes are provided by Prof. Hackman during class.</td>
+                </tr>
+            </table>
+            <hr>
+         
+            <section id="lec19">
+                <h3>Lecture 19 - 15/03/2018</h3>
+                <hr>
+                <b>Concurrence</b>
+                <p>
+                    It means multiple things occurring at the same time.<br>
+                    <br>
+                    Unless you've known, otherwise, all programs you've written have not used concurrently. They have been single-threaded.<br>
+                    We want parts of our program to run concurrently (at the same time) or at least appear to run concurrently.<br>
+                    <br>
+                    Larger software, or specific types of software typically want concurrence.<br>
+                    For example, any software with a Graphical User iInterface (GUI) wants to employ concurrency. Why?<br>
+                    When user presses a button which begins execution of a computation that takes several seconds.<br>
+                    If no concurrency the computation runs taking all CPU time for those seconds meaning the code for the GUI can't run so the GUI appears frozen to user.<br>
+                    This scares and frustrates the user.<br>
+                    We want the work of background computation and displaying the GUI to be done concurrently.<br>
+                </p>
+                <br>
+                <b>Multiprogramming</b>
+                <p>
+                    It is a simplest form of implementing concurrency. It is analogous to how humans multi-task.<br>
+                    Multiple tasks do not actually occur at one time step, instead you switch back and forth between tasks.<br>
+                    <br>
+                    The idea is CPUs are very fast.<br>
+                    Many computer tasks do not saturate the CPU (use 100% of the CPU's power).<br>
+                    Often computer tasks interact with slower entities.
+                </p>
+                <ul>
+                    <li>Devices such as disk, network, mouse, keyword.</li>
+                    <li>Humans, who need time to read, interpret and respond.</li>
+                </ul>
+                <p>
+                    Goal is to use our single CPU to execute multiple tasks concurrently, or rather switch between these tasks to minimise wasted time, and simulate concurrency.
+                </p>
+                <br>
+                <b>Task</b>
+                <p>
+                    It is the unit of computing our operating system controls, implemented as programs.<br>
+                    An instance of a task is called a <span class="keyword">process</span>.<br>
+                    <br>
+                    The operating system manages execution of all processes, REALLY it's like a middle manager.
+                </p>
+                <ul>
+                    <li>facilitates computation and running of processes</li>
+                    <li>enforces the rules on the processed</li>
+                </ul>
+                <p>
+                    A <u>process</u> is comprised of:
+                </p>
+                <ul>
+                    <li>Threads (divisions of execution of a given process) one or more</li>
+                    <li>Data (our addressable memory space/ address space)</li>
+                    <li>I/O Associations
+                        <ul>
+                            <li>example: open files, network connections</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Threads within a process share the same address space (main memory) but do NOT share their stacks.<br>
+                    But the stack is stored in main memory, so how?<br>
+                    We just break up our stack space into segments for each thread and give each thread a distinct stack pointer.<br>
+                </p>
+                <img src="./image/cs230/lec19/19_1.png"><br>
+                <p>
+                    This is usually okay because generally the stack does not get very large.<br>
+                    <br>
+                    Really we are just simulating concurrency by switching between threads; we still only have one CPU doing work on one given thread at any given time.<br>
+                    <br>
+                    We must be able to switch between which thread is executing - how to facilitate AND execute a <u>Thread Switch</u>.<br>
+                    <br>
+                    To switch thread A to thread thread B...
+                </p>
+                <ul>
+                    <li>
+                        suspend the execution of thread A
+                        <ul>
+                            <li>store the CPU state (our registers) on the stack</li>
+                            <li>store thread A's stack pointer in a special per thread data structure maintained by the operating system, called the <span class="keyword">Thread Control Block (TCB)</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        resume execution of thread B
+                        <ul>
+                            <li>retrieve thread B's stack pointer from the TCB</li>
+                            <li>restore your register you stored on the stack</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="./image/cs230/lec19/19_2.png"><br>
+                <p>
+                    Thread switches are different than subroutines:
+                </p>
+                <ul>
+                    <li>can happen at any time, current thread has no idea when it will be paused</li>
+                    <li>not known which thread will execute next</li>
+                    <li><u>all</u> registers must be saved</li>
+                    <li>must change our stack (isolated)</li>
+                </ul>
+                <p>
+                    If threads can swap in and out at any time, what is managing the execution of threads?<br>
+                    The <span class="keyword">Scheduler</span> (which is part of the OS).<br>
+                </p>
+                <br>
+                <b>Scheduler</b>
+                <ul>
+                    <li>part of OS</li>
+                    <li>keeps a list of <u>ready</u> threads and decides which to activate next</li>
+                    <li>when a thread paused execution, the scheduler is invoked</li>
+                </ul>
+                <p>
+                    Analogy: Scheduler is the coach of a sports term. Thread states are:
+                </p>
+                <ul>
+                    <li>Running: currently executing thread (player on the field)</li>
+                    <li>Ready: thread is ready and waiting (analogous to being on the bench)</li>
+                    <li>Blocked: thread is NOT ready to be executed (player is out with injury)
+                        <ul>
+                            <li>example: waiting for input</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    The actions or transition between these states are:
+                </p>
+                <ul>
+                    <li>Yield: running thread wants to pause its execution - asking the coach to sub you out</li>
+                    <li>Pre-empt: scheduler interrupts the currently executing thread - coach pulling you off the field</li>
+                    <li>Block/Unblock: block a thread (transition into blocked) or unblock (transition into ready) - getting injured/miraculously recovering</li>
+                </ul>
+                <br>
+                <b>State Transitions</b>
+                <br>
+                <img src="./image/cs230/lec19/19_3.png">
+                <img src="./image/cs230/lec19/19_4.png">
+                <br>
+                <p>
+                    How to choose which ready thread to execute? We will talk about it later.<br>
+                </p>
+                <br>
+                <b>Using Threads in Code (pseudo-code)</b>
+                <p>
+                    <span class="keyword">Operations</span><br>
+                    <code>tx = create (function name, function parameters)</code><br>
+                </p>
+                <ul>
+                    <li><code>tx</code>: the thread name</li>
+                    <li><code>function name</code>: the code that thread must execute (a function)</li>
+                    <li><code>function parameters</code>: arguments for that function parameters</li>
+                </ul>
+                <p>
+                    The operation spawns a new thread that will execute we named function with the given arguments. The thread is called <code>tx</code>.<br>
+                    <br>
+                    <code>join (tx)</code><br>
+                    The line waits for thread <code>tx</code> to compete.<br>
+                    <br>
+                    Example: Run a program that print A and B, each printed in a separate thread.
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>printLetter(inputChar) {<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;output(inputChar); // prints intputChar to screen<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">04&nbsp;&nbsp;</span><br>
+                        <span class="cline">05&nbsp;&nbsp;</span>main() {<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;t1 = create(printLetter,"A");<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;t2 = create(printLetter, "B");<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t1);<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t2);<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>// output: either "AB" or "BA"<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>// we don't know which one<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Note:<br>
+                    Once a thread is created, it may start running right away, or maybe put in a ready state and run later, depending on scheduler.<br>
+                </p>
+                <img src="./image/cs230/lec19/19_5.png"><br>
+                <p>
+                    Possible executions:
+                </p>
+                <img src="./image/cs230/lec19/19_6.png"><br>
+                <p>Other scenarios are possible.
+                    In this example, threads were independent with respect to the data they used.<br>
+                    What if they aren't? We will talk about this next lecture.<br>
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec20">
+                <h3>Lecture 20 - 20/03/2018</h3>
+                <hr>
+                <p>Pseudocode Example 2:<br></p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>global int count = 0<br>
+                        <span class="cline">02&nbsp;&nbsp;</span><br>
+                        <span class="cline">03&nbsp;&nbsp;</span>// function that adds 1 to counter 10 000 000 times<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>increaseCounter(inputChar){<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;output("Begin! " + inputChar)<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;for (int i = 0; i &lt; 10 000 000; ++i) {<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;counter = counter++;<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>&nbsp;&nbsp;output("Done: " + inputChar)<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">11&nbsp;&nbsp;</span><br>
+                        <span class="cline">12&nbsp;&nbsp;</span>int main() {<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;t1 = create(increaseCounter, 'A')<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;t2 = create(increaseCounter, 'B')<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t1)<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;join(t2)<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>&nbsp;&nbsp;output("counter = " + counter)<br>
+                        <span class="cline">18&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    We have no control over the scheduler.<br>
+                    To understand what's going on here, let's consider the assembly for <code>counter = counter + 1</code>.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; counter is currently 50<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>lis&nbsp;&nbsp;$8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; initialise $8 to the address of counter<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>.word counter&nbsp;&nbsp;&nbsp;; never change $8<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; load counter's value into register 9, so $9 = 50<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>addi $9, $9, 1  ; set $9 to 51<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>; scheduler interrupts thread 1 here and starts thread 2<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>; thread 2 starts executing<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>lw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; $9 = 50<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>addi $9, $9, 1  ; $9 = 51<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; counter = 51<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>; thread 2 continues 49 more times so it gets preempted right after<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; counter = 100<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>; now we go back to thread 1, which loads its program state<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>; off its stack and starts where it left off<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>sw&nbsp;&nbsp;&nbsp;$9, 0($8)&nbsp;&nbsp;; sets counter to 51<br>
+                    </code></pre>
+                </span>
+                <br>
+                <b>Summary</b>
+                <ul>
+                    <li><code>t1</code> copied counter's current value of 50 into register 9 and incremented it, so <code>$9 = 51</code></li>
+                    <li><code>t1</code> was interrupted, storing 51 for <code>$9</code> on its stack</li>
+                    <li><code>t2</code> was interrupted after incrementing counter 50 times, right after storing back to counter</li>
+                    <li><code>t1</code> begins execution again right where it paused, so it gets 51 as the value for register 9, and then executes <code>sw $9, 0($8)</code>, <code>counter = $9</code></li>
+                </ul>
+                <p>
+                    This is called a <span class="keyword">Race Condition</span>, where a program's result depends on the timing of the execution of threads.<br>
+                    <br>
+                    Section of code that can result in a race condition is called a <span class="keyword">critical section</span>.<br>
+                    For example,  <code>counter = counter + 1</code>.<br>
+                    <br>
+                    We need <span class="keyword">mutual exclusion</span>.<br>
+                    If one thread is in a critical section, another thread cannot enter that critical section.<br>
+                    <br>
+                    In order to implement mutual exclusion, we could use more powerful <span class="keyword">atomic instructions</span>.<br>
+                    It comes from the definition of atomic: "of or forming a single irreducible unit or component in a larger system." <br>
+                    That is, an atomic instruction is either entirely executed or not all.<br>
+                </p>
+                <ul>
+                    <li>Once atomic instruction has began execution, it cannot be paused until it is done.</li>
+                    <li>One such instruction we could use is <code>addmen $s, i</code>.</li>
+                    <li>Atomic instruction that <code>adds i</code> to the address of memory pointer to by <code>$5</code>.</li>
+                </ul>
+                <p>
+                    Atomicity of an instruction is ensured by hardware.<br>
+                    All the instructions we have seen are atomic; they are just not powerful enough.<br>
+                    <br>
+                    Special instructions like this may not be feasible or generalisable.<br>
+                    We can't make an atomic instruction for every possible task.<br>
+                    A programmer might want to be atomic.<br>
+                    How? Impact on hardware? Pipeline? CPI?<br>
+                    <br>
+                    Instead of atomic instructions for everything, have special atomic instructions to control <span class="keyword">locks</span> that we can use to ensure mutual exclusion of a critical component.<br>
+                    We can use a global lock variable pre critical section (or per critical/resource) which holds the state of the lock (locked or unlocked).<br>
+                </p>
+                <ul>
+                    <li>available, UNLOCKED, free</li>
+                    <li>acquired, held, LOCKED</li>
+                </ul>
+                <p>
+                    Thread must acquire the lock before entering the critical section and must release it upon completion.<br>
+                </p>
+                <br>
+                <b>Fix Example 2 Using Locks</b>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>global lock mutex<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>// in our increasCounter function...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>lock(mutex)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>counter = counter + 1<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>unlock(mutex)<br>
+                    </code></pre>
+                </span>
+                <p>
+                    When a thread calls <code>lock(lockName)</code>, it tries to acquire the lock "lockName".<br>
+                    If no other thread has the lock (i.e. it is unlocked), the requesting thread acquires it and enters its critical section.<br>
+                    If the lock is not free, <code>lock(lockName)</code> will not return until the lock becomes free when the thread that holds it calls <code>unlock(lockName)</code> when exiting the critical section.<br>
+                    <br>
+                    How can <code>lock()</code> and <code>unlock()</code> actually work?<br>
+                    There are many possible implementations; one possibility is assume we have an atomic instruction <code>compare_and_swap(lock, expected, new)</code> which works by checking if lock is currently in state expected; if it is it changes to state new, in both cases it returns the old state of lock.<br>
+                    <br>
+                    Pseudo-code:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>CAS(lock, expected, new){<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;actual = lock<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;if (actual == expected){<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;lock = new<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;return actual<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span>// So now we can implement<br>
+                        <span class="cline">09&nbsp;&nbsp;</span>lock(lockName){<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;while (CAS(lockName, UNLOCKED, LOCKED) == LOCKED) {<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;// do nothing<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">14&nbsp;&nbsp;</span><br>
+                        <span class="cline">15&nbsp;&nbsp;</span>unlock(lockName) {<br>
+                        <span class="cline">16&nbsp;&nbsp;</span>&nbsp;&nbsp;lockName = UNLOCKED<br>
+                        <span class="cline">17&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">18&nbsp;&nbsp;</span><br>
+                        <span class="cline">19&nbsp;&nbsp;</span>// Let's consider the lock is unlocked...<br>
+                        <span class="cline">20&nbsp;&nbsp;</span>CAS(lockName, UNLOCKED, LOCKED){<br>
+                        <span class="cline">21&nbsp;&nbsp;</span>&nbsp;&nbsp;actual = UNLOCKED<br>
+                        <span class="cline">22&nbsp;&nbsp;</span>&nbsp;&nbsp;if (actual == UNLOCKED) {<br>
+                        <span class="cline">23&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;lockName = LOCKED<br>
+                        <span class="cline">24&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">25&nbsp;&nbsp;</span>&nbsp;&nbsp;return actual // UNLOCKED<br>
+                        <span class="cline">26&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">27&nbsp;&nbsp;</span><br>
+                        <span class="cline">28&nbsp;&nbsp;</span>// Similarly, if lock is LOCKED<br>
+                        <span class="cline">29&nbsp;&nbsp;</span>CAS(lockName, UNLOCKED, LOCKED){<br>
+                        <span class="cline">30&nbsp;&nbsp;</span>&nbsp;&nbsp;actual = LOCKED<br>
+                        <span class="cline">31&nbsp;&nbsp;</span>&nbsp;&nbsp;if (actual == UNLOCKED) { // false<br>
+                        <span class="cline">32&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;lockName = LOCKED<br>
+                        <span class="cline">33&nbsp;&nbsp;</span>&nbsp;&nbsp;}<br>
+                        <span class="cline">34&nbsp;&nbsp;</span>&nbsp;&nbsp;return actual // LOCKED<br>
+                        <span class="cline">35&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <br>
+                <p>
+                    Since the return value of <code>CAS</code> is <code>LOCKED</code>, if we don't get the lock (because it is already locked), then the loop in <code>lock(lockName)</code> keeps looping.<br>
+                    <br>
+                    If it is <code>UNLOCKED</code>, then we got the lock and our loop ends.<br>
+                    <br>
+                    Locks of this style are called <span class="keyword">spin locks</span>.<br>
+                    <br>
+                    Since while waiting we need to constantly check if the lock variable is free, this is called <span class="keyword">busy waiting</span>.<br>
+                    It is not very productive.<br>
+                    The entire time a waiting thread is running, it is just checking the lock (that can't get unlocked until another thread runs).<br>
+                    <br>
+                    Alternative: <span class="keyword">Blocking LOCK</span><br>
+                </p>
+                <ul>
+                    <li>uses scheduler to reduce busy wait time</li>
+                    <li>blocks a thread when locked out, unblocks when available</li>
+                </ul>
+                <br>
+                <p>
+                    Locks are great; they have solved our need for mutual exclusion of our critical sections.<br>
+                    <br>
+                    Locks themselves raise a new set of problems.<br>
+                    <br>
+                    Consider two functions, 2 critical sections, 2 locks...<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>fn1{<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(A)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(b)<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(B)<br>
+                        <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(A)<br>
+                        <span class="cline">07&nbsp;&nbsp;</span>}<br>
+                        <span class="cline">08&nbsp;&nbsp;</span><br>
+                        <span class="cline">09&nbsp;&nbsp;</span>fn2{<br>
+                        <span class="cline">10&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(B)<br>
+                        <span class="cline">11&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(A)<br>
+                        <span class="cline">12&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">13&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(A)<br>
+                        <span class="cline">14&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(B)<br>
+                        <span class="cline">15&nbsp;&nbsp;</span>}<br>
+                    </code></pre>
+                </span>
+                <p>
+                    One possible interleaving of execution is:
+                </p>
+                <ul>
+                    <li><code>fn1</code> acquires <code>A</code></li>
+                    <li><code>fn2</code> acquires <code>B</code></li>
+                    <li><code>fn1</code> attempts to acquire <code>B</code></li>
+                    <li><code>fn2</code> attempts to acquire <code>A</code></li>
+                </ul>
+                <p>
+                    Neither thread can continue; if they can't continue, they can't unblock their block.<br>
+                    <br>
+                    This is called a <span class="keyword">deadlock</span>; when two threads are blocking each other from continuing, in doing so they ensure the other can never finish, but neither can they.<br>
+                    <br>
+                    We can solve this deadlock by only ever acquiring the locks in the same order.<br>
+                    <br>
+                    Solving deadlocks is not always so easy.<br>
+                </p>
+                <br>
+                <b>Hungry Hungry Philosopher (the dining philosopher's problem)</b>
+                <ul>
+                    <li>5 philosophers are sitting around a round table with plates of spaghetti in front of each of them</li>
+                    <li>in between each pair of philosophers is a fork so 5 forks total</li>
+                    <li>philosophers must alternate between thinking and eating</li>
+                    <li>to eat, a philosopher must have a fork in each hand and they can only grab the two forks beside them</li>
+                </ul>
+                <img src="./image/cs230/lec20/20_1.png">
+                <p>
+                    The goal is design an algorithm so no philosopher starves.<br>
+                    Simple approach:<br>
+                </p>
+                <ol>
+                    <li>think until left fork is available, then pick it up</li>
+                    <li>think until right fork is available, then pick it up</li>
+                    <li>when both forks are held, eat for a fixed amount of time</li>
+                    <li>put right fork down</li>
+                    <li>put left fork down</li>
+                    <li>repeat from beginning</li>
+                </ol>
+            </section>
+            <hr>
+            
+            <section id="lec21">
+                <h3>Lecture 21 - 22/03/2018</h3>
+                <hr>
+                <b>Wrap-Up</b>
+                <p>
+                    So far we have talked about concurrency with no support from hardware.<br>
+                    We simply created multiple threads and swapped between them for execution (done by scheduler).<br>
+                    <br>
+                    Without support from hardware, a multi-threaded program will <u>always</u> have worse throughput (runtime) than a single threaded version of that program.<br>
+                </p>
+                <ul>
+                    <li>That is, the same program multi-threaded will take longer to execute than the single threaded version.</li>
+                    <li>Overhead of threads cost (swapping is costly, creating threads, waiting for threads, potential wasted time waiting for locks)</li>
+                </ul>
+                <p>
+                    Threads are not useless in this case, they are used to allow for responsive software.<br>
+                    For example, thread for computation, thread for UI.<br>
+                    <br>
+                    How can hardware support concurrency?<br>
+                </p>
+                <br>
+                <b>Hardware Multi-threading</b>
+                <ul>
+                    <li>still only have <u>one</u> pipeline for execution
+                        <ul>
+                            <li>only one thread can run at a time</li>
+                        </ul>
+                    </li>
+                    <li>multiple (N) sets of registers</li>
+                    <li>support up to N threads</li>
+                    <li>switching is done in hardware, instead of saving/restoring</li>
+                </ul>
+                <br>
+                <b>Temporal Multi-threading</b>
+                <ul>
+                    <li>still not parallel execution</li>
+                </ul>
+                <br>
+                <p>
+                    We can go even further to full <span class="keyword">multi core</span> (standard for today's CPUs).
+                </p>
+                <ul>
+                    <li>multiple fully replicated pipelines, essentially multiple CPUs</li>
+                    <li>finally actual parallel execution (threads can be running at the same time as each other)</li>
+                    <li>potential gains are limited by the fraction of the program that can actually be run in parallel</li>
+                    <li>parallelisation of software is a big research topic today</li>
+                </ul>
+                <br>
+                <p>How much can we actually speed up our code using multiple cores?<br></p>
+                <b>Amdahl's Law</b>
+                <ul>
+                    <li><span class="math">p</span> is the percentage of the program that can be made to be parallel</li>
+                    <li><span class="math">1-p</span> is the percentage that cannot be parallelised</li>
+                    <li>
+                        maximum speed up from using <span class="math">N</span> cores can be calculated by...
+                        <ul><li class="math">S(N) = 1 &div; [(1-p) + (p &div; N)]</li></ul>
+                    </li>
+                </ul>
+                <p>
+                    What is the maximum possible speed-up if <span class="math">p = 90%</span>?<br>
+                    Maximum possible speed-up: <span class="math">N = &infin;</span>
+                </p>
+                <table>
+                    <tr>
+                        <td class="math">S(N)&nbsp;</td>
+                        <td class="math">=&nbsp;</td>
+                        <td class="math">1 &div; [(1-p) + (p &div; N)]&nbsp;</td>
+                        <td>(all limit as <span class="math">N &rarr; &infin;</span>)</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1 &div; [(1 - 0.9) + (0.9 &div; &infin;)]</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1 &div; (0.1 + 0)</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <p>
+                    Hence, the maximum speed-up is 10 times faster.<br>
+                    <br>
+                    When trying to use parallelisation for speed, programmers try to write their code in such a way that maximises <span class="math">p</span>.<br>
+                    More cores does not automatically make code run faster, some tasks cannot be parallelised at all.<br>
+                    Diminishing returns with increasing numbers of cores.<br>
+                    <br>
+                    Scheduler controls which threads run on which cores.<br>
+                </p>
+                <br>
+                <b>Module 6 - The Operating System</b>
+                <p>What does an operating system do?</p>
+                <ul>
+                    <li>provides an execution environment for programs</li>
+                    <li>manages resources (CPU, memory, I/O)</li>
+                    <li>
+                        provides isolation for our programs and protection from...
+                        <ul>
+                            <li>reading/using other programs' memory</li>
+                            <li>CPU hogging (one process hogging all CPU time so no one else gets to run)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    The <span class="keyword">kernel</span> is the core process (program) of the operating system.<br>
+                    It is the middle man between the applications and hardware.<br>
+                    One part of the kernel is the scheduler - it controls the execution of threads.<br>
+                </p>
+                <br>
+                <b>Performance Metrics</b>
+                <ul>
+                    <li>throughput (or threads) - number of threads completed per unit of time</li>
+                    <li>
+                        latency
+                        <ul>
+                            <li>turnaround time: <span class="math">T<sub>completion</sub> - T<sub>arrival</sub></span></li>
+                            <li>response time: <span class="math">T<sub>first run</sub> - T<sub>arrival</sub></span></li>
+                        </ul>
+                    </li>
+                    <li>fairness - equal CPU time for threads or proportional &rarr; making sure threads get to execute</li>
+                    <li>wait time - time spent in ready state</li>
+                </ul>
+                <p>
+                    Scheduling is a very complex topic, so we will start with 4 (very unrealistic) assumptions and relax them as we go.
+                </p>
+                <ol>
+                    <li>each thread runs for the same amount of time</li>
+                    <li>all jobs arrive (are created) at the same time</li>
+                    <li>all jobs use only CPU (no I/O)</li>
+                    <li>run time is known for each thread</li>
+                </ol>
+                <p>
+                    Most basic attempt at scheduling - first come first served (first in first out - FIFO).<br>
+                    It is very simple and easy to execute.<br>
+                    <br>
+                    Example: We have 3 threads A, B and C. All of them take 10 seconds to run. Assumption 2 says they all arrive at same time.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_1.png">
+                <br><br>
+                <p>What is the average turnaround time?</p>
+                <table class="textTable">
+                    <tr>
+                        <th>Job</th>
+                        <th>T<sub>completion</sub></th>
+                        <th>T<sub>arrival</sub></th>
+                        <th>T<sub>turnaround</sub></th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>20</td>
+                        <td>0</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>30</td>
+                        <td>0</td>
+                        <td>30</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    <span class="math">Average Turnaround = (10 + 20 + 30) &div; 3 = 20s</span><br>
+                    <br>
+                    Let's relax assumption 1 (all threads take same time).<br>
+                    How does FIFO perform now?<br>
+                    Does poorly with the grocery store dilemma:<br>
+                    A, B and C again, but A takes 100s, B and C take 10s.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_2.png">
+                <p>
+                    <span class="math">Average Turnaround = (100 + 110 + 120) &div; 3 = 110s</span><br>
+                    <br>
+                    This problem of many short resource consumers stuck behind one large resource consumer is called the <span class="keyword">convoy effect</span>.<br>
+                    <br>
+                    <span class="keyword">Shortest Job First (SJF): schedule shortest first</span>
+                </p>
+                <img src="./image/cs230/lec21/21_3.png">
+                <p>
+                    <span class="math">Average Turnaround = (10 + 20 + 120) &div; 3 = 50s</span><br>
+                    <br>
+                    SJF is much better than FIFO in this case.<br>
+                    If our assumptions held, SJF would probably be optimal.<br>
+                    <br>
+                    If we relax assumption 2 (all threads arrive at the same time) and if A arrives first in previous example, we still get convoy effect.<br>
+                    Maybe then the currently executing thread should be pre-empted if a new thread has a shorter runtime than the remainder of the current thread is runtime.<br>
+                    <br>
+                    This is called <span class="keyword">shortest time to completion first (STCF)</span>, aka <span class="keyword">pre-emptive shortest job first (PSJF)</span>.<br>
+                    <br>
+                    Example: Previous scenario with A arrives at 0, B and C arrive at 10.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_4.png">
+                <br>
+                <p>
+                    <span class="math">Average Turnaround = [(120 - 0) + (20 - 10) + (30 - 10)] &div; 3 = 50s</span><br>
+                    <br>
+                    It avoids convoy effect even without assumption 2.<br>
+                    STCF is probably optimal (for turnaround time); so long as we still have assumptions 3 and 4.<br>
+                    <br>
+                    But turnaround time is not our only metric.<br>
+                    <br>
+                    Users want low response time on their interactions with the program.<br>
+                    <br>
+                    Response time from our previous example...
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Job</th>
+                        <th>T<sub>first response</sub></th>
+                        <th>T<sub>arrival</sub></th>
+                        <th>T<sub>response</sub></th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <p>
+                    <span class="math">Average Turnaround = (0 + 0 + 10) &div; 3 &approx; 3.33s</span><br>
+                    <br>
+                    STCF (and related) are not good for response time.<br>
+                    Imagine thread C was for user input and was responding to you typing something - waiting 10 seconds to see what you typed show upon the screen is not what we want or expect from our software.<br>
+                    <br>
+                    Another big problem with STCF is a long runtime thread can be perpetually passed over in favour of shorter threads.<br>
+                    It is called <span class="keyword">thread starvation</span>.<br>
+                </p>
+                <br>
+                <b>Another algorithm: Round-robin</b>
+                <p>
+                    Instead of running a job until completion (or until pre-emption by a shorter thread), run the job for a short set amount of time, then switch to the next job in queue.<br>
+                </p>
+                <ul><li>repeat until all threads are done</li></ul>
+                <p>
+                    Hardware timers interrupts the CPU at the end of each time slice.<br>
+                    <br>Example: Threads A, B and C, arrive at <span class="math">t = 0</span>, each require 5 seconds.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_5.png">
+                <p>
+                    <span class="math">Average Response Time = (0 + 5 + 10) &div; 3 = 5s</span><br>
+                    <br>
+                    With round-robin and time slice of 1 second:<br>
+                </p>
+                <img src="./image/cs230/lec21/21_6.png">
+                <p>
+                    <span class="math">Average Response Time = (0 + 1 + 2) &div; 3 = 1s</span><br>
+                    <br>
+                    Intuitively, response time is better with round-robin.<br>
+                    But context switch takes time - it is costly.<br>
+                    So it is a trade-off between responsiveness and paying for switches.<br>
+                    <br>
+                    Also, how does round-robin perform on turnaround time?<br>
+                    In example above, <span class="math">turnaround = (13 + 14 + 15) &div; 3 = 14s</span><br>
+                    Generally, response time is at odds with turnaround time.
+                </p>
+            </section>
+            <hr>
+           
+            <table class="buttomTable">
+                <tr>
+                    <td class="buttomLeftTable"><a href="./cs230_4.html">&larr; Go to Module 4 - Build and Execute</a></td>
+                    <td class="buttomCentreTable"><a href="./cs230.html">&uarr; Go to Index</a></td>
+                    <td class="buttomRightTable"><a href="./cs230_6.html">&rarr; Go to Module 6 - Operating System&nbsp;</a></td>
+                </tr>
+            </table>
+            <hr>
+            
+            <p>
+                Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
+            </p>
+            <hr>
+            
+            <div class="footer">
+                <p>Thanks For Coming Here. - Calvin Li</p>
+                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
+                    <i class = "fa fa-envelope-square"></i>
+                </a>
+                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
+                    <i class = "fa fa-linkedin-square"></i>
+                </a>       
+                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href = "https://github.com/vertli" target = "_blank;">
+                    <i class="fa fa-github-square"></i>
+                </a>
+                <br>
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
+                <br>
+            </div>
+            
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        
+    </body>
+    
+</html>

@@ -208,3 +208,7 @@ b {
 .notePage table .four td {
     width: 25%;
 }
+
+a {
+    color: firebrick;
+}

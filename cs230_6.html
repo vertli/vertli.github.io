@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CS230|Calvin Li</title>
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/note.css">
+        <link rel="stylesheet" href="./css/cs230use.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:600,600i" rel="stylesheet"> <!-- for math use -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <!-- stylesheet found from w3school. (icon use)-->
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body class="cs230">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li class="courseNote">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./cs230.html">CS 230</a></li>
+                                <li><a href="./cs246.html">CS 246</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
+        <br><br><br>
+        
+        <div class="container">
+            
+            <br>
+            <table class="header">
+                <tr>
+                    <td colspan="100%">
+                        <h1 class="title">CS 230 - Introduction to Computers and Computer Systems</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Instructor:</th>
+                    <td colspan="95%">Rob Hackman</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Office:</th>
+                    <td colspan="95%">DC2551A</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Email:</th>
+                    <td colspan="95%"><a href = "mailto: r2hackma@uwaterloo.ca" target = "_blank;">r2hackma@uwaterloo.ca</a></td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Website:</th>
+                    <td colspan="95%">
+                        <a href="https://www.student.cs.uwaterloo.ca/~cs230/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs230/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Note:</th>
+                    <td>All program codes in this course notes are provided by Prof. Hackman during class.</td>
+                </tr>
+            </table>
+            <hr>
+         
+            <section id="lec21">
+                <h3>Lecture 21 - 22/03/2018</h3>
+                <hr>
+                <b>Wrap-Up</b>
+                <p>
+                    So far we have talked about concurrency with no support from hardware.<br>
+                    We simply created multiple threads and swapped between them for execution (done by scheduler).<br>
+                    <br>
+                    Without support from hardware, a multi-threaded program will <u>always</u> have worse throughput (runtime) than a single threaded version of that program.<br>
+                </p>
+                <ul>
+                    <li>That is, the same program multi-threaded will take longer to execute than the single threaded version.</li>
+                    <li>Overhead of threads cost (swapping is costly, creating threads, waiting for threads, potential wasted time waiting for locks)</li>
+                </ul>
+                <p>
+                    Threads are not useless in this case, they are used to allow for responsive software.<br>
+                    For example, thread for computation, thread for UI.<br>
+                    <br>
+                    How can hardware support concurrency?<br>
+                </p>
+                <br>
+                <b>Hardware Multi-threading</b>
+                <ul>
+                    <li>still only have <u>one</u> pipeline for execution
+                        <ul>
+                            <li>only one thread can run at a time</li>
+                        </ul>
+                    </li>
+                    <li>multiple (N) sets of registers</li>
+                    <li>support up to N threads</li>
+                    <li>switching is done in hardware, instead of saving/restoring</li>
+                </ul>
+                <br>
+                <b>Temporal Multi-threading</b>
+                <ul>
+                    <li>still not parallel execution</li>
+                </ul>
+                <br>
+                <p>
+                    We can go even further to full <span class="keyword">multi core</span> (standard for today's CPUs).
+                </p>
+                <ul>
+                    <li>multiple fully replicated pipelines, essentially multiple CPUs</li>
+                    <li>finally actual parallel execution (threads can be running at the same time as each other)</li>
+                    <li>potential gains are limited by the fraction of the program that can actually be run in parallel</li>
+                    <li>parallelisation of software is a big research topic today</li>
+                </ul>
+                <br>
+                <p>How much can we actually speed up our code using multiple cores?<br></p>
+                <b>Amdahl's Law</b>
+                <ul>
+                    <li><span class="math">p</span> is the percentage of the program that can be made to be parallel</li>
+                    <li><span class="math">1-p</span> is the percentage that cannot be parallelised</li>
+                    <li>
+                        maximum speed up from using <span class="math">N</span> cores can be calculated by...
+                        <ul><li class="math">S(N) = 1 &div; [(1-p) + (p &div; N)]</li></ul>
+                    </li>
+                </ul>
+                <p>
+                    What is the maximum possible speed-up if <span class="math">p = 90%</span>?<br>
+                    Maximum possible speed-up: <span class="math">N = &infin;</span>
+                </p>
+                <table>
+                    <tr>
+                        <td class="math">S(N)&nbsp;</td>
+                        <td class="math">=&nbsp;</td>
+                        <td class="math">1 &div; [(1-p) + (p &div; N)]&nbsp;</td>
+                        <td>(all limit as <span class="math">N &rarr; &infin;</span>)</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1 &div; [(1 - 0.9) + (0.9 &div; &infin;)]</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1 &div; (0.1 + 0)</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <p>
+                    Hence, the maximum speed-up is 10 times faster.<br>
+                    <br>
+                    When trying to use parallelisation for speed, programmers try to write their code in such a way that maximises <span class="math">p</span>.<br>
+                    More cores does not automatically make code run faster, some tasks cannot be parallelised at all.<br>
+                    Diminishing returns with increasing numbers of cores.<br>
+                    <br>
+                    Scheduler controls which threads run on which cores.<br>
+                </p>
+                <br>
+                <b>Module 6 - The Operating System</b>
+                <p>What does an operating system do?</p>
+                <ul>
+                    <li>provides an execution environment for programs</li>
+                    <li>manages resources (CPU, memory, I/O)</li>
+                    <li>
+                        provides isolation for our programs and protection from...
+                        <ul>
+                            <li>reading/using other programs' memory</li>
+                            <li>CPU hogging (one process hogging all CPU time so no one else gets to run)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    The <span class="keyword">kernel</span> is the core process (program) of the operating system.<br>
+                    It is the middle man between the applications and hardware.<br>
+                    One part of the kernel is the scheduler - it controls the execution of threads.<br>
+                </p>
+                <br>
+                <b>Performance Metrics</b>
+                <ul>
+                    <li>throughput (or threads) - number of threads completed per unit of time</li>
+                    <li>
+                        latency
+                        <ul>
+                            <li>turnaround time: <span class="math">T<sub>completion</sub> - T<sub>arrival</sub></span></li>
+                            <li>response time: <span class="math">T<sub>first run</sub> - T<sub>arrival</sub></span></li>
+                        </ul>
+                    </li>
+                    <li>fairness - equal CPU time for threads or proportional &rarr; making sure threads get to execute</li>
+                    <li>wait time - time spent in ready state</li>
+                </ul>
+                <p>
+                    Scheduling is a very complex topic, so we will start with 4 (very unrealistic) assumptions and relax them as we go.
+                </p>
+                <ol>
+                    <li>each thread runs for the same amount of time</li>
+                    <li>all jobs arrive (are created) at the same time</li>
+                    <li>all jobs use only CPU (no I/O)</li>
+                    <li>run time is known for each thread</li>
+                </ol>
+                <p>
+                    Most basic attempt at scheduling - first come first served (first in first out - FIFO).<br>
+                    It is very simple and easy to execute.<br>
+                    <br>
+                    Example: We have 3 threads A, B and C. All of them take 10 seconds to run. Assumption 2 says they all arrive at same time.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_1.png">
+                <br><br>
+                <p>What is the average turnaround time?</p>
+                <table class="textTable">
+                    <tr>
+                        <th>Job</th>
+                        <th>T<sub>completion</sub></th>
+                        <th>T<sub>arrival</sub></th>
+                        <th>T<sub>turnaround</sub></th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>20</td>
+                        <td>0</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>30</td>
+                        <td>0</td>
+                        <td>30</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    <span class="math">Average Turnaround = (10 + 20 + 30) &div; 3 = 20s</span><br>
+                    <br>
+                    Let's relax assumption 1 (all threads take same time).<br>
+                    How does FIFO perform now?<br>
+                    Does poorly with the grocery store dilemma:<br>
+                    A, B and C again, but A takes 100s, B and C take 10s.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_2.png">
+                <p>
+                    <span class="math">Average Turnaround = (100 + 110 + 120) &div; 3 = 110s</span><br>
+                    <br>
+                    This problem of many short resource consumers stuck behind one large resource consumer is called the <span class="keyword">convoy effect</span>.<br>
+                    <br>
+                    <span class="keyword">Shortest Job First (SJF): schedule shortest first</span>
+                </p>
+                <img src="./image/cs230/lec21/21_3.png">
+                <p>
+                    <span class="math">Average Turnaround = (10 + 20 + 120) &div; 3 = 50s</span><br>
+                    <br>
+                    SJF is much better than FIFO in this case.<br>
+                    If our assumptions held, SJF would probably be optimal.<br>
+                    <br>
+                    If we relax assumption 2 (all threads arrive at the same time) and if A arrives first in previous example, we still get convoy effect.<br>
+                    Maybe then the currently executing thread should be pre-empted if a new thread has a shorter runtime than the remainder of the current thread is runtime.<br>
+                    <br>
+                    This is called <span class="keyword">shortest time to completion first (STCF)</span>, aka <span class="keyword">pre-emptive shortest job first (PSJF)</span>.<br>
+                    <br>
+                    Example: Previous scenario with A arrives at 0, B and C arrive at 10.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_4.png">
+                <br>
+                <p>
+                    <span class="math">Average Turnaround = [(120 - 0) + (20 - 10) + (30 - 10)] &div; 3 = 50s</span><br>
+                    <br>
+                    It avoids convoy effect even without assumption 2.<br>
+                    STCF is probably optimal (for turnaround time); so long as we still have assumptions 3 and 4.<br>
+                    <br>
+                    But turnaround time is not our only metric.<br>
+                    <br>
+                    Users want low response time on their interactions with the program.<br>
+                    <br>
+                    Response time from our previous example...
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Job</th>
+                        <th>T<sub>first response</sub></th>
+                        <th>T<sub>arrival</sub></th>
+                        <th>T<sub>response</sub></th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <p>
+                    <span class="math">Average Turnaround = (0 + 0 + 10) &div; 3 &approx; 3.33s</span><br>
+                    <br>
+                    STCF (and related) are not good for response time.<br>
+                    Imagine thread C was for user input and was responding to you typing something - waiting 10 seconds to see what you typed show upon the screen is not what we want or expect from our software.<br>
+                    <br>
+                    Another big problem with STCF is a long runtime thread can be perpetually passed over in favour of shorter threads.<br>
+                    It is called <span class="keyword">thread starvation</span>.<br>
+                </p>
+                <br>
+                <b>Another algorithm: Round-robin</b>
+                <p>
+                    Instead of running a job until completion (or until pre-emption by a shorter thread), run the job for a short set amount of time, then switch to the next job in queue.<br>
+                </p>
+                <ul><li>repeat until all threads are done</li></ul>
+                <p>
+                    Hardware timers interrupts the CPU at the end of each time slice.<br>
+                    <br>Example: Threads A, B and C, arrive at <span class="math">t = 0</span>, each require 5 seconds.<br>
+                </p>
+                <img src="./image/cs230/lec21/21_5.png">
+                <p>
+                    <span class="math">Average Response Time = (0 + 5 + 10) &div; 3 = 5s</span><br>
+                    <br>
+                    With round-robin and time slice of 1 second:<br>
+                </p>
+                <img src="./image/cs230/lec21/21_6.png">
+                <p>
+                    <span class="math">Average Response Time = (0 + 1 + 2) &div; 3 = 1s</span><br>
+                    <br>
+                    Intuitively, response time is better with round-robin.<br>
+                    But context switch takes time - it is costly.<br>
+                    So it is a trade-off between responsiveness and paying for switches.<br>
+                    <br>
+                    Also, how does round-robin perform on turnaround time?<br>
+                    In example above, <span class="math">turnaround = (13 + 14 + 15) &div; 3 = 14s</span><br>
+                    Generally, response time is at odds with turnaround time.
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec22">
+                <h3>Lecture 22 - 27/03/2018</h3>
+                <hr>
+                <p>
+                    We know how long each job is going to take.<br>
+                    In reality, the scheduler has next to no information.<br>
+                </p>
+                <br>
+                <b>Review</b>
+                <ul>
+                    <li><span class="keyword">Turnaround Time</span>: time until completion
+                        <ul>
+                            <li class="math">T<sub>Finish</sub> - T<sub>Initial</sub></li>
+                        </ul>
+                    </li>
+                    <li><span class="keyword">Response Time</span>: time until first run
+                        <ul>
+                            <li>T<sub>first run</sub> - T<sub>initial</sub></li>
+                        </ul>
+                    </li>
+                    <li><span class="keyword">Round-Robin</span>: smaller time slices, so better response time worse turnaround time
+                    </li>
+                </ul>
+                <p>
+                    In general, we have a trade-off between response and turnaround.<br>
+                    <br>
+                    Our jobs are all CPU, not I/O.<br>
+                    This is ridiculous; any useful program has I/O - so now we relax this assumption.<br>
+                    <br>
+                    Example:<br>
+                    Job A and B both need 50ms of CPU time.<br>
+                    A runs on the CPU for 10ms at a time, then requests data from the disk (assume this request takes 10ms).<br>
+                    B simply uses CPU for 50ms.<br>
+                </p>
+                <img src="./image/cs230/lec22/22_1.png">
+                <br>
+                <p>
+                    We are wasting the CPU time.<br>
+                    <br>
+                    Common approach:<br>
+                    Treat A as several sub-jobs, each taking 10ms and use STCF.<br>
+                    When I/O is done for A, spawn its next sub-job if it is not complete.<br>
+                </p>
+                <img src="./image/cs230/lec22/22_2.png">
+                <br>
+                <p>
+                    This allows for much better usage of our resources (less waste).<br>
+                    <br>
+                    But... The scheduler in reality has no idea how long are jobs going to take.<br>
+                    We relax our final assumption (knowing how long all jobs take).<br>
+                    Now how? Since we do not know anything about a job's behaviour:
+                </p>
+                <ul>
+                    <li>how long does it take to execute?</li>
+                    <li>
+                        <ul>Is it a heavily interactive?
+                            <li>short bursts of CPU heavy work</li>
+                            <li>broken up by I/O</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    We want to watch the jobs, and adapt to how they behave and avoid problem we saw earlier (e.g. convoy effect).<br>
+                </p>
+                <br>
+                <b>Multi-Level Feedback Queue</b>
+                <p>
+                    Many real OS's use some form of this as their base for their scheduler.<br>
+                    <br>
+                    Definition:
+                </p>
+                <ul>
+                    <li>
+                        Some number of queues to put jobs in. Each queue has a different priority level.
+                        <ul>
+                            <li>For example, jobs in queue A are of higher priority then jobs in queue B.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Each queue has its own scheduling algorithm (could be the same).
+                    </li>
+                    <li>
+                        Based on job behaviour, define a policy for movement between queues. That is, define how to promote/demote jobs to a higher/lower priority queue.
+                        <ul>
+                            <li>
+                                policy for promotion and policy for demotion
+                                <ul>
+                                    <li>Example: If a job is acting like a highly interactive program, maybe we promote/keep in high priority.</li>
+                                    <li>Example: If job is using CPU for long periods of time, may demote.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Let's define then our own multi-level feedback queue scheduling algorithm.<br>
+                    We will have 8 queues: <code>q<sub>1</sub> ... q<sub>8</sub></code>.<br>
+                    <code>q<sub>8</sub></code> is the highest priority, <code>q<sub>1</sub></code> is lowest priority.<br>
+                    Snapshot of our queues with 4 jobs:<br>
+                </p>
+                <img src="./image/cs230/lec22/22_3.png">
+                <br><br>
+                <p>
+                    Our rules will be as follows:
+                </p>
+                <ol>
+                    <li>If priority(X) &gt; priority(Y), then X runs, Y doesn't</li>
+                    <li>If priority(X) == priority(Y), then X and Y run in Round-Robin</li>
+                </ol>
+                <p>
+                    With only these two rules, what happens in example above?<br>
+                    Round-Robin for A and B, only two get to run; when they finish we run C, after that finishes run D.<br>
+                </p>
+                <ol start="3">
+                    <li>when job enters our system, they are placed in <code>q<sub>8</sub></code> (high priority).</li>
+                    <li>When a job has run its Round-Robin time allotment, demote it to the next lower priority queue (instead of placing at back of current queue).</li>
+                    <li>After some amount of time, move all jobs back up to <code>q<sub>8</sub></code> (the topmost queue).</li>
+                </ol>
+                <p>
+                    This is a very simple approach to the problem, but it somewhat achieves what we set out to do.<br>
+                </p>
+                <ul>
+                    <li>do not know how long jobs run for, so assume short and give high priority</li>
+                    <li>a job that is actually short will finish in the first few time slices it is given</li>
+                    <li>if the job is actually long, it will fall down to lower priority queues (avoid convoy effect)</li>
+                    <li>our rule of promoting everything back up allows for adopting to changes in a job's behaviour</li>
+                </ul>
+                <p>
+                    While scheduling processes is a large part of the OS's job, but it is not everything.<br>
+                    <br>
+                    Another big component is the management of memory.<br>
+                    The OS "owns" the memory and loans portions of it to programs.<br>
+                    <br>
+                    Previously we have used the term <span class="keyword">address space</span> to talk about the range of memory addresses we could access.<br>
+                    We talk about <span class="keyword">address spaces</span> instead of just saying memory since our processes only see an abstraction of memory, not the real thing or not all of it.<br>
+                </p>
+                <br>
+                <dl>
+                    <dt class="keyword">Logical Address Space</dt>
+                    <dd>It is the abstracted set of memory address a process sees; it represents that process own memory.</dd>
+                    <br>
+                    <dt class="keyword">Logical Address (aka Virtual Address)</dt>
+                    <dd>It is the address of a piece of data as computed by the process.</dd>
+                    <dd>Since the process only knows about its own logical address space, this address is within that space (the number is within that range) and does not represent the actual "physical" location of that data in memory.</dd>
+                    <br>
+                    <dt class="keyword">Physical Address</dt>
+                    <dd>It is the place that data actually resides in the <span class="keyword">physical address space</span>.</dd>
+                    <br>
+                    <dt class="keyword">Memory-Management Unit (MMU)</dt>
+                    <dd>It is a new (to us) piece of hardware which is to map a process's logical address to a physical address.</dd>
+                    <br>
+                    <dt class="keyword">Physical Address Space</dt>
+                    <dd>The entirety of our memory space as seen by our MMU (may or may not just our RAM, for example).</dd>
+                </dl>
+                <p>
+                    There are many different ways for the MMU to map between logical addresses and physical addresses.<br>
+                    We will consider first the simplest idea: keep track of where a process's logical memory starts in physical memory, and how large it is.<br>
+                    To achieve this, lets make our lives easy and give ourselves a special registers.<br>
+                </p>
+                <dl>
+                    <dt class="keyword">Base Register</dt>
+                    <dd>It holds the smallest physical address that is accessible by the current executing process.</dd>
+                    <br>
+                    <dt class="keyword">Limit Register</dt>
+                    <dd>It holds the size of our address space.</dd>
+                </dl>
+                <p>
+                    The loader initialises these registers for us as it does the other registers when it loads this program into memory.<br>
+                    <br>
+                    Example:<br>
+                    A process P1 with a 16KB address space, we actually have 4 GB of memory.
+                </p>
+                <img src="./image/cs230/lec22/22_4.png">
+                <br>
+                <br>
+                <p>
+                    So our base register would hold: 128 * 1024 = 131 072<br>
+                    Our limit register would hold: 16 * 1024 = 16 384<br>
+                    The end of our range is: 128 * 1024 + 16 * 1024 = 147 456<br>
+                    <br>
+                    A simple mapping approach like this makes it seen like there is no different between using this and just allowing programs to discuss physical addresses.<br>
+                    Two reasons to do this:
+                </p>
+                <ul>
+                    <li>Simpler for the program, our loader does not need to update for all memory access</li>
+                    <li>Offers protection from illegal accesses - processes cannot access each other memory. MMU can check the access and disallow it if its outside of that program's physical address space.</li>
+                </ul>
+            </section>
+            <hr>
+            
+            <section id="lec23">
+                <h3>Lecture 23 - 29/03/2018 "The Penultimate Lecture"</h3>
+                <hr>
+                <p>
+                    In last lecture, we talked about that processes do not see the entirety of memory, rather an abstraction of it.<br>
+                </p>
+                <ul>
+                    <li>Logical Address Space v.s. Physical Address Space</li>
+                    <li>Memory Management Unit (MMU)</li>
+                </ul>
+                <p>
+                    Simplest method is to have a base register to hold the smallest physical address accessible by the running process, and store the size of the logical address space in a size register (the bound register).<br>
+                    <br>
+                    Example:<br>
+                    A process <code>P1</code> with a <span class="math">16 Kb</span> logical address space; our computer has <span class="math">4 Gb</span> total of memory.<bt></bt>
+                </p>
+                <img src="./image/cs230/lec22/22_4.png">
+                <br><br>
+                <p>
+                    Base Register is <span class="math">128 &times; 1024 = 131 072</span><br>
+                    Bound Register is <span class="math">16 &times; 1024 = 16 384</span><br>
+                    So end of our physical is <span class="math">131 072 + 16384 = 144 456 = 144 &times; 1024</span><br>
+                    <br>
+                    Why cares about it?<br>
+                </p>
+                <ul>
+                    <li>Offers protection, MMU can check that an access is within the processes address space, and disallow it if its not.</li>
+                    <li>Simplifies the view for the program (and the programmer).</li>
+                </ul>
+                <p>
+                    Extending this example, if process <code>P1</code> had the following instruction:
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>lw $9, 1000($0) ; load the value at address 1000<br>
+                    </code></pre>
+                </span>
+                <p>
+                    <span class="math">1000</span> is the logical address of this data.<br>
+                    So the MMU sees this, add the base register to <span class="math">1000</span>, in order to compute the physical address.<br>
+                    The physical address of this data is <span class="math">1000 + 131 072 = 132 072</span><br>
+                    <br>
+                    Additionally, the MMU checks that this is within <code>P1</code>'s memory space, it is because <span class="math">132 072 &lts; 144 &times; 1024</span>.<br>
+                    <br>
+                    This simple approach requires that our physical memory for processes be contiguous.<br>
+                    We do not know how much our programs are going to use, so we must allocate enough contiguous memory when the program starts for our largest conceivable program.<br>
+                </p>
+                <img src="./image/cs230/lec23/23_1.png">
+                <br><br>
+                <p>
+                    So, we break up our memory into <span class="math">N</span> segments, of a size large enough to hopefully provide enough memory for our largest program.<br>
+                    This limits the umber of programs we can have running of one time by <span class="math">N</span>.<br>
+                    Since our segments must large enough for our largest program, we are wasting a tonne of space for our smaller progress.<br>
+                    <br>
+                    Example:<br>
+                    Our memory segments are <span class="math">256 Kb</span>, we have a process that only uses <span class="math">2 Kb</span> - we are wasting <span class="math">254 Kb</span>.<br>
+                    <br>
+                    This type of memory waste is called <span class="keyword">internal fragmentation</span>.<br>
+                    <br>
+                    How then to reduce waster?<br>
+                    We organise our memory into smaller fixed size chunks (no longer try to have a segment that is all the memory any program could want).<br>
+                    <br>
+                    We use the following terms to talk about these chunks:
+                </p>
+                <ul>
+                    <li>a physical memory chunk: <span class="keyword">frame</span></li>
+                    <li>a virtual (logical) memory chunk: <span class="keyword">page</span></li>
+                </ul>
+                <p>
+                    So use smaller chunks of memory, now our programs require more than one chunk.<br>
+                    We <u>dynamically</u> grow/shrink the logical address space by adding/removing pages as necessary.<br>
+                    When a process acquires a new page, it will not necessarily map to a frame that is contiguous to its previous frames.<br>
+                </p>
+                <img src="./image/cs230/lec23/23_2.png">
+                <br><br>
+                <p>
+                    We can no longer keep track of the mapping from logical addresses to physical addresses with only a base and bound register.<br>
+                    <br>
+                    Example of potential view of memory under this scheme:
+                </p>
+                <img src="./image/cs230/lec23/23_3.png">
+                <br><br>
+                <p>
+                    So, the abstraction of the logical address space allows for the process to believe its instructions are laid out contiguously starting at address 0, and that its stack grows up from the bottom.<br>
+                    <br>
+                    What do our logical and physical addresses actually look like?<br> 
+                    Our page/frame size is always a power of 2.<br>
+                    Our virtual address is <span class="math">page number + offset</span><br>
+                    Our physical address is <span class="math">frame number + offset</span><br>
+                    <br>
+                    Example:<br>
+                    Address ranger of <span class="math">2<sup>32</sup></span>, <span class="math">32</span> bit addresses.<br>
+                    Page size is <span class="math">4 Kb</span> is <span class="math">2<sup>12</sup></span> bytes, which means our low order <span class="math">12</span> bits tell us the offset into that page, the rest of the bits are the page number.<br>
+                </p>
+                <img src="./image/cs230/lec23/23_4.png">
+                <br><br>
+                <p>
+                    Since we always use a power of 2 for our page size, if our page size is <span class="math">2<sup>n</sup></span> bytes and our address space is <span class="math">2<sup>m</sup></span> bytes, then the low order bits of an address are the offset.<br>
+                </p>
+                <ul>
+                    <li>the lower order <span class="math">n</span> bits</li>
+                    <li>the rest (the high order <span class="math">m - n</span> bits) are our page numbers</li>
+                </ul>
+                <p>
+                    How then to convert from a logical page number to a physical frame?<br>
+                    The offset is the same for both address.<br>
+                    The OS maintains a translation table (usually per process) which is called <span class="keyword">page table</span>.<br>
+                    <br>
+                    Example Page Table:
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Page</th>
+                        <th>Frame</th>
+                        <th>Flags</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>7743</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>4972382</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2<sup>50</sup> - 1</td>
+                        <td>an allocated</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>
+                    Some example of flags are...
+                </p>
+                <ul>
+                    <li>read only</li>
+                    <li>protected</li>
+                    <li>valid</li>
+                    <li>......</li>
+                </ul>
+                <p>
+                    The MMU translates logical page numbers into physical frame numbers using this table, and checks flags.<br>
+                    For example, are you trying to write to read only memory? Hard no!<br>
+                    <br>
+                    What is the physical address of the following virtual address, given the above page table?<br>
+                </p>
+                <img src="./image/cs230/lec23/23_5.png">
+            </section>
+            <hr>
+            
+            <section id="lec24">
+                <h3>Lecture 24 - 04/03/2018 "The Final Lecture"</h3>
+                <hr>
+                <b>Announcements</b>
+                <p>
+                    Final is coming up!!!<br>
+                    You can bring your own cheat sheet.<br>
+                    But it must be hand written, not printed off.<br>
+                    Also, it can be double-sided.<br>
+                    <br>
+                    <br>
+                    Last time, we talked about logical address spaces v.s. physical address spaces.<br>
+                    <br>
+                    Now let's consider a simple but concrete example of how a process' logical address space, physical memory and the page table may look.<br>
+                </p>
+                <ul>
+                    <li>Page size of 4 bytes</li>
+                    <li>Word size of 1 byte</li>
+                </ul>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="2">Logical Memory</th>
+                        <th rowspan="31">&nbsp;</th>
+                        <th colspan="2">Page Table</th>
+                        <th rowspan="31">&nbsp;</th>
+                        <th colspan="3" rowspan="2"> Physical Memory</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Array of Characters</th>
+                        <th>Page</th>
+                        <th>Frame</th>		
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>a</td>
+                        <td>0</td>
+                        <td>5</td>
+                        <td rowspan="4">Frame 0</td>
+                        <td>0</td>
+                        <td rowspan="4">&#8285;<br>&#8285;</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>b</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>c</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>d</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>e</td>
+                        <td rowspan="25"></td>
+                        <td rowspan="25"></td>
+                        <td rowspan="4">Frame 1</td>
+                        <td>4</td>
+                        <td>i</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>f</td>
+                        <td>5</td>
+                        <td>j</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>g</td>
+                        <td>6</td>
+                        <td>k</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>h</td>
+                        <td>7</td>
+                        <td>l</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>i</td>
+                        <td rowspan="4">Frame 2</td>
+                        <td>8</td>
+                        <td>m</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>j</td>
+                        <td>9</td>
+                        <td>o</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>k</td>
+                        <td>10</td>
+                        <td>o</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>l</td>
+                        <td>11</td>
+                        <td>p</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>m</td>
+                        <td rowspan="4">Frame 3</td>
+                        <td>12</td>
+                        <td rowspan="4">&#8285;<br>&#8285;</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>n</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>o</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>p</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>q</td>
+                        <td rowspan="4">Frame 4</td>
+                        <td>16</td>
+                        <td rowspan="4">&#8285;<br>&#8285;</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>r</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>s</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>t</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>u</td>
+                        <td rowspan="4">Frame 5</td>
+                        <td>20</td>
+                        <td>a</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>v</td>
+                        <td>21</td>
+                        <td>b</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>w</td>
+                        <td>22</td>
+                        <td>c</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>x</td>
+                        <td>23</td>
+                        <td>d</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>y</td>
+                        <td rowspan="4">Frame 6</td>
+                        <td>24</td>
+                        <td>e</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>z</td>
+                        <td>25</td>
+                        <td>f</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"></td>
+                        <td rowspan="3"></td>
+                        <td>26</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>h</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">&#8285;<br>More Frame...<br>&#8285;</td>
+                        <td rowspan="2">&#8285;<br>&#8285;</td>
+                        <td rowspan="2">&#8285;<br>&#8285;</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So, the process and the programmer still see their memory laid out in a "logical" way they asked for it.<br>
+                    But behind the scenes, the physical reality is far from the logical view.<br>
+                    It is spread out across physical memory.<br>
+                    <br>
+                    How might we actually implement a page table?<br>
+                    We will consider only the case where the OS creates a separate page table for each process.<br>
+                    <br>
+                    Every memory access we make must go through the page table.<br>
+                    This means we want our page table to be very fast to access and find the page/frame we are looking up.<br>
+                    In order to be fast, we need hardware to support.<br>
+                    <br>
+                    A page table can be supported by hardware several ways.<br>
+                    One possibility is have a special set of registers that store the page table.<br>
+                    Those registers must be protected, only the OS can access them.<br>
+                    Registers must be stored/restored on context switches, increases the cost of switching between processes.<br>
+                    Only reasonable if the page table is small; but modern page tables can be as large as 1 million entries!<br>
+                    <br>
+                    Instead we can keep only one special register for the page table; we call that <span class="keyword">Page Table Base Register (PTBR)</span>.<br>
+                    PTBR stores the address of the page table in main memory.<br>
+                    We only need to store/restore this register on context switches.<br>
+                    Now all memory accesses require 2 accesses, one into the page table and one to grab the actual data requested.<br>
+                    <br>
+                    Both of these solutions had been used on systems in the past.<br>
+                    <br>
+                    Modern personal computers however require a faster solution, and support for large page tables.<br>
+                    <br>
+                    A special associative cache specifically for the page table is added to the hardware; this cache is called the <span class="keyword">Translation Look-Aside Buffer (TLB)</span>.<br>
+                    Like in our regular caches, our TLB has a tag (also called a <span class="keyword">key</span>) and the actual data stored.<br>
+                    Recall in our regular caches, the tag was used to say which block of memory was actually stored in the slot.<br>
+                    In our TLB, the tag is the page number we are looking for.<br>
+                    <br>
+                    Recall again a fully associative cache, each tag can be searched simultaneously, that means in our TLB we can searched all our slots for the page we want simultaneously.<br>
+                    <br>
+                    Our page table can be very large, so we cannot store the page table in the TLB.<br>
+                    <br>
+                    So page table still kept in main memory; TLB acts as a cache specifically for our page table.<br>
+                    <br>
+                    How, from a software prospective, should we structure our page table?<br>
+                    Modern PCs have very large logical address spaces. That means very large page table.<br>
+                    If we have <span class="math">1 million</span> entries, each being <span class="math">4 bytes</span>, each page table could be up to <span class="math">4 Mb</span>.<br>
+                    It is not feasible nor do we want to store <span class="math">4 Mb</span> of memory contiguously.<br>
+                    <br>
+                    There are several solutions to this problem.<br>
+                    <br>
+                    Given our current knowledge, what might one solution be?<br>
+                    Why not create a page table for the page table?<br>
+                    This idea is called <span class="keyword">hierarchical paging</span>.<br>
+                    Specifically in this scenario, it is called <span class="keyword">two level paging</span>.<br>
+                    <br>
+                    Consider our previous example:<br>
+                    We have a page size of <span class="math">4 Kb</span>, <span class="math">32-bit</span> logical address space.<br>	
+                </p>
+                <ul>
+                    <li>high order <span class="math">20 bits</span> - page number</li>
+                    <li>Low order <span class="math">12 bits</span> - offset</li>
+                </ul>
+                <p>
+                    With 2 level paging, instead...
+                </p>
+                <ul>
+                    <li>high order <span class="math">10 bits</span> - the page of the outer page table</li>
+                    <li>next <span class="math">10 bits</span> - the offset into that page</li>
+                    <li>last <span class="math">12 bits</span> - same as before, the offset</li>
+                </ul>
+                <img src="./image/cs230/lec24/24_1.png"><br><br>
+                <p>
+                    Now we only require it each in a page table is <span class="math">4 bytes</span>.<br>
+                    <span class="math">(1024 &times; 4) + (1024 &times; 4) = 1024 + (1024 &times; 1024 &times; 4) &lt;&lt;&lt;&lt; 2 Mb</span><br>
+                    <strong>Hackman: Wait, I think I messed it up. Let's me do it again LOL</strong><br>
+                    <br>
+                    Page number in outer page table is storable in <span class="math">10 bits</span>, so <span class="math">2^10 - 1</span> entries in outer page table.<br>
+                    Each entry must tell us which page in the inner page table we go to.<br>
+                    If outer page table is <span class="math">4</span> byte entries, <span class="math">(2^10 - 1) &times; 4 bytes</span> is the space required for outer page table.<br>
+                    The reason we use <span class="math">(2^10 - 1) bytes</span> is because the offset into it is <span class="math">10 bits</span>.<br>
+                    <span class="math">4 bytes</span> entries mean our inner page table has <span class="math">(2^32 - 1)</span> entries (pages).<br>
+                    <span class="math">(2^32 - 1)</span> pages, each pages has <span class="math">(2^10 - 1)</span> entries, each entry is <span class="math">4 bytes</span>.<br>
+                    So the total is <span class="math">(2^32 - 1) &times; (2^10 - 1) &times; 4 bytes</span>.<br>
+                    <br>
+                    However hierarchical paging causes to be feasible as we go to <span class="math">64-bit</span> (and larger) architectures.<br>
+                    <span class="math">64-bit</span> addressable space, <span class="math">4 Kb</span> page sizes.
+                </p>
+                <ul>
+                    <li><span class="math">12-bit</span>: offset</li>
+                    <li><span class="math">52-bit</span>: page number</li>
+                    <li><span class="math">2^52 - 1</span>: potential entries into our page table, each 4 or even 8 bytes</li>
+                </ul>
+                <p>
+                    To make the size feasible would have go to at least 4 levels, but each level is another step of following a pointer and accessing a table until you have got your data.<br>
+                    <br>
+                    We are not willing to pay this access cost.<br>
+                    For <span class="math">64 bits</span> and above, hierarchical paging is not feasible nor is it used.<br>
+                    <br>
+                    Another solution to the paging problem is the Hashed Page Table.<br>
+                </p>
+                <ul>
+                    <li><span class="keyword">Hashed Page Table</span>: the page table is stored as a special data structure called a hash map</li>
+                    <li><span class="keyword">Map</span> (aka <span class="keyword">dictionary</span>): a pairing of key's to values (like a literary dictionary pairs words to definition)</li>
+                </ul>
+                <p>
+                    The hash part allows for constant time lookup of keys.<br>
+                    A hash function can have <span class="keyword">hash collisions</span> 2 or more inputs map to the same output.<br>
+                    Solve this problem by having the values (the actual data keys map to) be a limited list of entries which store frame number, and meta-data (data about data) about which page they correspond to.<br>
+                    <br>
+                    There is much more to operating systems; we have barely scratched the surface.<br>
+                    If you want to know more, read <strong>Operating System Concepts</strong> by Silberschatz.<br>
+                </p>
+                <br>
+                <h4 class="title">CS230</h4>
+                <h5 class="title">The End.</h5>
+            </section>
+            <hr>
+           
+            <table class="buttomTable">
+                <tr>
+                    <td class="buttomLeftTable"><a href="./cs230_5.html">&larr; Go to Module 5 - Multiprocessing</a></td>
+                    <td class="buttomCentreTable"><a href="./cs230.html">&uarr; Go to Index</a></td>
+                    <td class="buttomRightTable"></td>
+                </tr>
+            </table>
+            <hr>
+            
+            <p>
+                Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
+            </p>
+            <hr>
+            
+            <div class="footer">
+                <p>Thanks For Coming Here. - Calvin Li</p>
+                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
+                    <i class = "fa fa-envelope-square"></i>
+                </a>
+                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
+                    <i class = "fa fa-linkedin-square"></i>
+                </a>       
+                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href = "https://github.com/vertli" target = "_blank;">
+                    <i class="fa fa-github-square"></i>
+                </a>
+                <br>
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
+                <br>
+            </div>
+            
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        
+    </body>
+    
+</html>

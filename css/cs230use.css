@@ -63,3 +63,8 @@ code {
     float : left;
     margin-right: 6px;
 }
+
+
+.nav-tabs {
+    font-weight: bold;
+}
