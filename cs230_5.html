@@ -390,7 +390,7 @@
                     If the lock is not free, <code>lock(lockName)</code> will not return until the lock becomes free when the thread that holds it calls <code>unlock(lockName)</code> when exiting the critical section.<br>
                     <br>
                     How can <code>lock()</code> and <code>unlock()</code> actually work?<br>
-                    There are many possible implementations; one possibility is assume we have an atomic instruction <code>compare_and_swap(lock, expected, new)</code> which works by checking if lock is currently in state expected; if it is it changes to state new, in both cases it returns the old state of lock.<br>
+                    There are many possible implementations; one possibility is assume we have an atomic instruction <code>compare_and_swap(lock, expected, new)</code> which works by checking if lock is currently in state expected; if it changes to state new, in both cases it returns the old state of lock.<br>
                     <br>
                     Pseudo-code:<br>
                 </p>
@@ -463,7 +463,7 @@
                     <pre><code>
                         <span class="cline">01&nbsp;&nbsp;</span>fn1{<br>
                         <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(A)<br>
-                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(b)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;lock(B)<br>
                         <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
                         <span class="cline">05&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(B)<br>
                         <span class="cline">06&nbsp;&nbsp;</span>&nbsp;&nbsp;unblock(A)<br>
