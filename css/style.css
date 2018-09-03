@@ -10,6 +10,7 @@ body {
     padding: 0;
     font-size: 16px;
     height: 100%;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 hr {
@@ -26,7 +27,7 @@ b {
 
 .container {
     height: auto;
-    background-color: #8FAE8F;
+    background-color: #a2c4a2;
 }
 
 
