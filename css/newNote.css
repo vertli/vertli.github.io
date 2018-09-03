@@ -49,17 +49,20 @@ code {
   margin-right: auto;
 }
 
-.cs {
+.cs, .tableNoBorder {
   margin: 5px auto;
 }
 
-.cs tr th, .cs tr td {
+.cs tr th, .cs tr td, .tableNoBorder tr th, .tableNoBorder tr td {
   text-align: center;
   padding: 2px 15px;
+}
+
+.cs tr th, .cs tr td, .tableNoBorder .tableWithBorder {
   border: solid gray 1px;
 }
 
-.cs tr th {
+.cs tr th, .tableNoBorder tr th {
   background-color: lightgray;
 }
 
