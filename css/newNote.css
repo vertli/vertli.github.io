@@ -49,6 +49,7 @@ code {
   margin-right: auto;
 }
 
+
 .cs, .tableNoBorder {
   margin: 5px auto;
 }
@@ -58,19 +59,26 @@ code {
   padding: 2px 15px;
 }
 
-.cs tr th, .cs tr td, .tableNoBorder .tableWithBorder {
-  border: solid gray 1px;
+.cs .borderLeftDashed {
+  border-left: dashed gray 2px;
+}
+
+.tableNoBorder .tableLeftBorder {
+  border: solid 1px gray;
 }
 
 .cs tr th, .tableNoBorder tr th {
+  border: solid gray 1px;
   background-color: lightgray;
 }
 
-.cs code {
-/*
-  background: white;
-  color: black;
-*/
+
+.tableNoBorder tr td {
+  border: solid 1px lightgray;
+}
+
+.cs tr th, .cs tr td, .tableNoBorder .tableWithBorder {
+  border: solid gray 1px;
 }
 
 .grid-container {
@@ -121,6 +129,12 @@ code {
   background-color: lightgray;
 }
 
+
+img {
+  padding: 5px 5px;
+  background: white;
+}
+
 .imgRightMargin {
   margin-right: 10px;
 }
@@ -143,3 +157,4 @@ code {
     width: 45%;
     text-align: right;
 }
+
