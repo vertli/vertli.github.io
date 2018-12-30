@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>Index</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    
+  </head>
+  
+  <body onload="init()" onresize="init()">
+    
+    <section id="cover">
+      <canvas id="c_matrix"></canvas>
+    </section>
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Calvin Li</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Résumé</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#cover">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cousre Notes<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">CS 230</a></li>
+                <li><a href="#">CS 246</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    
+    <div class="container">
+      
+      <section id="about">
+        <div class="row">
+          <div class="col-md-3">
+            <img class="aboutImg" src="img/self.png">
+          </div>
+          <div class="col-md-9">
+            <p>Uhmm... Okay, so you did find me...</p>
+            <h2>Hello world! I am...</h2>
+            <h1 align="center">Calvin Vert Li</h1>
+            <p>I'm currently a Computational Mathematics and Statistics (double majors) student at University of Waterloo.</p>
+            <p>
+              I love coding and since my major is not computer science, I am trying my best to self-learning computer science. Until now, I know the following computer languages: C, C++, HTML with CSS, Java, MIPS, Pascal and Racket.<br>
+              But I will only say I am good at Java only.<br>
+              Also, I have some experience for teaching Java. I tutored high school student and university student before.
+            </p>
+            <p>
+              I love games and I want to create game. This is the reason I started learning coding. My favourite games are Fire Emblems, Pokemon, The Legend Of Zelda, Story Of Seasons, and Puzzle and Dragons. Yes, I grew up with Nintendo. Also, I hate action game - I am really weak with it.
+            </p>
+            <p>
+              I do arts. For me, Arts is the perfect way to represent my own feeling. I enjoy doing arts. However, I hate dirty. Thus I usually just draw with colour pencils and markers. (Usless I have to do my school projects, then I will try ohter media.)
+            </p>
+            <p>
+              I'm also a dart player. For me, dart is the only sport I fall in love with. I do know how to play badminton, but not that good. One interesting fact is that I don't know how to play table tennis but I was in my Hong Kong secondary school team. I was the only judge in my school.
+            </p>
+            <p>
+              Lastly, I love listening music and my favourite singing groups are Celtic Thunder and Celtic Woman. Also, Ed Sheeran is a perfect singer too. I also like the sound of violin. Sadly, I don't know how to play violn.
+            </p>
+            <p>
+              Please feel free to message me if you want to have a chat!
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <section id="project">
+        <p>Testing 2</p>
+      </section>
+      
+      <section id="footer">
+        <p>Testing 3</p>
+      </section>
+      
+    </div>
+    
+    <script src="matrix_rain.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+  </body>
+  
+</html>
