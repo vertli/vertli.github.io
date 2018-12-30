@@ -69,7 +69,7 @@ function selfWord() {
   ctx.shadowBlur = 1;
   ctx.shadowColor = "red";
   
-  if (sizeType < 3){
+  if (sizeType < 2){
     ctx.font = h1Size + "px Noto-Sans sans-serif";
     ctx.fillText("Chun Kit (Calvin) Li", centerPosition, c.height / 3);
 
@@ -81,7 +81,7 @@ function selfWord() {
 
     ctx.font = h2Size + "px Noto-Sans sans-serif";
     ctx.fillText("Class of 2020", centerPosition, c.height / 3 + h1Size + h2Size * 2);
-  } else if (sizeType == 3 || window.innerWidth >= 360) {
+  } else if (sizeType < 4 || window.innerWidth >= 360) {
     ctx.font = h1Size + "px Noto-Sans sans-serif";
     ctx.fillText("Chun Kit (Calvin) Li", centerPosition, c.height / 3);
 
