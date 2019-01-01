@@ -113,9 +113,8 @@ function selfWord() {
     ctx.fillText("Maths", centerPosition, c.height / 3 + h1Size * 3 + h2Size);
     ctx.fillText("Student", centerPosition, c.height / 3 + h1Size * 3 + h2Size * 2);
     ctx.fillText("Class 2021", centerPosition, c.height / 3 + h1Size * 3 + h2Size * 3);
-    
     ctx.font = h4Size + "px Noto-Sans sans-serif";
-    ctx.fillText(str, centerPosition, c.height / 3 + h1Size + h2Size * 5);
+    ctx.fillText(str, centerPosition, c.height / 3 + h1Size * 3 + h2Size * 5);
   }
 }
 
