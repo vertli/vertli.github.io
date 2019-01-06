@@ -5,6 +5,7 @@ html{
 
 body {
   height: 100%;
+/*  background-color: #2e3c2e;*/
   background-color: black;
   color: aliceblue;
   margin: 0 0;
@@ -13,12 +14,13 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-
 .container {
   margin: auto;
 }
 
-/* navbar */
+
+/************************************************************/
+/* navbar ***************************************************/
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
@@ -123,8 +125,26 @@ body {
 .dropdown-content.sticky {
   top: auto;
 }
+/* navbar ***************************************************/
+/************************************************************/
 
-/* navbar */
+
+/************************************************************/
+/* media ****************************************************/
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 10px;
+}
 
 /* Extra small devices (phones, 575px and down) */
 @media only screen and (max-width: 575px) {
@@ -133,6 +153,7 @@ body {
   }
   
   [class*="col-"] {
+    display: block;
     width: 100%;
   }
   
@@ -144,7 +165,6 @@ body {
     float: right;
     display: block;
   }
-  
   
   /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
   .topnav.responsive {position: relative;}
@@ -254,4 +274,126 @@ body {
   .col-xl-11 {width: 91.66%;}
   .col-xl-12 {width: 100%;}
   
+}
+/* media ****************************************************/
+/************************************************************/
+
+
+
+/************************************************************/
+/* about ****************************************************/
+#about {
+  background: #4a6f4a;
+}
+
+#about img {
+  width: 100%;
+  height: auto; 
+  border-radius: 50% 50%;
+  border: 2px solid #ddd;
+  float: left;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#about p {
+  margin: 10px 10px;
+}
+
+#about .underImg {
+  margin: 5px 10px;
+  text-align: justify;
+}
+
+#about h1 {
+  text-align: center;
+  font-size: 300%;
+  margin: 10px;
+}
+/* about ****************************************************/
+/************************************************************/
+
+
+/************************************************************/
+/* projects *************************************************/
+#projects {
+  background: #4a6f4a;
+  border-top: 3px solid white;
+}
+
+#projects h2 {
+  margin: 0;
+  padding: 20px;
+}
+
+/* Add padding BETWEEN each column */
+#projects .row > .card {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+#projects .card {
+  float: left;
+  display: none; /* Hide columns by default */
+}
+
+/* Clear floats after rows */ 
+#projects .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+#projects .content {
+  background-color: gray;
+  padding: 10px;
+}
+
+#projects img {
+  width: 100%;
+  height: auto; 
+}
+
+/* The "show" class is added to the filtered elements */
+#projects .show {
+  display: block;
+}
+
+/* Style the buttons */
+#projects .btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Add a grey background color on mouse-over */
+#projects .btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background color to the active button */
+#projects .btn.active {
+  background-color: #666;
+   color: white;
+}
+
+/* projects *************************************************/
+/************************************************************/
+
+#courseNotes {
+  background: #4a6f4a;
+  border-top: 3px solid white;
+}
+
+#courseNotes p {
+  margin: 0 0;
+}
+
+footer {
+  background: #4a6f4a;
+  border-top: 3px solid white;
+  text-align: center;
 }
