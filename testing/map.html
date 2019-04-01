@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Index</title>
+    <link href="style.css" rel="stylesheet">
+    
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  </head>
+  
+  <body>
+   
+    <div class="container" style="text-align: center">
+     
+      <h1>GooseMap</h1>
+      <img src="img/logo.PNG">
+    
+      <form >
+        Where are you now?<br>
+        <table>
+          <tr>
+            <td>Building: </td>
+            <td>Floor: </td>
+            <td>Room: </td>           
+          </tr>
+          <tr>
+            <td>
+              <input list="bld_name" name="building_name">
+              <datalist id="bld_name">
+                <option value=""></option>
+                <option value="ARC">ARC</option>
+                <option value="AL">AL</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="BAU">BAU</option>
+                <option value="BMH">BMH</option>
+                <option value="C2">C2</option>
+                <option value="CIF">CIF</option>
+                <option value="CLV">CLV</option>
+                <option value="CMH">CMH</option>
+                <option value="COM">COM</option>
+                <option value="CPH">CPH</option>
+                <option value="DC">DC</option>
+                <option value="DMS">DMS</option>
+                <option value="DWE">DWE</option>
+                <option value="E2">E2</option>
+                <option value="E3">E3</option>
+                <option value="E5">E5</option>
+                <option value="E6">E6</option>
+                <option value="E7">E7</option>
+                <option value="EC1">EC1</option>
+                <option value="EC2">EC2</option>
+                <option value="EC3">EC3</option>
+                <option value="EC4">EC4</option>
+                <option value="EC5">EC5</option>
+                <option value="ECH">ECH</option>
+                <option value="EIT">EIT</option>
+                <option value="ERC">ERC</option>
+                <option value="EV1">EV1</option>
+                <option value="EV2">EV2</option>
+                <option value="EV3">EV3</option>
+                <option value="FED">FED</option>
+                <option value="GH">GH</option>
+                <option value="GSC">GSC</option>
+                <option value="HH">HH</option>
+                <option value="HS">HS</option>
+                <option value="IHB">IHB</option>
+                <option value="LIB">LIB</option>
+                <option value="M3">M3</option>
+                <option value="MC">MC</option>
+                <option value="MHR">MHR</option>
+                <option value="MKV">MKV</option>
+                <option value="ML">ML</option>
+                <option value="NH">NH</option>
+                <option value="OPT">OPT</option>
+                <option value="PAC">PAC</option>
+                <option value="PAS">PAS</option>
+                <option value="PHR">PHR</option>
+                <option value="PHY">PHY</option>
+                <option value="QNC">QNC</option>
+                <option value="RAC">RAC</option>
+                <option value="RA2">RA2</option>
+                <option value="RCH">RCH</option>
+                <option value="REV">REV</option>
+                <option value="SCH">SCH</option>
+                <option value="SLC">SLC</option>
+                <option value="STC">STC</option>
+                <option value="TC">TC</option>
+                <option value="TH">TH</option>
+                <option value="TJB">TJB</option>
+                <option value="UC">UC</option>
+                <option value="UWP">UWP</option>
+                <option value="V1">V1</option>
+        </datalist>
+            </td>
+            <td>
+              <input list="flr_num" name="floor_number">
+              <datalist id="flr_num">
+                <option value=""></option>
+                <option value="Basement"></option>
+                <option value="1st Floor"></option>
+                <option value="2nd Floor"></option>
+                <option value="3rd Floor"></option>
+                <option value="4th Floor"></option>
+              </datalist>
+            </td>
+            <td>
+              <input list="rm_name" name="room_name">
+              <datalist id="rm_name">
+                <option value=""></option>
+                <option value="Main Stair (Stair E)"></option>
+                <option value="Stair A"></option>
+                <option value="Stair B"></option>
+                <option value="Stair C"></option>
+                <option value="Stair D"></option>
+                <option value="Elevator"></option>
+                <option value="4001"></option>
+                <option value="4004"></option>
+                <option value="4006"></option>
+                <option value="4007"></option>
+                <option value="4008"></option>
+                <option value="4009"></option>
+                <option value="4011"></option>
+                <option value="4012"></option>
+                <option value="4013"></option>
+                <option value="4014"></option>
+                <option value="4016"></option>
+                <option value="4018"></option>
+                <option value="4019"></option>
+                <option value="4021"></option>
+                <option value="4101"></option>
+                <option value="4102"></option>
+                <option value="4103"></option>
+                <option value="4104"></option>
+                <option value="4106"></option>
+                <option value="4107"></option>
+                <option value="4108"></option>
+                <option value="4109"></option>
+                <option value="4111"></option>
+                <option value="4112"></option>
+                <option value="4113"></option>
+                <option value="4114"></option>
+                <option value="4116"></option>
+                <option value="4117"></option>
+                <option value="4118"></option>
+                <option value="4119"></option>
+                <option value="4121"></option>
+                <option value="4122"></option>
+                <option value="4123"></option>
+                <option value="4124"></option>
+                <option value="4126"></option>
+                <option value="4127"></option>
+                <option value="4128"></option>
+                <option value="4129"></option>
+                <option value="4131"></option>
+                <option value="4132"></option>
+                <option value="4133"></option>
+                <option value="4134"></option>
+                <option value="4136"></option>
+                <option value="4137"></option>
+                <option value="4201"></option>
+                <option value="4202"></option>
+                <option value="4203"></option>
+                <option value="4204"></option>
+                <option value="4206"></option>
+                <option value="4207"></option>
+                <option value="4208"></option>
+                <option value="4209"></option>
+                <option value="4212"></option>
+                <option value="4213"></option>
+                <option value="4214"></option>
+                <option value="4216"></option>
+                <option value="4217"></option>
+                <option value="4218"></option>
+                <option value="4219"></option>
+                <option value="4221"></option>
+                <option value="4222"></option>
+                <option value="4223"></option>
+                <option value="4224"></option>
+                <option value="4226"></option>
+                <option value="4227"></option>
+                <option value="4228"></option>
+                <option value="4229"></option>
+                <option value="4231"></option>
+                <option value="4232"></option>
+                <option value="4233"></option>
+                <option value="4234"></option>
+                <option value="4901"></option>
+                <option value="4904"></option>
+                <option value="4906"></option>
+              </datalist>
+            </td>
+          </tr>
+        </table>
+        <br>
+        Where do you want to go?<br>
+        <table>
+          <tr>
+            <td>Building: </td>
+            <td>Floor: </td>
+            <td>Room: </td>           
+          </tr>
+          <tr>
+            <td>
+              <input list="bld_name" name="building_name">
+              <datalist id="bld_name">
+                <option value=""></option>
+                <option value="ARC">ARC</option>
+                <option value="AL">AL</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="BAU">BAU</option>
+                <option value="BMH">BMH</option>
+                <option value="C2">C2</option>
+                <option value="CIF">CIF</option>
+                <option value="CLV">CLV</option>
+                <option value="CMH">CMH</option>
+                <option value="COM">COM</option>
+                <option value="CPH">CPH</option>
+                <option value="DC">DC</option>
+                <option value="DMS">DMS</option>
+                <option value="DWE">DWE</option>
+                <option value="E2">E2</option>
+                <option value="E3">E3</option>
+                <option value="E5">E5</option>
+                <option value="E6">E6</option>
+                <option value="E7">E7</option>
+                <option value="EC1">EC1</option>
+                <option value="EC2">EC2</option>
+                <option value="EC3">EC3</option>
+                <option value="EC4">EC4</option>
+                <option value="EC5">EC5</option>
+                <option value="ECH">ECH</option>
+                <option value="EIT">EIT</option>
+                <option value="ERC">ERC</option>
+                <option value="EV1">EV1</option>
+                <option value="EV2">EV2</option>
+                <option value="EV3">EV3</option>
+                <option value="FED">FED</option>
+                <option value="GH">GH</option>
+                <option value="GSC">GSC</option>
+                <option value="HH">HH</option>
+                <option value="HS">HS</option>
+                <option value="IHB">IHB</option>
+                <option value="LIB">LIB</option>
+                <option value="M3">M3</option>
+                <option value="MC">MC</option>
+                <option value="MHR">MHR</option>
+                <option value="MKV">MKV</option>
+                <option value="ML">ML</option>
+                <option value="NH">NH</option>
+                <option value="OPT">OPT</option>
+                <option value="PAC">PAC</option>
+                <option value="PAS">PAS</option>
+                <option value="PHR">PHR</option>
+                <option value="PHY">PHY</option>
+                <option value="QNC">QNC</option>
+                <option value="RAC">RAC</option>
+                <option value="RA2">RA2</option>
+                <option value="RCH">RCH</option>
+                <option value="REV">REV</option>
+                <option value="SCH">SCH</option>
+                <option value="SLC">SLC</option>
+                <option value="STC">STC</option>
+                <option value="TC">TC</option>
+                <option value="TH">TH</option>
+                <option value="TJB">TJB</option>
+                <option value="UC">UC</option>
+                <option value="UWP">UWP</option>
+                <option value="V1">V1</option>
+        </datalist>
+            </td>
+            <td>
+              <input list="flr_num" name="floor_number">
+              <datalist id="flr_num">
+                <option value=""></option>
+                <option value="Basement"></option>
+                <option value="1st Floor"></option>
+                <option value="2nd Floor"></option>
+                <option value="3rd Floor"></option>
+                <option value="4th Floor"></option>
+              </datalist>
+            </td>
+            <td>
+              <input list="rm_name" name="room_name">
+              <datalist id="rm_name">
+                <option value=""></option>
+                <option value="Main Stair (Stair E)"></option>
+                <option value="Stair A"></option>
+                <option value="Stair B"></option>
+                <option value="Stair C"></option>
+                <option value="Stair D"></option>
+                <option value="Elevator"></option>
+                <option value="4001"></option>
+                <option value="4004"></option>
+                <option value="4006"></option>
+                <option value="4007"></option>
+                <option value="4008"></option>
+                <option value="4009"></option>
+                <option value="4011"></option>
+                <option value="4012"></option>
+                <option value="4013"></option>
+                <option value="4014"></option>
+                <option value="4016"></option>
+                <option value="4018"></option>
+                <option value="4019"></option>
+                <option value="4021"></option>
+                <option value="4101"></option>
+                <option value="4102"></option>
+                <option value="4103"></option>
+                <option value="4104"></option>
+                <option value="4106"></option>
+                <option value="4107"></option>
+                <option value="4108"></option>
+                <option value="4109"></option>
+                <option value="4111"></option>
+                <option value="4112"></option>
+                <option value="4113"></option>
+                <option value="4114"></option>
+                <option value="4116"></option>
+                <option value="4117"></option>
+                <option value="4118"></option>
+                <option value="4119"></option>
+                <option value="4121"></option>
+                <option value="4122"></option>
+                <option value="4123"></option>
+                <option value="4124"></option>
+                <option value="4126"></option>
+                <option value="4127"></option>
+                <option value="4128"></option>
+                <option value="4129"></option>
+                <option value="4131"></option>
+                <option value="4132"></option>
+                <option value="4133"></option>
+                <option value="4134"></option>
+                <option value="4136"></option>
+                <option value="4137"></option>
+                <option value="4201"></option>
+                <option value="4202"></option>
+                <option value="4203"></option>
+                <option value="4204"></option>
+                <option value="4206"></option>
+                <option value="4207"></option>
+                <option value="4208"></option>
+                <option value="4209"></option>
+                <option value="4212"></option>
+                <option value="4213"></option>
+                <option value="4214"></option>
+                <option value="4216"></option>
+                <option value="4217"></option>
+                <option value="4218"></option>
+                <option value="4219"></option>
+                <option value="4221"></option>
+                <option value="4222"></option>
+                <option value="4223"></option>
+                <option value="4224"></option>
+                <option value="4226"></option>
+                <option value="4227"></option>
+                <option value="4228"></option>
+                <option value="4229"></option>
+                <option value="4231"></option>
+                <option value="4232"></option>
+                <option value="4233"></option>
+                <option value="4234"></option>
+                <option value="4901"></option>
+                <option value="4904"></option>
+                <option value="4906"></option>
+              </datalist>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table>
+          <tr>
+            <td><input type="Reset"></td>
+            <td><input type="submit"></td>
+            <td><button type="button">Man! I don't know where am I going!</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    
+    <script src="style.js"></script>
+  </body>
+  
+</html>
