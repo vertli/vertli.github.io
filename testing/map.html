@@ -7,6 +7,7 @@
     
     <title>Index</title>
     <link href="style.css" rel="stylesheet">
+    <link href="map.css" rel="stylesheet">
     
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,220 +18,244 @@
    
     <div class="container" style="text-align: center">
        
-       <br><br><br><br><br>
+      <div id="landpage">
+         <br><br><br><br><br>
+        <h1>GooseMap</h1>
+        <img src="img/logo.PNG">
+        <br><br>
+        <form>
+          <button type="button" onclick="setHidden(0)">Start!</button>
+          <button type="button" onclick="setHidden(1)">About!</button>
+        </form>
+        <br>
+        FindYourRoute Ltd. &copy; 2019
+      </div>
       
-      <h1>GooseMap</h1>
-      <img src="img/logo.PNG">
-    
-      <form id="locationForm">
-        Where are you now?<br>
-        Building:<br>
-        <input list="cur_bld_name" id="cur_bld_name_input", name="building_name" onchange="FloorReload(0)"><br>
-        <datalist id="cur_bld_name">
-        </datalist><br>
-        Floor:<br>
-        <input list="cur_flr_num" id="cur_flr_num_input" name="floor_number"><br>
-        <datalist id="cur_flr_num">
-        </datalist><br>
-        Room:<br>
-        <input list="rm_name" name="room_name"><br>
-        <datalist id="rm_name">
-                <option value=""></option>
-                <option value="Main Stair (Stair E)"></option>
-                <option value="Stair A"></option>
-                <option value="Stair B"></option>
-                <option value="Stair C"></option>
-                <option value="Stair D"></option>
-                <option value="Elevator"></option>
-                <option value="4001"></option>
-                <option value="4004"></option>
-                <option value="4006"></option>
-                <option value="4007"></option>
-                <option value="4008"></option>
-                <option value="4009"></option>
-                <option value="4011"></option>
-                <option value="4012"></option>
-                <option value="4013"></option>
-                <option value="4014"></option>
-                <option value="4016"></option>
-                <option value="4018"></option>
-                <option value="4019"></option>
-                <option value="4021"></option>
-                <option value="4101"></option>
-                <option value="4102"></option>
-                <option value="4103"></option>
-                <option value="4104"></option>
-                <option value="4106"></option>
-                <option value="4107"></option>
-                <option value="4108"></option>
-                <option value="4109"></option>
-                <option value="4111"></option>
-                <option value="4112"></option>
-                <option value="4113"></option>
-                <option value="4114"></option>
-                <option value="4116"></option>
-                <option value="4117"></option>
-                <option value="4118"></option>
-                <option value="4119"></option>
-                <option value="4121"></option>
-                <option value="4122"></option>
-                <option value="4123"></option>
-                <option value="4124"></option>
-                <option value="4126"></option>
-                <option value="4127"></option>
-                <option value="4128"></option>
-                <option value="4129"></option>
-                <option value="4131"></option>
-                <option value="4132"></option>
-                <option value="4133"></option>
-                <option value="4134"></option>
-                <option value="4136"></option>
-                <option value="4137"></option>
-                <option value="4201"></option>
-                <option value="4202"></option>
-                <option value="4203"></option>
-                <option value="4204"></option>
-                <option value="4206"></option>
-                <option value="4207"></option>
-                <option value="4208"></option>
-                <option value="4209"></option>
-                <option value="4212"></option>
-                <option value="4213"></option>
-                <option value="4214"></option>
-                <option value="4216"></option>
-                <option value="4217"></option>
-                <option value="4218"></option>
-                <option value="4219"></option>
-                <option value="4221"></option>
-                <option value="4222"></option>
-                <option value="4223"></option>
-                <option value="4224"></option>
-                <option value="4226"></option>
-                <option value="4227"></option>
-                <option value="4228"></option>
-                <option value="4229"></option>
-                <option value="4231"></option>
-                <option value="4232"></option>
-                <option value="4233"></option>
-                <option value="4234"></option>
-                <option value="4901"></option>
-                <option value="4904"></option>
-                <option value="4906"></option>
-              </datalist><br>
-        <br>
-        Where do you want to go?<br>
-        Building:<br>
-        <input list="target_bld_name" id="target_bld_name_input", name="target_building_name" onchange="FloorReload(1)"><br>
-        <datalist id="target_bld_name">
-        </datalist><br>
-        Floor:<br>
-        <input list="target_flr_num" id="target_flr_num_input" name="floor_number"><br>
-        <datalist id="target_flr_num">
-        </datalist><br>
-        Room:<br>
-        <input list="rm_name" name="room_name"><br>
-        <datalist id="rm_name">
-          <option value=""></option>
-          <option value="Main Stair (Stair E)"></option>
-          <option value="Stair A"></option>
-          <option value="Stair B"></option>
-          <option value="Stair C"></option>
-          <option value="Stair D"></option>
-          <option value="Elevator"></option>
-          <option value="4001"></option>
-          <option value="4004"></option>
-          <option value="4006"></option>
-          <option value="4007"></option>
-          <option value="4008"></option>
-          <option value="4009"></option>
-          <option value="4011"></option>
-          <option value="4012"></option>
-          <option value="4013"></option>
-          <option value="4014"></option>
-          <option value="4016"></option>
-          <option value="4018"></option>
-          <option value="4019"></option>
-          <option value="4021"></option>
-          <option value="4101"></option>
-          <option value="4102"></option>
-          <option value="4103"></option>
-          <option value="4104"></option>
-          <option value="4106"></option>
-          <option value="4107"></option>
-          <option value="4108"></option>
-          <option value="4109"></option>
-          <option value="4111"></option>
-          <option value="4112"></option>
-          <option value="4113"></option>
-          <option value="4114"></option>
-          <option value="4116"></option>
-          <option value="4117"></option>
-          <option value="4118"></option>
-          <option value="4119"></option>
-          <option value="4121"></option>
-          <option value="4122"></option>
-          <option value="4123"></option>
-          <option value="4124"></option>
-          <option value="4126"></option>
-          <option value="4127"></option>
-          <option value="4128"></option>
-          <option value="4129"></option>
-          <option value="4131"></option>
-          <option value="4132"></option>
-          <option value="4133"></option>
-          <option value="4134"></option>
-          <option value="4136"></option>
-          <option value="4137"></option>
-          <option value="4201"></option>
-          <option value="4202"></option>
-          <option value="4203"></option>
-          <option value="4204"></option>
-          <option value="4206"></option>
-          <option value="4207"></option>
-          <option value="4208"></option>
-          <option value="4209"></option>
-          <option value="4212"></option>
-          <option value="4213"></option>
-          <option value="4214"></option>
-          <option value="4216"></option>
-          <option value="4217"></option>
-          <option value="4218"></option>
-          <option value="4219"></option>
-          <option value="4221"></option>
-          <option value="4222"></option>
-          <option value="4223"></option>
-          <option value="4224"></option>
-          <option value="4226"></option>
-          <option value="4227"></option>
-          <option value="4228"></option>
-          <option value="4229"></option>
-          <option value="4231"></option>
-          <option value="4232"></option>
-          <option value="4233"></option>
-          <option value="4234"></option>
-          <option value="4901"></option>
-          <option value="4904"></option>
-          <option value="4906"></option>
-        </datalist><br>
-        <button type="button" onclick="setHidden(0)">Man! I don't know where am I going!</button>
-        <br>
-        <input type="submit">
-      </form>
+      <div id="about" hidden>
+        
+      </div>
       
-      <form id="searchForm" hidden>
-        Are you looking for your professor's office?<br>
-        If so, what is your professor's name?<br>
-        <input type="text" name="fname" placeholder="First name"><br>
-        <input type="text" name="lname" placeholder="Last name"><br>
-        <input type="submit" value="Submit" onclick="setHidden(1)"><br>
+      <div id="locationForm" hidden>
         <br>
-        It's okay if you don't know your professor's name.<br>
-        Just tell me the course with section and, we will find it out of you.<br>
-        <input type="text" name="subject" placeholder="subject e.g.: ENGL"><br>
-        <input type="text" name="course" placeholder="course e.g.: 119"><br>
-        <input type="text" name="section" placeholder="lecture section e.g.: 4"><br>
-        <input type="submit" value="Submit" onclick="setHidden(1)"><br>
-      </form>
+        <h1>GooseMap</h1>
+        <form>
+          Where are you now?<br>
+          Building:<br>
+          <input list="cur_bld_name" id="cur_bld_name_input", name="building_name" onchange="FloorReload(1)"><br>
+          <datalist id="cur_bld_name">
+          </datalist><br>
+          Floor:<br>
+          <input list="cur_flr_num" id="cur_flr_num_input" name="floor_number"><br>
+          <datalist id="cur_flr_num">
+          </datalist><br>
+          Room:<br>
+          <input list="rm_name" name="room_name"><br>
+          <datalist id="rm_name">
+                  <option value=""></option>
+                  <option value="Main Stair (Stair E)"></option>
+                  <option value="Stair A"></option>
+                  <option value="Stair B"></option>
+                  <option value="Stair C"></option>
+                  <option value="Stair D"></option>
+                  <option value="Elevator"></option>
+                  <option value="4001"></option>
+                  <option value="4004"></option>
+                  <option value="4006"></option>
+                  <option value="4007"></option>
+                  <option value="4008"></option>
+                  <option value="4009"></option>
+                  <option value="4011"></option>
+                  <option value="4012"></option>
+                  <option value="4013"></option>
+                  <option value="4014"></option>
+                  <option value="4016"></option>
+                  <option value="4018"></option>
+                  <option value="4019"></option>
+                  <option value="4021"></option>
+                  <option value="4101"></option>
+                  <option value="4102"></option>
+                  <option value="4103"></option>
+                  <option value="4104"></option>
+                  <option value="4106"></option>
+                  <option value="4107"></option>
+                  <option value="4108"></option>
+                  <option value="4109"></option>
+                  <option value="4111"></option>
+                  <option value="4112"></option>
+                  <option value="4113"></option>
+                  <option value="4114"></option>
+                  <option value="4116"></option>
+                  <option value="4117"></option>
+                  <option value="4118"></option>
+                  <option value="4119"></option>
+                  <option value="4121"></option>
+                  <option value="4122"></option>
+                  <option value="4123"></option>
+                  <option value="4124"></option>
+                  <option value="4126"></option>
+                  <option value="4127"></option>
+                  <option value="4128"></option>
+                  <option value="4129"></option>
+                  <option value="4131"></option>
+                  <option value="4132"></option>
+                  <option value="4133"></option>
+                  <option value="4134"></option>
+                  <option value="4136"></option>
+                  <option value="4137"></option>
+                  <option value="4201"></option>
+                  <option value="4202"></option>
+                  <option value="4203"></option>
+                  <option value="4204"></option>
+                  <option value="4206"></option>
+                  <option value="4207"></option>
+                  <option value="4208"></option>
+                  <option value="4209"></option>
+                  <option value="4212"></option>
+                  <option value="4213"></option>
+                  <option value="4214"></option>
+                  <option value="4216"></option>
+                  <option value="4217"></option>
+                  <option value="4218"></option>
+                  <option value="4219"></option>
+                  <option value="4221"></option>
+                  <option value="4222"></option>
+                  <option value="4223"></option>
+                  <option value="4224"></option>
+                  <option value="4226"></option>
+                  <option value="4227"></option>
+                  <option value="4228"></option>
+                  <option value="4229"></option>
+                  <option value="4231"></option>
+                  <option value="4232"></option>
+                  <option value="4233"></option>
+                  <option value="4234"></option>
+                  <option value="4901"></option>
+                  <option value="4904"></option>
+                  <option value="4906"></option>
+</datalist><br>
+          <br>
+          Where do you want to go?<br>
+          Building:<br>
+          <input list="target_bld_name" id="target_bld_name_input", name="target_building_name" onchange="FloorReload(1)"><br>
+          <datalist id="target_bld_name">
+          </datalist><br>
+          Floor:<br>
+          <input list="target_flr_num" id="target_flr_num_input" name="floor_number"><br>
+          <datalist id="target_flr_num">
+          </datalist><br>
+          Room:<br>
+          <input list="rm_name" name="room_name"><br>
+          <datalist id="rm_name">
+            <option value=""></option>
+            <option value="Main Stair (Stair E)"></option>
+            <option value="Stair A"></option>
+            <option value="Stair B"></option>
+            <option value="Stair C"></option>
+            <option value="Stair D"></option>
+            <option value="Elevator"></option>
+            <option value="4001"></option>
+            <option value="4004"></option>
+            <option value="4006"></option>
+            <option value="4007"></option>
+            <option value="4008"></option>
+            <option value="4009"></option>
+            <option value="4011"></option>
+            <option value="4012"></option>
+            <option value="4013"></option>
+            <option value="4014"></option>
+            <option value="4016"></option>
+            <option value="4018"></option>
+            <option value="4019"></option>
+            <option value="4021"></option>
+            <option value="4101"></option>
+            <option value="4102"></option>
+            <option value="4103"></option>
+            <option value="4104"></option>
+            <option value="4106"></option>
+            <option value="4107"></option>
+            <option value="4108"></option>
+            <option value="4109"></option>
+            <option value="4111"></option>
+            <option value="4112"></option>
+            <option value="4113"></option>
+            <option value="4114"></option>
+            <option value="4116"></option>
+            <option value="4117"></option>
+            <option value="4118"></option>
+            <option value="4119"></option>
+            <option value="4121"></option>
+            <option value="4122"></option>
+            <option value="4123"></option>
+            <option value="4124"></option>
+            <option value="4126"></option>
+            <option value="4127"></option>
+            <option value="4128"></option>
+            <option value="4129"></option>
+            <option value="4131"></option>
+            <option value="4132"></option>
+            <option value="4133"></option>
+            <option value="4134"></option>
+            <option value="4136"></option>
+            <option value="4137"></option>
+            <option value="4201"></option>
+            <option value="4202"></option>
+            <option value="4203"></option>
+            <option value="4204"></option>
+            <option value="4206"></option>
+            <option value="4207"></option>
+            <option value="4208"></option>
+            <option value="4209"></option>
+            <option value="4212"></option>
+            <option value="4213"></option>
+            <option value="4214"></option>
+            <option value="4216"></option>
+            <option value="4217"></option>
+            <option value="4218"></option>
+            <option value="4219"></option>
+            <option value="4221"></option>
+            <option value="4222"></option>
+            <option value="4223"></option>
+            <option value="4224"></option>
+            <option value="4226"></option>
+            <option value="4227"></option>
+            <option value="4228"></option>
+            <option value="4229"></option>
+            <option value="4231"></option>
+            <option value="4232"></option>
+            <option value="4233"></option>
+            <option value="4234"></option>
+            <option value="4901"></option>
+            <option value="4904"></option>
+            <option value="4906"></option>
+</datalist><br>
+          <button type="button" onclick="setHidden(2)">Man! I don't know where am I going!</button>
+          <br><br>
+          <input type="submit">
+          <br><br>
+          <button type="button" onclick="setHidden(3)">back</button>
+        </form>
+      </div>
+      
+      <div id="searchForm" hidden>
+        <br>
+        <h1>GooseMap</h1>
+        <form>
+          Are you looking for your professor's office?<br>
+          If so, what is your professor's name?<br>
+          <input type="text" name="fname" placeholder="First name"><br>
+          <input type="text" name="lname" placeholder="Last name"><br>
+          <button type="button" onclick="setHidden(0)">Submit</button><br>
+          <br>
+          It's okay if you don't know your professor's name.<br>
+          Just tell me the course with section and, we will find it out of you.<br>
+          <input type="text" name="subject" placeholder="subject e.g.: ENGL"><br>
+          <input type="text" name="course" placeholder="course e.g.: 119"><br>
+          <input type="text" name="section" placeholder="lecture section e.g.: 4"><br>
+          <button type="button" onclick="setHidden(0)">Submit</button><br>
+          <br><br>
+          <button type="button" onclick="setHidden(0)">back</button>
+        </form>
+      </div>
       
     </div>
     

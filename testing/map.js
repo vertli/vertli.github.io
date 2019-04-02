@@ -80,10 +80,32 @@ function FloorReload(choice) {
 
 function setHidden(choice) {
   if (choice === 0) {
+    console.log(0);
+    document.getElementById("landpage").style.display = "none";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("locationForm").style.display = "block";
+    document.getElementById("searchForm").style.display = "none";
+    console.log(0);
+  } else if (choice === 1) {
+    console.log(1);
+    document.getElementById("landpage").style.display = "none";
+    document.getElementById("about").style.display = "block";
+    document.getElementById("locationForm").style.display = "none";
+    document.getElementById("searchForm").style.display = "none";
+    console.log(1);
+  } else if (choice === 2) {
+    console.log(2);
+    document.getElementById("landpage").style.display = "none";
+    document.getElementById("about").style.display = "none";
     document.getElementById("locationForm").style.display = "none";
     document.getElementById("searchForm").style.display = "block";
-  } else {
+    console.log(2);
+  } else if (choice === 3) {
+    console.log(3);
+    document.getElementById("landpage").style.display = "block";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("locationForm").style.display = "none";
     document.getElementById("searchForm").style.display = "none";
-    document.getElementById("locationForm").style.display = "block";
+    console.log(3);
   }
 }
