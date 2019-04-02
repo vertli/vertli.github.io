@@ -1,11 +1,3 @@
-//let bldName = ["ARC", "AL", "B1", "B2", "BAU", "BMH", "C2", "CIF", "CLV", "CMH",
-//               "COM", "CPH", "DC", "DMS", "DWE", "E2", "E3", "E5", "E6", "E7",
-//               "EC1", "EC2", "EC3", "EC4", "EC5", "ECH", "EIT", "ERC", "EV1",
-//               "EV2", "EV3", "FED", "GH", "GSC", "HH", "HS", "IHB", "LIB", "M3",
-//               "MC", "MHR", "MKV", "ML", "NH", "OPT", "PAC", "PAS", "PHR", "PHY",
-//               "QNC", "RAC", "RA2", "RCH", "REV", "SCH", "SLC", "STC", "TC", "TH",
-//               "TJB", "UC", "UWP", "V1"];
-
 let floorName = ["Basement", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", 
              "6th Floor", "7th Floor", "8th floor", "9th Floor", "10th Floor", "11th Floor",
              "12th Floor", "13th Floor", "14th Floor"];
@@ -84,4 +76,14 @@ function FloorReload(choice) {
   }
   
   
+}
+
+function setHidden(choice) {
+  if (choice === 0) {
+    document.getElementById("locationForm").style.display = "none";
+    document.getElementById("searchForm").style.display = "block";
+  } else {
+    document.getElementById("searchForm").style.display = "none";
+    document.getElementById("locationForm").style.display = "block";
+  }
 }

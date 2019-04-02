@@ -22,7 +22,7 @@
       <h1>GooseMap</h1>
       <img src="img/logo.PNG">
     
-      <form>
+      <form id="locationForm">
         Where are you now?<br>
         Building:<br>
         <input list="cur_bld_name" id="cur_bld_name_input", name="building_name" onchange="FloorReload(0)"><br>
@@ -212,10 +212,26 @@
           <option value="4904"></option>
           <option value="4906"></option>
         </datalist><br>
-        <button type="button">Man! I don't know where am I going!</button>
+        <button type="button" onclick="setHidden(0)">Man! I don't know where am I going!</button>
         <br>
         <input type="submit">
       </form>
+      
+      <form id="searchForm" hidden>
+        Are you looking for your professor's office?<br>
+        If so, what is your professor's name?<br>
+        <input type="text" name="fname" placeholder="First name"><br>
+        <input type="text" name="lname" placeholder="Last name"><br>
+        <input type="submit" value="Submit" onclick="setHidden(1)"><br>
+        <br>
+        It's okay if you don't know your professor's name.<br>
+        Just tell me the course with section and, we will find it out of you.<br>
+        <input type="text" name="subject" placeholder="subject e.g.: ENGL"><br>
+        <input type="text" name="course" placeholder="course e.g.: 119"><br>
+        <input type="text" name="section" placeholder="lecture section e.g.: 4"><br>
+        <input type="submit" value="Submit" onclick="setHidden(1)"><br>
+      </form>
+      
     </div>
     
     <br><br><br><br><br>
