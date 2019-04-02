@@ -28,7 +28,6 @@ function insertBuilding() {
   }
 }
 
-
 function FloorReload(choice) {
   
   let bld_input, flr, input;
@@ -72,6 +71,7 @@ function FloorReload(choice) {
         flr_option.value = floorName[j];
         flr.appendChild(flr_option);
       }
+      break;
     }
   }
   
