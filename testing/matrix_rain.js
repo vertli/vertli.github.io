@@ -3,6 +3,9 @@ c.height = window.innerHeight;
 c.width = window.innerWidth;
 let font_size = 16;
 let ctx, columns, drops, rectX, sizeType;
+let buttonX, buttonY, ButtonW, buttonH;
+
+ctx = c.getContext("2d");
 
 function init() {
   canvasResize();
@@ -72,7 +75,7 @@ function selfWord() {
   ctx.shadowColor = "red";
   
   let char = String.fromCharCode(0x2193);
-  let str = char + " Scroll down for more!" + char;
+  let str = "Press me for more!";
   
   if (sizeType < 2){
     ctx.font = h1Size + "px Noto-Sans sans-serif";
@@ -116,7 +119,14 @@ function selfWord() {
     ctx.font = h4Size + "px Noto-Sans sans-serif";
     ctx.fillText(str, centerPosition, c.height / 3 + h1Size * 3 + h2Size * 5);
   }
+  buttonY = c.height / 3 + h1Size * 4 - 10;
+  buttonH = h4Size +10;
+ // alert(ctx.measureText(str).height);
+  buttonW = ctx.measureText(str).width;
+  buttonX = centerPosition - (buttonW / 2);
+  
 }
+
 
 //drawing the characters
 function draw() {
@@ -131,7 +141,7 @@ function draw() {
   
   let char = "";
   
-	//looping over drops
+//	//looping over drops
 	for(let i = 0; i < drops.length; i++) {
     
     ctx.fillStyle = "#0F0"; //green text
@@ -162,4 +172,19 @@ function draw() {
 	}
 }
 
+
+
 setInterval(draw, 33);
+c.addEventListener('click', function(event) {
+      // Control that click event occurred within position of button
+      // NOTE: This assumes canvas is positioned at top left corner 
+      if (
+        event.x > buttonX && 
+        event.x < buttonX + buttonW &&
+        event.y > buttonY && 
+        event.y < buttonY + buttonH
+      ) {
+        // Executes if button was clicked!
+        window.location.assign(window.location.href + "#myTopnav");
+      }
+});
