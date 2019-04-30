@@ -327,13 +327,13 @@ a {
 }
 
 #about table {
-  margin: 15px 10px;
-  width: 99%;
+  margin: 10px 10px;
+  width: 96%;
   border-collapse: collapse;
 }
 
 #about th, #about td {
-  width: 33%;
+  width: 32%;
   padding: 3px 3px;
   border: 2px solid #79DBAD;
 }
