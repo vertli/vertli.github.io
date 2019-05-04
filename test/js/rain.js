@@ -124,12 +124,12 @@ function setButton() {
   // let buttonX, buttonY, ButtonW, buttonH;
   let cPos = window.innerWidth / 2; 
   
-  buttonH = hSize[2] + 20;
-  buttonW = [ctx.measureText("About").width +20,
-             ctx.measureText("Contact").width + 20,
-             ctx.measureText("Projects").width + 20,
-             ctx.measureText("Arts").width + 20,
-             ctx.measureText("Notes").width + 20];
+  buttonH = hSize[2] + 10;
+  buttonW = [ctx.measureText("About").width + 10,
+             ctx.measureText("Contact").width + 10,
+             ctx.measureText("Projects").width + 10,
+             ctx.measureText("Arts").width + 10,
+             ctx.measureText("Notes").width + 10];
   
   if (size >= 960) {
     buttonX = [cPos - 400 - buttonW[0] / 2,
@@ -137,11 +137,11 @@ function setButton() {
                cPos - buttonW[2] / 2, 
                cPos + 200 - buttonW[3] / 2, 
                cPos + 400 - buttonW[4] / 2];
-    buttonY = [c.height / 3 + hSize[0] * 4 - 15,
-               c.height / 3 + hSize[0] * 4 - 15,
-               c.height / 3 + hSize[0] * 4 - 15,
-               c.height / 3 + hSize[0] * 4 - 15,
-               c.height / 3 + hSize[0] * 4 - 15];
+    buttonY = [c.height / 3 + hSize[0] * 4 - 10,
+               c.height / 3 + hSize[0] * 4 - 10,
+               c.height / 3 + hSize[0] * 4 - 10,
+               c.height / 3 + hSize[0] * 4 - 10,
+               c.height / 3 + hSize[0] * 4 - 10];
   } else if (size >= 720) {
     buttonX = [cPos - 200 - buttonW[0] / 2,
                cPos - 70 - buttonW[1] / 2,
@@ -155,15 +155,16 @@ function setButton() {
                c.height / 3 + hSize[0] + hSize[1] * 5.5 - 30];
   } else {
     let str = String.fromCharCode(0x0003E) + " Enter " + String.fromCharCode(0x0003C);
-    buttonW = ctx.measureText(str).width +20;
+    buttonW = ctx.measureText(str).width + 10;
     buttonX = cPos - buttonW / 2;
-    buttonY = c.height / 3 + hSize[0] * 5 - 30;
+    buttonY = c.height / 3 + hSize[0] * 5 - 20;
 //    ctx.fillStyle = "rgba(250, 0, 0, 0.5)";
 //	  ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
   }
   
 //  if (size >= 720) {
 //    for (let i = 0; i < 5; i++) {
+//      ctx.fillStyle = "rgba(250, 0, 0, 0.5)";
 //      ctx.fillRect(buttonX[i], buttonY[i], buttonW[i], buttonH);
 //    } // end for(i)
 //  } //end if
@@ -212,50 +213,80 @@ function draw() {
 
 setInterval(draw, 33);
 
-c.addEventListener('click', function(event) {
+c.addEventListener("click", function(event) {
   
   if (size >= 720) {
     
-    if (event.x > buttonX[0] && 
-        event.x < buttonX[0] + buttonW[0] &&
-        event.y > buttonY[0] && 
-        event.y < buttonY[0] + buttonH) {
+    if (event.x > buttonX[0] && event.x < buttonX[0] + buttonW[0] &&
+        event.y > buttonY[0] && event.y < buttonY[0] + buttonH) {
         // Executes if button was clicked!
         window.location.assign(window.location.href.replace("index.html", "about.html"));
-      } else if (event.x > buttonX[1] && 
-        event.x < buttonX[1] + buttonW[1] &&
-        event.y > buttonY[1] && 
-        event.y < buttonY[1] + buttonH) {
+      } else if (event.x > buttonX[1] && event.x < buttonX[1] + buttonW[1] &&
+        event.y > buttonY[1] && event.y < buttonY[1] + buttonH) {
         // Executes if button was clicked!
         window.location.assign(window.location.href.replace("index.html", "contact.html"));
-      } else if (event.x > buttonX[2] && 
-        event.x < buttonX[2] + buttonW[2] &&
-        event.y > buttonY[2] && 
-        event.y < buttonY[2] + buttonH) {
+      } else if (event.x > buttonX[2] && event.x < buttonX[2] + buttonW[2] &&
+        event.y > buttonY[2] && event.y < buttonY[2] + buttonH) {
         // Executes if button was clicked!
         window.location.assign(window.location.href.replace("index.html", "projects.html"));
-      } else if (event.x > buttonX[0] && 
-        event.x < buttonX[3] + buttonW[3] &&
-        event.y > buttonY[3] && 
-        event.y < buttonY[3] + buttonH) {
+      } else if (event.x > buttonX[0] && event.x < buttonX[3] + buttonW[3] &&
+        event.y > buttonY[3] && event.y < buttonY[3] + buttonH) {
         // Executes if button was clicked!
         window.location.assign(window.location.href.replace("index.html", "arts.html"));
-      } else if (event.x > buttonX[4] && 
-        event.x < buttonX[4] + buttonW[4] &&
-        event.y > buttonY[4] && 
-        event.y < buttonY[4] + buttonH) {
+      } else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
+        event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
         // Executes if button was clicked!
         window.location.assign(window.location.href.replace("index.html", "notes.html"));
       }
     
   } else {
     
-    if (event.x > buttonX && 
-        event.x < buttonX + buttonW &&
-        event.y > buttonY && 
-        event.y < buttonY + buttonH) {
+    if (event.x > buttonX && event.x < buttonX + buttonW &&
+        event.y > buttonY && event.y < buttonY + buttonH) {
         // Executes if button was clicked!
         window.location.assign(window.location.href.replace("index.html", "about.html"));
+      } // end if
+    
+  } // end if..else..
+  
+});
+
+c.addEventListener("mousemove", function(event) {
+  
+  if (size >= 720) {
+    
+    if (event.x > buttonX[0] && event.x < buttonX[0] + buttonW[0] &&
+        event.y > buttonY[0] && event.y < buttonY[0] + buttonH) {
+        // executes if cursor points to "About".
+        document.body.style.cursor = "pointer";
+      } else if (event.x > buttonX[1] &&  event.x < buttonX[1] + buttonW[1] &&
+                 event.y > buttonY[1] && event.y < buttonY[1] + buttonH) {
+        // executes if cursor points to "Contact".
+        document.body.style.cursor = "pointer";
+      } else if (event.x > buttonX[2] && event.x < buttonX[2] + buttonW[2] &&
+                 event.y > buttonY[2] && event.y < buttonY[2] + buttonH) {
+        // executes if cursor points to "Projects".
+        document.body.style.cursor = "pointer";
+      } else if (event.x > buttonX[0] && event.x < buttonX[3] + buttonW[3] &&
+                 event.y > buttonY[3] &&  event.y < buttonY[3] + buttonH) {
+        // executes if cursor points to "Arts".
+        document.body.style.cursor = "pointer";
+      } else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
+                 event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
+        // executes if cursor points to "Notes".
+        document.body.style.cursor = "pointer";
+      } else {
+        document.body.style.cursor = "auto";
+      }
+    
+  } else {
+    
+    if (event.x > buttonX && event.x < buttonX + buttonW &&
+        event.y > buttonY &&  event.y < buttonY + buttonH) {
+        // executes if cursor points to "Enter".
+        document.body.style.cursor = "pointer";
+      } else {
+        document.body.style.cursor = "auto";
       } // end if
     
   } // end if..else..

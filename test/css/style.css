@@ -1,10 +1,10 @@
 html{
-  height: 100%;
+  min-height: 100%;
   margin: 0 0;
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
 /*  background-color: #2e3c2e;*/
   background-color: black;
   color: aliceblue;
@@ -16,6 +16,7 @@ body {
 
 .container {
   margin: auto;
+  min-height: 100vh;
 }
 
 
@@ -305,7 +306,7 @@ a {
 
 #about p {
   margin: 15px 10px;
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #about .underImg {
@@ -363,8 +364,7 @@ a {
 /************************************************************/
 /* projects *************************************************/
 #projects {
-  background: #4a6f4a;
-  border-top: 3px solid white;
+  background: #244234;
 }
 
 #projects h2 {
@@ -425,19 +425,84 @@ a {
   background-color: #666;
    color: white;
 }
-
 /* projects *************************************************/
 /************************************************************/
 
-#courseNotes {
-  background: #4a6f4a;
-  border-top: 3px solid white;
+
+/************************************************************/
+/* arts *****************************************************/
+#arts {
+  background: #244234;
+}
+/* arts *****************************************************/
+/************************************************************/
+
+/************************************************************/
+/* notes ****************************************************/
+#notes {
+  background: #244234;
 }
 
-#courseNotes p {
+#notes p {
+  margin: 0 0;
+}
+/* notes ****************************************************/
+/************************************************************/
+
+/************************************************************/
+/* contact **************************************************/
+#contact {
+  background: #244234;
+  min-height: 100vh;
+}
+
+#contact h1 {
+  text-align: center;
+  font-size: 300%;
+  padding: 10px;
   margin: 0 0;
 }
 
+#contact .keyword {
+  color: #79DBAD;
+}
+
+#contact p {
+  padding: 10px 15px;
+  margin: 0 0;
+}
+
+#contact table {
+  float: center;
+  margin: 10px 25%;
+  width: 50%;
+  border-collapse: collapse;
+}
+
+#contact th, #contact td {
+  padding: 3px 3px;
+  border: 2px solid #79DBAD;
+  text-align: center;
+  padding: 5px 0;
+  
+}
+
+#contact th {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 18px;
+}
+
+#contact td {
+  background-color: #f2f2f2;
+}
+
+#contact td a {
+  color: black;
+}
+
+/* contact **************************************************/
+/************************************************************/
 
 /************************************************************/
 /* footer ***************************************************/
