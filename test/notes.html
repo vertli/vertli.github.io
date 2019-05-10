@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
   </head>
   
-  <body>
+  <body onload="restHeight('notes')" onresize="location.reload()">
     
     <div class="topnav" id="myTopnav">
       <a href="./index.html" class="active">Calvin Li</a>
@@ -39,15 +39,15 @@
       <section id="notes">
         <div class="row">
           <div class="col-12">
-            <h1>DISCLAIMER</h1>
-            <p>These notes are taken by me while attending lectures at the University of Waterloo. You can review them free of charge from my website. I have no intention of violating any policies from University of Waterloo, and will gladly honour takedown notices produced by an authorized University of Waterloo representative.</p> 
-            <p>Furthermore, these notes are NOT authoritative. They may contain mistakes or omissions. Use at your own peril!</p>
-            <p>Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.</p>
+            <h1>Before you continue this page...</h1>
+            <p>These notes below are taken by me while attending lectures at the University of Waterloo. You can review them free of charge from my website. I have no intention of violating any policies from University of Waterloo, and will gladly honour takedown notices produced by an authorized University of Waterloo representative.</p> 
+            <p>Also, these notes are NOT authoritative. They may contain mistakes or omissions. Use at your own peril!</p>
+            <p>If you find a typo or mistake, please feel free to contact me and I will correct it as soon as possible.</p>
           </div>
         </div>
       </section>
       
-      <footer>
+      <footer id="footer">
         <p>Thanks For Coming. - Vert Li</p>
         <!-- icons -->
         <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;"><i class = "fas fa-envelope-square fa-2x"></i></a>
@@ -61,6 +61,7 @@
     </div>
     
     <script src="./js/style.js"></script>
+    <script src="./js/height.js"></script>
   </body>
   
 </html>

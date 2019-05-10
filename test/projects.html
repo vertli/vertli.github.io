@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
   </head>
   
-  <body>
+  <body onload="restHeight('projects')" onresize="location.reload()">
     
     <div class="topnav" id="myTopnav">
       <a href="./index.html" class="active">Calvin Li</a>
@@ -38,10 +38,62 @@
     <div class="container">
       
       <section id="projects">
-        <p>Projects</p>
+        <h2>Projects</h2>
+        <div id="projectsBtn">
+          <button class="btn active" onclick="filterSelection('all')"> All</button>
+          <button class="btn" onclick="filterSelection('cplusplus')"> C++</button>
+          <button class="btn" onclick="filterSelection('java')"> Java</button>
+          <button class="btn" onclick="filterSelection('pascal')"> Pacsal</button>
+          <button class="btn" onclick="filterSelection('web')"> Web</button>
+        </div>
+        
+        <div class="row">
+          
+          <div class="card pascal col-4 col-sm-6 col-md-4">
+            <div class="content">
+              <img src="./img/project/GetItAtOne.JPG">
+              <h4>Get It At One</h4>
+              <p>Some text here...</p>
+            </div>
+          </div>
+          
+          <div class="card pascal col-4 col-sm-6 col-md-4">
+            <div class="content">
+              <img src="./img/project/SBA.JPG">
+              <h4>SBA</h4>
+              <p>Some text here...</p>
+            </div>
+          </div>
+          
+          <div class="card java col-4 col-sm-6 col-md-4">
+            <div class="content">
+              <img src="./img/project/fmmEscape.JPG">
+              <h4>FMM Escape</h4>
+              <p>Some text here...</p>
+            </div>
+          </div>
+          
+          <div class="card web col-4 col-sm-6 col-md-4">
+            <div class="content">
+              <img src="./img/project/TRACKR.JPG">
+              <h4>TRACKR</h4>
+              <p>Some text here...</p>
+            </div>
+          </div>
+          
+          <div class="card web col-4 col-sm-6 col-md-4">
+            <div class="content">
+              <img src="./img/project/website.JPG">
+              <h4>Website</h4>
+              <p>Some text here...</p>
+            </div>
+          </div>
+
+        </div>
+        
       </section>
       
-      <footer>
+      <footer id="footer">
         <p>Thanks For Coming. - Vert Li</p>
         <!-- icons -->
         <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;"><i class = "fas fa-envelope-square fa-2x"></i></a>
@@ -55,6 +107,8 @@
     </div>
     
     <script src="./js/style.js"></script>
+    <script src="./js/height.js"></script>
+    <script src="./js/projects.js"></script>
   </body>
   
 </html>

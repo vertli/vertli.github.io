@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
   </head>
   
-  <body>
+  <body onload="restHeight('about')" onresize="location.reload()">
     
     <div class="topnav" id="myTopnav">
       <a href="./index.html" class="active">Calvin Li</a>
@@ -145,7 +145,7 @@
         
       </section>
       
-      <footer>
+      <footer id="footer">
         <p>Thanks For Coming. - Vert Li</p>
         <!-- icons -->
         <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;"><i class = "fas fa-envelope-square fa-2x"></i></a>
@@ -159,6 +159,7 @@
     </div>
     
     <script src="./js/style.js"></script>
+    <script src="./js/height.js"></script>
   </body>
   
 </html>
