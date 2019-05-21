@@ -115,6 +115,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 100;
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
@@ -429,8 +430,84 @@ a {
 /* Add a dark background color to the active button */
 #projects .btn.active {
   background-color: #666;
-   color: white;
+  color: white;
 }
+
+#projects .content .flip-card {
+  background-color: transparent;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+#projects .content .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+#projects .content .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+#projects .content .flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+#projects .content .flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+#projects .content .flip-card-back {
+  background-color: #f2f2f2;
+  color: black;
+  transform: rotateY(180deg);
+}
+
+#projects .content .flip-card-back .back-text {
+  padding: 20px 20px;
+}
+
+#projects .content .flip-card-back h4 {
+  text-align: center;
+  font-size: 24px;
+}
+
+#projects .content .flip-card-back p {
+  text-align: left;
+}
+
+#projects table {
+  margin: 5px 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#projects .thd {
+  width: 30%;
+  padding: 0 5px;
+}
+
+#projects h4 {
+  margin: 0 0;
+  font-size: 24px;
+}
+
+#projects .rightSide {
+  width: 5%;
+  text-align: right;
+}
+
 /* projects *************************************************/
 /************************************************************/
 

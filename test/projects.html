@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
   </head>
   
-  <body onload="restHeight('projects')" onresize="location.reload()">
+  <body onload="restHeight('projects')" onresize="location.reload()" onresize="setHeight()">
     
     <div class="topnav" id="myTopnav">
       <a href="./index.html" class="active">Calvin Li</a>
@@ -49,56 +49,176 @@
         
         <div class="row">
           
-          <div class="card pascal col-4 col-sm-6 col-md-4">
+          <div class="card pascal col-6 col-sm-6 col-md-6">
             <div class="content">
-              <img src="./img/project/GetItAtOne.JPG">
-              <h4>Get It At One</h4>
-              <p>Language: Pascal</p>
-              <p>Software Used: Free Pascal IDE</p>
-              <p>Summary:<br>It is a re-made guessing number game program which is developed during my Hong Kong secondary school period. The goal of this program is to learn how to use <scan class="keyword">crt</scan> unit to implement a better interface in Pascal console window. Also, users can use the arrow keys to select the choice in menu instead of typing what they want to do.</p>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/GetItAtOne.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is a re-made guessing number game program which is developed during my Hong Kong secondary school period. The goal of this program is to learn how to use <code>crt</code> unit to implement a better interface in Pascal console window. Also, users can use the arrow keys to select the choice in menu instead of typing what they want to do.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Get It At One</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/melissajwen/trackr" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>Pascal</td>
+                </tr>
+                <tr>
+                  <td class="thd">Software Used: </td>
+                  <td>Free Pascal IDE</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+         
+          <div class="card pascal col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/SBA.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is a health information system which is developed for my School-based Assessment (SBA, just think it as final year project) in Hong Kong secondary school. Also, this is my first system design project.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Health Care System</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/melissajwen/trackr" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>Pascal</td>
+                </tr>
+                <tr>
+                  <td class="thd">Software Used: </td>
+                  <td>Free Pascal IDE</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+         
+          <div class="card java col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/fmmEscape.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is an escape game as my final group project in Canadian high school. We had developed two versions, one is SWING (Java) version and the other one is hsa.Console version.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>FMM Escape</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/melissajwen/trackr" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>Java</td>
+                </tr>
+                <tr>
+                  <td class="thd">Software Used: </td>
+                  <td>Eclipse, Ready to Program Java IDE</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+        
+          <div class="card web col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/TRACKR.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is an unfinished website which was created as a group project in Hack The North 2017. My job was developed the front-end part. (The unfinished part is we do not know how to link our front-end and back-end together.)</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>TRACKR</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/melissajwen/trackr" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>HTML, CSS, Javascript, Node.js</td>
+                </tr>
+                <tr>
+                  <td class="thd">Software Used: </td>
+                  <td>Brackets</td>
+                </tr>
+              </table>          
             </div>
           </div>
           
-          <div class="card pascal col-4 col-sm-6 col-md-4">
+          <div class="card web col-6 col-sm-6 col-md-6">
             <div class="content">
-              <img src="./img/project/SBA.JPG">
-              <h4>Health Care System</h4>
-              <p>Language: Pascal</p>
-              <p>Software Used: Free Pascal IDE</p>
-              <p>Summary:<br>It is a health information system which is developed for my School-based Assessment (SBA, just think it as final year project) in Hong Kong secondary school. Also, this is my first system design project.</p>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/website.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>The place to display my projects and my arts (maybe). Yes, you are visiting it now!</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Persaonal Website</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/melissajwen/trackr" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>HTML, CSS, Javascript</td>
+                </tr>
+                <tr>
+                  <td class="thd">Software Used: </td>
+                  <td>Brackets</td>
+                </tr>
+              </table>          
             </div>
           </div>
           
-          <div class="card java col-4 col-sm-6 col-md-4">
-            <div class="content">
-              <img src="./img/project/fmmEscape.JPG">
-              <h4>FMM Escape</h4>
-              <p>Language: Java</p>
-              <p>Software Used: Eclipse, Ready to Program Java IDE</p>
-              <p>Summary:<br>It is an escape game as my final group project in Canadian high school. We had developed two versions, one is SWING (Java) version and the other one is hsa.Console version.</p>
-            </div>
-          </div>
-          
-          <div class="card web col-4 col-sm-6 col-md-4">
-            <div class="content">
-              <img src="./img/project/TRACKR.JPG">
-              <h4>TRACKR</h4>
-              <p>Language: HTML, CSS, Javascript, Node.js</p>
-              <p>Software Used: Brackets</p>
-              <p>Summary:<br>It is an unfinished website which was created as a group project in Hack The North 2017. My job was developed the front-end part. (The unfinished part is we do not know how to link our front-end and back-end together.)</p>
-            </div>
-          </div>
-          
-          <div class="card web col-4 col-sm-6 col-md-4">
-            <div class="content">
-              <img src="./img/project/website.JPG">
-              <h4>Persaonal Website</h4>
-              <p>Language: HTML, CSS, Javascript</p>
-              <p>Software Used: Brackets</p>
-              <p>Summary:<br>The place to display my projects and my arts (maybe). Yes, you are visiting it now!</p>
-            </div>
-          </div>
-
         </div>
         
       </section>

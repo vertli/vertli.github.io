@@ -50,3 +50,22 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+setHeight()
+function setHeight() {
+  var images = document.getElementsByTagName("img");
+  var len = images.length;
+  var tempHeight = images[0].height;
+  for (i = 1; i < len; i++) {
+    if (tempHeight < images[i].height) {
+      tempHeight = images[i].height;
+    } // end if
+  } // end for(i)
+  for (i = 0; i < len; i++) {
+    images[i].style.height = tempHeight + "px";
+  }
+  var flipCard = document.querySelectorAll(".flip-card");
+  for (f = 0; f < flipCard.length; f++) {
+   flipCard[f].style.height = tempHeight + "px";
+  }
+} // end setHeight()
