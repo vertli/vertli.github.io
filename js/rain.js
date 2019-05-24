@@ -72,7 +72,7 @@ function selfWord() {
     ctx.font = hSize[1] + "px Noto-Sans sans-serif";
     ctx.fillText("Computational Mathematics & Statistics Student", cPos, c.height / 3 + hSize[0]);
     ctx.fillText("University of Waterloo", cPos, c.height / 3 + hSize[0] + hSize[1]);
-    ctx.fillText("Class of 2020", cPos, c.height / 3 + hSize[0] + hSize[1] * 2);
+    ctx.fillText("Class of 2021", cPos, c.height / 3 + hSize[0] + hSize[1] * 2);
     
     ctx.font = hSize[2] + "px Noto-Sans sans-serif";
     ctx.fillText("About", cPos - 400, c.height / 3 + hSize[0] + hSize[1] * 4);
@@ -90,7 +90,7 @@ function selfWord() {
     ctx.font = hSize[1] + "px Noto-Sans sans-serif";
     ctx.fillText("Mathematics Student", cPos, c.height / 3 + hSize[1]);
     ctx.fillText("University of Waterloo", cPos, c.height / 3 + hSize[0] + hSize[1]);
-    ctx.fillText("Class of 2020", cPos, c.height / 3 + hSize[0] + hSize[1] * 2);
+    ctx.fillText("Class of 2021", cPos, c.height / 3 + hSize[0] + hSize[1] * 2);
     
     theListX = window.innerWidth / 5;
     
@@ -220,23 +220,23 @@ c.addEventListener("click", function(event) {
     if (event.x > buttonX[0] && event.x < buttonX[0] + buttonW[0] &&
         event.y > buttonY[0] && event.y < buttonY[0] + buttonH) {
         // Executes if button was clicked!
-        window.location.assign(window.location.href.replace("./index.html", "./about.html"));
+        window.location.assign(window.location.href.replace("index.html", "about.html"));
       } else if (event.x > buttonX[1] && event.x < buttonX[1] + buttonW[1] &&
         event.y > buttonY[1] && event.y < buttonY[1] + buttonH) {
         // Executes if button was clicked!
-        window.location.assign(window.location.href.replace("./index.html", "./contact.html"));
+        window.location.assign(window.location.href.replace("index.html", "contact.html"));
       } else if (event.x > buttonX[2] && event.x < buttonX[2] + buttonW[2] &&
         event.y > buttonY[2] && event.y < buttonY[2] + buttonH) {
         // Executes if button was clicked!
-        window.location.assign(window.location.href.replace("./index.html", "./projects.html"));
+        window.location.assign(window.location.href.replace("index.html", "projects.html"));
       } else if (event.x > buttonX[0] && event.x < buttonX[3] + buttonW[3] &&
         event.y > buttonY[3] && event.y < buttonY[3] + buttonH) {
         // Executes if button was clicked!
-        window.location.assign(window.location.href.replace("./index.html", "./arts.html"));
+        window.location.assign(window.location.href.replace("index.html", "arts.html"));
       } else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
         event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
         // Executes if button was clicked!
-        window.location.assign(window.location.href.replace("./index.html", "./notes.html"));
+        window.location.assign(window.location.href.replace("index.html", "notes.html"));
       }
     
   } else {
@@ -244,7 +244,7 @@ c.addEventListener("click", function(event) {
     if (event.x > buttonX && event.x < buttonX + buttonW &&
         event.y > buttonY && event.y < buttonY + buttonH) {
         // Executes if button was clicked!
-        window.location.assign(window.location.href.replace("./index.html", "./about.html"));
+        window.location.assign(window.location.href.replace("index.html", "about.html"));
       } // end if
     
   } // end if..else..
