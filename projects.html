@@ -1,135 +1,292 @@
 <!DOCTYPE html>
-
-<html>
-
-    <head>
-        <meta charset="utf-8">
-        <title>Projects|Calvin Li</title>
-        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-        <!-- stylesheet found from w3school. (icon use)-->
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+  </head>
+  
+  <body onload="restHeight('projects'); setHeight()" onresize="location.reload()" onresize="setHeight()">
     
-    <body>
-        
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="topNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./projects.html">Projects</a></li>
-                        <li class="courseNote">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="./cs230.html">CS 230</a></li>
-                                <li><a href="./cs246.html">CS 246</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        
-        <br><br><br>
-        
-        <div class="container">
-            
-            <div class="projects">
-                <h1>Projects</h1>
-                <table>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/TRACKR.JPG">
-                            <h2>TRACKR</h2>
-                            <p><strong>Summary:</strong><br>
-                                An unfinished website which was created as a group project in Hack The North 2017. My job was developed the front-end part.
-                            </p>
-                            <p><strong>Language: </strong>HTML, CSS, Javascript, Node.js</p>
-                            <p><Strong>Software Used: </Strong>Brackets</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                           <img src = "./image/project/website.JPG">
-                            <h2>Personal Website</h2>
-                            <p><strong>Summary: </strong><br> The place to display my projects. Yes, you are visiting it now!</p>
-                            <p><strong>Language: </strong>HTML, CSS, Javascript</p>
-                            <p><strong>Software Used: </strong>Brackets</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/fmmEscape.JPG">
-                            <h2>FMM Escape</h2>
-                            <p><strong>Summary: </strong><br> An escape game as my final group project in Canadian high school.<br> We made two versions, one is SWING(Java) version and the other one is hsa.Console version.</p>
-                            <p><strong>Language: </strong>Java</p>
-                            <p><strong>Software Used: </strong>Eclipse, Ready to Program Java IDE</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/GetItAtOne.JPG">
-                            <h2>Get It At One</h2>
-                            <p><strong>Summary: </strong><br> A re-made guessing number game which is developed during my Hong Kong secondary school period.</p>
-                            <p><strong>Language: </strong> Pascal</p>
-                            <P><strong>Software Used: </strong> Free Pascal IDE</P>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img src = "./image/project/SBA.JPG">
-                            <h2>Health Care System</h2>
-                            <p><strong>Summary: </strong><br> An information system which is developed as the final project in Hong Kong secondary school.</p>
-                            <p><strong>Language: </strong> Pascal</p>
-                            <P><strong>Software Used: </strong> Free Pascal IDE</P>
-                        </th>
-                    </tr>
-                </table>
-            </div>
-            <hr>
-            
-            
-            <div class="footer">
-                <p>Thanks For Coming Here. - Calvin Li</p>
-                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
-                    <i class = "fa fa-envelope-square"></i>
-                </a>
-                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
-                    <i class = "fa fa-linkedin-square"></i>
-                </a>       
-                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href = "https://github.com/vertli" target = "_blank;">
-                    <i class="fa fa-github-square"></i>
-                </a>
-                <br>
-                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
-            </div>
-            <hr>
+    <div class="topnav" id="myTopnav">
+      <a href="./index.html" class="active">Calvin Li</a>
+      <a href="./about.html">About</a>
+      <a href="./projects.html">Projects</a>
+      <a href="./arts.html">Arts</a>
+      <a href="./contact.html">Contact</a>
+      <div class="topnav-right">
+        <!-- reverse order plz! (as my CSS sucks) -->
+        <div class="dropdown">
+          <button class="dropbtn">Course Notes
+          <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">CS 230</a>
+            <a href="#">CS 246</a>
+          </div>
+        </div>
+        <a href="/doc/NewResume_CKLI.pdf">Résumé</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    
+    <div class="container">
+      
+      <section id="projects">
+        <h1>My <scan class="keyword">Projects</scan></h1>
+        <div id="projectsBtn">
+          <button class="btn active" onclick="filterSelection('all'); restHeight('projects');" > All</button>
+          <button class="btn" onclick="filterSelection('cfamily'); restHeight('projects');"> C / C++</button>
+          <button class="btn" onclick="filterSelection('java'); restHeight('projects');" > Java</button>
+          <button class="btn" onclick="filterSelection('pascal'); restHeight('projects');"> Pacsal</button>
+          <button class="btn" onclick="filterSelection('web'); restHeight('projects');"> Web</button>
         </div>
         
+        <div class="row">
+          
+          <div class="card pascal col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/GetItAtOne.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is a re-made guessing number game program which is developed during my Hong Kong secondary school period. The goal of this program is to learn how to use <code>crt</code> unit to implement a better interface in Pascal console window. Also, users can use the arrow keys to select the choice in menu instead of typing what they want to do.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Get It At One</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/vertli/Pascal-Code/blob/master/GetItAtOne.pas" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>Pascal</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+         
+          <div class="card pascal col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/SBA.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is a health information system which is developed for my School-based Assessment (SBA, just think it as final year project) in Hong Kong secondary school. Also, this is my first system design project.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Health Care System</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/vertli/Pascal-Health-Care-System" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>Pascal</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+         
+          <div class="card java col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/fmmEscape.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is an escape game as my final group project in Canadian high school. We had developed two versions, one is SWING (Java) version and the other one is hsa.Console version.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>FMM Escape</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/vertli/Java---FMM-Escape" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>Java</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
         
+          <div class="card web col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/TRACKR.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is an unfinished website which was created as a group project in Hack The North 2017. My job was developed the front-end part. (The unfinished part is we do not know how to link our front-end and back-end together.)<br>
+                       We used Microsoft Azure’s facial detection API and tracking.js<br>
+                       This website will compare one photo (took from camera) with other photos ifrom the database, then return the highest similar photo from database to the user.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>TRACKR</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/melissajwen/trackr" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>HTML, CSS, Javascript, Node.js</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+          
+          <div class="card web col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/website.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>The place to display my projects and my arts (maybe). Yes, you are visiting it now!</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Persaonal Website</h4></td>
+                  <td class="rightSide"><a href = "https://github.com/vertli/vertli.github.io" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>HTML, CSS, Javascript</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+          
+          <div class="card cfamily col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/minesweeper.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is a text-based game which devloped for one of my university computer science courses (CS 136).<br>
+                       My job was implemented the back-end algorithms (the school provided text graphical user interface).<br>
+                       (Also, I am currently developed a Java version.)</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Mine Sweeper</h4></td>
+                  <td class="rightSide"><a href = "" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>C</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+          
+          <div class="card cfamily col-6 col-sm-6 col-md-6">
+            <div class="content">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                   <div class="flip-card-front">
+                     <img src="./img/project/quadris.png">
+                   </div>
+                   <div class="flip-card-back">
+                     <div class="back-text">
+                       <h4>Summary</h4>
+                       <p>It is a Tetris-like game which developed for one of my university computer science courses (CS 246) as the final team project.<br>
+                       We had added "Hint" feature to display the Cartesian coordinate for next relative best move.<br>
+                       We also used observer pattern and only used smart pointers.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <table>
+                <tr>
+                  <td><h4>Quadris</h4></td>
+                  <td class="rightSide"><a href = "" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td class="thd">Language:</td>
+                  <td>C++</td>
+                </tr>
+              </table>          
+            </div>
+          </div>
+          
+          
+          
+        </div>
         
-        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-        
-    </body>
+      </section>
+      
+      <footer id="footer">
+        <p>Thanks For Coming. - Vert Li</p>
+        <!-- icons -->
+        <a href = "mailto: vert.c.k.li@gmail.com" target = "_blank;"><i class = "fas fa-envelope-square fa-2x"></i></a>
+        <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;"><i class = "fab fa-linkedin fa-2x"></i></a>       
+        <a href = "https://www.instagram.com/vert_arts/" target = "_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href = "https://github.com/vertli" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+        <!-- icons -->
+        <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2019</p>
+      </footer>
+      
+    </div>
     
+    <script src="./js/style.js"></script>
+    <script src="./js/height.js"></script>
+    <script src="./js/projects.js"></script>
+  </body>
+  
 </html>

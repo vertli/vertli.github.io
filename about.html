@@ -1,128 +1,165 @@
 <!DOCTYPE html>
-
-<html>
-
-    <head>
-        <meta charset="utf-8">
-        <title>About|Calvin Li</title>
-        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-        <!-- stylesheet found from w3school. (icon use)-->
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+  </head>
+  
+  <body onload="restHeight('about')" onresize="location.reload()">
     
-    <body>
-        
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
-                </div>
+    <div class="topnav" id="myTopnav">
+      <a href="./index.html" class="active">Calvin Li</a>
+      <a href="./about.html">About</a>
+      <a href="./projects.html">Projects</a>
+      <a href="./arts.html">Arts</a>
+      <a href="./contact.html">Contact</a>
+      <div class="topnav-right">
+        <!-- reverse order plz! (as my CSS sucks) -->
+        <div class="dropdown">
+          <button class="dropbtn">Course Notes
+          <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">CS 230</a>
+            <a href="#">CS 246</a>
+          </div>
+        </div>
+        <a href="/doc/NewResume_CKLI.pdf">Résumé</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    
+    <div class="container">
+      
+      <section id="about">
+        <div class="row">
+          <div class="col-1 col-md-4 col-lg-4">
+            <img src="img/self.png">
+            <p class="underImg">Clearly, this is a unfinished self-drawing (missing shadow and have to fix both arms). Also, my hair is black; I never dye my hair. (As a Chinese guy, I can/shall/should/must <strong><em>NOT</em></strong> dye my hair to green color ._.)</p>
+          </div>
+          <div class="col-1 col-md-8 col-lg-8">
+            <p>Okay, you did find me here.</p>
+            <p>Hello world. I am...</p>
+            <h1>Calvin Vert Li</h1>
+            <p>Or you might know me as my Chinese name... But since my father said he just randomly named me as he was lazy in that time, I am not going to tell you my Chinese name. (If you are curious, go find it out; it is somewhere in my website.)</p>
+            <p>I am currently a year 3 undergraduate student at <u>University of Waterloo</u> and my majors are <u>Computational Mathematics</u> and <u>Statistics</u>.</p>
+            
+            <p>Some of my interests relate to my majors are <span class="keyword">software development</span>, <span class="keyword">web development</span>, <span class="keyword">game development</span>, etc.</p>
+            
+            <p>I am also interested on arts and design. For example, <span class="keyword">drawing</span>, <span class="keyword">painting</span>, <span class="keyword">printmaking</span>, <span class="keyword">architectural design</span>, <span class="keyword">furniture design</span>, <span class="keyword">product design</span>, <span class="keyword">interior design</span>, <span class="keyword">advertisement design</span>, <span class="keyword">package design</span>, <span class="keyword">illustration design</span>, etc.</p>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="topNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./projects.html">Projects</a></li>
-                        <li class="courseNote">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="./cs230.html">CS 230</a></li>
-                                <li><a href="./cs246.html">CS 246</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        
-        <br><br><br>
-        
-        <div class="container">
-            <div class = "about">
-                <img class="topImg" src="./image/self.png">
-                <h1><center>Who am I?</center></h1>
-                <h3>I'm Calvin, and...</h3>
-                <p>I'm currently a <i>Computational Mathematics</i> and <i>Statistics</i> (double majors) student at University of Waterloo.</p> 
-                <br>
-                <h3>I love coding, and...</h3>
-                <p>
-                    Since my major is not computer science, I am trying my best to self-learning computer science.<br>
-                    Until now, I know the following computer languages: <i>C</i>, <i>C++</i>, <i>HTML with CSS</i>, <i>Java</i>, <i>MIPS</i>, <i>Pascal</i> and <i>Racket</i>.<br>
-                    But I will only say I am good at <i>Java</i> only.<br>
-                    Also, I have some experience for teaching <i>Java</i>.<br>
-                    I tutored high school student and university student before.<br>
-                </p>
-                <br>
-                <h3>I love games, and...</h3>
-                <p>
-                    I want to create game. This is the reason I started learning coding.<br>
-                    My favourite games are <i>Fire Emblems</i>, <i>Pokemon</i>, <i>The Legend Of Zelda</i>, <i>Story Of Seasons</i>, and <i>Puzzle and Dragons</i>.<br>
-                    Yes, I grew up with Nintendo.<br>
-                    Also, I hate action game - I am really weak with it.<br>
-                </p>
-                <br>
-                <h3>I do arts. For me...</h3>
-                <p>
-                    Arts is the perfect way to represent my own feeling.<br>
-                    I enjoy doing arts. However, I hate dirty.<br>
-                    Thus I usually just draw with colour pencils and markers.<br>
-                    (Usless I have to do my school projects, then I will try ohter media.)<br>
-                </p>
-                <br>
-                <h3>I'm also a dart player. For me...</h3>
-                <p>
-                    Dart is the only sport I fall in love with.<br>
-                    I do know how to play badminton, but not that good.<br>
-                    One interesting fact is that I don't know how to play table tennis but I was in my Hong Kong secondary school team.<br>
-                    I was the only judge in my school.<br>
-                </p>
-                <br>
-                <h3>Lastly, I love listening music...</h3>
-                <p>
-                    My favourite singing groups are <i>Celtic Thunder</i> and <i>Celtic Woman</i>.<br>
-                    Also, <i>Ed Sheeran</i> is a perfect singer too.<br>
-                    I also like the sound of violin. Sadly, I don't know how to play violn.<br>
-                </p>
-                <br>
-                <p class = "special">Please feel free to message me if you want to have a chat!</p>
-            </div>
-            
-            <hr>
-            <div class="footer">
-                <p>Thanks For Coming Here. - Calvin Li</p>
-                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
-                    <i class = "fa fa-envelope-square"></i>
-                </a>
-                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
-                    <i class = "fa fa-linkedin-square"></i>
-                </a>       
-                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href = "https://github.com/vertli" target = "_blank;">
-                    <i class="fa fa-github-square"></i>
-                </a>
-                <br>
-                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
-            </div>
-            <hr>
-            
+            <p>Here is a table of my skillset...</p>
+            <table>
+              <tr>
+                <th>Computer Languages</th>
+                <th>Technologies</th>
+                <th>Design Software</th>
+              </tr>
+              
+              <tr>
+                <td>&#9656; Bash</td>
+                <td>&#9656; Excel</td>
+                <td>&#9656; Adobe Illustrator</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; C</td>
+                <td>&#9656; Git</td>
+                <td>&#9656; Adobe InDesign</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; C++</td>
+                <td>&#9656; Linux</td>
+                <td>&#9656; Adobe Photoshtop</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; HTML with CSS</td>
+                <td>&#9656; Printmaking</td>
+                <td>&#9656; CorelDRAW</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; JavaScript</td>
+                <td>&#9656; Vex Robotics</td>
+                <td>&#9656; GIMP</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; Java</td>
+                <td>&#9656; Woodworking</td>
+                <td>&#9656; Google SketchUp</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; MATLAB</td>
+                <td></td>
+                <td>&#9656; Ulead PhotoImpact</td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; MIPS</td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; Pascal</td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; Python</td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; R</td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; Racket</td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>&#9656; SAS</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
         </div>
         
-        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-    </body>
+      </section>
+      
+      <footer id="footer">
+        <p>Thanks For Coming. - Vert Li</p>
+        <!-- icons -->
+        <a href = "mailto: vert.c.k.li@gmail.com" target = "_blank;"><i class = "fas fa-envelope-square fa-2x"></i></a>
+        <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;"><i class = "fab fa-linkedin fa-2x"></i></a>       
+        <a href = "https://www.instagram.com/vert_arts/" target = "_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href = "https://github.com/vertli" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+        <!-- icons -->
+        <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2019</p>
+      </footer>
+      
+    </div>
     
+    <script src="./js/style.js"></script>
+    <script src="./js/height.js"></script>
+  </body>
+  
 </html>

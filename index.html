@@ -1,105 +1,29 @@
 <!DOCTYPE html>
-
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Home|Calvin Li</title>
-        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-        <!-- stylesheet found from w3school. (icon use)-->
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <body>  
-        
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="topNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./projects.html">Projects</a></li>
-                        <li class="courseNote">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="./cs230.html">CS 230</a></li>
-                                <li><a href="./cs246.html">CS 246</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12, top">
-                    <h1>Chun Kit (Calvin) Li</h1>
-                    <h2>Computational Mathematics &amp; Statistics Student</h2>
-                    <h2>University of Waterloo</h2>
-                    <h2>Class of 2020</h2>
-                </div>
-            </div>
-            
-            <hr>
-            <img class="topImg" src="./image/self.png">
-            <h1><center>Hello. 你好。こんにちは.</center></h1>
-            <div class="row">
-                <div class="col-md-8">
-                    <p class="topIntro">
-                        <center>
-                            I'm Calvin, a year 2 <i>Computational Mathematics</i> with <i>Statistics</i> (double majors) student at in University of Waterloo.<br><br>
-                            I really like coding. Since my major isn't computer science, I try my best to self-learning computer science.<br><br>
-                            Also I love playing darts. But I haven't played darts after I moved to Waterloo. (I don't want to go bar...)<br><br>
-                            Want to know more about me? <a href="./about.html">Press here</a>!<br><br>
-                            <br>
-                            By the way, I still have a black colour hair.<br>
-                            (Mum said as a Chinese guy, I can/shall/should/must NOT dye my hair to green color ._.)<br>
-                        </center>
-                    </p>
-                </div>
-            </div>          
-            <hr>
-            
-            <div class="footer">
-                <p>Thanks For Coming Here. - Calvin Li</p>
-                <a href="mailto: ck6li@edu.uwaterloo.ca" target="_blank;">
-                    <i class="fa fa-envelope-square"></i>
-                </a>
-                <a href ="https://www.linkedin.com/in/vertckli/" target="_blank;">
-                    <i class = "fa fa-linkedin-square"></i>
-                </a>       
-                <a href="https://www.instagram.com/vert_arts/" target="_blank;">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="https://github.com/vertli" target="_blank;">
-                    <i class="fa fa-github-square"></i>
-                </a>
-                <br>
-                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
-            </div>
-            <hr>
-        </div>
-        
-
-        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-        
-    </body>
+    <title>Index</title>
+    <link href="./css/style.css" rel="stylesheet">
+    
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  </head>
+  
+  <body onload="init()" onresize="init()">
+  
+    <section id="cover">
+      <canvas id="c_matrix"></canvas>
+    </section>
+    
+    <div class="container index">
+      <a href="./about.html">Can't see the animation? Press me to enter the website.</a>
+    </div>
+  
+    <script src="./js/rain.js"></script>
+  </body>
+  
 </html>
