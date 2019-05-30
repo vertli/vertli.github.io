@@ -2,394 +2,305 @@
 
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>CS246|Calvin Li</title>
-        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/note.css">
-        <link rel="stylesheet" href="./css/cs246Use.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
-        <!-- stylesheet found from w3school. (icon use)-->
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    
-    <body>
-        
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
-                </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CS246|Calvin Li</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/notes.css">
+<!--      <link rel="stylesheet" href="./css/note.css">-->
+    <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+  </head>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="topNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./projects.html">Projects</a></li>
-                        <li class="courseNote">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="./cs230.html">CS 230</a></li>
-                                <li><a href="./cs246.html">CS 246</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
+  <body>
+
+    <div class="topnav" id="myTopnav">
+      <a href="./index.html" class="active">Calvin Li</a>
+      <a href="./about.html">About</a>
+      <a href="./projects.html">Projects</a>
+      <a href="./arts.html">Arts</a>
+      <a href="./contact.html">Contact</a>
+      <div class="topnav-right">
+        <!-- reverse order plz! (as my CSS sucks) -->
+        <div class="dropdown">
+          <button class="dropbtn">Course Notes
+          <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">CS 230</a>
+            <a href="#">CS 246</a>
+          </div>
+        </div>
+        <a href="/doc/NewResume_CKLI.pdf">Résumé</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <table class="header">
+            <tr>
+              <td colspan="100%">
+                <h1 class="title">CS 246 - Object-Oriented Development</h1>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="5%">Instructor:</th>
+              <td colspan="95%">Brad Lushman</td>
+            </tr>
+            <tr>
+              <th colspan="5%">Office:</th>
+              <td colspan="95%">DC3110</td>
+            </tr>
+            <tr>
+              <th colspan="5%">Email:</th>
+              <td colspan="95%"><a href = "mailto: brad.lushman@uwaterloo.ca" target = "_blank;">brad.lushman@uwaterloo.ca</a></td>
+            </tr>
+            <tr>
+              <th colspan="5%">Website:</th>
+              <td colspan="95%">
+                <a href="https://www.student.cs.uwaterloo.ca/~cs246/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs246/</a>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="5%">Note:</th>
+              <td>All program codes in this course notes are provided by Prof. Lushman during class.</td>
+            </tr>
+          </table>   
+        </div>
         
-        <br><br>
-        
-        <div class="container">
+      <!-- tabs -->
+      <!-- Tab links -->
+      <div class="tab">
+        <button class="tablinks" onclick="openMod(event, 'mod1')" id="defaultOpen">Module 1</button>
+        <button class="tablinks" onclick="openMod(event, 'mod2')">Module 2</button>
+        <button class="tablinks" onclick="openMod(event, 'mod3')">Module 3</button>
+        <button class="tablinks" onclick="openMod(event, 'mod4')">Module 4</button>
+      </div>
+              
+      <div id="mod1" class="tabcontent">
+        <b>Module 1 - The Shell</b>
+          <ul>
+            <li>Lecture 1 - Done
+              <ul>
+                <li>Shell</li>
+                <li>Linux Filesystem</li>
+                <li>Streams</li>
+                <li>StdErr</li>
+                <li>Buffered</li>
+                <li>Piples</li>
+              </ul>
+            </li>
+            <li>Lecture 2 - Not Done Yet</li>
+            <li>Lecture 3 - Not Done Yet</li>
+            <li>Software Engineering Topic: Testing  - Done</li>
+          </ul>
+      </div>
+               
+      <div id="mod2" class="tabcontent">
+        <b>Module 2 - C++ (Part 1)</b>
+        <ul>
+          <li>Lecture 4 - Done
+            <ul>
+              <li>Input/Output</li>
+              <li>I/O Operators in C++</li>
+            </ul>
+          </li>
+          <li>Lecture 5 - Done
+            <ul>
+              <li>Reading String</li>
+              <li>Reading TextFile (.txt)</li>
+              <li>String</li>
+              <li>String Operations</li>
+              <li>Default Function Parameters</li>
+              <li>Overloading</li>
+              <li>Struct (Structure)</li>
+              <li>Const (Constant)</li>
+            </ul>
+          </li>
+          <li>Lecture 6 - Done
+            <ul>
+              <li>Parameter Passing</li>
+              <li>Pass-by-value</li>
+              <li>References</li>
+              <li>Dynamic Memory Allocation</li>
+              <li>Operator Overloading</li>
+              <li>Overloading &lt;&lt; and &gt;&gt;</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
             
-            <br>
-            <table class="header">
-                <tr>
-                    <td colspan="100%">
-                        <h1 class="title">CS 246 - Object-Oriented Development</h1>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="5%">Instructor:</th>
-                    <td colspan="95%">Brad Lushman</td>
-                </tr>
-                <tr>
-                    <th colspan="5%">Office:</th>
-                    <td colspan="95%">DC3110</td>
-                </tr>
-                <tr>
-                    <th colspan="5%">Email:</th>
-                    <td colspan="95%"><a href = "mailto: brad.lushman@uwaterloo.ca" target = "_blank;">brad.lushman@uwaterloo.ca</a></td>
-                </tr>
-                <tr>
-                    <th colspan="5%">Website:</th>
-                    <td colspan="95%">
-                        <a href="https://www.student.cs.uwaterloo.ca/~cs246/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs246/</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="5%">Note:</th>
-                    <td>All program codes in this course notes are provided by Prof. Lushman during class.</td>
-                </tr>
-            </table>        
-            <hr>
-        
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <b><a href="./cs246_1.html">Module 1 - The Shell</a></b>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                &#9660;What module 1 includes...&#9660;
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
-                            <ul>
-                                <li>
-                                    Lecture 1 - Done
-                                    <ul>
-                                        <li>Shell</li>
-                                        <li>Linux Filesystem</li>
-                                        <li>Streams</li>
-                                        <li>StdErr</li>
-                                        <li>Buffered</li>
-                                        <li>Piples</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 2 - Not Done Yet
-                                </li>
-                                <li>
-                                    Lecture 3 - Not Done Yet
-                                </li>
-                                <li>Software Engineering Topic: Testing  - Done</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <b><a href="./cs246_2.html">Module 2 - C++ (Part 1)</a></b>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                &#9660;What module 2 includes...&#9660;
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            <ul>
-                                <li>
-                                    Lecture 4 - Done
-                                    <ul>
-                                        <li>Input/Output</li>
-                                        <li>I/O Operators in C++</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 5 - Done
-                                    <ul>
-                                        <li>Reading String</li>
-                                        <li>Reading TextFile (.txt)</li>
-                                        <li>String</li>
-                                        <li>String Operations</li>
-                                        <li>Default Function Parameters</li>
-                                        <li>Overloading</li>
-                                        <li>Struct (Structure)</li>
-                                        <li>Const (Constant)</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 6 - Done
-                                    <ul>
-                                        <li>Parameter Passing</li>
-                                        <li>Pass-by-value</li>
-                                        <li>References</li>
-                                        <li>Dynamic Memory Allocation</li>
-                                        <li>Operator Overloading</li>
-                                        <li>Overloading &lt;&lt; and &gt;&gt;</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <b><a href="./cs246_3.html">Module 3 - C++ (Part 2) and Introduction to OOP</a></b>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                         <h4 class="panel-title">
-                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                &#9660;What module 3 includes...&#9660;
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body">
-                            <ul>
-                                <li>
-                                    Lecture  7 - Done
-                                    <ul>
-                                        <li>The Preprocessor</li>
-                                        <li>Comment</li>
-                                        <li>Separate Compilation</li>
-                                        <li>Compiling Separately</li>
-                                        <li>#include Guard</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture  8 - Done
-                                    <ul>
-                                        <li>Classes</li>
-                                        <li>Initialising Objects</li>
-                                        <li>Constructor</li>
-                                        <li>Member Initialisation List (MIL)</li>
-                                        <li>Copy Constructor</li>
-                                        
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture  9 - Done
-                                    <ul>
-                                        <li>Copy Constructor</li>
-                                        <li>Destructor</li>
-                                        <li>Copy Assignment Operator</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 10 - Done
-                                    <ul>
-                                        <li>Copy and Swap Idiom</li>
-                                        <li>Member/Standalone Function</li>
-                                        <li>Separate Compilation for Classes</li>
-                                        <li>Constant Objects</li>
-                                        <li>Rvalues and Rvalue References</li>
-                                        <li>Move Constructor</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 11 - Done
-                                    <ul>
-                                        <li>Move Constructor and Move Assignment Operator</li>
-                                        <li>Copy/Move Elision</li>
-                                        <li>The Rule of 5 (Big 5)</li>
-                                        <li>Arrays of Objects</li>
-                                        <li>Invariants and Encapsulation</li>
-                                        <li>Class</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 12 - Done
-                                    <ul>
-                                        <li>Software Engineering Topic: Design Pattern</li>
-                                        <li>Iterator Pattern</li>
-                                        <li>Encapsulation</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <b><a href="./cs246_4.html">Module 4 -  C++ (Part 3), UML and Design Pattern</a></b>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingFour">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                &#9660;What module 4 includes...&#9660;
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
-                        <div class="panel-body">
-                            <ul>
-                                <li>
-                                    Lecture 13 - Done
-                                    <ul>
-                                        <li>Static Fields and Methods</li>
-                                        <li>System Modelling</li>
-                                        <li>UML - Unified Modelling Language</li>
-                                        <li>own-a</li>
-                                        <li>Inheritance</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 14 - Done
-                                    <ul>
-                                        <li>Inheritance</li>
-                                        <li>Virtual Methods</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 15 - Done
-                                    <ul>
-                                        <li>Destructor Revisited</li>
-                                        <li>Pure Virtual Methods and Abstract Classes</li>
-                                        <li>Inheritance of Copy/Move</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 16 - Done
-                                    <ul>
-                                        <li>Templates</li>
-                                        <li>The Standard Template Library (STL)</li>
-                                        <li>Vector</li>
-                                        <li>Exception</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 17 - Done
-                                    <ul>
-                                        <li>Exception</li>
-                                        <li>Design Pattern - Guiding Principle</li>
-                                        <li>Observer Pattern</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 18 - Done
-                                    <ul>
-                                        <li>Observer Pattern</li>
-                                        <li>Decorator Pattern</li>
-                                        <li>Factory Method Pattern - "Virtual Constructor Pattern"</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 19 - Done
-                                    <ul>
-                                        <li>Templete Method Pattern</li>
-                                        <li>STL - Map</li>
-                                        <li>Visitor Pattern</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 20 - Done
-                                    <ul>
-                                        <li>Compilation Dependencies</li>
-                                        <li>PIMPL Idiom</li>
-                                        <li>Measures of Design Quality</li>
-                                        <li>Decoupling the Interface (MVC)</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 21 - Done
-                                    <ul>
-                                        <li>Single Responsibility Principle</li>
-                                        <li>Model-View-Controller (MVC)</li>
-                                        <li>Exception Safely</li>
-                                        <li>RAII Idiom</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 22 - Done
-                                    <ul>
-                                        <li>Exception Safely Guarantee</li>
-                                        <li>Exception Safely and the STL: Vectors</li>
-                                        <li>Casting</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 23 - Done
-                                    <ul>
-                                        <li>Casting</li>
-                                        <li>How Virtual Methods Work</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Lecture 24 - Done
-                                    <ul>
-                                        <li>Template Functions</li>
-                                        <li>STL - &lt;algorithm&gt; Libaray</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                    
-            </div>
+      <div id="mod3" class="tabcontent">
+        <b>Module 3 - C++ (Part 2) and Introduction to OOP</b>
+          <ul>
+            <li>Lecture  7 - Done
+              <ul>
+                <li>The Preprocessor</li>
+                <li>Comment</li>
+                <li>Separate Compilation</li>
+                <li>Compiling Separately</li>
+                <li>#include Guard</li>
+              </ul>
+            </li>
+            <li>Lecture  8 - Done
+              <ul>
+                <li>Classes</li>
+                <li>Initialising Objects</li>
+                <li>Constructor</li>
+                <li>Member Initialisation List (MIL)</li>
+                <li>Copy Constructor</li>
+              </ul>
+            </li>
+            <li>Lecture  9 - Done
+              <ul>
+                <li>Copy Constructor</li>
+                <li>Destructor</li>
+                <li>Copy Assignment Operator</li>
+              </ul>
+            </li>
+            <li>Lecture 10 - Done
+              <ul>
+                <li>Copy and Swap Idiom</li>
+                <li>Member/Standalone Function</li>
+                <li>Separate Compilation for Classes</li>
+                <li>Constant Objects</li>
+                <li>Rvalues and Rvalue References</li>
+                <li>Move Constructor</li>
+              </ul>
+            </li>
+            <li>Lecture 11 - Done
+              <ul>
+                <li>Move Constructor and Move Assignment Operator</li>
+                <li>Copy/Move Elision</li>
+                <li>The Rule of 5 (Big 5)</li>
+                <li>Arrays of Objects</li>
+                <li>Invariants and Encapsulation</li>
+                <li>Class</li>
+              </ul>
+            </li>
+            <li>Lecture 12 - Done
+              <ul>
+                <li>Software Engineering Topic: Design Pattern</li>
+                <li>Iterator Pattern</li>
+                <li>Encapsulation</li>
+              </ul>
+            </li>
+          </ul>
+      </div>
             
-            <hr>
-            <p>
-                Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
-            </p>
-            
-            <hr>
-            <div class="footer">
-                <p>Thanks For Coming Here. - Calvin Li</p>
-                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
-                    <i class = "fa fa-envelope-square"></i>
-                </a>
-                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
-                    <i class = "fa fa-linkedin-square"></i>
-                </a>       
-                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href = "https://github.com/vertli" target = "_blank;">
-                    <i class="fa fa-github-square"></i>
-                </a>
-                <br>
-                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
-            </div>
-            <hr>
-        </div>   
-        
-        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-    </body>
-    
+      <div id="mod4" class="tabcontent">
+        <b>Module 4 -  C++ (Part 3), UML and Design Pattern</b>
+          <ul>
+            <li>Lecture 13 - Done
+              <ul>
+                <li>Static Fields and Methods</li>
+                <li>System Modelling</li>
+                <li>UML - Unified Modelling Language</li>
+                <li>own-a</li>
+                <li>Inheritance</li>
+              </ul>
+            </li>
+            <li>Lecture 14 - Done
+              <ul>
+                <li>Inheritance</li>
+                <li>Virtual Methods</li>
+              </ul>
+            </li>
+            <li>Lecture 15 - Done
+              <ul>
+                <li>Destructor Revisited</li>
+                <li>Pure Virtual Methods and Abstract Classes</li>
+                <li>Inheritance of Copy/Move</li>
+              </ul>
+            </li>
+            <li>Lecture 16 - Done
+              <ul>
+                <li>Templates</li>
+                <li>The Standard Template Library (STL)</li>
+                <li>Vector</li>
+                <li>Exception</li>
+              </ul>
+            </li>
+            <li>Lecture 17 - Done
+              <ul>
+                <li>Exception</li>
+                <li>Design Pattern - Guiding Principle</li>
+                <li>Observer Pattern</li>
+              </ul>
+            </li>
+            <li>Lecture 18 - Done
+              <ul>
+                <li>Observer Pattern</li>
+                <li>Decorator Pattern</li>
+                <li>Factory Method Pattern - "Virtual Constructor Pattern"</li>
+              </ul>
+            </li>
+            <li>Lecture 19 - Done
+              <ul>
+                <li>Templete Method Pattern</li>
+                <li>STL - Map</li>
+                <li>Visitor Pattern</li>
+              </ul>
+            </li>
+            <li>Lecture 20 - Done
+              <ul>
+                <li>Compilation Dependencies</li>
+                <li>PIMPL Idiom</li>
+                <li>Measures of Design Quality</li>
+                <li>Decoupling the Interface (MVC)</li>
+              </ul>
+            </li>
+            <li>Lecture 21 - Done
+              <ul>
+                <li>Single Responsibility Principle</li>
+                <li>Model-View-Controller (MVC)</li>
+                <li>Exception Safely</li>
+                <li>RAII Idiom</li>
+              </ul>
+            </li>
+            <li>Lecture 22 - Done
+              <ul>
+                <li>Exception Safely Guarantee</li>
+                <li>Exception Safely and the STL: Vectors</li>
+                <li>Casting</li>
+              </ul>
+            </li>
+            <li>Lecture 23 - Done
+              <ul>
+                <li>Casting</li>
+                <li>How Virtual Methods Work</li>
+              </ul>
+            </li>
+            <li>Lecture 24 - Done
+              <ul>
+                  <li>Template Functions</li>
+                  <li>STL - &lt;algorithm&gt; Libaray</li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+      <hr>
+        <p>Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.</p>
+        <hr>    
+      </div>
+      <footer id="footer">
+        <p>Thanks For Coming. - Vert Li</p>
+        <!-- icons -->
+        <a href = "mailto: vert.c.k.li@gmail.com" target = "_blank;"><i class = "fas fa-envelope-square fa-2x"></i></a>
+        <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;"><i class = "fab fa-linkedin fa-2x"></i></a>       
+        <a href = "https://www.instagram.com/vert_arts/" target = "_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href = "https://github.com/vertli" target = "_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+        <!-- icons -->
+        <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2019</p>
+      </footer>
+    </div>
+
+    <script src="./js/style.js"></script>
+    <script src="./js/height.js"></script>
+    <script src="./js/notes.js"></script>     
+  </body>
 </html>

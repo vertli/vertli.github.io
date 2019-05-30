@@ -549,6 +549,14 @@ a {
 #notes p {
   margin: 0 0;
 }
+
+#notes .row .centre {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 /* notes ****************************************************/
 /************************************************************/
 
