@@ -346,34 +346,84 @@ a {
   color: #79DBAD;
 }
 
-#about table {
+#about .skill table {
   margin: 10px 10px;
   width: 96%;
   border-collapse: collapse;
 }
 
-#about th, #about td {
+#about .skill th, #about .skill td {
   width: 32%;
   padding: 3px 3px;
   border: 2px solid #79DBAD;
 }
 
-#about th {
+#about .skill th {
   background-color: #4CAF50;
   color: white;
   font-size: 18px;
 }
 
-#about td {
+#about .skill td {
   color: black;
 }
 
-#about tr:nth-child(odd){
+#about .skill tr:nth-child(odd){
   background-color: #fff;
 }
 
-#about tr:nth-child(even){
+#about .skill tr:nth-child(even){
   background-color: #f2f2f2;
+}
+
+#about .job h1 {
+  float: left;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+#about .job h3, #about .job h4 {
+  padding: 5px 5px 0 0;
+  margin: 5px 5px 0 0;
+}
+
+#about .job table {
+  width: 98%;
+  border-collapse: collapse;
+  color: black;
+  background-color: aliceblue;
+}
+
+#about .job td {
+  margin: 5px 5px;
+}
+
+#about .job .top {
+  border-top-style: solid;
+  border-top-width: 10px;
+  border-top-color: #79DBAD;
+}
+
+#about .job .left {
+  border-left-style: solid;
+  border-left-width: 10px;
+  border-color: #79DBAD;
+}
+
+#about .job .left img {
+  width: auto;
+  height: auto; 
+  border-radius: 0 0;
+  border: 0;
+  float: left;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#about .job .right {
+  float: right;
 }
 
 /* about ****************************************************/
