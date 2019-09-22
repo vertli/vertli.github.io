@@ -385,8 +385,6 @@ a {
 }
 
 #about .job h3, #about .job h4 {
-  padding: 5px 5px 0 0;
-  margin: 5px 5px 0 0;
 }
 
 #about .job table {
@@ -397,7 +395,7 @@ a {
 }
 
 #about .job td {
-  margin: 5px 5px;
+  margin: 0 5px;
 }
 
 #about .job .top {
