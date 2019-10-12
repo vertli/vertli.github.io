@@ -76,10 +76,13 @@ function selfWord() {
     
     ctx.font = hSize[2] + "px Noto-Sans sans-serif";
     ctx.fillText("About", cPos - 400, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Contact", cPos - 200, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Projects", cPos, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Arts", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Notes", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
+    // ctx.fillText("Contact", cPos - 200, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Contact", cPos - 150, c.height / 3 + hSize[0] + hSize[1] * 4);
+    // ctx.fillText("Projects", cPos, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Projects", cPos + 150, c.height / 3 + hSize[0] + hSize[1] * 4);
+    // ctx.fillText("Arts", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Arts", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
+    // ctx.fillText("Notes", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
     
     
   } else if (size >= 720){
@@ -99,7 +102,7 @@ function selfWord() {
     ctx.fillText("Contact", cPos - 70, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Projects", cPos + 70, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Arts", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Notes", cPos, c.height / 3 + hSize[0] + hSize[1] * 5.5);
+    // ctx.fillText("Notes", cPos, c.height / 3 + hSize[0] + hSize[1] * 5.5);
     
   } else {
     ctx.font = hSize[0] + "px Noto-Sans sans-serif";
@@ -128,17 +131,25 @@ function setButton() {
   buttonW = [ctx.measureText("About").width + 10,
              ctx.measureText("Contact").width + 10,
              ctx.measureText("Projects").width + 10,
-             ctx.measureText("Arts").width + 10,
-             ctx.measureText("Notes").width + 10];
+             ctx.measureText("Arts").width + 10];
+//             ctx.measureText("Notes").width + 10];
   
   if (size >= 960) {
+//    buttonX = [cPos - 400 - buttonW[0] / 2,
+//               cPos - 200 - buttonW[1] / 2,
+//               cPos - buttonW[2] / 2, 
+//               cPos + 200 - buttonW[3] / 2, 
+//               cPos + 400 - buttonW[4] / 2];
+//    buttonY = [c.height / 3 + hSize[0] * 4 - 10,
+//               c.height / 3 + hSize[0] * 4 - 10,
+//               c.height / 3 + hSize[0] * 4 - 10,
+//               c.height / 3 + hSize[0] * 4 - 10,
+//               c.height / 3 + hSize[0] * 4 - 10];
     buttonX = [cPos - 400 - buttonW[0] / 2,
-               cPos - 200 - buttonW[1] / 2,
-               cPos - buttonW[2] / 2, 
-               cPos + 200 - buttonW[3] / 2, 
-               cPos + 400 - buttonW[4] / 2];
+               cPos - 150 - buttonW[1] / 2,
+               cPos + 150 - buttonW[2] / 2, 
+               cPos + 400 - buttonW[3] / 2];
     buttonY = [c.height / 3 + hSize[0] * 4 - 10,
-               c.height / 3 + hSize[0] * 4 - 10,
                c.height / 3 + hSize[0] * 4 - 10,
                c.height / 3 + hSize[0] * 4 - 10,
                c.height / 3 + hSize[0] * 4 - 10];
@@ -146,13 +157,13 @@ function setButton() {
     buttonX = [cPos - 200 - buttonW[0] / 2,
                cPos - 70 - buttonW[1] / 2,
                cPos + 70 - buttonW[2] / 2, 
-               cPos + 200 - buttonW[3] / 2, 
-               cPos - buttonW[4] / 2];
+               cPos + 200 - buttonW[3] / 2];
+//               cPos - buttonW[4] / 2];
     buttonY = [c.height / 3 + hSize[0] + hSize[1] * 4 - 30,
                c.height / 3 + hSize[0] + hSize[1] * 4 - 30,
                c.height / 3 + hSize[0] + hSize[1] * 4 - 30,
-               c.height / 3 + hSize[0] + hSize[1] * 4 - 30,
-               c.height / 3 + hSize[0] + hSize[1] * 5.5 - 30];
+               c.height / 3 + hSize[0] + hSize[1] * 4 - 30];
+//               c.height / 3 + hSize[0] + hSize[1] * 5.5 - 30];
   } else {
     let str = String.fromCharCode(0x0003E) + " Enter " + String.fromCharCode(0x0003C);
     buttonW = ctx.measureText(str).width + 10;
@@ -229,15 +240,16 @@ c.addEventListener("click", function(event) {
         event.y > buttonY[2] && event.y < buttonY[2] + buttonH) {
         // Executes if button was clicked!
         window.location.assign("/projects.html");
-      } else if (event.x > buttonX[0] && event.x < buttonX[3] + buttonW[3] &&
+      } else if (event.x > buttonX[3] && event.x < buttonX[3] + buttonW[3] &&
         event.y > buttonY[3] && event.y < buttonY[3] + buttonH) {
         // Executes if button was clicked!
         window.location.assign("/arts.html");
-      } else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
-        event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
-        // Executes if button was clicked!
-        window.location.assign("/notes.html");
-      }
+      } 
+//    else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
+//        event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
+//        // Executes if button was clicked!
+//        window.location.assign("/notes.html");
+//      }
     
   } else {
     
@@ -271,11 +283,13 @@ c.addEventListener("mousemove", function(event) {
                  event.y > buttonY[3] &&  event.y < buttonY[3] + buttonH) {
         // executes if cursor points to "Arts".
         document.body.style.cursor = "pointer";
-      } else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
-                 event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
-        // executes if cursor points to "Notes".
-        document.body.style.cursor = "pointer";
-      } else {
+      } 
+//    else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
+//                 event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
+//        // executes if cursor points to "Notes".
+//        document.body.style.cursor = "pointer";
+//      } 
+    else {
         document.body.style.cursor = "auto";
       }
     
