@@ -10,15 +10,14 @@ function init() {
   canvasResize();
   selfWord();
   setButton();
-  columns = (c.width - rectX) / font_size; //number of columns for the rain
-  drops = []; //an array of drops - one per column
+  columns = (c.width - rectX) / font_size; // number of columns for the rain
+  drops = []; // an array of drops - one pre column
   //x below is the x coordinate
   //1 = y co-ordinate of the drop(same for every drop initially)
-  for(let x = 0; x < columns; x++) {
+  for (let x = 0; x < columns; x++) {
     drops[x] = 1;
   } // end for(x)
 } // end init()
-
 
 function canvasResize() {
   c.width = window.innerWidth;
