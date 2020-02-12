@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CS230|Calvin Li</title>
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/note.css">
+        <link rel="stylesheet" href="./css/cs230use.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:600,600i" rel="stylesheet"> <!-- for math use -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <!-- stylesheet found from w3school. (icon use)-->
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body class="cs230">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li class="courseNote">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./cs230.html">CS 230</a></li>
+                                <li><a href="./cs246.html">CS 246</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
+        <br><br><br>
+        
+        <div class="container">
+            
+            <br>
+                <table class="header">
+                <tr>
+                    <td colspan="100%">
+                        <h1 class="title">CS 230 - Introduction to Computers and Computer Systems</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Instructor:</th>
+                    <td colspan="95%">Rob Hackman</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Office:</th>
+                    <td colspan="95%">DC2551A</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Email:</th>
+                    <td colspan="95%"><a href = "mailto: r2hackma@uwaterloo.ca" target = "_blank;">r2hackma@uwaterloo.ca</a></td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Website:</th>
+                    <td colspan="95%">
+                        <a href="https://www.student.cs.uwaterloo.ca/~cs230/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs230/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Note:</th>
+                    <td>All program codes in this course notes are provided by Prof. Hackman during class.</td>
+                </tr>
+            </table>
+            <hr>
+         
+            <section id="lec1">
+                <h3>Lecture 1 - 04/01/2018</h3>
+                <hr>
+                <b>Goals</b>
+                <ul>
+                    <li>
+                        Overview of computer systems
+                        <ul>
+                            <li>What is a computer?</li>
+                            <li>How do they work?</li>
+                            <li>Why are they designed as such?</li>
+                        </ul>
+                    </li>
+                    <li>Work from the bottom-up</li>
+                    <li>Understand the basic challenges and techniques</li>
+                </ul>
+                <br>
+                <p>
+                    In this course, we will use Linux.<br>
+                    The student environment is <a href="https://student.cs.uwaterloo.ca" target="_blank;">student.cs.uwaterloo.ca</a>.<br>
+                    <br>
+                    We will be learning MIPS; we have MIPS assembler and emulator for you to use on the student environments.<br>
+                </p>
+                <br>
+                <b>Overview</b>
+                <ul>
+                    <li>Arithmetic, Hardware, Data</li>
+                    <li>Assembly Language</li>
+                    <li>Machine Internals</li>
+                    <li>Build and Execute</li>
+                    <li>Multiprocessing</li>
+                    <li>Operating System (if time allow)</li>
+                </ul>
+                <br>
+                <b>What is a computer?</b>
+                <p>
+                    Computer is a bunch of logic gates and circuitry; it is designed to complete a task.<br>
+                    Let's think of a old stop watch. It can only has functionality to start timing, stop timing, and maybe hold up to 3 lap times.<br>
+                    Technically this is a computer; this is not what we think of today.<br>
+                    What differentiates it?<br>
+                    If we want to reprogram our stop watch, we must change the circuitry.<br>
+                    <br>
+                    The modern day personal computer is re-programmable without having to change the circuitry.<br>
+                    It is called "Von Neumann Architecture".<br>
+                </p>
+                <br>
+                <b>Von Neumann Architecture</b>
+                <p>
+                    Von Neumann Architecture has the circuitry redefine a set of "instructions" that can be executed by it.<br>
+                    Basic arithmetic done by the arithmetic logic unit (ALU); it has a "control unit" (CU) that runs control instructions.<br>
+                    These two together define our central processing unit (CPU).<br>
+                    <br>
+                    Von Neumann Architecture has memory that can be accessed at any location within (random access memory - RAM).<br>
+                    This is called our memory unit (MU).<br>
+                    We can read/write to our memory unit.<br>
+                    Memory unit stores both instructions AND data.<br>
+                    <br>
+                    Lastly, we require inputer/output devices.<br>
+                </p>
+                <img src="./image/cs230/lec1/1_1.PNG" align="left" class="leftMargin">
+                <p>
+                    Von Neumann Architecture is still the basis for almost all computers today.<br>
+                    (Strict Von Neumann Architecture says that data and program must be stored on the same memory unit; this is not always the case Harvard Architecture.)<br>
+                    <br>
+                    How does a Von Neumann Machine run a program?<br>
+                    It keeps track of what address in memory and the next instruction to execute is located.<br>
+                    <br>
+                    How does our CPU store the address of the next instruction if memory is separate?<br>
+                    Special circuits called "registors" which are parts of the CPU.<br>
+                    They are memory in that they simply store sets of 1's and 0's for the CPU to interpret and use.<br>
+                    <br>
+                    Registors begin part of the CPU are can be read from/written to very fast.<br>
+                    <br>
+                    A special registor called "program counter" or "PC registor" which stores the location of the next instruction.<br>
+                    <br>
+                    What types of instructions exist? Lots!<br>
+                </p>
+                <ul>
+                    <li>Data transfer/read/write to memory</li>
+                    <li>Do some arithmetic</li>
+                    <li>Branch (change the address stored in the program counter)</li>
+                </ul>
+                <p>
+                    There are many different hardwares exist: AMD, Intel, Qualcomm, ...<br>
+                    They have their own instruction sets!<br>
+                    <br>
+                    You can write a C program and execute both on a machine with an AMP's CPU and an Intel's CPU.<br>
+                    But how does this work if instruction sets are different?<br>
+                    The instructions are preset for the circuitry.<br>
+                    Instructions are great for circuitry; they're only ones and zeros!<br>
+                    Machine Code or Machine Language is the name for the code of a program written in base instructions. It is not friendly to human.<br>
+                    <br>
+                    We can move one step up to Assembly Language.<br>
+                    Assembly instructions have a direct mapping to one or more machine code instructions.<br>
+                    We have a tool called "assembler" that takes assembly language programs and generates a machine program which the hardware can execute.<br>
+                    <br>
+                    Moving one step further away from the machine, there are intermediate languages (essentially a tool for compilers).<br>
+                    <br>
+                    Lastly, we have high level programming languages: C, C++, Java, ...<br>
+                    <br>
+                    C/C++ are compiled programming languages.<br>
+                    We have a program called "compiler" that takes our C program as input and generates an assembly version of that program.<br>
+                    Most compilers also assemble that program immediately to produce a final machine code program (binary file) which your hardware can execute!<br>
+                    Hence, programs are stored in memory; data is also stored in memory.<br>
+                    Memory is just <span class="math">1</span>'s or <span class="math">0</span>'s.<br>
+                    So, what does memory actually look like and how do we interpret it?<br>
+                </p>
+                <br>
+                <b>Number Representation</b>
+                <p>
+                    What does the number <span class="math">942</span> mean?<br>
+                </p>
+                <ul>
+                    <li>Nine hundred forty two</li>
+                    <li>Nine hundreds, Four tens, Two ones</li>
+                    <li class="math">9 * 10<sup>2</sup> + 4 * 10<sup>1</sup> + 2 * 10<sup>0</sup></li>
+                </ul>
+                <p>
+                    This is the radix 10 representation of the number 942.<br>
+                    Radix is also know as "base".<br>
+                    <br>
+                    This continues each digit we add to the left we simply increment the exponent.<br>
+                    This is why our number system is called "base 10" or "decimal".<br>
+                    <br>
+                    Radix representation allows us to write natural numbers using a finite alphabet.<br>
+                    In base <span class="math">r</span>, we have <span class="math">r</span> characters in <span class="math">r</span> alphabets (digits).<br>
+                    Typically, <span class="math">0, 1, 2, ..., r-2, r-1</span>.<br>
+                    <br>
+                    For any length <i>n</i> word in base <span class="math">r</span>, we have 
+                    <span class="math">d<sub>n-1</sub>, d<sub>n-2</sub>, ..., d<sub>2</sub>, d<sub>1</sub>, d<sub>0</sub>.</span><br>
+                    <br>
+                    We can "calculate" or rather compue the decimal value number by doing <img src="./image/cs230/lec1/1_2.PNG" width="65px" height="65px" align="middle"><br>
+                    You can use any number for your base.<br>
+                </p>
+                <ul>
+                    <li>base 2: binary [0,1] (also call bit)</li>
+                    <li>base 8: octal [0,7]</li>
+                    <li>base 10: decimal [0,9]</li>
+                    <li>base 16: hexadecimal [0,1,...,9,A,B,C,D,E,F]</li>
+                </ul>
+                <p>
+                    Humans mostly use base 10 - why? We have 10 fingers!<br>
+                    <br>
+                    Computer use base 2, binary. Why?<br>
+                    Electrical simplicity: On/Off, High/Low, 1/0.<br>
+                    <br>
+                    Example: Consider the number <span class="math">1440<sub>sept</sub></span> or <span class="math">1440<sub>7</sub></span>.<br>
+                    <span class="math">
+                        0 * 7<sup>0</sup> + 4 * 7<sup>1</sup> + 4 * 7<sup>2</sup> + 1 * 7<sup>3</sup> = 567<sub>10</sub>
+                    </span><br>
+                    <br>
+                    Example: Consider the number <span class="math">A32<sub>Hex</sub></span>, aka <span class="math">A32<sub>16</sub></span>.<br>
+                    <span class="math">
+                        2 * 16<sup>0</sup> + 3 * 16<sup>1</sup> + A * 16<sup>2</sup> = 1050<sub>10</sub>
+                    </span><br>
+                    <br>
+                    Same conversion for any base to base 10 (binary included) - just use that summation formula.<br>
+                    But what if we have a decimal number and we want to figure out the binary representation?<br>
+                    We need to use repeated divisions!<br>
+                </p>
+                <ul>
+                    <li>Step 1: divide the number by 2, the remainder is the current digit (starting at digit 0)</li>
+                    <li>Step 2: take the quotient and repeat until the quotient is 0</li>
+                </ul>
+                <p>
+                    Example: Convert <span class="math">4242<sub>10</sub></span> to hexadecimal.<br>
+                    <span class="math">4242 / 16 = 265 .. 2</span> &#8592; 2 is the least significant digit<br>
+                    <span class="math">
+                        265 / 16 = 16 .. 9<br>
+                        16 / 16 = 1 .. 0<br>
+                        1 / 16 = 0 .. 1<br>
+                    </span>
+                    So <span class="math">4242<sub>10</sub> = 1092<sub>16</sub></span>.<br>
+                    <br>
+                    Example: Convert <span class="math">187<sub>10</sub></span> to binary.<br>
+                    <span class="math">
+                        187 / 2 = 93 .. 1<br>
+                        93 / 2 = 46 .. 1<br>
+                        46 / 2 = 23 .. 0<br>
+                        23 / 2 = 11 .. 1<br>
+                        11 / 2 = 5 .. 1<br>
+                        5 / 2 = 2 .. 1<br>
+                        2 / 2 = 1 .. 0<br>
+                        1 / 2 = 0 .. 1<br>
+                    </span>
+                    So <span class="math">187<sub>10</sub> = 101 1101<sub>2</sub></span><br>
+                    <br>
+                    It took a LOT of divisions to get our binary number, and it was only 187!<br>
+                    Luckily, it is trivial to convert between both octal/hexadecimal and binary.<br>
+                    So we can always first convert to hexadecimal, the nto binary.<br>
+                    <br>
+                    To convert hexadecimal to binary, simply look at sets of 4 bits.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Binary&nbsp;</th>
+                        <th>&nbsp;Hexadecimal&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>0000</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0001</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0010</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>0011</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>0100</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>0101</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>0110</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>0111</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>1000</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>1010</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>1011</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>1100</td>
+                        <td>C</td>
+                    </tr>
+                    <tr>
+                        <td>1101</td>
+                        <td>D</td>
+                    </tr>
+                    <tr>
+                        <td>1110</td>
+                        <td>E</td>
+                    </tr>
+                    <tr>
+                        <td>1111</td>
+                        <td>F</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So <span class="math">1101 0111<sub>2</sub> = D7<sub>16</sub></span>
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec2">
+                <h3>Lecture 2 - 09/01/2018</h3>
+                <hr>
+                <b>Binary Addition</b>
+                <p>
+                    Last time, we had learnt how to convert decimal number to binary number.<br>
+                    But how do we add two binary numbers together?<br>
+                    Binary addition is actually simple textbook addition.<br>
+                    <br>
+                    However, we have a problem.<br>
+                    Unlike writing on paper or doing math in our head, our circuit can only have a certain number of bits (for example, 32-bit).<br>
+                    This is what we call <span class="key">fixed-width representation</span>; in fixed-width representation, we have a problem called  <span class="key">overflow</span>.<br>
+                    <br>
+                    Consider a 4-bit fixed-width representation.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;12<sub>10</sub> + 7<sub>10</sub>&nbsp;</td>
+                        <td>&nbsp;= 1100<sub>2</sub> + 0111<sub>2</sub>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1 0011<sub>2</sub>&nbsp;</td>
+                    </tr>
+                </table>
+                <p>
+                    Our answer has 5 bits, but we are working with a 4-bit fixed-width representation!<br>
+                    This is an overflow!<br>
+                    Hence, we have to omit the leftest bit and so, we can get a 4-bit answer.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;12<sub>10</sub> + 7<sub>10</sub>&nbsp;</td>
+                        <td>&nbsp;= 1100<sub>2</sub> + 0111<sub>2</sub>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 0011<sub>2</sub>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 3<sub>10</sub>&nbsp;</td>
+                    </tr>
+                </table>
+                <p>
+                    So <span class="math">12<sub>10</sub> + 7<sub>10</sub> = 3<sub>10</sub></span> in a 4-bits fixed-width representation<br>
+                    <br>
+                    We can calculate the result directly modulo 16 (so the largest number we can represent with 4 bits is 15).<br>
+                </p>
+                <br>
+                <b>Binary Subtraction</b>
+                <p>
+                    Now we know that the addition works with binary, but human is lazy - we don't want to design a subtraction circuit!<br>
+                    Subtraction is simply adding a negative number, or adding the negation of the number you are subtracting.<br>
+                    <br>
+                    Naive Approach:<br>
+                    If we have n-bit to store our number, use n-1 bits to just store a regular old binary natural number (magnitude) and use the remaining bit to denote the sign.<br>
+                    This is the <span class="key">sign and magnitude approach</span>.<br>
+                    But this approach has two problems!<br>
+                    <br>
+                    The first problem is we have two zeros here!<br>
+                    For example, in 4-bit fixed-width representation...<br>
+                    <span class="math">1000<sub>2</sub> = -0<sub>10</sub></span> where the first bit <span class="math">1</span> is the sign bit <span class="math">-</span> and the rest of the bits is the magnitude of <span class="math">0<sub>10</sub></span>.<br>
+                    <span class="math">0000<sub>2</sub> = +0<sub>10</sub></span> where the first bit <span class="math">0</span> is the sign bit <span class="math">+</span> and the rest of the bits is the magnitude of <span class="math">0<sub>10</sub></span>.<br>
+                    <br>
+                    The second problem is addition does not work here!<br>
+                    For example,<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;3<sub>10</sub> - 1<sub>10</sub>&nbsp;</td>
+                        <td>&nbsp;= 3<sub>10</sub> + (-1<sub>10</sub>)&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 0011<sub>2</sub> + 1001<sub>2</sub>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1100<sub>2</sub>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= -4<sub>10</sub>&nbsp;</td>
+                    </tr>
+                </table>
+                <p>
+                    Clearly, we know that <span class="math">3 - 1 &ne; -4</span>.<br>
+                    <br>
+                    Attempt 2: <span class="key">1's Complement</span><br>
+                    To represent negation of a binary number, simply invert(flip) the bits - 0's become 1's and 1's become 0's.<br>
+                    Addition is possible here; the trick is to add any carry over to the sum.<br>
+                    Example: <span class="math">7<sub>10</sub> - 4<sub>10</sub></span> in 4-bit fixed-width representation.<br>
+                    We know that <span>4<sub>10</sub> = 0100<sub>2</sub></span>, then flip it and we will get <span class="math">1011<sub>2</sub></span> to represent <span class="math">-4</span>.<br>
+
+                </p>
+                <table>
+                    <tr class="math">
+                        <td>&nbsp;7<sub>10</sub> - 4<sub>10</sub>&nbsp;</td>
+                        <td>&nbsp;= 7<sub>10</sub> + (-4<sub>10</sub>)&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 0111<sub>2</sub> + 1011<sub>2</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 1 0010<sub>2</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 0010<sub>2</sub> + 1<sub>2</sub>&nbsp;</td>
+                        <td> // add the carry over to the sum&nbsp;</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 0011<sub>2</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 3<sub>10</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>
+                    Wait... We still have two zeros here!<br>
+                    <span class="math">0000<sub>2</sub> = +0<sub>10</sub></span> and <span class="math">1111<sub>2</sub> = -0<sub>10</sub></span>.<br>
+                    Also, this is not our same addition from before; we want to reuse the exact same circuit!<br>
+                    <br>
+                    Attempt 3: <span class="key">2's Complement</span><br>
+                    To negate a number, flip the bits, then add 1.<br>
+                    This will only give us one zero.<br>
+                </p>
+                <table>
+                    <tr>
+                        <td class="math">&nbsp;+0<sub>10</sub>&nbsp;</td>
+                        <td class="math">&nbsp;= 0000<sub>2</sub>&nbsp;</td>
+                        <td>// work in 4-bit fixed-width representation&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 1111<sub>2</sub>&nbsp;</td>
+                        <td>// flip&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 10000<sub>2</sub>&nbsp;</td>
+                        <td>// add 1&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 0000<sub>2</sub>&nbsp;</td>
+                        <td>// remove the overflow bit&nbsp;</td>
+                    </tr>
+                </table>
+                <p>
+                    Example: <span class="math">7 - 4</span> in 4-bit fixed-width representation.<br>
+                    We know that <span>4<sub>10</sub> = 0100<sub>2</sub></span>, then flip it to get <span class="math">1011<sub>2</sub></span> and add 1 to get <span class="math">1100<sub>2</sub></span> which represents <span class="math">-4</span>.<br>
+                </p>
+                <table>
+                    <tr class="math">
+                        <td>&nbsp;7<sub>10</sub> - 4<sub>10</sub>&nbsp;</td>
+                        <td>&nbsp;= 7<sub>10</sub> + (-4<sub>10</sub>)&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 0111<sub>2</sub> + 1100<sub>2</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 1 0011<sub>2</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;= 0011<sub>2</sub>&nbsp;</td>
+                        <td> // remove the overflow bit&nbsp;</td>
+                    </tr>
+                    <tr class="math">
+                        <td></td>
+                        <td>&nbsp;= 3<sub>10</sub>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>
+                    The 2's complement solves our problems and it works!<br>
+                    This is how all computers today represent negative integers.<br>
+                    <br>
+                    Beauty is in the eye of the beholder!<br>
+                    What does <span class="math">1011<sub>2</sub></span> mean?<br>
+                    This could be <span class="math">11<sub>10</sub></span> or <span class="math">-5<sub>10</sub></span>, it depends on how we choose to interpret it.<br>
+                    There are other ways to interpret these binary numbers; we will talk about later.<br>
+                </p>
+                <br>
+                <b>Sign Extension</b>
+                <p>
+                    We were using 4-bit fixed-width representation. If we wanted to move to other fixed-width representation (e.g. 8-bit), fill the extra spaces on the left with 0's for any positive number, or 1's for any negative number.<br>
+                    For example...
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>&nbsp;4-bit&nbsp;</th>
+                        <th>&nbsp;8-bit&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td><span class="math">5<sub>10</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">0101<sub>2</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">0000 0101<sub>2</sub></span>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><span class="math">-3<sub>10</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">1101<sub>2</sub></span>&nbsp;</td>
+                        <td>&nbsp;<span class="math">1111 1101<sub>2</sub></span>&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Range</b>
+                <p>
+                    For 2's complement, the range of n-bit fixed-width representation is <span class="math">[-2<sup>n-1</sup>, 2<sup>n-1</sup> - 1]</span>.<br>
+                    For example, the range of 4-bit fixed-width representation is <span class="math">[-8, 7]</span>.<br>
+                    <br>
+                    Range for unsigned integers is <span class="math">[0, 2<sup>n</sup> - 1]</span>.<br>
+                </p>
+                <br>
+                <b>Shift Operations</b>
+                <p>
+                    We can shift a bit string right or left.<br>
+                    They are equivalent to division or multiplication by 2.<br>
+                    They are very fast machine instructions.<br>
+                    When right shifting a negative number, fill the "new" left positions with 1's; for positive number, fill with 0's.<br>
+                    For example...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;1101 &lt;&lt; 2&nbsp;</td>
+                        <td>&nbsp;// shift the bit string <span class="math">1101</span> left 2 positions&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;=&nbsp;</td>
+                        <td class="math">&nbsp;11 0100&nbsp;</td>
+                        <td>&nbsp;// Overflow, omit the 2 leftest bits&nbsp;</td>
+                    </tr>
+                    <tr class="tableUnderline">
+                        <td>&nbsp;=&nbsp;</td>
+                        <td class="math">&nbsp;0100&nbsp;</td>
+                        <td>&nbsp;// final answer&nbsp;</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td></td>
+                        <td class="math">&nbsp;0001 &lt;&lt; 2&nbsp;</td>
+                        <td>&nbsp;// shift the bit string <span class="math">0001</span> left 2 positions&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;=&nbsp;</td>
+                        <td class="math">&nbsp;00 0100&nbsp;</td>
+                        <td>&nbsp;// Overflow, omit the 2 leftest bits&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;=&nbsp;</td>
+                        <td class="math">&nbsp;0100&nbsp;</td>
+                        <td>&nbsp;// final answer&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Binary Multiplication</b>
+                <p>
+                    Binary multiplication is same as textbook multiplication.<br>
+                    For example...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="tableUnderline">
+                        <td>&#10005;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="tableUnderline">
+                        <td>+</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="tableDoubleUnderline">
+                        <td></td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+                <p>
+                    Binary multiplication is done by the processor as shift and add operators.<br>
+                    It can be easily parallelized.<br>
+                </p>
+                <br>
+                <b>Binary Division</b>
+                <p>
+                    Again, it is same as textbook division.<br>
+                    For example...<br>
+                </p>
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td class="tableLeftLine">1</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0<sub>2</sub></td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0<sub>2</sub></td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0<sub>2</sub></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableDoubleUnderline">1</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0<sub>2</sub></td>
+                    </tr>
+                </table>
+                <p>
+                    Binary division is also done by shift and subtract.<br>
+                    But each result depends on the previous, division cannot be easily to parallelized.<br>
+                    <br>
+                    So, the duration of binary multiplication is shorter than the duration of binary division.<br>
+                </p>
+                <br>
+                <b>Boolean Algebra</b>
+                <p>
+                    How does our computer actually implement binary addition, subtraction, multiplication, division and shifting?<br>
+                    How does it work with all these 0's and 1's?<br>
+                    <br>
+                    The basis of all our computer's circuits today comes from the work of a mathematician who died in 1864 - George Boole.<br>
+                    Boole's work is what we call <span class="key">Boolean algebra</span> today.<br>
+                    <br>
+                    <span class="key">Boolean algebra</span> is a specific branch of algebra dedicated to work with only values <span class="key">true</span> and <span class="key">false</span>.<br>
+                    The basic operators of Boolean algebra are <span class="key">AND</span>, <span class="key">OR</span>, <span class="key">NOT</span>.<br>
+                    In computers, each of these "logic gates" can be created with a few transistors.<br>
+                </p>
+                <br>
+                <b>OR operator</b>
+                <p>
+                    It is also called "disjunction".<br>
+                    It denotes as x&or;y; it most closely relates to addition(+) in regular algebra, so it can be denoted as x+y.<br>
+                    x&or;y is true if either<span class="math">x</span> or <span class="math">y</span> is true, or both.
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate OR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_1.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                </table>
+                <br>
+                <b>AND operator</b>
+                <p>
+                    It is also called "conjunction".<br>
+                    It denotes as x&and;y; it most closely relates to multiplication(*) in regular algebra, so it can be denoted as x*y.<br>
+                    AND means both of <span class="math">x</span> and <span class="math">y</span> must be true!<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate AND for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_2.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                </table>
+                <br>
+                <b>NOT operator</b>
+                <p>
+                    It is also called "negation".<br>
+                    It denotes as &not;x, x&#772;, ~x or !x.<br>
+                    NOT means the opposite of <span class="math">x</span>.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOT for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><img src="./image/cs230/lec2/2_3.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    There also exists more specific gates that can be built from combinations of the above three operators.<br>
+                    But these are so common and helpful, we use them in our Boolean algebra.<br>
+                </p>
+                <br>
+                <b>XOR operator</b>
+                <p>
+                    It is also called "exclusive or".<br>
+                    It denotes as x&oplus;y or x#y.<br>
+                    It means "one or the other, but not both."<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate XOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_4.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <img src="./image/cs230/lec2/2_5.PNG">
+                <br><br>
+                <b>NOR operator</b>
+                <p>
+                    It denotes as &not;(x&#8897;y) or x&darr;y.<br>
+                    It means "neither", aka "NOT OR".<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_6.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLine tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <b>NAND operator</b>
+                <p>
+                    It denotes as &not;(x&#8896;y) or x&uarr;y.<br>
+                    It means "not both"; it is simply negation of AND.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="3">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec2/2_7.PNG"></td>
+                        <td class="math tableUnderline">&nbsp;x&nbsp;</td>
+                        <td class="math tableLeftLine tableUnderline">&nbsp;y&nbsp;</td>
+                        <td class="tableLeftLin tableUnderline">&nbsp;output&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                    </tr>
+                    <tr>
+                        <td class="math">1</td>
+                        <td class="math tableLeftLine tableUnderline">1</td>
+                        <td class="math tableLeftLine tableUnderline">0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Since this is Boolean algebra, we can combine these operators to form complex expression and of course, we have rules for how these operators write.<br> 
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th class="tableUnderline">Identity</th>
+                        <th class="tableUnderline tableLeftLine">Name</th>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">&not;(&not;x) = x</td>
+                        <td class="tableUnderline tableLeftLine">Double Negation</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;x = x</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">Idempotent Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;x = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;1 = x</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">Identity Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;0 = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;0 = 0</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">Domination Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;1 = 1</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;y = y&and;x</td>
+                        <td rowspan="2" class="tableUnderline tableLeftLine">&nbsp;Commutative Law</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">x&or;y = y&or;x</td>
+                    </tr>
+                </table>
+            </section>
+            <hr>
+            
+            <section id="lec3">
+                <h3>Lecture 3 - 11/01/2018</h3>
+                <hr>
+                <p>Example: Convert the following binary to decimal.</p>
+                <table class="textTable">
+                    <tr>
+                        <th>Binary</th>
+                        <th>Sign and Magnitude</th>
+                        <th>1's Complement</th>
+                        <th>2's Complement</th>
+                    </tr>
+                    <tr>
+                        <td>0000<sub>2</sub></td>
+                        <td>+0<sub>10</sub></td>
+                        <td>+0<sub>10</sub></td>
+                        <td>0<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>0001<sub>2</sub></td>
+                        <td>+1<sub>10</sub></td>
+                        <td>+1<sub>10</sub></td>
+                        <td>1<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1000<sub>2</sub></td>
+                        <td>-0<sub>10</sub></td>
+                        <td>-7<sub>10</sub></td>
+                        <td>-8<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1001<sub>2</sub></td>
+                        <td>-1<sub>10</sub></td>
+                        <td>-6<sub>10</sub></td>
+                        <td>-7<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td>1011<sub>2</sub></td>
+                        <td>-3<sub>10</sub></td>
+                        <td>-4<sub>10</sub></td>
+                        <td>-5<sub>10</sub></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    In human mind, t oconver binary to decimal under 2's complement, we can use the following formula:<br>
+                </p>
+                <img src="./image/cs230/lec3/3_sum.png" width="15%" height="15%">
+                <br>
+                <p>
+                    For example: <span class="math">1001<sub>2</sub></span>
+                </p>
+                <table>
+                    <tr>
+                        <td>1001<sub>2</sub></td>
+                        <td>= -2<sup>3</sup> + 0&times;2<sup>2</sup> + 0&times;2<sup>1</sup> + 1&times;2<sup>0</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>= -8<sub>10</sub> + 1<sub>10</sub></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>= -7<sub>10</sub></td>
+                    </tr>
+                </table>
+                <br>
+                <b>Boolean Algebra</b>
+                <table class="textTable">
+                    <tr>
+                        <th>Identity</th>
+                        <th>Name</th>
+                    </tr>
+                    <tr>
+                        <td>&not;(&not;x) = x</td>
+                        <td>Law of the Double Complement</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;x = x</td>
+                        <td rowspan="2">Idempotent Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;x = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;1 = x</td>
+                        <td rowspan="2">Identity Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;0 = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;0 = 0</td>
+                        <td rowspan="2">Domination Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;1 = 1</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;y = y&and;x</td>
+                        <td rowspan="2">&nbsp;Commutative Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;y = y&or;x</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(y&or;z) = (x&or;y)&or;z</td>
+                        <td rowspan="2">Associative Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(y&and;z) = (x&and;y)&and;z</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(y&and;z) = (x&or;y)&and;(x&or;z)</td>
+                        <td rowspan="2">Distributive Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(y&or;z) = (x&and;y)&or;(x&and;z)</td>
+                    </tr>
+                    <tr>
+                        <td>&not;(x&or;y) = (&not;x)&and;(&not;y)</td>
+                        <td rowspan="2">DeMorgan's Law</td>
+                    </tr>
+                    <tr>
+                        <td>&not;(x&and;y) = (&not;x)&or;(&not;y)</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(x&and;y) = x</td>
+                        <td rowspan="2">Absorption Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(x&or;y) = x</td>
+                    </tr>
+                    <tr>
+                        <td>x&or;(&not;x) = 1</td>
+                        <td rowspan="2">Nonmonotone Law</td>
+                    </tr>
+                    <tr>
+                        <td>x&and;(&not;x) = 0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    A Boolean expression represents a logic function.<br>
+                    A logic function can be represented also by a logic circuit diagram, or a truth table.<br>
+                    Example: (x&or;y)&and;(&not;x)
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>&nbsp;Logic gate NOR for logic circuit diagram:&nbsp;</th>
+                        <th colspan="5">&nbsp;Truth Table<br>(0 is false, 1 is true)&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img src="./image/cs230/lec3/3_1.png"></td>
+                        <td>x</td>
+                        <td>y</td>
+                        <td>x&or;y</td>
+                        <td>&not;x</td>
+                        <td>(x&or;y)&and;(&not;x)</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    It is worth mentioning that our variables represent logical statements.<br>
+                    If you are ever confused about how to apply a law over a larger more complex expression, you can say "let p = (x&or;y&or;z)" and do your manipulations after subbing p into that expression, than resub back the real value to get the final result.<br>
+                    <br>
+                    Additionally, while drawing circuits, we can choose to draw an AND, OR, NAND, or NOR gate having an numbers of inputs.<br>
+                    This is easily replicated in redraw.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>x&or;y&or;z</th>
+                        <th>x&and;y&and;z</th>
+                    </tr>
+                    <tr>
+                        <td><img src="./image/cs230/lec3/3_2.png"></td>
+                        <td><img src="./image/cs230/lec3/3_3.png"></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Now, we can draw logic gates and we know logic gates can be easily constructed with only a handful of circuit.<br>
+                    So, let's build a circuit to add two bits together.<br>
+                    <br>
+                    Example: 1-column of Addition<br>
+                    We want sum (is there 1 remaining in this column after addition) and carry (do we need to carry a 1 to the next column).<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>sum = A&oplus;B</td>
+                        <td rowspan="2"><img src="./image/cs230/lec3/3_4.png"></td>
+                    </tr>
+                    <tr>
+                        <td>carry = A&and;B</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So all of that for one column of addition.<br>
+                    This circuit is called a <span class="key">Half-Adder</span>.<br>
+                    The half-adder does not take into account the fact a carry bit may have come in from the previous column.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>Carry<sub>in</sub></th>
+                        <th>Carry<sub>out</sub></th>
+                        <th>Sum</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <br>
+                <p>How about <span class="key">full-adder</span>?<br></p>
+                <table class="textTable">
+                    <tr>
+                        <td>sum = x&oplus;y&oplus;Carry<sub>in</sub></td>
+                        <td rowspan="2"><img src="./image/cs230/lec3/3_5.png"></td>
+                    </tr>
+                    <tr>
+                        <td>carry = (x&and;y)&or;((x&oplus;y)&and;Carry<sub>in</sub>)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Take away if you can build a truth table or logical expression, you can build a circuit (and all other combos too).<br>
+                    So what about adding numbers with a width larger than 1?<br>
+                    Stick a bunch of full-adders together!<br>
+                </p>
+                <img src="./image/cs230/lec3/3_6.png">
+                <br><br>
+                <p>
+                    Example:<br>
+                </p>
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td><sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td><sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(</td>
+                        <td>x<sub>3</sub></td>
+                        <td>&nbsp;</td>
+                        <td>x<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>x<sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>x<sub>0</sub></td>
+                        <td>)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>1</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                     <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(</td>
+                        <td>y<sub>3</sub></td>
+                        <td>&nbsp;</td>
+                        <td>y<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>y<sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>y<sub>0</sub></td>
+                        <td>)</td>
+                    </tr>
+                    <tr>
+                        <td class="tableUnderline">+</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline"></td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">0</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                        <td class="tableUnderline">1</td>
+                        <td class="tableUnderline">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td class="tableDoubleUnderline">1</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0</td>
+                        <td class="tableDoubleUnderline">&nbsp;</td>
+                        <td class="tableDoubleUnderline">0</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                     <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(</td>
+                        <td>d<sub>3</sub></td>
+                        <td>&nbsp;</td>
+                        <td>d<sub>2</sub></td>
+                        <td>&nbsp;</td>
+                        <td>d<sub>1</sub></td>
+                        <td>&nbsp;</td>
+                        <td>d<sub>0</sub></td>
+                        <td>)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    But there is a problem: this is kind of slow!<br>
+                    The carry bit needs to propagate from each column to the next.<br>
+                    So, this is linear in number of bits.<br>
+                </p>
+                <b>Carry-Lookahead Adder</b>
+                <p>
+                    This is faster than full adder.<br>
+                    It is more complex(larger) circuits to determine carry.<br>
+                    Trade-off is complexity and speed (example: power, cost, etc.).<br>
+                    <br>
+                    Now, we know how to represent integers and how basis operations work.<br>
+                    But what about other data types?<br>
+                    We know that a bit is the smallest piece of information representable - true or false.<br>
+                </p>
+                <br>
+                <b>Byte</b>
+                <p>
+                    A byte today is 8 bits; it can easily be shown as two hexadecimal digits.<br>
+                    <br>
+                    A word is the size of instruction on the given architecture.<br>
+                    The common architectures for now are 4 bytes (32 bits) and 8 bytes (64 bits).<br>
+                    <br>
+                    Words can be ordered in different way.<br>
+                    What is the most significant byte?<br> This ordering is called <span class="key">Endianness</span>.<br>
+                </p>
+                <br>
+                <b>Endianness</b>
+                <p>
+                    Big endian which is most significant byte first descending.<br>
+                    Little endian which is least significant byte first asscending.<br>
+                    <br>
+                    If we want to represent the number <span class="math">0xDEADBEEF</span> in one 4-byte word, it looks like this.<br>
+                </p>
+                <table>
+                    <tr class="textTable">
+                        <td>&nbsp;Big Endian: </td>
+                        <td>0xDE</td>
+                        <td>0xAD</td>
+                        <td>0xBE</td>
+                        <td>0xEF</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&uarr;</td>
+                        <td>&uarr;</td>
+                        <td>&uarr;</td>
+                        <td>&uarr;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td></td>
+                        <td>0x0010&nbsp;</td>
+                        <td>0x0020&nbsp;</td>
+                        <td>0x0030&nbsp;</td>
+                        <td>0x0040&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&darr;</td>
+                        <td>&darr;</td>
+                        <td>&darr;</td>
+                        <td>&darr;</td>
+                    </tr>
+                    <tr class="textTable">
+                        <td>&nbsp;Little Endian: </td>
+                        <td>0xEF</td>
+                        <td>0xBE</td>
+                        <td>0xAD</td>
+                        <td>0xDE</td>
+                    </tr>
+                </table>
+                <p>
+                    Endianness is important!<br>
+                    Think about two computers passing a file.<br>
+                    If one computer stores in big endian but the other stores in little endian, they will not understand the file is the same!<br>
+                    <br>
+                    Endianness is important in network area; the standard for networking is big endian.<br>
+                    <br>
+                    Okay, so these are bits and bytes.<br>
+                    But how do we store staff?<br>
+                </p>
+                <br>
+                <b>Character</b>
+                <p>
+                    Character is letter!<br>
+                    There are two famous character encoding standard.<br>
+                    <br>
+                    The first one is <span class="key">ASCII</span> (American Standard Code for Information Interchange).<br>
+                    In ASCII, 1 byte means 1 character.<br>
+                    The normal ASCII codes are using [0,127] and the extended ASCII codes are using [128,255].<br>
+                    For example, [0,31] is for special control characters (non-printable), [48,57] is for number 0 to 9, [65,90] is for alphabet A to Z and [97,122] is for alphabet a to z.<br>
+                    <br>
+                    But... ASCII does not include other languages!<br>
+                    So we have other standard called <span class="key">UTF-8</span> (8-bit Unicode Transformation Format).<br>
+                    In UTF-8, we use 1 to 4 bytes to represent per character.<br>
+                    The 1 byte encoding is compatible as ASCII - characters that tend to occur more frequently store in 1 byte.<br>
+                </p>
+                <br>
+                <b>String</b>
+                <p>
+                    String is just a collection or array of characters.<br>
+                    But how does the computer know the length of a string?<br>
+                    Commonly, a string is terminated with the special character NULL(\0): 0x00.<br>
+                    For example, "Hello" in ASCII is 0x48 0x65 0x6C 0x6c 0x6F 0x00.<br>
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec4">
+                <h3>Lecture 4 - 16/01/2018</h3>
+                <hr>
+                <b>Real Numbers</b>
+                <p>
+                    What is real number? For example, <span class="math">1.15</span> is real number.<br>
+                    <br>
+                    How does computer represent real numbers?<br>
+                    First of all, let's talk about the <span class="key">Scientific Notation</span>.<br>
+                    For example, <span class="math">-3.24&times;10<sup>56</sup></span>, and it is also called as <span class="key">Normalized Scientific Notation</span>.<br>
+                    <br>
+                    <span class="key">Normalized Scientific Notation</span>: one non-zero digit in front of the decimal point<br>
+                    For example, <span class="math">0.002&times;10<sup>4</sup></span> and <span class="math">56.123&times;10<sup>8</sup></span> are not normalized.<br>
+                    <br>
+                    How do we write a real number in binary with scientific notation?<br>
+                    For example, <span class="math">1.01<sub>2</sub> &sdot; 2<sup>1</sup></span> where the <span class="key">.</span> after 1 and before 0 is called a binary point (radix point generally).<br>
+                    So what does <span class="math">1.01<sub>2</sub></span> mean?<br>
+                    Before we answer this answer, we need to ask ourselves, what does <span class="math">1.01<sub>10</sub></span> mean?<br>
+                    <span class="math">1.01<sub>10</sub> = 1 &sdot; 10<sup>0</sup> + 0 &sdot; 10<sup>-1</sup> + 1 &sdot; 10<sup>-2</sup></span><br>
+                    With the same idea, we have...<br>
+                    <span class="math">1.01<sub>2</sub> = 1 &sdot; 2<sup>0</sup> + 0 &sdot; 2<sup>-1</sup> + 1 &sdot; 2<sup>-2</sup> = 1 +  1/4 = 1.25<sub>10</sub></span><br>
+                    <br>
+                    How do we represent real numbers in our machines?<br>
+                    We use what's called <span class="math">floating point number</span>.<br>
+                    The reason it is called this name because it allow the binary point to "float" by changing the exponent.<br>
+                    The opposite would be fixed point.<br>
+                    <br>
+                    Floating point is of the form <span class="math">I.F &sdot; B<sup>E</sup></span> where...<br>
+                </p>
+                <ul>
+                    <li><span class="math">I</span>: Integer</li>
+                    <li><span class="math">F</span>: Fractional</li>
+                    <li><span class="math">B</span>: Base</li>
+                    <li><span class="math">E</span>: Exponent</li>
+                    <li><span class="math">I.F</span>: Significand (or "Mantissa")</li>
+                </ul>
+                <p>
+                    Our floats are always normalized, so <span class="math">I</span> is always <span class="math">1</span>.<br>
+                </p>
+                <ul>
+                    <li>left out of our representation is called "implicit/hidden point"</li>
+                </ul>
+                <p>
+                    The base in always <span class="math">2</span> because we are in binary!<br>
+                    So these are the components of our floating point.<br>
+                    <br>
+                    How does float represent in a machine? the standard <span class="key">IEEE 754</span>.<br>
+                    We have single precision 32 bits, double precision 64 bits.<br>
+                    <br>
+                    Single Precision Float: 32 bits<br>
+                </p>
+                <img src="./image/cs230/lec4/4_1.png">
+                <p>
+                    We have 1 bit for the sign bit (green box), 8 bits for the exponent (red boxes) and the rest of the boxes (purple) are for the fractional.<br>
+                    Note that integer and base are not represented since base is 2 and integer is always 1 except for special subnormal numbers.<br>
+                    <br>
+                    Also, we need to know that the exponent bits do not represent exactly the exponent <span class="math">e</span> in <span class="math">I.F &sdot; B<sup>e</sup></span>. Why?<br>
+                    The standard uses a bias value, so the exponent bits represent an unsigned number and you subtract the bias from it.<br>
+                    Bias for single precision is 127.<br>
+                    <br>
+                    So to calculate the value <span class="math">(-1)<sup>5</sup> &sdot; (I.F)&dot;2<sup>e-127</sup></span>, let's try calculating the decimal value of single precision float:<br>
+                    <span class="math">0 10000100 11000000000000000000000</span><br>
+                    The first <span class="math">0</span> is the sign bit.<br>
+                    Then, <span class="math">10000100</span> are the exponent bits: <span class="math">10000100 = 128 + 4 - bias = 132 - 127 = 5</span><br>
+                    The rest of the bits <span class="math">11000000000000000000000</span> are the fractional bits where<br>
+                    &nbsp;&nbsp;<span class="math">1.11 = 1 + 2<sup>-1</sup> + 2<sup>-2</sup> = 1 + 0.5 + 0.25 = 1.75</span><br>
+                    So, we now have:<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>(-1)<sup>S</sup> &sdot; (I.F) &sdot; 2<sup>e-127</sup></td>
+                        <td>&nbsp;= (-1)<sup>0</sup> &sdot; (1.11) &sdot; 2<sup>5</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1 &sdot; (1.75) &sdot; 2<sup>5</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 56.0</td>
+                    </tr>
+                </table>
+                <p>
+                    Let's consider a simplified 8-bit representation for floats: 1 bit for sign bit, 3 bits for exponent (bias = 3) and 4 bits for fractional.<br>
+                    Note that bias is a choosing value, so you don't have to worry about it.<br>
+                    <br>
+                    Example: Express 4.5 in our simplified format.<br>
+                    Note that <span class="math">4<sub>10</sub> = 100<sub>2</sub></span> and <span class="math">0.5<sub>10</sub> = 1/2<sub>10</sub> = 2<sup>-1</sup> = 0.1<sub>2</sub></span>.<br>
+                    Thus, <span class="math">4.5<sub>10</sub> = 100.1<sub>2</sub></span>.<br>
+                    Then we have <span class="math">100.1 &sdot; 2<sup>0</sup></span> and normalize it, we get <span class="math">1.001 &sdot; 2<sup>2</sup></span>.<br>
+                    Next, the exponent is <span class="math">e + bias = 2 + 3 = 5 = 101<sub>2</sub></span> and sign bit is 0 since 4.5 is a positive number.<br>
+                    So, we get 0 101 0010 as our final answer, where 0 is the sign bit, 101 is the exponent bits and 0010 is the fractional bits.<br>
+                    <br>
+                    Arithmetic with floats is easy.<br>
+                    For addition, just set the exponents the same and add the significands (regular addition).<br>
+                    <br>
+                    Example: Add 1.25 and 2.125 in our simplified format.<br>
+                    Note that <span class="math">1.25 = 1.01 &sdot; 2<sup>0</sup></span>.<br>
+                    So we know that <span class="math">F = 0100</span>, <span class="math">E = 0 + 3 = 3 = 011</span> and <span class="math">S = 0</span>.<br>
+                    Thus, <span class="math">1.25<sub>10</sub> = 0 011 0100<sub>2</sub></span>.<br>
+                    Also, <span class="math">2.125 = 1.0001 &sdot; 2<sup>1</sup></span>.<br>
+                    So we know that <span class="math">F = 0001</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
+                    Thus, <span class="math">2.125<sub>10</sub> = 0 100 0001<sub>2</sub></span>.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>1.25 + 2.125</td>
+                        <td>&nbsp;= 1.01 &sdot; 2<sup>0</sup> + 1.0001 &sdot; 2<sup>1</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.01 &sdot; 2<sup>0</sup> + 10.001 &sdot; 2<sup>0</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 11.011 &sdot; 2<sup>0</sup></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.1011 &sdot; 2<sup>1</sup></td>
+                    </tr>
+                </table>
+                <p>
+                    From the normalized scientific notation <span class="math">1.1011 &sdot; 2<sup>1</sup></span>, we know that <span class="math">F = 1011</span>, <span class="math">E = 1 + 3 = 4 = 100</span> and <span class="math">S = 0</span>.<br>
+                    So our final answer is 0 100 1011.<br>
+                    <br>
+                    For multiplication, we add exponents, then multiply significands.<br>
+                    For example, <span class="math">1.5 &sdot; 2.25</span>.<br>
+                    Note that <span class="math">1.5 = 0 011 100</span> and <span class="math">2.25 = 0 100 0010</span>.<br>
+                    Step 1 - Add Exponents:<br>
+                    <span class="math">(E<sub>1.5</sub> - bias) + (E<sub>2.25</sub> - bias) = (011 - 011) + (100 - 011) = 1 = e</span><br>
+                    So <span class="math">E = 1 + 3 = 4 = 100<sub>2</sub></span>.<br>
+                    Step 2 - Multiply Significands:<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>1.1000 &times; 1.0010</td>
+                        <td>&nbsp;= (1 &sdot; 1.001) + (0.1 &sdot; 1.001)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.001 + 0.1001</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1.1011</td>
+                    </tr>
+                </table>
+                <p>
+                    So our new fractional bits are 1011, new exponent bits are 100 and new sign bit is 0.<br>
+                    Therefore, <span class="math">1.5 &sdot; 2.25 = 0 100 1011</span>.<br>
+                    <br>
+                    However, examining our simplified format we can see the problems that arise in floating point numbers.<br>
+                    The first problem is there exists infinite numbers between 0 and 1, but we cannot represent infinite numbers within 32 bits!<br>
+                    For example, consider 15.25 in our 8-bit system:<br>
+                    <span class="math">15.25 = 1111.01 &sdot; 2<sup>0</sup> = 1.11101 &sdot; 2<sup>3</sup></span><br>
+                    We need 5 bits for the fraction but we only have 4 bits to use!<br>
+                    So we get an overflow, which is <span class="math">1.1110 &sdot; 2<sup>3</sup></span>.<br>
+                    If we round up, we get 15.5; if we round down, we get 15.0.<br>
+                    <br>
+                    So overflow can happen; they get represented as <span class="key">inf</span> (also occurs for divide by 0).<br>
+                    <br>
+                    For IEEE 754,<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Exponent Bits</th>
+                        <th>Fractional Bits</th>
+                        <th>Value/Type</th>
+                    </tr>
+                    <tr>
+                        <td>0000 0000</td>
+                        <td>00...00</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0000 0000</td>
+                        <td>non-zero</td>
+                        <td>subnormal</td>
+                    </tr>
+                    <tr>
+                        <td>0000 0000 1...1111 1110</td>
+                        <td>Any</td>
+                        <td>normal number</td>
+                    </tr>
+                    <tr>
+                        <td>1111 1111</td>
+                        <td>00...00</td>
+                        <td>infinity</td>
+                    </tr>
+                    <tr>
+                        <td>1111 1111</td>
+                        <td>non-zero</td>
+                        <td>NaN</td>
+                    </tr>
+                </table>
+                <p>
+                    What is <span class="key">NaN</span>? It means "not a number".<br>
+                    For example, &radic;-1, &infin;/&infin; and &infin; &sdot; 0.<br>
+                    <br>
+                    If we didn't create a special case for subnormal numbers, then the gap between 0 and our smallest representable number would be:<br>
+                    <span class="math">0 000 0000<sub>2</sub> = 1.0000 &sdot; 2<sup>-3</sup> = 0.1255</span><br>
+                    That is a large gap! Often we talk about small numbers.<br>
+                    This also means our gap between adjacent numbers is <span class="math">0.0001 &sdot; 2<sup>-3</sup> = 2<sup>-7</sup></span>.<br>
+                    <br>
+                    Instead, we treat subnormal numbers as a special case.<br>
+                    So, when we would have (0 - bias) exponent instead we do (1 - bias) as exponent and have the implicit bit be 0.<br>
+                    This is how to interpret subnormal numbers: <span class="math">(-1)<sup>S</sup> &sdot; (0.F) &sdot; 2<sup>1 - bias</sup></span><br>
+                </p>
+                <ul>
+                    <li>Smallest number (&gt;0) is <span class="math">1.00 &sdot; 2<sup>-2</sup></span></li>
+                    <li>Gap between number is <span class="math">0.0001 &sdot; 2<sup>-2</sup></span> (worse)</li>
+                    <li>Smallest subnormal number is <span class="math">0.0001 &sdot; 2<sup>-2</sup> = 0.01525</span> (much better!)</li>
+                </ul>
+                <p>
+                    So using subnormal numbers we get a larger gap between our numbers (largest/smallest possible exponent).<br>
+                    But we get closer to 0 before losing all our precision.<br>
+                    Tradeoff is the gaps between representable numbers and how close to 0 we can get.<br>
+                </p>
+                <br>
+                <b>Gradual Underflow</b>
+                <p>
+                    Don't forget floating point is not exact, it is only an approximation of real numbers.<br>
+                    For example, 0.1 cannot be represented in IEEE 754.<br>
+                    Therefore, don't use <code>==</code> on floats.<br>
+                    Also, associativity and distribution or arithmetic operators are not guaranteed!<br>
+                </p>
+                <br>
+                <b>Module 2 - Assembly Language</b>
+                <p>
+                    Recall: Computers only understand set instructions which are group of 1's and 0's (machine code).<br>
+                    <br>
+                    A assembly language is one step up from that - basis operations that operate on registers.<br>
+                    It has a direct translation to machine code.<br>
+                    <br>
+                    A program called an assembler translates assembly to machine code.<br>
+                    <br>
+                    In order to understand how computers/programs work, we are going to study <span class="key">MIPS</span> on assembly language.<br>
+                    Because assembly languages operate on registers (actual hardware of CPU), assembly languages are tied to hardware.<br>
+                    Hence why we use an emulator.<br>
+                    <br>
+                    <span class="key">MIPS</span> is an acronym for Microprocessor without Interlocked Pipeline Stages; we will talk about the meaning later (someday in the future).<br>
+                    <br>
+                    In MUPS, we have 32 registers (which are labeled with $0 to $31).<br>
+                    Each register is 32 bits.<br>
+                    Why we only have 32 registers, not more? More means slower - we need more bits to store a register.<br>
+                    For now, we only need 5 bits to store 32 registers.<br>
+                    <br>
+                    <span class="key">Special Registers</span><br>
+                    PC (program counter) holds the memory address of the next instruction; each instruction done increments it by 4, or it can be manipulator.<br>
+                    <br>
+                    <span class="key">Register 0 ($0)</span>: It is the constant 0; otherwise, the machine will die!<br>
+                    <br>
+                    <span class="key">Conventions</span><br>
+                    $31 is the return address and $30, $29 and $28 are special.<br>
+                </p>
+            </section>
+            <hr>
+
+            <table class="buttomTable">
+                <tr>
+                    <td class="buttomLeftTable"></td>
+                    <td class="buttomCentreTable"><a href="./cs230.html">&uarr; Go to Index</a></td>
+                    <td class="buttomRightTable"><a href="./cs230_2.html">&rarr; Go to Module 2 - Assembly Language&nbsp;</a></td>
+                </tr>
+            </table>
+            <hr>
+            
+            <p>
+                Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
+            </p>
+            <hr>
+            
+            <div class="footer">
+                <p>Thanks For Coming Here. - Calvin Li</p>
+                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
+                    <i class = "fa fa-envelope-square"></i>
+                </a>
+                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
+                    <i class = "fa fa-linkedin-square"></i>
+                </a>       
+                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href = "https://github.com/vertli" target = "_blank;">
+                    <i class="fa fa-github-square"></i>
+                </a>
+                <br>
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
+            </div>
+            <hr>
+            
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        
+    </body>
+    
+</html>

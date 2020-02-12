@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CS230|Calvin Li</title>
+        <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/note.css">
+        <link rel="stylesheet" href="./css/cs230use.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text:600,600i" rel="stylesheet"> <!-- for math use -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+        <!-- stylesheet found from w3school. (icon use)-->
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body class="cs230">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">Calvin Li</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="topNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./doc/NewResume_CKLI.pdf" target="_blank;">Résumé</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li class="courseNote">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Notes<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./cs230.html">CS 230</a></li>
+                                <li><a href="./cs246.html">CS 246</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
+        <br><br><br>
+        
+        <div class="container">
+            
+            <br>
+            <table class="header">
+                <tr>
+                    <td colspan="100%">
+                        <h1 class="title">CS 230 - Introduction to Computers and Computer Systems</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Instructor:</th>
+                    <td colspan="95%">Rob Hackman</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Office:</th>
+                    <td colspan="95%">DC2551A</td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Email:</th>
+                    <td colspan="95%"><a href = "mailto: r2hackma@uwaterloo.ca" target = "_blank;">r2hackma@uwaterloo.ca</a></td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Website:</th>
+                    <td colspan="95%">
+                        <a href="https://www.student.cs.uwaterloo.ca/~cs230/" target="_blank;">https://www.student.cs.uwaterloo.ca/~cs230/</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="5%">Note:</th>
+                    <td>All program codes in this course notes are provided by Prof. Hackman during class.</td>
+                </tr>
+            </table>
+            <hr>
+         
+            <section id="lec8">
+                <h3>Lecture 8 - 30/01/2018</h3>
+                <hr>
+                <p>
+                    Assignment 2 due this Friday (2<sup>nd</sup> February, 2018) at 5pm!<br>
+                    Midterm is next week, Thursday 8<sup>th</sup> February, 2018!<br>
+                </p>
+                <br>
+                <b>Questions from last lecture?</b>
+                <p>
+                    The stack - controlled (used) through a pointer (a memory address) to the current location of the stack.<br>
+                    Our stack pointer is in <code>$30</code>.<br>
+                    Stack starts at the BOTTOM (END) of our memory and "grows up" towards the start.<br>
+                </p>
+                <br>
+                <img src="./image/cs230/lec8/8_1.png">
+                <p>
+                    Note that we can't store store anything in the end of memory - that would go outside the memory space!<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, -4<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_2.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; assume $1 is 0xFB<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw $1, 0($30)<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_3.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, -8<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_4.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>; assume $2 is 0x81, $3 is 0xABC<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>sw $2, 0($30)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>sw $3, 4($30)<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_5.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $1, $0, 0xABD ; now $1 is 0xABD<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>addi $2, $0, 0xEE&nbsp; ; now $2 is 0xEE<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>addi $3, $0, 0xCC&nbsp; ; now $3 is 0xCC<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>lw&nbsp;&nbsp; $2, 0($30) &nbsp;&nbsp;&nbsp;; $2 is back to 0x81<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_6.png">
+                <br><br>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>addi $30, $30, 4<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_7.png">
+                <p>
+                    Note that even the value <code>0x81</code> is popped, it still exists in memory until we overwrite something into the memory.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>lw &nbsp;$3, &nbsp;0($30)<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>lw &nbsp;$1, &nbsp;4($30)<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>; now $3 is 0xABC and $1 is 0xFB<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>add $30, $30, 8<br>
+                    </code></pre>
+                </span>
+                <img src="./image/cs230/lec8/8_8.png">
+                <br><br>
+                <b>Why bother learning assembly?</b>
+                <ul>
+                    <li>Gain and understanding of what a program actually is (sequence of instructions)</li>
+                    <li>Understand how our high level languages can be interpreted by a computer</li>
+                    <li>Gain an appreciation for which high level constructs are slower (take more instructions)</li>
+                    <li>
+                        Understand high level concepts better
+                        <ul>
+                            <li>example: How is data actually represented?</li>
+                        </ul>
+                    </li>
+                </ul>	
+                <br>
+                <b>Machine Internals and Performance</b>
+                <p>
+                    Computers are constructed with a <u>CLOCK</u> that determines the speed at which instructions are done.<br>
+                    Basically, it is a metronome for the computer - it keeps time for operations and achieves by sending an alternating signal of high/low voltage (in time).<br>
+                </p>
+                <img src="./image/cs230/lec8/8_9.png">
+                <p>
+                    Electric signal propagates pretty fast.<br>
+                </p>
+                <ul>
+                    <li>Not infinitely fast, physical constraints</li>
+                    <li>Gate delay, time it takes for a signal to enter a gate and result exit the gate (at a steady state)</li>
+                </ul>
+
+                <p>
+                    Clock Period (Cycle Time): Duration in seconds of a cycle<br>
+                    Clock Frequency (Clock Rate): Cycles per second (1/cycle time) in Hz (hertz)<br>
+                    <br>
+                    Example: clock period of <span class="math">250ps = 250(10<sup>12</sup>) s/cycle</span>.<br>
+                    Note: ps is picoseconds, a.k.a <span class="math">10<sup>-12</sup></span>.<br>
+                    What is our clock rate?<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;1 / 250(10<sup>-12</sup>)</td>
+                        <td>&nbsp;= 10<sup>12</sup> / 250</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 4(10<sup>9</sup>)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 4 GHz</td>
+                    </tr>
+                </table>
+                <p>
+                    Our cycles are used to "time" operations.<br>
+                </p>
+                <br>
+                <b>Single Cycle Execution</b>
+                <ul>
+                    <li>Execute one instruction per cycle</li>
+                    <li>
+                        Fixed cycle time equal to the time it takes for our slowest instruction
+                        <ul>
+                            <li>add v.s. multiply</li>
+                            <li>memory instructions (slow)</li>
+                        </ul>
+                    </li>
+                    <li>If we want our common cases to be fast - then single cycle execution is not a great choice.</li>
+                </ul>
+                <br>
+                <b>Measuring Performance</b>
+                <p>Time</p>
+                <ul>
+                    <li>
+                        Time to execute program (short as possible is goal!) - different ways of measuring this:
+                        <ul>
+                            <li>
+                                Elapsed Time (total response time): total real time it takes the program to execute from an outside perspective<br>
+                                It includes wait times (waiting for a resource like memory or hard dist), waiting for input, idle time.<br>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        CPU Time is how much time your program actually spends processing instructions and quite often CPU time is less than Elapsed time.<br> 
+                    </li>
+                </ul>
+                <ul>
+                    <li>Latency - time to execute one instruction</li>
+                    <li>Throughput - number of instructions executed per unit of time</li>
+                </ul>
+                <b>Metrics of a Program/Hardware Combo</b>
+                <ul>
+                    <li>Cycles Per Instruction (CPI) - determined by the CPU hardware, probable for different instructions to take different number of cycles</li>
+                    <li>Instruction count (IC) - the number of instructions in a program. Affected by primarily the program itself, the instruction set itself (e.g. <code>slt</code> and <code>bne</code> v.s. "branch is less than", the compiler (how much does it optimizes)</li>
+                </ul>
+                <p>
+                    Number of clock cycles for a program: <span class="math">IC &sdot; CPI</span><br>
+                    <span class="math">CPU Time = IC &sdot; CPI &sdot; cycleTime</span><br>
+                    <br>
+                    Example:<br>
+                    Computer A has a cycle time 250ps and CPI is 2.0.<br>
+                    Computer B has a cycle time 500ps and CPI is 1.2.<br>
+                    Both of them use same instruction set, running the same program. Which is faster?<br>
+                    <br>
+                    <span class="math">CPU TIME<sub>A</sub> = IC &sdot; 20 &sdot; 250ps = IC &sdot; 500ps</span><br>
+                    <span class="math">CPU TIME<sub>B</sub> = IC &sdot; 1.2 &sdot; 500ps = IC &sdot; 600ps</span><br>
+                    <br>
+                    So computer A is faster - how much faster?<br>
+                    <span class="math">CPU TIME<sub>B</sub> / CPU TIME<sub>A</sub> = 600ps / 500ps = 1.2</span><br><br>
+                    Computer A is 1.2 times faster than computer B.<br>
+                    <br>
+                    Example: 3 different types of instructions, each takes a different number of cycles, 2 programs X and Y.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>I-type</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                    </tr>
+                    <tr>
+                        <td>CPI</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>IC<sub>x</sub></td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>IC<sub>Y</sub></td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <p>
+                    What is the weighted average CPI for programs X and Y?<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;CPI<sub>X</sub></td>
+                        <td>&nbsp;= numbers of cycles / numbers of instructions</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1 &sdot; 1+2 &sdot; 1+4 &sdot; 3 / (1+1+3)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 15 / 5</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 3.0</td>
+                    </tr>
+                </table>
+                <br>
+                <table class="math">
+                    <tr>
+                        <td>&nbsp;CPI<sub>Y</sub></td>
+                        <td>&nbsp;= numbers of cycles / numbers of instructions</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 1 &sdot; 2+2 &sdot; 4+4 &sdot; 1 / (2+5+1)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 14 / 7</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 2.0</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    So program Y is using less cycles per instruction than X since it's using quicker instructions.<br>
+                    <br>
+                    In summary, we can calculate CPU time required for some program as<br>
+                    <span class="math">CPUtime = IC &sdot; CPI &sdot; cycleTime = IC &sdot; CPI &sdot; (1/clockRate)</span><br>
+                    We can try to reduce CPU time by...<br>
+                </p>
+                <ul>
+                    <li>using less instructions</li>
+                    <li>Reduce our CPI time</li>
+                    <li>Faster clock (over-clocking)</li>
+                </ul>
+                <p>
+                    Tradeoffs to all of these - we have other ways to increase performance.<br>
+                </p>
+                <br>
+                <b>Pipelining</b>
+                <p>
+                    The idea behind pipelining is to use all your resources as much possible, not have resources sit waiting.<br>
+                    A completely unpipelined task will do each task in sequence waiting for completion before starting the next.<br>
+                    A pipelined version will do multiple tasks in parallel, so long as there is no reason why it cannot. (The resource required is not available, or its not ready)<br>
+                    <br>
+                    The best real life analogy for pipelining is laundry. We have 4 tasks (wash, dry, fold, put away) and 3 resources (washer, dryer, manual labour).<br>
+                </p>
+                <p>
+                    In the pipelined version, we don't wait for one load to be completely finished (folded and put away) before starting the next load.<br>
+                    So our pipelined version is faster, by making sure our resources in use as often as possible.<br>
+                    In reality, it's not this clean , e.g. we have might have hang dry (take labour resource), can't fold and put away at same time.<br>
+                    <br>
+                    Under pipelining, can I wash one article of clothing faster than without pipelining?<br>
+                    Pipelining does not affect LATENCY; it only affects throughput.<br>
+                    <br>
+                    In MIPS, we break up our execution into 5 steps, each step takes one cycle, and all 5 can be done in the same cycle (they use different resources). So in theory, we could have 5 instructions currently executing in any one cycle (under ideal conditions).<br>
+                    <br>
+                    Let's talk about our stages of execution.<br>
+                </p>
+                <ol>
+                    <li>
+                        Instruction Fetch (IF)
+                        <ul>
+                            <li>load instruction from memory into the CPU</li>
+                            <li>load from the address in <code>$PC</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Instruction Decode (ID)
+                        <ul>
+                            <li>Determine which instruction this is and what registers it is using (decode the bits of the instruction)</li>
+                            <li>Read the values from the corresponding registers into the ALU (takes place in the second half of cycle)</li>
+                            <li>Also determine if it is a branch instruction</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Execute (EX)
+                        <ul>
+                            <li>Do the operation indicated by the instruction (done in the ALU)</li>
+                            <li>For <code>add</code> do addition</li>
+                            <li>For <code>mult</code> do multiplication</li>
+                            <li>For  <code>lw/sw</code> compute the address  <code>$s + i</code>, etc.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <hr>
+            
+            <section id="lec9">
+                <h3>Lecture 9 - 01/02/2018</h3>
+                <hr>
+                <b>Five Stages of MIPS Execution Pipeline</b>
+                <ol>
+                    <li>
+                        Instruction Fetch (IF)
+                        <ul>
+                            <li>load the instruction from memory into CPU</li>
+                            <li>load from address in <code>$PC</code> (program counter register)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Instruction Decode (ID)
+                        <ul>
+                            <li>determine which instruction this is (decoding the bits of the instruction</li>
+                            <li>read the values from the corresponding registers into the ALU (takes place in the second half of the cycle)</li>
+                            <li>also, determine if a branch is taken (extra hardware)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Execute (EX)
+                        <ul>
+                            <li>do the operation the instruction says to do (done in ALU)</li>
+                            <li>for <code>add</code>, do the addition</li>
+                            <li>for <code>mult</code>, do the multiplication</li>
+                            <li>for <code>sw/lw</code>, compute the address <code>$w + i</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Memory Address (MEM)
+                        <ul>
+                            <li>accessing memory</li>
+                            <li>only used for <code>lw/sw</code> instructions</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Write Back (WB)
+                        <ul>
+                            <li>write results into the destination register</li>
+                            <li>this happens in the first half of the clock cycle</li>
+                        </ul>
+                    </li>
+                </ol>
+                <br>
+                <p>
+                    Let's look at what stages of execution.<br>
+                    Some of our different instructions use and how long they take.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>instruction Class</th>
+                        <th>IF</th>
+                        <th>ID</th>
+                        <th>EX</th>
+                        <th>MEM</th>
+                        <th>WB</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td><code>lw</code> (load word)</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>800ps</td>
+                    </tr>
+                    <tr>
+                        <td><code>sw</code> (store word)</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps</td>
+                        <td>200ps</td>
+                        <td>-</td>
+                        <td>700ps</td>
+                    </tr>
+                    <tr>
+                        <td>R-Format</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps</td>
+                        <td>-</td>
+                        <td>100ps</td>
+                        <td>600ps</td>
+                    </tr>
+                    <tr>
+                        <td>Branch</td>
+                        <td>200ps</td>
+                        <td>100ps</td>
+                        <td>200ps (jump to)</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>500ps</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    What is the actual speedup gained from pipelining?<br>
+                    Under perfect conditions with all stages balanced (take the same time), then the speedup is equal to the number of stages.<br>
+                    <br>
+                    Of course, if the stages aren't balanced (or we don't have perfect conditions), then the speedup is less.<br>
+                    <br>
+                    In our example, we experienced a speedup <span class="math"> 800ps / 200ps = 4 times as fast</span><br>
+                    <br>
+                    Example:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>cycle</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td>(1)</td>
+                        <td><code>addi $8, $0, 2</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td><del>MEM</del></td>
+                        <td>WB</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>(2)</td>
+                        <td><code>sub $9, $9, $10</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td><del>MEM</del></td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that MEM does nothing in our example, so we just crossed it out.<br>
+                    <br>
+                    Question: What if in our example above, instruction (2) was instead <code>sub $9, $8, $10</code>?<br>
+                </p>
+                <br>
+                <b>Pipeline Hazards</b>
+                <p>
+                    <span class="key">Hazard</span>: a condition which blocks the flow of the pipeline<br>
+                </p>
+                <ul>
+                    <li>instructions are (often) not completely independent</li>
+                    <li>
+                        we have 3 types of Hazards:
+                        <ol>
+                            <li>Data Hazard</li>
+                            <li>Control Hazard</li>
+                            <li>Structural Hazard</li>
+                        </ol>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    A <span class="key">data hazard</span> is when data that is required for the execution of an instruction is not available yet. This is the problem we have above if we changed the subtract instruction to read from <code>$8</code>.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th colspan="2">5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td class="borderRightDashed">WB</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>add $11, $8, $2</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="borderRightDashed"></td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MUM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that the two <code>-</code>s in row 3 are stalls (do nothing).<br>
+                    <br>
+                    This is an example of data hazard; it is called a "Read After Write" or "RAW" hazard.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td><code>slt $8, $12, $13</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    This is not a pipeline hazard.<br>
+                    This iteration is called "write after write".<br>
+                    <br>
+                    In our first example, we had to delay the ID phase of instruction 2 until instruction had written back its result into <code>$8</code>; the data was not ready yet. We could do IF for instruction 2 in cycle 5, because ID reads the values from the source registers in the second half of the cycle, while WB is written them in the first half.<br>
+                </p>
+                <br>
+                <p>
+                    <span class="key">Control Hazards</span> are when we don't know which instruction we should execute next. Most simple example is a branch we don't know if the branch is taken or not, so we don't know if we should execute the immediately following instruction or the one the branch would jump us to.<br>
+                    To mitigate this problem extra hardware is put in so that result of the branch condition can be determined in the ID phase (mentioned above).<br>
+                    <br>
+                    It is still not perfect though.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>beq $11, $12, label</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>sub $14, $0, $13</code></td>
+                        <td></td>
+                        <td></td>
+                        <td>-</td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that we don't know if the <code>sub</code> instruction is the real next instruction, so we put <code>-</code> in row 4 column 3.<br>
+                    <br>
+                    Also, for row 4 column 4 <code>IF</code>, ID of branch determined branch condition was false, we can now execute this instruction.<br>
+                    <br>
+                    Only had to stall for 1 cycle sine extra hardware allowed branch conditions to be evaluated in ID phase.<br>
+                    <br>
+                    It is still had to stall though...<br>
+                </p>
+                <br>
+                <p>
+                    A <span class="key">structural hazard</span> occurs when two or more instructions need the same resource at the same time.<br>
+                    <br>
+                    Most common example is when the IF stage of one instruction needs to access the same memory as the MEM stage of another instruction. Or, not even the same memory but asking the memory resource for memory values maybe it can only process one request at a time.<br>
+                    <br>
+                    For now, we'll assume memory is fast enough to do both in one cycle.<br>
+                </p>
+                <br>
+                <b>Solving Hazards</b>
+                <p>
+                    <span class="class">Forwarding</span>: send data from an intermediate pipeline stage directly to another stage. (Instead of writing result back to register and waiting to read from that register send data directly to next pipeline.)<br>
+                    <br>
+                    Example with data forwarding:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td><code>add $8, $9, $10</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>add $11, <u>$8</u>, $12</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td><u>ID</u></td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    The data was forwarded directly from the EX phase of instruction 1 to the EX phase of instruction 2 in the next cycle.<br>
+                    <br>
+                    This takes extra hardware. Thus, with forwarding:<br>
+                </p>
+                <ul>
+                    <li>saved two stall cycles in this example</li>
+                    <li>implementing forwarding increase hardware complexity</li>
+                    <li>we can't always avoid stalls by forwarding; if the value isn't ready in time we can't forward backward in the time</li>
+                </ul>
+                <br>
+                <p>
+                    Example: Loading into a register immediately before usage load-use data hazard.
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                    </tr>
+                    <tr>
+                        <td><code>lw $16, 0($8)</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX (0 + $8)</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>sub $9, $16, $10</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>- (stall)</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Note that the <code>MEM</code> in row 2 is linked to the <code>EX</code> in row 3. (That is, MEM &harr; EX.)<br>
+                    <br>
+                    Load from memory the value is not ready until it is actually loaded from MEM at the end of MEM stage. Hence we still must stall. We did save one stall cycle from the case without forwarding.<br>
+                </p>
+                <br>
+                <b>Branch Prediction</b>
+                <p>
+                    It tries to predict to the best of our abilities the outcome of the branch condition. Then, we're only wasted time if the guess was wrong.<br>
+                </p>
+                <ul>
+                    <li>
+                        (1) Simple Branch Prediction
+                        <ul>
+                            <li>predict the branch is never taken</li>
+                            <li>fetch the instruction (no delay)</li>
+                            <li>stall only when we guessed wrong</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Example: Wrong Prediction<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                    </tr>
+                    <tr>
+                        <td><code>beq $0, $0, label</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>next instruction</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td colspan="3">---(flush)---&rarr;</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    If we guessed correctly, no stall!<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <td><code>bne $0, $0, label</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>next instruction</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <ul>
+                    <li>
+                        (2) Static Branch Prediction
+                        <ul>
+                            <li>base predictions on typical branch behaviour</li>
+                        </ul>
+                    </li>
+                </ul>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>loop:<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>&nbsp;&nbsp;bne $4, $0, loop<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Backwards branches are often used for loops; loops are often ran more than once, so always guess the branch will be taken for backwards branches.<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>&nbsp;&nbsp;beq $3, $0, else<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>else:<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>&nbsp;&nbsp;...<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Forward branches are often used for if statement and if-else statement. Guess that forward loops are not taken, if you have an <code>if, elif, elif, ..., else</code> chain, all but one are NOT taken!<br>
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec10">
+                <h3>Lecture 10 - 06/02/2018</h3>
+                <hr>
+
+                <b>Midterm Review</b>
+                <p>
+                    Office hours for this week: Today 16:30 - 18:30 <br>
+                    Normally Thursdays 16:30 - 18:30<br>
+                    <br>
+                    Midterm Thursday 16:30 - 18:20, check seating online (link posted on Piazza if you don't know where to look)<br>
+                    <br>
+                    You don't have to know the proof of Boolean algebra. (But you do need to put those Boolean algebra on you cheat sheet!)<br>
+                    <br>
+                    You won't ask for doing math with 32-bit fixed width. (32-bit is too big and you only have 2 hours to write your midterm!)<br>
+                    <br>
+                    You won't ask for drawing a terrible circuit diagram.<br>
+                    <br>
+                    By the way, we still have class before the midterm on this Thursday!<br>
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec11">
+                <h3>Lecture 11 - 08/02/2018</h3>
+                <hr>
+                <p>
+                    Midterm today at 16:30 YaY! :)<br>
+                    <br>
+                    Last time, we talked about pipeline hazards - data, structural and control.<br>
+                    We talked about data forwarding for data hazards too.<br>
+                    We also talked about branch prediction for control.<br>
+                </p>
+                <ul>
+                    <li>Simple brunch prediction: always assume brunch is NOT taken</li>
+                    <li>Static branch prediction: Guess based on typical behaviours</li>
+                </ul>
+                <br>
+                <b>Dynamic Branch Prediction</b>
+                <p>
+                    This is what we left last time.<br>
+                    Dynamic branch prediction predicts the behaviour of branches based on recent history. It keeps track of recent branches. Also, it increases complexity and has fewer stalls, but at the cost of increased complexity, it needs more power consumption.<br>
+                </p>
+                <br>
+                <b>Software Solution</b>
+                <p>
+                    It is aware of potential hazards and structure code in such a way to avoid them as often as possible.<br>
+                    <br>
+                    Example:<br>
+                </p>
+                <span>
+                    <pre><code>
+                        <span class="cline">01&nbsp;&nbsp;</span>sub $2,&nbsp; $4, $5<br>
+                        <span class="cline">02&nbsp;&nbsp;</span>slt $12, $2, $5<br>
+                        <span class="cline">03&nbsp;&nbsp;</span>slt $18, $6, $2<br>
+                        <span class="cline">04&nbsp;&nbsp;</span>add $13, $7, $4<br>
+                    </code></pre>
+                </span>
+                <p>
+                    Assume pipeline with NO forwarding...<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><code>sub $2, $4, $5</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $12, $2, $5</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td>slt $18, $6, $2</td>
+                        <td colspan="4"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>add $13, $7, $4</code></td>
+                        <td colspan="5"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>Assume with forwarding...</p>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td><code>sub $2, $4, $5</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $12, $2, $5</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $18, $6, $2</code></td>
+                        <td colspan="2"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>add $13, $7, $4</code></td>
+                        <td colspan="3"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    What if our hardware doesn't support data forwarding? Can we do better than 2 stalls?<br>
+                    We can rearrange code (so long as it doesn't change the actual program) to avoid hazards.<br>
+                    The only requirement for this block of code is that the <code>slt</code>'s happen after the <code>sub</code>.<br>
+                </p>
+                <br>
+                <table class="textTable">
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                    </tr>
+                    <tr>
+                        <td><code>sub $2, $4, $5</code></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>add $13, $7, $4</code></td>
+                        <td></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $12, $2, $5</code></td>
+                        <td colspan="2"></td>
+                        <td>IF</td>
+                        <td>-</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                    <tr>
+                        <td><code>slt $13, $7, $4</code></td>
+                        <td colspan="4"></td>
+                        <td>IF</td>
+                        <td>ID</td>
+                        <td>EX</td>
+                        <td>MEM</td>
+                        <td>WB</td>
+                    </tr>
+                </table>
+                <p>So we save 1 stall by restructuring our code.<br></p>
+                <br>
+                <b>Memory</b>
+                <p>
+                    Until now, we've only talked about 2 types of memory: registers, and "main memory" where program and data are stored.<br>
+                </p>
+                <ul>
+                    <li>
+                        Metrics of Memory, characteristics
+                        <ul>
+                            <li>Cost per unit of storage
+                                <ul>
+                                    <li>How expensive is our memory? This affects how much of this memory we can feasibly have.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Performance
+                                <ul>
+                                    <li>How long does our memory access take (latency)?</li>
+                                    <li>How many memory accesses can we do per unit of time (throughput)?</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Is the memory volatile?
+                                <ul>
+                                    <li>Volatile memory does NOT hold its data through a power cycle (power being turned off and on).</li>
+                                    <li>Non-volatile memory <u>does</u> hold its data without a power source.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Registers are part of our CPU
+                            </li>
+                            <li>
+                                Main Memory
+                                <ul>
+                                    <li>where our program/data are stored so it can be executed</li>
+                                    <li>
+                                        Often (always) implemented with RAM (Random Access Memory)
+                                        <ul>
+                                            RAM takes the same amount of time to read away location of the memory
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                DRAM (dynamic RAM) and SRAM (static RAM)
+                            </li>
+                            <li>
+                                Main memory is comprised of DRAM
+                            </li>
+                            <li>
+                                Registers: expensive, fastest, volatile
+                            </li>
+                            <li>
+                                SRAM (cache): expensive (cheaper than register), fastest next to registers, volatile
+                            </li>
+                            <li>
+                                DRAM (main memory): cheaper, slower (almost factor of 100 slower than SRAM), volatile
+                            </li>
+                            <li>
+                                Hard drives: very cheap, very slow, non-volatile
+                                <ul>
+                                    <li>spinning disk drive (very very slow)</li>
+                                    <li>solid state drive (fast than spinning disk drive, but still slower than DRAM)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    It is very common for programmers to say "memory is cheap".<br>
+                    What they should really say is "slower memory is cheap"<br>
+                    <br>
+                    In a perfect world, we have unlimited fast memory.<br>
+                    <br>
+                    In reality, fast memory is expensive (i.e. registers, SRAM) and slower memory is cheaper (e.g. DRAM, Hard Disks).
+                    <br>
+                    Our programs need memory, our programs <u>ARE</u> memory.<br>
+                    So our goal is to satisfy as many memory requests as fast as possible.<br>
+                    <br>
+                    In order to achieve this goal, we implement a memory hierarchy.<br>
+                    It goes from very fast memory to slower memory, only grabbing from slower memory when we absolutely need to.<br>
+                    <br>
+                    Main memory is slow and registers are fast, but our registers are very limited (expensive per bit).<br>
+                    So we stick in between main memory and our registers - a fast "cache" of memory made typically of SRAM.<br>
+                    <br>
+                    There is a example memory hierarchy.<br>
+                </p>
+                <img src="./image/cs230/lec11/11_1.png">
+                <p> <br>
+                    The goal of our cache is to be larger than our register storage, and when our registers need to fetch memory values, they grab from the cache.<br>
+                    Caches more expensive then main memory, so our cache is much smaller than main memory.<br>
+                    <br>
+                    It can't hold all of program/data at once.<br>
+                    If we try to fetch something from our cache to load into our registers and it's not there, then our cache must go grab that data from main memory (very slow). When the cache doesn't have the data we want, it is called a "<span class="key">cache miss</span>".<br>
+                    When it is time to copy data from main memory into the cache - the <span class="key">miss penalty</span>.<br>
+                    <br>
+                    On the flip side, if the cache does have our data then we just load into our registers - this is called a <span class="key">cache hit</span>.<br>
+                    It costs to fetch from cache - <span class="key">hit time</span>.<br>
+                    hit time &lt;&lt;&lt;&lt; miss penalty<br>
+                    <br>
+                    So if we have a cache miss, we must go to main memory which is very slow. We therefore want to limit cache misses to as few as possible. How to do that?<br>
+                    <br>
+                    Observation: We can't load our entire program/data into our cache at once.<br>
+                    But in any given period of time, we only need a certain subset of program/data. This set of data is called our "working set".<br>
+                    <br>
+                    We work with the assumption that working set &lt;&lt; size (all data/memory).<br>
+                    We want for the data in our cache to be as close to the working set as possible.<br>
+                    <br>
+                    How to maximize probability that we save the data we need in our cache?<br>
+                    We follow the "principle of locality".<br>
+                    The idea is things that are close together are most likely to be used together. (close together things are related)<br>
+                    <br>
+                    What do we mean by close together?<br>
+                    Typically there is 2 types of locality we're interested in.<br>
+                </p>
+                <ul>
+                    <li>
+                        Temporal Locality (Time)
+                        <ul>
+                            <li>Data that was recently used is likely to be used again soon (e.g. loops)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Structural Locality (Space)
+                        <ul>
+                            <li>Data that is close (physically) to data that was recently used will likely be used soon.</li>
+                            <li>For examples, iterating over a array, our program itself - instructions are ordered one after another in memory.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    So, how do we apply these principles to loading our cache?<br>
+                    Don't throw data away as soon as it is used, hold on to more recently used data on overwrite older accessed memory first.<br>
+                    If you're asked to load the word at address X in main memory, don't just load that one word, load it into the cache AND several nearby words before and after it in memory.<br>
+                </p>
+            </section>
+            <hr>
+            
+            <section id="lec12">
+                <h3>Lecture 12 - 13/02/2018</h3>
+                <hr>
+                <b>Recall</b>
+                <ul>
+                    <li>Cache Hit: the memory we want to access is already loaded into the cache</li>
+                    <li>Cache Miss: the memory we want to access is <u>NOT</u> already loaded into the cache</li>
+                </ul>
+                <p>
+                    What actually happens when a hit or miss occur? Firstly, we need a bit more vocabulary.<br>
+                </p>
+                <ul>
+                    <li>Memory Block: a grouping of 1 or more (2, 4, 8, 16, ...) words in memory</li>
+                    <li>Cache Slot: a spot in the cache that can accommodate one memory block</li>
+                </ul>
+                <p>
+                    On a cache bit, the value is read from the cache, and the processor continues execution.<br>
+                    <br>
+                    On a cache miss, we have to stall the CPU pipeline and fetch a memory block from the next level of hierarchy (main memory).<br>
+                    If the memory we miss was an INSTRUTION, then we must restart IF phase.<br>
+                    If the memory was data, then finish the data access.<br>
+                </p>
+                <br>
+                <b>Cache Structure</b>
+                <p>
+                    Note: This is in textbook section 5.2 of 4<sup>th</sup> edition.<br>
+                    <br>
+                    How does the CPU ask the cache for data?<br>
+                    The CPU tries to access memory at a specific address. That address corresponds to main memory.<br>
+                    Our cache is much smaller than main memory. This means an address in main memory is not a location in our cache.<br>
+                    Thus, we must structure our cache such that...<br>
+                    <br>
+                    We need to know where to look in our cache to correspond to a specific address of main memory (which slot stores which block).<br>
+                    <br>
+                    We must be able to check if that address <u>is</u> currently loaded into our cache. (is this a hit or a miss?)<br>
+                    <br>
+                    We have 3 methods for structuring our cache.<br>
+                </p>
+                <br>
+                <b>Direct-Mapped Cache</b>
+                <p>
+                    Each memory block is mapped to exactly ONE slot in our cache, so block X can only ever be in slot Y.<br>
+                    <br>
+                    Example:<br>
+                    Memory block is 2 words, 16 blocks in main memory, 4 slots in our cache.<br>
+                    Remember, each slot can hold 1 block.<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th>Address</th>
+                        <th rowspan="2" class="tableBottomLine">Main Memory</th>
+                        <th>Word number</th>
+                        <th rowspan="2">Block number</th>
+                    </tr>
+                    <tr>
+                        <th>(in bytes)</th>
+                        <th>(4 bytes/word)</th>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">0</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>0</td>
+                        <td rowspan="2">0</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">4</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>1</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">8</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>2</td>
+                        <td rowspan="2">1</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">12</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>3</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">16</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>4</td>
+                        <td rowspan="2">2</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">20</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableRightLine">.<br>.<br>.</td>
+                        <td class="tableBox rectangle">.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                    </tr>
+                
+                    <tr>
+                        <td class="tableRightLine">48</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>12</td>
+                        <td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">52</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">.<br>.<br>.</td>
+                        <td class="tableBox rectangle">.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                        <td>.<br>.<br>.</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">120</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>30</td>
+                        <td rowspan="2">15</td>
+                    </tr>
+                    <tr>
+                        <td class="tableRightLine">124</td>
+                        <td class="tableBox rectangle"></td>
+                        <td>31</td>
+                    </tr>
+                </table>
+                <p>
+                    In a direct mapping, in order to find which cache slot corresponds to a given memory block, you simply work modulo the number of slots.<br>
+                    <span class="math">(Cache Slot Number) = (Memory Block Number) mod (Number of Cache Slots)</span><br>
+                    <br>
+                    Or equivalently we need 2 bits to represent our slots (<span class="math">4 = 2<sup>2</sup></span>).<br>
+                    <br>
+                    You need to determine the binary representation of your memory block.<br>
+                    Keep the lowest order number of cache slot bits, that is, your cache slot number.<br>
+                    <br>
+                    What if we had 8 cache slots?<br>
+                    <br>
+                    Example: Which cache slot does the memory block containing address 48 map to?<br>
+                    <br>
+                    What block is address 48 in? What word does address 48 correspond to?<br>
+                    4 bytes/word so <span class="math">48/4 = 12</span>.<br>
+                    <br>
+                    What block is word 12 in? 2 words/block so <span class="math">12/2 = block 6</span>.<br>
+                    <br>
+                    What cache slot does block 6 map to? <span class="math">6<sub>10</sub> = 110<sub>2</sub></span><br>
+                    Look at the last 2 bits, we know that cache slot <span class="math">10<sub>2</sub> = 2<sub>10</sub></span><br>
+                    Or we can do <span class="math">6 mod 4 = 2</span>, so cache slot is 2.<br>
+                    <br>
+                    Of course, this is not the only memory block that maps to slot 2, which other blocks map to slot 2? 2, 6 , 10 and 14.<br>
+                    <br><br>
+                    Let's figure out the cache slot of address 48 if we have 8 cache slots, memory block 6.<br>
+                    <span class="math">6 mod 8 = 6</span>, so cache slot is 6.<br>
+                    Or <span class="math">6 = 110<sub>2</sub></span>, so the cache slot is 6.<br>
+                    <br>
+                    If we have 8 cache slots, which other blocks map to slot 6? 6 and 14.<br>
+                    <br><br>
+                    So, we've achieved our first requirement for ordering our cache (which slot to look in for the value of a memory address).<br>
+                    <br>
+                    Have we solved our second requirement? No!<br>
+                    We only know which slot CAN store the given block for that address, not whether or not it DOES store that block, since it could be storing another block that maps to that slot.<br>
+                    <br>
+                    Since many memory blocks map to 1 cache slot in a direct-mapped cache, we also store TAGS that say which block this cache slot currently corresponds to.<br>
+                    <br>
+                    Since our cache slot tells us already the lowest order <span class="math">log<sub>2</sub></span> (number of cache slot) bits of our block number, our tag only needs to be the remaining higher order bits.<br>
+                    Or equivalently, <span class = "math">(Memory Block Number) / (Number of Cache Slots)</span>.<br>
+                    <br>
+                    So, is this enough to meet requirement 2? No.<br>
+                    It's because until we've loaded memory into our cache, all the data in the cache and the tags are garbage - not the actual data of our program.<br>
+                    <br>
+                    So to solve this problem, we give ourselves "valid bit" that says whether or not that slot is valid.<br>
+                    At	start, valid bits all set to 0.<br>
+                    When a memory access loads a block into a slot valid bit is set, tag is updated.<br>
+                    <br>
+                    Let's simulate a cache, with our parameters described before.<br>
+                    For the following memory accesses:<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 22: Cache Miss<br>
+                    <span class="math">
+                        word/block = 22/2 = block 11<br>
+                        11<sub>10</sub> = 1011<sub>2</sub><br>
+                        slot: 11<sub>2</sub> = 3<sub>10</sub><br>
+                        Tag: 10<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 22 and 23 (block 11), bytes 88 - 95</td>
+                     </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 16: Cache Miss<br>
+                    <span class="math">
+                        word/block = 16 / 2 = block 8<br>
+                        8<sub>10</sub> = 1000<sub>2</sub><br>
+                        slot: 00<sub>2</sub> = 0<sub>10</sub><br>
+                        Tag: 10<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>	
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 22 and 23 (block 11), bytes 88 - 95</td>
+                     </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 3: Cache Miss<br>
+                    <span class="math">
+                        word/block = 3 / 2 = block 1<br>
+                        1<sub>10</sub> = 0001<sub>2</sub><br>
+                        slot: 01<sub>2</sub> = 1<sub>10</sub><br>
+                        Tag: 00<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>	
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>Y</td>
+                        <td>00</td>
+                        <td>words 2 and 3, block 1 (bytes 8 - 15)</td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 22 and 23 (block 11), bytes 88 - 95</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 14: Cache Miss<br>
+                    <span class="math">
+                        word/block = 14 / 2 = block 7<br>
+                        7<sub>10</sub> = 0111<sub>2</sub><br>
+                        slot: 11<sub>2</sub> = 3<sub>10</sub><br>
+                        Tag: 01<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>	
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>Y</td>
+                        <td>00</td>
+                        <td>words 2 and 3, block 1 (bytes 8 - 15)</td>
+                    </tr>
+                    <tr>
+                        <td>word 143</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>01</td>
+                        <td>words 14 and 15 (block 7)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Accessing word 2: Cache Hit<br>
+                    <span class="math">
+                        word/block = 2 / 2 = block 1<br>
+                        1<sub>10</sub> = 0001<sub>2</sub><br>
+                        slot: 01<sub>2</sub> = 1<sub>10</sub><br>
+                        Tag: 00<sub>2</sub><br>
+                    </span>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <td>word 22</td>
+                        <th></th>
+                        <th>slot number</th>
+                        <th>valid</th>
+                        <th>tag</th>
+                        <th>data</th>
+                    </tr>
+                    <tr>
+                        <td>word 16</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>Y</td>
+                        <td>10</td>
+                        <td>words 16 and 17, block 8 (bytes 64 - 71)</td>
+                    </tr>
+
+                    <tr>
+                        <td>word 3</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>Y</td>
+                        <td>00</td>
+                        <td>words 2 and 3, block 1 (bytes 8 - 15)</td>
+                    </tr>
+                    <tr>
+                        <td>word 14</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>word 2</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>Y</td>
+                        <td>01</td>
+                        <td>words 14 and 15 (block 7)</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    What another word that would result in a hit currently? 2, 3, 14, 15, 16 and 17.<br>
+                    Our block size is one parameter we could tune to try and limit cache misses.<br>
+                    <br>
+                    What do changes in our block size do?<br>
+                </p>
+                <ul>
+                    <li>
+                        Larger block size <u>may</u> reduce miss rate.
+                        <ul>
+                            <li>
+                                Larger block size means more memory is read into the cache when a miss occurs. Implements the idea of structural locality (spatial locality)
+                                <ul>
+                                    <li>For example, if we block size 4 words, and you ask for word 1 and it is a miss the words 0 - 3 get loaded into the cache.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        If our cache size is fixed and we increase the block size...
+                        <ul>
+                            <li>larger blocks mean fewer slots.
+                                <ul>
+                                    <li>For example we have 4 cache slots when block size was 2 words, if we make it 4 words we can only have 2 slots.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                fewer cache slots means we have to overwrite slots more often, which we means we're throwing out data we were just using more often.
+                                <ul>
+                                    <li>Reduced temporal locality.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Also, larger block size means a larger read occurs on miss; miss penalty is larger the larger read times may offset the fewer potential cache misses.
+                    </li>
+                </ul>
+                <p>
+                    So far we've only generally talked about memory accesses, really we're been discussing reads.<br>
+                    It's because what happens when you want tot write to a memory address in a caches system?<br>
+                    When we write, we must update main memory.<br>
+                    What policy should we follow for doing so?<br>
+                </p>
+                <br>
+                <b>3 different Policies</b>
+                <ul>
+                    <li>
+                        <span class="key">Write-through</span>
+                        <ul>
+                            <li>When a write occurs update both the cache and main memory.</li>
+                            <li>Every single write made accesses main memory, individual writes are very slow.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Write-back</span>
+                        <ul>
+                            <li>When a write is made, update the value stored in the corresponding cache slot.</li>
+                            <li>It could have multiple writes to same block.</li>
+                            <li>It keeps track of which cache slots have pending writes in them by setting a "dirty bit" for that slot.</li>
+                            <li>When a block would be evicted from its cache slot, if the dirty bit is set, write all values in that cache slot to their corresponding places in memory.
+                            <ul>
+                                <li>For example, we load block 11 in our example above, we then write to words 22 and 23, so their values are updated in the cache and dirty bit is set. Then, when we go to load block 7 which maps to the same cache slot, we write the data from cache slot 3 into main memory words 22 and 23 BEFORE over writing it in the cache with block 7.</li>
+                            </ul>
+                            <ul>
+                                <li>When you read in a new block, unset the dirty bit.</li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="key">Write buffered</span>
+                        <ul>
+                            <li>It separates dedicated buffer for dirty blocks.</li>
+                            <li>Writes are made to the buffer, execution continuous.</li>
+                            <li>When necessary, the buffer flushes makes all writes to main memory.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    There are other ways to structure a cache other than direct-mapped.<br>
+                </p>
+                <br>
+                <b>Fully Associative Cache</b>
+                <p>
+                    It allows a given memory block to store to ANY cache slot.<br>
+                    Since a block can be stored in any slot, we have to search every slot in our cache.<br>
+                    This is slow... It defeats the purpose of a cache.<br>
+                    It requires all entries to be searched at once, which is a much more expensive/complex piece of hardware.<br>
+                </p>
+                <br>
+                <b>A N-way Associative Cache</b>
+                <p>We will talk about this next class.</p>
+            </section>
+            <hr>
+            
+            <section id="lec13">
+                <h3>Lecture 13 - 15/02/2018</h3>
+                <hr>
+                <b>3 Different Policies For Handling Writes</b>
+                <ul>
+                    <li>
+                        <span class="keyword">Write-through</span>: Immediately write to both the cache and main memory for each individual write instructions.
+                    </li>
+                    <li>
+                        <span class="keyword">Write-back</span>: Write to the cache only when write is done mark that cache slot as "dirty" by setting a "dirty bit" that slot to true
+                    </li>
+                    <li>
+                        <span class="keyword">Write buffered</span>:
+                    </li>
+                </ul>
+                <table class="textTable">
+                    <tr>
+                        <th>Word</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>Word</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th class="tableBottomLine">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>5</td>
+                        <td rowspan="4">&nbsp;Block 1&nbsp;&nbsp;</td>
+                        <td rowspan="4">&nbsp;</td>
+                        <td>8</td>
+                        <td>15</td>
+                        <td rowspan="4" class="tableRightLine">&nbsp;Block 3&nbsp;&nbsp;</td>
+                        <td rowspan="9" class="tableRightLine tableBottomLine">
+                            This place of table is main memory.<br>
+                            <br>
+                            Block Size: 4 words<br>
+                            <br>
+                            <code class="left">
+                                <span class="cline">01&nbsp;&nbsp;</span> lw&nbsp;&nbsp;&nbsp;$5, 12($0)<br>
+                                <span class="cline">02&nbsp;&nbsp;</span> word @byte12<br>
+                                <span class="cline">03&nbsp;&nbsp;</span> word 3<br>
+                            </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>12</td>
+                        <td>9</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>8</td>
+                        <td>11</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>-1</td>
+                        <td rowspan="4">&nbsp;Block 2&nbsp;&nbsp;</td>
+                        <td rowspan="4">&nbsp;</td>
+                        <td>12</td>
+                        <td>19</td>
+                        <td rowspan="4">&nbsp;Block 4&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>17</td>
+                        <td>13</td>
+                        <td>58</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>42</td>
+                        <td>14</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>1000</td>
+                        <td>15</td>
+                        <td>64</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Fully Associative Cache</b>
+                <ul>
+                    <li>
+                        It allows a given memory block to be stored in any slot.
+                    </li>
+                    <li>
+                        Since no direct mapping between blocks and slots, we must check all our cache slots to determine if they hold a block we are looking for.
+                    </li>
+                    <li>
+                        It requires all memories can be searched at once, so in one time step we can use "do you have block 5 currently loaded" and get the answer.
+                    </li>
+                    <li>
+                        It is more complex/expensive hardware.
+                    </li>
+                </ul>
+                <br>
+                <b>N-way Associative Cache</b>
+                <ul>
+                    <li>group our cache slots together into sets</li>
+                    <li>each for contains N-slots</li>
+                    <li>we map from block number to set number
+                        <ul>
+                            <li>exactly the same as direct mapped <span class="math">(Set Number) = (Block Number) mod (Number of Sets)</span></li>
+                        </ul>
+                    </li>
+                    <li>can store that block in any slot in its set</li>
+                    <li>only need to search entries in a given set</li>
+                    <li>cheaper than fully associative since we only need parallel search for each slot in a set</li>
+                </ul>
+                <br>
+                <b>Compare 3 Different Kinds of Caches</b>
+                <p>
+                    Each cache has 4 slots and we're accessing the following blocks in order.<br>
+                    Blocks: 0, 8, 0, 6, 8<br>
+                </p>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="5">Direct-Mapped</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;Slot&nbsp;</th>
+                        <th>&nbsp;Data&nbsp;</th>
+                        <th>&nbsp;Block Number&nbsp;</th>
+                        <th>&nbsp;Slot Number&nbsp;</th>
+                        <th>&nbsp;Hit/Miss&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td><del>MEM[0]</del>&nbsp;<del>MEM[8]</del>&nbsp;<del>MEM[0]</del>&nbsp;MEM[8]</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td></td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MEM[6]</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                </table>
+                <br>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="6">2-way Associative Cache</th>
+                    </tr>
+                    <tr>
+                        <th>Set Number</th>
+                        <th>Slot Number</th>
+                        <th>Data</th>
+                        <th>Block Number</th>
+                        <th>Set Number</th>
+                        <th>Hit/Miss</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">0</td>
+                        <td>0</td>
+                        <td><del>MEM[0]</del>&nbsp;MEM[6]</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>MEM[8]</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">1</td>
+                        <td>2</td>
+                        <td></td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Hit</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>Hit</td>
+                    </tr>
+                </table>
+                <br>
+                <table class="textTable">
+                    <tr>
+                        <th colspan="4">Fully Associative Cache</th>
+                    </tr>
+                    <tr>
+                        <th>Slot Number</th>
+                        <th>Data</th>
+                        <th>Block Number</th>
+                        <th>Hit/Miss</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>MEM[0]</td>
+                        <td>0</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>MEM[8]</td>
+                        <td>8</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MEM[6]</td>
+                        <td>0</td>
+                        <td>Hit</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>Miss</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>8</td>
+                        <td>Hit</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    If you were designing a CPU and were deciding what kind of cache you want to put in to your CPU, what level of associativity do you choose?
+                </p>
+                <ul>
+                    <li>
+                        Increased associativity &rarr; Decreased miss rate
+                        <ul>
+                            <li>
+                                Diminishing Returns: If we have N sets with P slots each, then until we read P blocks that map to set number i, we don't have to throw anything out, if we're that for away from the original memory, we probably don't care about it anymore.
+                            </li>
+                        </ul>			
+                    </li>
+                    <li>Increased associativity increases complexity and cost of our cache and therefore our CPU</li>
+                    <li>Trade-off</li>
+                </ul>
+                <p>
+                    How does our cache decide what data it's going to replace when it must evict a block?
+                </p>
+                <ul>
+                    <li>Direct Mapped: We have no choice slot is affected by blocked number.</li>
+                    <li>
+                        Associative: Prefer empty/invalid slots (unused)
+                        <ul>
+                            <li>temporal locality says we should evict the lease recently used block</li>
+                            <li>we must keep track of order accesses &rarr; increased complexity/price</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Alternatively, just do random replacement.
+                        <ul>
+                            <li>simple and fast</li>
+                            <li>not that much waste then lease recently used in terms of miss rate</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Cache Performance</b>
+                <p>
+                    Before our CPU time calculations ignored the cost of accessing memory.<br>
+                    We must now include memory stall cycles in our CPY time calculations.<br>
+                    Now...<br>
+                    <span class="math">CPU Time = (CPU Execution Cycles + Memory Stall Cycles) &times; Cycle Time </span><br>
+                    <br>
+                    Memory stall cycles from cache misses:<br>
+                    <span class="math">
+                        (Number of Memory Accesses &divide; Program) &times; Miss Rate &times; Miss Penalty
+                    </span><br>
+                    or <span class="math">
+                        (Instructions &divide; Program) &times; (Misses &divide; Instructions) &times; Miss Penalty</span><br>
+                    <br>
+                    Example: How much faster is a perfect cache compare with:<br>
+                    Instruction cache miss rate: 2%<br>
+                    Data access cache miss rate: 4%<br>
+                    Miss penalty: 100 cycles<br>
+                    Load/Stores: 36% of all our instructions<br>
+                    Base CPI (perfect cache): 2.0<br>
+                    So we have...<br>
+                    <span>
+                        0.02 &times; 100 cycles = 2 cycles/instructions<br>
+                        0.36 &times; 0.04 &times; 100 cycles = 1.44 cycles/instructions<br>
+                    </span>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>Actual CPI</td>
+                        <td>&nbsp;= base CPI + stall cycles/instructions</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 2.0 + 2.00 (IF misses) + 1.44 (data misses)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;= 5.44 cycles/instructions</td>
+                    </tr>
+                </table>
+                <br>
+                <p>So, how much faster is the perfect cache?</p>
+                <table class="math">
+                    <tr>
+                        <td></td>
+                        <td>CPU Time Stalls &divide; CPU Time Perfect </td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>(IC &times; CPI Stall &times; Cycle Time) &divide; (IC &times; CPI Perfect &times; Cycle Time)</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>CPI Stalls &divide; CPI Perfect</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>5.44/2</td>
+                    </tr>
+                    <tr>
+                        <td>=&nbsp;</td>
+                        <td>2.72 times faster</td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    In this example above, we assume hit time is 0. In reality, we must talk about <u>average memory access time</u> (AMAT).<br>
+                    <span class="math">AMAT = Hit Time + Miss Rate + Miss Penalty</span><br>
+                    <br>
+                    Example: Given 1 ns clock, hit time is 1 cycle, miss penalty of 20 cycles, and instruction cache miss rate is 5%.<br>
+                </p>
+                <table class="math">
+                    <tr>
+                        <td>AMAT</td>
+                        <td>=&nbsp;</td>
+                        <td>1ns + 0.05 &times; 20 cycles &times; (1ns /cycle)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>1ns + 1ns</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>=&nbsp;</td>
+                        <td>2ns</td>
+                    </tr>
+                </table>
+                <br>
+                <b>Multi-Level Caches</b>
+                <p>
+                    When we first discuss the memory hierarchy, we mentioned the possibility that our cache level between our registers and main memory could be multiple levels. This is often the case.<br>
+                    <span class="key">Multi-level</span> cache follows the same principle as the rest of memory hierarchy, as we go down each step in our hierarchy, we have a larger pool of less expensive, but slower memory than the precious level.<br>
+                </p>
+                <ul>
+                    <li>
+                        Level 1(L1) Cache
+                        <ul>
+                            <li>very small, very fast</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Level 2(L2) Cache
+                        <ul>
+                            <li>larger than L1, but slower</li>
+                            <li>still faster than main memory</li>
+                        </ul>
+                    </li>
+                    <li>Many systems have more levels, sometimes for specialised purposes.</li>
+                </ul>
+                <p>
+                    What we have said before about hit and misses still hold.<br>
+                </p>
+                <ul>
+                    <li>If data needed is in current level of hierarchy (e.g. L1 cache), then we have a hit and we use that data.</li>
+                    <li>If the data needed is not in our current level (e.g. L1 cache), then it is a miss and we must go to the next level (e.g. L2 cache).</li>
+                </ul>
+                <p>
+                    Obviously, misses can propagate down the hierarchy.
+                </p>
+                <ul>
+                    <li>L1 doesn't have the data, it asks L2</li>
+                    <li>L2 doesn't have the data, it asks main memory</li>
+                </ul>
+            </section>
+            <hr>
+            
+            <section id="lec14">
+                <h3>Lecture 14 - 27/02/2018</h3>
+                <hr>
+                <p>
+                    <u>Recall</u>:<br>
+                    We can add multiple caches to our memory hierarchy. Hence if out L1 cache misses, it goes to our L2 cache; if our L2 cache misses, it goes to the next level in the hierarchy, etc.<br>
+                    <br>
+                    Example: Consider the following...<br>
+                </p>
+                <ul>
+                    <li>Base CPI: 1.0</li>
+                    <li>Clock Rate: 4GHz, that is, <span class="math">cycle time = 1 &divide; (4&times;10<sup>9</sup>) = 0.25 ns/cycle</span></li>
+                    <li>Miss Rate: 2% (primary cache)</li>
+                    <li>Main Memory Access Time: 100ns</li>
+                </ul>
+                <p>
+                    With just a primary cache:<br>
+                    <span class="math">
+                        Miss Penalty = 100 ns &divide; 0.25 ns/cycle = 400 cycles<br>
+                        Effective CPI = 1 + 400 &times; 0.02 = 9 cycles per instruction<br>
+                    </span>
+                    <br>
+                    Now let's add an L2 cache. Consider the following...<br>
+                </p>
+                <ul>
+                    <li>Access time for L2 cache = 5ns (access time means an hit or miss)</li>
+                    <li>Global Miss Rate to Main Memory = 0.5%</li>
+                </ul>
+                <p>
+                    Primary cache miss with L2 hit:<br>
+                    <span class="math">5 ns &divide; 0.25 ns/cycle = 20 cycles</span><br>
+                    <br>
+                    Primary cache miss with L2 miss: 400 cycles (same as before)<br>
+                    <br>
+                    <span class="math">Effective CPI = 1.0 + 0.02 &times; 20 + 0.005 &times; 400 = 3.4 CPI</span><br>
+                    Or in other terms, the processor with L2 cache is 9 &divide; 3.4 = 26 times faster.<br>
+                    <br>
+                    In summary, caching helps to increase our performance by lowering the cost of memory access at the cost of adding some overhead and complexity to our hardware. In this case, the trade-off is absolutely worth it.<br>
+                </p>
+                <br>
+                <b>Input and Output (I/O) Devices</b>
+                <p>
+                    Practically, everything connected to our CPU other than our main memory can be thought of as an I/O device.<br>
+                    <br>
+                    Some characteristics of I/O devices we care about are:<br>
+                </p>
+                <ul>
+                    <li>
+                        behaviour characteristics - what is the behaviour of this device?
+                        <ul>
+                            <li>Input - read ONCE only (e.g. keyboard)</li>
+                            <li>Output - write only, cannot read (e.g. print to screen)</li>
+                            <li>Storage - read and write, usually reread/rewritten (e.g. hard drive)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Partner - who (or what) is feeding or reading data to/from the I/O device.
+                        <ul>
+                            <li>Human (e.g. mouse, keyboard</li>
+                            <li>Machine (e.g. network [someone else's computer] modern)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Data Rate - the MAXIMUM rate we can transfer data between our I/O device and our computer.<br>
+                        <ul>
+                            <li>bytes/sec</li>
+                            <li>transfers/sec</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    Additionally, we have I/O controller component in our computer (NOT part of the CPU) facilitates communication between our I/O devices and our CPU.<br>
+                    <br>
+                    We need some way to connect all the components of our computer CPU, main memory, I/O controllers, etc.<br>
+                    <br>
+                    We use to connect the components of our computer what is called a <u>BUS</u>, which is a channel for sending data back and forth often access different components.<br>	
+                </p>
+                <ul>
+                    <li>Physically, this wires along our circuit board (or traces really).</li>
+                    <li>A parallel set of wires for data and synchronization.</li>
+                </ul>
+                <img src="./image/cs230/lec14/14_1.png">
+                <p>
+                    Traditionally, our buses are separated into two types.
+                </p>
+                <br>
+                <b>Bus Types</b>
+                <ul>
+                    <li>
+                        Processor-Memory Bus: connects our CPU to main memory
+                        <ul>
+                            <li>very short in length</li>
+                            <li>the design the bus so it matches the memory organization of our machine itself</li>
+                        </ul>
+                    </li>
+                    <li>
+                        I/O Bus: connects many different devices together
+                        <ul>
+                            <li>can be quite lengthy</li>
+                            <li>doesn't interface directly to main memory</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    We have what is called our <u>Bridge</u> connects our memory and I/O bus, rather than them communicating directly.<br>
+                </p>
+                <br>
+                <b>Bus Signals</b>
+                <p>
+                    An individual bus <u>must</u> send multiple signals.
+                </p>
+                <ul>
+                    <li>
+                        Data Lines
+                        <ul>
+                            <li>carry addresses and data
+                                <ul>
+                                    <li>can be separate, or multiplexed (shared)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Control Lines
+                        <ul>
+                            <li>carry information about the data being carried</li>
+                            <li>indicate <u>data types</u> synchronize transaction</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Serial Communication
+                        <ul>
+                            <li>one bit at a time, on one line</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Parallel communication
+                        <ul>
+                            <li>multiple bits at a time, sent on memory parallel lines (still on bit/line)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>Bus Synchronization</b>
+                <p>
+                    Information begin sent back and forth on a bus needs to be synchronized somehow. So the component making a request needs to know when it is receiving on answer to the request.<br>
+                </p>
+                <ul>
+                    <li>
+                        Synchronous Bus: include a clock on our bus in the control lines, follow a fixed protocol for questions/answers
+                        <ul>
+                            <li>
+                                e.g. CPU could send out a request for a word from memory with the address and instruction (read) at cycle 1; the protocol may say that the memory device must respond with the requested word exactly on cycle 5.
+                            </li>
+                            <li>
+                                Every device on the bus must be synchronized to the same clock (run at the same clock rate)
+                            </li>
+                            <li>
+                                Clock skew is an issue particularly on lengthy buses that are also fast.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Asynchronous Bus: no clock, all requests/answers must follow an handshaking protocol to facilitate synchronization
+                        <ul>
+                            <li>send out signal, wait for acknowledge of that signal before sending next</li>
+                            <li>can support any devices that follow the protocol, no need for clocks</li>
+                            <li>can lengthened as needed</li>
+                        </ul>			
+                    </li>
+                </ul>
+                <br>
+                <b>I/O Programming</b>
+                <p>
+                    How do we actually create hardware that works with I/O devices and our VNA?<br>
+                </p>
+                <ul>
+                    <li>
+                        Memory-Mapped I/O
+                        <ul>
+                            <li>specific parts of our address space correspond to specific I/O devices</li>
+                            <li>reads/writes to those addresses are instead interpreted as reads/writes to that device</li>
+                            <li>what we've seen in MIPS</li>
+                        </ul>
+                    </li>
+                    <li>
+                        I/O Instructions
+                        <ul>
+                            <li>provide special instructions in our architecture for I/O ops</li>
+                            <li>
+                                can only executed when in a high level access mode (kernel mode)
+                                <ul>
+                                    <li>may talk about that late time permitting</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    How do we facilitate communication between our I/O devices and our CPU?<br> 
+                </p>
+                <ul>
+                    <li>
+                        Polling
+                        <ul>
+                            <li>The I/O devices put information about their state in a status register.</li>
+                            <li>CPU must poll (repeatedly check) the status of the register.</li>
+                            <li>If the device is ready perform operation.</li>
+                            <li>If error, take action.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Interrupts
+                        <ul>
+                            <li>The I/O controller <u>interrupts</u> the CPU when a device requires attention (e.g. something was typed in the keyboard).</li>
+                            <li>Asynchronous with respect to instruction execution - Interrupts are not associated with instruction execution, and don't prevent instruction competition.</li>
+                            <li>They pause the current program and take over the CPU - Must save the current state of the program (or at least with CPU) and restore it when done. Very, very costly timewise.</li>
+                            <li>Can have different levels of intercepts, different priorities, and in some circumstances we can ignore an interrupt until later.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <b>I/O Data Transfer</b>
+                <p>
+                    How to move data between our I/O device and memory?<br>
+                </p>
+                <ul>
+                    <li>
+                        Traditional
+                        <ul>
+                            <li>The CPU acts as the middle man between and I/O devices.</li>
+                            <li>Time consuming, uses a lot of CPU time.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Direct Memory Access (DMA)
+                        <ul>
+                            <li>Provide memory addresses directly to I/O controllers.</li>
+                            <li>I/O controller autonomously transfers data</li>
+                            <li>interrupt/poll signal on completion or error to notify the program</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Big problem with DMA!<br>
+                    How to synchronize with cache?<br>
+                </p>
+                <ul>
+                    <li>If block X is in our cache, and DMA updates it in main memory, we now have a stale copy in our cache.</li>
+                    <li>Or if we've dirtied block X in our cache and DMA reads block X from main memory, it gets a stale copy.</li>
+                </ul>
+            </section>
+            <hr>
+            
+
+            <table class="buttomTable">
+                <tr>
+                    <td class="buttomLeftTable"><a href="./cs230_2.html">&larr; Go to Module 2 - Assembly Language</a></td>
+                    <td class="buttomCentreTable"><a href="./cs230.html">&uarr; Go to Index</a></td>
+                    <td class="buttomRightTable"><a href="./cs230_4.html">&rarr; Go to Module 4 - Build and Execute&nbsp;</a></td>
+                </tr>
+            </table>
+            <hr>
+            
+            <p>
+                Find a typo or mistake? Feel free to contact me and I will correct it as soon as possible.
+            </p>
+            <hr>
+            
+            <div class="footer">
+                <p>Thanks For Coming Here. - Calvin Li</p>
+                <a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">
+                    <i class = "fa fa-envelope-square"></i>
+                </a>
+                <a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">
+                    <i class = "fa fa-linkedin-square"></i>
+                </a>       
+                <a href = "https://www.instagram.com/vert_arts/" target = "_blank;">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href = "https://github.com/vertli" target = "_blank;">
+                    <i class="fa fa-github-square"></i>
+                </a>
+                <br>
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a> This work by <a xmlns:cc="http://creativecommons.org/ns#" href="https://vertli.github.io/" property="cc:attributionName" rel="cc:attributionURL">Chun Kit (Calvin) Li</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. Chun Kit (Calvin) Li &copy; 2017 - 2018</p>
+            </div>
+            <hr>
+            
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        
+    </body>
+    
+</html>

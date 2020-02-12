@@ -1,0 +1,111 @@
+code {
+    font-size: 15px;
+    font-family: 'Hack','Open Sans', sans-serif;
+}
+
+.cline {
+    color: rgba(27,31,35,0.3); 
+}
+
+table {
+    background-color: whitesmoke;
+}
+
+
+.header {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.header tr th {
+    padding-left: 1%;
+}
+
+.title {
+    text-align: center;
+}
+
+
+pre code {
+    display: block;
+    border: 0;
+    border-radius: 3px;
+    white-space: initial;
+}
+
+ol, ul {
+    margin-top: -5px;
+}
+
+.buttomTable {
+    width: 100%;
+}
+
+.buttomLeftTable {
+    width: 45%;
+    text-align: left;
+}
+
+.buttomCentreTable {
+    width: 10%;
+    text-align: center;
+}
+
+.buttomRightTable {
+    width: 45%;
+    text-align: right;
+}
+
+.key {
+    font-style: italic;
+    color: darkviolet;
+}
+
+.textTable table {
+    width: auto;
+    text-align: center;
+}
+
+.textTable tr th, .textTable tr td{
+    text-align: center;
+}
+
+.tableUnderline {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: black;
+}
+
+.tableDoubleUnderline {
+    border-bottom-style: double;
+    border-bottom-width: thick;
+    border-bottom-color: black;
+}
+
+.tableLeftLine {
+    border-left-style: solid;
+    border-left-width: thin;
+    border-left-color: black;
+}
+
+.tableBox {
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+}
+
+
+img {
+    background-color: white;
+    padding: 5px;
+}
+
+.leftMargin {
+    margin-right: 0.75em;
+}
+
+.math {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 20px;
+}

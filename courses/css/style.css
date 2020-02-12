@@ -1,0 +1,226 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #4a6f4a;
+    color: #2e3c2e;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    height: 100%;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+hr {
+    border-color: #2e3c2e;
+}
+
+b {
+    color: blue;
+}
+
+.navbar-inverse {
+    background-color: #2e3c2e;
+}
+
+.container {
+    height: auto;
+    background-color: #a2c4a2;
+}
+
+
+.footer {
+    text-align: center;
+    text-align: center;
+    font-size: 1.15em;
+}
+
+.footer i {
+    font-size: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.top {
+    height: 100%;
+    color: yellow;
+    text-align: center;
+}
+
+.top h1 {
+    padding-top: 1.5em;
+    margin-top: 0px;
+    font-size: 3.75em;
+    text-shadow: 2px 2px black;
+}
+
+.top h2 {
+    font-size: 2em;
+    text-shadow: 2px 2px black;
+}
+
+.top a {
+    font-size: 1.5em;
+    color: #ebfaeb;
+    text-shadow: 2px 2px #051405;
+}
+
+.topImg, .about img {
+    height: 412.5px;
+    width: 219.5px;
+    border-radius: 50% 8%;
+    float: left;
+    margin-left: 1em;
+    margin-right: 1.5em;
+    margin-bottom: 1em;
+    border: 2px solid #ddd;
+    padding: 5px;
+}
+  
+h1 center {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-top: 0px;
+    font-size: 1em;
+    color: yellow;
+    text-shadow: 2px 2px black;
+}
+
+.topIntro {
+    font-size: 18px;
+    line-height: 1.15;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.about {
+    height: auto;
+}
+
+
+.about h1 {
+    font-size: 2.25em;
+}
+
+.about h3 {
+    
+    padding-left: 10px;
+}
+
+.about p {
+    font-size: 1.15em;
+    line-height: 1.15;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.arts {
+    height: auto;
+}
+
+.arts ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.arts li {
+    float: left;
+    margin-right: 10px;
+}
+
+.projects {
+    height: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1%;
+}
+
+.projects h1 {
+    text-align: center;
+    font-size: 2.25em;
+}
+
+.projects p {
+    font-size: 14px;
+    text-align: left;
+}
+
+.projects h2 {
+    color: black;
+    text-align: left;
+}
+
+.projects img {
+    float: left;
+    height: 188px;
+    width: 379px;
+    margin: 1%;
+}
+
+.projects table {
+    background-color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.projects table th {
+    border-top: 3px solid grey;
+    border-bottom: 3px solid grey;
+}
+
+/* Change the link color to #111000 (black) on hover */
+.projects table th:hover {
+    background-color: #e6ffe6;
+}
+
+
+.notePage {
+    height: auto;
+}
+
+.notePage p {
+    font-size: 1.15em;
+}
+
+.notePage h1 {
+    font-size: 2.25em;
+    text-align: center;
+}
+
+.notePage table {
+    background-color: whitesmoke;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.notePage table th {
+    text-align: center;
+}
+
+.notePage table .two td {
+    width: 50%;
+}
+
+.notePage table .three td {
+    width: 33.3%;
+}
+
+.notePage table .four td {
+    width: 25%;
+}
+
+a {
+    color: firebrick;
+}
