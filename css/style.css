@@ -688,3 +688,26 @@ footer p {
 
 /* footer ***************************************************/
 /************************************************************/
+
+/* Shallow Water Animation **********************************/
+#shallowWaterAnimation p {
+  margin-left: 5px;
+}
+
+#shallowWaterAnimation img {
+  width: 560px;
+  height: 420px;
+}
+
+#shallowWaterAnimation .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#shallowWaterAnimation iframe {
+  width: 560px;
+  height: 420px;
+}
+/************************************************************/

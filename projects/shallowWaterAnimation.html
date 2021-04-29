@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shallow Water Animation | Calvin Vert Li</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:600,600i" rel="stylesheet"> <!-- for math use -->
+    <link rel="stylesheet" href="../css/font-awesome-5.8.1/all.css">
+</head>
+
+<body onload="restHeight('shallowWaterAnimation'); setHeight()" onresize="location.reload()" onresize="setHeight()">
+
+    <div class="topnav" id="myTopnav">
+        <a href="../index.html" class="active">Calvin Li</a>
+        <a href="../about.html">About</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../contact.html">Contact</a>
+        <div class="topnav-right">
+            <a href="../doc/resume_CKLI.pdf">Résumé</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+
+        <section id="shallowWaterAnimation">
+            <h1><scan class="keyword">2D Shallow Water Equation Animation</scan></h1>
+
+            <p>The shallow water equations in 2D space are modelled as the following Partial Differntial Equations (PDE):</p>
+            $$
+            \frac{\partial }{\partial t}\left\lbrack \begin{array}{c}
+            h\\
+            \mathrm{hu}\\
+            \mathrm{hv}
+            \end{array}\right\rbrack +\frac{\partial }{\partial x}\left\lbrack \begin{array}{c}
+            \mathrm{hu}\\
+            {\mathrm{hu}}^2 +\frac{{\mathrm{gh}}^2 }{2}\\
+            \mathrm{huv}
+            \end{array}\right\rbrack +\frac{\partial }{\partial y}\left\lbrack \begin{array}{c}
+            \mathrm{hv}\\
+            \mathrm{huv}\\
+            {\mathrm{hv}}^2 +\frac{{\mathrm{gh}}^2 }{2}
+            \end{array}\right\rbrack =0\;\;\;\ldotp \ldotp \ldotp \left(1\right)
+            $$
+            <p>where \(h\) is the height of water, \(u,v\) is the 2D velocity vector, and \(g=9.81\) is the gravitational acceleration.</p>
+            <p>Consider the following initial boundary values for the above PDE (1):</p>
+            <ul>
+                <li>PDE (1) on \(\Omega\)</li>
+                <li>\(\Omega :\left(x,y\right)\in {\left\lbrack -1,1\right\rbrack }^2\) and \(t\in \left\lbrack 0,3\right\rbrack\)</li>
+                <li>\(U\left(x,y,0\right)={\left\lbrack \begin{array}{ccc}
+                    2 & 0 & 0
+                    \end{array}\right\rbrack }^T\) for \(\left(x,y\right)\in {\left\lbrack -\frac{1}{2},\frac{1}{2}\right\rbrack }^{2\;}\), and</li>
+                <li>\(U\left(x,y,0\right)={\left\lbrack \begin{array}{ccc}
+                    1 & 0 & 0
+                    \end{array}\right\rbrack }^T\) otherwise.</li>
+            </ul>
+            <p>To generate numerical sumulations at different time , we can use Finite Volume Method with Lax-Friedrichs Flux:</p>
+            $$
+            U_j^{n+1} =U_{j\;}^n -\frac{\Delta t}{|\Omega_j |}\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}
+            $$
+            <p>The time-step size is chosen dynamically based on the following equation:</p>
+            $$
+            \Delta t=\frac{c}{2}\mathrm{min}\left(\underset{j}{\mathrm{min}} \left(\frac{\Delta x}{\lambda_{x,j} }\right),\underset{j}{\mathrm{min}} \left(\frac{\Delta y}{\lambda_{y,j} }\right)\right)
+            $$
+            <p>where</p>
+            $$
+            \lambda_{x,j} =\left|u_j \right|+\sqrt{{\mathrm{gh}}_j }
+            $$
+            $$
+            \lambda_{y,j} =\left|v_j \right|+\sqrt{{\mathrm{gh}}_j }
+            $$
+            <p>To approximate the solution for the above problem, we will apply the divergence theorem</p>
+            $$\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}=\int_{\partial \Omega } F\left(u\right)\cdot \overrightarrow{n} \mathrm{dt}$$
+            <p>where \(\Omega\) is the square surface given by the following vertices</p>
+            <ul>
+                <li>\(\left(x\left\lbrack i-1\right\rbrack ,y\left\lbrack i-1\right\rbrack \right)\)</li>
+                <li>\(\left(x\left\lbrack i\right\rbrack ,y\left\lbrack i-1\right\rbrack \right)\)</li>
+                <li>\(\left(x\left\lbrack i-1\right\rbrack ,y\left\lbrack i\right\rbrack \right)\)</li>
+                <li>\(\left(x\left\lbrack i\right\rbrack ,y\left\lbrack i\right\rbrack \right)\)</li>
+            </ul>
+            <p>Here are some constants for solving the above problem:</p>
+            <ul>
+                <li>CFL coefficient: \(0.8\)</li>
+                <li>\(x \in [-1, 1]\)</li>
+                <li>\(y \in [-1, 1]\)</li>
+                <li>number of physical cells: 61</li>
+            </ul>
+            <p>The following plots show how the shallow water looks like at \(t=0\), \(t=1.5\), and \(t=3\):</p>
+            <img src="../img/shallowWaterAnimation/plot_0.png" alt="2D Shallow Water Equation at t = 0" class="center"><br>
+            <img src="../img/shallowWaterAnimation/plot_15.png" alt="2D Shallow Water Equation at t = 1.5" class="center"><br>
+            <img src="../img/shallowWaterAnimation/plot_3.png" alt="2D Shallow Water Equation at t = 3" class="center">
+            <p>The following video is the animation for the problem above:</p>
+            <iframe src="https://www.youtube.com/embed/Z-sc1zhZscg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center"></iframe>
+            <br>
+        </section>
+
+        <footer id="footer">
+            <p>Thanks For Coming. - Vert Li</p>
+            <!-- icons -->
+            <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+            <!-- icons -->
+            <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2021</p>
+        </footer>
+
+    </div>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../js/style.js"></script>
+    <script src="../js/height.js"></script>
+    <noscript>This website requires to use JavaScript!!!</noscript>
+</body>
+
+</html>
