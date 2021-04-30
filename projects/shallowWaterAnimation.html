@@ -27,10 +27,23 @@
 
     <div class="container">
 
-        <section id="shallowWaterAnimation">
-            <h1><scan class="keyword">2D Shallow Water Equation Animation</scan></h1>
+        <section id="shallowWaterAnimation" class="projectPage">
+            <h1>
+                <scan class="keyword">2D Shallow Water Equation Animation</scan>
+            </h1>
 
-            <p>The shallow water equations in 2D space are modelled as the following Partial Differntial Equations (PDE):</p>
+            <h3>Introduction</h3>
+            <p>This is the summary of the last coding assignment for the course <span class="keyword">AMATH442/642
+                    (Computational Methods for Partial Deffierential Equations)</span> which I took in my second last
+                academic term (Fall 2020) at Waterloo.
+            </p>
+            <p>In this assignment, I needed to implement computational method to sumulate how shallow water moves within
+                a given time period.</p>
+            <br>
+
+            <h3>Shallow Water Equations</h3>
+            <p>The shallow water equations in 2D space are modelled as the following Partial Differntial Equations
+                (PDE):</p>
             $$
             \frac{\partial }{\partial t}\left\lbrack \begin{array}{c}
             h\\
@@ -46,25 +59,36 @@
             {\mathrm{hv}}^2 +\frac{{\mathrm{gh}}^2 }{2}
             \end{array}\right\rbrack =0\;\;\;\ldotp \ldotp \ldotp \left(1\right)
             $$
-            <p>where \(h\) is the height of water, \(u,v\) is the 2D velocity vector, and \(g=9.81\) is the gravitational acceleration.</p>
+            <p>where \(h\) is the height of water, \(u,v\) is the 2D velocity vector, and \(g=9.81\) is the
+                gravitational acceleration.</p>
+            <br>
+
+            <h3>Initial Boundary Values Problem</h3>
             <p>Consider the following initial boundary values for the above PDE (1):</p>
             <ul>
                 <li>PDE (1) on \(\Omega\)</li>
-                <li>\(\Omega :\left(x,y\right)\in {\left\lbrack -1,1\right\rbrack }^2\) and \(t\in \left\lbrack 0,3\right\rbrack\)</li>
+                <li>\(\Omega :\left(x,y\right)\in {\left\lbrack -1,1\right\rbrack }^2\) and \(t\in \left\lbrack
+                    0,3\right\rbrack\)</li>
                 <li>\(U\left(x,y,0\right)={\left\lbrack \begin{array}{ccc}
                     2 & 0 & 0
-                    \end{array}\right\rbrack }^T\) for \(\left(x,y\right)\in {\left\lbrack -\frac{1}{2},\frac{1}{2}\right\rbrack }^{2\;}\), and</li>
+                    \end{array}\right\rbrack }^T\) for \(\left(x,y\right)\in {\left\lbrack
+                    -\frac{1}{2},\frac{1}{2}\right\rbrack }^{2\;}\), and</li>
                 <li>\(U\left(x,y,0\right)={\left\lbrack \begin{array}{ccc}
                     1 & 0 & 0
                     \end{array}\right\rbrack }^T\) otherwise.</li>
             </ul>
-            <p>To generate numerical sumulations at different time , we can use Finite Volume Method with Lax-Friedrichs Flux:</p>
+            <br>
+            <h3>How to Sumulate the Results?</h3>
+            <p>To generate numerical sumulations at different time , we can use Finite Volume Method with Lax-Friedrichs
+                Flux:</p>
             $$
             U_j^{n+1} =U_{j\;}^n -\frac{\Delta t}{|\Omega_j |}\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}
             $$
+            <br>
             <p>The time-step size is chosen dynamically based on the following equation:</p>
             $$
-            \Delta t=\frac{c}{2}\mathrm{min}\left(\underset{j}{\mathrm{min}} \left(\frac{\Delta x}{\lambda_{x,j} }\right),\underset{j}{\mathrm{min}} \left(\frac{\Delta y}{\lambda_{y,j} }\right)\right)
+            \Delta t=\frac{c}{2}\mathrm{min}\left(\underset{j}{\mathrm{min}} \left(\frac{\Delta x}{\lambda_{x,j}
+            }\right),\underset{j}{\mathrm{min}} \left(\frac{\Delta y}{\lambda_{y,j} }\right)\right)
             $$
             <p>where</p>
             $$
@@ -73,8 +97,10 @@
             $$
             \lambda_{y,j} =\left|v_j \right|+\sqrt{{\mathrm{gh}}_j }
             $$
+            <br>
             <p>To approximate the solution for the above problem, we will apply the divergence theorem</p>
-            $$\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}=\int_{\partial \Omega } F\left(u\right)\cdot \overrightarrow{n} \mathrm{dt}$$
+            $$\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}=\int_{\partial \Omega } F\left(u\right)\cdot
+            \overrightarrow{n} \mathrm{dt}$$
             <p>where \(\Omega\) is the square surface given by the following vertices</p>
             <ul>
                 <li>\(\left(x\left\lbrack i-1\right\rbrack ,y\left\lbrack i-1\right\rbrack \right)\)</li>
@@ -82,6 +108,8 @@
                 <li>\(\left(x\left\lbrack i-1\right\rbrack ,y\left\lbrack i\right\rbrack \right)\)</li>
                 <li>\(\left(x\left\lbrack i\right\rbrack ,y\left\lbrack i\right\rbrack \right)\)</li>
             </ul>
+            <br>
+            <h3>Other constants</h3>
             <p>Here are some constants for solving the above problem:</p>
             <ul>
                 <li>CFL coefficient: \(0.8\)</li>
@@ -89,12 +117,18 @@
                 <li>\(y \in [-1, 1]\)</li>
                 <li>number of physical cells: 61</li>
             </ul>
+            <br>
+            <h3>Results</h3>
             <p>The following plots show how the shallow water looks like at \(t=0\), \(t=1.5\), and \(t=3\):</p>
-            <img src="../img/shallowWaterAnimation/plot_0.png" alt="2D Shallow Water Equation at t = 0" class="center"><br>
-            <img src="../img/shallowWaterAnimation/plot_15.png" alt="2D Shallow Water Equation at t = 1.5" class="center"><br>
+            <img src="../img/shallowWaterAnimation/plot_0.png" alt="2D Shallow Water Equation at t = 0"
+                class="center"><br>
+            <img src="../img/shallowWaterAnimation/plot_15.png" alt="2D Shallow Water Equation at t = 1.5"
+                class="center"><br>
             <img src="../img/shallowWaterAnimation/plot_3.png" alt="2D Shallow Water Equation at t = 3" class="center">
             <p>The following video is the animation for the problem above:</p>
-            <iframe src="https://www.youtube.com/embed/Z-sc1zhZscg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center"></iframe>
+            <iframe src="https://www.youtube.com/embed/Z-sc1zhZscg" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen class="center"></iframe>
             <br>
         </section>
 
