@@ -708,8 +708,8 @@ footer p {
 }
 
 .projectPage img {
-  width: 75%;
-  height: 75%
+  max-width:100%; 
+  height:auto
 }
 
 .projectPage h3 {
