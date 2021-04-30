@@ -689,6 +689,7 @@ footer p {
 /* footer ***************************************************/
 /************************************************************/
 
+/************************************************************/
 /* Shallow Water Animation **********************************/
 #shallowWaterAnimation p {
   margin-left: 5px;
@@ -703,11 +704,45 @@ footer p {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 75%;
 }
 
 #shallowWaterAnimation iframe {
   width: 560px;
   height: 420px;
 }
+/* Shallow Water Animation **********************************/
+/************************************************************/
+
+/************************************************************/
+/* Shallow Water Animation **********************************/
+#fashionMNIST p {
+  margin-left: 5px;
+}
+
+#fashionMNIST h3 {
+  margin-left: 5px;
+  color: #79DBAD;
+}
+
+#fashionMNIST .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+#fashionMNIST .warning {
+  color: red;
+}
+
+#fashionMNIST code {
+  font: hack;
+  font-size: 16px;
+  background-color: rgb(26, 26, 26);
+  border-radius: 5px;
+  padding: 1px 1px;
+}
+
+/************************************************************/
 /************************************************************/
