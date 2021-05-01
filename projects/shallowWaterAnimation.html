@@ -33,17 +33,17 @@
             </h1>
 
             <h3>Introduction</h3>
-            <p>This is the summary of the last coding assignment for the course <span class="keyword">AMATH442/642
-                    (Computational Methods for Partial Deffierential Equations)</span> which I took in my second last
+            <p>This is the summary of the last coding assignment for the course <a href="https://ucalendar.uwaterloo.ca/2021/COURSE/course-AMATH.html#AMATH442" target="_blank;"><span class="keyword">AMATH442/642
+                (<em>Computational Methods for Partial Deffierential Equations</em>)</span></a> which I took in my second-last
                 academic term (Fall 2020) at Waterloo.
             </p>
-            <p>In this assignment, I needed to implement computational method to sumulate how shallow water moves within
+            <p>In this assignment, I needed to establish a computational method to simulate how shallow water moves within
                 a given time period.</p>
             <br>
 
             <h3>Shallow Water Equations</h3>
-            <p>The shallow water equations in 2D space are modelled as the following Partial Differntial Equations
-                (PDE):</p>
+            <p>The shallow water equations in 2D space are modelled using the following Partial Differential Equations
+                (PDEs):</p>
             $$
             \frac{\partial }{\partial t}\left\lbrack \begin{array}{c}
             h\\
@@ -59,7 +59,7 @@
             {\mathrm{hv}}^2 +\frac{{\mathrm{gh}}^2 }{2}
             \end{array}\right\rbrack =0\;\;\;\ldotp \ldotp \ldotp \left(1\right)
             $$
-            <p>where \(h\) is the height of water, \(u,v\) is the 2D velocity vector, and \(g=9.81\) is the
+            <p>where \(h\) is the height of the water, \(u\) and \(v\) are the 2D velocity vectors, and \(g=9.81\) is the
                 gravitational acceleration.</p>
             <br>
 
@@ -78,9 +78,9 @@
                     \end{array}\right\rbrack }^T\) otherwise.</li>
             </ul>
             <br>
-            <h3>How to Sumulate the Results?</h3>
-            <p>To generate numerical sumulations at different time , we can use Finite Volume Method with Lax-Friedrichs
-                Flux:</p>
+            <h3>How to Simulate the Results?</h3>
+            <p>To generate numerical simulations at different times, we can use the <strong class="keyword">Finite Volume Method</strong> with <strong class="keyword">Lax-Friedrichs
+                Flux</strong>:</p>
             $$
             U_j^{n+1} =U_{j\;}^n -\frac{\Delta t}{|\Omega_j |}\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}
             $$
@@ -98,7 +98,7 @@
             \lambda_{y,j} =\left|v_j \right|+\sqrt{{\mathrm{gh}}_j }
             $$
             <br>
-            <p>To approximate the solution for the above problem, we will apply the divergence theorem</p>
+            <p>To approximate the solution for the above problem, we will apply the <strong class="keyword">divergence theorem</strong></p>
             $$\int_{\Omega } \Delta \cdot F\left(u\right)\mathrm{ds}=\int_{\partial \Omega } F\left(u\right)\cdot
             \overrightarrow{n} \mathrm{dt}$$
             <p>where \(\Omega\) is the square surface given by the following vertices</p>
@@ -110,7 +110,7 @@
             </ul>
             <br>
             <h3>Other constants</h3>
-            <p>Here are some constants for solving the above problem:</p>
+            <p>Here are some constants for solving this problem:</p>
             <ul>
                 <li>CFL coefficient: \(0.8\)</li>
                 <li>\(x \in [-1, 1]\)</li>
@@ -125,7 +125,7 @@
             <img src="../img/shallowWaterAnimation/plot_15.png" alt="2D Shallow Water Equation at t = 1.5"
                 class="center"><br>
             <img src="../img/shallowWaterAnimation/plot_3.png" alt="2D Shallow Water Equation at t = 3" class="center">
-            <p>The following video is the animation for the problem above:</p>
+            <p>The following video is the animation for this problem:</p>
             <iframe src="https://www.youtube.com/embed/Z-sc1zhZscg" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen class="center"></iframe>
