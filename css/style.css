@@ -718,17 +718,27 @@ footer p {
   margin-left: 10px;
 }
 
+.projectPage a {
+  color: #79DBAD;
+}
 
 .projectPage .warning {
   color: red;
 }
 
+.projectPage pre {
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 2px 2px;
+}
+
 .projectPage code {
   font: hack;
   font-size: 16px;
-  background-color: rgb(26, 26, 26);
+  background-color: #333;
   border-radius: 5px;
-  padding: 1px 1px;
+  padding: 2px 2px;
 }
 /* All ProjectPage Use **************************************/
 /************************************************************/
