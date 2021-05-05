@@ -37,10 +37,11 @@ class Slime {
         this.ctx.drawImage(this.img, this.sx, this.sy, this.width, this.height, this.x, this.y, this.width, this.height);
     } // end draw()
 
-    async move(direction, curX, curY, newX, newY, map) {
+    async move(direction, curX, curY, newX, newY, box, map) {
         
         for (let i = 0; i < this.frameNum; i++) {
             map.draw();
+            box.draw();
             this.draw(direction, i);
             await this.sleep(20);
             this.x = this.x + (newX - curX) * (this.gridSize / (this.frameNum - 1));
