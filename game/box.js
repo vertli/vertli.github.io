@@ -1,13 +1,10 @@
 class Box {
 
-    constructor(path, width, height, x, y, context) {
-        this.img = new Image();
-        this.img.src = path;
-        this.width = width;
-        this.height = height;
-        this.x = x;
-        this.y = y;
-        this.ctx = context;
+    constructor(ctx, asset, position) {
+        this.ctx = ctx;
+        this.asset = asset;
+        this.x = position[0];
+        this.y = position[1];
     } // end constructor()
 
     setX(x) {
@@ -26,14 +23,20 @@ class Box {
         return this.y;
     }
 
-    load() {
-        this.img.onload = () => {
-            this.draw();
-        }
-    } // end load()
+    isBoxBody(x, y) {
+        return this.x === x && this.y === y;
+    } // end isBoxBody()
 
-    draw() {
-        this.ctx.drawImage(this.img, this.width * this.x, this.height * this.y);
+    isBoxTop(x, y) {
+        return this.x === x && this.y-1 === y;
+    } // end isBoxTop()
+
+    drawTop() {
+        this.asset.draw(4, 9, this.x, this.y-1);
     }
+
+    drawBody() {
+        this.asset.draw(5, 9, this.x, this.y);
+    } // end draw()
 
 } // end Box
