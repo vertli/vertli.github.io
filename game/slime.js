@@ -1,28 +1,19 @@
 class Slime {
 
-    constructor(movePath, width, height, x, y, ctx) {
-        this.moveImg = new Image();
+    constructor(moveID, width, height, x, y, ctx) {
+        this.moveImg = document.getElementById(moveID);
+        this.moveImg.remove();
         this.ctx = ctx;
-        this.moveImg.onload =() => {
-            this.ctx.drawImage(this.moveImg, 0, 0);
-        };
-        this.moveImg.src = movePath;
         this.width = width;
         this.height = height;
         this.x = x;
         this.y = y;
-    } // end constructor()
-
-    setUp() {
         this.moveFrameCol = this.moveImg.width / this.width ;
         this.moveFrameRow = this.moveImg.height / this.height ;
         this.dx = this.width / (this.moveFrameCol - 1);
         this.dy = this.height / (this.moveFrameRow - 1);
-    }
+    } // end constructor()
 
-    isCompleted() {
-        return this.moveImg.complete;
-    }
 
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -61,10 +52,12 @@ class Slime {
             map.drawFloorGrid(oldX, oldY);
             map.drawWallGrid(oldX, oldY);
             map.drawFloorGrid(newX, newY);
+            map.drawTrap();
             this.draw(direction, i);
             map.drawBoxBody();
             map.drawWallGrid(newX, newY);
             map.drawBoxTop();
+            map.drawDoor();
             
             await this.sleep(15);
             this.x += (this.x - newX > 0) ? -this.dx:this.dx;
@@ -76,6 +69,7 @@ class Slime {
         this.draw(direction, 0);
         map.drawBoxBody();
         map.drawWallGrid(newX, newY);
+        map.drawDoor();
         map.drawBoxTop();
     }
 }

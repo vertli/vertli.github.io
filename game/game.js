@@ -8,45 +8,24 @@ let asset;
 let slime;
 let map;
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-} // end sleep()
-
 async function gameStart() {
-
-    console.log("add asset");
-    asset = new Asset("./assets/asset.png", 32, ctx);
-    while (!asset.isCompleted()) {
-        console.log("asset", asset.isCompleted());
-        await this.sleep(10);
-    }
-    console.log("asset", asset.isCompleted());
-
-    console.log("add slime");
-    slime = new Slime("./assets/redSlimeMove.png", 32, 32, 1, 2, ctx);
-    while (!slime.isCompleted()) {
-        console.log("slime", asset.isCompleted());
-        await this.sleep(10);
-    }
-    console.log("slime", asset.isCompleted());
-    slime.setUp();
-
-    console.log("set map");
+    asset = new Asset("asset", 32, ctx);
+    slime = new Slime("redSlimeMove", 32, 32, 1, 2, ctx);
     map = new LevelOne(ctx, asset, 32);
     updateMap("down");
 }
 
 function updateMap(direction) {
-    console.log("print map...");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     map.drawFloor();
-    // map.drawBack();
+    map.drawTrap();
     slime.draw(direction, 0);
     map.drawBoxBody();
     map.drawWall();
+    map.drawDoor();
     map.drawBoxTop();
-    console.log("print map done...");
 } // end updateMap()
+
+gameStart();
 
 document.addEventListener("keyup", (event) => {
     let x = slime.getX();
@@ -63,11 +42,8 @@ document.addEventListener("keyup", (event) => {
             slime.move("up", map);
         } else {
             let box = map.getBox(x, y-1);
-            console.log(box);
             if (box && map.isPassable(x, y-2)) {
-                console.log("push up");
                 map.pushBox(box, x, y-2);
-                console.log(box);
             }
         }
     } // end if
@@ -78,11 +54,8 @@ document.addEventListener("keyup", (event) => {
             slime.move("down", map);
         } else {
             let box = map.getBox(x, y+1);
-            console.log(box);
             if (box && map.isPassable(x, y+2)) {
                map.pushBox(box, x, y+2);
-              console.log("push down");
-              console.log(box);
             }
         }
     } // end if
@@ -92,11 +65,8 @@ document.addEventListener("keyup", (event) => {
             slime.move("left", map);
         } else {
             let box = map.getBox(x-1, y);
-            console.log(box);
             if (box && map.isPassable(x-2, y)) {
                 map.pushBox(box, x-2, y);
-                console.log("push left");
-                console.log(box);
             } 
         }
     } // end if
@@ -106,11 +76,8 @@ document.addEventListener("keyup", (event) => {
             slime.move("right", map);
         } else {
             let box = map.getBox(x+1, y);
-            console.log(box);
             if (box && map.isPassable(x+2, y)) {
                 map.pushBox(box, x+2, y);
-                console.log("push right");
-                console.log(box);
             }
         }
     } // end if

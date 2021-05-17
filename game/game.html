@@ -8,16 +8,25 @@
         body {
             background-color: black;
         }
+
+        img {
+           visibility: hidden;
+        }
     </style>
 </head>
-<body onload="gameStart()">
+<body>
     <canvas id = "gameCanvas"></canvas>
-    <script src="game.js"></script>
+    <img src="./assets/redSlimeMove.png" id="redSlimeMove">
+    <img src="./assets/asset.png" id="asset">
+    
+    
     <script src="asset.js"></script>
     <script src="slime.js"></script>
     <script src="box.js"></script>
+    <script src="trap.js"></script>
     <script src="door.js"></script>
     <script src="baseMap.js"></script>
     <script src="levelOne.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
