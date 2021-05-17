@@ -14,22 +14,30 @@ function sleep(ms) {
 
 async function gameStart() {
 
+    console.log("add asset");
     asset = new Asset("./assets/asset.png", 32, ctx);
     while (!asset.isCompleted()) {
+        console.log("asset", asset.isCompleted());
         await this.sleep(10);
     }
+    console.log("asset", asset.isCompleted());
 
+    console.log("add slime");
     slime = new Slime("./assets/redSlimeMove.png", 32, 32, 1, 2, ctx);
     while (!slime.isCompleted()) {
+        console.log("slime", asset.isCompleted());
         await this.sleep(10);
     }
+    console.log("slime", asset.isCompleted());
     slime.setUp();
 
+    console.log("set map");
     map = new LevelOne(ctx, asset, 32);
     updateMap("down");
 }
 
 function updateMap(direction) {
+    console.log("print map...");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     map.drawFloor();
     // map.drawBack();
@@ -37,6 +45,7 @@ function updateMap(direction) {
     map.drawBoxBody();
     map.drawWall();
     map.drawBoxTop();
+    console.log("print map done...");
 } // end updateMap()
 
 document.addEventListener("keyup", (event) => {
