@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Slime Escape</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/font-awesome-5.8.1/all.css">
+</head>
+
+<body onload="restHeight('SlimeEscape')" onresize="location.reload()">
+
+    <div class="topnav" id="myTopnav">
+        <a href="../index.html" class="active">Calvin Li</a>
+        <a href="../about.html">About</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../contact.html">Contact</a>
+        <div class="topnav-right">
+            <a href="../doc/resume_CKLi.pdf">Résumé</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+
+        <section id="SlimeEscape">
+            <canvas id="gameCanvas"></canvas>
+        </section>
+
+        <footer id="footer">
+            <p>Thanks For Coming. - Vert Li</p>
+            <!-- icons -->
+            <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+            <!-- icons -->
+            <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2021</p>
+        </footer>
+
+    </div>
+
+    <script src="./SlimeEscapeJS/asset.js"></script>
+    <script src="./SlimeEscapeJS/objectModel.js"></script>
+    <script src="./SlimeEscapeJS/trapModel.js"></script>
+    <script src="./SlimeEscapeJS/boxModel.js"></script>
+    <script src="./SlimeEscapeJS/boxView.js"></script>
+    <script src="./SlimeEscapeJS/doorModel.js"></script>
+    <script src="./SlimeEscapeJS/doorView.js"></script>
+    <script src="./SlimeEscapeJS/slimeModel.js"></script>
+    <script src="./SlimeEscapeJS/slimeView.js"></script>
+    <script src="./SlimeEscapeJS/levelModel.js"></script>
+    <script src="./SlimeEscapeJS/levelView.js"></script>
+    <script src="./SlimeEscapeJS/levelOneModel.js"></script>
+    <script src="./SlimeEscapeJS/levelOneView.js"></script>
+    <script src="./SlimeEscapeJS/slimeEscape.js"></script>
+
+    <script src="../js/style.js"></script>
+    <script src="../js/height.js"></script>
+    <noscript>This website requires to use JavaScript!!!</noscript>
+</body>
+
+</html>
