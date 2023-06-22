@@ -16,6 +16,7 @@ body {
 
 .container {
   margin: auto;
+  width: 100%;
   background: #244234;
 }
 
@@ -666,9 +667,13 @@ a {
 /* footer ***************************************************/
 footer {
   background: #244234;
-  border-top: 3px solid white;
+  /* border-top: 3px solid white; */
   text-align: center;
-  border-bottom: 3px solid white;
+  /* border-bottom: 3px solid white; */
+}
+
+footer hr {
+  border: 3px solid white;
 }
 
 footer i {

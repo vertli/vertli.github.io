@@ -4,17 +4,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact</title>
+    <title>Pokemon Hunting List</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+    <link href="./pokemon/pokemon.css" rel="stylesheet">
   </head>
   
-  <body onload="restHeight('contact')" onresize="location.reload()">
+  <body onload="restHeight('pokemonHuntingList'); setHeight()" onresize="location.reload()" onresize="setHeight()">
     
     <div class="topnav" id="myTopnav">
       <a href="./index.html" class="active">Calvin Li</a>
       <a href="./about.html">About</a>
       <a href="./projects.html">Projects</a>
+      <a href="./huntingList.html">Pokemon TCG Hunting List</a>
       <a href="./contact.html">Contact</a>
       <div class="topnav-right">
         <a href="./doc/resume_CKLi.pdf" target="_blank;">Résumé</a>
@@ -25,45 +27,24 @@
     </div>
     
     <div class="container">
-      <section id="contact">
-        <h1>Contact <scan class="keyword">Me</scan></h1>
-        <p>I am currently NOT looking for full time job.<br>
-		However... Feel free to message me if you want to have a chat!</p>
-        
-        <table>
-          <tr>
-            <th><i class="fas fa-envelope-square fa-sm"></i> Email</th>
-          </tr>
-<!--
-          <tr>
-            <td><a href = "mailto: ck6li@edu.uwaterloo.ca" target = "_blank;">ck6li@edu.uwaterloo.ca</a></td>
-          </tr>
--->
-          <tr>
-            <td><a href = "mailto: vert.c.k.li@gmail.com" target = "_blank;">vert.c.k.li@gmail.com</a></td>
-          </tr>
-        </table>
-        
-        <table>
-          <tr>
-            <th><i class = "fab fa-linkedin fa-sm"></i> LinkedIn</th>
-          </tr>
-          <tr>
-            <td><a href = "https://www.linkedin.com/in/vertckli/" target = "_blank;">Chun Kit (Calvin) Li</a></td>
-          </tr>
-        </table>
-<!--
-        <table>
-          <tr>
-            <th><i class="fab fa-artstation fa-sm"></i> Art Station (I don't really use it.)</th>
-          </tr>		  
-          <tr>
-            <td><a href = "https://www.artstation.com/calvinli1" target = "_blank;">Vert Li</a></td>
-          </tr>
-        </table>
--->
-        <br>    
+      <section id="pokemonHuntingList">
+        <h1>Pokemon <scan class="keyword">TCG</scan> Hunting List</h1>
+
+        <div class="pagination-container">
+          <button class="pagination-button" id="prev-button" title="Previous Page" aria-label="Previous Page">
+            &lt;
+          </button>
+          <div id="pagination-numbers">
+          </div>
+          <button class="pagination-button" id="next-button" title="Next Page" aria-label="Next Page">
+            &gt;
+          </button>
+        </div>
+
+        <div class="row" id="card-gallery" aria-live="polite">
+        </div>
       </section>
+
       <footer id="footer">
         <hr/>
         <p>Thanks For Coming. - Vert Li</p>
@@ -77,9 +58,9 @@
         <hr/>
       </footer>
     </div>
-    
+
+    <script type="module" src="./pokemon/huntingList.js"></script>
     <script src="./js/style.js"></script>
-    <script src="./js/height.js"></script>
     <noscript>This website requires to use JavaScript!!!</noscript>
   </body>
   
