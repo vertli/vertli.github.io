@@ -1,13 +1,12 @@
-import huntingList from "./huntingList.json" assert { type: "json" };
-let cardData = huntingList["cardData"];
+// import huntingList from "./huntingList.json" assert { type: "json" };
+// let cardData = huntingList["cardData"];
 
-// pagination logic starts here
 const paginationNumbers = document.getElementById("pagination-numbers");
 const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
-
 const paginationLimit = 16;
-const pageCount = Math.ceil(cardData.length / paginationLimit);
+let cardData = [];
+let pageCount = 0;
 
 // add page numbers into pagination bar
 const appendPageNumber = (index) => {
@@ -38,28 +37,36 @@ const handleActivePageNumber = () => {
 
 // disable page navigation buttons
 const disableButton = (button) => {
+  button.disabled = true;
   button.classList.add("disabled");
+  button.style.color = "#777";
   // button.setAttribute("disabled", true);
-  button.setAttribute("hidden", true);
+  // button.setAttribute("hidden", true);
 };
 
 // enable page navigation buttons
 const enableButton = (button) => {
+  button.disabled = false;
   button.classList.remove("disabled");
+  button.style.color = "white";
   // button.removeAttribute("disabled");
-  button.removeAttribute("hidden");
+  // button.removeAttribute("hidden");
 };
 
 const handlePageButtonsStatus = () => {
   if (currentPage === 1) {
-    disableButton(prevButton);
+    prevButton.addEventListener("click", disableButton(prevButton));
+    // disableButton(prevButton);
   } else {
-    enableButton(prevButton);
+    prevButton.addEventListener("click", enableButton(prevButton));
+    // disableButton(prevButton);
   }
   if (pageCount === currentPage) {
-    disableButton(nextButton);
+    nextButton.addEventListener("click", disableButton(nextButton));
+    // disableButton(nextButton);
   } else {
-    enableButton(nextButton);
+    nextButton.addEventListener("click", enableButton(nextButton));
+    // enableButton(nextButton);
   }
 };
 
@@ -100,15 +107,26 @@ const setCurrentPage = (pageNum) => {
   }
 }
 
-window.addEventListener("load", () => {
+async function logJSONData() {
+  const response = await fetch("./pokemon/huntingList.json");
+  const jsonData = await response.json();
+  cardData = jsonData["cardData"];
+  return true;
+}
+
+function init() {
+  pageCount = Math.ceil(cardData.length / paginationLimit);
   getPaginationNumbers();
   setCurrentPage(1);
+   
   prevButton.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
   });
+
   nextButton.addEventListener("click", () => {
     setCurrentPage(currentPage + 1);
   });
+
   document.querySelectorAll(".pagination-number").forEach((button) => {
     const pageIndex = Number(button.getAttribute("page-index"));
     if (pageIndex) {
@@ -117,4 +135,15 @@ window.addEventListener("load", () => {
       });
     }
   });
+}
+
+window.addEventListener("load", () => {
+
+  const isDone = logJSONData();
+
+  const intervalID = setInterval(function() {
+    if (!isDone) return;
+    init();
+    clearInterval(intervalID);
+  }, 100);
 });
