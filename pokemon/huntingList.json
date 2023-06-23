@@ -8,7 +8,8 @@
       "type": "Supporter",
       "releaseDate": "02/11/2018",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM8/SM8_EN_213.png"
-    }, {
+    },
+    {
       "name": "Professor Juniper",
       "gen": "Black & White",
       "set": "Plasma Freeze",
@@ -16,7 +17,8 @@
       "type": "Supporter",
       "releaseDate": "08/05/2013",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/BW9/BW9_EN_116.png"
-    }, {
+    },
+    {
       "name": "Green's Exploration",
       "gen": "Sun and Moon",
       "set": "Unbroken Bonds",
@@ -24,7 +26,8 @@
       "type": "Supporter",
       "releaseDate": "03/05/2019",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM10/SM10_EN_209.png"
-    }, {
+    },
+    {
       "name": "Red & Blue",
       "gen": "Sun and Moon",
       "set": "Cosmic Eclipse",
@@ -32,7 +35,8 @@
       "type": "Supporter",
       "releaseDate": "01/11/2019",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM12/SM12_EN_234.png"
-    }, {
+    },
+    {
       "name": "Lapras",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -40,7 +44,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG05.png"
-    }, {
+    },
+    {
       "name": "Electivire",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -48,7 +53,8 @@
       "type": "Stage 2 Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG08.png"
-    }, {
+    },
+    {
       "name": "Mew",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -56,7 +62,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG10.png"
-    }, {
+    },
+    {
       "name": "Deoxys",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -64,7 +71,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG12.png"
-    }, {
+    },
+    {
       "name": "Diancie",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -72,7 +80,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG13.png"
-    }, {
+    },
+    {
       "name": "Comfey",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -80,7 +89,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG14.png"
-    }, {
+    },
+    {
       "name": "Solrock",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -88,7 +98,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG15.png"
-    }, {
+    },
+    {
       "name": "Altaria",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -96,7 +107,8 @@
       "type": "Stage 1 Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG19.png"
-    }, {
+    },
+    {
       "name": "Swablu",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -104,7 +116,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG27.png"
-    }, {
+    },
+    {
       "name": "Mareep",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -112,7 +125,8 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG34.png"
-    }, {
+    },
+    {
       "name": "Entei V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -120,7 +134,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG36.png"
-    }, {
+    },
+    {
       "name": "Suicune V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -128,7 +143,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG38.png"
-    }, {
+    },
+    {
       "name": "Lumineon V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -136,7 +152,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG39.png"
-    }, {
+    },
+    {
       "name": "Glaceon VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -144,7 +161,8 @@
       "type": "Pokemon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG40.png"
-    }, {
+    },
+    {
       "name": "Raikou V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -152,7 +170,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG41.png"
-    }, {
+    },
+    {
       "name": "Zeraora VMAX",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -160,7 +179,8 @@
       "type": "Pokemon VMAX",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG42.png"
-    }, {
+    },
+    {
       "name": "Deoxys VMAX",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -168,7 +188,8 @@
       "type": "Pokemon VMAX",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG45.png"
-    }, {
+    },
+    {
       "name": "Deoxys VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -176,7 +197,8 @@
       "type": "Pokemon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG46.png"
-    }, {
+    },
+    {
       "name": "Hatterene VMAX",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -184,7 +206,8 @@
       "type": "Pokemon VMAX",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG47.png"
-    }, {
+    },
+    {
       "name": "Drapion V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -192,7 +215,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG49.png"
-    }, {
+    },
+    {
       "name": "Darkrai VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -200,7 +224,8 @@
       "type": "Pokemon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG50.png"
-    }, {
+    },
+    {
       "name": "Hisuian Samurott VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -208,7 +233,8 @@
       "type": "Pokemon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG52.png"
-    }, {
+    },
+    {
       "name": "Hoopa V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -216,7 +242,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG53.png"
-    }, {
+    },
+    {
       "name": "Zamazenta V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -224,7 +251,8 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG54.png"
-    }, {
+    },
+    {
       "name": "Regigigas VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -232,7 +260,8 @@
       "type": "Pokemon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG55.png"
-    }, {
+    },
+    {
       "name": "Adaman",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -240,7 +269,8 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG57.png"
-    }, {
+    },
+    {
       "name": "Cheren's Care",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -248,7 +278,8 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG58.png"
-    }, {
+    },
+    {
       "name": "Cynthia's Ambition",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -256,7 +287,8 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG60.png"
-    }, {
+    },
+    {
       "name": "Irida",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -264,7 +296,8 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG63.png"
-    }, {
+    },
+    {
       "name": "Raihan",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -272,7 +305,8 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG65.png"
-    }, {
+    },
+    {
       "name": "Giratina VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",

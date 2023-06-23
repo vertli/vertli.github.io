@@ -673,7 +673,7 @@ footer {
 }
 
 footer hr {
-  border: 3px solid white;
+  font-size: 18px;
 }
 
 footer i {
