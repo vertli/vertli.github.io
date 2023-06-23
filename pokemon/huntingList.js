@@ -1,9 +1,5 @@
-// https://webdesign.tutsplus.com/tutorials/pagination-with-vanilla-javascript--cms-41896
-// read first
-
 import huntingList from "./huntingList.json" assert { type: "json" };
 let cardData = huntingList["cardData"];
-console.log(cardData);
 
 // pagination logic starts here
 const paginationNumbers = document.getElementById("pagination-numbers");
@@ -50,7 +46,7 @@ const disableButton = (button) => {
 // enable page navigation buttons
 const enableButton = (button) => {
   button.classList.remove("disabled");
-  //button.removeAttribute("disabled");
+  // button.removeAttribute("disabled");
   button.removeAttribute("hidden");
 };
 
