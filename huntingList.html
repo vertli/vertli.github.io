@@ -30,6 +30,9 @@
       <section id="pokemonHuntingList">
         <h1>Pokemon <scan class="keyword">TCG</scan> Hunting List</h1>
 
+        <div class="row" id="card-gallery" aria-live="polite">
+        </div>
+
         <div class="pagination-container">
           <button class="pagination-button" id="prev-button" title="Previous Page" aria-label="Previous Page">
             &lt;
@@ -41,8 +44,7 @@
           </button>
         </div>
 
-        <div class="row" id="card-gallery" aria-live="polite">
-        </div>
+        <button onclick="goToTop()" id="go-to-top-button" title="Go to Top" aria-label="Go to Top">Top</button>
       </section>
 
       <footer id="footer">

@@ -1,6 +1,3 @@
-// import huntingList from "./huntingList.json" assert { type: "json" };
-// let cardData = huntingList["cardData"];
-
 const paginationNumbers = document.getElementById("pagination-numbers");
 const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
@@ -40,8 +37,6 @@ const disableButton = (button) => {
   button.disabled = true;
   button.classList.add("disabled");
   button.style.color = "#777";
-  // button.setAttribute("disabled", true);
-  // button.setAttribute("hidden", true);
 };
 
 // enable page navigation buttons
@@ -49,24 +44,18 @@ const enableButton = (button) => {
   button.disabled = false;
   button.classList.remove("disabled");
   button.style.color = "white";
-  // button.removeAttribute("disabled");
-  // button.removeAttribute("hidden");
 };
 
 const handlePageButtonsStatus = () => {
   if (currentPage === 1) {
     prevButton.addEventListener("click", disableButton(prevButton));
-    // disableButton(prevButton);
   } else {
     prevButton.addEventListener("click", enableButton(prevButton));
-    // disableButton(prevButton);
   }
   if (pageCount === currentPage) {
     nextButton.addEventListener("click", disableButton(nextButton));
-    // disableButton(nextButton);
   } else {
     nextButton.addEventListener("click", enableButton(nextButton));
-    // enableButton(nextButton);
   }
 };
 
@@ -111,7 +100,6 @@ async function logJSONData() {
   const response = await fetch("./pokemon/huntingList.json");
   const jsonData = await response.json();
   cardData = jsonData["cardData"];
-  return true;
 }
 
 function init() {
@@ -147,3 +135,21 @@ window.addEventListener("load", () => {
     clearInterval(intervalID);
   }, 100);
 });
+
+// Go to Top Function
+let goToTopButton = document.getElementById("go-to-top-button");
+
+// when the user scrolls down 20px from the top of the document, show the button
+window.addEventListener("scroll", () => {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    goToTopButton.style.display = "block";
+  } else {
+    goToTopButton.style.display = "none";
+  }
+});
+
+// when the user clicks on the button, scroll to the top of the document
+function goToTop() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+};
