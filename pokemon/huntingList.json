@@ -37,15 +37,6 @@
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM12/SM12_EN_234.png"
     },
     {
-      "name": "Lapras",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG05",
-      "type": "Basic Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG05.png"
-    },
-    {
       "name": "Electivire",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -62,15 +53,6 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG10.png"
-    },
-    {
-      "name": "Deoxys",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG12",
-      "type": "Basic Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG12.png"
     },
     {
       "name": "Diancie",
@@ -116,15 +98,6 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG27.png"
-    },
-    {
-      "name": "Mareep",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG34",
-      "type": "Basic Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG34.png"
     },
     {
       "name": "Entei V",
@@ -226,15 +199,6 @@
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG50.png"
     },
     {
-      "name": "Hisuian Samurott VSTAR",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG52",
-      "type": "Pokemon VSTAR",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG52.png"
-    },
-    {
       "name": "Hoopa V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -314,6 +278,564 @@
       "type": "Pokemon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://product-images.tcgplayer.com/fit-in/585x585/478100.jpg"
+    },
+    {
+      "name": "Professor Elm's Lecture",
+      "gen": "Sun and Moon",
+      "set": "League and Championship Promo",
+      "number": "188a Promo",
+      "type": "Supporter",
+      "releaseDate": "02/11/2018",
+      "url": "https://product-images.tcgplayer.com/fit-in/867x867/205307.jpg"
+    },
+    {
+      "name": "Skeledirge ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 37,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_37.png"
+    },
+    {
+      "name": "Bellibolt ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 79,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_79.png"
+    },
+    {
+      "name": "Ting-Lu ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 127,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_127.png"
+    },
+    {
+      "name": "Copperajah ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 150,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_150.png"
+    },
+    {
+      "name": "Heracross",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 194,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_194.png"
+    },
+    {
+      "name": "Tropius",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 195,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_195.png"
+    },
+    {
+      "name": "Fletchinder",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 199,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_199.png"
+    },
+    {
+      "name": "Pyroar",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 200,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_200.png"
+    },
+    {
+      "name": "Fuecoco",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 201,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_201.png"
+    },
+    {
+      "name": "Crocalor",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 202,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_202.png"
+    },
+    {
+      "name": "Magikarp",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 203,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_203.png"
+    },
+    {
+      "name": "Marill",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 204,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_204.png"
+    },
+    {
+      "name": "Eiscue",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 205,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_205.png"
+    },
+    {
+      "name": "Frigibax",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 208,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_208.png"
+    },
+    {
+      "name": "Arctibax",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 209,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_209.png"
+    },
+    {
+      "name": "Baxcalibur",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 210,
+      "type": "Stage 2 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_210.png"
+    },
+    {
+      "name": "Raichu",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 211,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_211.png"
+    },
+    {
+      "name": "Tinkatink",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 216,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_216.png"
+    },
+    {
+      "name": "Paldean Tauros",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 218,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_218.png"
+    },
+    {
+      "name": "Sudowoodo",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 219,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_219.png"
+    },
+    {
+      "name": "Nacli",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 220,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_220.png"
+    },
+    {
+      "name": "Tyranitar",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 227,
+      "type": "Stage 2 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_222.png"
+    },
+    {
+      "name": "Grafaiai",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 223,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_223.png"
+    },
+    {
+      "name": "Orthworm",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 224,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_224.png"
+    },
+    {
+      "name": "Rookidee",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 225,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_225.png"
+    },
+    {
+      "name": "Maushold",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 226,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_226.png"
+    },
+    {
+      "name": "Flamigo",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 227,
+      "type": "Basic Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_227.png"
+    },
+    {
+      "name": "Farigiraf",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 228,
+      "type": "Stage 1 Pokemon",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_228.png"
+    },
+    {
+      "name": "Forretress ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 230,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_230.png"
+    },
+    {
+      "name": "Wo-Chien ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 232,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_232.png"
+    },
+    {
+      "name": "Skeledirge ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 233,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_233.png"
+    },
+    {
+      "name": "Chi-Yu ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 234,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_234.png"
+    },
+    {
+      "name": "Quaquaval ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 235,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_235.png"
+    },
+    {
+      "name": "Chien-Pao ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 236,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_236.png"
+    },
+    {
+      "name": "Slowking ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 238,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_238.png"
+    },
+    {
+      "name": "Tinkaton ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 240,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_240.png"
+    },
+    {
+      "name": "Lycanroc ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 241,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_241.png"
+    },
+    {
+      "name": "Ting-Lu ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 243,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_243.png"
+    },
+    {
+      "name": "Paldean Clodsire ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 244,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_244.png"
+    },
+    {
+      "name": "Noivern ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 246,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_246.png"
+    },
+    {
+      "name": "Clavell",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 249,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_249.png"
+    },
+    {
+      "name": "Dendra",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 250,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_250.png"
+    },
+    {
+      "name": "Falkner",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 251,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_251.png"
+    },
+    {
+      "name": "Grusha",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 253,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_253.png"
+    },
+    {
+      "name": "Iono",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 254,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_254.png"
+    },
+    {
+      "name": "Chi-Yu ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 259,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_259.png"
+    },
+    {
+      "name": "Chien-Pao ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 261,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_261.png"
+    },
+    {
+      "name": "Tinkaton ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 262,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_262.png"
+    },
+    {
+      "name": "Ting-Lu ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 263,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_263.png"
+    },
+    {
+      "name": "Squawkabilly ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 264,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_264.png"
+    },
+    {
+      "name": "Boss's Orders (Bhetsis)",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 265,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_265.png"
+    },
+    {
+      "name": "Dendra",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 266,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_266.png"
+    },
+    {
+      "name": "Giacomo",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 267,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_267.png"
+    },
+    {
+      "name": "Grusha",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 268,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_268.png"
+    },
+    {
+      "name": "Iono",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 269,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_269.png"
+    },
+    {
+      "name": "Saguaro",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 270,
+      "type": "Supporter",
+      "releaseDate": "09/06/2023",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_270.png"
+    },
+    {
+      "name": "Meowscarada ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 271,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://product-images.tcgplayer.com/fit-in/585x585/497692.jpg"
+    },
+    {
+      "name": "Quaquaval ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 273,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://product-images.tcgplayer.com/fit-in/585x585/497694.jpg"
+    },
+    {
+      "name": "Ting-Lu ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 275,
+      "type": "Pokemon ex",
+      "releaseDate": "09/06/2023",
+      "url": "https://product-images.tcgplayer.com/fit-in/585x585/497696.jpg"
+    },
+    {
+      "name": "Superior Energy Retrieval",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 277,
+      "type": "Item",
+      "releaseDate": "09/06/2023",
+      "url": "https://product-images.tcgplayer.com/fit-in/585x585/497699.jpg"
+    },
+    {
+      "name": "Basic Water Energy",
+      "gen": "Scarlet and Violet",
+      "set": "Paldea Evolved",
+      "number": 279,
+      "type": "Basic Energy",
+      "releaseDate": "09/06/2023",
+      "url": "https://product-images.tcgplayer.com/fit-in/585x585/497701.jpg"
     }
   ]
 }

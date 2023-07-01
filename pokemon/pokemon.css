@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+p {
+  padding: 10px;
+}
+
 #card-gallery {
   margin-top: 1px !important;
 }
