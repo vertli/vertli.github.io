@@ -55,15 +55,6 @@
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG10.png"
     },
     {
-      "name": "Diancie",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG13",
-      "type": "Basic Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG13.png"
-    },
-    {
       "name": "Comfey",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -71,33 +62,6 @@
       "type": "Basic Pokemon",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG14.png"
-    },
-    {
-      "name": "Solrock",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG15",
-      "type": "Basic Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG15.png"
-    },
-    {
-      "name": "Altaria",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG19",
-      "type": "Stage 1 Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG19.png"
-    },
-    {
-      "name": "Swablu",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG27",
-      "type": "Basic Pokemon",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG27.png"
     },
     {
       "name": "Entei V",
@@ -125,15 +89,6 @@
       "type": "Pokemon V",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG39.png"
-    },
-    {
-      "name": "Glaceon VSTAR",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG40",
-      "type": "Pokemon VSTAR",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG40.png"
     },
     {
       "name": "Raikou V",
@@ -190,24 +145,6 @@
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG49.png"
     },
     {
-      "name": "Darkrai VSTAR",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG50",
-      "type": "Pokemon VSTAR",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG50.png"
-    },
-    {
-      "name": "Hoopa V",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG53",
-      "type": "Pokemon V",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG53.png"
-    },
-    {
       "name": "Zamazenta V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -233,15 +170,6 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG57.png"
-    },
-    {
-      "name": "Cheren's Care",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG58",
-      "type": "Supporter",
-      "releaseDate": "20/01/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5GG/SWSH12PT5GG_EN_GG58.png"
     },
     {
       "name": "Cynthia's Ambition",
@@ -343,15 +271,6 @@
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_195.png"
     },
     {
-      "name": "Fletchinder",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 199,
-      "type": "Stage 1 Pokemon",
-      "releaseDate": "09/06/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_199.png"
-    },
-    {
       "name": "Pyroar",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -386,15 +305,6 @@
       "type": "Basic Pokemon",
       "releaseDate": "09/06/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_203.png"
-    },
-    {
-      "name": "Marill",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 204,
-      "type": "Basic Pokemon",
-      "releaseDate": "09/06/2023",
-      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_204.png"
     },
     {
       "name": "Eiscue",
@@ -791,15 +701,6 @@
       "type": "Supporter",
       "releaseDate": "09/06/2023",
       "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_270.png"
-    },
-    {
-      "name": "Meowscarada ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 271,
-      "type": "Pokemon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/fit-in/585x585/497692.jpg"
     },
     {
       "name": "Quaquaval ex",
