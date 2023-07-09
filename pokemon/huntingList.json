@@ -19,6 +19,15 @@
       "url": "https://product-images.tcgplayer.com/88398.jpg"
     },
     {
+      "name": "Sonia",
+      "gen": "Sword and Shield",
+      "set": "Rebel Clash",
+      "number": 192,
+      "type": "Supporter",
+      "releaseDate": "01/05/2020",
+      "url": "https://product-images.tcgplayer.com/213276.jpg"
+    },
+    {
       "name": "Green's Exploration",
       "gen": "Sun and Moon",
       "set": "Unbroken Bonds",
@@ -197,15 +206,6 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://product-images.tcgplayer.com/478095.jpg"
-    },
-    {
-      "name": "Giratina VSTAR",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG69",
-      "type": "Pokémon VSTAR",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478100.jpg"
     },
     {
       "name": "Skeledirge ex",
@@ -902,15 +902,6 @@
       "url": "https://product-images.tcgplayer.com/478108.jpg"
     },
     {
-      "name": "Sonia",
-      "gen": "Sword and Shield",
-      "set": "Rebel Clash",
-      "number": 192,
-      "type": "Supporter",
-      "releaseDate": "01/05/2020",
-      "url": "https://product-images.tcgplayer.com/213276.jpg"
-    },
-    {
       "name": "Reshiram",
       "gen": "Sword and Shield",
       "set": "Shining Fates",
@@ -963,6 +954,78 @@
       "type": "Basic Pokémon",
       "releaseDate": "13/11/2020",
       "url": "https://product-images.tcgplayer.com/226554.jpg"
+    },
+    {
+      "name": "Froslass",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC8",
+      "type": "Stage 1 Pokémon",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113750.jpg"
+    },
+    {
+      "name": "Jirachi",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC13",
+      "type": "Basic Pokémon",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113755.jpg"
+    },
+    {
+      "name": "Flabebe",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC17",
+      "type": "Basic Pokémon",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113759.jpg"
+    },
+    {
+      "name": "Floette",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC18",
+      "type": "Stage 1 Pokémon",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113760.jpg"
+    },
+    {
+      "name": "Slurpuff",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC20",
+      "type": "Basic Pokémon",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113762.jpg"
+    },
+    {
+      "name": "Sylveon EX",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC21",
+      "type": "Pokémon EX",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113763.jpg"
+    },
+    {
+      "name": "Gardevoir EX",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC31",
+      "type": "Basic Pokémon",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113773.jpg"
+    },
+    {
+      "name": "Sylveon EX",
+      "gen": "XY",
+      "set": "Generations: Radiant Collection",
+      "number": "RC32",
+      "type": "Pokémon EX",
+      "releaseDate": "22/02/2016",
+      "url": "https://product-images.tcgplayer.com/113764.jpg"
     }
   ]
 }
