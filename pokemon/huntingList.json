@@ -711,25 +711,6 @@
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497701.jpg"
     },
-    
-    {
-      "name": "Mewtwo VStar",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 79,
-      "type": "Pokémon VSTAR",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277011.jpg"
-    },
-    {
-      "name": "Melmetal VMax",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 80,
-      "type": "Pokémon VMAX",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277013.jpg"
-    },
     {
       "name": "Dragonite VStar",
       "gen": "Sword and Shield",
@@ -749,51 +730,6 @@
       "url": "https://product-images.tcgplayer.com/277015.jpg"
     },
     {
-      "name": "Candela",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 83,
-      "type": "Supporter",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277017.jpg"
-    },
-    {
-      "name": "Professor's Research",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 84,
-      "type": "Supporter",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277018.jpg"
-    },
-    {
-      "name": "Spark",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 85,
-      "type": "Supporter",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277020.jpg"
-    },
-    {
-      "name": "Mewtwo VStar",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 86,
-      "type": "Pokémon VSTAR",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277024.jpg"
-    },
-    {
-      "name": "Egg Incubator",
-      "gen": "Sword and Shield",
-      "set": "Pokémon Go",
-      "number": 87,
-      "type": "Item",
-      "releaseDate": "01/07/2022",
-      "url": "https://product-images.tcgplayer.com/277025.jpg"
-    },
-    {
       "name": "Professor Elm's Lecture",
       "gen": "Sun and Moon",
       "set": "League and Championship Promo",
@@ -810,15 +746,6 @@
       "type": "Item",
       "releaseDate": "02/11/2018",
       "url": "https://product-images.tcgplayer.com/179022.jpg"
-    },
-    {
-      "name": "Aether Paradise Conservation Area",
-      "gen": "Sun and Moon",
-      "set": "Hidden Fates: Shiny vault",
-      "number": "SV87",
-      "type": "Stadium",
-      "releaseDate": "23/08/2019",
-      "url": "https://product-images.tcgplayer.com/197841.jpg"
     },
     {
       "name": "Grass Energy (Texture)",
@@ -938,15 +865,6 @@
       "url": "https://product-images.tcgplayer.com/226554.jpg"
     },
     {
-      "name": "Froslass",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC8",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113750.jpg"
-    },
-    {
       "name": "Jirachi",
       "gen": "XY",
       "set": "Generations: Radiant Collection",
@@ -963,24 +881,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "22/02/2016",
       "url": "https://product-images.tcgplayer.com/113759.jpg"
-    },
-    {
-      "name": "Floette",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC18",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113760.jpg"
-    },
-    {
-      "name": "Slurpuff",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC20",
-      "type": "Basic Pokémon",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113762.jpg"
     },
     {
       "name": "Sylveon EX",
@@ -1008,6 +908,15 @@
       "type": "Pokémon EX",
       "releaseDate": "22/02/2016",
       "url": "https://product-images.tcgplayer.com/113764.jpg"
+    },
+    {
+      "name": "Aether Paradise Conservation Area",
+      "gen": "Sun and Moon",
+      "set": "Hidden Fates: Shiny vault",
+      "number": "SV87",
+      "type": "Stadium",
+      "releaseDate": "23/08/2019",
+      "url": "https://product-images.tcgplayer.com/197841.jpg"
     }
   ]
 }
