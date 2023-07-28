@@ -37,6 +37,15 @@
       "url": "https://product-images.tcgplayer.com/201346.jpg"
     },
     {
+      "name": "Nessa (Holofoil)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": 136,
+      "type": "Basic Pokémon",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/478190.jpg"
+    },
+    {
       "name": "Mew",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -676,15 +685,6 @@
       "url": "https://product-images.tcgplayer.com/497699.jpg"
     },
     {
-      "name": "Basic Water Energy",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 279,
-      "type": "Basic Energy",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497701.jpg"
-    },
-    {
       "name": "Blanche",
       "gen": "Sword and Shield",
       "set": "Pokémon Go",
@@ -692,69 +692,6 @@
       "type": "Supporter",
       "releaseDate": "01/07/2022",
       "url": "https://product-images.tcgplayer.com/277015.jpg"
-    },
-    {
-      "name": "Grass Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 152,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478116.jpg"
-    },
-    {
-      "name": "Fire Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 153,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478115.jpg"
-    },
-    {
-      "name": "Water Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 154,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478112.jpg"
-    },
-    {
-      "name": "Lightning Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 155,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478111.jpg"
-    },
-    {
-      "name": "Psychic Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 156,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478113.jpg"
-    },
-    {
-      "name": "Fighting Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 157,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478109.jpg"
-    },
-    {
-      "name": "Dark Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": 158,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478108.jpg"
     },
     {
       "name": "Reshiram",
@@ -872,6 +809,77 @@
       "type": "Stadium",
       "releaseDate": "23/08/2019",
       "url": "https://product-images.tcgplayer.com/197841.jpg"
+    },{
+      "name": "Basic Grass Energy (Texture)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": 152,
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/478116.jpg"
+    },
+    {
+      "name": "Basic Water Energy (Texture)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": 154,
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/478112.jpg"
+    },
+    {
+      "name": "Fighting Energy (Texture)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": 157,
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/478109.jpg"
+    },
+    {
+      "name": "Basic Dark Energy (Texture)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": 158,
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/478108.jpg"
+    },
+    {
+      "name": "Basic Lightning Energy (Reverse Holo)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": "Unnumbered",
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/264250.jpg"
+    },
+    {
+      "name": "Basic Psychic Energy (Reverse Holo)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": "Unnumbered",
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/264251.jpg"
+    },
+    {
+      "name": "Basic Fighting Energy (Reverse Holo)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": "Unnumbered",
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/264252.jpg"
+    },
+    {
+      "name": "Basic Dark Energy (Reverse Holo)",
+      "gen": "Sword and Shield",
+      "set": "Crown Zenith",
+      "number": "Unnumbered",
+      "type": "Basic Energy",
+      "releaseDate": "20/01/2023",
+      "url": "https://product-images.tcgplayer.com/264253.jpg"
     }
   ]
 }
