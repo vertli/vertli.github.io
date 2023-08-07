@@ -37,15 +37,6 @@
       "url": "https://product-images.tcgplayer.com/201346.jpg"
     },
     {
-      "name": "Nessa (Holofoil)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith",
-      "number": 136,
-      "type": "Basic Pokémon",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478190.jpg"
-    },
-    {
       "name": "Mew",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -188,24 +179,6 @@
       "type": "Supporter",
       "releaseDate": "20/01/2023",
       "url": "https://product-images.tcgplayer.com/478095.jpg"
-    },
-    {
-      "name": "Skeledirge ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 37,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497448.jpg"
-    },
-    {
-      "name": "Bellibolt ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 79,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497490.jpg"
     },
     {
       "name": "Ting-Lu ex",
