@@ -10,15 +10,6 @@
       "url": "https://product-images.tcgplayer.com/88398.jpg"
     },
     {
-      "name": "Sonia",
-      "gen": "Sword and Shield",
-      "set": "Rebel Clash",
-      "number": 192,
-      "type": "Supporter",
-      "releaseDate": "01/05/2020",
-      "url": "https://product-images.tcgplayer.com/213276.jpg"
-    },
-    {
       "name": "Green's Exploration",
       "gen": "Sun and Moon",
       "set": "Unbroken Bonds",
@@ -379,15 +370,6 @@
       "url": "https://product-images.tcgplayer.com/497634.jpg"
     },
     {
-      "name": "Wo-Chien ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 232,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497637.jpg"
-    },
-    {
       "name": "Skeledirge ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -694,60 +676,6 @@
       "url": "https://product-images.tcgplayer.com/226554.jpg"
     },
     {
-      "name": "Jirachi",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC13",
-      "type": "Basic Pokémon",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113755.jpg"
-    },
-    {
-      "name": "Flabebe",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC17",
-      "type": "Basic Pokémon",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113759.jpg"
-    },
-    {
-      "name": "Floette",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC18",
-      "type": "Pokémon EX",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113760.jpg"
-    },
-    {
-      "name": "Slurpuff",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC20",
-      "type": "Pokémon EX",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113762.jpg"
-    },
-    {
-      "name": "Sylveon EX",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC21",
-      "type": "Pokémon EX",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113763.jpg"
-    },
-    {
-      "name": "Sylveon EX",
-      "gen": "XY",
-      "set": "Generations: Radiant Collection",
-      "number": "RC32",
-      "type": "Pokémon EX",
-      "releaseDate": "22/02/2016",
-      "url": "https://product-images.tcgplayer.com/113764.jpg"
-    },
-    {
       "name": "Aether Paradise Conservation Area",
       "gen": "Sun and Moon",
       "set": "Hidden Fates: Shiny vault",
@@ -763,24 +691,6 @@
       "type": "Basic Energy",
       "releaseDate": "20/01/2023",
       "url": "https://product-images.tcgplayer.com/478116.jpg"
-    },
-    {
-      "name": "Basic Water Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith",
-      "number": 154,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478112.jpg"
-    },
-    {
-      "name": "Fighting Energy (Texture)",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith",
-      "number": 157,
-      "type": "Basic Energy",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478109.jpg"
     },
     {
       "name": "Basic Lightning Energy (Reverse Holo)",
