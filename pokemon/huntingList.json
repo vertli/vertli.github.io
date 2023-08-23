@@ -521,7 +521,7 @@
       "type": "Supporter",
       "releaseDate": "11/08/2023",
       "url": "https://product-images.tcgplayer.com/509986.jpg"
-    },   
+    },
     {
       "name": "Reshiram",
       "gen": "Sword and Shield",
@@ -764,7 +764,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/90315.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "POP",
       "set": "Series 2",
@@ -772,7 +773,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "01/08/2005",
       "url": "https://product-images.tcgplayer.com/90317.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "Original Series",
       "set": "WoTC Promo",
@@ -780,7 +782,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/90311.jpg"
-    },{
+    },
+    {
       "name": "Venusaur EX",
       "gen": "XY",
       "set": "Base Set",
@@ -788,7 +791,8 @@
       "type": "Basic Pokémon",
       "releaseDate": "05/02/2014",
       "url": "https://product-images.tcgplayer.com/90325.jpg"
-    },{
+    },
+    {
       "name": "Erika's Venusaur",
       "gen": "Original Series",
       "set": "Gym Challenge",
@@ -796,7 +800,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "16/10/2000",
       "url": "https://product-images.tcgplayer.com/85307.jpg"
-    },{
+    },
+    {
       "name": "M Venusaur EX",
       "gen": "XY",
       "set": "Generations",
@@ -804,7 +809,8 @@
       "type": "MEGA Pokémon",
       "releaseDate": "22/02/2016",
       "url": "https://product-images.tcgplayer.com/113660.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "Black & White",
       "set": "Dark Explorers",
@@ -812,7 +818,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "09/05/2012",
       "url": "https://product-images.tcgplayer.com/90322.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
@@ -820,7 +827,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/90316.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "EX Series",
       "set": "FireRed & LeafGreen",
@@ -828,7 +836,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "30/08/2004",
       "url": "https://product-images.tcgplayer.com/90323.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "Miscellaneous Sets",
       "set": "Rumble",
@@ -836,7 +845,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "02/12/2009",
       "url": "https://product-images.tcgplayer.com/90320.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "Platinum",
       "set": "Supreme Victors",
@@ -844,7 +854,8 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "19/08/2009",
       "url": "https://product-images.tcgplayer.com/125073.jpg"
-    },{
+    },
+    {
       "name": "Venusaur & Snivy GX",
       "gen": "Sun and Moon",
       "set": "Cosmic Eclipse",
@@ -852,7 +863,8 @@
       "type": "Basic Pokémon",
       "releaseDate": "01/11/2019",
       "url": "https://product-images.tcgplayer.com/201330.jpg"
-    },{
+    },
+    {
       "name": "Celebi & Venusaur GX",
       "gen": "Sun and Moon",
       "set": "Team Up",
@@ -860,7 +872,8 @@
       "type": "Basic Pokémon",
       "releaseDate": "01/02/2019",
       "url": "https://product-images.tcgplayer.com/183772.jpg"
-    },{
+    },
+    {
       "name": "Venusaur",
       "gen": "League & Championship Cards",
       "set": "League & Championship Cards",
@@ -868,14 +881,258 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/236464.jpg"
-    },{
-      "name": "Venusaur & Snivy GX",
-      "gen": "Sun and Moon",
-      "set": "Cosmic Eclipse",
-      "number": "249/236",
+    },
+    {
+      "name": "Treecko",
+      "gen": "EX Series",
+      "set": "Crystal Guardians",
+      "number": "67/100",
       "type": "Basic Pokémon",
-      "releaseDate": "01/11/2019",
-      "url": "https://product-images.tcgplayer.com/201609.jpg"
+      "releaseDate": "30/08/2006",
+      "url": "https://product-images.tcgplayer.com/90038.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Diamond & Peral",
+      "set": "Great Encounters",
+      "number": "90/106",
+      "type": "Basic Pokémon",
+      "releaseDate": "13/02/2008",
+      "url": "https://product-images.tcgplayer.com/90039.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Black & White",
+      "set": "Plasma Freeze",
+      "number": "6/116",
+      "type": "Basic Pokémon",
+      "releaseDate": "08/05/2013",
+      "url": "https://product-images.tcgplayer.com/90043.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "EX Series",
+      "set": "Crystal Guardians",
+      "number": "68/100",
+      "type": "Basic Pokémon",
+      "releaseDate": "30/08/2006",
+      "url": "https://product-images.tcgplayer.com/90044.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Diamond & Peral",
+      "set": "Stormfront",
+      "number": "79/100",
+      "type": "Basic Pokémon",
+      "releaseDate": "05/11/2008",
+      "url": "https://product-images.tcgplayer.com/90040.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "EX Series",
+      "set": "Ruby and Sapphire",
+      "number": "75/109",
+      "type": "Basic Pokémon",
+      "releaseDate": "18/07/2003",
+      "url": "https://product-images.tcgplayer.com/90032.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "EX Series",
+      "set": "Dragon",
+      "number": "80/97",
+      "type": "Basic Pokémon",
+      "releaseDate": "24/11/2003",
+      "url": "https://product-images.tcgplayer.com/90034.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Platinum",
+      "set": "Arceus",
+      "number": "78/99",
+      "type": "Basic Pokémon",
+      "releaseDate": "04/11/2009",
+      "url": "https://product-images.tcgplayer.com/90041.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Sun and Moon",
+      "set": "Celestial Storm",
+      "number": "8/168",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/08/2018",
+      "url": "https://product-images.tcgplayer.com/170816.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Sun and Moon",
+      "set": "Celestial Storm",
+      "number": "7/168",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/08/2018",
+      "url": "https://product-images.tcgplayer.com/170813.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "EX Series",
+      "set": "Team Rocket Returns",
+      "number": "109/109",
+      "type": "Basic Pokémon",
+      "releaseDate": "08/11/2004",
+      "url": "https://product-images.tcgplayer.com/90046.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Nintendo",
+      "set": "Promos",
+      "number": "7/40",
+      "type": "Basic Pokémon",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/90036.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "POP",
+      "set": "Series 4",
+      "number": "15/17",
+      "type": "Basic Pokémon",
+      "releaseDate": "01/08/2006",
+      "url": "https://product-images.tcgplayer.com/90045.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Nintendo",
+      "set": "Promos",
+      "number": "16/40",
+      "type": "Basic Pokémon",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/90035.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Nintendo",
+      "set": "Promos",
+      "number": "3/40",
+      "type": "Basic Pokémon",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/90031.jpg"
+    },
+    {
+      "name": "Treecko",
+      "gen": "Miscellaneous Cards",
+      "set": "GEN CON",
+      "number": "70/106",
+      "type": "Basic Pokémon",
+      "releaseDate": "09/05/2005",
+      "url": "https://product-images.tcgplayer.com/213010.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "POP",
+      "set": "Series 8",
+      "number": "17/17",
+      "type": "Basic Pokémon",
+      "releaseDate": "01/09/2008",
+      "url": "https://product-images.tcgplayer.com/90076.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Black & White",
+      "set": "Plasma Storm",
+      "number": "1/135",
+      "type": "Basic Pokémon",
+      "releaseDate": "06/02/2013",
+      "url": "https://product-images.tcgplayer.com/90081.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Diamond & Peral",
+      "set": "Majestic Dawn",
+      "number": "78/100",
+      "type": "Basic Pokémon",
+      "releaseDate": "21/05/2008",
+      "url": "https://product-images.tcgplayer.com/90074.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Platinum",
+      "set": "Base Set",
+      "number": "101/127",
+      "type": "Basic Pokémon",
+      "releaseDate": "11/02/2009",
+      "url": "https://product-images.tcgplayer.com/90077.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Diamond & Peral",
+      "set": "Majestic Dawn",
+      "number": "77/100",
+      "type": "Basic Pokémon",
+      "releaseDate": "21/05/2008",
+      "url": "https://product-images.tcgplayer.com/90073.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Platinum",
+      "set": "Supreme Victors",
+      "number": "131/147",
+      "type": "Basic Pokémon",
+      "releaseDate": "19/08/2009",
+      "url": "https://product-images.tcgplayer.com/90079.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "HeartGold & SoulSilver",
+      "set": "Unleashed",
+      "number": "67/95",
+      "type": "Basic Pokémon",
+      "releaseDate": "12/05/2010",
+      "url": "https://product-images.tcgplayer.com/90080.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "POP",
+      "set": "Series 6",
+      "number": "17/17",
+      "type": "Basic Pokémon",
+      "releaseDate": "01/09/2007",
+      "url": "https://product-images.tcgplayer.com/90072.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Diamond and Pearl",
+      "set": "Promo",
+      "number": "DP01",
+      "type": "Basic Pokémon",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/90075.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Sun and Moon",
+      "set": "Ultra Prism",
+      "number": "7/156",
+      "type": "Basic Pokémon",
+      "releaseDate": "02/02/2018",
+      "url": "https://product-images.tcgplayer.com/157624.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Burger King",
+      "set": "Promos",
+      "number": "77/100",
+      "type": "Basic Pokémon",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/231450.jpg"
+    },
+    {
+      "name": "Turtwig",
+      "gen": "Burger King",
+      "set": "Promos",
+      "number": "",
+      "type": "Basic Pokémon",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/231449.jpg"
     },
     {
       "name": "Aether Paradise Conservation Area",
