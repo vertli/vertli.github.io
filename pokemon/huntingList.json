@@ -1,24 +1,6 @@
 {
   "cardData": [
     {
-      "name": "Professor Juniper",
-      "gen": "Black & White",
-      "set": "Plasma Freeze",
-      "number": 116,
-      "type": "Supporter",
-      "releaseDate": "08/05/2013",
-      "url": "https://product-images.tcgplayer.com/88398.jpg"
-    },
-    {
-      "name": "Red & Blue",
-      "gen": "Sun and Moon",
-      "set": "Cosmic Eclipse",
-      "number": 234,
-      "type": "Supporter",
-      "releaseDate": "01/11/2019",
-      "url": "https://product-images.tcgplayer.com/201346.jpg"
-    },
-    {
       "name": "Entei V",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -668,15 +650,6 @@
     },
     {
       "name": "Ivysaur",
-      "gen": "Diamond & Peral",
-      "set": "Secret Wonders",
-      "number": "51/132",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "07/11/2007",
-      "url": "https://product-images.tcgplayer.com/86302.jpg"
-    },
-    {
-      "name": "Ivysaur",
       "gen": "Platinum",
       "set": "Supreme Victors",
       "number": "62/147",
@@ -809,24 +782,6 @@
       "type": "MEGA Pokémon",
       "releaseDate": "22/02/2016",
       "url": "https://product-images.tcgplayer.com/113660.jpg"
-    },
-    {
-      "name": "Venusaur",
-      "gen": "Black & White",
-      "set": "Dark Explorers",
-      "number": "3/108",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "09/05/2012",
-      "url": "https://product-images.tcgplayer.com/90322.jpg"
-    },
-    {
-      "name": "Venusaur",
-      "gen": "e-Card Series",
-      "set": "Expedition Base Set",
-      "number": "68/165",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "15/09/2002",
-      "url": "https://product-images.tcgplayer.com/90316.jpg"
     },
     {
       "name": "Venusaur",
@@ -1043,15 +998,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "06/02/2013",
       "url": "https://product-images.tcgplayer.com/90081.jpg"
-    },
-    {
-      "name": "Turtwig",
-      "gen": "Diamond & Peral",
-      "set": "Majestic Dawn",
-      "number": "78/100",
-      "type": "Basic Pokémon",
-      "releaseDate": "21/05/2008",
-      "url": "https://product-images.tcgplayer.com/90074.jpg"
     },
     {
       "name": "Turtwig",
