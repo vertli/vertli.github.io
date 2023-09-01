@@ -172,15 +172,6 @@
       "url": "https://product-images.tcgplayer.com/497629.jpg"
     },
     {
-      "name": "Flamigo",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 227,
-      "type": "Basic Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497630.jpg"
-    },
-    {
       "name": "Farigiraf",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -217,15 +208,6 @@
       "url": "https://product-images.tcgplayer.com/497640.jpg"
     },
     {
-      "name": "Quaquaval ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 235,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497641.jpg"
-    },
-    {
       "name": "Chien-Pao ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -235,24 +217,6 @@
       "url": "https://product-images.tcgplayer.com/497642.jpg"
     },
     {
-      "name": "Slowking ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 238,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497646.jpg"
-    },
-    {
-      "name": "Tinkaton ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 240,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497649.jpg"
-    },
-    {
       "name": "Lycanroc ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -260,24 +224,6 @@
       "type": "Pokémon ex",
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497651.jpg"
-    },
-    {
-      "name": "Ting-Lu ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 243,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497653.jpg"
-    },
-    {
-      "name": "Paldean Clodsire ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 244,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497654.jpg"
     },
     {
       "name": "Noivern ex",
@@ -451,15 +397,6 @@
       "url": "https://product-images.tcgplayer.com/509945.jpg"
     },
     {
-      "name": "Palafin",
-      "gen": "Scarlet and Violet",
-      "set": "Obsidian Flames",
-      "number": 200,
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "11/08/2023",
-      "url": "https://product-images.tcgplayer.com/509946.jpg"
-    },
-    {
       "name": "Pidgey",
       "gen": "Scarlet and Violet",
       "set": "Obsidian Flames",
@@ -485,15 +422,6 @@
       "type": "Supporter",
       "releaseDate": "11/08/2023",
       "url": "https://product-images.tcgplayer.com/509967.jpg"
-    },
-    {
-      "name": "Poppy",
-      "gen": "Scarlet and Violet",
-      "set": "Obsidian Flames",
-      "number": 220,
-      "type": "Supporter",
-      "releaseDate": "11/08/2023",
-      "url": "https://product-images.tcgplayer.com/509973.jpg"
     },
     {
       "name": "Geeta",
