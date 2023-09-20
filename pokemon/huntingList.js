@@ -2,6 +2,7 @@ const paginationNumbers = document.getElementById("pagination-numbers");
 const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
 const paginationLimit = 16;
+let originCardData = [];
 let cardData = [];
 let pageCount = 0;
 
@@ -20,6 +21,13 @@ const getPaginationNumbers = () => {
     appendPageNumber(i);
   }
 };
+
+const removeAllPaginationNumbers = () => {
+  let pagination = document.getElementById("pagination-numbers");
+  while (pagination.hasChildNodes()) {
+    pagination.removeChild(pagination.firstChild);
+  }
+}
 
 // set active page number
 const handleActivePageNumber = () => {
@@ -59,6 +67,21 @@ const handlePageButtonsStatus = () => {
   }
 };
 
+let cardType = (dataStr) => {
+  if (dataStr === "Basic Pokémon") return "basic";
+  if (dataStr === "Stage 1 Pokémon") return "stage1";
+  if (dataStr === "Stage 2 Pokémon") return "stage2";
+  if (dataStr === "Pokémon EX") return "pEX";
+  if (dataStr === "MEGA Pokémon") return "pMEGA";
+  if (dataStr === "Pokémon ex") return "pex";
+  if (dataStr === "Pokémon V") return "pV";
+  if (dataStr === "Pokémon VMAX") return "pVMax";
+  if (dataStr === "Pokémon VSTAR") return "pVStar";
+  if (dataStr === "Item") return "item";
+  if (dataStr === "Stadium") return "stadium";
+  if (dataStr === "Supporter") return "supporter";
+}
+
 // display active page
 let currentPage;
 const cardGallery = document.getElementById("card-gallery");
@@ -75,7 +98,7 @@ const setCurrentPage = (pageNum) => {
   for (let idx = prevRange; idx < currRange; idx++) {
     if (idx >= cardData.length) break;
     const card = document.createElement("div");
-    card.className = "card col-xl-3 col-sm-12 col-md-6";
+    card.className = "card col-xl-3 col-sm-12 col-md-6 " + cardType(cardData[idx]["type"]);
     const gallery = document.createElement("div");
     gallery.className = "gallery";
     const img = document.createElement("img");
@@ -99,6 +122,7 @@ const setCurrentPage = (pageNum) => {
 async function logJSONData() {
   const response = await fetch("./pokemon/huntingList.json");
   const jsonData = await response.json();
+  originCardData = jsonData["cardData"];
   cardData = jsonData["cardData"];
 }
 
@@ -153,3 +177,33 @@ function goToTop() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 };
+
+
+/*
+* Filter Part LOL
+*/
+filterSelection("all"); // default ._.
+function filterSelection(option) {
+  if (option === "all") {
+    cardData = originCardData;
+  } else {
+    cardData = []; // clean the current card data list
+    for (let idx = 0; idx < originCardData.length; idx++) {
+      if (option === cardType(originCardData[idx]["type"])) cardData.push(originCardData[idx]);
+    }
+  }
+  removeAllPaginationNumbers();
+  init();
+}
+
+// Add active class to the current control button (highlight it)
+let btnContainer = document.getElementById("filterList");
+let btns = btnContainer.getElementsByClassName("btn");
+// console.log(btns);
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    let current = document.getElementsByClassName("btn active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}

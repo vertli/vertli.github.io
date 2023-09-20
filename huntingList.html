@@ -35,9 +35,31 @@
           I don't own any copyright of those images.
         </p>
 
-        <div class="row" id="card-gallery" aria-live="polite">
+        
+        <div id="filterList">
+          <button class="btn active" onclick="filterSelection('all')">Show All</button>
+          <br>
+          <button class="btn" onclick="filterSelection('basic')">Basic Pokémon</button>
+          <button class="btn" onclick="filterSelection('stage1')">Stage 1 Pokémon</button>
+          <button class="btn" onclick="filterSelection('stage2')">Stage 2 Pokémon</button>
+          <button class="btn" onclick="filterSelection('pEX')">Pokémon EX</button>
+          <button class="btn" onclick="filterSelection('pMEGA')">MEGA Pokémon</button>
+          <br>
+          <button class="btn" onclick="filterSelection('pV')">Pokémon V</button>
+          <button class="btn" onclick="filterSelection('pVMax')">Pokémon VMAX</button>
+          <button class="btn" onclick="filterSelection('pVStar')">Pokémon VSTAR</button>
+          <button class="btn" onclick="filterSelection('pex')">Pokémon ex</button>
+          <button class="btn" onclick="filterSelection('item')">Item</button>
+          <button class="btn" onclick="filterSelection('stadium')">Stadium</button>
+          <button class="btn" onclick="filterSelection('supporter')">Supporter</button>
         </div>
-
+        
+        <div class="" id="context">
+          <div class="row" id="card-gallery" aria-live="polite">
+          </div>
+        </div>
+        
+      
         <div class="pagination-container">
           <button class="pagination-button" id="prev-button" title="Previous Page" aria-label="Previous Page">
             &lt;
@@ -69,7 +91,6 @@
     
     <script src="./pokemon/huntingList.js"></script>
     <script src="./js/style.js"></script>
-    <script src="./js/height.js"></script>
     <noscript>This website requires to use JavaScript!!!</noscript>
   </body>
   
