@@ -1,22 +1,103 @@
 {
   "cardData": [
     {
-      "name": "Entei V",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG36",
-      "type": "Pokémon V",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478065.jpg"
+      "name": "Ghetsis",
+      "gen": "Black & White",
+      "set": "Plasma Freeze",
+      "number": "115/116",
+      "type": "Supporter",
+      "releaseDate": "08/05/2013",
+      "url": "https://product-images.tcgplayer.com/85695.jpg"
     },
     {
-      "name": "Suicune V",
+      "name": "Erika's Hospitality",
+      "gen": "Sun and Moon",
+      "set": "Team Up",
+      "number": "174/181",
+      "type": "Supporter",
+      "releaseDate": "01/02/2019",
+      "url": "https://product-images.tcgplayer.com/183933.jpg"
+    },
+    {
+      "name": "Gardenia",
+      "gen": "Sun and Moon",
+      "set": "Ultra Prism",
+      "number": "149/159",
+      "type": "Supporter",
+      "releaseDate": "02/02/2018",
+      "url": "https://product-images.tcgplayer.com/157765.jpg"
+    },
+    {
+      "name": "Milo",
       "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG38",
-      "type": "Pokémon V",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478067.jpg"
+      "set": "Rebel Clash",
+      "number": "190/192",
+      "type": "Supporter",
+      "releaseDate": "01/05/2020",
+      "url": "https://product-images.tcgplayer.com/213265.jpg"
+    },
+    {
+      "name": "Ball Guy",
+      "gen": "Sword and Shield",
+      "set": "Shining Fates",
+      "number": "065/072",
+      "type": "Supporter",
+      "releaseDate": "19/02/2021",
+      "url": "https://product-images.tcgplayer.com/232539.jpg"
+    },
+    {
+      "name": "Roxanne",
+      "gen": "Sword and Shield",
+      "set": "Astral Radiance",
+      "number": "188/189",
+      "type": "Supporter",
+      "releaseDate": "27/05/2022",
+      "url": "https://product-images.tcgplayer.com/272438.jpg"
+    },
+    {
+      "name": "Tate & Liza",
+      "gen": "Sun and Moon",
+      "set": "Celestial Storm",
+      "number": "166/168",
+      "type": "Supporter",
+      "releaseDate": "03/08/2018",
+      "url": "https://product-images.tcgplayer.com/171018.jpg"
+    },
+    {
+      "name": "N",
+      "gen": "Black & White",
+      "set": "Noble Victories",
+      "number": "101/101",
+      "type": "Supporter",
+      "releaseDate": "16/11/2011",
+      "url": "https://product-images.tcgplayer.com/87678.jpg"
+    },
+    {
+      "name": "Colress",
+      "gen": "Black & White",
+      "set": "Plasma Storm",
+      "number": "135/135",
+      "type": "Supporter",
+      "releaseDate": "06/02/2013",
+      "url": "https://product-images.tcgplayer.com/84390.jpg"
+    },
+    {
+      "name": "Cynthia",
+      "gen": "Sun and Moon",
+      "set": "Hidden Fates: Shiny Vault",
+      "number": "SV82/SV94",
+      "type": "Supporter",
+      "releaseDate": "23/08/2019",
+      "url": "https://product-images.tcgplayer.com/197836.jpg"
+    },
+    {
+      "name": "Cynthia",
+      "gen": "Sun and Moon",
+      "set": "Ultra Prism",
+      "number": "148/156",
+      "type": "Supporter",
+      "releaseDate": "02/02/2018",
+      "url": "https://product-images.tcgplayer.com/157764.jpg"
     },
     {
       "name": "Zeraora VMAX",
@@ -967,19 +1048,154 @@
       "name": "Turtwig",
       "gen": "Burger King",
       "set": "Promos",
-      "number": "",
+      "number": "103/130",
       "type": "Basic Pokémon",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/231449.jpg"
     },
     {
-      "name": "Aether Paradise Conservation Area",
+      "name": "Life Forest",
       "gen": "Sun and Moon",
-      "set": "Hidden Fates: Shiny vault",
-      "number": "SV87",
+      "set": "Lost Thunder",
+      "number": "180/214",
       "type": "Stadium",
-      "releaseDate": "23/08/2019",
-      "url": "https://product-images.tcgplayer.com/197841.jpg"
+      "releaseDate": "02/11/2018",
+      "url": "https://product-images.tcgplayer.com/179011.jpg"
+    },
+    {
+      "name": "Heat Factory",
+      "gen": "Sun and Moon",
+      "set": "Lost Thunder",
+      "number": "178/214",
+      "type": "Stadium",
+      "releaseDate": "02/11/2018",
+      "url": "https://product-images.tcgplayer.com/179007.jpg"
+    },
+    {
+      "name": "Black Market",
+      "gen": "Sun and Moon",
+      "set": "Team Up",
+      "number": "134/181",
+      "type": "Stadium",
+      "releaseDate": "01/02/2019",
+      "url": "https://product-images.tcgplayer.com/183923.jpg"
+    },
+    {
+      "name": "Wondrous Labyrinth",
+      "gen": "Sun and Moon",
+      "set": "Team Up",
+      "number": "158/181",
+      "type": "Stadium",
+      "releaseDate": "01/02/2019",
+      "url": "https://product-images.tcgplayer.com/183962.jpg"
+    },
+    {
+      "name": "Cyrus",
+      "gen": "Sun and Moon",
+      "set": "Ultra Prism",
+      "number": "120/156",
+      "type": "Supporter",
+      "releaseDate": "02/02/2018",
+      "url": "https://product-images.tcgplayer.com/157737.jpg"
+    },
+    {
+      "name": "Lance",
+      "gen": "Sun and Moon",
+      "set": "Dragon Majesty",
+      "number": "61/70",
+      "type": "Supporter",
+      "releaseDate": "07/09/2018",
+      "url": "https://product-images.tcgplayer.com/175491.jpg"
+    },
+    {
+      "name": "Lysandre",
+      "gen": "Sun and Moon",
+      "set": "Forbidden Light",
+      "number": "110/131",
+      "type": "Supporter",
+      "releaseDate": "04/05/2018",
+      "url": "https://product-images.tcgplayer.com/165773.jpg"
+    },
+    {
+      "name": "Gym Badge (Brock)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY203",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/127141.jpg"
+    },
+    {
+      "name": "Gym Badge (Misty)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY204",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/127142.jpg"
+    },
+    {
+      "name": "Gym Badge (Lt. Surge)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY205",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/127143.jpg"
+    },
+    {
+      "name": "Gym Badge (Erika)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY206",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/127144.jpg"
+    },
+    {
+      "name": "Gym Badge (Koga)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY207",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/127145.jpg"
+    },
+    {
+      "name": "Gym Badge (Sabrina)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY208",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/129720.jpg"
+    },
+    {
+      "name": "Gym Badge (Blaine)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY209",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com//129718.jpg"
+    },
+    {
+      "name": "Gym Badge (Giovanni)",
+      "gen": "XY",
+      "set": "Promo",
+      "number": "XY210",
+      "type": "Item",
+      "releaseDate": "",
+      "url": "https://product-images.tcgplayer.com/129719.jpg"
+    },
+    {
+      "name": "Dark Jolteon (not 1st printed)",
+      "gen": "Team Rocket",
+      "set": "WoTC",
+      "number": "38/82",
+      "type": "Stage 1 Pokémon",
+      "releaseDate": "24/04/2000",
+      "url": "https://product-images.tcgplayer.com/84617.jpg"
     }
   ]
 }
