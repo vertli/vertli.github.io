@@ -109,15 +109,6 @@
       "url": "https://product-images.tcgplayer.com/477062.jpg"
     },
     {
-      "name": "Deoxys VMAX",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG45",
-      "type": "Pokémon VMAX",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/477354.jpg"
-    },
-    {
       "name": "Deoxys VSTAR",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -143,24 +134,6 @@
       "type": "Pokémon V",
       "releaseDate": "20/01/2023",
       "url": "https://product-images.tcgplayer.com/478081.jpg"
-    },
-    {
-      "name": "Cynthia's Ambition",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG60",
-      "type": "Supporter",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/477052.jpg"
-    },
-    {
-      "name": "Ting-Lu ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 127,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497543.jpg"
     },
     {
       "name": "Copperajah ex",
@@ -253,15 +226,6 @@
       "url": "https://product-images.tcgplayer.com/497631.jpg"
     },
     {
-      "name": "Forretress ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 230,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497634.jpg"
-    },
-    {
       "name": "Skeledirge ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -296,15 +260,6 @@
       "type": "Pokémon ex",
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497651.jpg"
-    },
-    {
-      "name": "Noivern ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 246,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497657.jpg"
     },
     {
       "name": "Chi-Yu ex",
