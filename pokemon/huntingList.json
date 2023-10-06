@@ -172,15 +172,6 @@
       "url": "https://product-images.tcgplayer.com/497622.jpg"
     },
     {
-      "name": "Nacli",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 220,
-      "type": "Basic Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497623.jpg"
-    },
-    {
       "name": "Tyranitar",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -188,24 +179,6 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497625.jpg"
-    },
-    {
-      "name": "Grafaiai",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 223,
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497626.jpg"
-    },
-    {
-      "name": "Rookidee",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 225,
-      "type": "Basic Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497628.jpg"
     },
     {
       "name": "Maushold",
@@ -226,24 +199,6 @@
       "url": "https://product-images.tcgplayer.com/497631.jpg"
     },
     {
-      "name": "Skeledirge ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 233,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497639.jpg"
-    },
-    {
-      "name": "Chi-Yu ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 234,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497640.jpg"
-    },
-    {
       "name": "Chien-Pao ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -253,15 +208,6 @@
       "url": "https://product-images.tcgplayer.com/497642.jpg"
     },
     {
-      "name": "Lycanroc ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 241,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497651.jpg"
-    },
-    {
       "name": "Chi-Yu ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -269,24 +215,6 @@
       "type": "Pokémon ex",
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497678.jpg"
-    },
-    {
-      "name": "Chien-Pao ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 261,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497680.jpg"
-    },
-    {
-      "name": "Ting-Lu ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 263,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497682.jpg"
     },
     {
       "name": "Squawkabilly ex",
@@ -314,15 +242,6 @@
       "type": "Supporter",
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497688.jpg"
-    },
-    {
-      "name": "Saguaro",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 270,
-      "type": "Supporter",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497691.jpg"
     },
     {
       "name": "Quaquaval ex",
@@ -433,24 +352,6 @@
       "url": "https://product-images.tcgplayer.com/509986.jpg"
     },
     {
-      "name": "Reshiram",
-      "gen": "Sword and Shield",
-      "set": "Shining Fates",
-      "number": 17,
-      "type": "Basic Pokémon",
-      "releaseDate": "19/02/2021",
-      "url": "https://product-images.tcgplayer.com/232402.jpg"
-    },
-    {
-      "name": "Kyogre",
-      "gen": "Sword and Shield",
-      "set": "Shining Fates",
-      "number": 21,
-      "type": "Basic Pokémon",
-      "releaseDate": "19/02/2021",
-      "url": "https://product-images.tcgplayer.com/232414.jpg"
-    },
-    {
       "name": "Rayquaza",
       "gen": "Sword and Shield",
       "set": "Vivid Voltage",
@@ -458,33 +359,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "13/11/2020",
       "url": "https://product-images.tcgplayer.com/226594.jpg"
-    },
-    {
-      "name": "Raikou",
-      "gen": "Sword and Shield",
-      "set": "Vivid Voltage",
-      "number": 50,
-      "type": "Basic Pokémon",
-      "releaseDate": "13/11/2020",
-      "url": "https://product-images.tcgplayer.com/226445.jpg"
-    },
-    {
-      "name": "Jirachi",
-      "gen": "Sword and Shield",
-      "set": "Vivid Voltage",
-      "number": 119,
-      "type": "Basic Pokémon",
-      "releaseDate": "13/11/2020",
-      "url": "https://product-images.tcgplayer.com/226573.jpg"
-    },
-    {
-      "name": "Zamazenta",
-      "gen": "Sword and Shield",
-      "set": "Vivid Voltage",
-      "number": 102,
-      "type": "Basic Pokémon",
-      "releaseDate": "13/11/2020",
-      "url": "https://product-images.tcgplayer.com/226554.jpg"
     },
     {
       "name": "Bulbasaur",
