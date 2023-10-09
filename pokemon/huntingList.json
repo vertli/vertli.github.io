@@ -91,15 +91,6 @@
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
     {
-      "name": "Cynthia",
-      "gen": "Sun and Moon",
-      "set": "Ultra Prism",
-      "number": "148/156",
-      "type": "Supporter",
-      "releaseDate": "02/02/2018",
-      "url": "https://product-images.tcgplayer.com/157764.jpg"
-    },
-    {
       "name": "Zeraora VMAX",
       "gen": "Sword and Shield",
       "set": "Crown Zenith Galarian Gallery",
@@ -116,24 +107,6 @@
       "type": "Pokémon VSTAR",
       "releaseDate": "20/01/2023",
       "url": "https://product-images.tcgplayer.com/477059.jpg"
-    },
-    {
-      "name": "Hatterene VMAX",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG47",
-      "type": "Pokémon VMAX",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478074.jpg"
-    },
-    {
-      "name": "Zamazenta V",
-      "gen": "Sword and Shield",
-      "set": "Crown Zenith Galarian Gallery",
-      "number": "GG54",
-      "type": "Pokémon V",
-      "releaseDate": "20/01/2023",
-      "url": "https://product-images.tcgplayer.com/478081.jpg"
     },
     {
       "name": "Copperajah ex",
@@ -380,30 +353,12 @@
     },
     {
       "name": "Bulbasaur",
-      "gen": "EX Series",
-      "set": "Crystal Guardians",
-      "number": "46/100",
-      "type": "Basic Pokémon",
-      "releaseDate": "30/08/2006",
-      "url": "https://product-images.tcgplayer.com/84033.jpg"
-    },
-    {
-      "name": "Bulbasaur",
       "gen": "Black & White",
       "set": "Dark Explorers",
       "number": "1/108",
       "type": "Basic Pokémon",
       "releaseDate": "09/05/2012",
       "url": "https://product-images.tcgplayer.com/84036.jpg"
-    },
-    {
-      "name": "Bulbasaur",
-      "gen": "EX Series",
-      "set": "Crystal Guardians",
-      "number": "45/100",
-      "type": "Basic Pokémon",
-      "releaseDate": "30/08/2006",
-      "url": "https://product-images.tcgplayer.com/84032.jpg"
     },
     {
       "name": "Bulbasaur",
@@ -440,33 +395,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "31/10/2005",
       "url": "https://product-images.tcgplayer.com/84833.jpg"
-    },
-    {
-      "name": "Ivysaur",
-      "gen": "Black & White",
-      "set": "Dark Explorers",
-      "number": "2/108",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "09/05/2012",
-      "url": "https://product-images.tcgplayer.com/86304.jpg"
-    },
-    {
-      "name": "Ivysaur",
-      "gen": "Platinum",
-      "set": "Supreme Victors",
-      "number": "62/147",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "19/08/2009",
-      "url": "https://product-images.tcgplayer.com/86303.jpg"
-    },
-    {
-      "name": "Erika's Ivysaur",
-      "gen": "Original Series",
-      "set": "Gym Challenge",
-      "number": "41/132",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "16/10/2000",
-      "url": "https://product-images.tcgplayer.com/85297.jpg"
     },
     {
       "name": "Ivysaur",
@@ -910,15 +838,6 @@
       "url": "https://product-images.tcgplayer.com/183962.jpg"
     },
     {
-      "name": "Cyrus",
-      "gen": "Sun and Moon",
-      "set": "Ultra Prism",
-      "number": "120/156",
-      "type": "Supporter",
-      "releaseDate": "02/02/2018",
-      "url": "https://product-images.tcgplayer.com/157737.jpg"
-    },
-    {
       "name": "Lance",
       "gen": "Sun and Moon",
       "set": "Dragon Majesty",
@@ -926,15 +845,6 @@
       "type": "Supporter",
       "releaseDate": "07/09/2018",
       "url": "https://product-images.tcgplayer.com/175491.jpg"
-    },
-    {
-      "name": "Lysandre",
-      "gen": "Sun and Moon",
-      "set": "Forbidden Light",
-      "number": "110/131",
-      "type": "Supporter",
-      "releaseDate": "04/05/2018",
-      "url": "https://product-images.tcgplayer.com/165773.jpg"
     },
     {
       "name": "Gym Badge (Brock)",
