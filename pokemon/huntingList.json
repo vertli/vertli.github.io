@@ -19,24 +19,6 @@
       "url": "https://product-images.tcgplayer.com/183933.jpg"
     },
     {
-      "name": "Gardenia",
-      "gen": "Sun and Moon",
-      "set": "Ultra Prism",
-      "number": "149/159",
-      "type": "Supporter",
-      "releaseDate": "02/02/2018",
-      "url": "https://product-images.tcgplayer.com/157765.jpg"
-    },
-    {
-      "name": "Milo",
-      "gen": "Sword and Shield",
-      "set": "Rebel Clash",
-      "number": "190/192",
-      "type": "Supporter",
-      "releaseDate": "01/05/2020",
-      "url": "https://product-images.tcgplayer.com/213265.jpg"
-    },
-    {
       "name": "Ball Guy",
       "gen": "Sword and Shield",
       "set": "Shining Fates",
@@ -44,15 +26,6 @@
       "type": "Supporter",
       "releaseDate": "19/02/2021",
       "url": "https://product-images.tcgplayer.com/232539.jpg"
-    },
-    {
-      "name": "Roxanne",
-      "gen": "Sword and Shield",
-      "set": "Astral Radiance",
-      "number": "188/189",
-      "type": "Supporter",
-      "releaseDate": "27/05/2022",
-      "url": "https://product-images.tcgplayer.com/272438.jpg"
     },
     {
       "name": "Tate & Liza",
@@ -379,15 +352,6 @@
       "url": "https://product-images.tcgplayer.com/84026.jpg"
     },
     {
-      "name": "Bulbasaur",
-      "gen": "EX Series",
-      "set": "FireRed & LeafGreen",
-      "number": "54/112",
-      "type": "Basic Pokémon",
-      "releaseDate": "30/08/2004",
-      "url": "https://product-images.tcgplayer.com/84029.jpg"
-    },
-    {
       "name": "Ditto",
       "gen": "EX Series",
       "set": "Delta Species",
@@ -602,15 +566,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "30/08/2006",
       "url": "https://product-images.tcgplayer.com/90044.jpg"
-    },
-    {
-      "name": "Treecko",
-      "gen": "Diamond & Peral",
-      "set": "Stormfront",
-      "number": "79/100",
-      "type": "Basic Pokémon",
-      "releaseDate": "05/11/2008",
-      "url": "https://product-images.tcgplayer.com/90040.jpg"
     },
     {
       "name": "Treecko",
@@ -845,6 +800,15 @@
       "type": "Supporter",
       "releaseDate": "07/09/2018",
       "url": "https://product-images.tcgplayer.com/175491.jpg"
+    },
+    {
+      "name": "Lysandre",
+      "gen": "Sun and Moon",
+      "set": "Forbidden Light",
+      "number": "110/131",
+      "type": "Supporter",
+      "releaseDate": "04/05/2018",
+      "url": "https://product-images.tcgplayer.com/165773.jpg"
     },
     {
       "name": "Gym Badge (Brock)",
