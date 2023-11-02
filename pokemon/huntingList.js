@@ -68,18 +68,31 @@ const handlePageButtonsStatus = () => {
 };
 
 let cardType = (dataStr) => {
-  if (dataStr === "Basic Pokémon") return "basic";
-  if (dataStr === "Stage 1 Pokémon") return "stage1";
-  if (dataStr === "Stage 2 Pokémon") return "stage2";
-  if (dataStr === "Pokémon EX") return "pEX";
-  if (dataStr === "MEGA Pokémon") return "pMEGA";
-  if (dataStr === "Pokémon ex") return "pex";
-  if (dataStr === "Pokémon V") return "pV";
-  if (dataStr === "Pokémon VMAX") return "pVMax";
-  if (dataStr === "Pokémon VSTAR") return "pVStar";
-  if (dataStr === "Item") return "item";
-  if (dataStr === "Stadium") return "stadium";
-  if (dataStr === "Supporter") return "supporter";
+  if (typeof dataStr === "string") {
+    if (dataStr === "Basic Pokémon") return "basic";
+    if (dataStr === "Stage 1 Pokémon") return "stage1";
+    if (dataStr === "Stage 2 Pokémon") return "stage2";
+    if (dataStr === "Pokémon EX") return "pEX";
+    if (dataStr === "MEGA Pokémon") return "pMEGA";
+    if (dataStr === "Pokémon ex") return "pex";
+    if (dataStr === "Pokémon V") return "pV";
+    if (dataStr === "Pokémon VMAX") return "pVMax";
+    if (dataStr === "Pokémon VSTAR") return "pVStar";
+    if (dataStr === "Item") return "item";
+    if (dataStr === "Pokémon Tool") return "tool";
+    if (dataStr === "Stadium") return "stadium";
+    if (dataStr === "Supporter") return "supporter";
+    if (dataStr === "Energy") return "energy";
+    if (dataStr === "Pokémon 151") return "p151";
+  }
+  if (typeof dataStr === "object") {
+    let ret = "";
+    for (s of dataStr) {
+      ret += cardType(s) + " ";
+    }
+    return ret;
+  }
+  return ""; // LOL bug here
 }
 
 // display active page
@@ -189,7 +202,13 @@ function filterSelection(option) {
   } else {
     cardData = []; // clean the current card data list
     for (let idx = 0; idx < originCardData.length; idx++) {
-      if (option === cardType(originCardData[idx]["type"])) cardData.push(originCardData[idx]);
+      if (typeof originCardData[idx]["type"] === "string") {
+        if (option === cardType(originCardData[idx]["type"])) cardData.push(originCardData[idx]);
+      } else {
+        for (t of originCardData[idx]["type"]) {
+          if (option === cardType(t)) cardData.push(originCardData[idx]);
+        }
+      }
     }
   }
   removeAllPaginationNumbers();

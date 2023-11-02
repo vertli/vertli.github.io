@@ -46,15 +46,6 @@
       "url": "https://product-images.tcgplayer.com/87678.jpg"
     },
     {
-      "name": "Colress",
-      "gen": "Black & White",
-      "set": "Plasma Storm",
-      "number": "135/135",
-      "type": "Supporter",
-      "releaseDate": "06/02/2013",
-      "url": "https://product-images.tcgplayer.com/84390.jpg"
-    },
-    {
       "name": "Cynthia",
       "gen": "Sun and Moon",
       "set": "Hidden Fates: Shiny Vault",
@@ -314,15 +305,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/84026.jpg"
-    },
-    {
-      "name": "Ditto",
-      "gen": "EX Series",
-      "set": "Delta Species",
-      "number": "36/113",
-      "type": "Basic Pokémon",
-      "releaseDate": "31/10/2005",
-      "url": "https://product-images.tcgplayer.com/84833.jpg"
     },
     {
       "name": "Ivysaur",
@@ -845,6 +827,367 @@
       "type": "Item",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/129719.jpg"
+    },
+    {
+      "name": "Charmander (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "004/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502555.jpg"
+    },{
+      "name": "Charizard ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "006/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502558.jpg"
+    },{
+      "name": "Blastoise ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "009/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502551.jpg"
+    },{
+      "name": "Caterpie (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "010/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502559.jpg"
+    },{
+      "name": "Beedrill (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "015/165",
+      "type": ["Stage 2 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502564.jpg"
+    },{
+      "name": "Spearow (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "021/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502587.jpg"
+    },{
+      "name": "Machamp (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "068/165",
+      "type": ["Stage 2 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516385.jpg"
+    },{
+      "name": "Ponyta (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "077/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516601.jpg"
+    },{
+      "name": "Dodrio (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "085/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516654.jpg"
+    },{
+      "name": "Marowak (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "105/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516674.jpg"
+    },{
+      "name": "Chansey (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "113/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516575.jpg"
+    },{
+      "name": "Starmie (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "121/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516684.jpg"
+    },{
+      "name": "Gyarados (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "130/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516693.jpg"
+    },{
+      "name": "Lapras (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "131/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516694.jpg"
+    },{
+      "name": "Kabutops (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "141/165",
+      "type": ["Stage 2 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516704.jpg"
+    },{
+      "name": "Dragonair (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "148/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516711.jpg"
+    },{
+      "name": "Antique Helix Fossil (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "153/165",
+      "type": ["Item", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516715.jpg"
+    },{
+      "name": "Big Air Balloon (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "155/165",
+      "type": ["Pokémon Tool", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516717.jpg"
+    },{
+      "name": "Erika's Invitation (RH)",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "160/165",
+      "type": ["Supporter", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/516722.jpg"
+    },{
+      "name": "Charmander",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "168/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502556.jpg"
+    },{
+      "name": "Charmeleon",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "169/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517018.jpg"
+    },{
+      "name": "Squirtle",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "170/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/502549.jpg"
+    },{
+      "name": "Wartortle ",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "171/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517038.jpg"
+    },{
+      "name": "Caterpie ",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "172/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517016.jpg"
+    },{
+      "name": "Rikachu ",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "173/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/513721.jpg"
+    },{
+      "name": "Nidoking",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "174/165",
+      "type": ["Stage 2 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517029.jpg"
+    },{
+      "name": "Psyduck",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "175/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517035.jpg"
+    },{
+      "name": "Machoke",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "177/165",
+      "type": ["Stage 1 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517025.jpg"
+    },{
+      "name": "Tangela",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "178/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517036.jpg"
+    },{
+      "name": "Charizard ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "183/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517017.jpg"
+    },{
+      "name": "Blastoise ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "184/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517015.jpg"
+    },{
+      "name": "Arbok ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "185/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517014.jpg"
+    },{
+      "name": "Ninetales ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "186/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517030.jpg"
+    },{
+      "name": "Golem ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "189/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517021.jpg"
+    },{
+      "name": "Kangaskhan ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "190/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517024.jpg"
+    },{
+      "name": "Zapdos ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "192/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517040.jpg"
+    },{
+      "name": "Bill's Transfer",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "194/165",
+      "type": ["Supporter", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517041.jpg"
+    },{
+      "name": "Erika's Invitation",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "196/165",
+      "type": ["Supporter", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517176.jpg"
+    },{
+      "name": "Giovanni's Charisma",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "197/165",
+      "type": ["Supporter", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517043.jpg"
+    },{
+      "name": "Venusaur ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "198/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517044.jpg"
+    },{
+      "name": "Alakazam ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "201/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517047.jpg"
+    },{
+      "name": "Zapdos ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "202/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517048.jpg"
+    },{
+      "name": "Giovanni's Charisma",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "204/165",
+      "type": ["Supporter", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517050.jpg"
+    },{
+      "name": "Mew ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "205/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517051.jpg"
+    },{
+      "name": "Basic Psychic Energy",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "207/165",
+      "type": ["Energy", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517053.jpg"
     },
     {
       "name": "Dark Jolteon (not 1st printed)",
