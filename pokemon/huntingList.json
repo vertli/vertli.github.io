@@ -818,14 +818,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/502558.jpg"
     },{
-      "name": "Caterpie (RH)",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "010/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/502559.jpg"
-    },{
       "name": "Beedrill (RH)",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -833,14 +825,6 @@
       "type": ["Stage 2 Pokémon", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/502564.jpg"
-    },{
-      "name": "Spearow (RH)",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "021/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/502587.jpg"
     },{
       "name": "Machamp (RH)",
       "gen": "Scarlet and Violet",
@@ -881,22 +865,6 @@
       "type": ["Stage 1 Pokémon", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/516684.jpg"
-    },{
-      "name": "Gyarados (RH)",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "130/165",
-      "type": ["Stage 1 Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/516693.jpg"
-    },{
-      "name": "Kabutops (RH)",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "141/165",
-      "type": ["Stage 2 Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/516704.jpg"
     },{
       "name": "Antique Helix Fossil (RH)",
       "gen": "Scarlet and Violet",
@@ -954,7 +922,7 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517038.jpg"
     },{
-      "name": "Caterpie ",
+      "name": "Caterpie",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
       "number": "172/165",
