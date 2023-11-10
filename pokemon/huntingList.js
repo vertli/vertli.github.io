@@ -141,10 +141,11 @@ async function logJSONData() {
 
 function init() {
   pageCount = Math.ceil(cardData.length / paginationLimit);
+  console.log("pageCount: ", pageCount);
   getPaginationNumbers();
   setCurrentPage(1);
-   
-  prevButton.addEventListener("click", () => {
+
+  prevButton.addEventListener("click", (e) => {
     setCurrentPage(currentPage - 1);
   });
 
@@ -168,7 +169,7 @@ window.addEventListener("load", () => {
 
   const intervalID = setInterval(function() {
     if (!isDone) return;
-    init();
+    filterSelection("all"); // default ._.
     clearInterval(intervalID);
   }, 100);
 });
@@ -195,7 +196,6 @@ function goToTop() {
 /*
 * Filter Part LOL
 */
-filterSelection("all"); // default ._.
 function filterSelection(option) {
   if (option === "all") {
     cardData = originCardData;
