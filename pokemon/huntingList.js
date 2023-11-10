@@ -139,19 +139,23 @@ async function logJSONData() {
   cardData = jsonData["cardData"];
 }
 
+let goToPrevPage = (e) => {
+  setCurrentPage(currentPage - 1);
+}
+
+let goToNextPage = (e) => {
+  setCurrentPage(currentPage + 1);
+}
+
 function init() {
   pageCount = Math.ceil(cardData.length / paginationLimit);
   console.log("pageCount: ", pageCount);
   getPaginationNumbers();
   setCurrentPage(1);
 
-  prevButton.addEventListener("click", (e) => {
-    setCurrentPage(currentPage - 1);
-  });
+  prevButton.addEventListener("click", goToPrevPage, false);
 
-  nextButton.addEventListener("click", () => {
-    setCurrentPage(currentPage + 1);
-  });
+  nextButton.addEventListener("click", goToNextPage, false);
 
   document.querySelectorAll(".pagination-number").forEach((button) => {
     const pageIndex = Number(button.getAttribute("page-index"));
