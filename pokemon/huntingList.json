@@ -46,15 +46,6 @@
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
     {
-      "name": "Copperajah ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 150,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497568.jpg"
-    },
-    {
       "name": "Pyroar",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -145,15 +136,6 @@
       "url": "https://product-images.tcgplayer.com/497694.jpg"
     },
     {
-      "name": "Ting-Lu ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 275,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497696.jpg"
-    },
-    {
       "name": "Decidueye ex",
       "gen": "Scarlet and Violet",
       "set": "Obsidian Flames",
@@ -181,15 +163,6 @@
       "url": "https://product-images.tcgplayer.com/509846.jpg"
     },
     {
-      "name": "Miraidon ex",
-      "gen": "Scarlet and Violet",
-      "set": "Obsidian Flames",
-      "number": 79,
-      "type": "Pokémon ex",
-      "releaseDate": "11/08/2023",
-      "url": "https://product-images.tcgplayer.com/509864.jpg"
-    },
-    {
       "name": "Revavroom ex",
       "gen": "Scarlet and Violet",
       "set": "Obsidian Flames",
@@ -206,15 +179,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "11/08/2023",
       "url": "https://product-images.tcgplayer.com/509945.jpg"
-    },
-    {
-      "name": "Pidgey",
-      "gen": "Scarlet and Violet",
-      "set": "Obsidian Flames",
-      "number": 207,
-      "type": "Basic Pokémon",
-      "releaseDate": "11/08/2023",
-      "url": "https://product-images.tcgplayer.com/509955.jpg"
     },
     {
       "name": "Absol ex",
@@ -809,22 +773,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517018.jpg"
     },{
-      "name": "Squirtle",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "170/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/502549.jpg"
-    },{
-      "name": "Wartortle ",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "171/165",
-      "type": ["Stage 1 Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517038.jpg"
-    },{
       "name": "Caterpie",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -832,14 +780,6 @@
       "type": ["Basic Pokémon", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517016.jpg"
-    },{
-      "name": "Rikachu ",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "173/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/513721.jpg"
     },{
       "name": "Nidoking",
       "gen": "Scarlet and Violet",
@@ -857,14 +797,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517035.jpg"
     },{
-      "name": "Machoke",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "177/165",
-      "type": ["Stage 1 Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517025.jpg"
-    },{
       "name": "Tangela",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -880,14 +812,6 @@
       "type": ["Pokémon ex", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517017.jpg"
-    },{
-      "name": "Ninetales ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "186/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517030.jpg"
     },{
       "name": "Golem ex",
       "gen": "Scarlet and Violet",
@@ -905,14 +829,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517024.jpg"
     },{
-      "name": "Zapdos ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "192/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517040.jpg"
-    },{
       "name": "Bill's Transfer",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -920,14 +836,6 @@
       "type": ["Supporter", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517041.jpg"
-    },{
-      "name": "Erika's Invitation",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "196/165",
-      "type": ["Supporter", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517176.jpg"
     },{
       "name": "Alakazam ex",
       "gen": "Scarlet and Violet",
@@ -952,14 +860,6 @@
       "type": ["Supporter", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517050.jpg"
-    },{
-      "name": "Mew ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "205/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517051.jpg"
     },{
       "name": "Basic Psychic Energy",
       "gen": "Scarlet and Violet",
@@ -1024,15 +924,6 @@
       "url": "https://product-images.tcgplayer.com/523870.jpg"
     },
     {
-      "name": "Vanillish",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "190/182",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523871.jpg"
-    },
-    {
       "name": "Wimpod",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -1040,15 +931,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523872.jpg"
-    },
-    {
-      "name": "Veluza",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "192/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523873.jpg"
     },
     {
       "name": "Joltik",
@@ -1177,15 +1059,6 @@
       "url": "https://product-images.tcgplayer.com/523898.jpg"
     },
     {
-      "name": "Iron Hands ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "223/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523904.jpg"
-    },
-    {
       "name": "Sandy Shocks ex",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -1213,15 +1086,6 @@
       "url": "https://product-images.tcgplayer.com/523911.jpg"
     },
     {
-      "name": "Gholdengo ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "231/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523912.jpg"
-    },
-    {
       "name": "Maushold ex",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -1247,42 +1111,6 @@
       "type": "Supporter",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523920.jpg"
-    },
-    {
-      "name": "Shauntal",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "243/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523924.jpg"
-    },
-    {
-      "name": "Garchomp ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "245/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523926.jpg"
-    },
-    {
-      "name": "Golisopod ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "246/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523927.jpg"
-    },
-    {
-      "name": "Iron Hands ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "248/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523929.jpg"
     },
     {
       "name": "Iron Valiant ex",
@@ -1330,15 +1158,6 @@
       "url": "https://product-images.tcgplayer.com/523934.jpg"
     },
     {
-      "name": "Mela",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "254/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523935.jpg"
-    },
-    {
       "name": "Professor Sada's Vitality",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -1375,25 +1194,7 @@
       "url": "https://product-images.tcgplayer.com/523941.jpg"
     },
     {
-      "name": "Beach Court",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "263/182",
-      "type": "Stadium",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523944.jpg"
-    },
-    {
-      "name": "Counter Catcher",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "264/182",
-      "type": "Item",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523945.jpg"
-    },
-    {
-      "name": "Reversal Energy (2)",
+      "name": "Reversal Energy",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
       "number": "266/182",
