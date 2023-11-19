@@ -773,14 +773,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517018.jpg"
     },{
-      "name": "Caterpie",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "172/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517016.jpg"
-    },{
       "name": "Nidoking",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -877,15 +869,6 @@
       "type": "Pokémon ex",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523660.jpg"
-    },
-    {
-      "name": "Skeledirge ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "137/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523816.jpg"
     },
     {
       "name": "Maushold ex",
@@ -1048,15 +1031,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523897.jpg"
-    },
-    {
-      "name": "Froslass ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "217/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523898.jpg"
     },
     {
       "name": "Sandy Shocks ex",
