@@ -826,14 +826,6 @@
       "type": ["Supporter", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517050.jpg"
-    },{
-      "name": "Basic Psychic Energy",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "207/165",
-      "type": ["Energy", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517053.jpg"
     },
     {
       "name": "Golisopod ex",
@@ -1052,15 +1044,6 @@
       "url": "https://product-images.tcgplayer.com/523919.jpg"
     },
     {
-      "name": "Professor Sada's Vitality",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "239/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523920.jpg"
-    },
-    {
       "name": "Iron Valiant ex",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -1122,15 +1105,6 @@
       "type": "Supporter",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523938.jpg"
-    },
-    {
-      "name": "Tulip",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "259/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523940.jpg"
     },
     {
       "name": "Garchomp ex",
