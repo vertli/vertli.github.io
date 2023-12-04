@@ -10,15 +10,6 @@
       "url": "https://product-images.tcgplayer.com/85695.jpg"
     },
     {
-      "name": "Erika's Hospitality",
-      "gen": "Sun and Moon",
-      "set": "Team Up",
-      "number": "174/181",
-      "type": "Supporter",
-      "releaseDate": "01/02/2019",
-      "url": "https://product-images.tcgplayer.com/183933.jpg"
-    },
-    {
       "name": "Tate & Liza",
       "gen": "Sun and Moon",
       "set": "Celestial Storm",
@@ -778,14 +769,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517021.jpg"
     },{
-      "name": "Kangaskhan ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "190/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517024.jpg"
-    },{
       "name": "Bill's Transfer",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -793,14 +776,6 @@
       "type": ["Supporter", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517041.jpg"
-    },{
-      "name": "Alakazam ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "201/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517047.jpg"
     },{
       "name": "Zapdos ex",
       "gen": "Scarlet and Violet",
@@ -1069,15 +1044,6 @@
       "type": "Pokémon ex",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523934.jpg"
-    },
-    {
-      "name": "Professor Sada's Vitality",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "256/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523937.jpg"
     },
     {
       "name": "Professor Turo's Scenario",
