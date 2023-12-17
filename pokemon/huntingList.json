@@ -737,14 +737,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517029.jpg"
     },{
-      "name": "Psyduck",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "175/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517035.jpg"
-    },{
       "name": "Tangela",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -768,30 +760,6 @@
       "type": ["Pokémon ex", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517021.jpg"
-    },{
-      "name": "Bill's Transfer",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "194/165",
-      "type": ["Supporter", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517041.jpg"
-    },{
-      "name": "Zapdos ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "202/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517048.jpg"
-    },{
-      "name": "Giovanni's Charisma",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "204/165",
-      "type": ["Supporter", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517050.jpg"
     },
     {
       "name": "Golisopod ex",
@@ -810,15 +778,6 @@
       "type": "Pokémon ex",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523836.jpg"
-    },
-    {
-      "name": "Crustle",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "183/182",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523864.jpg"
     },
     {
       "name": "Iron Moth",
@@ -929,15 +888,6 @@
       "url": "https://product-images.tcgplayer.com/523888.jpg"
     },
     {
-      "name": "Ferrothorn",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "209/182",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523890.jpg"
-    },
-    {
       "name": "Loudred",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -990,15 +940,6 @@
       "type": "Pokémon ex",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523914.jpg"
-    },
-    {
-      "name": "Parasol Lady",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "238/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523919.jpg"
     },
     {
       "name": "Iron Valiant ex",
