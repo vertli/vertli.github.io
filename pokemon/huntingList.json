@@ -46,24 +46,6 @@
       "url": "https://product-images.tcgplayer.com/497603.jpg"
     },
     {
-      "name": "Baxcalibur",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 210,
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497613.jpg"
-    },
-    {
-      "name": "Sudowoodo",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 219,
-      "type": "Basic Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497622.jpg"
-    },
-    {
       "name": "Tyranitar",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -91,24 +73,6 @@
       "url": "https://product-images.tcgplayer.com/497631.jpg"
     },
     {
-      "name": "Chien-Pao ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 236,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497642.jpg"
-    },
-    {
-      "name": "Chi-Yu ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 259,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497678.jpg"
-    },
-    {
       "name": "Squawkabilly ex",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -116,15 +80,6 @@
       "type": "Pokémon ex",
       "releaseDate": "09/06/2023",
       "url": "https://product-images.tcgplayer.com/497684.jpg"
-    },
-    {
-      "name": "Quaquaval ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 273,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497694.jpg"
     },
     {
       "name": "Decidueye ex",
@@ -832,15 +787,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523879.jpg"
-    },
-    {
-      "name": "Groudon",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "199/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523880.jpg"
     },
     {
       "name": "Mienshao",
