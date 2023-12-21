@@ -80,6 +80,173 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "11/08/2023",
       "url": "https://product-images.tcgplayer.com/509945.jpg"
+    },{
+      "name": "Nidoking",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "174/165",
+      "type": ["Stage 2 Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517029.jpg"
+    },{
+      "name": "Tangela",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "178/165",
+      "type": ["Basic Pokémon", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517036.jpg"
+    },{
+      "name": "Charizard ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "183/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517017.jpg"
+    },{
+      "name": "Golem ex",
+      "gen": "Scarlet and Violet",
+      "set": "SV 151",
+      "number": "189/165",
+      "type": ["Pokémon ex", "Pokémon 151"],
+      "releaseDate": "22/09/2023",
+      "url": "https://product-images.tcgplayer.com/517021.jpg"
+    },
+    {
+      "name": "Iron Moth",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "187/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523868.jpg"
+    },
+    {
+      "name": "Mantyke",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "189/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523870.jpg"
+    },
+    {
+      "name": "Wimpod",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "191/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523872.jpg"
+    },
+    {
+      "name": "Joltik",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "196/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523877.jpg"
+    },
+    {
+      "name": "Gimmighoul",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "198/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523879.jpg"
+    },
+    {
+      "name": "Mienshao",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "200/182",
+      "type": "Stage 1 Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523881.jpg"
+    },
+    {
+      "name": "Yveltal",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "205/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523886.jpg"
+    },
+    {
+      "name": "Iron Jugulis",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "216/182",
+      "type": "Basic Pokémon",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523897.jpg"
+    },
+    {
+      "name": "Iron Valiant ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "249/182",
+      "type": "Pokémon ex",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523930.jpg"
+    },
+    {
+      "name": "Roaring Moon ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "251/182",
+      "type": "Pokémon ex",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523932.jpg"
+    },
+    {
+      "name": "Gholdengo ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "252/182",
+      "type": "Pokémon ex",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523933.jpg"
+    },
+    {
+      "name": "Altaria ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "253/182",
+      "type": "Pokémon ex",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523934.jpg"
+    },
+    {
+      "name": "Professor Turo's Scenario",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "257/182",
+      "type": "Supporter",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523938.jpg"
+    },
+    {
+      "name": "Garchomp ex",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "260/182",
+      "type": "Pokémon ex",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523941.jpg"
+    },
+    {
+      "name": "Reversal Energy",
+      "gen": "Scarlet and Violet",
+      "set": "Paradox Rift",
+      "number": "266/182",
+      "type": "Energy",
+      "releaseDate": "03/11/2023",
+      "url": "https://product-images.tcgplayer.com/523947.jpg"
     },
     {
       "name": "Rayquaza",
@@ -629,173 +796,6 @@
       "type": "Item",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/129719.jpg"
-    },{
-      "name": "Nidoking",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "174/165",
-      "type": ["Stage 2 Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517029.jpg"
-    },{
-      "name": "Tangela",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "178/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517036.jpg"
-    },{
-      "name": "Charizard ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "183/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517017.jpg"
-    },{
-      "name": "Golem ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "189/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517021.jpg"
-    },
-    {
-      "name": "Iron Moth",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "187/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523868.jpg"
-    },
-    {
-      "name": "Mantyke",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "189/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523870.jpg"
-    },
-    {
-      "name": "Wimpod",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "191/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523872.jpg"
-    },
-    {
-      "name": "Joltik",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "196/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523877.jpg"
-    },
-    {
-      "name": "Gimmighoul",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "198/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523879.jpg"
-    },
-    {
-      "name": "Mienshao",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "200/182",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523881.jpg"
-    },
-    {
-      "name": "Yveltal",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "205/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523886.jpg"
-    },
-    {
-      "name": "Iron Jugulis",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "216/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523897.jpg"
-    },
-    {
-      "name": "Iron Valiant ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "249/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523930.jpg"
-    },
-    {
-      "name": "Roaring Moon ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "251/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523932.jpg"
-    },
-    {
-      "name": "Gholdengo ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "252/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523933.jpg"
-    },
-    {
-      "name": "Altaria ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "253/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523934.jpg"
-    },
-    {
-      "name": "Professor Turo's Scenario",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "257/182",
-      "type": "Supporter",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523938.jpg"
-    },
-    {
-      "name": "Garchomp ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "260/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523941.jpg"
-    },
-    {
-      "name": "Reversal Energy",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "266/182",
-      "type": "Energy",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523947.jpg"
     },
     {
       "name": "Dark Jolteon (not 1st printed)",
