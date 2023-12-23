@@ -37,15 +37,6 @@
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
     {
-      "name": "Tyranitar",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 227,
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497625.jpg"
-    },
-    {
       "name": "Maushold",
       "gen": "Scarlet and Violet",
       "set": "Paldea Evolved",
@@ -64,23 +55,6 @@
       "url": "https://product-images.tcgplayer.com/497631.jpg"
     },
     {
-      "name": "Squawkabilly ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paldea Evolved",
-      "number": 264,
-      "type": "Pokémon ex",
-      "releaseDate": "09/06/2023",
-      "url": "https://product-images.tcgplayer.com/497684.jpg"
-    },
-    {
-      "name": "Ninetales",
-      "gen": "Scarlet and Violet",
-      "set": "Obsidian Flames",
-      "number": 199,
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "11/08/2023",
-      "url": "https://product-images.tcgplayer.com/509945.jpg"
-    },{
       "name": "Nidoking",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -89,14 +63,6 @@
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517029.jpg"
     },{
-      "name": "Tangela",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "178/165",
-      "type": ["Basic Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517036.jpg"
-    },{
       "name": "Charizard ex",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -104,14 +70,6 @@
       "type": ["Pokémon ex", "Pokémon 151"],
       "releaseDate": "22/09/2023",
       "url": "https://product-images.tcgplayer.com/517017.jpg"
-    },{
-      "name": "Golem ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "189/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517021.jpg"
     },
     {
       "name": "Iron Moth",
