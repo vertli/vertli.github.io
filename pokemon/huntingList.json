@@ -55,14 +55,6 @@
       "url": "https://product-images.tcgplayer.com/497631.jpg"
     },
     {
-      "name": "Nidoking",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "174/165",
-      "type": ["Stage 2 Pokémon", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517029.jpg"
-    },{
       "name": "Charizard ex",
       "gen": "Scarlet and Violet",
       "set": "SV 151",
@@ -637,15 +629,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/231450.jpg"
-    },
-    {
-      "name": "Turtwig",
-      "gen": "Burger King",
-      "set": "Promos",
-      "number": "103/130",
-      "type": "Basic Pokémon",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/231449.jpg"
     },
     {
       "name": "Black Market",
