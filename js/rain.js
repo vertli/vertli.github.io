@@ -80,7 +80,7 @@ function selfWord() {
     // ctx.fillText("Projects", cPos, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Projects", cPos + 150, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Arts", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Arts", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Pokémon", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Notes", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
     
     
@@ -100,7 +100,7 @@ function selfWord() {
     ctx.fillText("About", cPos - 200, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Contact", cPos - 70, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Projects", cPos + 70, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Arts", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Pokémon", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Notes", cPos, c.height / 3 + hSize[0] + hSize[1] * 5.5);
     
   } else {
@@ -130,7 +130,7 @@ function setButton() {
   buttonW = [ctx.measureText("About").width + 10,
              ctx.measureText("Contact").width + 10,
              ctx.measureText("Projects").width + 10,
-             ctx.measureText("Arts").width + 10];
+             ctx.measureText("Pokémon").width + 10];
 //             ctx.measureText("Notes").width + 10];
   
   if (size >= 960) {
@@ -242,7 +242,7 @@ c.addEventListener("click", function(event) {
       } else if (event.x > buttonX[3] && event.x < buttonX[3] + buttonW[3] &&
         event.y > buttonY[3] && event.y < buttonY[3] + buttonH) {
         // Executes if button was clicked!
-        window.location.assign("/arts.html");
+        window.location.assign("/pcCalendar.html");
       } 
 //    else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
 //        event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
