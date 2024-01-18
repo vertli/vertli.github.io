@@ -17,6 +17,7 @@ body {
 .container {
   margin: auto;
   width: 100%;
+  height: 100vh;
   background: #244234;
 }
 
@@ -777,24 +778,53 @@ footer p {
 /* Calendar *************************************************/
 #pcCalendar iframe {
   border:solid 1px #777;
-  width: 1000px;
-  height: 1000px;
-  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-#pcCalendar .regionals {
-  color: #FF8D00;
+#pcCalendar iframe .deskContent {
+  width: 800px;
+  height: 600px;
 }
 
-#pcCalendar .challenge {
-  color: #237F2E;
+#pcCalendar iframe .deskContent {
+  width: 200px;
+  height: 500px;
 }
 
-#pcCalendar .cup {
-  color: #0B347D;
+#pcCalendar .responsiveCal {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+  }
+   
+#pcCalendar .responsiveCal iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
+  
+  @media all and (min-width: 768px) {
+    #pcCalendar .deskContent {
+      display:block;
+    }
+    #pcCalendar .phoneContent {
+      display:none;
+    }
+  }
+  
+  @media all and (max-width: 767px) {
+    #pcCalendar .deskContent {
+      display:none;
+    }
+    #pcCalendar .phoneContent {
+      display:block;
+    }
+  }
+
 /* Calendar *************************************************/
 /************************************************************/
 
