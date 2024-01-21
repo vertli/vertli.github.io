@@ -37,15 +37,6 @@
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
     {
-      "name": "Charizard ex",
-      "gen": "Scarlet and Violet",
-      "set": "SV 151",
-      "number": "183/165",
-      "type": ["Pokémon ex", "Pokémon 151"],
-      "releaseDate": "22/09/2023",
-      "url": "https://product-images.tcgplayer.com/517017.jpg"
-    },
-    {
       "name": "Iron Moth",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -584,15 +575,6 @@
       "type": "Stadium",
       "releaseDate": "01/02/2019",
       "url": "https://product-images.tcgplayer.com/183923.jpg"
-    },
-    {
-      "name": "Wondrous Labyrinth",
-      "gen": "Sun and Moon",
-      "set": "Team Up",
-      "number": "158/181",
-      "type": "Stadium",
-      "releaseDate": "01/02/2019",
-      "url": "https://product-images.tcgplayer.com/183962.jpg"
     },
     {
       "name": "Lance",
