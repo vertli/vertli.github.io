@@ -191,15 +191,6 @@
     },
     {
       "name": "Ivysaur",
-      "gen": "Miscellaneous Sets",
-      "set": "Southern Islands",
-      "number": "1/18",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "31/07/2001",
-      "url": "https://product-images.tcgplayer.com/46479.jpg"
-    },
-    {
-      "name": "Ivysaur",
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
       "number": "82/165",
@@ -586,33 +577,6 @@
       "url": "https://product-images.tcgplayer.com/175491.jpg"
     },
     {
-      "name": "Gym Badge (Brock)",
-      "gen": "XY",
-      "set": "Promo",
-      "number": "XY203",
-      "type": "Item",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/127141.jpg"
-    },
-    {
-      "name": "Gym Badge (Misty)",
-      "gen": "XY",
-      "set": "Promo",
-      "number": "XY204",
-      "type": "Item",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/127142.jpg"
-    },
-    {
-      "name": "Gym Badge (Lt. Surge)",
-      "gen": "XY",
-      "set": "Promo",
-      "number": "XY205",
-      "type": "Item",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/127143.jpg"
-    },
-    {
       "name": "Gym Badge (Erika)",
       "gen": "XY",
       "set": "Promo",
@@ -629,33 +593,6 @@
       "type": "Item",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/127145.jpg"
-    },
-    {
-      "name": "Gym Badge (Sabrina)",
-      "gen": "XY",
-      "set": "Promo",
-      "number": "XY208",
-      "type": "Item",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/129720.jpg"
-    },
-    {
-      "name": "Gym Badge (Blaine)",
-      "gen": "XY",
-      "set": "Promo",
-      "number": "XY209",
-      "type": "Item",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com//129718.jpg"
-    },
-    {
-      "name": "Gym Badge (Giovanni)",
-      "gen": "XY",
-      "set": "Promo",
-      "number": "XY210",
-      "type": "Item",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/129719.jpg"
     },
     {
       "name": "Dark Jolteon (not 1st printed)",
