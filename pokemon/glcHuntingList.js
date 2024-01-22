@@ -72,18 +72,12 @@ let cardType = (dataStr) => {
     if (dataStr === "Basic Pokémon") return "basic";
     if (dataStr === "Stage 1 Pokémon") return "stage1";
     if (dataStr === "Stage 2 Pokémon") return "stage2";
-    if (dataStr === "Pokémon EX") return "pEX";
-    if (dataStr === "MEGA Pokémon") return "pMEGA";
-    if (dataStr === "Pokémon ex") return "pex";
-    if (dataStr === "Pokémon V") return "pV";
-    if (dataStr === "Pokémon VMAX") return "pVMax";
-    if (dataStr === "Pokémon VSTAR") return "pVStar";
     if (dataStr === "Item") return "item";
-    if (dataStr === "Pokémon Tool") return "tool";
+    if (dataStr === "Tool") return "tool";
     if (dataStr === "Stadium") return "stadium";
     if (dataStr === "Supporter") return "supporter";
     if (dataStr === "Energy") return "energy";
-    if (dataStr === "Pokémon 151") return "p151";
+    if (dataStr === "Special Energy") return "energy";
   }
   if (typeof dataStr === "object") {
     let ret = "";
@@ -123,9 +117,13 @@ const setCurrentPage = (pageNum) => {
     const name = document.createElement("h3");
     name.appendChild(document.createTextNode(cardData[idx]["name"]));
     const set = document.createElement("h4");
-    set.appendChild(document.createTextNode(cardData[idx]["set"]));
+    set.appendChild(document.createTextNode(cardData[idx]["gen"] + ": " + cardData[idx]["set"]));
+    const amount = document.createElement("h3");
+    amount.style.paddingTop = "10px";
+    amount.appendChild(document.createTextNode("Amount: " + cardData[idx]["amount"]));
     desc.appendChild(name);
     desc.appendChild(set);
+    desc.appendChild(amount);
     gallery.appendChild(desc);
     card.appendChild(gallery);
     cardGallery.appendChild(card);
@@ -133,7 +131,7 @@ const setCurrentPage = (pageNum) => {
 }
 
 async function logJSONData() {
-  const response = await fetch("./pokemon/huntingList.json");
+  const response = await fetch("./pokemon/glcHuntingList.json");
   const jsonData = await response.json();
   originCardData = jsonData["cardData"];
   cardData = jsonData["cardData"];
@@ -206,10 +204,10 @@ function filterSelection(option) {
   } else {
     cardData = []; // clean the current card data list
     for (let idx = 0; idx < originCardData.length; idx++) {
-      if (typeof originCardData[idx]["type"] === "string") {
-        if (option === cardType(originCardData[idx]["type"])) cardData.push(originCardData[idx]);
+      if (typeof originCardData[idx]["cardType"] === "string") {
+        if (option === cardType(originCardData[idx]["cardType"])) cardData.push(originCardData[idx]);
       } else {
-        for (t of originCardData[idx]["type"]) {
+        for (t of originCardData[idx]["cardType"]) {
           if (option === cardType(t)) cardData.push(originCardData[idx]);
         }
       }

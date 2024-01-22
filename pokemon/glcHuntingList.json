@@ -1,0 +1,212 @@
+{
+  "cardData": [
+    {
+      "name": "Tynamo",
+      "gen": "Black & White",
+      "set": "Noble Victories",
+      "number": "39/101",
+      "cardType": "Basic Pokémon",
+      "type": "Lightning",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/90094.jpg"
+    },{
+      "name": "Tapu Koko",
+      "gen": "Sun & Moon",
+      "set": "Black Star Promos",
+      "number": "SM30",
+      "cardType": "Basic Pokémon",
+      "type": "Lightning",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/131733.jpg"
+    },{
+      "name": "Volkner",
+      "gen": "Sun & Moon",
+      "set": "Ultra Prism",
+      "number": "135/156",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/157751.jpg"
+    },{
+      "name": "Electropower",
+      "gen": "Sun & Moon",
+      "set": "Lost Thunder",
+      "number": "172/214",
+      "cardType": "Item",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/178999.jpg"
+    },{
+      "name": "Town Map",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "150/162",
+      "cardType": "Item",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/107269.jpg"
+    },{
+      "name": "Counter Gain",
+      "gen": "Sun & Moon",
+      "set": "Lost Thunder",
+      "number": "170/214",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/178995.jpg"
+    },{
+      "name": "Float Stone",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "137/162",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 3,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/107256.jpg"
+    },{
+      "name": "Muscle Band",
+      "gen": "XY",
+      "set": "Base Set",
+      "number": "121/146",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/87658.jpg"
+    },{
+      "name": "Silent Lab",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": "140/160",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/96038.jpg"
+    },{
+      "name": "Counter Energy",
+      "gen": "Sun & Moon",
+      "set": "Crimson Invasion",
+      "number": "100/111",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/149125.jpg"
+    },{
+      "name": "Inteleon",
+      "gen": "Sword & Shield",
+      "set": "Base Set",
+      "number": "058/202",
+      "cardType": "Stage 2 Pokémon",
+      "type":  "Water",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/208355.jpg"
+    },{
+      "name": "Staryu ",
+      "gen": "XY",
+      "set": "BREAKpoint",
+      "number": "25/122",
+      "cardType": "Basic Pokémon",
+      "type":  "Water",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/111528.jpg"
+    },{
+      "name": "Wailord",
+      "gen": "Sword & Shield",
+      "set": "Vivid Voltage",
+      "number": "032/185",
+      "cardType": "Stage 1 Pokémon",
+      "type":  "Water",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/226411.jpg"
+    },{
+      "name": "Lapras",
+      "gen": "Sun & Moon",
+      "set": "Team Up",
+      "number": "31/181",
+      "cardType": "Basic Pokémon",
+      "type":  "Water",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/183802.jpg"
+    },{
+      "name": "Wishiwashi",
+      "gen": "Sun & Moon",
+      "set": "Cosmic Eclipse",
+      "number": "62/236",
+      "cardType": "Basic Pokémon",
+      "type":  "Water",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/201238.jpg"
+    },{
+      "name": "Brigette",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "134/162",
+      "cardType": "Supporter",
+      "type":  "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/107253.jpg"
+    },{
+      "name": "Hex Maniac",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": "75/98",
+      "cardType": "Supporter",
+      "type":  "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/101497.jpg"
+    },{
+      "name": "Brooklet Hill",
+      "gen": "Sun & Moon",
+      "set": "uardians Rising",
+      "number": "120/145",
+      "cardType": "Stadium",
+      "type":  "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/131040.jpg"
+    },{
+      "name": "Charizard",
+      "gen": "Sword & Shield",
+      "set": "Pokémon Go",
+      "number": "010/078",
+      "cardType": "Stage 2 Pokémon",
+      "type":  "Fire",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/274439.jpg"
+    },{
+      "name": "Volcanion",
+      "gen": "Sun & Moon",
+      "set": "Unbroken Bonds",
+      "number": "25/214",
+      "cardType": "Basic Pokémon",
+      "type":  "Fire",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/189070.jpg"
+    },{
+      "name": "Blacksmith",
+      "gen": "XY",
+      "set": "Flashfire",
+      "number": "88/106",
+      "cardType": "Supporter",
+      "type":  "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/91225.jpg"
+    },{
+      "name": "Tate & Liza",
+      "gen": "Sun & Moon",
+      "set": "Celestial Storm",
+      "number": "148/168",
+      "cardType": "Supporter",
+      "type":  "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/171009.jpg"
+    },{
+      "name": "Bicycle",
+      "gen": "Black & White",
+      "set": "Plasma Storm",
+      "number": "117/135",
+      "cardType": "Item",
+      "type":  "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/fit-in/932x932/83823.jpg"
+    }
+  ]
+}
