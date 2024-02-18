@@ -37,24 +37,6 @@
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
     {
-      "name": "Iron Moth",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "187/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523868.jpg"
-    },
-    {
-      "name": "Wimpod",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "191/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523872.jpg"
-    },
-    {
       "name": "Joltik",
       "gen": "Scarlet and Violet",
       "set": "Paradox Rift",
@@ -71,15 +53,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "03/11/2023",
       "url": "https://product-images.tcgplayer.com/523886.jpg"
-    },
-    {
-      "name": "Iron Jugulis",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "216/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523897.jpg"
     },
     {
       "name": "Iron Valiant ex",
@@ -748,15 +721,6 @@
       "url": "https://product-images.tcgplayer.com/534511.jpg"
     },
     {
-      "name": "Wiglett",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "121/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534512.jpg"
-    },
-    {
       "name": "Wugtrio",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1306,15 +1270,6 @@
       "url": "https://product-images.tcgplayer.com/535527.jpg"
     },
     {
-      "name": "Paldean Clodsire ex",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "219/091",
-      "type": "Pokémon ex",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535537.jpg"
-    },
-    {
       "name": "Wigglytuff ex",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1322,15 +1277,6 @@
       "type": "Pokémon ex",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535562.jpg"
-    },
-    {
-      "name": "Palafin",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "225/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534736.jpg"
     },
     {
       "name": "Mew ex",
