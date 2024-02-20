@@ -83,7 +83,6 @@ let cardType = (dataStr) => {
     if (dataStr === "Stadium") return "stadium";
     if (dataStr === "Supporter") return "supporter";
     if (dataStr === "Energy") return "energy";
-    if (dataStr === "Pokémon 151") return "p151";
   }
   if (typeof dataStr === "object") {
     let ret = "";
