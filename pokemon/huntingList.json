@@ -73,15 +73,6 @@
       "url": "https://product-images.tcgplayer.com/523941.jpg"
     },
     {
-      "name": "Reversal Energy",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "266/182",
-      "type": "Energy",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523947.jpg"
-    },
-    {
       "name": "Bulbasaur",
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
@@ -730,15 +721,6 @@
       "url": "https://product-images.tcgplayer.com/534513.jpg"
     },
     {
-      "name": "Finizen",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "123/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534514.jpg"
-    },
-    {
       "name": "Veluza",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -764,15 +746,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534518.jpg"
-    },
-    {
-      "name": "Frigibax",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "128/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534519.jpg"
     },
     {
       "name": "Baxcalibur",
@@ -955,24 +928,6 @@
       "url": "https://product-images.tcgplayer.com/534687.jpg"
     },
     {
-      "name": "Rabsca",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "163/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534693.jpg"
-    },
-    {
-      "name": "Flittle",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "164/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534694.jpg"
-    },
-    {
       "name": "Tinkatink",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1007,15 +962,6 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534733.jpg"
-    },
-    {
-      "name": "Paldean Tauros",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "172/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535956.jpg"
     },
     {
       "name": "Riolu",
@@ -1070,15 +1016,6 @@
       "type": "Stage 2 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534923.jpg"
-    },
-    {
-      "name": "Murkrow",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "181/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535097.jpg"
     },
     {
       "name": "Sneasel",
@@ -1241,33 +1178,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535215.jpg"
-    },
-    {
-      "name": "Flamigo",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "211/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535217.jpg"
-    },
-    {
-      "name": "Alakazam ex",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "215/091",
-      "type": "Pokémon ex",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com//535524.jpg"
-    },
-    {
-      "name": "Mew ex",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "216/091",
-      "type": "Pokémon ex",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535527.jpg"
     },
     {
       "name": "Wigglytuff ex",
