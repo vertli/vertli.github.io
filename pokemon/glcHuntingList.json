@@ -1,14 +1,383 @@
 {
   "cardData": [
     {
-      "name": "Octillery",
-      "gen": "XY",
-      "set": "BREAKthrough",
-      "number": "33/162",
-      "cardType": "Stage 1 Pokémon",
+      "name": "Turtwig",
+      "gen": "SM",
+      "set": "Ultra Prism",
+      "number": "6/156",
+      "cardType": "Basic Pokémon",
+      "type": "Grass",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/157623.jpg"
+    },{
+      "name": "Adventure Bag",
+      "gen": "SM",
+      "set": "Lost Thunder",
+      "number": "167/214",
+      "cardType": "Item",
       "type": "",
       "amount": 1,
-      "url": "https://product-images.tcgplayer.com/fit-in/921x921/107152.jpg"
+      "url": "https://product-images.tcgplayer.com/178990.jpg"
+    },{
+      "name": "Revitalizer",
+      "gen": "XY",
+      "set": "Generations",
+      "number": "70/83",
+      "cardType": "Item",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/113728.jpg"
+    },{
+      "name": "Wishful Baton",
+      "gen": "SM",
+      "set": "Burning Shadows",
+      "number": "128/147",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/138629.jpg"
+    },{
+      "name": "Inkay",
+      "gen": "SM",
+      "set": "Forbidden Light",
+      "number": "50/131",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/166464.jpg"
+    },{
+      "name": "Malamar",
+      "gen": "SM",
+      "set": "Forbidden Light",
+      "number": "51/131",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/165701.jpg"
+    },{
+      "name": "Marshadow",
+      "gen": "SM",
+      "set": "Shining Legends",
+      "number": "45/73",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/146702.jpg"
+    },{
+      "name": "Mew",
+      "gen": "SM",
+      "set": "Unbroken Bonds",
+      "number": "76/214",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/189176.jpg"
+    },{
+      "name": "Mewtwo",
+      "gen": "SWSH",
+      "set": "Crown Zenith",
+      "number": "059/159",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/478173.jpg"
+    },{
+      "name": "Mimikyu",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "58/145",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/130966.jpg"
+    },{
+      "name": "Necrozma",
+      "gen": "SM",
+      "set": "Unified Minds",
+      "number": "101/236",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/195041.jpg"
+    },{
+      "name": "Ralts",
+      "gen": "BW",
+      "set": "Plasma Storm",
+      "number": "59/135",
+      "cardType": "Basic Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/88565.jpg"
+    },{
+      "name": "Gallade",
+      "gen": "SWSH",
+      "set": "Astral Radiance",
+      "number": "062/189",
+      "cardType": "Stage 2 Pokémon",
+      "type": "Psychic",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/272263.jpg"
+    },{
+      "name": "Enhanced Hammer",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "124/145",
+      "cardType": "Item",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/131044.jpg"
+    },{
+      "name": "Mysterious Treasure",
+      "gen": "SM",
+      "set": "Forbidden Light",
+      "number": "113/131",
+      "cardType": "Item",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/165789.jpg"
+    },{
+      "name": "Rescue Stretcher",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "130/145",
+      "cardType": "Item",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/131050.jpg"
+    },{
+      "name": "Town Map (maybe no)",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "150/162",
+      "cardType": "Item",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/107269.jpg"
+    },{
+      "name": "Dimension Valley",
+      "gen": "XY",
+      "set": "Phantom Forces",
+      "number": "93/119",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/94662.jpg"
+    },{
+      "name": "Guzma",
+      "gen": "SM",
+      "set": "Burning Shadows",
+      "number": "115/147",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/138611.jpg"
+    },{
+      "name": "Hex Maniac",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": "75/98",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/101497.jpg"
+    },{
+      "name": "Lusamine",
+      "gen": "SM",
+      "set": "Crimson Invasion",
+      "number": "96/111",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/149121.jpg"
+    },{
+      "name": "Marnie",
+      "gen": "SWSH",
+      "set": "Champion's Path",
+      "number": "056/073",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/223056.jpg"
+    },{
+      "name": "Raihan",
+      "gen": "SWSH",
+      "set": "Evolving Skies",
+      "number": "152/203",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/246777.jpg"
+    },{
+      "name": "Tate & Liza",
+      "gen": "SM",
+      "set": "Celestial Storm",
+      "number": "148/168",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/171009.jpg"
+    },{
+      "name": "Counter Energy",
+      "gen": "SM",
+      "set": "Crimson Invasion",
+      "number": "100/111",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/149125.jpg"
+    },{
+      "name": "Horror Psychic Energy",
+      "gen": "SWSH",
+      "set": "Rebel Clash",
+      "number": "172/192",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/213283.jpg"
+    },{
+      "name": "Mystery Energy",
+      "gen": "XY",
+      "set": "Phantom Forces",
+      "number": "112/119",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/94681.jpg"
+    },{
+      "name": "Machoke",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "64/145",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Fighting",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/130974.jpg"
+    },{
+      "name": "Machamp",
+      "gen": "SWSH",
+      "set": "Lost Origin",
+      "number": "088/196",
+      "cardType": "Stage 2 Pokémon",
+      "type": "Fighting",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/283974.jpg"
+    },{
+      "name": "Phanpy",
+      "gen": "BW",
+      "set": "Plasma Storm",
+      "number": "71/135",
+      "cardType": "Basic Pokémon",
+      "type": "Fighting",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/88005.jpg"
+    },{
+      "name": "Riolu",
+      "gen": "SM",
+      "set": "Ultra Prism",
+      "number": "66/156",
+      "cardType": "Basic Pokémon",
+      "type": "Fighting",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/157683.jpg"
+    },{
+      "name": "Heavy Ball",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "140/162",
+      "cardType": "Item",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/107259.jpg"
+    },{
+      "name": "Float Stone",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "137/162",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/107256.jpg"
+    },{
+      "name": "Brooklet Hill",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "120/145",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/131040.jpg"
+    },{
+      "name": "Martial Arts Dojo",
+      "gen": "SM",
+      "set": "Unbroken Bonds",
+      "number": "179/214",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/189284.jpg"
+    },{
+      "name": "Parallel City",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "145/162",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/107264.jpg"
+    },{
+      "name": "Avery",
+      "gen": "SWSH",
+      "set": "Chilling Reign",
+      "number": "130/198",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/241814.jpg"
+    },{
+      "name": "Colress's Experiment",
+      "gen": "SWSH",
+      "set": "Lost Origin",
+      "number": "155/196",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/284085.jpg"
+    },{
+      "name": "Green's Exploration",
+      "gen": "SM",
+      "set": "Unbroken Bonds",
+      "number": "175/214",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/189277.jpg"
+    },{
+      "name": "Gladion",
+      "gen": "SM",
+      "set": "Crimson Invasion",
+      "number": "95/111",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/149120.jpg"
+    },{
+      "name": "Stone Fighting Energy",
+      "gen": "SWSH",
+      "set": "Vivid Voltage",
+      "number": "164/185",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/226543.jpg"
+    },{
+      "name": "Strong Energy",
+      "gen": "XY",
+      "set": "Fates Collide",
+      "number": "115/124",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/117887.jpg"
     }
   ]
 }
