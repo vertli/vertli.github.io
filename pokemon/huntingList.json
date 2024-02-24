@@ -541,15 +541,6 @@
       "url": "https://product-images.tcgplayer.com/84617.jpg"
     },
     {
-      "name": "Noivern ex",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "/091",
-      "type": "Pokémon ex",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534431.jpg"
-    },
-    {
       "name": "Oddish",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -611,24 +602,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534478.jpg"
-    },
-    {
-      "name": "Capsakid",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "106/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534479.jpg"
-    },
-    {
-      "name": "Rellor",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "108/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534482.jpg"
     },
     {
       "name": "Charmander",
@@ -730,15 +703,6 @@
       "url": "https://product-images.tcgplayer.com/534516.jpg"
     },
     {
-      "name": "Dondozo",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "126/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534517.jpg"
-    },
-    {
       "name": "Tatsugiri",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -764,15 +728,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534523.jpg"
-    },
-    {
-      "name": "Voltorb",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "133/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534525.jpg"
     },
     {
       "name": "Electrode",
@@ -892,24 +847,6 @@
       "url": "https://product-images.tcgplayer.com/534670.jpg"
     },
     {
-      "name": "Mime Jr.",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "157/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534671.jpg"
-    },
-    {
-      "name": "Spiritomb",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "158/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534680.jpg"
-    },
-    {
       "name": "Mimikyu",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -919,15 +856,6 @@
       "url": "https://product-images.tcgplayer.com/534683.jpg"
     },
     {
-      "name": "Ceruledge",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "162/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534687.jpg"
-    },
-    {
       "name": "Tinkatink",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -935,15 +863,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534697.jpg"
-    },
-    {
-      "name": "Tinkaton",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "167/091",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534704.jpg"
     },
     {
       "name": "Houndstone",
@@ -989,15 +908,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534755.jpg"
-    },
-    {
-      "name": "Nacli",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "176/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534762.jpg"
     },
     {
       "name": "Naclstack",
@@ -1081,15 +991,6 @@
       "url": "https://product-images.tcgplayer.com/535143.jpg"
     },
     {
-      "name": "Varoom",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "192/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535151.jpg"
-    },
-    {
       "name": "Cyclizar",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1144,15 +1045,6 @@
       "url": "https://product-images.tcgplayer.com/535201.jpg"
     },
     {
-      "name": "Greedent",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "206/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535203.jpg"
-    },
-    {
       "name": "Lechonk",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1180,15 +1072,6 @@
       "url": "https://product-images.tcgplayer.com/535215.jpg"
     },
     {
-      "name": "Wigglytuff ex",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "222/091",
-      "type": "Pokémon ex",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535562.jpg"
-    },
-    {
       "name": "Mew ex",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1205,15 +1088,6 @@
       "type": "Supporter",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535095.jpg"
-    },
-    {
-      "name": "Clive",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "236/091",
-      "type": "Supporter",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535098.jpg"
     },
     {
       "name": "Iono",
