@@ -83,15 +83,6 @@
     },
     {
       "name": "Bulbasaur",
-      "gen": "EX Series",
-      "set": "Team Magma vs Team Aqua",
-      "number": "39/95",
-      "type": "Basic Pokémon",
-      "releaseDate": "15/03/2004",
-      "url": "https://product-images.tcgplayer.com/84028.jpg"
-    },
-    {
-      "name": "Bulbasaur",
       "gen": "Black & White",
       "set": "Dark Explorers",
       "number": "1/108",
@@ -532,15 +523,6 @@
       "url": "https://product-images.tcgplayer.com/127145.jpg"
     },
     {
-      "name": "Dark Jolteon (not 1st printed)",
-      "gen": "Team Rocket",
-      "set": "WoTC",
-      "number": "38/82",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "24/04/2000",
-      "url": "https://product-images.tcgplayer.com/84617.jpg"
-    },
-    {
       "name": "Oddish",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -685,7 +667,7 @@
       "url": "https://product-images.tcgplayer.com/534523.jpg"
     },
     {
-      "name": "Electrode",
+      "name": "Electrode (hold)",
       "gen": "SV",
       "set": "Paldean Fates",
       "number": "134/091",
@@ -946,15 +928,6 @@
       "url": "https://product-images.tcgplayer.com/535196.jpg"
     },
     {
-      "name": "Skwovet",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "205/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535201.jpg"
-    },
-    {
       "name": "Lechonk",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -1034,6 +1007,15 @@
       "type": "Pokémon ex",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535134.jpg"
+    },
+    {
+      "name": "Dark Jolteon (not 1st printed)",
+      "gen": "Team Rocket",
+      "set": "WoTC",
+      "number": "38/82",
+      "type": "Stage 1 Pokémon",
+      "releaseDate": "24/04/2000",
+      "url": "https://product-images.tcgplayer.com/84617.jpg"
     }
   ]
 }
