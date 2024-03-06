@@ -73,6 +73,7 @@ let cardType = (dataStr) => {
     if (dataStr === "Stage 1 Pokémon") return "stage1";
     if (dataStr === "Stage 2 Pokémon") return "stage2";
     if (dataStr === "Pokémon EX") return "pEX";
+    if (dataStr === "Pokémon GX") return "pGX";
     if (dataStr === "MEGA Pokémon") return "pMEGA";
     if (dataStr === "Pokémon ex") return "pex";
     if (dataStr === "Pokémon V") return "pV";
