@@ -523,15 +523,6 @@
       "url": "https://product-images.tcgplayer.com/534459.jpg"
     },
     {
-      "name": "Gloom",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "093/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534460.jpg"
-    },
-    {
       "name": "Skiploom",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -595,15 +586,6 @@
       "url": "https://product-images.tcgplayer.com/534504.jpg"
     },
     {
-      "name": "Slowbro",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "117/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534507.jpg"
-    },
-    {
       "name": "Staryu",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -640,15 +622,6 @@
       "url": "https://product-images.tcgplayer.com/534518.jpg"
     },
     {
-      "name": "Baxcalibur",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "130/091",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534521.jpg"
-    },
-    {
       "name": "Raichu",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -676,15 +649,6 @@
       "url": "https://product-images.tcgplayer.com/534529.jpg"
     },
     {
-      "name": "Luxray",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "137/091",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534533.jpg"
-    },
-    {
       "name": "Pachirisu",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -692,51 +656,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534538.jpg"
-    },
-    {
-      "name": "Pawmo",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "143/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534579.jpg"
-    },
-    {
-      "name": "Abra",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "148/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534631.jpg"
-    },
-    {
-      "name": "Kadabra",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "149/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534634.jpg"
-    },
-    {
-      "name": "Natu",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "151/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534642.jpg"
-    },
-    {
-      "name": "Xatu",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "152/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534646.jpg"
     },
     {
       "name": "Ralts",
@@ -757,15 +676,6 @@
       "url": "https://product-images.tcgplayer.com/534670.jpg"
     },
     {
-      "name": "Mimikyu",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "160/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534683.jpg"
-    },
-    {
       "name": "Tinkatink",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -782,15 +692,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/534724.jpg"
-    },
-    {
-      "name": "Annihilape",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "171/091",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534733.jpg"
     },
     {
       "name": "Lucario",
@@ -882,33 +783,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535143.jpg"
-    },
-    {
-      "name": "Pidgeotto",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "197/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535165.jpg"
-    },
-    {
-      "name": "Doduo",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "199/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535183.jpg"
-    },
-    {
-      "name": "Wingull",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "203/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535196.jpg"
     },
     {
       "name": "Lechonk",
