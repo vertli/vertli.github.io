@@ -740,14 +740,6 @@
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197808.jpg"
     },{
-      "name": "Shiftry",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "163/152",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542884.jpg"
-    },{
       "name": "Grotle",
       "gen": "Scarlet and Violet",
       "set": "Temporal Forces",
@@ -764,14 +756,6 @@
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542888.jpg"
     },{
-      "name": "Snom",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "168/162",
-      "type": "Basic Pokémon",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542889.jpg"
-    },{
       "name": "Cutiefly",
       "gen": "Scarlet and Violet",
       "set": "Temporal Forces",
@@ -787,14 +771,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542896.jpg"
-    },{
-      "name": "Chatot",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "181/162",
-      "type": "Basic Pokémon",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542902.jpg"
     },{
       "name": "Cinccino",
       "gen": "Scarlet and Violet",
@@ -828,14 +804,6 @@
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542911.jpg"
     },{
-      "name": "Iron Boulder ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "192/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542913.jpg"
-    },{
       "name": "Gengar ex",
       "gen": "Scarlet and Violet",
       "set": "Temporal Forces",
@@ -844,31 +812,7 @@
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542914.jpg"
     },{
-      "name": "Farigiraf ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "194/162",
-      "type": ["Stage 1 Pokémon", "Pokémon ex"],
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542915.jpg"
-    },{
-      "name": "Explorer's Guidance (2)",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "200/162",
-      "type": "Supporter",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542921.jpg"
-    },{
-      "name": "Morty's Conviction",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "201/162",
-      "type": "Supporter",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542922.jpg"
-    },{
-      "name": "Salvatore (5)",
+      "name": "Salvatore (2)",
       "gen": "Scarlet and Violet",
       "set": "Temporal Forces",
       "number": "202/162",
@@ -899,14 +843,6 @@
       "type": "Pokémon ex",
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542926.jpg"
-    },{
-      "name": "Iron Crown ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "206/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542927.jpg"
     },{
       "name": "Iron Boulder ex",
       "gen": "Scarlet and Violet",
@@ -940,38 +876,6 @@
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542932.jpg"
     },{
-      "name": "Gouging Fire ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "214/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542935.jpg"
-    },{
-      "name": "Walking Wake ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "215/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542936.jpg"
-    },{
-      "name": "Iron Crown ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "216/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542937.jpg"
-    },{
-      "name": "Iron Boulder ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "217/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542938.jpg"
-    },{
       "name": "Raging Bolt ex",
       "gen": "Scarlet and Violet",
       "set": "Temporal Forces",
@@ -979,14 +883,6 @@
       "type": "Pokémon ex",
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542939.jpg"
-    },{
-      "name": "Ciphermaniac's Codebreaking",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "198/162",
-      "type": "Supporter",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542919.jpg"
     },{
       "name": "Dark Jolteon (not 1st printed)",
       "gen": "Team Rocket",
