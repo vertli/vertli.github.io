@@ -37,33 +37,6 @@
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
     {
-      "name": "Joltik",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "196/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523877.jpg"
-    },
-    {
-      "name": "Yveltal",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "205/182",
-      "type": "Basic Pokémon",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523886.jpg"
-    },
-    {
-      "name": "Garchomp ex",
-      "gen": "Scarlet and Violet",
-      "set": "Paradox Rift",
-      "number": "260/182",
-      "type": "Pokémon ex",
-      "releaseDate": "03/11/2023",
-      "url": "https://product-images.tcgplayer.com/523941.jpg"
-    },
-    {
       "name": "Bulbasaur",
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
@@ -731,30 +704,6 @@
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197808.jpg"
     },{
-      "name": "Grotle",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "164/162",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542885.jpg"
-    },{
-      "name": "Cutiefly",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "172/162",
-      "type": "Basic Pokémon",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542893.jpg"
-    },{
-      "name": "Drampa",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "184/162",
-      "type": "Basic Pokémon",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542905.jpg"
-    },{
       "name": "Torterra ex",
       "gen": "Scarlet and Violet",
       "set": "Temporal Forces",
@@ -786,14 +735,6 @@
       "type": "Supporter",
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542932.jpg"
-    },{
-      "name": "Raging Bolt ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "218/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542939.jpg"
     },{
       "name": "Dark Jolteon (not 1st printed)",
       "gen": "Team Rocket",
