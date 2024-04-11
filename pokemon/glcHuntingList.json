@@ -1,87 +1,66 @@
 {
   "cardData": [
     {
-      "name": "Turtwig",
-      "gen": "SM",
-      "set": "Ultra Prism",
-      "number": "6/156",
-      "cardType": "Basic Pokémon",
-      "type": "Grass",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/157623.jpg"
-    },{
-      "name": "Adventure Bag",
-      "gen": "SM",
-      "set": "Lost Thunder",
-      "number": "167/214",
+      "name": "Evolution Incense",
+      "gen": "SWSH",
+      "set": "Base Set",
+      "number": "163/202",
       "cardType": "Item",
       "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/178990.jpg"
-    },{
-      "name": "Revitalizer",
+      "amount": 4,
+      "url": "https://product-images.tcgplayer.com/208489.jpg"
+    },
+    {
+      "name": "Heavy Ball",
       "gen": "XY",
-      "set": "Generations",
-      "number": "70/83",
+      "set": "BREAKthrough",
+      "number": "140/162",
       "cardType": "Item",
       "type": "",
       "amount": 1,
-      "url": "https://product-images.tcgplayer.com/113728.jpg"
-    },{
-      "name": "Malamar",
-      "gen": "SM",
-      "set": "Forbidden Light",
-      "number": "51/131",
-      "cardType": "Stage 1 Pokémon",
-      "type": "Psychic",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/165701.jpg"
-    },{
-      "name": "Marshadow",
-      "gen": "SM",
-      "set": "Shining Legends",
-      "number": "45/73",
-      "cardType": "Basic Pokémon",
-      "type": "Psychic",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/146702.jpg"
-    },{
-      "name": "Mew",
-      "gen": "SM",
-      "set": "Unbroken Bonds",
-      "number": "76/214",
-      "cardType": "Basic Pokémon",
-      "type": "Psychic",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/189176.jpg"
-    },{
-      "name": "Mimikyu",
+      "url": "https://product-images.tcgplayer.com/107259.jpg"
+    },
+    {
+      "name": "Scoop Up Net",
+      "gen": "SWSH",
+      "set": "Rebel Clash",
+      "number": "165/192",
+      "cardType": "Item",
+      "type": "",
+      "amount": 3,
+      "url": "https://product-images.tcgplayer.com/213272.jpg"
+    },
+    {
+      "name": "Rescue Stretcher",
       "gen": "SM",
       "set": "Guardians Rising",
-      "number": "58/145",
-      "cardType": "Basic Pokémon",
-      "type": "Psychic",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/130966.jpg"
-    },{
-      "name": "Ralts",
-      "gen": "BW",
-      "set": "Plasma Storm",
-      "number": "59/135",
-      "cardType": "Basic Pokémon",
-      "type": "Psychic",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/88565.jpg"
-    },{
-      "name": "Gallade",
+      "number": "130/145",
+      "cardType": "Item",
+      "type": "",
+      "amount": 3,
+      "url": "https://product-images.tcgplayer.com/131050.jpg"
+    },
+    {
+      "name": "Trainers' Mail",
+      "gen": "XY",
+      "set": "Roaring Skies",
+      "number": "92/108",
+      "cardType": "Item",
+      "type": "",
+      "amount": 3,
+      "url": "https://product-images.tcgplayer.com/98128.jpg"
+    },
+    {
+      "name": "Hisuian Heavy Ball",
       "gen": "SWSH",
       "set": "Astral Radiance",
-      "number": "062/189",
-      "cardType": "Stage 2 Pokémon",
-      "type": "Psychic",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/272263.jpg"
-    },{
+      "number": "146/189",
+      "cardType": "Item",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/272398.jpg"
+    },
+    {
       "name": "Mysterious Treasure",
       "gen": "SM",
       "set": "Forbidden Light",
@@ -90,168 +69,76 @@
       "type": "",
       "amount": 1,
       "url": "https://product-images.tcgplayer.com/165789.jpg"
-    },{
-      "name": "Rescue Stretcher",
-      "gen": "SM",
-      "set": "Guardians Rising",
-      "number": "130/145",
+    },
+    {
+      "name": "Special Charge",
+      "gen": "XY",
+      "set": "Steam Siege",
+      "number": "105/114",
       "cardType": "Item",
       "type": "",
       "amount": 2,
-      "url": "https://product-images.tcgplayer.com/131050.jpg"
-    },{
-      "name": "Town Map (maybe no)",
-      "gen": "XY",
-      "set": "BREAKthrough",
-      "number": "150/162",
+      "url": "https://product-images.tcgplayer.com/121229.jpg"
+    },
+    {
+      "name": "Tag Call",
+      "gen": "SM",
+      "set": "Cosmic Eclipse",
+      "number": "206/236",
       "cardType": "Item",
       "type": "",
       "amount": 2,
-      "url": "https://product-images.tcgplayer.com/107269.jpg"
-    },{
-      "name": "Dimension Valley",
-      "gen": "XY",
-      "set": "Phantom Forces",
-      "number": "93/119",
-      "cardType": "Stadium",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/94662.jpg"
-    },{
-      "name": "Guzma",
-      "gen": "SM",
-      "set": "Burning Shadows",
-      "number": "115/147",
-      "cardType": "Supporter",
-      "type": "",
-      "amount": 2,
-      "url": "https://product-images.tcgplayer.com/138611.jpg"
-    },{
-      "name": "Hex Maniac",
-      "gen": "XY",
-      "set": "Ancient Origins",
-      "number": "75/98",
-      "cardType": "Supporter",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/101497.jpg"
-    },{
-      "name": "Lusamine",
-      "gen": "SM",
-      "set": "Crimson Invasion",
-      "number": "96/111",
-      "cardType": "Supporter",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/149121.jpg"
-    },{
-      "name": "Tate & Liza",
-      "gen": "SM",
-      "set": "Celestial Storm",
-      "number": "148/168",
-      "cardType": "Supporter",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/171009.jpg"
-    },{
-      "name": "Counter Energy",
-      "gen": "SM",
-      "set": "Crimson Invasion",
-      "number": "100/111",
-      "cardType": "Special Energy",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/149125.jpg"
-    },{
-      "name": "Mystery Energy",
-      "gen": "XY",
-      "set": "Phantom Forces",
-      "number": "112/119",
-      "cardType": "Special Energy",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/94681.jpg"
-    },{
-      "name": "Machamp",
-      "gen": "SWSH",
-      "set": "Lost Origin",
-      "number": "088/196",
-      "cardType": "Stage 2 Pokémon",
-      "type": "Fighting",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/283974.jpg"
-    },{
-      "name": "Phanpy",
-      "gen": "BW",
-      "set": "Plasma Storm",
-      "number": "71/135",
-      "cardType": "Basic Pokémon",
-      "type": "Fighting",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/88005.jpg"
-    },{
-      "name": "Riolu",
-      "gen": "SM",
-      "set": "Ultra Prism",
-      "number": "66/156",
-      "cardType": "Basic Pokémon",
-      "type": "Fighting",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/157683.jpg"
-    },{
+      "url": "https://product-images.tcgplayer.com/201326.jpg"
+    },
+    {
       "name": "Float Stone",
-      "gen": "XY",
-      "set": "BREAKthrough",
-      "number": "137/162",
+      "gen": "BW",
+      "set": "Plasma Freeze",
+      "number": "99/116",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 3,
+      "url": "https://product-images.tcgplayer.com/85510.jpg"
+    },
+    {
+      "name": "Metal Goggles",
+      "gen": "SM",
+      "set": "Team Up",
+      "number": "148/181",
       "cardType": "Tool",
       "type": "",
       "amount": 1,
-      "url": "https://product-images.tcgplayer.com/107256.jpg"
-    },{
-      "name": "Brooklet Hill",
-      "gen": "SM",
-      "set": "Guardians Rising",
-      "number": "120/145",
-      "cardType": "Stadium",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/131040.jpg"
-    },{
-      "name": "Martial Arts Dojo",
-      "gen": "SM",
-      "set": "Unbroken Bonds",
-      "number": "179/214",
-      "cardType": "Stadium",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/189284.jpg"
-    },{
-      "name": "Parallel City",
+      "url": "https://product-images.tcgplayer.com/183946.jpg"
+    },
+    {
+      "name": "Muscle Band",
       "gen": "XY",
-      "set": "BREAKthrough",
-      "number": "145/162",
-      "cardType": "Stadium",
-      "type": "",
-      "amount": 1,
-      "url": "https://product-images.tcgplayer.com/107264.jpg"
-    },{
-      "name": "Gladion",
-      "gen": "SM",
-      "set": "Crimson Invasion",
-      "number": "95/111",
-      "cardType": "Supporter",
+      "set": "Base Set",
+      "number": "121/146",
+      "cardType": "Tool",
       "type": "",
       "amount": 2,
-      "url": "https://product-images.tcgplayer.com/149120.jpg"
-    },{
-      "name": "Strong Energy",
-      "gen": "XY",
-      "set": "Fates Collide",
-      "number": "115/124",
-      "cardType": "Special Energy",
+      "url": "https://product-images.tcgplayer.com/87658.jpg"
+    },
+    {
+      "name": "Flyinium Z: Air Slash",
+      "gen": "SM",
+      "set": "Unified Minds",
+      "number": "195/236",
+      "cardType": "Tool",
       "type": "",
       "amount": 1,
-      "url": "https://product-images.tcgplayer.com/117887.jpg"
+      "url": "https://product-images.tcgplayer.com/195250.jpg"
+    },
+    {
+      "name": "U-Turn Board",
+      "gen": "SM",
+      "set": "Unified Minds",
+      "number": "211/236",
+      "cardType": "Tool",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/195277.jpg"
     }
   ]
 }
