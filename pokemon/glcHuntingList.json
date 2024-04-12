@@ -139,6 +139,156 @@
       "type": "",
       "amount": 1,
       "url": "https://product-images.tcgplayer.com/195277.jpg"
+    },
+    {
+      "name": "Altar of the Moone",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "117/145",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/131037.jpg"
+    },
+    {
+      "name": "Virbank City Gym",
+      "gen": "BW",
+      "set": "Plasma Storm",
+      "number": "126/135",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/90385.jpg"
+    },
+    {
+      "name": "PokéStop",
+      "gen": "SWSH",
+      "set": "Poekmon Go",
+      "number": "068/078",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/276996.jpg"
+    },
+    {
+      "name": "Parallel City",
+      "gen": "XY",
+      "set": "BREAKthrough",
+      "number": "145/162",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/107264.jpg"
+    },
+    {
+      "name": "Team Magma's Secret Base",
+      "gen": "XY",
+      "set": "Double Crisis",
+      "number": "32/34",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/97078.jpg"
+    },
+    {
+      "name": "Chaotic Swell",
+      "gen": "SM",
+      "set": "Cosmic Eclipse",
+      "number": "187/236",
+      "cardType": "Stadium",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/201310.jpg"
+    },
+    {
+      "name": "Guzma",
+      "gen": "SM",
+      "set": "Burning Shadows",
+      "number": "115/147",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 4,
+      "url": "https://product-images.tcgplayer.com/138611.jpg"
+    },
+    {
+      "name": "Marnie",
+      "gen": "SWSH",
+      "set": "Base Set",
+      "number": "169/202",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/208495.jpg"
+    },
+    {
+      "name": "Sonia",
+      "gen": "SWSH",
+      "set": "Rebel Clash",
+      "number": "167/192",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/213275.jpg"
+    },
+    {
+      "name": "Mallow",
+      "gen": "SM",
+      "set": "Guardians Rising",
+      "number": "127/145",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/131047.jpg"
+    },
+    {
+      "name": "Raihan",
+      "gen": "SWSH",
+      "set": "Evolving Skies",
+      "number": "152/203",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/246777.jpg"
+    },
+    {
+      "name": "Cynthia & Caitlin",
+      "gen": "SM",
+      "set": "Cosmic Eclipse",
+      "number": "189/236",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/201312.jpg"
+    },
+    {
+      "name": "Guzma & Hala",
+      "gen": "SM",
+      "set": "Cosmic Eclipse",
+      "number": "193/236",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/201314.jpg"
+    },
+    {
+      "name": "Hex Maniac",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": "75/98",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/101497.jpg"
+    },
+    {
+      "name": "Teammates",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": "141/160",
+      "cardType": "Supporter",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/96039.jpg"
     }
   ]
 }
