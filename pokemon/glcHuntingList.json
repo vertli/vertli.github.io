@@ -289,6 +289,271 @@
       "type": "",
       "amount": 1,
       "url": "https://product-images.tcgplayer.com/96039.jpg"
+    },
+    {
+      "name": "Counter Energy",
+      "gen": "SM",
+      "set": "Crimson Invasion",
+      "number": "100/111",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 3,
+      "url": "https://product-images.tcgplayer.com/149125.jpg"
+    },
+    {
+      "name": "Double Colorless Energy",
+      "gen": "SM",
+      "set": "Base Set",
+      "number": "136/149",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/127008.jpg"
+    },
+    {
+      "name": "Shield Energy",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": "143/160",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/96041.jpg"
+    },
+    {
+      "name": "Aurora Energy",
+      "gen": "SWSH",
+      "set": "Base Set",
+      "number": "186/202",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/208521.jpg"
+    },
+    {
+      "name": "Blend Energy WLFM",
+      "gen": "BW",
+      "set": "Dragons Exalted",
+      "number": "118/124",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/83917.jpg"
+    },
+    {
+      "name": "Rainbow Energy",
+      "gen": "SM",
+      "set": "Base Set",
+      "number": "137/149",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 2,
+      "url": "https://product-images.tcgplayer.com/127009.jpg"
+    },
+    {
+      "name": "Recycle Energy",
+      "gen": "SM",
+      "set": "Unified Minds",
+      "number": "212/236",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/195279.jpg"
+    },
+    {
+      "name": "Triple Acceleration Energy",
+      "gen": "SM",
+      "set": "Unbroken Bonds",
+      "number": "190/214",
+      "cardType": "Special Energy",
+      "type": "",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/189301.jpg"
+    },
+    {
+      "name": "Absol ",
+      "gen": "XY",
+      "set": "Roaring Skies",
+      "number": "40/108",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/98076.jpg"
+    },
+    {
+      "name": "Toxicroak",
+      "gen": "SWSH",
+      "set": "Base Set",
+      "number": "124/202",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/208435.jpg"
+    },
+    {
+      "name": "Koffing",
+      "gen": "SWSH",
+      "set": "Shining Fates",
+      "number": "041/072",
+      "cardType": "Basic Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/232497.jpg"
+    },
+    {
+      "name": "Galarian Weezing",
+      "gen": "SWSH",
+      "set": "Shining Fates",
+      "number": "042/072",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/232505.jpg"
+    },
+    {
+      "name": "Purrloin",
+      "gen": "SM",
+      "set": "Unified Minds",
+      "number": "135/236",
+      "cardType": "Basic Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/195106.jpg"
+    },
+    {
+      "name": "Yveltal",
+      "gen": "SM",
+      "set": "Team Up",
+      "number": "95/181",
+      "cardType": "Basic Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/183873.jpg"
+    },
+    {
+      "name": "Crobat",
+      "gen": "SWSH",
+      "set": "Silber Tempest",
+      "number": "105/195",
+      "cardType": "Stage 2 Pokémon",
+      "type": "Darkness",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/451759.jpg"
+    },
+    {
+      "name": "Bronzor",
+      "gen": "SM",
+      "set": "Team Up",
+      "number": "100/181",
+      "cardType": "Basic Pokémon",
+      "type": "Metal",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/183882.jpg"
+    },{
+      "name": "Bronzong",
+      "gen": "XY",
+      "set": "Phantom Forces",
+      "number": "61/119",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Metal",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/94629.jpg"
+    },{
+      "name": "Cobalion",
+      "gen": "XY",
+      "set": "Steam Siege",
+      "number": "74/114",
+      "cardType": "Basic Pokémon",
+      "type": "Metal",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/121203.jpg"
+    },{
+      "name": "Galarian Perrserker",
+      "gen": "SWSH",
+      "set": "Base Set",
+      "number": "128/202",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Metal",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/208439.jpg"
+    },{
+      "name": "Jirachi",
+      "gen": "SM",
+      "set": "Team Up",
+      "number": "99/181",
+      "cardType": "Basic Pokémon",
+      "type": "Metal",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/183881.jpg"
+    },{
+      "name": "Bisharp",
+      "gen": "SM",
+      "set": "Team Up",
+      "number": "105/181",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Metal",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/183887.jpg"
+    },
+    {
+      "name": "Dragonite",
+      "gen": "SM",
+      "set": "Team Up",
+      "number": "119/181",
+      "cardType": "Stage 2 Pokémon",
+      "type": "Dragon",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/183906.jpg"
+    },
+    {
+      "name": "Gible",
+      "gen": "SM",
+      "set": "Ultra Prism",
+      "number": "96/156",
+      "cardType": "Basic Pokémon",
+      "type": "Dragon",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/157713.jpg"
+    },
+    {
+      "name": "Ducklett",
+      "gen": "SWSH",
+      "set": "Darkness Ablaze",
+      "number": "148/189",
+      "cardType": "Basic Pokémon",
+      "type": "Colourless",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/219357.jpg"
+    },
+    {
+      "name": "Swanna",
+      "gen": "SWSH",
+      "set": "Darkness Ablaze",
+      "number": "149/189",
+      "cardType": "Stage 1 Pokémon",
+      "type": "Colourless",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/219360.jpg"
+    },
+    {
+      "name": "Porygon-Z",
+      "gen": "SM",
+      "set": "Unbroken Bonds",
+      "number": "157/214",
+      "cardType": "Stage 2 Pokémon",
+      "type": "Colourless",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/189259.jpg"
+    },
+    {
+      "name": "Tornadus",
+      "gen": "SWSH",
+      "set": "Vivid Voltage",
+      "number": "142/185",
+      "cardType": "Basic Pokémon",
+      "type": "Colourless",
+      "amount": 1,
+      "url": "https://product-images.tcgplayer.com/226600.jpg"
     }
   ]
 }
