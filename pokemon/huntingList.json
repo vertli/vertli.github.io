@@ -487,24 +487,6 @@
       "url": "https://product-images.tcgplayer.com/534508.jpg"
     },
     {
-      "name": "Paldean Tauros",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "120/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534511.jpg"
-    },
-    {
-      "name": "Tatsugiri",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "127/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534518.jpg"
-    },
-    {
       "name": "Ralts",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -523,15 +505,6 @@
       "url": "https://product-images.tcgplayer.com/534697.jpg"
     },
     {
-      "name": "Garganacl",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "178/091",
-      "type": "Stage 2 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534923.jpg"
-    },
-    {
       "name": "Weavile",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -539,15 +512,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535118.jpg"
-    },
-    {
-      "name": "Mabosstiff",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "188/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535135.jpg"
     },
     {
       "name": "Maushold",
@@ -711,14 +675,6 @@
       "type": ["Stage 2 Pokémon", "Pokémon ex"],
       "releaseDate": "23/03/2024",
       "url": "https://product-images.tcgplayer.com/542906.jpg"
-    },{
-      "name": "Iron Leaves ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "203/162",
-      "type": "Pokémon ex",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542924.jpg"
     },{
       "name": "Bianca's Devotion",
       "gen": "Scarlet and Violet",
