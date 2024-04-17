@@ -1,15 +1,6 @@
 {
   "cardData": [
     {
-      "name": "Ghetsis",
-      "gen": "Black & White",
-      "set": "Plasma Freeze",
-      "number": "115/116",
-      "type": "Supporter",
-      "releaseDate": "08/05/2013",
-      "url": "https://product-images.tcgplayer.com/85695.jpg"
-    },
-    {
       "name": "Tate & Liza",
       "gen": "Sun and Moon",
       "set": "Celestial Storm",
@@ -469,15 +460,6 @@
       "url": "https://product-images.tcgplayer.com/127145.jpg"
     },
     {
-      "name": "Oddish",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "092/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534459.jpg"
-    },
-    {
       "name": "Staryu",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -505,15 +487,6 @@
       "url": "https://product-images.tcgplayer.com/534697.jpg"
     },
     {
-      "name": "Weavile",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "183/091",
-      "type": "Stage 1 Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/535118.jpg"
-    },
-    {
       "name": "Maushold",
       "gen": "SV",
       "set": "Paldean Fates",
@@ -521,15 +494,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "26/01/2024",
       "url": "https://product-images.tcgplayer.com/535215.jpg"
-    },
-    {
-      "name": "Mew ex",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "232/091",
-      "type": "Pokémon ex",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534919.jpg"
     },
     {
       "name": "Arven",
@@ -667,30 +631,6 @@
       "type": "Pokémon GX",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197808.jpg"
-    },{
-      "name": "Torterra ex",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "185/162",
-      "type": ["Stage 2 Pokémon", "Pokémon ex"],
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542906.jpg"
-    },{
-      "name": "Bianca's Devotion",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "209/162",
-      "type": "Supporter",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542930.jpg"
-    },{
-      "name": "Morty's Conviction",
-      "gen": "Scarlet and Violet",
-      "set": "Temporal Forces",
-      "number": "211/162",
-      "type": "Supporter",
-      "releaseDate": "23/03/2024",
-      "url": "https://product-images.tcgplayer.com/542932.jpg"
     },{
       "name": "Dark Jolteon (not 1st printed)",
       "gen": "Team Rocket",
