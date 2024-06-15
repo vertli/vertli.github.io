@@ -10,15 +10,6 @@
       "url": "https://product-images.tcgplayer.com/171018.jpg"
     },
     {
-      "name": "N",
-      "gen": "Black & White",
-      "set": "Noble Victories",
-      "number": "101/101",
-      "type": "Supporter",
-      "releaseDate": "16/11/2011",
-      "url": "https://product-images.tcgplayer.com/87678.jpg"
-    },
-    {
       "name": "Cynthia",
       "gen": "Sun and Moon",
       "set": "Hidden Fates: Shiny Vault",
@@ -319,15 +310,6 @@
       "name": "Treecko",
       "gen": "Nintendo",
       "set": "Promos",
-      "number": "16/40",
-      "type": "Basic Pokémon",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/90035.jpg"
-    },
-    {
-      "name": "Treecko",
-      "gen": "Nintendo",
-      "set": "Promos",
       "number": "3/40",
       "type": "Basic Pokémon",
       "releaseDate": "",
@@ -359,15 +341,6 @@
       "type": "Basic Pokémon",
       "releaseDate": "06/02/2013",
       "url": "https://product-images.tcgplayer.com/90081.jpg"
-    },
-    {
-      "name": "Turtwig",
-      "gen": "Platinum",
-      "set": "Base Set",
-      "number": "101/127",
-      "type": "Basic Pokémon",
-      "releaseDate": "11/02/2009",
-      "url": "https://product-images.tcgplayer.com/90077.jpg"
     },
     {
       "name": "Turtwig",
@@ -528,14 +501,6 @@
       "type": "Stage 1 Pokémon",
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197764.jpg"
-    },{
-      "name": "Eevee",
-      "gen": "SM",
-      "set": "Hidden Fates: Shiny Vault",
-      "number": "SV41/SV94",
-      "type": "Basic Pokémon",
-      "releaseDate": "",
-      "url": "https://product-images.tcgplayer.com/197811.jpg"
     },{
       "name": "Leafeon GX",
       "gen": "SM",
