@@ -121,6 +121,9 @@ const setCurrentPage = (pageNum) => {
     const desc = document.createElement("div");
     desc.className = "desc";
     const name = document.createElement("h3");
+    if (cardData[idx]["name"].length > 23) {
+      name.style = "font-size: 16px";
+    }
     name.appendChild(document.createTextNode(cardData[idx]["name"]));
     const set = document.createElement("h4");
     set.appendChild(document.createTextNode(cardData[idx]["set"]));

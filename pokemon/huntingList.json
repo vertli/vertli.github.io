@@ -1,11 +1,132 @@
 {
   "cardData": [
     {
+      "name": "Lairon",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "184/167",
+      "type": ["Stage 1 Pokémon"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550228.jpg"
+    },
+    {
+      "name": "Greninja ex",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "198/167",
+      "type": ["Stage 2 Pokémon", "Pokémon ex"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550242.jpg"
+    },
+    {
+      "name": "Bloodmoon Ursaluna ex (2)",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "202/167",
+      "type": ["Basic Pokémon", "Pokémon ex"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550246.jpg"
+    },
+    {
+      "name": "Carmine",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "204/167",
+      "type": ["Supporter"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550248.jpg"
+    },
+    {
+      "name": "Sinistcha ex",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "210/167",
+      "type": ["Stage 1 Pokémon"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550254.jpg"
+    },
+    {
+      "name": "Teal Mask Ogerpon ex",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "211/167",
+      "type": ["Basic Pokémon", "Pokémon ex"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550255.jpg"
+    },
+    {
+      "name": "Wellspring Mask Ogerpon ex",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "213/167",
+      "type": ["Basic Pokémon", "Pokémon ex"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550257.jpg"
+    },
+    {
+      "name": "Greninja ex",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "214/167",
+      "type": ["Stage 2 Pokémon", "Pokémon ex"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550258.jpg"
+    },
+    {
+      "name": "Bloodmoon Ursaluna ex",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "216/167",
+      "type": ["Basic Pokémon", "Pokémon ex"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550260.jpg"
+    },
+
+    {
+      "name": "Carmine",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "217/167",
+      "type": ["Supporter"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550261.jpg"
+    },
+
+    {
+      "name": "Kieran",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "218/167",
+      "type": ["Supporter"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550262.jpg"
+    },
+
+    {
+      "name": "Perrin",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "220/167",
+      "type": ["Supporter"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550264.jpg"
+    },
+
+    {
+      "name": "Buddy-Buddy Poffin",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "223/167",
+      "type": ["Item"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/fit-in/921x921/filters:quality(1)/550267.jpg"
+    },
+    {
       "name": "Tate & Liza",
       "gen": "Sun and Moon",
       "set": "Celestial Storm",
       "number": "166/168",
-      "type": "Supporter",
+      "type": ["Supporter"],
       "releaseDate": "03/08/2018",
       "url": "https://product-images.tcgplayer.com/171018.jpg"
     },
@@ -14,7 +135,7 @@
       "gen": "Sun and Moon",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV82/SV94",
-      "type": "Supporter",
+      "type": ["Supporter"],
       "releaseDate": "23/08/2019",
       "url": "https://product-images.tcgplayer.com/197836.jpg"
     },
@@ -23,7 +144,7 @@
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
       "number": "95/165",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/84027.jpg"
     },
@@ -32,7 +153,7 @@
       "gen": "Black & White",
       "set": "Dark Explorers",
       "number": "1/108",
-      "type": "Basic Pokémon",
+      "type":[ "Basic Pokémon"],
       "releaseDate": "09/05/2012",
       "url": "https://product-images.tcgplayer.com/84036.jpg"
     },
@@ -41,7 +162,7 @@
       "gen": "POP",
       "set": "Series 2",
       "number": "12/17",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "01/08/2005",
       "url": "https://product-images.tcgplayer.com/84031.jpg"
     },
@@ -50,7 +171,7 @@
       "gen": "e-Card Series",
       "set": "Expedition",
       "number": "94/165",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/84026.jpg"
     },
@@ -59,7 +180,7 @@
       "gen": "EX Series",
       "set": "Crystal Guardians",
       "number": "35/100",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "30/08/2006",
       "url": "https://product-images.tcgplayer.com/86301.jpg"
     },
@@ -68,7 +189,7 @@
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
       "number": "82/165",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/86296.jpg"
     },
@@ -77,7 +198,7 @@
       "gen": "EX Series",
       "set": "Crystal Guardians",
       "number": "34/100",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "30/08/2006",
       "url": "https://product-images.tcgplayer.com/86300.jpg"
     },
@@ -86,7 +207,7 @@
       "gen": "POP",
       "set": "Series 2",
       "number": "7/17",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "08/2005",
       "url": "https://product-images.tcgplayer.com/86298.jpg"
     },
@@ -95,7 +216,7 @@
       "gen": "POP",
       "set": "Series 3",
       "number": "14/17",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "01/04/2006",
       "url": "https://product-images.tcgplayer.com/86299.jpg"
     },
@@ -104,7 +225,7 @@
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
       "number": "30/165",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/90314.jpg"
     },
@@ -113,7 +234,7 @@
       "gen": "e-Card Series",
       "set": "Expedition Base Set",
       "number": "067/165",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "15/09/2002",
       "url": "https://product-images.tcgplayer.com/90315.jpg"
     },
@@ -122,7 +243,7 @@
       "gen": "POP",
       "set": "Series 2",
       "number": "6/17",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "01/08/2005",
       "url": "https://product-images.tcgplayer.com/90317.jpg"
     },
@@ -131,7 +252,7 @@
       "gen": "Original Series",
       "set": "WoTC Promo",
       "number": "13/53",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/90311.jpg"
     },
@@ -140,7 +261,7 @@
       "gen": "XY",
       "set": "Base Set",
       "number": "141/146",
-      "type": "Pokémon EX",
+      "type": ["Basic Pokémon", "Pokémon EX"],
       "releaseDate": "05/02/2014",
       "url": "https://product-images.tcgplayer.com/90325.jpg"
     },
@@ -149,7 +270,7 @@
       "gen": "Original Series",
       "set": "Gym Challenge",
       "number": "4/132",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "16/10/2000",
       "url": "https://product-images.tcgplayer.com/85307.jpg"
     },
@@ -158,16 +279,16 @@
       "gen": "XY",
       "set": "Generations",
       "number": "2/83",
-      "type": "MEGA Pokémon",
+      "type": ["MEGA Pokémon"],
       "releaseDate": "22/02/2016",
       "url": "https://product-images.tcgplayer.com/113660.jpg"
     },
     {
-      "name": "Venusaur",
+      "name": "Venusaur ex",
       "gen": "EX Series",
       "set": "FireRed & LeafGreen",
       "number": "112/112",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "30/08/2004",
       "url": "https://product-images.tcgplayer.com/90323.jpg"
     },
@@ -176,7 +297,7 @@
       "gen": "Miscellaneous Sets",
       "set": "Rumble",
       "number": "1/16",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "02/12/2009",
       "url": "https://product-images.tcgplayer.com/90320.jpg"
     },
@@ -185,7 +306,7 @@
       "gen": "Platinum",
       "set": "Supreme Victors",
       "number": "13/147",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "19/08/2009",
       "url": "https://product-images.tcgplayer.com/125073.jpg"
     },
@@ -194,7 +315,7 @@
       "gen": "Sun and Moon",
       "set": "Cosmic Eclipse",
       "number": "210/236",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon", "Pokémon GX"],
       "releaseDate": "01/11/2019",
       "url": "https://product-images.tcgplayer.com/201330.jpg"
     },
@@ -203,7 +324,7 @@
       "gen": "Sun and Moon",
       "set": "Team Up",
       "number": "182/181",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon", "Pokémon GX"],
       "releaseDate": "01/02/2019",
       "url": "https://product-images.tcgplayer.com/183772.jpg"
     },
@@ -212,7 +333,7 @@
       "gen": "League & Championship Cards",
       "set": "League & Championship Cards",
       "number": "28/100",
-      "type": "Stage 2 Pokémon",
+      "type": ["Stage 2 Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/236464.jpg"
     },
@@ -221,7 +342,7 @@
       "gen": "EX Series",
       "set": "Crystal Guardians",
       "number": "67/100",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "30/08/2006",
       "url": "https://product-images.tcgplayer.com/90038.jpg"
     },
@@ -230,7 +351,7 @@
       "gen": "Diamond & Peral",
       "set": "Great Encounters",
       "number": "90/106",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "13/02/2008",
       "url": "https://product-images.tcgplayer.com/90039.jpg"
     },
@@ -239,7 +360,7 @@
       "gen": "Black & White",
       "set": "Plasma Freeze",
       "number": "6/116",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "08/05/2013",
       "url": "https://product-images.tcgplayer.com/90043.jpg"
     },
@@ -248,7 +369,7 @@
       "gen": "EX Series",
       "set": "Dragon",
       "number": "80/97",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "24/11/2003",
       "url": "https://product-images.tcgplayer.com/90034.jpg"
     },
@@ -257,7 +378,7 @@
       "gen": "Platinum",
       "set": "Arceus",
       "number": "78/99",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "04/11/2009",
       "url": "https://product-images.tcgplayer.com/90041.jpg"
     },
@@ -266,7 +387,7 @@
       "gen": "Sun and Moon",
       "set": "Celestial Storm",
       "number": "8/168",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "03/08/2018",
       "url": "https://product-images.tcgplayer.com/170816.jpg"
     },
@@ -275,7 +396,7 @@
       "gen": "Sun and Moon",
       "set": "Celestial Storm",
       "number": "7/168",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "03/08/2018",
       "url": "https://product-images.tcgplayer.com/170813.jpg"
     },
@@ -284,7 +405,7 @@
       "gen": "EX Series",
       "set": "Team Rocket Returns",
       "number": "109/109",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "08/11/2004",
       "url": "https://product-images.tcgplayer.com/90046.jpg"
     },
@@ -293,7 +414,7 @@
       "gen": "Nintendo",
       "set": "Promos",
       "number": "7/40",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/90036.jpg"
     },
@@ -302,7 +423,7 @@
       "gen": "POP",
       "set": "Series 4",
       "number": "15/17",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "01/08/2006",
       "url": "https://product-images.tcgplayer.com/90045.jpg"
     },
@@ -311,7 +432,7 @@
       "gen": "Nintendo",
       "set": "Promos",
       "number": "3/40",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/90031.jpg"
     },
@@ -320,7 +441,7 @@
       "gen": "Miscellaneous Cards",
       "set": "GEN CON",
       "number": "70/106",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "09/05/2005",
       "url": "https://product-images.tcgplayer.com/213010.jpg"
     },
@@ -329,7 +450,7 @@
       "gen": "POP",
       "set": "Series 8",
       "number": "17/17",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "01/09/2008",
       "url": "https://product-images.tcgplayer.com/90076.jpg"
     },
@@ -338,7 +459,7 @@
       "gen": "Black & White",
       "set": "Plasma Storm",
       "number": "1/135",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "06/02/2013",
       "url": "https://product-images.tcgplayer.com/90081.jpg"
     },
@@ -347,7 +468,7 @@
       "gen": "Diamond & Peral",
       "set": "Majestic Dawn",
       "number": "77/100",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "21/05/2008",
       "url": "https://product-images.tcgplayer.com/90073.jpg"
     },
@@ -356,7 +477,7 @@
       "gen": "Platinum",
       "set": "Supreme Victors",
       "number": "131/147",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "19/08/2009",
       "url": "https://product-images.tcgplayer.com/90079.jpg"
     },
@@ -365,7 +486,7 @@
       "gen": "HeartGold & SoulSilver",
       "set": "Unleashed",
       "number": "67/95",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "12/05/2010",
       "url": "https://product-images.tcgplayer.com/90080.jpg"
     },
@@ -374,7 +495,7 @@
       "gen": "POP",
       "set": "Series 6",
       "number": "17/17",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "01/09/2007",
       "url": "https://product-images.tcgplayer.com/90072.jpg"
     },
@@ -383,7 +504,7 @@
       "gen": "Diamond and Pearl",
       "set": "Promo",
       "number": "DP01",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/90075.jpg"
     },
@@ -392,7 +513,7 @@
       "gen": "Sun and Moon",
       "set": "Ultra Prism",
       "number": "7/156",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "02/02/2018",
       "url": "https://product-images.tcgplayer.com/157624.jpg"
     },
@@ -401,7 +522,7 @@
       "gen": "Burger King",
       "set": "Promos",
       "number": "77/100",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/231450.jpg"
     },
@@ -410,7 +531,7 @@
       "gen": "Sun and Moon",
       "set": "Dragon Majesty",
       "number": "61/70",
-      "type": "Supporter",
+      "type": ["Supporter"],
       "releaseDate": "07/09/2018",
       "url": "https://product-images.tcgplayer.com/175491.jpg"
     },
@@ -419,7 +540,7 @@
       "gen": "XY",
       "set": "Promo",
       "number": "XY206",
-      "type": "Item",
+      "type": ["Item"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/127144.jpg"
     },
@@ -428,18 +549,9 @@
       "gen": "XY",
       "set": "Promo",
       "number": "XY207",
-      "type": "Item",
+      "type": ["Item"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/127145.jpg"
-    },
-    {
-      "name": "Ralts",
-      "gen": "SV",
-      "set": "Paldean Fates",
-      "number": "153/091",
-      "type": "Basic Pokémon",
-      "releaseDate": "26/01/2024",
-      "url": "https://product-images.tcgplayer.com/534650.jpg"
     },
     {
       "name": "Solgaleo & Lunala GX",
@@ -455,7 +567,7 @@
       "gen": "SM",
       "set": "Cosmic Eclipse",
       "number": "216/236",
-      "type": "Pokémon GX",
+      "type": ["Basic Pokémon", "Pokémon GX"],
       "releaseDate": "01/11/2019",
       "url": "https://product-images.tcgplayer.com/201250.jpg"
     },
@@ -464,7 +576,7 @@
       "gen": "SM",
       "set": "Cosmic Eclipse",
       "number": "157/236",
-      "type": "Pokémon GX",
+      "type": ["Basic Pokémon", "Pokémon GX"],
       "releaseDate": "01/11/2019",
       "url": "https://product-images.tcgplayer.com/201205.jpg"
     },
@@ -473,7 +585,7 @@
       "gen": "SM",
       "set": "Cosmic Eclipse",
       "number": "222/236",
-      "type": "Pokémon GX",
+      "type": ["Basic Pokémon", "Pokémon GX"],
       "releaseDate": "01/11/2019",
       "url": "https://product-images.tcgplayer.com/201339.jpg"
     },
@@ -482,7 +594,7 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV7/SV94",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197745.jpg"
     },{
@@ -490,7 +602,7 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV9/SV94",
-      "type": "Basic Pokémon",
+      "type": ["Basic Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197763.jpg"
     },{
@@ -498,7 +610,7 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV10/SV94",
-      "type": "Stage 1 Pokémon",
+      "type": ["Stage 1 Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197764.jpg"
     },{
@@ -506,7 +618,7 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV46/SV94",
-      "type": "Pokémon GX",
+      "type": ["Stage 1 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197770.jpg"
     },{
@@ -514,7 +626,7 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV55/SV94",
-      "type": "Pokémon GX",
+      "type": ["Stage 1 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197795.jpg"
     },{
@@ -522,7 +634,7 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV56/SV94",
-      "type": "Pokémon GX",
+      "type": ["Stage 2 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197797.jpg"
     },{
@@ -530,10 +642,11 @@
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
       "number": "SV60/SV94",
-      "type": "Pokémon GX",
+      "type": ["Stage 1 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197808.jpg"
-    },{
+    },
+    {
       "name": "Dark Jolteon (not 1st printed)",
       "gen": "Team Rocket",
       "set": "WoTC",
