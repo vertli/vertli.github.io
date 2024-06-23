@@ -122,7 +122,7 @@ const setCurrentPage = (pageNum) => {
     desc.className = "desc";
     const name = document.createElement("h3");
     if (cardData[idx]["name"].length > 23) {
-      name.style = "font-size: 16px";
+      name.style = "font-size: 17.5px";
     }
     name.appendChild(document.createTextNode(cardData[idx]["name"]));
     const set = document.createElement("h4");
