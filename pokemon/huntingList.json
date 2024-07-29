@@ -1,15 +1,6 @@
 {
   "cardData": [
     {
-      "name": "Wellspring Mask Ogerpon ex",
-      "gen": "Scarlet & Violet",
-      "set": "Twilight Masquerade",
-      "number": "213/167",
-      "type": ["Basic Pokémon", "Pokémon ex"],
-      "releaseDate": "24/05/2024",
-      "url": "https://product-images.tcgplayer.com/550257.jpg"
-    },
-    {
       "name": "Sinistcha ex",
       "gen": "Scarlet & Violet",
       "set": "Twilight Masquerade",
@@ -68,7 +59,7 @@
       "gen": "Black & White",
       "set": "Dark Explorers",
       "number": "1/108",
-      "type":[ "Basic Pokémon"],
+      "type": ["Basic Pokémon"],
       "releaseDate": "09/05/2012",
       "url": "https://product-images.tcgplayer.com/84036.jpg"
     },
@@ -472,15 +463,6 @@
       "name": "Solgaleo & Lunala GX",
       "gen": "SM",
       "set": "Cosmic Eclipse",
-      "number": "75/236",
-      "type": "Pokémon GX",
-      "releaseDate": "01/11/2019",
-      "url": "https://product-images.tcgplayer.com/201249.jpg"
-    },
-    {
-      "name": "Solgaleo & Lunala GX",
-      "gen": "SM",
-      "set": "Cosmic Eclipse",
       "number": "216/236",
       "type": ["Basic Pokémon", "Pokémon GX"],
       "releaseDate": "01/11/2019",
@@ -512,7 +494,8 @@
       "type": ["Stage 1 Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197745.jpg"
-    },{
+    },
+    {
       "name": "Wooper",
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
@@ -520,7 +503,8 @@
       "type": ["Basic Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197763.jpg"
-    },{
+    },
+    {
       "name": "Quagsire",
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
@@ -528,7 +512,8 @@
       "type": ["Stage 1 Pokémon"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197764.jpg"
-    },{
+    },
+    {
       "name": "Leafeon GX",
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
@@ -536,7 +521,8 @@
       "type": ["Stage 1 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197770.jpg"
-    },{
+    },
+    {
       "name": "Glaceon GX",
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
@@ -544,7 +530,8 @@
       "type": ["Stage 1 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197795.jpg"
-    },{
+    },
+    {
       "name": "Greninja GX",
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
@@ -552,7 +539,8 @@
       "type": ["Stage 2 Pokémon", "Pokémon GX"],
       "releaseDate": "",
       "url": "https://product-images.tcgplayer.com/197797.jpg"
-    },{
+    },
+    {
       "name": "Espeon GX",
       "gen": "SM",
       "set": "Hidden Fates: Shiny Vault",
