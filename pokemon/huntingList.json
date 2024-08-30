@@ -1,7 +1,7 @@
 {
   "cardData": [
     {
-      "name": "Dragapult ex",
+      "name": "Dragapult ex (2)",
       "gen": "Scarlet & Violet",
       "set": "Twilight Masquerade",
       "number": "200/167",
@@ -19,15 +19,6 @@
       "url": "https://product-images.tcgplayer.com/550254.jpg"
     },
     {
-      "name": "Greninja ex",
-      "gen": "Scarlet & Violet",
-      "set": "Twilight Masquerade",
-      "number": "214/167",
-      "type": ["Stage 2 Pokémon", "Pokémon ex"],
-      "releaseDate": "24/05/2024",
-      "url": "https://product-images.tcgplayer.com/550258.jpg"
-    },
-    {
       "name": "Bloodmoon Ursaluna ex",
       "gen": "Scarlet & Violet",
       "set": "Twilight Masquerade",
@@ -35,6 +26,15 @@
       "type": ["Basic Pokémon", "Pokémon ex"],
       "releaseDate": "24/05/2024",
       "url": "https://product-images.tcgplayer.com/550260.jpg"
+    },
+    {
+      "name": "Carmine",
+      "gen": "Scarlet & Violet",
+      "set": "Twilight Masquerade",
+      "number": "217/167",
+      "type": ["Supporter"],
+      "releaseDate": "24/05/2024",
+      "url": "https://product-images.tcgplayer.com/550261.jpg"
     },
     {
       "name": "Perrin",
