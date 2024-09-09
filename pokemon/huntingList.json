@@ -109,22 +109,13 @@
       "url": "https://tcgplayer-cdn.tcgplayer.com/product/560410_in_1000x1000.jpg"
     },
     {
-      "name": "Dragapult ex (2)",
+      "name": "Dragapult ex",
       "gen": "Scarlet & Violet",
       "set": "Twilight Masquerade",
       "number": "200/167",
       "type": ["Stage 2 Pokémon", "Pokémon ex"],
       "releaseDate": "24/05/2024",
       "url": "https://tcgplayer-cdn.tcgplayer.com/product/550244_in_1000x1000.jpg"
-    },
-    {
-      "name": "Bloodmoon Ursaluna ex",
-      "gen": "Scarlet & Violet",
-      "set": "Twilight Masquerade",
-      "number": "216/167",
-      "type": ["Basic Pokémon", "Pokémon ex"],
-      "releaseDate": "24/05/2024",
-      "url": "https://product-images.tcgplayer.com/550260.jpg"
     },
     {
       "name": "Carmine",
@@ -134,15 +125,6 @@
       "type": ["Supporter"],
       "releaseDate": "24/05/2024",
       "url": "https://product-images.tcgplayer.com/550261.jpg"
-    },
-    {
-      "name": "Perrin",
-      "gen": "Scarlet & Violet",
-      "set": "Twilight Masquerade",
-      "number": "220/167",
-      "type": ["Supporter"],
-      "releaseDate": "24/05/2024",
-      "url": "https://product-images.tcgplayer.com/550264.jpg"
     },
     {
       "name": "Tate & Liza",
