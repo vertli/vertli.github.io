@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokémon TCG Calendar 2024</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css" />
+    <link href="./pokemon/pokemon.css" rel="stylesheet" />
   </head>
-  
+
   <body>
-    
     <div class="topnav" id="myTopnav">
       <a href="./index.html" class="active">Calvin Li</a>
       <a href="./about.html">About</a>
@@ -32,37 +31,55 @@
         <i class="fa fa-bars"></i>
       </a>
     </div>
-    
+
     <div class="container">
       <section id="pcCalendar">
         <h1>Pokémon <scan class="keyword">TCG</scan> Calendar 2024</h1>
         <div class="responsiveCal">
           <div class="deskContent">
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FToronto&title=Pok%C3%A9mon%20TCG%20Calendar%202024&src=MDRmMzQ0MmE1YjQ3NmI1ODRhODkwYTFiNmJjMzBmY2I5ZThiOGFiYmRhMmM4NmE3MmM1MzA2MmExNTYzODRjOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NDZjYTFlYzAyZDliMjIzYzUxNGRhZDgxZGZiZTRhNGE4NGViNmU3MDNmMmJiOGQyYjljMDYwM2ZjMjZhMTljZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NGE5ODhmYjAzOGQ2ZTFkMjdkZGY0N2E3ODAxOWNmODg0NTk5Y2JmMmI2NzQzNjg5MGE2YTE4MmVhMWY3ZWZmZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5&color=%230B8043&color=%23F4511E"></iframe>
+            <iframe
+              src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FToronto&title=Pok%C3%A9mon%20TCG%20Calendar%202024&src=MDRmMzQ0MmE1YjQ3NmI1ODRhODkwYTFiNmJjMzBmY2I5ZThiOGFiYmRhMmM4NmE3MmM1MzA2MmExNTYzODRjOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NDZjYTFlYzAyZDliMjIzYzUxNGRhZDgxZGZiZTRhNGE4NGViNmU3MDNmMmJiOGQyYjljMDYwM2ZjMjZhMTljZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NGE5ODhmYjAzOGQ2ZTFkMjdkZGY0N2E3ODAxOWNmODg0NTk5Y2JmMmI2NzQzNjg5MGE2YTE4MmVhMWY3ZWZmZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5&color=%230B8043&color=%23F4511E"
+            ></iframe>
           </div>
           <div class="phoneContent">
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FToronto&title=Pok%C3%A9mon%20TCG%20Calendar%202024&src=MDRmMzQ0MmE1YjQ3NmI1ODRhODkwYTFiNmJjMzBmY2I5ZThiOGFiYmRhMmM4NmE3MmM1MzA2MmExNTYzODRjOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NDZjYTFlYzAyZDliMjIzYzUxNGRhZDgxZGZiZTRhNGE4NGViNmU3MDNmMmJiOGQyYjljMDYwM2ZjMjZhMTljZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NGE5ODhmYjAzOGQ2ZTFkMjdkZGY0N2E3ODAxOWNmODg0NTk5Y2JmMmI2NzQzNjg5MGE2YTE4MmVhMWY3ZWZmZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5&color=%230B8043&color=%23F4511E"></iframe>
+            <iframe
+              src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FToronto&title=Pok%C3%A9mon%20TCG%20Calendar%202024&src=MDRmMzQ0MmE1YjQ3NmI1ODRhODkwYTFiNmJjMzBmY2I5ZThiOGFiYmRhMmM4NmE3MmM1MzA2MmExNTYzODRjOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NDZjYTFlYzAyZDliMjIzYzUxNGRhZDgxZGZiZTRhNGE4NGViNmU3MDNmMmJiOGQyYjljMDYwM2ZjMjZhMTljZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NGE5ODhmYjAzOGQ2ZTFkMjdkZGY0N2E3ODAxOWNmODg0NTk5Y2JmMmI2NzQzNjg5MGE2YTE4MmVhMWY3ZWZmZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5&color=%230B8043&color=%23F4511E"
+            ></iframe>
           </div>
         </div>
-        <br>
+        <br />
+      </section>
+
+      <section id="pokemonCPEvents">
+        <div class="" id="context">
+          <div class="row" id="card-gallery" aria-live="polite"></div>
+        </div>
       </section>
 
       <footer id="footer">
-        <hr/>
+        <hr />
         <p>Thanks For Coming. - Vert Li</p>
         <!-- icons -->
-        <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
-        <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
-        <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
-        <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+        <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"
+          ><i class="fas fa-envelope-square fa-2x"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"
+          ><i class="fab fa-linkedin fa-2x"></i
+        ></a>
+        <a href="https://www.instagram.com/vert_arts/" target="_blank;"
+          ><i class="fab fa-instagram fa-2x"></i
+        ></a>
+        <a href="https://github.com/vertli" target="_blank;"
+          ><i class="fab fa-github-square fa-2x"></i
+        ></a>
         <!-- icons -->
         <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2024</p>
-        <hr/>
+        <hr />
       </footer>
     </div>
 
+    <script src="./pokemon/eventList.js"></script>
     <script src="./js/style.js"></script>
     <noscript>This website requires to use JavaScript!!!</noscript>
   </body>
-  
 </html>
