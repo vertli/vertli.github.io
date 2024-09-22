@@ -1,15 +1,6 @@
 {
   "cardData": [
     {
-      "name": "Crabominable",
-      "gen": "Scarlet & Violet",
-      "set": "Stellar Crown",
-      "number": "149/142",
-      "type": ["Stage 1 Pokémon"],
-      "releaseDate": "13/09/2024",
-      "url": "https://tcgplayer-cdn.tcgplayer.com/product/567431_in_1000x1000.jpg"
-    },
-    {
       "name": "Terapagos ex",
       "gen": "Scarlet & Violet",
       "set": "Stellar Crown",
@@ -35,15 +26,6 @@
       "type": ["Stage 2 Pokémon"],
       "releaseDate": "02/08/2024",
       "url": "https://tcgplayer-cdn.tcgplayer.com/product/560381_in_1000x1000.jpg"
-    },
-    {
-      "name": "Okidogi",
-      "gen": "Scarlet & Violet",
-      "set": "Shrouded Fable",
-      "number": "074/064",
-      "type": ["Basic Pokémon"],
-      "releaseDate": "02/08/2024",
-      "url": "https://tcgplayer-cdn.tcgplayer.com/product/560385_in_1000x1000.jpg"
     },
     {
       "name": "Fraxure",
