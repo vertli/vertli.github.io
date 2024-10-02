@@ -1,238 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Me | Calvin Vert Li</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
-</head>
-
-<body onload="restHeight('about')" onresize="location.reload()">
-
-  <div class="topnav" id="myTopnav">
-    <a href="./index.html" class="active">Calvin Li</a>
-    <a href="./about.html">About</a>
-    <a href="./projects.html">Projects</a>
-    <div class="dropdown">
-      <button class="dropbtn">Pokémon</button>
-      <div class="dropdown-content">
-        <a href="./pcCalendar.html">Pokémon TCG Calendar 2024</a>
-          <a href="./huntingList.html">TCG Hunting List</a>
-          <a href="./glcHuntingList.html">GLC Hunting List</a>
-        <!-- <a href="./exchangeList.html">TCG Exchange List</a> -->
+  <body id="about-me" class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom border-body">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">Calvin Li</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./about.html"
+                >About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./projects.html">Projects</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Pokémon
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./pokemonEventList.html"
+                    >CP Event List</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./pokemonHuntingList.html"
+                    >Hunting List</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./resume.html">Résume</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="topnav-right">
-      <a href="./contact.html">Contact</a>
-      <!-- <a href="./doc/resume_CKLi.pdf" target="_blank;">Résumé</a> -->
-    </div>
-    <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
+    </nav>
 
-  <div class="container">
-
-    <section id="about">
+    <div class="container flex-grow-1">
+      <h1 class="display-1">About Me</h1>
       <div class="row">
-        <div class="col-1 col-md-4 col-lg-4">
-          <img src="img/self.png">
-          <p class="underImg">Clearly, this is a unfinished "self"-drawing (need to add shadow and fix both arms).
-            Also, my hair is black; I never dye my hair. (As a Chinese guy, I can / shall / should / must
-            <strong><em>NOT</em></strong> dye my hair to green color ._.)
+        <div class="col-lg-4 col-md-6 col-sm-12 intro">
+          <p>Hello world! I am</p>
+          <p class="display-5 text-center">Calvin Vert Li</p>
+          <p>
+            I am just your daily software QA who randomly codes for fun at
+            night.
+          </p>
+          <p>
+            I currently work at Varicent and testing the Sales Performance
+            Management. I am foucs on testing and delivering hot-fixes for
+            escalations and platinum client issues. I also write my own Python
+            scripts to test RestAPI during work.
+          </p>
+          <p>
+            I earned my Bachelor's Degree in Computational Mathematics and
+            Statistics with Computing minor from the University of Waterloo in
+            2021. Prior to that, I was born in Hong Kong and lived there for
+            almost 18 years.
+          </p>
+          <p>
+            Aside from doing maths and coding, you will often see me playing
+            Pokemon TCG and even hosting and judging Pokemon TCG tournaments in
+            Toronto area.
+          </p>
+          <p>
+            By the way, my favourite bubble tea is Matcha Milk Tea
+            <del>(not because of my name!)</del>
           </p>
         </div>
-        <div class="col-1 col-md-8 col-lg-8">
-          <p>Okay, so you did find me here.</p>
-          <p>Hello world. I am...</p>
-          <h1>Calvin Vert Li</h1>
-          <p>Or you might know me by my Chinese name. But to be honest, it is impolite to call a HongKonger by their
-            Chinese name unless they allow you to. Thus, I am not going to tell you my Chinese name. (If you are
-            curious, go find it out; it is somewhere on my website.)</p>
-          <p>I just finished my last undergraduate academic term (Winter 2021) at <u>University of Waterloo</u> and
-            my majors are <u>Computational Mathematics</u> and <u>Statistics</u>. I also have <u>Computing minor</u>
-            in my academics program.</p>
-
-          <p>Some of my interests relate to my majors are <span class="keyword">computer graphics</span>, <span
-              class="keyword">web development</span>, <span class="keyword">game development</span>, etc. I am also
-            interested on arts and design. For example, <span class="keyword">drawing</span>, <span
-              class="keyword">animation</span>, <span class="keyword">printmaking</span>, <span
-              class="keyword">architectural design</span>, <span class="keyword">furniture design</span>, <span
-              class="keyword">product design</span>, <span class="keyword">interior design</span>, <span
-              class="keyword">advertisement design</span>, <span class="keyword">package design</span>, <span
-              class="keyword">illustration design</span>, etc.</p>
-
-          <p>Here is a table of my skillset...</p>
-          <div class="skill">
-            <table>
-              <tr>
-                <th>Computer Languages</th>
-                <th>Technologies</th>
-                <th>Design Software</th>
-              </tr>
-
-              <tr>
-                <td>&#9656; Bash</td>
-                <td>&#9656; Excel</td>
-                <td>&#9656; Adobe Illustrator</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; C</td>
-                <td>&#9656; Git</td>
-                <td>&#9656; Adobe InDesign</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; C++</td>
-                <td>&#9656; Linux</td>
-                <td>&#9656; Adobe Photoshop</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; HTML with CSS</td>
-                <td>&#9656; Printmaking</td>
-                <td>&#9656; Adobe XD</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; JavaScript</td>
-                <td>&#9656; Vex Robotics</td>
-                <td>&#9656; CorelDRAW</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; Java</td>
-                <td>&#9656; Woodworking</td>
-                <td>&#9656; GIMP</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; MATLAB</td>
-                <td></td>
-                <td>&#9656; Google SketchUp</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; MIPS</td>
-                <td></td>
-                <td>&#9656; Ulead PhotoImpact</td>
-              </tr>
-
-              <tr>
-                <td>&#9656; Pascal</td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>&#9656; Python</td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>&#9656; R</td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>&#9656; Racket</td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>&#9656; SAS</td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>&#9656; SQL</td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table>
+        <div class="col-lg-8 col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <img src="./img/About/markham_map.png" alt="Map of Markham" />
+                <div class="card-body text-at-img-bottom">
+                  <h5 class="card-title">📍 LOCATION</h5>
+                  <p class="card-text">
+                    Currently in Markham, Canada 🇨🇦<br />
+                    Originally from Hong Kong 🇭🇰
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <img src="./img/About/varient-icm.png" alt="Varicent ICM" />
+                <div class="card-body text-at-img-bottom">
+                  <h5 class="card-title">💼 WORK</h5>
+                  <p class="card-text">
+                    QA Analyst in Varicent Inc.,<br />
+                    testing Sales Perormance Management
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12 col-md-12 col-lg-12">
-          <div class="job">
-            <h1>Work Experience</h1>
-            <table>
-              <tr>
-                <td class="top left"><img src="img/edUHK.png"></td>
-              </tr>
-              <tr>
-                <td class="left">
-                  <h3>The Education University of Hong Kong - Office of the Chief Information Officer (OCIO)</h3>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="left">
-                  <h4>IT Intern (Programming)</h4>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">
-                  <h4>Sep. - Dec. 2019</h4>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="left" colspan="2">
-                  I worked in the Student Administration (SA) team.<br><br>
-                  My job was to transitioned the school system's data forms for over 13 500 users by using Java, XML,
-                  and
-                  PL/SQL. Thus, school members can access and modify data with the new system when it is ready to
-                  publish.<br><br>
-                  During work, I needed to use Eclipse for programming and Apache Tomcat to run the server.<br>
-                  In addition, I need to use Apache Maven to manage and modify the new school system data form
-                  structure. (But I didn't know I was using Apache Maven in that time...)<br><br>
-                  Also, I helped writing technical documentation for the new system for future developers since 
-                  in that time, we didn't have any useful documentation to teach us how to modify the new school system.
-                </td>
-              </tr>
-              <tr>
-                <td class="left">&nbsp;</td>
-              </tr>
-            </table>
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <img
+                  src="./img/About/uwaterloo.jpg"
+                  alt="University of Waterloo"
+                />
+                <div class="card-body text-at-img-bottom">
+                  <h5 class="card-title">🎓 EDUCATION</h5>
+                  <p class="card-text">
+                    Honours Bachelor of Mathematics<br />
+                    Major in Computational Mathematics and Statistics with
+                    Computing Minor
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-    </section>
-
-    <footer id="footer">
-      <hr/>
-      <p>Thanks For Coming. - Vert Li</p>
-      <!-- icons -->
-      <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
-      <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
-      <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
-      <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
-      <!-- icons -->
-      <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2024</p>
-      <hr/>
+    </div>
+    <footer class="footer mt-auto text-center">
+      <div class="container">
+        <p>Thanks For Coming. - Vert Li</p>
+        <div class="row">
+          <div class="">
+            <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"
+              ><i class="fas fa-envelope-square fa-2x"></i
+            ></a>
+            <a href="https://github.com/vertli" target="_blank;"
+              ><i class="fab fa-github-square fa-2x"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/vertckli/" target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a href="https://twitter.com/CalvinVertLi" target="_blank"
+              ><i class="fa-brands fa-square-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <p>Chun Kit (Calvin Vert) Li © 2024</p>
+      </div>
     </footer>
 
-  </div>
-
-  <script src="./js/style.js"></script>
-  <script src="./js/height.js"></script>
-  <noscript>This website requires to use JavaScript!!!</noscript>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -20,10 +20,31 @@ function init() {
 } // end init()
 
 function canvasResize() {
-  c.width = window.innerWidth - 2;
-  size = c.width;
-  rectX = (c.width - size) / 2;
-  c.height = window.innerHeight - 4;
+  c.width = window.innerWidth;
+
+  if (c.width >= 1200) {
+    // Extra large devices (large laptops and desktops, 1200px and up)
+    size = 1140;
+  } else if (c.width < 1200 && c.width >= 992) {
+    // Large devices (laptops/desktops, 992px and up)
+    size = 960;
+  } else if (c.width < 992 && c.width >= 768) {
+    // Medium devices (landscape tablets, 768px and up)
+    size = 720;
+  } else if (c.width < 768 && c.width >= 600) {
+    // Small devices (portrait tablets and large phones, 600px and up)
+    size = 540;
+  }
+
+  if (size >= 540) {
+    rectX = (c.width - size) / 2;
+    c.width = c.width - rectX;
+  } else {
+    rectX = c.width * 0.05;
+    c.width = c.width * 0.95;
+  }
+
+  c.height = window.innerHeight - 30;
 } // end canvasResize()
 
 function selfWord() {
@@ -35,10 +56,10 @@ function selfWord() {
     hSize = [36, 30, 18];
   }
 
-  ctx.fillStyle = "#cfe2ce";
+  ctx.fillStyle = "#FFF";
   ctx.textAlign = "center";
   ctx.shadowBlur = 1;
-  ctx.shadowColor = "black";
+  ctx.shadowColor = "red";
 
   if (size >= 960) {
     ctx.font = hSize[0] + "px Noto-Sans sans-serif";
@@ -46,26 +67,27 @@ function selfWord() {
 
     ctx.font = hSize[1] + "px Noto-Sans sans-serif";
     ctx.fillText(
-      "Daily Software QA, Nightly Developer",
+      "Computational Mathematics & Statistics Student",
       cPos,
       c.height / 3 + hSize[0]
     );
     ctx.fillText(
-      "Weekend Pokémon TCG Trainer",
+      "University of Waterloo",
       cPos,
       c.height / 3 + hSize[0] + hSize[1]
     );
+    ctx.fillText("Class of 2021", cPos, c.height / 3 + hSize[0] + hSize[1] * 2);
 
     ctx.font = hSize[2] + "px Noto-Sans sans-serif";
     ctx.fillText("About", cPos - 400, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Contact", cPos - 200, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Contact", cPos - 150, c.height / 3 + hSize[0] + hSize[1] * 4);
+    // ctx.fillText("Projects", cPos, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText(
       "Projects",
-      cPos - 150,
+      cPos + 150,
       c.height / 3 + hSize[0] + hSize[1] * 4
     );
-    // ctx.fillText("Projects", cPos, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Résume", cPos + 150, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Arts", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Pokémon", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Notes", cPos + 400, c.height / 3 + hSize[0] + hSize[1] * 4);
@@ -74,20 +96,20 @@ function selfWord() {
     ctx.fillText("Calvin Vert Li", cPos, c.height / 3);
 
     ctx.font = hSize[1] + "px Noto-Sans sans-serif";
-    ctx.fillText("Just a IT Guy", cPos, c.height / 3 + hSize[1]);
-    ctx.fillText("&", cPos, c.height / 3 + hSize[0] + hSize[1]);
+    ctx.fillText("Mathematics Student", cPos, c.height / 3 + hSize[1]);
     ctx.fillText(
-      "Pokémon Trainer",
+      "University of Waterloo",
       cPos,
-      c.height / 3 + hSize[0] + hSize[1] * 2
+      c.height / 3 + hSize[0] + hSize[1]
     );
+    ctx.fillText("Class of 2021", cPos, c.height / 3 + hSize[0] + hSize[1] * 2);
 
     theListX = window.innerWidth / 5;
 
     ctx.font = hSize[2] + "px Noto-Sans sans-serif";
     ctx.fillText("About", cPos - 200, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Projects", cPos - 70, c.height / 3 + hSize[0] + hSize[1] * 4);
-    ctx.fillText("Résume", cPos + 70, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Contact", cPos - 70, c.height / 3 + hSize[0] + hSize[1] * 4);
+    ctx.fillText("Projects", cPos + 70, c.height / 3 + hSize[0] + hSize[1] * 4);
     ctx.fillText("Pokémon", cPos + 200, c.height / 3 + hSize[0] + hSize[1] * 4);
     // ctx.fillText("Notes", cPos, c.height / 3 + hSize[0] + hSize[1] * 5.5);
   } else {
@@ -95,9 +117,9 @@ function selfWord() {
     ctx.fillText("Calvin Vert Li", cPos, c.height / 3);
 
     ctx.font = hSize[1] + "px Noto-Sans sans-serif";
-    ctx.fillText("Just a IT Guy", cPos, c.height / 3 + hSize[0]);
-    ctx.fillText("&", cPos, c.height / 3 + hSize[0] * 2);
-    ctx.fillText("Pokémon Trainer", cPos, c.height / 3 + hSize[0] * 3);
+    ctx.fillText("UWaterloo", cPos, c.height / 3 + hSize[0]);
+    ctx.fillText("Maths Student", cPos, c.height / 3 + hSize[0] * 2);
+    ctx.fillText("Class 2021", cPos, c.height / 3 + hSize[0] * 3);
     ctx.font = hSize[2] + "px Noto-Sans sans-serif";
 
     ctx.font = hSize[2] + "px Noto-Sans sans-serif";
@@ -114,8 +136,8 @@ function setButton() {
   buttonH = hSize[2] + 10;
   buttonW = [
     ctx.measureText("About").width + 10,
+    ctx.measureText("Contact").width + 10,
     ctx.measureText("Projects").width + 10,
-    ctx.measureText("Résume").width + 10,
     ctx.measureText("Pokémon").width + 10,
   ];
   //             ctx.measureText("Notes").width + 10];
@@ -226,7 +248,7 @@ c.addEventListener("click", function (event) {
       event.y < buttonY[0] + buttonH
     ) {
       // Executes if button was clicked!
-      window.location.assign("./about.html");
+      window.location.assign("/about.html");
     } else if (
       event.x > buttonX[1] &&
       event.x < buttonX[1] + buttonW[1] &&
@@ -234,7 +256,7 @@ c.addEventListener("click", function (event) {
       event.y < buttonY[1] + buttonH
     ) {
       // Executes if button was clicked!
-      window.location.assign("./projects.html");
+      window.location.assign("/contact.html");
     } else if (
       event.x > buttonX[2] &&
       event.x < buttonX[2] + buttonW[2] &&
@@ -242,7 +264,7 @@ c.addEventListener("click", function (event) {
       event.y < buttonY[2] + buttonH
     ) {
       // Executes if button was clicked!
-      window.location.assign("./resume.html");
+      window.location.assign("/projects.html");
     } else if (
       event.x > buttonX[3] &&
       event.x < buttonX[3] + buttonW[3] &&
@@ -250,7 +272,7 @@ c.addEventListener("click", function (event) {
       event.y < buttonY[3] + buttonH
     ) {
       // Executes if button was clicked!
-      window.location.assign("./pokemonEventList.html");
+      window.location.assign("/pcCalendar.html");
     }
     //    else if (event.x > buttonX[4] && event.x < buttonX[4] + buttonW[4] &&
     //        event.y > buttonY[4] && event.y < buttonY[4] + buttonH) {
@@ -265,7 +287,7 @@ c.addEventListener("click", function (event) {
       event.y < buttonY + buttonH
     ) {
       // Executes if button was clicked!
-      window.location.assign("./about.html");
+      window.location.assign("/about.html");
     } // end if
   } // end if..else..
 });

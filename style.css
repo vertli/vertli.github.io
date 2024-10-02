@@ -1,0 +1,220 @@
+:root {
+  --green-1: #cfe2ce;
+  --green-2: #6b9d4a;
+  --green-3: #4c6a4b;
+  --green-4: #2d452f;
+  --black-1: #303030;
+  --black-2: #2b2b2b;
+  --black-3: #1f1f1f;
+  --black-4: #1b1c1e;
+  --text-w: #f2f2f2;
+  --keyword: #79dbad;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--text-w);
+  background-color: var(--black-4);
+}
+
+#c_matrix {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: var(--black-1);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  /* font-weight: bold; */
+}
+
+.navbar .container-fluid {
+  --bs-gutter-x: 0rem;
+  --bs-navbar-brand-margin-end: 0rem;
+}
+
+.navbar .navbar-brand {
+  background-color: var(--green-3);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-item a {
+  color: var(--text-w);
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar-nav .nav-link.show {
+  color: var(--text-w);
+}
+
+.navbar .nav-item a:hover,
+.navbar .dropdown-item a:hover {
+  background-color: var(--black-3);
+}
+
+.navbar button {
+  background-color: var(--green-1);
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--black-1);
+}
+
+.container {
+  background-color: var(--green-4);
+  border-bottom: #cfe2ce 2px solid;
+}
+
+#about-me .intro {
+  text-align: justify;
+  font-size: 18px;
+}
+
+#about-me .card {
+  background: none;
+  border: 0;
+  margin-bottom: 20px;
+}
+
+#about-me .card img {
+  border-radius: 5% 5% 0 0;
+  height: 400px;
+}
+
+.open-in-new {
+  position: absolute;
+  bottom: 3%;
+  right: 1%;
+  z-index: 1;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.text-at-img-bottom {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--green-1);
+  width: 100%;
+  padding: 20px;
+}
+
+footer p {
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+footer i {
+  font-size: 2rem;
+}
+
+footer a i {
+  color: var(--green-1);
+  padding: 5px;
+}
+
+#pokemon-event-list .card {
+  background-color: var(--green-2);
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+#pokemon-event-list .cup {
+  background-color: var(--green-3);
+  color: var(--text-w);
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.container a {
+  color: var(--green-1);
+}
+
+#projects .card-col {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+#projects .card {
+  background-color: var(--black-1);
+  padding: 8px;
+  color: var(--text-w);
+  text-align: justify;
+}
+
+#projects .fa-square-github {
+  font-size: 24px;
+}
+
+#projects .fa-link {
+  font-size: 20px;
+}
+
+#projects .card a i {
+  color: var(--text-w);
+}
+
+#shallowWaterAnimation .container h6,
+#rdtProtocol .container h6,
+#fashionMNIST .container h6 {
+  color: var(--keyword);
+}
+
+.keyword {
+  color: var(--keyword);
+}
+
+#shallowWaterAnimation img,
+#rdtProtocol img,
+#fashionMNIST img {
+  padding-bottom: 1rem;
+}
+
+#shallowWaterAnimation iframe,
+#rdtProtocol iframe {
+  width: 560px;
+  height: 420px;
+}
+
+/* CODE */
+/* override desert scheme ported from vim to google prettify */
+pre.prettyprint {
+  /* font-size: 16px; */
+  text-align: justify;
+  overflow: auto;
+  background-color: var(--black-2);
+}
+
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 {
+  list-style-type: decimal;
+}
+
+code {
+  font: hack;
+  /* font-size: 16px; */
+  color: var(--text-w);
+  background-color: var(--black-2);
+  border-radius: 5px;
+  padding: 2px 2px;
+}
+/* CODE */

@@ -1,0 +1,311 @@
+{
+  "cardData": [
+    {
+      "name": "Moomoo Milk",
+      "gen": "HeartGold and SoulSilver",
+      "set": "Base Set",
+      "number": 94,
+      "type": "Item",
+      "releaseDate": "10/02/2010",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_94.png",
+      "amount": 1
+    }, {
+      "name": "Pokémon Reversal",
+      "gen": "HeartGold and SoulSilver",
+      "set": "Base Set",
+      "number": 99,
+      "type": "Item",
+      "releaseDate": "10/02/2010",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_99.png",
+      "amount": 2
+    }, {
+      "name": "Pokémon Communication",
+      "gen": "HeartGold and SoulSilver",
+      "set": "Base Set",
+      "number": 98,
+      "type": "Item",
+      "releaseDate": "10/02/2010",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_98.png",
+      "amount": 2
+    }, {
+      "name": "Acro Bike",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": 122,
+      "type": "Item",
+      "releaseDate": "04/02/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY5/XY5_EN_122.png",
+      "amount": 3
+    }, {
+      "name": "Aqua Patch",
+      "gen": "Sun and Moon",
+      "set": "Guardians Rising",
+      "number": 119,
+      "type": "Item",
+      "releaseDate": "05/05/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM2/SM2_EN_119.png",
+      "amount": 2
+    }, {
+      "name": "Big Malasada",
+      "gen": "Sun and Moon",
+      "set": "Base Set",
+      "number": 114,
+      "type": "Item",
+      "releaseDate": "03/02/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM1/SM1_EN_114.png",
+      "amount": 0
+    }, {
+      "name": "Claw Fossil Anorith",
+      "gen": "XY",
+      "set": "Steam Siege",
+      "number": 100,
+      "type": "Item",
+      "releaseDate": "03/08/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY11/XY11_EN_100.png",
+      "amount": 1
+    }, {
+      "name": "Eco Arm",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": 71,
+      "type": "Item",
+      "releaseDate": "12/08/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY7/XY7_EN_71.png",
+      "amount": 1
+    }, {
+      "name": "Energy Switch",
+      "gen": "XY",
+      "set": "Generations",
+      "number": 61,
+      "type": "Item",
+      "releaseDate": "22/02/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_61.png",
+      "amount": 2
+    }, {
+      "name": "Evosoda",
+      "gen": "XY",
+      "set": "Base Set",
+      "number": 116,
+      "type": "Item",
+      "releaseDate": "05/02/2014",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_116.png",
+      "amount": 2
+    }, {
+      "name": "Evosoda",
+      "gen": "XY",
+      "set": "Generations",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "22/02/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_62.png",
+      "amount": 3
+    }, {
+      "name": "Field Blower",
+      "gen": "Sun and Moon",
+      "set": "Guardians Rising",
+      "number": 125,
+      "type": "Item",
+      "releaseDate": "05/05/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM2/SM2_EN_125.png",
+      "amount": 1
+    }, {
+      "name": "Fresh Water Set",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": 129,
+      "type": "Item",
+      "releaseDate": "04/02/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY5/XY5_EN_129.png",
+      "amount": 3
+    }, {
+      "name": "Great Ball",
+      "gen": "Sun and Moon",
+      "set": "Base Set",
+      "number": 119,
+      "type": "Item",
+      "releaseDate": "03/02/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM1/SM1_EN_119.png",
+      "amount": 1
+    }, {
+      "name": "Jaw Fossil",
+      "gen": "XY",
+      "set": "Furious Fists",
+      "number": 94,
+      "type": "Item",
+      "releaseDate": "13/08/2014",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY3/XY3_EN_94.png",
+      "amount": 1
+    }, {
+      "name": "Maintenance",
+      "gen": "XY",
+      "set": "Generations",
+      "number": 64,
+      "type": "Item",
+      "releaseDate": "22/02/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_64.png",
+      "amount": 4
+    }, {
+      "name": "Max Revive",
+      "gen": "XY",
+      "set": "Base Set",
+      "number": 120,
+      "type": "Item",
+      "releaseDate": "05/02/2014",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_120.png",
+      "amount": 1
+    }, {
+      "name": "Max Revive",
+      "gen": "XY",
+      "set": "Generations",
+      "number": 65,
+      "type": "Item",
+      "releaseDate": "22/02/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_65.png",
+      "amount": 2
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }, {
+      "name": "",
+      "gen": "",
+      "set": "",
+      "number": 0,
+      "type": "Item",
+      "releaseDate": "",
+      "url": "",
+      "amount": 0
+    }
+  ]
+}

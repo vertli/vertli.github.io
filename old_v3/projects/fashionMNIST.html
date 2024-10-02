@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Classification: Fashion-MNIST | Calvin Vert Li</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'> <!-- HACK!!! -->
+    <link rel="stylesheet" href="../css/font-awesome-5.8.1/all.css">
+    <!-- Code Display use -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+    <link rel="stylesheet" href="../css/skin.css">
+</head>
+
+<body onload="restHeight('fashionMNIST'); setHeight()" onresize="location.reload()" onresize="setHeight()">
+
+    <div class="topnav" id="myTopnav">
+        <a href="../index.html" class="active">Calvin Li</a>
+        <a href="../about.html">About</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../contact.html">Contact</a>
+        <div class="topnav-right">
+            <a href="../doc/resume_CKLi.pdf" target="_blank;">Résumé</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+
+        <section id="fashionMNIST" class="projectPage">
+            <h1 class="keyword">Fashion-MNIST</h1>
+
+            <h3>Introduction</h3>
+            <p>In my second-last academic term (Fall 2020) at Waterloo, I took <a
+                    href="https://ucalendar.uwaterloo.ca/2021/COURSE/course-STAT.html#STAT441" target="_blank;">
+                    <scan class="keyword">STAT441/841/CM763 (<em>Statistical Learning - Classification</em>)</scan></a> 
+                    to learn about machine learning.</p>
+            <p>During that term, there were two Kaggle competitions and one final project we students needed to
+                complete.</p>
+            <p>The second Kaggle competition was a clothing image classification task; we needed to classify the
+                <em>Fashion-MNIST dataset</em>.</p>
+            <p>However, instead of using the original Fashion-MNIST, we used a <em>.csv</em> data file from our professor.</p>
+            <p>My solution for this Kaggle competition is implemented with a convolutional neural network (CNN) using
+                MATLAB, and the accuracy is 93.66%.</p>
+            <p>In this article, I will explain how I derived my solution step-by-step.</p>
+            <br>
+
+            <h3>Dataset</h3>
+            <p>A total of 60 000 rows of data are in the training .csv data file (<em>"image_train_Kaggle.csv"</em>) for this
+                Kaggle competition.</p>
+            <p>Each row represents a 28x28 image.</p>
+            <p>In every row, we will find the image <strong class="keyword">label</strong> followed by 784-pixel values.</p>
+            <p>The <strong class="keyword">label</strong> is the class of the image which there are 10 classes in this dataset:</p>
+            <ol start="0">
+                <li>T-Shirt/Top</li>
+                <li>Trouser</li>
+                <li>Pullover</li>
+                <li>Dress</li>
+                <li>Coat</li>
+                <li>Sandals</li>
+                <li>Shirt</li>
+                <li>Sneaker</li>
+                <li>Big</li>
+                <li>Ankle boots</li>
+            </ol>
+            <p>Each class includes 6 000 images for the training dataset.</p>
+            <br>
+            <p>From the testing .csv file (<em>"image_test_Kaggle.csv"</em>), there are in total 10 000 rows.</p>
+            <p>Each row represents a 28x28 image.</p>
+            <p>In every row, it starts with an <strong class="keyword">ID</strong> follows by 784-pixel values.</p>
+            <br>
+            <p><strong><em class="warning">P.S.</em></strong> For copyright reasons, I will not publish those two datasets.</p>
+            <br>
+
+            <h3>Goal</h3>
+            <p>Using the training dataset to train a CNN model; then, using that model to classify the testing dataset.
+            </p>
+            <br>
+
+            <h3>How to do it?</h3>
+            <p>In MATLAB, we can train a CNN model using the <strong class="keyword">Deep Learning Toolbox</strong>.</p>
+            <p>However, we need to:</p>
+            <ol type="A">
+                <li>First, <u class="keyword">convert</u> the .csv files to images - this requires us to use the <strong class="keyword">Image Processing
+                    Toolbox</strong>.</li>
+                <li>Then, we will <u class="keyword">create</u> image datastore objects to store our training data and testing data.</li>
+                <li>Next, we need to <u class="keyword">design</u> our CNN model model and <u class="keyword">train</u>train it with the training data.</li>
+                <li>Lastly, we use the training CNN model to <u class="keyword">classify</u> our testing dataset.</li>
+            </ol>
+            To complete A - D, I put them into 7 steps.
+            <br>
+
+            <h3>Step 1: Create Images</h3>
+            <p>Since I want to use an image datastore object, I need to convert the given <em>.csv</em>  files to images.</p>
+            <p>To do so, we first need to create a folder <em>"train"</em> with another 10 subfolders titled 0 to 9 (which
+                represent the labels).</p>
+            <p>Then, we need to open <em>image_train_Kaggle.csv</em>, convert each row into <em>.jpg</em> image, and save 
+                each image into the subfolder that corresponds to the image label (e.g., a pair of running shoes will be saved into subfoler 7).</p>
+            <pre class="prettyprint linenums lang-m">
+# create a folder "train" with another 10 subfolders 0 to 9
+for i = 0:9
+    mkdir("train\" + i);
+end
+
+# open the training csv file
+trainData = readtable("image_train_Kaggle.csv");
+
+# create two matrices where TrainX contains the training data's pixel values
+#   and TrainY contains the training data's labels
+TrainX = table2array(trainData(:,2:end));
+TrainX = double(TrainX ./ 255);
+TrainY = table2array(trainData(:,1));
+
+# now we reshape each row in image_train_Kaggle.csv to jpg image,
+#   then save each image into the subfolder inside "train" based
+#   on the image corresponding label
+#
+# in addition, we will also save a flip version of each images to increase 
+#   the number of training images we can use
+toFlip = true;
+for i = 1:length(TrainY)
+    name = "train\" + TrainY(i) + "\train" + i + "_1.jpg";
+    img = reshape(TrainX(i,:), 28, 28)';
+    imwrite(img, name);
+
+    # now flip the image
+    # however, this will not run if label = 5, 7, or 9 since those label
+    #   images are shoes and they all face to the same direction - flipping
+    #   them will definitely decrease the correctness for our model
+    # for those shoes, we will just save the original images one more time
+    if toFlip && TrainY(i) ~= 5 && TrainY(i) ~= 7 && TrainY(i) ~= 9
+        img = flip(img, 2);
+    end
+    name = "train\" + TrainY(i) + "\train" + i + "_2.jpg";
+    imwrite(img, name);
+end
+
+# delete the varables we do not need anymore
+clear toFlip i img name TrainX TrainY trainData
+</pre>
+            <br>
+            <p>For our testing dataset <em>image_test_Kaggle.csv</em>, we will write a similar code, except we only need
+                to create a folder <em>"test"</em> without any subfolders:</p>
+            <pre class="prettyprint linenums lang-m"># create a folder "test"
+mkdir("test");
+
+# open the testing csv file
+testData = readtable("image_test_Kaggle.csv");
+
+# create two matrices where TestX contains the testing data's pixel values
+#   and TestID contains the testing data's IDs
+TestX = table2array(testData(:,2:end));
+TestX = double(TestX ./ 255);
+TestID = table2array(testData(:,1));
+
+# now we reshape each row in image_test_Kaggle.csv to jpg image,
+#   then save each image into the sfolder "test"
+for i = 1:length(TestID)
+    name = "test\" + TestID(i) + ".jpg";
+    img = reshape(TestX(i,:), 28, 28)';
+    imwrite(img, name);
+end
+
+# delete the varables we do not need anymore
+clear i testData TestX TestID name img
+</pre>
+
+            <br>
+            <h3>Step 2: Create Image Datastores</h3>
+            <p>After creating all the training set and testing set images, we need to create datastores for the image data
+                before training the convolutional neural network:</p>
+            <pre class="prettyprint linenums lang-m">rng(441);
+imds = imageDatastore("./train", ...
+    "IncludeSubfolders", true, "LabelSource", "foldernames");
+numTrainFiles = round(6000 * 2 * 0.85);
+[imdsTrain,imdsValidation] = splitEachLabel(imds,numTrainFiles,'randomize');
+
+# delete the varables we do not need anymore
+clear numTrainFiles</pre>
+
+            <p>Here, the function <code>rng(441)</code> in line 1 will set the seed to 441.</p>
+            <p>In lines 2 and 3, we create an image datastore object and define the labels to be the subfolder titles.</p>
+            <p>We will use 85% of the training images to train the network and the rest of the training images will be the
+                validation set - this is what lines 4 and 5 are doing.</p>
+            <br>
+            <p>To create the image datastore for the testing set, we only need to run one line of code:</p>
+            <pre class="prettyprint linenums lang-m">imdsTest = imageDatastore("./test");</pre>
+
+            <br>
+            <h3>Part 3: Create IDs</h3>
+            <p>This part will create the ID column for the <em>"result.csv"</em> - this is the file we need to submit to Kaggle.
+            </p>
+            <pre class="prettyprint linenums lang-m"># obtain the path for the folder "test"
+path = imdsTest.Files{1};
+idx = strfind(path, "\");
+path = extractBetween(path, 1, idx(end));
+
+# set the IDs
+ID = erase(imdsTest.Files, [path, ".jpg"]);
+ID = str2double(ID);
+
+# delete the varables we do not need anymore
+clear path idx
+</pre>
+            <br>
+            <h3>Part 4: Convolutional Neural Network</h3>
+            <p>To train a convolutional neural network, we need to design the <strong class="keyword">hidden layers</strong> first:</p>
+            <pre class="prettyprint linenums lang-m">layers = [
+    imageInputLayer([28 28 1],'Name','input')
+    convolution2dLayer([3 3],16,"Name","conv_1","Padding","same")
+    reluLayer("Name","relu_1")
+    batchNormalizationLayer("Name","batch_1")
+    convolution2dLayer([3 3],16,"Name","conv_2","Padding","same")
+    reluLayer("Name","relu_2")
+    batchNormalizationLayer("Name","batch_2")
+    maxPooling2dLayer([2 2],"Name","maxPool_1","Padding","same")
+    dropoutLayer(0.25, "Name","dropout_1")
+    convolution2dLayer([3 3],32,"Name","conv_3","Padding","same")
+    reluLayer("Name","relu_3")
+    batchNormalizationLayer("Name","batch_3")
+    convolution2dLayer([3 3],32,"Name","conv_4","Padding","same")
+    reluLayer("Name","relu_4")
+    batchNormalizationLayer("Name","batch_4")
+    maxPooling2dLayer([2 2],"Name","maxPool_2","Padding","same")
+    dropoutLayer(0.25, "Name","dropout_2")
+    convolution2dLayer([3 3],64,"Name","conv_5","Padding","same")
+    reluLayer("Name","relu_5")
+    batchNormalizationLayer("Name","batch_5")
+    convolution2dLayer([3 3],64,"Name","conv_6","Padding","same")
+    reluLayer("Name","relu_6")
+    batchNormalizationLayer("Name","batch_6")
+    maxPooling2dLayer([2 2],"Name","maxPool_3","Padding","same")
+    dropoutLayer(0.25, "Name","dropout_3")
+    fullyConnectedLayer(512, "Name","fully_1")
+    batchNormalizationLayer("Name","batch_7")
+    dropoutLayer(0.5, "Name","dropout_4")
+    fullyConnectedLayer(10, "Name","fully_2")
+    softmaxLayer("Name","softmax_1")
+    classificationLayer("Name","classification")];
+</pre>
+            <p>For each layer description, you can read the MATLAB documentation <a
+                    href="https://www.mathworks.com/help/deeplearning/ug/layers-of-a-convolutional-neural-network.html"
+                    target="_blank;">"Specify Layers of Convolutional Neural Network"</a>.</p>
+            <p>You can also use the deep network designer to help you design the hidden layers - to use it, you
+                just need to run <code>deepNetworkDesigner</code>.</p>
+            <br>
+            <p>Having the hidden layers for our CNN is not enough, we also need to set the <strong class="keyword">training options</strong>:</p>
+            <pre class="prettyprint linenums lang-m">options = trainingOptions('sgdm', ...
+    'MaxEpochs', 100, ...
+    'MiniBatchSize', 256, ...
+    'Shuffle', 'every-epoch', ...
+    'ValidationData',imdsValidation, ...
+    'ValidationFrequency', 30, ...
+    'InitialLearnRate', 0.001, ...
+    'Verbose',false, ...
+    'Plots','training-progress');
+</pre>
+            <p>The MATLAB documentation <a href="https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html"
+                    target="_blank;">"trainingOptions"</a> explains what you can do to set up the training options.</p>
+
+            <br>
+            <p>Okay, we can start training the network now:</p>
+            <pre class="prettyprint linenums lang-m">net = trainNetwork(imdsTrain,layers,options);
+</pre>
+            <p>Since we set <code>'Plots'</code> to <code>'training-progress'</code>, once we run this line, a new
+                window will pop up.</p>
+            <p>This window will plot the training progress during training.</p>
+            <p>This following image is the final result of my training progress:</p>
+            <img src="../img/fashionNMIST/trainingProgess.PNG" alt="Training Process" class="center">
+            <p>(I actually re-ran all my codes to obtain this image...)</p>
+            <br>
+            <h3>Part 5: Classify the Testing Set</h3>
+            <p>After training the model, of course we want to use it to classify the testing dataset.</p>
+            <p>To do so, we only need to run 1 line of code:</p>
+            <pre class="prettyprint linenums lang-m">label = classify(net, imdsTest);</pre>
+
+            <br>
+            <h3>Part 6: Create a .csv file for Submission</h3>
+            <p>Lastly, we need to save our results into a <em>.csv</em> file so we may submit them to Kaggle:</p>
+            <pre class="prettyprint linenums lang-m">T = table(ID, label);
+writetable(T, "result.csv");
+</pre>
+
+            <br>
+            <h3>Part 7: Delete the Folders "train" and "test" (Optional!)</h3>
+            <p>The last thing you may want to do is to delete the "train" and "test" folders.</p>
+            <p>You can run the following two lines to delete those two folders:</p>
+            <pre class="prettyprint linenums lang-m">rmdir("train", "s");
+rmdir("test", "s");
+</pre>
+
+            <br>
+            <p>And here we go!</p>
+            <p>We now have the <em>result.csv</em> to submit to Kaggle!</p>
+
+        </section>
+
+        <footer id="footer">
+            <p>Thanks For Coming. - Vert Li</p>
+            <!-- icons -->
+            <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+            <!-- icons -->
+            <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2021</p>
+        </footer>
+
+    </div>
+
+    <script src="../js/style.js"></script>
+    <script src="../js/height.js"></script>
+    <noscript>This website requires to use JavaScript!!!</noscript>
+</body>
+
+</html>

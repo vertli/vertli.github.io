@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokémon Hunting List</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+    <link href="./pokemon/pokemon.css" rel="stylesheet">
+  </head>
+  
+  <body>
+    
+    <div class="topnav" id="myTopnav">
+      <a href="./index.html" class="active">Calvin Li</a>
+      <a href="./about.html">About</a>
+      <a href="./projects.html">Projects</a>
+      <div class="dropdown">
+        <button class="dropbtn">Pokémon</button>
+        <div class="dropdown-content">
+          <a href="./pcCalendar.html">Pokémon TCG Calendar 2024</a>
+          <a href="./huntingList.html">TCG Hunting List</a>
+          <a href="./glcHuntingList.html">GLC Hunting List</a>
+          <!-- <a href="./exchangeList.html">TCG Exchange List</a> -->
+        </div>
+      </div>
+      <div class="topnav-right">
+        <a href="./contact.html">Contact</a>
+        <!-- <a href="./doc/resume_CKLi.pdf" target="_blank;">Résumé</a> -->
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    
+    <div class="container">
+      <section id="pokemonExchangeList">
+        <h1>Pokémon <scan class="keyword">TCG</scan> Exchange List</h1>
+        <p>
+          This page displays the Pokémon cards I'm current looking for (mainly for showing my friends use only).<br>
+          All images are from the <a href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/" target="_blank">official Pokémon TCG Card Database</a> or the <a href="https://www.tcgplayer.com/" target="_blank">TCG Player</a> website.<br>
+          I don't own any copyright of those images.
+        </p>
+
+        <div id="filterList">
+          <button class="btn active" onclick="filterSelection('all')">Show All</button>
+          <br>
+          <button class="btn" onclick="filterSelection('basic')">Basic Pokémon</button>
+          <button class="btn" onclick="filterSelection('stage1')">Stage 1 Pokémon</button>
+          <button class="btn" onclick="filterSelection('stage2')">Stage 2 Pokémon</button>
+          <button class="btn" onclick="filterSelection('pEX')">Pokémon EX</button>
+          <button class="btn" onclick="filterSelection('pMEGA')">MEGA Pokémon</button>
+          <button class="btn" onclick="filterSelection('pV')">Pokémon V</button>
+          <button class="btn" onclick="filterSelection('pVMax')">Pokémon VMAX</button>
+          <button class="btn" onclick="filterSelection('pVStar')">Pokémon VSTAR</button>
+          <br>
+          <button class="btn" onclick="filterSelection('pex')">Pokémon ex</button>
+          <button class="btn" onclick="filterSelection('item')">Item</button>
+          <button class="btn" onclick="filterSelection('tool')">Pokémon Tool</button>
+          <button class="btn" onclick="filterSelection('stadium')">Stadium</button>
+          <button class="btn" onclick="filterSelection('supporter')">Supporter</button>
+          <button class="btn" onclick="filterSelection('energy')">Energy</button>
+          <button class="btn" onclick="filterSelection('p151')">Pokémon 151</button>
+        </div>
+        
+        <div class="" id="context">
+          <div class="row" id="card-gallery" aria-live="polite">
+          </div>
+        </div>
+        
+      
+        <div class="pagination-container">
+          <button class="pagination-button" id="prev-button" title="Previous Page" aria-label="Previous Page">
+            &lt;
+          </button>
+          <div id="pagination-numbers">
+          </div>
+          <button class="pagination-button" id="next-button" title="Next Page" aria-label="Next Page">
+            &gt;
+          </button>
+        </div>
+
+        <button onclick="goToTop()" id="go-to-top-button" title="Go to Top" aria-label="Go to Top">Top</button>
+      </section>
+
+      <footer id="footer">
+        <hr/>
+        <p>Thanks For Coming. - Vert Li</p>
+        <!-- icons -->
+        <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
+        <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+        <!-- icons -->
+        <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2024</p>
+        <hr/>
+      </footer>
+    </div>
+
+    
+    <script src="./pokemon/huntingList.js"></script>
+    <script src="./js/style.js"></script>
+    <noscript>This website requires to use JavaScript!!!</noscript>
+  </body>
+  
+</html>

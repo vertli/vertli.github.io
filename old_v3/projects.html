@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/font-awesome-5.8.1/all.css">
+</head>
+
+<body onload="restHeight('projects'); setHeight()" onresize="location.reload()" onresize="setHeight()">
+
+  <div class="topnav" id="myTopnav">
+    <a href="./index.html" class="active">Calvin Li</a>
+    <a href="./about.html">About</a>
+    <a href="./projects.html">Projects</a>
+    <div class="dropdown">
+      <button class="dropbtn">Pokémon</button>
+      <div class="dropdown-content">
+        <a href="./pcCalendar.html">Pokémon TCG Calendar 2024</a>
+        <a href="./huntingList.html">TCG Hunting List</a>
+        <a href="./glcHuntingList.html">GLC Hunting List</a>
+        <!-- <a href="./exchangeList.html">TCG Exchange List</a> -->
+      </div>
+    </div>
+    <div class="topnav-right">
+      <a href="./contact.html">Contact</a>
+      <!-- <a href="./doc/resume_CKLi.pdf" target="_blank;">Résumé</a> -->
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="container">
+
+    <section id="projects">
+      <h1>My <scan class="keyword">Projects</scan>
+      </h1>
+      <div id="projectsBtn">
+        <button class="btn active" onclick="filterSelection('all'); restHeight('projects');"> All</button>
+        <button class="btn" onclick="filterSelection('cfamily'); restHeight('projects');"> C / C++</button>
+        <button class="btn" onclick="filterSelection('java'); restHeight('projects');"> Java</button>
+        <button class="btn" onclick="filterSelection('matlab'); restHeight('projects');"> MATLAB</button>
+        <button class="btn" onclick="filterSelection('pascal'); restHeight('projects');"> Pacsal</button>
+        <button class="btn" onclick="filterSelection('web'); restHeight('projects');"> Web</button>
+      </div>
+
+      <div class="row">
+        <!-- Reliable Data Transfer Protocol -->
+        <div class="card java col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/RDTprotocol/RDT_2.PNG">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>A reliable data transfer (RDT) protocol for my second coding assignments for one of my
+                      university computer science courses (CS436/636).<br>
+                      This project implemented a RDT protocol for both sender and receiver, and also a unreliable newtork emulator.<br>
+                      For more detail, click the hyperlink icon below (next to the title "RDT Protocol").</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>RDT Protocol</h4>
+                </td>
+                <td class="rightSide"><a href="./projects/rdtProtocol.html"><i class="fas fa-link"></i></a>
+                </td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>Java</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+
+
+        <!-- Image Classification - Fashion-MNIST -->
+        <div class="card matlab col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/fashionNMIST/trainingProgess.PNG">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>A image classification for my second Kaggle comeptition for one of my
+                      university statistics courses (STAT441/841/CM763).<br>
+                      This project implemented a convolutional neural network model and the accuracy was 93.66%.<br>
+                      For more detail, click the hyperlink icon below (next to the title "Fashion-MNIST").</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Fashion-MNIST</h4>
+                </td>
+                <td class="rightSide"><a href="./projects/fashionMNIST.html"><i class="fas fa-link"></i></a>
+                </td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>MATLAB</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Shadow Water Animation -->
+        <div class="card matlab col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/shallowWaterAnimation/plot_3.png">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>A 3D shallow water animation which developed as my last coding assignment for one of my
+                      university applied maths courses (AMATH 442/642).<br>
+                      To generate numerical sumulations at different time for shallow water equation, Finite Volume
+                      Method with Lax-Friedrichs Flux and divergence theorem had been used.<br>
+                      For more detail, click the hyperlink icon below (next to the title "Shallow Water Animation").</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Shallow Water Animation</h4>
+                </td>
+                <td class="rightSide"><a href="./projects/shallowWaterAnimation.html"><i class="fas fa-link"></i></a>
+                </td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>MATLAB</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Personal Website -->
+        <div class="card web col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/website.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>A place that I use for practicing my HTML 5, CSS 3, and JavaScript skills.
+                      It is also a place for you to know me more, to see some (all?) of the projects I have done, and
+                      (maybe) to see what arts I have done in my past.<br>
+                      Yes, you are visiting it now!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Personal Website</h4>
+                </td>
+                <td class="rightSide"><a href="https://github.com/vertli/vertli.github.io" target="_blank;"><i
+                      class="fab fa-github-square fa-2x"></i></a></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>HTML, CSS, JavaScript</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Quadris -->
+        <div class="card cfamily col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/quadris.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>A Tetris-like game which developed as the final team project for one of my university computer
+                      science courses (CS 246).
+                      We had added "Hint" feature to display the Cartesian coordinate for next relative best move. Also,
+                      we only used smart pointers in this project.
+                      Due to academic integrity and copyright, the source code is not available online.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Quadris</h4>
+                </td>
+                <td class="rightSide"><i style="color: gray" class="fab fa-github-square fa-2x"></i></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>C++</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="card web col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/TRACKR.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>It is an unfinished website which was created as a group project in Hack The North 2017. My job
+                      was developed the front-end part. (The unfinished part is we do not know how to link our front-end
+                      and back-end together.)<br>
+                      We used Microsoft Azure’s facial detection API and tracking.js<br>
+                      This website will compare one photo (took from camera) with other photos ifrom the database, then
+                      return the highest similar photo from database to the user.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>TRACKR</h4>
+                </td>
+                <td class="rightSide"><a href="https://github.com/melissajwen/trackr" target="_blank;"><i
+                      class="fab fa-github-square fa-2x"></i></a></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>HTML, CSS, JavaScript, Node.js</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Mine Sweeper -->
+        <div class="card cfamily col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/minesweeper.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>It is a text-based game which developed for one of my university computer science courses (CS
+                      136).
+                      My job was implemented the back-end algorithms (the school provided text graphical user
+                      interface).
+                      Due to academic integrity and copyright, the source code is not available online.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Mine Sweeper</h4>
+                </td>
+                <td class="rightSide"><i style="color: gray" class="fab fa-github-square fa-2x"></i></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>C</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="card java col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/fmmEscape.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>It is an escape game as my final group project in Canadian high school. We had developed two
+                      versions, one is SWING (Java) version and the other one is hsa.Console version.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>FMM Escape</h4>
+                </td>
+                <td class="rightSide"><a href="https://github.com/vertli/Java---FMM-Escape" target="_blank;"><i
+                      class="fab fa-github-square fa-2x"></i></a></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>Java</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="card pascal col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/GetItAtOne.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>It is a re-made guessing number game program which is developed during my Hong Kong secondary
+                      school period. The goal of this program is to learn how to use <code>crt</code> unit to implement
+                      a better interface in Pascal console window. Also, users can use the arrow keys to select the
+                      choice in menu instead of typing what they want to do.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Get It At One</h4>
+                </td>
+                <td class="rightSide"><a href="https://github.com/vertli/Pascal-Code/blob/master/GetItAtOne.pas"
+                    target="_blank;"><i class="fab fa-github-square fa-2x"></i></a></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>Pascal</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="card pascal col-6 col-sm-6 col-md-6">
+          <div class="content">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./img/project/SBA.jpg">
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-text">
+                    <h4>Summary</h4>
+                    <p>It is a health information system which is developed for my School-based Assessment (SBA, just
+                      think it as final year project) in Hong Kong secondary school. Also, this is my first system
+                      design project.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <td>
+                  <h4>Health Care System</h4>
+                </td>
+                <td class="rightSide"><a href="https://github.com/vertli/Pascal-Health-Care-System" target="_blank;"><i
+                      class="fab fa-github-square fa-2x"></i></a></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td class="thd">Language:</td>
+                <td>Pascal</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer id="footer">
+      <hr/>
+      <p>Thanks For Coming. - Vert Li</p>
+      <!-- icons -->
+      <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
+      <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
+      <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+      <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+      <!-- icons -->
+      <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2024</p>
+      <hr/>
+    </footer>
+
+  </div>
+
+  <script src="./js/style.js"></script>
+  <script src="./js/height.js"></script>
+  <script src="./js/projects.js"></script>
+  <noscript>This website requires to use JavaScript!!!</noscript>
+</body>
+
+</html>

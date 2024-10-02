@@ -1,0 +1,104 @@
+{
+  "cardData": [
+    {
+      "name": "Brock's Pewter City Gym",
+      "gen": "Sun and Moon",
+      "set": "Hidden Fates",
+      "number": 54,
+      "type": "Stadium",
+      "releaseDate": "23/08/2019",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM115/SM115_EN_54.png",
+      "amount": 1
+    }, {
+      "name": "Devoured Field",
+      "gen": "Sun and Moon",
+      "set": "Crimson Invasion",
+      "number": 93,
+      "type": "Stadium",
+      "releaseDate": "03/11/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_93.png",
+      "amount": 2
+    }, {
+      "name": "Lavender Town",
+      "gen": "Sun and Moon",
+      "set": "Team Up",
+      "number": 147,
+      "type": "Stadium",
+      "releaseDate": "01/02/2019",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM9/SM9_EN_147.png",
+      "amount": 1
+    }, {
+      "name": "Magnetic Storm",
+      "gen": "XY",
+      "set": "Flashfire",
+      "number": 91,
+      "type": "Stadium",
+      "releaseDate": "07/05/2014",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY2/XY2_EN_91.png",
+      "amount": 1
+    }, {
+      "name": "Mount Lanakila",
+      "gen": "Sun and Moon",
+      "set": "Burning Shadows",
+      "number": 118,
+      "type": "Stadium",
+      "releaseDate": "04/08/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM3/SM3_EN_118.png",
+      "amount": 1
+    }, {
+      "name": "Pokémon Center",
+      "gen": "Black and White",
+      "set": "Next Destinies",
+      "number": 90,
+      "type": "Stadium",
+      "releaseDate": "08/02/2012",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/BW4/BW4_EN_90.png",
+      "amount": 1
+    }, {
+      "name": "Rough Seas",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": 137,
+      "type": "Stadium",
+      "releaseDate": "04/02/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY5/XY5_EN_137.png",
+      "amount": 1
+    }, {
+      "name": "Scorched Earth",
+      "gen": "XY",
+      "set": "Primal Clash",
+      "number": 138,
+      "type": "Stadium",
+      "releaseDate": "04/02/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY5/XY5_EN_138.png",
+      "amount": 1
+    }, {
+      "name": "Sky Field",
+      "gen": "XY",
+      "set": "Roaring Skies",
+      "number": 89,
+      "type": "Stadium",
+      "releaseDate": "06/05/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY6/XY6_EN_89.png",
+      "amount": 1
+    }, {
+      "name": "Team Aqua's Secret Base",
+      "gen": "XY",
+      "set": "Double Crisis",
+      "number": 28,
+      "type": "Stadium",
+      "releaseDate": "https://assets.pokemon.com/assets/cms2/img/cards/web/DC1/DC1_EN_28.png",
+      "url": "25/03/2015",
+      "amount": 1
+    }, {
+      "name": "Training Center",
+      "gen": "XY",
+      "set": "Furious Fists",
+      "number": 102,
+      "type": "Stadium",
+      "releaseDate": "13/08/2014",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY3/XY3_EN_102.png",
+      "amount": 1
+    }
+  ]
+}

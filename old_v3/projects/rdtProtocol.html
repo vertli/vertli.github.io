@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RDT Protocol | Calvin Vert Li</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:600,600i" rel="stylesheet"> <!-- for math use -->
+    <link rel="stylesheet" href="../css/font-awesome-5.8.1/all.css">
+    <!-- Code Display use -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+    <link rel="stylesheet" href="../css/skin.css">
+</head>
+
+<body onload="restHeight('rdtProtocol'); setHeight()" onresize="location.reload()" onresize="setHeight()">
+
+    <div class="topnav" id="myTopnav">
+        <a href="../index.html" class="active">Calvin Li</a>
+        <a href="../about.html">About</a>
+        <a href="../projects.html">Projects</a>
+        <a href="../contact.html">Contact</a>
+        <div class="topnav-right">
+            <a href="../doc/resume_CKLi.pdf" target="_blank;">Résumé</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="navbarUse()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+
+        <section id="rdtProtocol" class="projectPage">
+            <h1>
+                <scan class="keyword">Reliable Data Transfer Protocol</scan>
+            </h1>
+
+            <h3>Introduction</h3>
+            <p>This is the summary of the second (and final) coding assignment for the course <a
+                    href="https://ucalendar.uwaterloo.ca/2021/COURSE/course-CS.html#CS436" target="_blank;">CS 436
+                    <em>(Networks and Distributed Computer Systems)</em></a>, which I took in my last academic term
+                (Winter 2021) at
+                Waterloo.
+            </p>
+            <p>In this assignment, I needed to implement a <strong class="keyword">Reliable Data Transfer (RDT)</strong>
+                protocol such
+                that a sender could use this protocol to faithfully transfer a text file to a receiver via an unreliable
+                network.</p>
+            <p>The programming language I used for this assignment is <strong class="keyword">Java</strong>.<br>
+                (I believe I was one of the few students, perhaps the only one, who used Java — most others used
+                Python…)</p>
+            <p>To implement and test this protocol, I had to write the following three programs:</p>
+            <ul>
+                <li>Sender</li>
+                <li>Receiver</li>
+                <li>Network Emulator</li>
+            </ul>
+            <br>
+
+            <h3>Reliable Data Transfer (RDT) Protocol</h3>
+            <p>The RDT protocol needs to:</p>
+            <ul>
+                <li>handle network errors (i.e., packet loss)</li>
+                <li>packet reordering</li>
+                <li>duplicate packets</li>
+            </ul>
+
+            <p>For simplicity, this protocol is unidirectional:</p>
+            <ul>
+                <li>Text file data will only flow from the sender to the receiver.</li>
+                <li>The <strong class="keyword">acknowledgments (ACKs)</strong> will only flow from the receiver to the
+                    sender.</li>
+            </ul>
+
+            <p>When the sender wants to send packets to the receiver, he/she will send them to the network emulator
+                instead of the receiver directly.<br>
+                Then, the network emulator will send those packets to the receiver.<br>
+                However, the network emulator may discard the packets randomly.</p>
+            <p>Similarly, the receiver will send ACKs to the network emulator, the network emulator will then send those
+                ACKs to the sender.<br>
+                The network emulator will also discard those ACKs randomly.</p>
+            <img src="../img/RDTprotocol/RDT_1.png" class="center">
+            <br>
+
+            <h3>Packet class</h3>
+            <p>All packets transferred between the sender and the receiver will have the following structure:</p>
+            <pre class="prettyprint linenums lang-java">int type;
+int seqnum;
+int length;
+String data;</pre>
+
+            <p><code>type</code> represents the type of the packet. It can be set to either 0, 1, or 2, which are
+                defined as follows:</p>
+            <ol start="0">
+                <li>an ACK packet</li>
+                <li>a data packet</li>
+                <li>end-of-transmission (EOT) packet</li>
+            </ol>
+
+            <p><code>seqnum</code> represents the sequence number of the packet.<br>
+                The first packet should have <code>seqnum = 0</code>.</p>
+
+            <p><code>length</code> is the number of characters in the <code>data</code> field.<br>
+                The range of it is between 0 and 500 (inclusive).<br>
+                For ACK or EOT packet, the length should be 0.</p>
+
+            <p>To allow different programs to receive the same type of object, the <code>Packet</code> class needs to
+                implement the
+                <code>Serializable</code> interface and set the variable <code>serialVersionUID</code>.
+            </p>
+
+            <p>To create a <code>Packet</code> object for a data packet, we do</p>
+            <pre
+                class="prettyprint linenums lang-java">Packet packet = new Packet(int type, int seqnum, String data);</pre>
+
+
+            <p>To create a <code>Packet</code> object for an ACK or EOT packet, we do</p>
+            <pre class="prettyprint linenums lang-java">Packet packet = new Packet(int type, int seqnum);</pre>
+            <br>
+
+            <h3>UDP class</h3>
+            <p>The <code>UDP</code> class will establish a UDP connection between a sender and a receiver by using the
+                <code>DatagramSocket</code> class from the <code>java.net</code> packet.
+            </p>
+
+            <p>To create a <code>UDP</code> object, we do either</p>
+            <pre
+                class="prettyprint linenums lang-java">UDP udp = new UDP(String destIP, String destPort, String sourcePort);</pre>
+            <p>or</p>
+            <pre
+                class="prettyprint linenums lang-java">UDP udp = new UDP(String destIP, String destPort, String sourcePort, int timeout);</pre>
+            <p>where</p>
+            <ul>
+                <li><code>destIP</code> is the the destination IP address,</li>
+                <li><code>destPort</code> is the port number used by the destination,</li>
+                <li><code>sourcePort</code> is the port number used by the source, and</li>
+                <li><code>timeout</code> is the timeout of a packet (optional, default value is 0)</li>
+            </ul>
+
+            <p>The <code>UDP</code> class will convert both <code>destPort</code> and <code>sourcePort</code> into
+                integers.<br>
+                If either one of them is not an integer and between 0 and 65535 (inclusive), an error will be returned.
+            </p>
+            <p>If the IP address for the destination host cannot be found, an error will also be returned.</p>
+
+            <p>After creating a <code>UDP</code> object, we can start the UDP connection between the source and the
+                destination.</p>
+            <pre class="prettyprint linenums lang-java">udp.startConnection();</pre>
+
+            <p>Then, we can start sending packets from the source to the destination or receiving packets from the
+                destination to the source.</p>
+            <p>To send a packet, we do</p>
+            <pre class="prettyprint linenums lang-java">udp.send(Packet packet);</pre>
+
+            <p>When sending a <code>Packet</code> object, UDP will first convert it into an array of bytes.<br>
+                Then, the array of bytes will be encapsulated into a <code>DatagramPacket</code> object from the
+                <code>java.net</code> packet.<br>
+                Lastly, the <code>DatagramPacket</code> object will be sent out.
+            </p>
+
+            <p>To receive a packet, we do</p>
+            <pre class="prettyprint linenums lang-java">Packet receivedPacket = udp.receive();</pre>
+
+            <p>The <code>UDP</code> object will wait for a <code>DatagramPacket</code> object to arrive infinitely if
+                <code>timeout = 0</code>.<br>
+                Otherwise, after the amount of <code>timeout</code>, if no <code>DatagramPacket</code> object arrives,
+                the <code>UDP</code> object will stop receiving any packet.
+            </p>
+
+            <p>When a <code>DatagramPacket</code> object arrives, the <code>UDP</code> object will decapsulate it to a
+                <code>Packet</code> object.
+            </p>
+
+            <p>To close the UDP connection, we do</p>
+            <pre class="prettyprint linenums lang-java">udp.closeConnection();</pre>
+            <br>
+
+            <h3>Sender Program</h3>
+            <p>To execute the <code>sender</code> program, we need the following command-line arguments:</p>
+            <ul>
+                <li>The host address of the network emulator</li>
+                <li>The UDP port number used by the emulator to receive data from the sender</li>
+                <li>The UDP port number used by the sender to receive ACK packets from the network emulator</li>
+                <li>The timeout interval in units of milliseconds</li>
+                <li>The name of the file to be transferred</li>
+            </ul>
+
+            <p>After executing the sender program with those 5 arguments, the program will first open the text file and
+                convert it into a sequence of <code>Packet</code> objects.<br>
+                Then, it will create a <code>UDP</code> object using the first 4 arguments to start sending data packets
+                and receiving ACK packets.</p>
+
+            <p>Note that the RDT protocol is pipelined — meaning the sender program can send at most 30 packets
+                simultaneously.<br>
+                Thus, we need to create 30 threads and do multi-threading here.</p>
+
+            <p>Each thread will send one data packet and receive one ACK packet (or receive nothing if timeout).<br>
+                If the corresponding ACK packet is not received, the data packet will be re-transferred and reset the
+                timer.</p>
+
+            <p>Note that, for example, if thread 1 sends a data packet with <code>seqnum = 1</code>, it may receive an
+                ACK packet with <code>seqnum &#8800; 1</code>.<br>
+                Hence, instead of using the <code>Runnable</code>Runnable interface, I used the <code>Callable</code>
+                interface here.</p>
+
+            <p>By using the <code>Callable</code> interface here, each thread can return the received packet (or
+                nothing) back to the main thread.</p>
+
+            <p>Then, the main thread can control which threads should re-transfer the data packet, and determine which
+                threads have finished their tasks.<br>
+                This allows the sender program to resend the data packet if the corresponding ACK packet does not arrive
+                within the timeout period.<br>
+                Moreover, this can ensure <strong class="keyword">reliable transmission</strong> and
+                <strong class="keyword">congestion control</strong> for the RDT protocol.
+            </p>
+
+            <p>Once all the data packets have been sent and all corresponding ACK packets have been received, the sender
+                program will send an EOT packet.<br>
+                When the corresponding ACK packet for that EOT packet arrives, the sender program will close the UDP
+                connection and terminates itself.
+            </p>
+
+            <p>When the sender program sends out a packet, it will record the packet’s sequence number into a log file,
+                <code>seqnum.log</code>.
+            </p>
+
+            <p>When the sender program receives an ACK packet, it will record the ACK packet’s sequence number into a
+                log file, <code>ack.log</code>.
+            </p>
+            <br>
+
+            <h3>Receiver Program</h3>
+            <p>To execute the <code>receiver</code> program, we need the following command-line arguments:</p>
+            <ul>
+                <li>the hostname for the network emulator</li>
+                <li>the UDP port number used by the network emulator to receive ACKs from the receiver</li>
+                <li>the UDP port number used by the receiver to receive data from the network emulator</li>
+                <li>the name of the file into which the received data is written</li>
+            </ul>
+
+            <p>After executing the <code>receiver</code> program with those 4 arguments, the program will create a
+                <code>UDP</code> object using the first 3 arguments and start receiving data packets and sending ACK
+                packets.
+            </p>
+
+            <p>When a data packet arrives, the <code>receiver</code> program will send an ACK packet where the
+                <code>seqnum</code> is the same as the received data packet.<br>
+                Then, it will store the data packet into a dictionary where the key is the <code>seqnum</code> and the
+                value is the <code>data</code>.<br>
+                By doing that, we do not need to worry about the received order of the data packets.
+            </p>
+
+            <p>If a duplicate packet arrives, the <code>receiver</code> program will send a corresponding ACK packet but
+                will not add that duplicate packet into the dictionary.</p>
+
+            <p>Once an EOT packet arrives and the receiver program sends a corresponding EOT packet, the
+                <code>receiver</code> program will close the UDP connection.<br>
+                Then, it will read all values from the dictionary in order and save them into a text file where the file
+                name is defined by the last command-line argument.
+            </p>
+
+            <p>When the <code>receiver</code> program receives a data packet, it will record the packet’s sequence
+                number into a log file, <code>arrival.log</code>.</p>
+            <br>
+
+            <h3>Network Emulator</h3>
+            <p>To execute the <code>network emulator</code> program, we need the following command-line arguments:</p>
+            <ul>
+                <li>the receiver’s network address</li>
+                <li>the receiver’s receiving UDP port number</li>
+                <li>the receiving UDP port number in the receiver direction</li>
+                <li>the sender’s network address</li>
+                <li>the sender’s receiving UDP port number</li>
+                <li>the receiving UDP port number in the sender direction</li>
+                <li>the packet discard probability</li>
+                <li>the verbose-mode</li>
+            </ul>
+
+            <p>The verbose mode is either 0 or 1.<br>
+                If it is set to 1, then the <code>network emulator</code> program will display its internal processing
+                one per line.</p>
+
+            <p>Once we execute the <code>network emulator</code> program, it will build two UDP connections - one
+                connects to the sender and one connects to the receiver.</p>
+
+            <p>When the <code>network emulator</code> program receives a data packet from the sender, it will drop the
+                packet with the specified probability (depends on the second last command-line argument).<br>
+                If the packet is not dropped, then the <code>network emulator</code> program will send it to the
+                receiver.</p>
+
+            <p>Similarly, when the <code>network emulator</code> program receives an ACK packet from the receiver, it
+                will drop the packet with the specified probability (depends on the second last command-line
+                argument).<br>
+                If the packet is not dropped, then the <code>network emulator</code> program will send it to the sender.
+            </p>
+
+            <p>However, the EOT packet from both sender and receiver will never be discarded.</p>
+
+            <p>For the <code>network emulator</code> program, we need to create two threads and do multi-threading.</p>
+
+            <p>The first thread will receive a packet from the sender, then transfer it to the receiver if the packet is
+                not dropped.</p>
+
+            <p>The second thread will receive a packet from the receiver, then transfer it to the sender if the packet
+                is not discarded.</p>
+            <br>
+
+            <h3>Demo</h3>
+            <p>The following video is a demo of this project.</p>
+
+            <iframe class="center" src="https://www.youtube.com/embed/kp_RD6BCqKs" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+
+            <p>In this demo, I run the <code>network emulator</code> program, the <code>receiver</code> program, and the
+                <code>sender</code> program in the Waterloo CS Undergrad Environment (where the course professor and TAs
+                test and mark my programs).
+            </p>
+            <p>The left window is the <code>network emulator</code> program, the top right window is the
+                <code>receiver</code> program, and the bottom right window is the <code>sender</code> program.
+            </p>
+            <p>I run the <code>network emulator</code> program in the machine <code>ubuntu1804-010</code> and I run the
+                other two programs in the machine <code>ubuntu1804-002</code>.</p>
+            <p>Note that in general, those three programs should be run on three different machines.<br>
+                However, when I recorded this video (in May), only two machines were available.<br>
+                But when I tested and submitted this project in March, those programs had run on three different
+                machines for sure.
+            </p>
+        </section>
+
+        <footer id="footer">
+            <p>Thanks For Coming. - Vert Li</p>
+            <!-- icons -->
+            <a href="mailto: vert.c.k.li@gmail.com" target="_blank;"><i class="fas fa-envelope-square fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/vertckli/" target="_blank;"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="https://www.instagram.com/vert_arts/" target="_blank;"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://github.com/vertli" target="_blank;"><i class="fab fa-github-square fa-2x"></i></a>
+            <!-- icons -->
+            <p>Chun Kit (Calvin Vert) Li &copy; 2017 - 2021</p>
+        </footer>
+
+    </div>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../js/style.js"></script>
+    <script src="../js/height.js"></script>
+    <noscript>This website requires to use JavaScript!!!</noscript>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+{
+  "cardData": [
+    {
+      "name": "Aqua Diffuser",
+      "gen": "XY",
+      "set": "Double Crisis",
+      "number": 23,
+      "type": "Pokémon Tool",
+      "releaseDate": "25/03/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/DC1/DC1_EN_23.png",
+      "amount": 2
+    }, {
+      "name": "Dashing Pouch",
+      "gen": "Sun and Moon",
+      "set": "Crimson Invasion",
+      "number": 92,
+      "type": "Pokémon Tool",
+      "releaseDate": "03/11/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_92.png",
+      "amount": 0
+    }, {
+      "name": "Escape Board",
+      "gen": "Sun and Moon",
+      "set": "Ultra Prism",
+      "number": 122,
+      "type": "Pokémon Tool",
+      "releaseDate": "02/02/2018",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM5/SM5_EN_122.png",
+      "amount": 1
+    }, {
+      "name": "Floral Crown",
+      "gen": "XY",
+      "set": "Generations",
+      "number": "RC26",
+      "type": "Pokémon Tool",
+      "releaseDate": "22/02/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_RC26.png",
+      "amount": 3
+    }, {
+      "name": "Healing Scarf",
+      "gen": "XY",
+      "set": "Roaring Skies",
+      "number": 84,
+      "type": "Pokémon Tool",
+      "releaseDate": "06/05/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY6/XY6_EN_84.png",
+      "amount": 3
+    }, {
+      "name": "Lucky Helmet",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": 77,
+      "type": "Pokémon Tool",
+      "releaseDate": "12/08/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY7/XY7_EN_77.png",
+      "amount": 3
+    }, {
+      "name": "Poison Barb",
+      "gen": "Sun and Moon",
+      "set": "Base Set",
+      "number": 124,
+      "type": "Pokémon Tool",
+      "releaseDate": "03/02/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM1/SM1_EN_124.png",
+      "amount": 1
+    }, {
+      "name": "Protection Cube",
+      "gen": "XY",
+      "set": "Flashfire",
+      "number": 95,
+      "type": "Pokémon Tool",
+      "releaseDate": "07/05/2014",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY2/XY2_EN_95.png",
+      "amount": 1
+    }, {
+      "name": "Psychic Memory",
+      "gen": "Sun and Moon",
+      "set": "Crimson Invasion",
+      "number": 98,
+      "type": "Pokémon Tool",
+      "releaseDate": "03/11/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_98.png",
+      "amount": 1
+    }, {
+      "name": "Reversal Trigger",
+      "gen": "Black and White",
+      "set": "Plasma blast",
+      "number": 86,
+      "type": "Pokémon Tool",
+      "releaseDate": "14/08/2013",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/BW10/BW10_EN_86.png",
+      "amount": 1
+    }, {
+      "name": "Wishful Baton",
+      "gen": "Sun and Moon",
+      "set": "Burning Shadows",
+      "number": 128,
+      "type": "Pokémon Tool",
+      "releaseDate": "04/08/2017",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM3/SM3_EN_128.png",
+      "amount": 1
+    }, {
+      "name": "Ampharos Spirit Link",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": 70,
+      "type": "Pokémon Tool",
+      "releaseDate": "12/08/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY7/XY7_EN_70.png",
+      "amount": 1
+    }, {
+      "name": "Rayquaza Spirit Link",
+      "gen": "XY",
+      "set": "Roaring Skies",
+      "number": 87,
+      "type": "Pokémon Tool",
+      "releaseDate": "06/05/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY6/XY6_EN_87.png",
+      "amount": 1
+    }, {
+      "name": "Sceptile Spirit Link",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": 80,
+      "type": "Pokémon Tool",
+      "releaseDate": "12/08/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY7/XY7_EN_80.pngb",
+      "amount": 2
+    }, {
+      "name": "Tyranitar Spirit Link",
+      "gen": "XY",
+      "set": "Ancient Origins",
+      "number": 81,
+      "type": "Pokémon Tool",
+      "releaseDate": "12/08/2015",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY7/XY7_EN_81.png",
+      "amount": 1
+    }, {
+      "name": "Slowbro Spirit Link",
+      "gen": "XY",
+      "set": "Evolutions",
+      "number": 86,
+      "type": "Pokémon Tool",
+      "releaseDate": "02/11/2016",
+      "url": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_86.png",
+      "amount": 1
+    }
+  ]
+}
