@@ -218,3 +218,7 @@ code {
   padding: 2px 2px;
 }
 /* CODE */
+
+iframe {
+  background-color: var(--text-w);
+}
