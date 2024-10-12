@@ -1,15 +1,6 @@
 {
   "cardData": [
     {
-      "name": "Terapagos ex",
-      "gen": "Scarlet & Violet",
-      "set": "Stellar Crown",
-      "number": "170/142",
-      "type": ["Pokémon ex"],
-      "releaseDate": "13/09/2024",
-      "url": "https://tcgplayer-cdn.tcgplayer.com/product/567478_in_1000x1000.jpg"
-    },
-    {
       "name": "Tapu Bulu",
       "gen": "Scarlet & Violet",
       "set": "Shrouded Fable",
@@ -17,15 +8,6 @@
       "type": ["Basic Pokémon"],
       "releaseDate": "02/08/2024",
       "url": "https://tcgplayer-cdn.tcgplayer.com/product/560376_in_1000x1000.jpg"
-    },
-    {
-      "name": "Kingdra ex",
-      "gen": "Scarlet & Violet",
-      "set": "Shrouded Fable",
-      "number": "080/064",
-      "type": ["Stage 2 Pokémon", "Pokémon ex"],
-      "releaseDate": "02/08/2024",
-      "url": "https://tcgplayer-cdn.tcgplayer.com/product/560391_in_1000x1000.jpg"
     },
     {
       "name": "Okidogi ex",
