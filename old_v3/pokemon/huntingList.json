@@ -10,15 +10,6 @@
       "url": "https://tcgplayer-cdn.tcgplayer.com/product/560376_in_1000x1000.jpg"
     },
     {
-      "name": "Okidogi ex",
-      "gen": "Scarlet & Violet",
-      "set": "Shrouded Fable",
-      "number": "090/064",
-      "type": ["Basic Pokémon", "Pokémon ex"],
-      "releaseDate": "02/08/2024",
-      "url": "https://tcgplayer-cdn.tcgplayer.com/product/560401_in_1000x1000.jpg"
-    },
-    {
       "name": "Munkidori ex",
       "gen": "Scarlet & Violet",
       "set": "Shrouded Fable",
@@ -26,24 +17,6 @@
       "type": ["Basic Pokémon", "Pokémon ex"],
       "releaseDate": "02/08/2024",
       "url": "https://tcgplayer-cdn.tcgplayer.com/product/560402_in_1000x1000.jpg"
-    },
-    {
-      "name": "Fezandipiti ex",
-      "gen": "Scarlet & Violet",
-      "set": "Shrouded Fable",
-      "number": "092/064",
-      "type": ["Basic Pokémon", "Pokémon ex"],
-      "releaseDate": "02/08/2024",
-      "url": "https://tcgplayer-cdn.tcgplayer.com/product/560403_in_1000x1000.jpg"
-    },
-    {
-      "name": "Carmine",
-      "gen": "Scarlet & Violet",
-      "set": "Twilight Masquerade",
-      "number": "217/167",
-      "type": ["Supporter"],
-      "releaseDate": "24/05/2024",
-      "url": "https://product-images.tcgplayer.com/550261.jpg"
     },
     {
       "name": "Tate & Liza",
