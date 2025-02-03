@@ -4,8 +4,8 @@
     "id": "8190e05f-4329-5027-a47f-7c0ed72ad101",
     "store": "Dolly's Toys And Games",
     "city": "Scarborough",
-    "datetime": "2025-02-23T14:00:00+00:00",
-    "date": "2025-02-23",
+    "datetime": "2025-03-30T14:00:00+00:00",
+    "date": "2025-03-30",
     "time": "14:00",
     "type": "Challenge"
   },
@@ -14,8 +14,8 @@
     "id": "8190e05f-4329-5027-a47f-7c0ed72ad101",
     "store": "Dolly's Toys And Games",
     "city": "Scarborough",
-    "datetime": "2025-03-30T14:00:00+00:00",
-    "date": "2025-03-30",
+    "datetime": "2025-02-23T14:00:00+00:00",
+    "date": "2025-02-23",
     "time": "14:00",
     "type": "Challenge"
   },
@@ -48,6 +48,16 @@
     "date": "2025-02-20",
     "time": "18:00",
     "type": "Challenge"
+  },
+  {
+    "name": "Comfy Hobbies",
+    "id": "ec848c94-d998-5ad9-b247-7e36eba8bc9f",
+    "store": "Comfy Hobbies",
+    "city": "Thornhill",
+    "datetime": "2025-03-01T12:00:00+00:00",
+    "date": "2025-03-01",
+    "time": "12:00",
+    "type": "Cup"
   },
   {
     "name": "Comfy Hobbies",
@@ -110,13 +120,13 @@
     "type": "Challenge"
   },
   {
-    "name": "Hairy Tarantula",
-    "id": "2b9a3072-f6cb-c52b-5df6-835ef4ada27f",
-    "store": "Hairy Tarantula",
+    "name": "Face To Face Games",
+    "id": "deef0513-611a-6596-aef8-fa6db44b2265",
+    "store": "Face To Face Games",
     "city": "Toronto",
-    "datetime": "2025-02-02T12:30:00+00:00",
-    "date": "2025-02-02",
-    "time": "12:30",
+    "datetime": "2025-03-01T11:00:00+00:00",
+    "date": "2025-03-01",
+    "time": "11:00",
     "type": "Challenge"
   },
   {
@@ -138,16 +148,6 @@
     "date": "2025-03-29",
     "time": "11:00",
     "type": "Cup"
-  },
-  {
-    "name": "Face To Face Games",
-    "id": "deef0513-611a-6596-aef8-fa6db44b2265",
-    "store": "Face To Face Games",
-    "city": "Toronto",
-    "datetime": "2025-03-01T11:00:00+00:00",
-    "date": "2025-03-01",
-    "time": "11:00",
-    "type": "Challenge"
   },
   {
     "name": "401 Games",
@@ -174,10 +174,10 @@
     "id": "ff26aec6-c2ba-f4a0-975f-3980d32e12eb",
     "store": "Anime Alley",
     "city": "Toronto",
-    "datetime": "2025-03-22T14:00:00+00:00",
-    "date": "2025-03-22",
+    "datetime": "2025-03-01T14:00:00+00:00",
+    "date": "2025-03-01",
     "time": "14:00",
-    "type": "Cup"
+    "type": "Challenge"
   },
   {
     "name": "Anime Alley",
@@ -194,10 +194,20 @@
     "id": "ff26aec6-c2ba-f4a0-975f-3980d32e12eb",
     "store": "Anime Alley",
     "city": "Toronto",
-    "datetime": "2025-03-01T14:00:00+00:00",
-    "date": "2025-03-01",
+    "datetime": "2025-03-22T14:00:00+00:00",
+    "date": "2025-03-22",
     "time": "14:00",
-    "type": "Challenge"
+    "type": "Cup"
+  },
+  {
+    "name": "401 Games Downtown",
+    "id": "ae5ee54d-d885-c65f-f4ed-f193ba57b009",
+    "store": "401 Games Downtown",
+    "city": "Toronto",
+    "datetime": "2025-03-15T11:00:00+00:00",
+    "date": "2025-03-15",
+    "time": "11:00",
+    "type": "Cup"
   },
   {
     "name": "401 Games Downtown",
@@ -220,16 +230,6 @@
     "type": "Challenge"
   },
   {
-    "name": "401 Games Downtown",
-    "id": "ae5ee54d-d885-c65f-f4ed-f193ba57b009",
-    "store": "401 Games Downtown",
-    "city": "Toronto",
-    "datetime": "2025-03-15T11:00:00+00:00",
-    "date": "2025-03-15",
-    "time": "11:00",
-    "type": "Cup"
-  },
-  {
     "name": "Banana Games And Hobbies",
     "id": "f623ad82-d413-0b0c-0f3c-b5be02b71c66",
     "store": "Banana Games And Hobbies",
@@ -238,16 +238,6 @@
     "date": "2025-02-19",
     "time": "18:00",
     "type": "Challenge"
-  },
-  {
-    "name": "A & C Games",
-    "id": "a42d0595-e142-925b-03f1-8fcb1cb008d6",
-    "store": "A & C Games",
-    "city": "Toronto",
-    "datetime": "2025-02-02T11:00:00+00:00",
-    "date": "2025-02-02",
-    "time": "11:00",
-    "type": "Cup"
   },
   {
     "name": "Hobbiesville Toronto",
@@ -264,20 +254,20 @@
     "id": "b3efa0b5-3842-c9d1-8142-c9a2a0d49a9f",
     "store": "Hope Club Collectibles",
     "city": "Toronto",
-    "datetime": "2025-02-09T12:30:00+00:00",
-    "date": "2025-02-09",
-    "time": "12:30",
-    "type": "Challenge"
+    "datetime": "2025-03-29T10:00:00+00:00",
+    "date": "2025-03-29",
+    "time": "10:00",
+    "type": "Cup"
   },
   {
     "name": "Hope Club Collectibles",
     "id": "b3efa0b5-3842-c9d1-8142-c9a2a0d49a9f",
     "store": "Hope Club Collectibles",
     "city": "Toronto",
-    "datetime": "2025-03-29T10:00:00+00:00",
-    "date": "2025-03-29",
-    "time": "10:00",
-    "type": "Cup"
+    "datetime": "2025-02-09T12:30:00+00:00",
+    "date": "2025-02-09",
+    "time": "12:30",
+    "type": "Challenge"
   },
   {
     "name": "Hope Club Collectibles",
@@ -354,20 +344,20 @@
     "id": "5f1cfd3f-9673-19e1-ca20-0c5ac5d70aac",
     "store": "Kanzen Games Sports & Collectibles",
     "city": "Mississauga",
-    "datetime": "2025-02-17T11:00:00+00:00",
-    "date": "2025-02-17",
-    "time": "11:00",
-    "type": "Cup"
+    "datetime": "2025-02-28T18:30:00+00:00",
+    "date": "2025-02-28",
+    "time": "18:30",
+    "type": "Challenge"
   },
   {
     "name": "Kanzen Games Sports & Collectibles",
     "id": "5f1cfd3f-9673-19e1-ca20-0c5ac5d70aac",
     "store": "Kanzen Games Sports & Collectibles",
     "city": "Mississauga",
-    "datetime": "2025-02-28T18:30:00+00:00",
-    "date": "2025-02-28",
-    "time": "18:30",
-    "type": "Challenge"
+    "datetime": "2025-02-17T11:00:00+00:00",
+    "date": "2025-02-17",
+    "time": "11:00",
+    "type": "Cup"
   },
   {
     "name": "Kanzen Games Sports & Collectibles",
@@ -384,8 +374,8 @@
     "id": "74369c2b-491f-c735-4855-f700a8e78e2d",
     "store": "Cardboard Memories",
     "city": "Brampton",
-    "datetime": "2025-03-08T12:00:00+00:00",
-    "date": "2025-03-08",
+    "datetime": "2025-02-08T12:00:00+00:00",
+    "date": "2025-02-08",
     "time": "12:00",
     "type": "Challenge"
   },
@@ -394,8 +384,8 @@
     "id": "74369c2b-491f-c735-4855-f700a8e78e2d",
     "store": "Cardboard Memories",
     "city": "Brampton",
-    "datetime": "2025-02-08T12:00:00+00:00",
-    "date": "2025-02-08",
+    "datetime": "2025-03-08T12:00:00+00:00",
+    "date": "2025-03-08",
     "time": "12:00",
     "type": "Challenge"
   },
@@ -414,8 +404,8 @@
     "id": "7f1262a2-6a99-1007-6f30-f9d5b68ffa13",
     "store": "Red Riot Games",
     "city": "Mississauga",
-    "datetime": "2025-03-27T13:00:00+00:00",
-    "date": "2025-03-27",
+    "datetime": "2025-02-27T13:00:00+00:00",
+    "date": "2025-02-27",
     "time": "13:00",
     "type": "Challenge"
   },
@@ -424,8 +414,8 @@
     "id": "7f1262a2-6a99-1007-6f30-f9d5b68ffa13",
     "store": "Red Riot Games",
     "city": "Mississauga",
-    "datetime": "2025-02-27T13:00:00+00:00",
-    "date": "2025-02-27",
+    "datetime": "2025-03-27T13:00:00+00:00",
+    "date": "2025-03-27",
     "time": "13:00",
     "type": "Challenge"
   },
@@ -434,8 +424,8 @@
     "id": "1d74d4e8-a39d-31aa-25c8-bba37ed87354",
     "store": "The Upper Hand",
     "city": "Mississauga",
-    "datetime": "2025-02-27T18:30:00+00:00",
-    "date": "2025-02-27",
+    "datetime": "2025-03-27T18:30:00+00:00",
+    "date": "2025-03-27",
     "time": "18:30",
     "type": "Challenge"
   },
@@ -454,18 +444,8 @@
     "id": "1d74d4e8-a39d-31aa-25c8-bba37ed87354",
     "store": "The Upper Hand",
     "city": "Mississauga",
-    "datetime": "2025-03-27T18:30:00+00:00",
-    "date": "2025-03-27",
-    "time": "18:30",
-    "type": "Challenge"
-  },
-  {
-    "name": "Game Time Collectibles",
-    "id": "41e64c17-a871-b1f0-30f3-203fcf42dc5c",
-    "store": "Game Time Collectibles",
-    "city": "Mississauga",
-    "datetime": "2025-03-17T18:30:00+00:00",
-    "date": "2025-03-17",
+    "datetime": "2025-02-27T18:30:00+00:00",
+    "date": "2025-02-27",
     "time": "18:30",
     "type": "Challenge"
   },
@@ -476,6 +456,16 @@
     "city": "Mississauga",
     "datetime": "2025-02-17T18:30:00+00:00",
     "date": "2025-02-17",
+    "time": "18:30",
+    "type": "Challenge"
+  },
+  {
+    "name": "Game Time Collectibles",
+    "id": "41e64c17-a871-b1f0-30f3-203fcf42dc5c",
+    "store": "Game Time Collectibles",
+    "city": "Mississauga",
+    "datetime": "2025-03-17T18:30:00+00:00",
+    "date": "2025-03-17",
     "time": "18:30",
     "type": "Challenge"
   },
@@ -524,8 +514,8 @@
     "id": "83ff892c-113d-b698-1d8e-421c76e3c66c",
     "store": "Game 3 TCG & Hobby",
     "city": "Oakville",
-    "datetime": "2025-03-05T19:00:00+00:00",
-    "date": "2025-03-05",
+    "datetime": "2025-02-12T19:00:00+00:00",
+    "date": "2025-02-12",
     "time": "19:00",
     "type": "Challenge"
   },
@@ -534,19 +524,9 @@
     "id": "83ff892c-113d-b698-1d8e-421c76e3c66c",
     "store": "Game 3 TCG & Hobby",
     "city": "Oakville",
-    "datetime": "2025-02-12T19:00:00+00:00",
-    "date": "2025-02-12",
+    "datetime": "2025-03-05T19:00:00+00:00",
+    "date": "2025-03-05",
     "time": "19:00",
-    "type": "Challenge"
-  },
-  {
-    "name": "Dungeon Comics",
-    "id": "e4311974-fb9c-09d9-3b46-4658cdbe514c",
-    "store": "Dungeon Comics",
-    "city": "Oakville",
-    "datetime": "2025-03-29T13:00:00+00:00",
-    "date": "2025-03-29",
-    "time": "13:00",
     "type": "Challenge"
   },
   {
@@ -560,13 +540,13 @@
     "type": "Cup"
   },
   {
-    "name": "Top Shelf Co.",
-    "id": "4ba2f234-c4dd-67f1-2730-f2c93ecca07b",
-    "store": "Top Shelf Co.",
+    "name": "Dungeon Comics",
+    "id": "e4311974-fb9c-09d9-3b46-4658cdbe514c",
+    "store": "Dungeon Comics",
     "city": "Oakville",
-    "datetime": "2025-02-13T18:00:00+00:00",
-    "date": "2025-02-13",
-    "time": "18:00",
+    "datetime": "2025-03-29T13:00:00+00:00",
+    "date": "2025-03-29",
+    "time": "13:00",
     "type": "Challenge"
   },
   {
@@ -576,6 +556,16 @@
     "city": "Oakville",
     "datetime": "2025-03-13T18:00:00+00:00",
     "date": "2025-03-13",
+    "time": "18:00",
+    "type": "Challenge"
+  },
+  {
+    "name": "Top Shelf Co.",
+    "id": "4ba2f234-c4dd-67f1-2730-f2c93ecca07b",
+    "store": "Top Shelf Co.",
+    "city": "Oakville",
+    "datetime": "2025-02-13T18:00:00+00:00",
+    "date": "2025-02-13",
     "time": "18:00",
     "type": "Challenge"
   },
@@ -670,16 +660,6 @@
     "type": "Cup"
   },
   {
-    "name": "ParadoxTCG",
-    "id": "6c1dd896-111d-2a21-e1c9-7dc4f7c706df",
-    "store": "ParadoxTCG",
-    "city": "Hamilton",
-    "datetime": "2025-02-02T13:00:00+00:00",
-    "date": "2025-02-02",
-    "time": "13:00",
-    "type": "Cup"
-  },
-  {
     "name": "Black Knight Games",
     "id": "ad784996-5b0b-42fd-efaa-1c083b1b61ef",
     "store": "Black Knight Games",
@@ -704,16 +684,6 @@
     "id": "31c6aaf6-c48e-f113-a88b-eba9aad9a033",
     "store": "Dark Fox Tcg",
     "city": "Hamilton",
-    "datetime": "2025-03-22T12:00:00+00:00",
-    "date": "2025-03-22",
-    "time": "12:00",
-    "type": "Cup"
-  },
-  {
-    "name": "Dark Fox Tcg",
-    "id": "31c6aaf6-c48e-f113-a88b-eba9aad9a033",
-    "store": "Dark Fox Tcg",
-    "city": "Hamilton",
     "datetime": "2025-02-24T18:00:00+00:00",
     "date": "2025-02-24",
     "time": "18:00",
@@ -730,14 +700,14 @@
     "type": "Challenge"
   },
   {
-    "name": "The Trading Post",
-    "id": "c8ea3b6a-9993-51aa-cf86-1bf610677485",
-    "store": "The Trading Post",
-    "city": "Guelph",
-    "datetime": "2025-02-25T17:30:00+00:00",
-    "date": "2025-02-25",
-    "time": "17:30",
-    "type": "Challenge"
+    "name": "Dark Fox Tcg",
+    "id": "31c6aaf6-c48e-f113-a88b-eba9aad9a033",
+    "store": "Dark Fox Tcg",
+    "city": "Hamilton",
+    "datetime": "2025-03-22T12:00:00+00:00",
+    "date": "2025-03-22",
+    "time": "12:00",
+    "type": "Cup"
   },
   {
     "name": "The Trading Post",
@@ -746,6 +716,16 @@
     "city": "Guelph",
     "datetime": "2025-03-25T17:30:00+00:00",
     "date": "2025-03-25",
+    "time": "17:30",
+    "type": "Challenge"
+  },
+  {
+    "name": "The Trading Post",
+    "id": "c8ea3b6a-9993-51aa-cf86-1bf610677485",
+    "store": "The Trading Post",
+    "city": "Guelph",
+    "datetime": "2025-02-25T17:30:00+00:00",
+    "date": "2025-02-25",
     "time": "17:30",
     "type": "Challenge"
   },
@@ -774,30 +754,20 @@
     "id": "9dbe80ed-8a47-be60-9977-8f4949c0b997",
     "store": "Tcg Temple",
     "city": "Cobourg",
-    "datetime": "2025-02-09T10:00:00+00:00",
-    "date": "2025-02-09",
-    "time": "10:00",
-    "type": "Cup"
-  },
-  {
-    "name": "Tcg Temple",
-    "id": "9dbe80ed-8a47-be60-9977-8f4949c0b997",
-    "store": "Tcg Temple",
-    "city": "Cobourg",
     "datetime": "2025-02-09T13:00:24+00:00",
     "date": "2025-02-09",
     "time": "13:00",
     "type": "Challenge"
   },
   {
-    "name": "Dueling Grounds",
-    "id": "651313df-6922-2295-4fc6-a4afb141dfa7",
-    "store": "Dueling Grounds",
-    "city": "Peterborough",
-    "datetime": "2025-02-15T13:00:00+00:00",
-    "date": "2025-02-15",
-    "time": "13:00",
-    "type": "Challenge"
+    "name": "Tcg Temple",
+    "id": "9dbe80ed-8a47-be60-9977-8f4949c0b997",
+    "store": "Tcg Temple",
+    "city": "Cobourg",
+    "datetime": "2025-02-09T10:00:00+00:00",
+    "date": "2025-02-09",
+    "time": "10:00",
+    "type": "Cup"
   },
   {
     "name": "Dueling Grounds",
@@ -808,6 +778,16 @@
     "date": "2025-02-15",
     "time": "10:30",
     "type": "Cup"
+  },
+  {
+    "name": "Dueling Grounds",
+    "id": "651313df-6922-2295-4fc6-a4afb141dfa7",
+    "store": "Dueling Grounds",
+    "city": "Peterborough",
+    "datetime": "2025-02-15T13:00:00+00:00",
+    "date": "2025-02-15",
+    "time": "13:00",
+    "type": "Challenge"
   },
   {
     "name": "Jack's On Queen",
