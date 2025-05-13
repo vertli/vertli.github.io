@@ -3,10 +3,11 @@ let ctx = null;
 let squareW = 0;
 let squareH = 0;
 let isStarted = false;
+let steps = 0;
 
 const colour = {
   poppyRed: "#DC343B",
-  orangeade: "#E2552D",
+  orangePeel: "#FA7A35",
   lemonGrass: "#DCD494",
   kashmir: "#6F8D6A",
   dejaVuBlue: "#2E5283",
@@ -28,6 +29,7 @@ function init() {
 
 function titlePage() {
   ctx.font = "50px serif";
+  ctx.fillStyle = "white";
   ctx.fillText("COULOR", squareW, squareH * 2, squareW * 3);
   ctx.fillText("SCHEME", squareW, squareH * 3, squareW * 3);
   ctx.fillText("> START <", squareW, squareH * 5, squareW * 3);
@@ -35,17 +37,18 @@ function titlePage() {
 
 function startGame() {
   isStarted = true;
+  steps = 0;
   ctx.clearRect(0, 0, c.width, c.height);
   createLevel();
 }
 
 function createLevel() {
   let row1 = [colour.dejaVuBlue, colour.damson, colour.kashmir];
-  let row2 = [colour.poppyRed, colour.orangeade, colour.lemonGrass];
+  let row2 = [colour.poppyRed, colour.orangePeel, colour.lemonGrass];
   let row3 = [colour.poppyRed, colour.lemonGrass, colour.kashmir];
-  let row4 = [colour.orangeade, colour.lemonGrass, colour.kashmir];
-  let row5 = [colour.damson, colour.orangeade, colour.dejaVuBlue];
-  let row6 = [colour.orangeade, colour.dejaVuBlue, colour.kashmir];
+  let row4 = [colour.orangePeel, colour.lemonGrass, colour.kashmir];
+  let row5 = [colour.damson, colour.orangePeel, colour.dejaVuBlue];
+  let row6 = [colour.orangePeel, colour.dejaVuBlue, colour.kashmir];
 
   sqrtArray.push(row1, row2, row3, row4, row5, row6);
 
@@ -60,6 +63,15 @@ function createLevel() {
     x = squareW;
     y += squareH;
   }
+
+  drawSteps();
+}
+
+function drawSteps() {
+  ctx.clearRect(0, 0, squareW * 2, squareH);
+  ctx.font = "20px serif";
+  ctx.fillStyle = "white";
+  ctx.fillText("Steps: " + steps, squareW / 2, squareH / 2);
 }
 
 function drawRect(x, y, colour) {
@@ -69,13 +81,13 @@ function drawRect(x, y, colour) {
   ctx.stroke();
 }
 
-function changeColour(col, row) {
+function changeColour(col, row, countSteps = false, isLogged = false) {
   if (col < 0 || col > 2 || row < 0 || row > 5) {
     return; // out of bounds
   }
   if (sqrtArray[row][col] === colour.poppyRed) {
-    sqrtArray[row][col] = colour.orangeade;
-  } else if (sqrtArray[row][col] === colour.orangeade) {
+    sqrtArray[row][col] = colour.orangePeel;
+  } else if (sqrtArray[row][col] === colour.orangePeel) {
     sqrtArray[row][col] = colour.lemonGrass;
   } else if (sqrtArray[row][col] === colour.lemonGrass) {
     sqrtArray[row][col] = colour.kashmir;
@@ -91,6 +103,13 @@ function changeColour(col, row) {
     squareH + row * squareH,
     sqrtArray[row][col]
   );
+  if (countSteps) {
+    steps++;
+    drawSteps();
+  }
+  if (isLogged) {
+    console.log(`col: ${col}, row: ${row}, colour: ${sqrtArray[row][col]}`);
+  }
 }
 
 c.addEventListener("click", function (event) {
@@ -119,7 +138,7 @@ c.addEventListener("click", function (event) {
   }
   const col = (xPos - (xPos % squareW)) / squareW - 1;
   const row = (yPos - (yPos % squareH)) / squareH - 1;
-  changeColour(col, row); // self
+  changeColour(col, row, true, true); // self
   changeColour(col, row - 1); // up
   changeColour(col, row + 1); // down
   changeColour(col - 1, row); // left
