@@ -9,8 +9,10 @@ async function logJSONData() {
   const lastUpdate = document.getElementById("last-update");
   lastUpdate.innerText = timestamp;
   const allEvents = jsonData["events"];
+  console.log(jsonData);
   for (let i in allEvents) {
-    originData.push(jsonData[i]);
+    originData.push(allEvents[i]);
+    console.log(allEvents[i]);
   }
 }
 
