@@ -5,7 +5,11 @@ const cupImg = "../img/pokemon/leagueCup.png";
 async function logJSONData() {
   const response = await fetch("../doc/pokemonEventList.json");
   const jsonData = await response.json();
-  for (let i in jsonData) {
+  const timestamp = jsonData["timestamp"];
+  const lastUpdate = document.getElementById("last-update");
+  lastUpdate.innerText = timestamp;
+  const allEvents = jsonData["events"];
+  for (let i in allEvents) {
     originData.push(jsonData[i]);
   }
 }
