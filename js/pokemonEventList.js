@@ -75,7 +75,7 @@ const setCurrentPage = (pageNum) => {
     // card title
     const card_title = document.createElement("h5");
     card_title.className = "card-title";
-    card_title.appendChild(document.createTextNode(event["name"]));
+    card_title.appendChild(document.createTextNode(event["store"]));
     // card text
     const card_text_store = document.createElement("h6");
     card_text_store.className = "card-text";
