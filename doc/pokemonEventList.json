@@ -1,186 +1,6 @@
 {
-  "timestamp": "29 Sep 2025 22:01:38",
+  "timestamp": "09 Oct 2025 12:39:59",
   "events": [
-    {
-      "store": "The Trading Post",
-      "city": "Guelph",
-      "datetime": "2025-09-30T18:00:00",
-      "date": "2025-09-30",
-      "time": "18:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-09-000995/"
-    },
-    {
-      "store": "Event Horizon Hobbies",
-      "city": "Midland",
-      "datetime": "2025-09-30T18:30:00",
-      "date": "2025-09-30",
-      "time": "18:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-09-000450/"
-    },
-    {
-      "store": "Wizard Tower",
-      "city": "Ottawa",
-      "datetime": "2025-09-30T18:30:00",
-      "date": "2025-09-30",
-      "time": "18:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-09-001360/"
-    },
-    {
-      "store": "Mind Games",
-      "city": "Oshawa",
-      "datetime": "2025-09-30T12:00:00",
-      "date": "2025-09-30",
-      "time": "12:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-09-014044/"
-    },
-    {
-      "store": "401 Games (Downtown)",
-      "city": "Old Toronto",
-      "datetime": "2025-09-30T18:00:00",
-      "date": "2025-09-30",
-      "time": "18:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-09-001765/"
-    },
-    {
-      "store": "Nerd Herder",
-      "city": "Niagara Falls",
-      "datetime": "2025-10-01T18:30:00",
-      "date": "2025-10-01",
-      "time": "18:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002298/"
-    },
-    {
-      "store": "Mecha Games",
-      "city": "St. Catharines",
-      "datetime": "2025-10-03T18:30:00",
-      "date": "2025-10-03",
-      "time": "18:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004078/"
-    },
-    {
-      "store": "KanZen Games Sports & Collectibles",
-      "city": "Mississauga",
-      "datetime": "2025-10-03T18:30:00",
-      "date": "2025-10-03",
-      "time": "18:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002342/"
-    },
-    {
-      "store": "Dolly's Toys and Games",
-      "city": "St. Catharines",
-      "datetime": "2025-10-04T13:00:00",
-      "date": "2025-10-04",
-      "time": "13:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005242/"
-    },
-    {
-      "store": "Gamer's Lair Ltd.",
-      "city": "Barrie",
-      "datetime": "2025-10-04T13:00:00",
-      "date": "2025-10-04",
-      "time": "13:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003253/"
-    },
-    {
-      "store": "Anime Alley",
-      "city": "Old Toronto",
-      "datetime": "2025-10-04T14:00:00",
-      "date": "2025-10-04",
-      "time": "14:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002261/"
-    },
-    {
-      "store": "Skyfox Games",
-      "city": "Oshawa",
-      "datetime": "2025-10-04T12:00:00",
-      "date": "2025-10-04",
-      "time": "12:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003169/"
-    },
-    {
-      "store": "Cardboard Hero Games and Collectibles",
-      "city": "Oshawa",
-      "datetime": "2025-10-04T10:00:00",
-      "date": "2025-10-04",
-      "time": "10:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004856/"
-    },
-    {
-      "store": "NexPack Collectibles",
-      "city": "Markham",
-      "datetime": "2025-10-04T14:00:00",
-      "date": "2025-10-04",
-      "time": "14:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004340/"
-    },
-    {
-      "store": "Flaring Lair",
-      "city": "Markham",
-      "datetime": "2025-10-05T17:15:00",
-      "date": "2025-10-05",
-      "time": "17:15",
-      "type": "Cup",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002328/"
-    },
-    {
-      "store": "PvP Shoppe",
-      "city": "Markham",
-      "datetime": "2025-10-05T11:00:00",
-      "date": "2025-10-05",
-      "time": "11:00",
-      "type": "Cup",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005276/"
-    },
-    {
-      "store": "A & C Games",
-      "city": "Old Toronto",
-      "datetime": "2025-10-05T13:00:00",
-      "date": "2025-10-05",
-      "time": "13:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003456/"
-    },
-    {
-      "store": "Hope Club Collectibles",
-      "city": "Toronto",
-      "datetime": "2025-10-05T12:30:00",
-      "date": "2025-10-05",
-      "time": "12:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003737/"
-    },
-    {
-      "store": "Dicey Business Inc.",
-      "city": "Mississauga",
-      "datetime": "2025-10-07T19:00:00",
-      "date": "2025-10-07",
-      "time": "19:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-001828/"
-    },
-    {
-      "store": "Claw Me Baby",
-      "city": "Toronto",
-      "datetime": "2025-10-07T19:00:00",
-      "date": "2025-10-07",
-      "time": "19:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002709/"
-    },
     {
       "store": "Top Shelf Collection",
       "city": "Oakville",
@@ -189,6 +9,15 @@
       "time": "18:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002083/"
+    },
+    {
+      "store": "GT Games",
+      "city": "Carleton Place",
+      "datetime": "2025-10-09T18:00:00",
+      "date": "2025-10-09",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-007928/"
     },
     {
       "store": "Cardboard Memories Inc.",
@@ -209,15 +38,6 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005713/"
     },
     {
-      "store": "KadOone",
-      "city": "Markham",
-      "datetime": "2025-10-11T15:30:00",
-      "date": "2025-10-11",
-      "time": "15:30",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004969/"
-    },
-    {
       "store": "Imaginaire",
       "city": "(Old) Ottawa",
       "datetime": "2025-10-11T11:00:00",
@@ -227,15 +47,6 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003984/"
     },
     {
-      "store": "Dungeon Comics and Cards",
-      "city": "Oakville",
-      "datetime": "2025-10-11T13:00:00",
-      "date": "2025-10-11",
-      "time": "13:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006107/"
-    },
-    {
       "store": "Face to Face Games",
       "city": "Old Toronto",
       "datetime": "2025-10-11T11:00:00",
@@ -243,6 +54,24 @@
       "time": "11:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002015/"
+    },
+    {
+      "store": "Claw Me Baby",
+      "city": "Toronto",
+      "datetime": "2025-10-11T15:00:00",
+      "date": "2025-10-11",
+      "time": "15:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002709/"
+    },
+    {
+      "store": "Cardboard Classics",
+      "city": "Vaughan",
+      "datetime": "2025-10-12T15:30:00",
+      "date": "2025-10-12",
+      "time": "15:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006339/"
     },
     {
       "store": "Untouchables Sports Cards and Gaming (Mississauga)",
@@ -263,6 +92,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003741/"
     },
     {
+      "store": "Mintink Trading Cards & Live Experience",
+      "city": "Vaughan",
+      "datetime": "2025-10-12T11:00:00",
+      "date": "2025-10-12",
+      "time": "11:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-008479/"
+    },
+    {
       "store": "Imaginaire",
       "city": "(Old) Ottawa",
       "datetime": "2025-10-13T14:00:00",
@@ -270,6 +108,15 @@
       "time": "14:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003967/"
+    },
+    {
+      "store": "Board to Bits Game Cafe",
+      "city": "Niagara Falls",
+      "datetime": "2025-10-14T18:00:00",
+      "date": "2025-10-14",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-008484/"
     },
     {
       "store": "Boreal Gaming and Cards",
@@ -281,6 +128,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005264/"
     },
     {
+      "store": "The Game Room at The Frugal Dutchman",
+      "city": "Fort Erie",
+      "datetime": "2025-10-17T18:00:00",
+      "date": "2025-10-17",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009573/"
+    },
+    {
       "store": "Minty Fresh Collectible",
       "city": "Ottawa",
       "datetime": "2025-10-17T18:00:00",
@@ -288,6 +144,24 @@
       "time": "18:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005644/"
+    },
+    {
+      "store": "Chonky Collectibles",
+      "city": "Old Toronto",
+      "datetime": "2025-10-17T18:00:00",
+      "date": "2025-10-17",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009143/"
+    },
+    {
+      "store": "Heavy Js Card House",
+      "city": "Sarnia",
+      "datetime": "2025-10-17T18:00:00",
+      "date": "2025-10-17",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009599/"
     },
     {
       "store": "Nabema Collectibles",
@@ -299,6 +173,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005977/"
     },
     {
+      "store": "KadOone",
+      "city": "Markham",
+      "datetime": "2025-10-18T15:30:00",
+      "date": "2025-10-18",
+      "time": "15:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004969/"
+    },
+    {
       "store": "Black Knight Games",
       "city": "Hamilton",
       "datetime": "2025-10-18T12:00:00",
@@ -308,6 +191,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004814/"
     },
     {
+      "store": "FantasyForged",
+      "city": "Orangeville",
+      "datetime": "2025-10-18T18:30:00",
+      "date": "2025-10-18",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-011303/"
+    },
+    {
       "store": "Comfy Hobbies",
       "city": "Markham",
       "datetime": "2025-10-18T13:15:00",
@@ -315,6 +207,15 @@
       "time": "13:15",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006105/"
+    },
+    {
+      "store": "Dungeon Comics and Cards",
+      "city": "Oakville",
+      "datetime": "2025-10-18T13:00:00",
+      "date": "2025-10-18",
+      "time": "13:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006107/"
     },
     {
       "store": "Face to Face Games",
@@ -335,6 +236,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006073/"
     },
     {
+      "store": "Muskoka Cards & Collectibles",
+      "city": "Bracebridge",
+      "datetime": "2025-10-18T15:00:00",
+      "date": "2025-10-18",
+      "time": "15:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-010617/"
+    },
+    {
       "store": "Cardboard Classics",
       "city": "Vaughan",
       "datetime": "2025-10-19T11:45:00",
@@ -353,13 +263,31 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-003008/"
     },
     {
-      "store": "Grey Guardian Games",
-      "city": "Cobourg",
-      "datetime": "2025-10-19T11:00:00",
+      "store": "Jack's on Queen",
+      "city": "Springwater",
+      "datetime": "2025-10-19T14:00:00",
       "date": "2025-10-19",
-      "time": "11:00",
-      "type": "Cup",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002583/"
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006384/"
+    },
+    {
+      "store": "Great Canadian Games & Hobbies",
+      "city": "Greater Sudbury",
+      "datetime": "2025-10-21T18:00:00",
+      "date": "2025-10-21",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009243/"
+    },
+    {
+      "store": "Hobbiesville Toronto",
+      "city": "Old Toronto",
+      "datetime": "2025-10-21T18:00:00",
+      "date": "2025-10-21",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009606/"
     },
     {
       "store": "ParadoxTCG",
@@ -371,6 +299,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002104/"
     },
     {
+      "store": "Cards and Coasters",
+      "city": "Orillia",
+      "datetime": "2025-10-24T19:00:00",
+      "date": "2025-10-24",
+      "time": "19:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-010679/"
+    },
+    {
       "store": "Brimstone Games",
       "city": "Windsor",
       "datetime": "2025-10-24T18:00:00",
@@ -378,6 +315,24 @@
       "time": "18:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002911/"
+    },
+    {
+      "store": "Three Kingdoms Games",
+      "city": "Markham",
+      "datetime": "2025-10-25T14:00:00",
+      "date": "2025-10-25",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009724/"
+    },
+    {
+      "store": "Dueling Grounds",
+      "city": "Peterborough",
+      "datetime": "2025-10-25T12:00:00",
+      "date": "2025-10-25",
+      "time": "12:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-008835/"
     },
     {
       "store": "Treasures 'N' More",
@@ -425,6 +380,24 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004950/"
     },
     {
+      "store": "Heroic Dreams",
+      "city": "Pickering",
+      "datetime": "2025-10-25T12:00:00",
+      "date": "2025-10-25",
+      "time": "12:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006849/"
+    },
+    {
+      "store": "Danireon Cards & Games",
+      "city": "Ottawa",
+      "datetime": "2025-10-25T12:00:00",
+      "date": "2025-10-25",
+      "time": "12:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-006646/"
+    },
+    {
       "store": "NexPack Collectibles",
       "city": "Markham",
       "datetime": "2025-10-25T14:00:00",
@@ -432,6 +405,33 @@
       "time": "14:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004347/"
+    },
+    {
+      "store": "Game Shack",
+      "city": "Toronto",
+      "datetime": "2025-10-26T10:15:00",
+      "date": "2025-10-26",
+      "time": "10:15",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-010329/"
+    },
+    {
+      "store": "Grey Guardian Games",
+      "city": "Cobourg",
+      "datetime": "2025-10-26T14:00:00",
+      "date": "2025-10-26",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-011333/"
+    },
+    {
+      "store": "Breakaway Sports Cards",
+      "city": "Hamilton",
+      "datetime": "2025-10-26T11:00:00",
+      "date": "2025-10-26",
+      "time": "11:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009056/"
     },
     {
       "store": "Hairy Tarantula",
@@ -443,6 +443,33 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-005864/"
     },
     {
+      "store": "Grey Guardian Games",
+      "city": "Cobourg",
+      "datetime": "2025-10-26T11:00:00",
+      "date": "2025-10-26",
+      "time": "11:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002583/"
+    },
+    {
+      "store": "Dolly's Toys and Games",
+      "city": "Toronto",
+      "datetime": "2025-10-26T14:00:00",
+      "date": "2025-10-26",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009851/"
+    },
+    {
+      "store": "Trinity Hobby",
+      "city": "Ottawa",
+      "datetime": "2025-10-26T13:00:00",
+      "date": "2025-10-26",
+      "time": "13:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-008179/"
+    },
+    {
       "store": "Nerd Herder",
       "city": "Niagara Falls",
       "datetime": "2025-10-26T13:00:00",
@@ -450,6 +477,24 @@
       "time": "13:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004906/"
+    },
+    {
+      "store": "WoodForSheep Hobbies Ltd.",
+      "city": "Markham",
+      "datetime": "2025-10-26T20:00:00",
+      "date": "2025-10-26",
+      "time": "20:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-008545/"
+    },
+    {
+      "store": "Rad Gameshop",
+      "city": "Kingsville",
+      "datetime": "2025-10-26T13:00:00",
+      "date": "2025-10-26",
+      "time": "13:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-007290/"
     },
     {
       "store": "Dark Fox TCG",
@@ -477,6 +522,24 @@
       "time": "18:40",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002335/"
+    },
+    {
+      "store": "Event Horizon Hobbies",
+      "city": "Midland",
+      "datetime": "2025-10-28T18:30:00",
+      "date": "2025-10-28",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-007644/"
+    },
+    {
+      "store": "The Trading Post",
+      "city": "Guelph",
+      "datetime": "2025-10-28T18:00:00",
+      "date": "2025-10-28",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-007668/"
     },
     {
       "store": "401 Games",
@@ -533,6 +596,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-002730/"
     },
     {
+      "store": "Players Cards and Collectibles",
+      "city": "London",
+      "datetime": "2025-10-30T18:30:00",
+      "date": "2025-10-30",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-009422/"
+    },
+    {
       "store": "Waypoint Games",
       "city": "Hamilton",
       "datetime": "2025-10-30T18:30:00",
@@ -540,6 +612,15 @@
       "time": "18:30",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-004760/"
+    },
+    {
+      "store": "Neferious Comics",
+      "city": "Ottawa",
+      "datetime": "2025-10-31T18:30:00",
+      "date": "2025-10-31",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-10-007777/"
     },
     {
       "store": "Anime Alley",
@@ -560,15 +641,6 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001662/"
     },
     {
-      "store": "Skyfox Games",
-      "city": "Oshawa",
-      "datetime": "2025-11-01T12:00:00",
-      "date": "2025-11-01",
-      "time": "12:00",
-      "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000948/"
-    },
-    {
       "store": "Dolly's Toys and Games",
       "city": "St. Catharines",
       "datetime": "2025-11-01T13:00:00",
@@ -578,13 +650,13 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001785/"
     },
     {
-      "store": "Dicey Business Inc.",
-      "city": "Mississauga",
-      "datetime": "2025-11-04T19:00:00",
-      "date": "2025-11-04",
+      "store": "Cards and Coasters",
+      "city": "Orillia",
+      "datetime": "2025-11-07T19:00:00",
+      "date": "2025-11-07",
       "time": "19:00",
       "type": "Challenge",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000184/"
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-004920/"
     },
     {
       "store": "KanZen Games Sports & Collectibles",
@@ -605,6 +677,24 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000824/"
     },
     {
+      "store": "The Game Room at The Frugal Dutchman",
+      "city": "Fort Erie",
+      "datetime": "2025-11-08T10:00:00",
+      "date": "2025-11-08",
+      "time": "10:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-003853/"
+    },
+    {
+      "store": "Skyfox Games",
+      "city": "Oshawa",
+      "datetime": "2025-11-08T12:00:00",
+      "date": "2025-11-08",
+      "time": "12:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000948/"
+    },
+    {
       "store": "Cardboard Hero Games and Collectibles",
       "city": "Oshawa",
       "datetime": "2025-11-08T10:00:00",
@@ -612,6 +702,24 @@
       "time": "10:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001663/"
+    },
+    {
+      "store": "Jack's on Queen",
+      "city": "Springwater",
+      "datetime": "2025-11-09T14:00:00",
+      "date": "2025-11-09",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002208/"
+    },
+    {
+      "store": "Enter the Battlefield",
+      "city": "Newmarket",
+      "datetime": "2025-11-09T13:00:00",
+      "date": "2025-11-09",
+      "time": "13:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002806/"
     },
     {
       "store": "Imaginaire",
@@ -630,6 +738,24 @@
       "time": "18:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000362/"
+    },
+    {
+      "store": "Nerd Herder",
+      "city": "Niagara Falls",
+      "datetime": "2025-11-12T18:30:00",
+      "date": "2025-11-12",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002847/"
+    },
+    {
+      "store": "GT Games",
+      "city": "Carleton Place",
+      "datetime": "2025-11-13T18:00:00",
+      "date": "2025-11-13",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002660/"
     },
     {
       "store": "Top Shelf Collection",
@@ -677,6 +803,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001096/"
     },
     {
+      "store": "Danireon Cards & Games",
+      "city": "Ottawa",
+      "datetime": "2025-11-15T12:00:00",
+      "date": "2025-11-15",
+      "time": "12:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002271/"
+    },
+    {
       "store": "Nabema Collectibles",
       "city": "Ottawa",
       "datetime": "2025-11-15T12:00:00",
@@ -684,6 +819,15 @@
       "time": "12:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002060/"
+    },
+    {
+      "store": "FantasyForged",
+      "city": "Orangeville",
+      "datetime": "2025-11-15T18:30:00",
+      "date": "2025-11-15",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-005014/"
     },
     {
       "store": "Cardboard Memories Inc.",
@@ -731,6 +875,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000321/"
     },
     {
+      "store": "The Game Room at The Frugal Dutchman",
+      "city": "Fort Erie",
+      "datetime": "2025-11-21T18:00:00",
+      "date": "2025-11-21",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-003455/"
+    },
+    {
       "store": "Wizard Tower",
       "city": "Ottawa",
       "datetime": "2025-11-22T10:05:00",
@@ -758,6 +911,33 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001634/"
     },
     {
+      "store": "Waypoint Games",
+      "city": "Hamilton",
+      "datetime": "2025-11-22T12:00:00",
+      "date": "2025-11-22",
+      "time": "12:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-004543/"
+    },
+    {
+      "store": "Event Horizon Hobbies",
+      "city": "Midland",
+      "datetime": "2025-11-22T12:00:00",
+      "date": "2025-11-22",
+      "time": "12:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002603/"
+    },
+    {
+      "store": "WoodForSheep Hobbies Ltd.",
+      "city": "Markham",
+      "datetime": "2025-11-23T20:00:00",
+      "date": "2025-11-23",
+      "time": "20:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002812/"
+    },
+    {
       "store": "Mecha Games",
       "city": "St. Catharines",
       "datetime": "2025-11-23T12:00:00",
@@ -765,6 +945,33 @@
       "time": "12:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001334/"
+    },
+    {
+      "store": "Trinity Hobby",
+      "city": "Ottawa",
+      "datetime": "2025-11-23T13:00:00",
+      "date": "2025-11-23",
+      "time": "13:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002760/"
+    },
+    {
+      "store": "Dark Fox TCG",
+      "city": "Hamilton",
+      "datetime": "2025-11-24T18:00:00",
+      "date": "2025-11-24",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-005301/"
+    },
+    {
+      "store": "Dicey Business Inc.",
+      "city": "Mississauga",
+      "datetime": "2025-11-25T19:00:00",
+      "date": "2025-11-25",
+      "time": "19:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000184/"
     },
     {
       "store": "Mind Games Cataraqui Centre",
@@ -776,6 +983,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000618/"
     },
     {
+      "store": "The Trading Post",
+      "city": "Guelph",
+      "datetime": "2025-11-25T18:00:00",
+      "date": "2025-11-25",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002606/"
+    },
+    {
       "store": "Wizard Tower",
       "city": "Ottawa",
       "datetime": "2025-11-25T18:40:00",
@@ -783,6 +999,15 @@
       "time": "18:40",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000492/"
+    },
+    {
+      "store": "Event Horizon Hobbies",
+      "city": "Midland",
+      "datetime": "2025-11-25T18:30:00",
+      "date": "2025-11-25",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002601/"
     },
     {
       "store": "401 Games",
@@ -866,13 +1091,13 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-001690/"
     },
     {
-      "store": "The Upper Hand",
-      "city": "Mississauga",
-      "datetime": "2025-11-29T11:00:00",
+      "store": "Heroic Dreams",
+      "city": "Pickering",
+      "datetime": "2025-11-29T12:00:00",
       "date": "2025-11-29",
-      "time": "11:00",
-      "type": "Cup",
-      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000178/"
+      "time": "12:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002342/"
     },
     {
       "store": "Danireon Cards & Games",
@@ -911,6 +1136,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000403/"
     },
     {
+      "store": "Trinity Hobby",
+      "city": "Ottawa",
+      "datetime": "2025-11-30T13:00:00",
+      "date": "2025-11-30",
+      "time": "13:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-002763/"
+    },
+    {
       "store": "Carta Magica Ottawa",
       "city": "Ottawa",
       "datetime": "2025-11-30T12:00:00",
@@ -918,6 +1152,24 @@
       "time": "12:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000324/"
+    },
+    {
+      "store": "The Upper Hand",
+      "city": "Mississauga",
+      "datetime": "2025-11-30T11:00:00",
+      "date": "2025-11-30",
+      "time": "11:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-000178/"
+    },
+    {
+      "store": "Dolly's Toys and Games",
+      "city": "Toronto",
+      "datetime": "2025-11-30T14:00:00",
+      "date": "2025-11-30",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-11-004043/"
     },
     {
       "store": "Dicey Business Inc.",
@@ -945,6 +1197,24 @@
       "time": "18:15",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001445/"
+    },
+    {
+      "store": "Cards and Coasters",
+      "city": "Orillia",
+      "datetime": "2025-12-05T19:00:00",
+      "date": "2025-12-05",
+      "time": "19:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002493/"
+    },
+    {
+      "store": "Cards and Coasters",
+      "city": "Orillia",
+      "datetime": "2025-12-05T19:00:00",
+      "date": "2025-12-05",
+      "time": "19:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002489/"
     },
     {
       "store": "KanZen Games Sports & Collectibles",
@@ -1001,6 +1271,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001465/"
     },
     {
+      "store": "KanZen Games Sports & Collectibles",
+      "city": "Mississauga",
+      "datetime": "2025-12-06T11:00:00",
+      "date": "2025-12-06",
+      "time": "11:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001985/"
+    },
+    {
       "store": "Skyfox Games",
       "city": "Oshawa",
       "datetime": "2025-12-06T12:00:00",
@@ -1019,6 +1298,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000732/"
     },
     {
+      "store": "WoodForSheep Hobbies Ltd.",
+      "city": "Markham",
+      "datetime": "2025-12-07T20:00:00",
+      "date": "2025-12-07",
+      "time": "20:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002148/"
+    },
+    {
       "store": "Hope Club Collectibles",
       "city": "Toronto",
       "datetime": "2025-12-07T12:30:00",
@@ -1035,6 +1323,15 @@
       "time": "11:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001632/"
+    },
+    {
+      "store": "Jack's on Queen",
+      "city": "Springwater",
+      "datetime": "2025-12-07T14:00:00",
+      "date": "2025-12-07",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001738/"
     },
     {
       "store": "Imaginaire",
@@ -1064,6 +1361,15 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000291/"
     },
     {
+      "store": "GT Games",
+      "city": "Carleton Place",
+      "datetime": "2025-12-11T18:00:00",
+      "date": "2025-12-11",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002067/"
+    },
+    {
       "store": "Cardboard Memories Inc.",
       "city": "Brampton",
       "datetime": "2025-12-12T18:00:00",
@@ -1091,6 +1397,51 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000376/"
     },
     {
+      "store": "GT Games",
+      "city": "Carleton Place",
+      "datetime": "2025-12-13T11:00:00",
+      "date": "2025-12-13",
+      "time": "11:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002066/"
+    },
+    {
+      "store": "401 Games",
+      "city": "Vaughan",
+      "datetime": "2025-12-13T11:00:00",
+      "date": "2025-12-13",
+      "time": "11:00",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002339/"
+    },
+    {
+      "store": "Trinity Hobby",
+      "city": "Ottawa",
+      "datetime": "2025-12-14T13:00:00",
+      "date": "2025-12-14",
+      "time": "13:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002117/"
+    },
+    {
+      "store": "Jack's on Queen",
+      "city": "Springwater",
+      "datetime": "2025-12-14T13:30:00",
+      "date": "2025-12-14",
+      "time": "13:30",
+      "type": "Cup",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001739/"
+    },
+    {
+      "store": "The Trading Post",
+      "city": "Guelph",
+      "datetime": "2025-12-16T18:00:00",
+      "date": "2025-12-16",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002005/"
+    },
+    {
       "store": "401 Games",
       "city": "Vaughan",
       "datetime": "2025-12-17T18:00:00",
@@ -1109,6 +1460,24 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000627/"
     },
     {
+      "store": "Waypoint Games",
+      "city": "Hamilton",
+      "datetime": "2025-12-18T18:30:00",
+      "date": "2025-12-18",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002414/"
+    },
+    {
+      "store": "The Game Room at The Frugal Dutchman",
+      "city": "Fort Erie",
+      "datetime": "2025-12-19T18:00:00",
+      "date": "2025-12-19",
+      "time": "18:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002274/"
+    },
+    {
       "store": "Dungeon Comics and Cards",
       "city": "Oakville",
       "datetime": "2025-12-20T13:00:00",
@@ -1116,6 +1485,15 @@
       "time": "13:00",
       "type": "Challenge",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001661/"
+    },
+    {
+      "store": "FantasyForged",
+      "city": "Orangeville",
+      "datetime": "2025-12-20T18:30:00",
+      "date": "2025-12-20",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002511/"
     },
     {
       "store": "Derpy Cards",
@@ -1134,6 +1512,15 @@
       "time": "13:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000295/"
+    },
+    {
+      "store": "Heroic Dreams",
+      "city": "Pickering",
+      "datetime": "2025-12-27T12:00:00",
+      "date": "2025-12-27",
+      "time": "12:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-001852/"
     },
     {
       "store": "Hope Club Collectibles",
@@ -1163,6 +1550,24 @@
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000912/"
     },
     {
+      "store": "Dolly's Toys and Games",
+      "city": "Toronto",
+      "datetime": "2025-12-28T14:00:00",
+      "date": "2025-12-28",
+      "time": "14:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002332/"
+    },
+    {
+      "store": "WoodForSheep Hobbies Ltd.",
+      "city": "Markham",
+      "datetime": "2025-12-28T20:00:00",
+      "date": "2025-12-28",
+      "time": "20:00",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002147/"
+    },
+    {
       "store": "Derpy Cards",
       "city": "Richmond Hill",
       "datetime": "2025-12-28T12:30:00",
@@ -1179,6 +1584,15 @@
       "time": "12:00",
       "type": "Cup",
       "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-000288/"
+    },
+    {
+      "store": "Event Horizon Hobbies",
+      "city": "Midland",
+      "datetime": "2025-12-30T18:30:00",
+      "date": "2025-12-30",
+      "time": "18:30",
+      "type": "Challenge",
+      "pkmn_url": "https://www.pokemon.com/us/pokemon-trainer-club/play-pokemon-tournaments/25-12-002003/"
     },
     {
       "store": "Wizard Tower",
